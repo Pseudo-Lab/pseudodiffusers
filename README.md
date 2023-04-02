@@ -14,6 +14,6 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 조상우 [Sangwoo Jo] | [Github](https://github.com/jasonjo97) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 
 ## Schedule 
-| idx | Date | Presenter | Resource | Paper / Code | 
-| :--: | :--: | :--: | :--: | :--: |
-| 1 | 2023.03.29 | 조상우 [Sangwoo Jo] | | | 
+| idx | Date | Presenter | Paper / Code | 
+| :--: | :--: | :--: | :--: |
+| 1 | 2023.03.29 | 조상우 [Sangwoo Jo] | [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) (ICLR 2014) <br> [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (NIPS 2014)| 

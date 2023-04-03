@@ -1,8 +1,5 @@
-# VAE
+# Variational AutoEncoder (VAE)
 
-paper : [https://arxiv.org/abs/1312.6114](https://arxiv.org/abs/1312.6114)
-
-code : https://github.com/GunhoChoi/PyTorch-FastCampus
 
 **[Introduction]**
 
@@ -19,13 +16,24 @@ code : https://github.com/GunhoChoi/PyTorch-FastCampus
 
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
-![스크린샷 2023-03-27 220619.png](VAE%2047c97dd03410405fa65cac4d99c49102/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-03-27_220619.png)
+<p align="center">
+  <img src="../../pics/vae/vae_01.png">
+</p>
 
 Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용해 어떤 새로운 데이터를 생성하는 Decoder 부분에 초점을 둡니다. 이때 논문에서 다음과 같은 assumption 들을 내립니다. 첫번째로 $p_{\theta}(z)$ 와 $p_{\theta}(x|z)$ 는 parametric 한 distribution 을 가지고 있고, 이는 $\theta$ 와 $z$ 에 대해 differentiable 하다는 가정을 내립니다. 이 때, 대표적으로 $p_{\theta}(z)$ 는 Gaussian distribution 을 따르고 $p_{\theta}(x|z)$ 는 생성하고자 하는 데이터 성질에 따라 Bernoulli 혹은 Gaussian distribution 을 따르도록 정의합니다. 그리고 $p_{\theta}(x|z)$ 의 파라미터 $p$ 혹은 $(\mu, \sigma)$ 는 아래 그림과 같이 뉴럴 네트워크로 구성된 Decoder 로부터 계산이 됩니다. 
 
-![Screen Shot 2023-03-28 at 11.19.19 AM.png](VAE%2047c97dd03410405fa65cac4d99c49102/Screen_Shot_2023-03-28_at_11.19.19_AM.png)
-
-![스크린샷 2023-03-27 233103.png](VAE%2047c97dd03410405fa65cac4d99c49102/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-03-27_233103.png)
+<div id="image-table" align="center">
+    <table>
+	    <tr>
+    	    <td style="padding:10px">
+        	    <img src="../../pics/vae/vae_06.png" width="400"/>
+      	    </td>
+            <td style="padding:10px">
+            	<img src="../../pics/vae/vae_02.png" width="300"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 이를 기반으로 우리는 ML/MAP estimation 을 통해 marginal likelihood $p_{\theta}(x)$ 를 최대화시키는 파라미터 $\theta$ 를 구하는 것이 목적입니다. 하지만, $p_{\theta}(x) = \int p_{\theta}(z)p_{\theta}(x|z) \ dz$  는 intractable 하기 때문에 $p_{\theta}(z|x)$ 를 계산하기 위한 Encoder 가 등장하게 됩니다. 
 
@@ -35,9 +43,18 @@ $$
 
 여기서 $p_{\theta}(z|x)$ 역시 intractable 하기 때문에 이를 잘 근사화하는 뉴럴 네트워크 $q_{\phi}(z|x)$ 를 정의하게 되고, 이러한 과정을 변분추론(Variational Inference) 라고 합니다. 아래는 Encoder 와 Decoder 를 함께 도식화한 그림입니다. 정리하자면, MLP Encoder 를 통해 계산된 $\mu$ 와 $\sigma$ 로 잠재변수 $z$ 를 생성하게 되고, 이를 기반으로 Decoder 는 원본 이미지와 유사한 데이터를 생성하게 됩니다.  
 
-![Screen Shot 2023-03-28 at 3.17.36 PM.png](VAE%2047c97dd03410405fa65cac4d99c49102/Screen_Shot_2023-03-28_at_3.17.36_PM.png)
-
-![Screen Shot 2023-03-28 at 3.19.12 PM.png](VAE%2047c97dd03410405fa65cac4d99c49102/Screen_Shot_2023-03-28_at_3.19.12_PM.png)
+<div id="image-table" align="center">
+    <table>
+	    <tr>
+    	    <td style="padding:10px">
+        	    <img src="../../pics/vae/vae_03.png" width="400"/>
+      	    </td>
+            <td style="padding:10px">
+            	<img src="../../pics/vae/vae_04.png" width="400"/>
+            </td>
+        </tr>
+    </table>
+</div>
 
 해당 implementation code 도 확인해보겠습니다. 
 
@@ -108,7 +125,9 @@ $$
 
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
-![Screen Shot 2023-03-28 at 6.25.14 PM.png](VAE%2047c97dd03410405fa65cac4d99c49102/Screen_Shot_2023-03-28_at_6.25.14_PM.png)
+<p align="center">
+  <img src="../../pics/vae/vae_05.png" width="700/">
+</p>
 
 **[Summary]**
 
@@ -116,6 +135,8 @@ AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는
 
 **[References]**
 
-[https://wikidocs.net/152474](https://wikidocs.net/152474)
+[https://arxiv.org/abs/1312.6114](https://arxiv.org/abs/1312.6114) [paper]
 
-[https://ratsgo.github.io/generative model/2018/01/27/VAE/](https://ratsgo.github.io/generative%20model/2018/01/27/VAE/)
+https://github.com/GunhoChoi/PyTorch-FastCampus [code]
+
+[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](youtu.be/GbCAwVVKaHY)

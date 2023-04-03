@@ -175,7 +175,7 @@ $$
 이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고 
 
 $$
-V(D^*,G) = \mathbb{E}_{x \sim p_{data}(x)}[log(D^{*}(x))] + \mathbb{E}_{x \sim p_g(x)}[log(1-D^{*}(x)]
+V(D^*,G) = \mathbb{E}_{x \sim p_{data}(x)} \[ log D^{\*}(x) \] + \mathbb{E}_{x \sim p_g(x)}\[ log(1-D^{\*}(x) \]
 $$
 
 $$
@@ -200,6 +200,6 @@ VAE는 생성된 이미지가 흐릿하고, 입력 데이터와 유사한 데이
 
 [https://arxiv.org/abs/1406.2661](https://arxiv.org/abs/1406.2661) [paper]
 
-https://github.com/eriklindernoren/PyTorch-GAN (original code : https://github.com/goodfeli/adversarial) [code]
+https://github.com/eriklindernoren/PyTorch-GAN [code]
 
 [Smart Design Lab @KAIST | 딥러닝 Chp 3.4 GAN](https://www.youtube.com/watch?v=cd-kj1ysqOc)

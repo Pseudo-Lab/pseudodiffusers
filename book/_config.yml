@@ -1,12 +1,12 @@
 #######################################################################################
 # Book settings
-title : PseudoLab [Text-to-Image Generation]
+title : Text-to-Image Generation
 author: PseudoLab
 logo: 'PseudoLab_logo.png'
 
 # Short description about the book
 description: >-
-  Basic Jupyter Book template for PseudoLab studies
+  Paper/code review and experimental findings related to Text-to-Image Generation models
 
 #######################################################################################
 # Execution settings

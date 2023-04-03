@@ -1,7 +1,7 @@
 # Variational AutoEncoder (VAE)
 
 
-**[Introduction]**
+### Introduction
 
 논문의 Introduction 에 다음과 같은 문구가 적혀있는데요.  
 
@@ -12,7 +12,7 @@
 
 이가 의미하는 바가 무엇인지 한번 살펴보도록 하겠습니다. 
 
-**[Intractability]**
+### Intractability
 
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
@@ -121,7 +121,7 @@ $$
 \mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] = \int log(p_{\theta}(x_i|z))q_{\phi}(z|x_i)dz \approx \frac{1}{L}\sum_{z^{i,l}} log(p_{\theta}(x_i|z^{i,l}))
 $$
 
-**[Reparameterization Trick]**
+### Reparameterization Trick
 
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
@@ -129,11 +129,11 @@ $$
   <img src="../../pics/vae/vae_05.png" width="700/">
 </p>
 
-**[Summary]**
+### Summary
 
 AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 또한, 손실함수의 Reconstruction Error 에 해당하는 term 에서 확인한 것처럼 입력 데이터와 출력 데이터가 유사하도록 모델이 학습되기 때문에, GAN 에 비해서 새로운 데이터를 생성하는데 성능이 떨어집니다. 
 
-**[References]**
+### References
 
 [https://arxiv.org/abs/1312.6114](https://arxiv.org/abs/1312.6114) [paper]
 

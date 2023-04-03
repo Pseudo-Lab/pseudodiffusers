@@ -175,7 +175,7 @@ $$
 이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고 
 
 $$
-V(D^*,G) = \mathbb{E}_{x \sim p_{data}(x)}[log\ D^*(x)] + \mathbb{E}_{x \sim p_g(x)}[log(1-D^*(x)]
+V(D^*,G) = \mathbb{E}_{x \sim p_{data}(x)}[log(D^{*}(x))] + \mathbb{E}_{x \sim p_g(x)}[log(1-D^{*}(x)]
 $$
 
 $$
@@ -186,7 +186,7 @@ $$
 = -log(4)\ + KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) 
 $$
 
-$KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) = 2\ \cdot\ JSD(p_{data}\ ||\ p_{g})$ 의 최솟값은 0 이고 이는 $**p_g = p_{data}$** 일때 성립합니다.   
+$KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) = 2\ \cdot\ JSD(p_{data}\ ||\ p_{g})$ 의 최솟값은 0 이고 이는 $p_g = p_{data}$ 일때 성립합니다.   
 
 ### Experiments
 

@@ -1,7 +1,8 @@
-format: jb-article
+format: jb-book
 root: intro
-sections:
-- file: docs/markdown-example
-  title: "markdown \uC608\uC2DC"
-- file: docs/notebook-example
-  title: ".ipynb \uD30C\uC77C \uC608\uC2DC"
+parts:
+- caption: Paper/Code Review
+  chapters:
+  - file: docs/review/vae.md  
+  - file: docs/review/gan.md
+- caption: Case Studies 

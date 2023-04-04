@@ -5,4 +5,3 @@ parts:
   chapters:
   - file: docs/review/vae.md  
   - file: docs/review/gan.md
-- caption: Case Studies 

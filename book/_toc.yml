@@ -1,5 +1,5 @@
 format: jb-book
-root: docs/intro
+root: intro
 parts:
 - caption: Paper/Code Review
   chapters:

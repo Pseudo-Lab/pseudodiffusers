@@ -139,4 +139,4 @@ AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는
 
 https://github.com/GunhoChoi/PyTorch-FastCampus [code]
 
-[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](youtu.be/GbCAwVVKaHY)
+[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](https://www.youtube.com/watch?v=GbCAwVVKaHY&t=95s)

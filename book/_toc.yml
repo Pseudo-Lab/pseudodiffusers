@@ -1,7 +1,7 @@
 format: jb-book
-root: intro
+root: docs/intro
 parts:
 - caption: Paper/Code Review
   chapters:
-  - file: docs/review/vae.md  
-  - file: docs/review/gan.md
+  - file: docs/review/vae
+  - file: docs/review/gan

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>.ipynb 파일 활용 &#8212; Text-to-Image Generation</title>
+    <title>Jupyter Book Template for PseudoLab &#8212; Text-to-Image Generation</title>
   
   
   
@@ -62,10 +62,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/notebook-example';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/intro';</script>
     <link rel="shortcut icon" href="../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Variational AutoEncoder (VAE)" href="review/vae.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -131,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="intro.html">
+<a class="navbar-brand logo" href="#">
   
   
   
@@ -150,8 +151,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
                     Jupyter Book Template for PseudoLab
                 </a>
             </li>
@@ -231,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/notebook-example.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/intro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -261,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/docs/notebook-example.ipynb" target="_blank"
+      <li><a href="../_sources/docs/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -271,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.ipynb</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -341,7 +342,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>.ipynb 파일 활용</h1>
+    <h1>Jupyter Book Template for PseudoLab</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -355,25 +356,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="ipynb">
-<h1>.ipynb 파일 활용<a class="headerlink" href="#ipynb" title="Permalink to this heading">#</a></h1>
-<p>Jupyter Book에선 .ipynb파일 또한 지원합니다. 아래와 같이 코드를 입력하고, 그에 대응하는 출력물을 함께 웹페이지로 구성 가능합니다.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
-</pre></div>
+  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-book-template-for-pseudolab">
+<h1>Jupyter Book Template for PseudoLab<a class="headerlink" href="#jupyter-book-template-for-pseudolab" title="Permalink to this heading">#</a></h1>
+<p>가짜연구소 자료 정리를 위한 Jupyter Book Template 입니다.</p>
+<div class="toctree-wrapper compound">
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21ff8e508e0&gt;]
-</pre></div>
-</div>
-<img alt="../_images/e468cd07c03dd3d875a2c27057f68f7774a504cdecb7a93e0f4ae9b608d647f2.png" src="../_images/e468cd07c03dd3d875a2c27057f68f7774a504cdecb7a93e0f4ae9b608d647f2.png" />
-</div>
-</div>
-<p><a class="reference external" href="https://jupyterbook.org/interactive/interactive.html#plotly">공식 홈페이지</a>를 참고하여 interactive한 시각화도 가능합니다.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -407,6 +394,15 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="right-next"
+       href="review/vae.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variational AutoEncoder (VAE)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

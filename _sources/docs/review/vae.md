@@ -17,7 +17,7 @@
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
 <p align="center">
-  <img src="../../pics/vae/vae_01.png">
+  <img src="/book/pics/vae/vae_01.png">
 </p>
 
 Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용해 어떤 새로운 데이터를 생성하는 Decoder 부분에 초점을 둡니다. 이때 논문에서 다음과 같은 assumption 들을 내립니다. 첫번째로 $p_{\theta}(z)$ 와 $p_{\theta}(x|z)$ 는 parametric 한 distribution 을 가지고 있고, 이는 $\theta$ 와 $z$ 에 대해 differentiable 하다는 가정을 내립니다. 이 때, 대표적으로 $p_{\theta}(z)$ 는 Gaussian distribution 을 따르고 $p_{\theta}(x|z)$ 는 생성하고자 하는 데이터 성질에 따라 Bernoulli 혹은 Gaussian distribution 을 따르도록 정의합니다. 그리고 $p_{\theta}(x|z)$ 의 파라미터 $p$ 혹은 $(\mu, \sigma)$ 는 아래 그림과 같이 뉴럴 네트워크로 구성된 Decoder 로부터 계산이 됩니다. 
@@ -26,10 +26,10 @@ Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용
     <table>
 	    <tr>
     	    <td style="padding:10px">
-        	    <img src="../../pics/vae/vae_06.png" width="400"/>
+        	    <img src="/book/pics/vae/vae_06.png" width="400"/>
       	    </td>
             <td style="padding:10px">
-            	<img src="../../pics/vae/vae_02.png" width="300"/>
+            	<img src="/book/pics/vae/vae_02.png" width="300"/>
             </td>
         </tr>
     </table>
@@ -47,10 +47,10 @@ $$
     <table>
 	    <tr>
     	    <td style="padding:10px">
-        	    <img src="../../pics/vae/vae_03.png" width="400"/>
+        	    <img src="/book/pics/vae/vae_03.png" width="400"/>
       	    </td>
             <td style="padding:10px">
-            	<img src="../../pics/vae/vae_04.png" width="400"/>
+            	<img src="/book/pics/vae/vae_04.png" width="400"/>
             </td>
         </tr>
     </table>
@@ -126,7 +126,7 @@ $$
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
 <p align="center">
-  <img src="../../pics/vae/vae_05.png" width="700/">
+  <img src="/book/pics/vae/vae_05.png" width="700/">
 </p>
 
 ### Summary
@@ -139,4 +139,4 @@ AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는
 
 https://github.com/GunhoChoi/PyTorch-FastCampus [code]
 
-[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](youtu.be/GbCAwVVKaHY)
+[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](https://www.youtube.com/watch?v=GbCAwVVKaHY&t=95s)

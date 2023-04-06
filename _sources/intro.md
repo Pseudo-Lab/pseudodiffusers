@@ -1,3 +1,2 @@
-# Jupyter Book Template for PseudoLab
+# [PseudoLab] Text-to-Image Generation (feat. Diffusion)
 
-가짜연구소 자료 정리를 위한 Jupyter Book Template 입니다. 

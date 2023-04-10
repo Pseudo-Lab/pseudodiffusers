@@ -194,7 +194,7 @@ $KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data
 
 ### Summary
 
-VAE는 새로운 데이터를 생성하지만 생성된 이미지가 흐릿하다는 단점을 지니고 있습니다. 반면에 GAN 은 high quality image 를 잘 생성하지만 unstable 한 convergence 를 가지고 있습니다. 그래서 실제로 VAE 는 Encoder 를 활용한 차원축소로 많이 활용되고 이미지 데이터를 생성하는데는 GAN 이 많이 활용되었다고 합니다. 
+VAE는 새로운 데이터를 잘 생성하지만 생성된 이미지가 흐릿하다는 단점을 지니고 있습니다. 반면에 GAN 은 high quality image 를 잘 생성하지만 unstable 한 convergence 를 가지고 있습니다. 그래서 실제로 VAE 는 Encoder 를 활용한 차원축소로 많이 활용되고 이미지 데이터를 생성하는데는 GAN 이 많이 활용되었다고 합니다. 
 
 ### References
 

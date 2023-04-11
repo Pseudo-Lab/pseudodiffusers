@@ -131,7 +131,7 @@ $$
 
 ### Summary
 
-AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 또한, 손실함수의 Reconstruction Error 에 해당하는 term 에서 확인한 것처럼 입력 데이터와 출력 데이터가 유사하도록 모델이 학습되기 때문에, GAN 에 비해서 새로운 데이터를 생성하는데 성능이 떨어집니다. 
+AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 그리고 VAE 를 실제로 사용해보면 생성된 데이터 image quality 가 낮다는 단점을 가지고 있다고 합니다. 
 
 ### References
 

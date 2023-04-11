@@ -5,5 +5,5 @@ parts:
   chapters:
   - file: docs/review/vae
   - file: docs/review/gan
-  - file: docs/review/cyclegan
-  - file: docs/review/stylegan
+  - file: docs/review/cycleGAN
+  - file: docs/review/StyleGAN

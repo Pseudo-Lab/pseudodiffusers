@@ -33,7 +33,34 @@ pip install jupyter-book==0.15.1
 pip install ghp-import==2.1.0
 ```
 
-3. Change the contents in ```book/docs``` folder and ```_toc.yml``` file accordingly 
+3. Change the contents in ```book/docs``` folder with the following format and update ```_toc.yml``` file accordingly (check [https://github.com/Pseudo-Lab/SegCrew-Book](https://github.com/Pseudo-Lab/SegCrew-Book) for reference)
+
+- 3.1. Add information section on top of the markdown page 
+```{admonition} Information
+- **Title:** {논문 제목}, {학회/학술지명}
+
+- **Reference**
+    - Paper:  [{논문 링크}]({논문 링크})
+    - Code: [{code 링크}]({code 링크})
+    - Review: [{review 링크}]({review 링크})
+    
+- **Author:** {리뷰 작성자 기입}
+
+- **Edited by:** {리뷰 편집자 기입}
+
+- **Last updated on {최종 update 날짜 e.g. Apr. 12, 2023}**
+```
+
+- 3-2. Use the following template when displaying images 
+```
+:::{figure-md} 'tag명'
+<img src="{주소}" alt="{tag명}" class="bg-primary mb-1" width="{800px}">
+
+{제목} \  (source: {출처})
+:::
+```
+
+- 3-3. Update ```_toc.yml``` file accordingly
 ```
 format: jb-book
 root: intro

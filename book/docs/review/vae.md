@@ -1,7 +1,20 @@
+```{admonition} Information
+- **Title:** Auto-Encoding Variational Bayes (ICLR 2014)
+
+- **Reference**
+    - Paper: [https://arxiv.org/abs/1312.6114](https://arxiv.org/abs/1312.6114)
+    - Code: [https://github.com/GunhoChoi/PyTorch-FastCampus](https://github.com/GunhoChoi/PyTorch-FastCampus)
+    - [Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](https://www.youtube.com/watch?v=GbCAwVVKaHY&t=95s)
+
+- **Author:** Sangwoo Jo
+
+- **Last updated on Apr. 12, 2023**
+```
+ 
 # Variational AutoEncoder (VAE)
 
 
-### Introduction
+## Introduction
 
 논문의 Introduction 에 다음과 같은 문구가 적혀있는데요.  
 
@@ -12,14 +25,14 @@
 
 이가 의미하는 바가 무엇인지 한번 살펴보도록 하겠습니다. 
 
-### Intractability
+## Intractability
 
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
 :::{figure-md} markdown-fig
 <img src="./pics/vae/vae_01.png" alt="vae_01" class="bg-primary mb-1" width="700px">
 
-Variational Autoencoder(VAE) Architecture (source: arXiv:1312.6114)
+Variational Autoencoder(VAE) Architecture 
 :::
 
 Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용해 어떤 새로운 데이터를 생성하는 Decoder 부분에 초점을 둡니다. 이때 논문에서 다음과 같은 assumption 들을 내립니다. 첫번째로 $p_{\theta}(z)$ 와 $p_{\theta}(x|z)$ 는 parametric 한 distribution 을 가지고 있고, 이는 $\theta$ 와 $z$ 에 대해 differentiable 하다는 가정을 내립니다. 이 때, 대표적으로 $p_{\theta}(z)$ 는 Gaussian distribution 을 따르고 $p_{\theta}(x|z)$ 는 생성하고자 하는 데이터 성질에 따라 Bernoulli 혹은 Gaussian distribution 을 따르도록 정의합니다. 그리고 $p_{\theta}(x|z)$ 의 파라미터 $p$ 혹은 $(\mu, \sigma)$ 는 아래 그림과 같이 뉴럴 네트워크로 구성된 Decoder 로부터 계산이 됩니다. 
@@ -123,25 +136,16 @@ $$
 \mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] = \int log(p_{\theta}(x_i|z))q_{\phi}(z|x_i)dz \approx \frac{1}{L}\sum_{z^{i,l}} log(p_{\theta}(x_i|z^{i,l}))
 $$
 
-### Reparameterization Trick
+## Reparameterization Trick
 
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
-```{image} ./pics/vae/vae_05.png
-:alt: vae_05
-:class: bg-primary mb-1
-:width: 700px
-:align: center
-```
+:::{figure-md} markdown-fig
+<img src="./pics/vae/vae_05.png" alt="vae_05" class="bg-primary mb-1" width="700px">
 
-### Summary
+Overview of Reparameterization Trick
+:::
+
+## Summary
 
 AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 그리고 VAE 를 실제로 사용해보면 생성된 데이터 image quality 가 낮다는 단점을 가지고 있다고 합니다. 
-
-### References
-
-[https://arxiv.org/abs/1312.6114](https://arxiv.org/abs/1312.6114) [paper]
-
-https://github.com/GunhoChoi/PyTorch-FastCampus [code]
-
-[Smart Design Lab @KAIST | 딥러닝 Ch.3.3 VAE](https://www.youtube.com/watch?v=GbCAwVVKaHY&t=95s)

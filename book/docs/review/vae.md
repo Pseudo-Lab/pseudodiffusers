@@ -30,7 +30,7 @@
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
 :::{figure-md} markdown-fig
-<img src="./pics/vae/vae_01.png" alt="vae_01" class="bg-primary mb-1" width="700px">
+<img src="../../pics/vae/vae_01.png" alt="vae_01" class="bg-primary mb-1" width="700px">
 
 Variational Autoencoder(VAE) Architecture 
 :::
@@ -41,10 +41,10 @@ Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용
     <table>
 	    <tr>
     	    <td style="padding:10px">
-        	    <img src="./pics/vae/vae_06.png" width="400"/>
+        	    <img src="../../pics/vae/vae_06.png" width="400"/>
       	    </td>
             <td style="padding:10px">
-            	<img src="./pics/vae/vae_02.png" width="300"/>
+            	<img src="../../pics/vae/vae_02.png" width="300"/>
             </td>
         </tr>
     </table>
@@ -62,10 +62,10 @@ $$
     <table>
 	    <tr>
     	    <td style="padding:10px">
-        	    <img src="./pics/vae/vae_03.png" width="400"/>
+        	    <img src="../../pics/vae/vae_03.png" width="400"/>
       	    </td>
             <td style="padding:10px">
-            	<img src="./pics/vae/vae_04.png" width="400"/>
+            	<img src="../../pics/vae/vae_04.png" width="400"/>
             </td>
         </tr>
     </table>
@@ -141,7 +141,7 @@ $$
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
 :::{figure-md} markdown-fig
-<img src="./pics/vae/vae_05.png" alt="vae_05" class="bg-primary mb-1" width="700px">
+<img src="../../pics/vae/vae_05.png" alt="vae_05" class="bg-primary mb-1" width="700px">
 
 Overview of Reparameterization Trick
 :::

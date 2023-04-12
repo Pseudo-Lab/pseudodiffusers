@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Variational AutoEncoder (VAE) &#8212; Text-to-Image Generation</title>
   
@@ -164,6 +164,15 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variational AutoEncoder (VAE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Abstract</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks</a></li>
 </ul>
 
     </div>
@@ -361,7 +370,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intractability">Intractability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparameterization-trick">Reparameterization Trick</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -373,7 +381,22 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder-vae">
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Auto-Encoding Variational Bayes (ICLR 2014)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/1312.6114">https://arxiv.org/abs/1312.6114</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/GunhoChoi/PyTorch-FastCampus">GunhoChoi/PyTorch-FastCampus</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=GbCAwVVKaHY&amp;t=95s">Smart Design Lab &#64;KAIST | 딥러닝 Ch.3.3 VAE</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Sangwoo Jo</p></li>
+<li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder-vae">
 <h1>Variational AutoEncoder (VAE)<a class="headerlink" href="#variational-autoencoder-vae" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -387,40 +410,31 @@ document.write(`
 <section id="intractability">
 <h2>Intractability<a class="headerlink" href="#intractability" title="Permalink to this heading">#</a></h2>
 <p>Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 <span class="math notranslate nohighlight">\(x\)</span> 를 받아서 잠재변수(Latent Variable) <span class="math notranslate nohighlight">\(z\)</span> 를 만들어내고, Decoder 는 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 를 활용해서 다시 <span class="math notranslate nohighlight">\(x\)</span> 를 복원하게 됩니다.</p>
-<p align="center">
-  <img src="pics/vae/vae_01.png">
-</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_01.png"><img alt="vae_01" class="bg-primary mb-1" src="../../_images/vae_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Variational Autoencoder(VAE) Architecture</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용해 어떤 새로운 데이터를 생성하는 Decoder 부분에 초점을 둡니다. 이때 논문에서 다음과 같은 assumption 들을 내립니다. 첫번째로 <span class="math notranslate nohighlight">\(p_{\theta}(z)\)</span> 와 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 는 parametric 한 distribution 을 가지고 있고, 이는 <span class="math notranslate nohighlight">\(\theta\)</span> 와 <span class="math notranslate nohighlight">\(z\)</span> 에 대해 differentiable 하다는 가정을 내립니다. 이 때, 대표적으로 <span class="math notranslate nohighlight">\(p_{\theta}(z)\)</span> 는 Gaussian distribution 을 따르고 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 는 생성하고자 하는 데이터 성질에 따라 Bernoulli 혹은 Gaussian distribution 을 따르도록 정의합니다. 그리고 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 의 파라미터 <span class="math notranslate nohighlight">\(p\)</span> 혹은 <span class="math notranslate nohighlight">\((\mu, \sigma)\)</span> 는 아래 그림과 같이 뉴럴 네트워크로 구성된 Decoder 로부터 계산이 됩니다.</p>
-<div id="image-table" align="center">
-    <table>
-	    <tr>
-    	    <td style="padding:10px">
-        	    <img src="pics/vae/vae_06.png" width="400"/>
-      	    </td>
-            <td style="padding:10px">
-            	<img src="pics/vae/vae_02.png" width="300"/>
-            </td>
-        </tr>
-    </table>
-</div>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_07.png"><img alt="vae_07" class="bg-primary mb-1" src="../../_images/vae_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of Bernoulli(left) and Gaussian(right) Decoder</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>이를 기반으로 우리는 ML/MAP estimation 을 통해 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 최대화시키는 파라미터 <span class="math notranslate nohighlight">\(\theta\)</span> 를 구하는 것이 목적입니다. 하지만, <span class="math notranslate nohighlight">\(p_{\theta}(x) = \int p_{\theta}(z)p_{\theta}(x|z) \ dz\)</span>  는 intractable 하기 때문에 <span class="math notranslate nohighlight">\(p_{\theta}(z|x)\)</span> 를 계산하기 위한 Encoder 가 등장하게 됩니다.</p>
 <div class="math notranslate nohighlight">
 \[
 p_{\theta}(x) = p_{\theta}(x|z)p_{\theta}(z)/p_{\theta}(z|x)
 \]</div>
 <p>여기서 <span class="math notranslate nohighlight">\(p_{\theta}(z|x)\)</span> 역시 intractable 하기 때문에 이를 잘 근사화하는 뉴럴 네트워크 <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 를 정의하게 되고, 이러한 과정을 변분추론(Variational Inference) 라고 합니다. 아래는 Encoder 와 Decoder 를 함께 도식화한 그림입니다. 정리하자면, MLP Encoder 를 통해 계산된 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 로 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 를 생성하게 되고, 이를 기반으로 Decoder 는 원본 이미지와 유사한 데이터를 생성하게 됩니다.</p>
-<div id="image-table" align="center">
-    <table>
-	    <tr>
-    	    <td style="padding:10px">
-        	    <img src="pics/vae/vae_03.png" width="400"/>
-      	    </td>
-            <td style="padding:10px">
-            	<img src="pics/vae/vae_04.png" width="400"/>
-            </td>
-        </tr>
-    </table>
-</div>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_08.png"><img alt="vae_08" class="bg-primary mb-1" src="../../_images/vae_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Overview of Gaussian Encoder and Decoder</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>해당 implementation code 도 확인해보겠습니다.</p>
 <ul>
 <li><p><strong>Encoder 구현 code</strong></p>
@@ -486,19 +500,16 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
 <section id="reparameterization-trick">
 <h2>Reparameterization Trick<a class="headerlink" href="#reparameterization-trick" title="Permalink to this heading">#</a></h2>
 <p>마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 를 Encoder 에서 나온 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 를 각각 더하고 곱하게 됩니다. 이는 <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 이 Gaussian distribution 을 따른다고 설정했을 때이고, <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다.</p>
-<p align="center">
-  <img src="pics/vae/vae_05.png" width="700/">
-</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_05.png"><img alt="vae_05" class="bg-primary mb-1" src="../../_images/vae_05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Overview of Reparameterization Trick</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
-<p>AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 또한, 손실함수의 Reconstruction Error 에 해당하는 term 에서 확인한 것처럼 입력 데이터와 출력 데이터가 유사하도록 모델이 학습되기 때문에, GAN 에 비해서 새로운 데이터를 생성하는데 성능이 떨어집니다.</p>
-</section>
-<section id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p><a class="reference external" href="https://arxiv.org/abs/1312.6114">https://arxiv.org/abs/1312.6114</a> [paper]</p>
-<p><a class="github reference external" href="https://github.com/GunhoChoi/PyTorch-FastCampus">GunhoChoi/PyTorch-FastCampus</a> [code]</p>
-<p><a class="reference external" href="https://www.youtube.com/watch?v=GbCAwVVKaHY&amp;t=95s">Smart Design Lab &#64;KAIST | 딥러닝 Ch.3.3 VAE</a></p>
+<p>AutoEncoder 는 latent space 에 하나의 값으로 지정해줬다면, VAE 는 평균 그리고 분산 파라미터들과 Gaussian 분포를 가진 샘플을 통해 잠재변수를 생성합니다. 그리고 VAE 를 실제로 사용해보면 생성된 데이터 image quality 가 낮다는 단점을 가지고 있다고 합니다.</p>
 </section>
 </section>
 
@@ -573,7 +584,6 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intractability">Intractability</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparameterization-trick">Reparameterization Trick</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

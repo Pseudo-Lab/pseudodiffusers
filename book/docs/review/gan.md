@@ -196,7 +196,7 @@ $$
 이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고 
 
 $$
-V(D^{\*},G) = \mathbb{E}_{x \sim p_{data}(x)} \[ log D^{\*}(x) \] + \mathbb{E}_{x \sim p_g(x)} \[ log(1-D^{\*}(x) \]
+V(D^{\*},G) = \mathbb{E}_{x \sim p_{data}(x)} \[ log D^{\*}(x) ]\ + \mathbb{E}_{x \sim p_g(x)} \[ log(1-D^{\*}(x) ]\
 $$
 
 $$

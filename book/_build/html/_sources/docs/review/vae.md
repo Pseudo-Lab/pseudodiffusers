@@ -17,7 +17,7 @@
 Variational Autoencoder(VAE) 는 크게 Encoder 와 Decoder 부분으로 이루어져 있습니다. 더 자세하게는, Encoder는 입력 데이터 $x$ 를 받아서 잠재변수(Latent Variable) $z$ 를 만들어내고, Decoder 는 잠재변수 $z$ 를 활용해서 다시 $x$ 를 복원하게 됩니다.  
 
 :::{figure-md} markdown-fig
-<img src="./pics/vae/vae_01.png" alt="vae_01" class="bg-primary mb-1" width="600px">
+<img src="./pics/vae/vae_01.png" alt="vae_01" class="bg-primary mb-1" width="700px">
 
 Variational Autoencoder(VAE) Architecture (source: arXiv:1312.6114)
 :::

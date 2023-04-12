@@ -127,13 +127,12 @@ $$
 
 마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
 
-:::{figure-md} markdown-fig
-<p align="center">
-  <img src="./pics/vae/vae_05.png" width="700/">
-</p>
-
-Overview of Reparameterization Trick (source: arXiv:1312.6114)
-:::
+```{image} ./pics/vae/vae_05.png
+:alt: vae_05
+:class: bg-primary mb-1
+:width: 700px
+:align: center
+```
 
 ### Summary
 

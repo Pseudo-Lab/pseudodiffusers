@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>A Style-Based Generator Architecture for Generative Adversarial Networks &#8212; Text-to-Image Generation</title>
   
@@ -164,7 +164,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="vae.html">Variational AutoEncoder (VAE)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Abstract</a></li>
-
 
 
 
@@ -446,7 +445,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
         <span class="k">return</span> <span class="n">x</span>
 
 <span class="k">class</span> <span class="nc">LayerEpilogue</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Things to do at the end of each layer.&quot;&quot;&quot;</span>
+    <span class="sd">&quot;&quot;&quot;Things to do at the end of each layer.&quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">channels</span><span class="p">,</span> <span class="n">dlatent_size</span><span class="p">,</span> <span class="n">use_wscale</span><span class="p">,</span>
                  <span class="n">use_noise</span><span class="p">,</span> <span class="n">use_pixel_norm</span><span class="p">,</span> <span class="n">use_instance_norm</span><span class="p">,</span> <span class="n">use_styles</span><span class="p">,</span> <span class="n">activation_layer</span><span class="p">):</span>

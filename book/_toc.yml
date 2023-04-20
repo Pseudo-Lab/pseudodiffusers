@@ -7,3 +7,4 @@ parts:
   - file: docs/review/gan
   - file: docs/review/cycleGAN
   - file: docs/review/StyleGAN
+  - file: docs/review/DDPM

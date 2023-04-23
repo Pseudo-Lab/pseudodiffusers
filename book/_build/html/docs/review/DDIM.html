@@ -1,0 +1,770 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Denoising Diffusion Implicit Models(DDIM) &#8212; Text-to-Image Generation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Denoising Diffusion Probabilistic Models(DDPM)" href="DDPM.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Paper/Code Review
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vae.html">
+   Variational AutoEncoder (VAE)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gan.html">
+   Generative Adversarial Network (GAN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycleGAN.html">
+   Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyleGAN.html">
+   A Style-Based Generator Architecture for Generative Adversarial Networks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDPM.html">
+   Denoising Diffusion Probabilistic Models(DDPM)
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Denoising Diffusion Implicit Models(DDIM)
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/review/DDIM.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
+                    class="fab fa-github"></i>저장소</button></a>
+        <a class="issues-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DDIM.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ddpm">
+     DDPM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variational-inference-for-non-markovian-forward-process">
+   3. Variational Inference For Non-Markovian Forward Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sampling-from-generalized-generative-process">
+   4. Sampling From Generalized Generative Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   5. Experiments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   6. Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   7. 참고자료
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Denoising Diffusion Implicit Models(DDIM)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 내용 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2. Background
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ddpm">
+     DDPM
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variational-inference-for-non-markovian-forward-process">
+   3. Variational Inference For Non-Markovian Forward Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sampling-from-generalized-generative-process">
+   4. Sampling From Generalized Generative Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   5. Experiments
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#code">
+   6. Code
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id13">
+   7. 참고자료
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> {Denoising Diffusion Implicit Models}, {ICLR 2021}</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2010.02502">https://arxiv.org/abs/2010.02502</a></p></li>
+<li><p>Code: <a class="reference external" href="https://github.com/ermongroup/ddim">Official:</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Seunghwan Ji</p></li>
+<li><p><strong>Last updated on April. 23, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="denoising-diffusion-implicit-models-ddim">
+<h1>Denoising Diffusion Implicit Models(DDIM)<a class="headerlink" href="#denoising-diffusion-implicit-models-ddim" title="Permalink to this headline">¶</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>DDPM의 단점인 Markov Process를 Non markovian process로 정의함으로서 Time efficient,  deterministic한 Sampling이 가능한 모델을 제안</p>
+<ul>
+<li><p>Deterministic vs Stochastic</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>생성 분야에서 GAN(Generative Adversarial Network)이 뛰어난 성능을 보여주고있다.</p></li>
+<li><p>하지만, GAN은 학습 과정에서 불안정성을 보이는 경우가 많다.</p>
+<ul class="simple">
+<li><p>Generator와 Discriminator의 Imbalanced에 의한 Mode collapse</p></li>
+</ul>
+</li>
+<li><p>그러던 중, DDPM과 NCSN같은 adversarial training구조가 아닌 model들이 등장하였고 성공의 가능성을 보여주었다.</p></li>
+<li><p>이 중 DDPM은 Forward Process에서 Markov Process를 거치는데 이때문에 GAN에 비해 매우 느린 Performance를 보여준다.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>sampling</p></th>
+<th class="head"><p>GAN</p></th>
+<th class="head"><p>DDPM</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>32 x 32 x 50k</p></td>
+<td><p>Less than 1 min</p></td>
+<td><p>About 20h</p></td>
+</tr>
+<tr class="row-odd"><td><p>256 x 256 x 50k</p></td>
+<td><p>-</p></td>
+<td><p>About 1000h</p></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>DDIM은,</p>
+<ol class="simple">
+<li><p>Markov Chain에 기반한 Process를 Non Markovian Process로 대체하였고</p></li>
+<li><p>결국 좀더 빠르고 비교적 우수한 Quality의 결과를 생성해내고, (with accelate)</p></li>
+<li><p>DDPM과는 다르게 Consistency한 학습 결과를 보여줌으로써 latent간의 Interpolation이 가능하다.</p>
+<ul class="simple">
+<li><p>Consistency?</p>
+<ul>
+<li><p>If x, y is equivalent, then f(x) = f(y)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="background">
+<h2>2. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<section id="ddpm">
+<h3>DDPM<a class="headerlink" href="#ddpm" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/00.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/00.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">DDPM &amp; DDIM Architectures</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>DDPM의 Forward Process는 Markov process로 동작한다.</p>
+<ul>
+<li><p><em><strong>Markov process</strong></em></p>
+<ul>
+<li><p><em>미래 시점을 예측하기위해 현재 시점의 값을 이용한다.</em></p></li>
+<li><p><em>미래 시점은 과거 시점의 값에는 독립적인 값을 갖는다.</em></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>time step T는 DDPM에서 성능을 좌지우지하는 중요한 Hyper parameter이다. (대충 T=1000 정도?)</p></li>
+<li><p>하지만, Sampling 과정에서 DDPM은 결국 T 번의 inference 과정을 모두 Sequential하게 거쳐야하고 이는 다른 Method(GAN 등)보다 현저히 느린 속도를 보이는 요소가 된다.</p></li>
+</ul>
+</section>
+</section>
+<section id="variational-inference-for-non-markovian-forward-process">
+<h2>3. Variational Inference For Non-Markovian Forward Process<a class="headerlink" href="#variational-inference-for-non-markovian-forward-process" title="Permalink to this headline">¶</a></h2>
+<p><strong>3.1. Non-Markovian Forward Processes</strong></p>
+<ul class="simple">
+<li><p>Inference’s Distribution 정의</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/01.png"><img alt="DDIM_01" class="bg-primary mb-1" src="../../_images/01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/02.png"><img alt="DDIM_02" class="bg-primary mb-1" src="../../_images/02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>t 시점의 값을 구하기위해 <span class="math notranslate nohighlight">\(X_{t-1}\)</span>의 값과 <span class="math notranslate nohighlight">\(X_{0}\)</span>의 값을 참조</p>
+<ul>
+<li><p>DDPM은? <span class="math notranslate nohighlight">\(X_{t-1}\)</span>의 값만을 참조</p></li>
+<li><p>σ는 Forward process의 stochastic한 정도를 조절하는 hyper parameter (chap 4 참조)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>3.2. Generative Process And Unified Variational Inference Objective (Reverse Process)</strong></p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/03.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/03.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/04.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/04.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{t}\)</span>을 통해 <span class="math notranslate nohighlight">\(X_{0}\)</span>의 값을 예측 (trainable)</p></li>
+<li><p>위의 식을 통해 <span class="math notranslate nohighlight">\(X_{t}\)</span>와, <span class="math notranslate nohighlight">\(X_{0}\)</span>의 값을 이용해 <span class="math notranslate nohighlight">\(X_{t-1}\)</span>을 샘플링</p></li>
+</ol>
+<p>실제로는</p>
+<ul>
+<li><p>noise(ε)와 <span class="math notranslate nohighlight">\(X_{0}\)</span>, <span class="math notranslate nohighlight">\(X_{t}\)</span>의 관계</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/05.png"><img alt="DDIM_05" class="bg-primary mb-1" src="../../_images/05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_{t}\)</span>을 통해 <span class="math notranslate nohighlight">\(X_{0}\)</span>을 예측</p>
+<ol class="simple">
+<li><p>t 시점의 이미지를 통해 t 시점의 noise를 예측</p></li>
+<li><p>t 시점의 이미지와 t 시점의 noise를 통해 0 시점의 이미지를 계산 (fixed)</p></li>
+</ol>
+</li>
+<li><p>위의 식을 통해 t시점의 값과 예측한 0 시점의 값을 이용해 t-1 시점의 값을 샘플링</p></li>
+</ol>
+</section>
+<section id="sampling-from-generalized-generative-process">
+<h2>4. Sampling From Generalized Generative Process<a class="headerlink" href="#sampling-from-generalized-generative-process" title="Permalink to this headline">¶</a></h2>
+<p>4.1. Denoising Diffusion Implicit Models</p>
+<ol class="simple">
+<li><p>If σ → 0</p></li>
+</ol>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/06.png"><img alt="DDIM_06" class="bg-primary mb-1" src="../../_images/06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Equation 6</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ol class="simple">
+<li><p>σ가 특정 값을 가질 때 DDPM의 generative process의 수식과 동일하다.</p></li>
+</ol>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/07.png"><img alt="DDIM_07" class="bg-primary mb-1" src="../../_images/07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Explanation of σ</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>4.2. Accelerated Generation Processes</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/08.png"><img alt="DDIM_08" class="bg-primary mb-1" src="../../_images/08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Explanation of accelated method</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>DDIM은 Deterministic하기때문에 모든 시점의 값을 모두 계산할 필요 없이 subset의 시점만으로 sampling이 가능하다.</p></li>
+<li><p>이 Accelerating method는 약간의 quality 저하가 있지만 Computational efficiency를 충분히 증가시킬 수 있다.</p></li>
+<li><p><strong>DDIM 방식의 재학습 없이 DDPM의 training에 DDIM의 sampling이 가능하다.</strong></p></li>
+</ul>
+<p>4.3. Relevance To Neural ODEs</p>
+<ul class="simple">
+<li><p>DDIM은 Object(e.g. 이미지)의 Encoding이 가능한 식을 유도할 수 있다.</p></li>
+</ul>
+</section>
+<section id="experiments">
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/09.png"><img alt="DDIM_09" class="bg-primary mb-1" src="../../_images/09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/010.png"><img alt="DDIM_010" class="bg-primary mb-1" src="../../_images/010.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Euqation 7</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>η → model을 simple하게 control하기위한 hyperparameter</p>
+<ul>
+<li><p>η = 1 → Model is DDPM</p></li>
+<li><p>η = 0 → Model is DDIM</p></li>
+</ul>
+</li>
+<li><p>모든 비교 모델이 S(sampling 횟수)의 값이 커질수록 더 낮은 FiD를 보여준다.</p></li>
+<li><p>Fig.3의 DDIM은 다른 모델(η가 0이 아닌 모델)과 다르게 sampling step에 consistency한 결과를 보여준다.</p></li>
+</ul>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/011.png"><img alt="DDIM_011" class="bg-primary mb-1" src="../../_images/011.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Figure 4, 5</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Step과 Inference time이 linear한 관계를 갖는다.</p></li>
+<li><p>적은 sampling step에서도 어느정도의 object를 보여준다.</p></li>
+</ul>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/012.png"><img alt="DDIM_012" class="bg-primary mb-1" src="../../_images/012.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>T 시점의 이미지에 interpolation이 가능하다.</p></li>
+</ul>
+</section>
+<section id="code">
+<h2>6. Code<a class="headerlink" href="#code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://keras.io/examples/generative/ddim/</span>
+<span class="k">class</span> <span class="nc">DiffusionModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">block_depth</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Normalization</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">image_size</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">block_depth</span><span class="p">)</span> <span class="c1"># unet 구조</span>
+
+    <span class="k">def</span> <span class="nf">denormalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+        <span class="c1"># convert the pixel values back to 0-1 range</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="o">.</span><span class="n">mean</span> <span class="o">+</span> <span class="n">images</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="o">.</span><span class="n">variance</span><span class="o">**</span><span class="mf">0.5</span>
+        <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">diffusion_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diffusion_times</span><span class="p">):</span>
+        <span class="c1"># diffusion times -&gt; angles</span>
+        <span class="n">start_angle</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">max_signal_rate</span><span class="p">)</span>
+        <span class="n">end_angle</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">min_signal_rate</span><span class="p">)</span>
+
+        <span class="n">diffusion_angles</span> <span class="o">=</span> <span class="n">start_angle</span> <span class="o">+</span> <span class="n">diffusion_times</span> <span class="o">*</span> <span class="p">(</span><span class="n">end_angle</span> <span class="o">-</span> <span class="n">start_angle</span><span class="p">)</span>
+
+        <span class="c1"># angles -&gt; signal and noise rates</span>
+        <span class="n">signal_rates</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">diffusion_angles</span><span class="p">)</span>
+        <span class="n">noise_rates</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">diffusion_angles</span><span class="p">)</span>
+        <span class="c1"># note that their squared sum is always: sin^2(x) + cos^2(x) = 1</span>
+
+        <span class="k">return</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span>
+
+    <span class="k">def</span> <span class="nf">denoise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
+        <span class="c1"># the exponential moving average weights are used at evaluation</span>
+        <span class="k">if</span> <span class="n">training</span><span class="p">:</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">network</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ema_network</span>
+
+        <span class="c1"># predict noise component and calculate the image component using it</span>
+        <span class="n">pred_noises</span> <span class="o">=</span> <span class="n">network</span><span class="p">([</span><span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="o">**</span><span class="mi">2</span><span class="p">],</span> <span class="n">training</span><span class="o">=</span><span class="n">training</span><span class="p">)</span>
+        <span class="n">pred_images</span> <span class="o">=</span> <span class="p">(</span><span class="n">noisy_images</span> <span class="o">-</span> <span class="n">noise_rates</span> <span class="o">*</span> <span class="n">pred_noises</span><span class="p">)</span> <span class="o">/</span> <span class="n">signal_rates</span>
+
+        <span class="k">return</span> <span class="n">pred_noises</span><span class="p">,</span> <span class="n">pred_images</span>
+
+    
+
+    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+        <span class="c1"># normalize images to have standard deviation of 1, like the noises</span>
+        <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">noises</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+        <span class="c1"># sample uniform random diffusion times</span>
+        <span class="n">diffusion_times</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minval</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">maxval</span><span class="o">=</span><span class="mf">1.0</span>
+        <span class="p">)</span>
+        <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion_schedule</span><span class="p">(</span><span class="n">diffusion_times</span><span class="p">)</span>
+        <span class="c1"># mix the images with noises accordingly</span>
+        <span class="n">noisy_images</span> <span class="o">=</span> <span class="n">signal_rates</span> <span class="o">*</span> <span class="n">images</span> <span class="o">+</span> <span class="n">noise_rates</span> <span class="o">*</span> <span class="n">noises</span>
+
+        <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+            <span class="c1"># train the network to separate noisy images to their components</span>
+            <span class="n">pred_noises</span><span class="p">,</span> <span class="n">pred_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denoise</span><span class="p">(</span>
+                <span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+
+            <span class="n">noise_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">noises</span><span class="p">,</span> <span class="n">pred_noises</span><span class="p">)</span>  <span class="c1"># used for training</span>
+            <span class="n">image_loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loss</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">pred_images</span><span class="p">)</span>  <span class="c1"># only used as metric</span>
+
+        <span class="n">gradients</span> <span class="o">=</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">noise_loss</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">optimizer</span><span class="o">.</span><span class="n">apply_gradients</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">gradients</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">noise_loss_tracker</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">noise_loss</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">image_loss_tracker</span><span class="o">.</span><span class="n">update_state</span><span class="p">(</span><span class="n">image_loss</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]}</span>
+
+		<span class="k">def</span> <span class="nf">reverse_diffusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_noise</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
+        <span class="c1"># reverse diffusion = sampling</span>
+        <span class="n">num_images</span> <span class="o">=</span> <span class="n">initial_noise</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">step_size</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">diffusion_steps</span>
+
+        <span class="c1"># important line:</span>
+        <span class="c1"># at the first sampling step, the &quot;noisy image&quot; is pure noise</span>
+        <span class="c1"># but its signal rate is assumed to be nonzero (min_signal_rate)</span>
+        <span class="n">next_noisy_images</span> <span class="o">=</span> <span class="n">initial_noise</span>
+        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">diffusion_steps</span><span class="p">):</span>
+            <span class="n">noisy_images</span> <span class="o">=</span> <span class="n">next_noisy_images</span>
+
+            <span class="c1"># separate the current noisy image to its components</span>
+            <span class="n">diffusion_times</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">num_images</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="n">step</span> <span class="o">*</span> <span class="n">step_size</span>
+            <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion_schedule</span><span class="p">(</span><span class="n">diffusion_times</span><span class="p">)</span>
+            <span class="n">pred_noises</span><span class="p">,</span> <span class="n">pred_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denoise</span><span class="p">(</span>
+                <span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+            <span class="c1"># network used in eval mode</span>
+
+            <span class="c1"># remix the predicted components using the next signal and noise rates</span>
+            <span class="n">next_diffusion_times</span> <span class="o">=</span> <span class="n">diffusion_times</span> <span class="o">-</span> <span class="n">step_size</span>
+            <span class="n">next_noise_rates</span><span class="p">,</span> <span class="n">next_signal_rates</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">diffusion_schedule</span><span class="p">(</span>
+                <span class="n">next_diffusion_times</span>
+            <span class="p">)</span>
+            <span class="n">next_noisy_images</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">next_signal_rates</span> <span class="o">*</span> <span class="n">pred_images</span> <span class="o">+</span> <span class="n">next_noise_rates</span> <span class="o">*</span> <span class="n">pred_noises</span>
+            <span class="p">)</span>
+            <span class="c1"># this new noisy image will be used in the next step</span>
+
+        <span class="k">return</span> <span class="n">pred_images</span>
+
+    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
+        <span class="c1"># noise -&gt; images -&gt; denormalized images</span>
+        <span class="n">initial_noise</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_images</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+        <span class="n">generated_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse_diffusion</span><span class="p">(</span><span class="n">initial_noise</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">)</span>
+        <span class="n">generated_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">denormalize</span><span class="p">(</span><span class="n">generated_images</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">generated_images</span>
+</pre></div>
+</div>
+</section>
+<section id="id13">
+<h2>7. 참고자료<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="DDPM.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Denoising Diffusion Probabilistic Models(DDPM)</p>
+        </div>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      으로 PseudoLab<br/>
+    
+        &copy; 저작권 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

@@ -8,3 +8,4 @@ parts:
   - file: docs/review/cycleGAN
   - file: docs/review/StyleGAN
   - file: docs/review/DDPM
+  - file: docs/review/DDIM

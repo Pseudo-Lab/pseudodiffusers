@@ -10,7 +10,7 @@
 - **Last updated on Apr. 12, 2023**
 ```
 
-# A Style-Based Generator Architecture for Generative Adversarial Networks
+# A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)
 
 오늘 알아볼 모델은 StyleGAN입니다. 기존에 다뤘던 GAN과 같이 이미지를 생성하는 모델입니다. generator 구조를 변경함으로써 성능을 올리고 feature의 control이 가능하게 했습니다. loss나 discriminator 구조 개선에 관한 논문은 아닙니다. 먼저 결과를 보도록 하죠.
 

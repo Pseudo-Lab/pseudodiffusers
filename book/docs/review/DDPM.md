@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {Denoising Diffusion Probabilistic Models}, {ICLR 2021}
+- **Title:** Denoising Diffusion Probabilistic Models (ICLR 2021)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2006.11239](https://arxiv.org/abs/2006.11239)

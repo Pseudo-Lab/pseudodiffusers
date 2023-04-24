@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>A Style-Based Generator Architecture for Generative Adversarial Networks &#8212; Text-to-Image Generation</title>
+    <title>A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN) &#8212; Text-to-Image Generation</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -60,7 +60,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Denoising Diffusion Probabilistic Models(DDPM)" href="DDPM.html" />
-    <link rel="prev" title="Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)" href="cycleGAN.html" />
+    <link rel="prev" title="Cycle-Consistent Adversarial Networks (CycleGAN)" href="cycleGAN.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -122,17 +122,22 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="cycleGAN.html">
-   Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)
+   Cycle-Consistent Adversarial Networks (CycleGAN)
   </a>
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   A Style-Based Generator Architecture for Generative Adversarial Networks
+   A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="DDPM.html">
    Denoising Diffusion Probabilistic Models(DDPM)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDIM.html">
+   Denoising Diffusion Implicit Models(DDIM)
   </a>
  </li>
 </ul>
@@ -257,7 +262,7 @@
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>A Style-Based Generator Architecture for Generative Adversarial Networks</h1>
+                <h1>A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -315,8 +320,8 @@
 <li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="a-style-based-generator-architecture-for-generative-adversarial-networks">
-<h1>A Style-Based Generator Architecture for Generative Adversarial Networks<a class="headerlink" href="#a-style-based-generator-architecture-for-generative-adversarial-networks" title="Permalink to this headline">¶</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="a-style-based-generator-architecture-for-generative-adversarial-networks-stylegan">
+<h1>A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)<a class="headerlink" href="#a-style-based-generator-architecture-for-generative-adversarial-networks-stylegan" title="Permalink to this headline">¶</a></h1>
 <p>오늘 알아볼 모델은 StyleGAN입니다. 기존에 다뤘던 GAN과 같이 이미지를 생성하는 모델입니다. generator 구조를 변경함으로써 성능을 올리고 feature의 control이 가능하게 했습니다. loss나 discriminator 구조 개선에 관한 논문은 아닙니다. 먼저 결과를 보도록 하죠.</p>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig1.png"><img alt="stylegan_01" class="bg-primary mb-1" src="../../_images/styleGAN_fig1.png" style="width: 700px;" /></a>
@@ -492,7 +497,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)</p>
+            <p class="prev-next-title">Cycle-Consistent Adversarial Networks (CycleGAN)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="DDPM.html" title="next page">

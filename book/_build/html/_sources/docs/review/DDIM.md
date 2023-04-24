@@ -285,5 +285,3 @@ class DiffusionModel(keras.Model):
         generated_images = self.denormalize(generated_images)
         return generated_images
 ```
-
-## 7. 참고자료

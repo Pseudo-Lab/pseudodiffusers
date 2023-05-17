@@ -56,18 +56,18 @@
 - 분산  $\Sigma_\theta(X_t,t)$을 학습에도 활용 
 - $L_{hybrid}$라는 새로운 loss 함수 제시
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/improved_ddpm_eq.JPG" alt="improved_ddpm_eq" class="bg-primary mb-1" width="700px">
 
 ### DDIM
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/ddim_pipe.JPG" alt="ddim_pipeline" class="bg-primary mb-1" width="700px">
 
 - Markovian Chain Process를 끊고 Non-Markovian 형태로 Deterministic 하게 수식을 바꿈
 - DDPM 보다 더 적은 iteration으로 image synthesis 가능
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/DDIM_pic.JPG" alt="ddim_pic" class="bg-primary mb-1" width="700px">
 
 
@@ -81,10 +81,10 @@
 - 일반 ResNet Residual Block이 아닌 BigGAN의 residual block을 채택하여 upsampling / downsampling 사용 해보기
 - Residual Connection을 1/√2 로 rescaling 해보기
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/architect_1.JPG" alt="ablation1" class="bg-primary mb-1" width="700px">
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/architect_2.JPG" alt="ablation2" class="bg-primary mb-1" width="700px">
 
 ** 3-1. Best Architecture **
@@ -97,7 +97,7 @@
 - Rescaling X 
 - 위와 같은 parameter를 통해 제일 좋은 FID 결과가 나옴
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/architect_3.JPG" alt="ablation3" class="bg-primary mb-1" width="700px">
 
 ## 4. Adaptive Group Normalization
@@ -112,7 +112,7 @@ where $h =$ residual block and $y = [y_s,y_b]$ time-step embedding and class emb
 
 **4-1 AdaGN의 성능**
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/adagn_table.JPG" alt="adagn" class="bg-primary mb-1" width="700px">
 
 - 기존 DDPM은 Addition + GroupNorm layer을 사용했는데, AdaGN 을 사용하는 것이 FID가 더 낮게 (즉 더 좋은 성능) 나온 것을 볼 수 있다
@@ -133,15 +133,15 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 - classifier의 gradient를 활용해서 학습을 같이 해준다. 
 - 식 유도는 아래와 같다. 본문의 (3) ~ (10) 번식이므로 본 논문을 참고하면 좋다.
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/class_eq1.JPG" alt="classifier_1" class="bg-primary mb-1" width="700px">
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/class_eq2.JPG" alt="classifier_2" class="bg-primary mb-1" width="700px">
 
 ## 6. Algorithm
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/algorithm.JPG" alt="algorithm" class="bg-primary mb-1" width="700px">
 
 - Algorithm 1 은 일반 DDPM에서 샘플링 하는 방법이다. 똑같이 Gaussian distribution에서 샘플링 할 시, classifier의 gradient를 활용하여 $x_{t-1}$를 sample한다.
@@ -156,7 +156,7 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 
 ## 7. Impact of parameter s in classifier guidance
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/classifier_guidance_vis.JPG" alt="class_guidance_vis" class="bg-primary mb-1" width="700px">
 - classifier guidance 앞에 hyperparameter \bf{s} 의 값에 따라 classifier가 줄 수 있는 scaling이 다르다.
 - scale을 1.0으로 주면 웰시코기라는 class의 scale 영향을 덜 받아 "웰시코기스러운" 강아지가 생성이 많이 되지는 않는다.
@@ -166,36 +166,37 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 
 ## 8. Results
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/plot_result.JPG" alt="plot result" class="bg-primary mb-1" width="700px">
 
 - gradient scale이 높을수록 recall은 낮지만, precision은 높다. 즉 trade-off 가 생기는데, recall이 낮을수록 diveristy가 낮다는 의미이고, precision이 높을수록 fidelity가 높다는 뜻이다.
 - scale을 높일수록 다양한 이미지가 생성되는 것이 아닌, classifier가 준 label쪽으로 guide가 생기므로 일정한 class의 사진이 나온다.
 - FID와 sFID는 diversity와 fidelity의 trade-off로 도출되는 값이므로, 최고의 값은 중간 지점에서 나왔다.
 
-**8-1. Result Table**
+
 <img src="../../pics/diffusion_model_beats_gans/algorithm.JPG" alt="algorithm" class="bg-primary mb-1" width="700px">
 
+**8-1. Result Table**
 - ADM은 Ablated Diffusion Model의 약자이며, ADM-G는 Ablated Diffusion Model with Guidance의 약자이다.
 - Guidance를 주었을 시 제일 좋은 FID값이 나왔으며, Precision이 높을수록, Recall이 낮게 나왔다 (and vice versa).
 
 
 ## 8-2. Image Synthesis Results
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/img_results.JPG" alt="plot result" class="bg-primary mb-1" width="700px">
 - 두번쨰 플라밍고 생성된 사진을 볼때, BigGAN은 이미지간들의 diversity가 없다. 학습된 플라밍고가 다수 플라밍고 시 비슷한 느낌의 이미지만 뽑아낸다.
 - 반면, Diffusion model with guidance를 사용했을 시, 다채로운 플라밍고 사진을 볼 수 있다. 한마리만 있는 플라밍고 사진도 뽑아 낼 수 있다.
 
 ## 9. Limitation and Future Work
-** Limitation 1 **
+**Limitation 1**
 - Diffusion 모델들은 GAN보다 샘플링 시간이 아직 느리다.
 
-** Future Work 1 **
+**Future Work 1**
 - DDIM의 sampling process를 distillation 해서 빠르게 하는 법을 고려
 
-** Limitation 2 **
+**Limitation 2**
 - Classifier guidance는 classification function의 gradient를 사용함으로써, label이 없는 data에는 확장이 불가능하다.
 
-** Future Work 2 **
+**Future Work 2**
 - Unlabeled sample을 clustering 하는 방법을 통해 방법론을 expand 하려 한다. 

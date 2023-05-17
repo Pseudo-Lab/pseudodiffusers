@@ -15,13 +15,13 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 문광수 [Kwangsu Mun] | | [Github](https://github.com/mksoo) | [Linkedin](https://www.linkedin.com/in/%EA%B4%91%EC%88%98-%EB%AC%B8-95681b229/) |
 - 김지수 [Jisu Kim] | [Linkedin](https://www.linkedin.com/in/%EC%A7%80%EC%88%98-%EA%B9%80-5a0b2320a/) |
 - 박범수 [Beomsoo Park] | [Github](https://github.com/hanlyang0522) |
-
+- 고동근 [Donggeun "Sean" Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 ## Schedule 
 | idx | Date | Presenter | Paper / Code | 
 | :--: | :--: | :--: | :--: |
 | 1 | 2023.03.29 | 조상우 [Sangwoo Jo] | [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) (ICLR 2014) <br> [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (NIPS 2014)| 
 | 2 | 2023.04.05 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593) (ICCV 2017) <br> [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (CVPR 2019)| 
-
+| 3 | 2023.05.10 | 고동근 [Donggeun "Sean" Ko] | [Diffusion Models Beat GANs in Image Synthesis](https://arxiv.org/abs/2105.05233) (NeurIPS 2021)|
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  
 ```bash

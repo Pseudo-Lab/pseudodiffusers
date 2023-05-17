@@ -27,6 +27,7 @@
     
 ## 2. Background
 - DDPM, DDIM, Improved DDPM은 이전에 설명되있으므로, 각 background 논문들의 핵심 부분만 설명하겠습니다.
+- 
 ### DDPM
 
 
@@ -36,18 +37,17 @@
 - 공분산 $\Sigma_\theta(X_t,t)$은 학습 불가능한 매개변수로 설정되며 constant 값을 가진다.
 - 아래와 같이 $L_{simple}$ 을 새로운 Loss function으로 제안한다.
 
-<!-- /*:::{figure-md} markdown-fig*/ -->
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/ddpm_pipeline.png" alt="ddpm_pipeline" class="bg-primary mb-1" width="700px">
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/DDPM_eq.JPG" alt="ddpm_eq" class="bg-primary mb-1" width="700px">
 
 
 ### Improved DDPM
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/improved_ddpm_pic.JPG" alt="improved_ddpm_schedule" class="bg-primary mb-1" width="700px">
 
 - 더 적은 diffusion step으로 샘플링 함.

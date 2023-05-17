@@ -173,9 +173,10 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 - scale을 높일수록 다양한 이미지가 생성되는 것이 아닌, classifier가 준 label쪽으로 guide가 생기므로 일정한 class의 사진이 나온다.
 - FID와 sFID는 diversity와 fidelity의 trade-off로 도출되는 값이므로, 최고의 값은 중간 지점에서 나왔다.
 
-**8-1. Result Table**
+
 <img src="../../pics/diffusion_model_beats_gans/algorithm.JPG" alt="algorithm" class="bg-primary mb-1" width="700px">
 
+**8-1. Result Table**
 - ADM은 Ablated Diffusion Model의 약자이며, ADM-G는 Ablated Diffusion Model with Guidance의 약자이다.
 - Guidance를 주었을 시 제일 좋은 FID값이 나왔으며, Precision이 높을수록, Recall이 낮게 나왔다 (and vice versa).
 
@@ -188,14 +189,14 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 - 반면, Diffusion model with guidance를 사용했을 시, 다채로운 플라밍고 사진을 볼 수 있다. 한마리만 있는 플라밍고 사진도 뽑아 낼 수 있다.
 
 ## 9. Limitation and Future Work
-** Limitation 1 **
+**Limitation 1**
 - Diffusion 모델들은 GAN보다 샘플링 시간이 아직 느리다.
 
-** Future Work 1 **
+**Future Work 1**
 - DDIM의 sampling process를 distillation 해서 빠르게 하는 법을 고려
 
-** Limitation 2 **
+**Limitation 2**
 - Classifier guidance는 classification function의 gradient를 사용함으로써, label이 없는 data에는 확장이 불가능하다.
 
-** Future Work 2 **
+**Future Work 2**
 - Unlabeled sample을 clustering 하는 방법을 통해 방법론을 expand 하려 한다. 

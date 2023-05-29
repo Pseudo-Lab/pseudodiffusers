@@ -1,10 +1,18 @@
-# .
+``` {admonition} Information
+- **Title:** DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation (CVPR 2023)
 
-paper: [https://arxiv.org/abs/2208.12242](https://arxiv.org/abs/2208.12242)
+- **Reference**
+    - Paper: [https://arxiv.org/abs/2208.12242](https://arxiv.org/abs/2208.12242)
+    - Code: [https://github.com/huggingface/diffusers/tree/main/examples/dreambooth](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth)
+    
+- **Author:** Sangwoo Jo
 
-code: [https://github.com/huggingface/diffusers/tree/main/examples/dreambooth](https://github.com/huggingface/diffusers/tree/main/examples/dreambooth)
+- **Last updated on May. 31, 2023**
+```
 
-**Introduction**
+# DreamBooth
+
+## Introduction
 
 최근에 DALL-E2, Imagen, Stable Diffusion 등 다양한 text-to-image generation 모델들이 등장하였지만, 어떠한 동일한 subject 에 대해서 다른 context 에 적용하는 부분에서 부족한 면들을 보여주고 있습니다. DreamBooth 논문은 이러한 문제점을 개선하기 위해 text-to-image 모델을 fine-tuning 하는 기법으로 소개되었고, 단 3-5장의 이미지를 학습하면 되며 이를 NVIDIA A100 으로 학습하는데 5분 정도밖에 소요되지 않는다고 합니다. 
 
@@ -12,7 +20,7 @@ code: [https://github.com/huggingface/diffusers/tree/main/examples/dreambooth](h
 
 DreamBooth 가 무엇인지 자세히 알아보기 전에 text-to-image diffusion model 에 대해 다시 한번 개념 정리를 해볼 필요가 있습니다.  
 
-**Text-to-Image Diffusion Models**
+## Text-to-Image Diffusion Models
 
 사전학습된 text-to-image diffusion model $\hat{x}_{\theta}$ 는 input 으로 원본 이미지 $x$, 그리고 text prompt $P$ 와 text-encoder $\Gamma$ 로부터 나오는 conditioning vector $c = \Gamma(P)$ 를 입력받아서 이미지 $x_{gen} = \hat{x}_{\theta}(\epsilon, c)$ 를 생성하게 됩니다. 학습 시, mean squared loss 를 사용하고 이를 수식적으로 표현하면 다음과 같습니다. 
 
@@ -174,7 +182,7 @@ $$
     ```
     
 
-**Fine-tuning** 
+## Fine-tuning 
 
 DreamBooth 에서 pre-trained 된 text-to-image generation 모델을 fine-tuning 할 때 *“a [unique identifier] [class noun]”* 그리고 *“a [class noun]”*  형태의 두 가지 text prompt 를 사용합니다. 이때, *unique identifier* 에 유지하고자 하는 대상에 대한 정보를 담는 것을 목표로 하기 때문에 사전 정보가 없는 rare token 을 사용하는 것이 중요하다고 합니다. 논문에서는 3개 이하의 Unicode character 혹은 T5-XXL tokenizer 를 랜덤하게 샘플링해서 token 을 생성하고 이를 기반으로 *unique identifier* 를 정의합니다. 
 
@@ -192,7 +200,7 @@ $$
 
 ![Screen Shot 2023-05-17 at 6.06.16 PM.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/Screen_Shot_2023-05-17_at_6.06.16_PM.png)
 
-**Experiments**
+## Experiments
 
 DreamBooth 논문에서 세 가지의 모델 평가 metric 을 소개합니다. 첫번째로는 *subject fidelity* 를 측정하는 CLIP-I, DINO 그리고 *prompt fidelity* 를 측정하는 CLIP-T metric 을 사용합니다. 이때, DINO metric 이 동일한 class 를 가진 subject 에 대해서 다른 embedding 이 생성되기 때문에 CLIP-I 보다 더 선호된다고 합니다. 더 자세하게는 각 metric 은 다음과 같이 계산됩니다.   
 
@@ -204,7 +212,7 @@ Textual Inversion 과 비교했을때, 세 개의 metric 에서 모두 DreamBoot
 
 ![Screen Shot 2023-05-29 at 1.22.03 PM.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/Screen_Shot_2023-05-29_at_1.22.03_PM.png)
 
-**Ablation Studies** 
+## Ablation Studies
 
 Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과도 논문에서 공유합니다. PPL 가 적용됨으로써 앞써 소개드렸던 Language Drift 그리고 Reduced Output Diversity 문제점을 PRES 그리고 DIV metric 을 통해 해결되는 것을 보여줍니다. 또한, Class-Prior Ablation 에서 다음과 같은 세 가지 prompt 를 사용하여 fine-tuning 했을 때, 해당 subject 에 맞는 *class noun* 을 prompt 에 입력했을때가 가장 좋은 성능을 보여준다고 설명합니다. 
 
@@ -212,7 +220,7 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 - “a randomly sampled incorrect class noun” (e.g., “can” for a backpack)
 - “correct class noun”
 
-**Applications** 
+## Applications
 
 논문에서 DreamBooth 를 활용한 여러 application 도 소개합니다. 
 
@@ -236,7 +244,7 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 - Prompt: “a cross of a [V] dog and a [target species]”
 - 사전 학습한 subject 의 고유 feature 들이 다른 target species 에서도 반영이 되는 부분을 확인할 수 있습니다.
 
-**Limitations** 
+## Limitations
 
 하지만 DreamBooth 모델에 다음과 같은 한계점도 존재합니다. 
 
@@ -248,7 +256,7 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 
 마지막으로 subject 대상에 따라 모델 성능(fidelity)이 차이를 보인다고 합니다. 
 
-**Appendix**
+## Appendix
 
 마지막으로, 논문 본문에 소개되고 있지는 않지만 Appendix 부문에서도 흥미로운 결과들을 확인할 수 있습니다. Figure 20 은 fine tuning 하는 이미지 개수에 따른 DreamBooth 학습결과를 보여주는데, 단 한 장만으로도 identity 의 전반적인 특징을 잘 담는 것을 확인할 수 있습니다. Figure 18 은 만화 캐릭터의 identity 를 유지한 상태로 다양한 만화 사진들을 모델이 생성하는 사례들을 보여줍니다. 
 

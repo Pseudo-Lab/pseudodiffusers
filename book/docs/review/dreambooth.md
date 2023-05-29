@@ -16,7 +16,11 @@
 
 최근에 DALL-E2, Imagen, Stable Diffusion 등 다양한 text-to-image generation 모델들이 등장하였지만, 어떠한 동일한 subject 에 대해서 다른 context 에 적용하는 부분에서 부족한 면들을 보여주고 있습니다. DreamBooth 논문은 이러한 문제점을 개선하기 위해 text-to-image 모델을 fine-tuning 하는 기법으로 소개되었고, 단 3-5장의 이미지를 학습하면 되며 이를 NVIDIA A100 으로 학습하는데 5분 정도밖에 소요되지 않는다고 합니다. 
 
-![스크린샷 2023-05-17 200217.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_200217.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_01.png" alt="dreambooth_01" class="bg-primary mb-1" width="700px">
+
+Subject-Driven Generation
+:::
 
 DreamBooth 가 무엇인지 자세히 알아보기 전에 text-to-image diffusion model 에 대해 다시 한번 개념 정리를 해볼 필요가 있습니다.  
 
@@ -25,7 +29,7 @@ DreamBooth 가 무엇인지 자세히 알아보기 전에 text-to-image diffusio
 사전학습된 text-to-image diffusion model $\hat{x}_{\theta}$ 는 input 으로 원본 이미지 $x$, 그리고 text prompt $P$ 와 text-encoder $\Gamma$ 로부터 나오는 conditioning vector $c = \Gamma(P)$ 를 입력받아서 이미지 $x_{gen} = \hat{x}_{\theta}(\epsilon, c)$ 를 생성하게 됩니다. 학습 시, mean squared loss 를 사용하고 이를 수식적으로 표현하면 다음과 같습니다. 
 
 $$
-\mathbb{E}_{x,c,\epsilon,t}[w_t || \hat{x}_{\theta}(\alpha_tx + \sigma_t\epsilon, c) - x ||_{2}^{2}]
+\mathbb{E}_{x,c,\epsilon,t}[w_t || \hat{x}_{\theta}(\alpha_tx + \sigma_{t}\epsilon, c) - x ||_{2}^{2}]
 $$
 
 이때, DreamBooth 에서는 text encoder 를 CLIP text embedding 과 사전학습된 T5-XXL 모델 중 T5-XXL 모델을 사용했다고 합니다. 그리고 DreamBooth 로 fine-tuning 할때, diffusion process 에서 사용되는 U-net (때로는 text encoder 도 포함) 은 learnable 한 parameter 로 설정하고 생성된 latent vector 로부터 새로운 이미지를 생성하는 Decoder 의 파라미터 값은 고정시킨다고 합니다.
@@ -126,59 +130,6 @@ $$
                     optimizer.step()
                     lr_scheduler.step()
                     optimizer.zero_grad(set_to_none=args.set_grads_to_none)
-    
-                # Checks if the accelerator has performed an optimization step behind the scenes
-                if accelerator.sync_gradients:
-                    progress_bar.update(1)
-                    global_step += 1
-    
-                    if accelerator.is_main_process:
-                        images = []
-                        if global_step % args.checkpointing_steps == 0:
-                            save_path = os.path.join(args.output_dir, f"checkpoint-{global_step}")
-                            accelerator.save_state(save_path)
-                            logger.info(f"Saved state to {save_path}")
-    
-                        if args.validation_prompt is not None and global_step % args.validation_steps == 0:
-                            images = log_validation(
-                                text_encoder, tokenizer, unet, vae, args, accelerator, weight_dtype, epoch
-                            )
-    
-                logs = {"loss": loss.detach().item(), "lr": lr_scheduler.get_last_lr()[0]}
-                progress_bar.set_postfix(**logs)
-                accelerator.log(logs, step=global_step)
-    
-                if global_step >= args.max_train_steps:
-                    break
-    
-        # Create the pipeline using using the trained modules and save it.
-        accelerator.wait_for_everyone()
-        if accelerator.is_main_process:
-            pipeline = DiffusionPipeline.from_pretrained(
-                args.pretrained_model_name_or_path,
-                unet=accelerator.unwrap_model(unet),
-                text_encoder=accelerator.unwrap_model(text_encoder),
-                revision=args.revision,
-            )
-            pipeline.save_pretrained(args.output_dir)
-    
-            if args.push_to_hub:
-                save_model_card(
-                    repo_id,
-                    images=images,
-                    base_model=args.pretrained_model_name_or_path,
-                    train_text_encoder=args.train_text_encoder,
-                    prompt=args.instance_prompt,
-                    repo_folder=args.output_dir,
-                )
-                upload_folder(
-                    repo_id=repo_id,
-                    folder_path=args.output_dir,
-                    commit_message="End of training",
-                    ignore_patterns=["step_*", "epoch_*"],
-                )
-    
-        accelerator.end_training()
     ```
     
 
@@ -188,7 +139,11 @@ DreamBooth 에서 pre-trained 된 text-to-image generation 모델을 fine-tuning
 
 또한, 논문에서 *Language Drift* 그리고 *Reduced Output Diversity* 두 가지 문제점을 해결하기 위해 Class-specific Prior Preservation Loss 를 소개합니다. 이를 활용하여 모델을 fine-tuning 하는 방법은 다음과 같습니다. 
 
-![스크린샷 2023-05-14 175656.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-14_175656.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_02.png" alt="dreambooth_02" class="bg-primary mb-1" width="700px">
+
+Fine-tuning
+:::
 
 우선, Gaussian 노이즈 이미지와 *“A V [class noun]”* 형태의 text prompt 를 사전학습된 text-to-image diffusion 모델에 입력하여 이미지를 생성한 후, 원본 이미지와의 *Reconstruction Loss* 를 계산합니다. 그리고 비슷한 과정으로 Gaussian 노이즈 이미지와 *“A [class noun]”* 형태의 text prompt 를 학습하고자 하는 모델, 그리고 freeze 시킨 또 다른 pre-trained diffusion 모델에 각각 입력하여 이미지를 생성한 후 *Class-Specific Prior Preservation Loss* 를 계산합니다. 이에 대한 training objective 를 수식적으로 표현하면 다음과 같습니다.
 
@@ -198,7 +153,11 @@ $$
 
 *Class-Specific Prior Preservation Loss* 를 추가함으로써 class prior 에 대한 정보를 유지하게 되고, 이로써 동일한 class 에 대해 더 다양한 이미지들을 생성할 수 있는 부분을 아래 그림에서 확인할 수 있습니다.  
 
-![Screen Shot 2023-05-17 at 6.06.16 PM.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/Screen_Shot_2023-05-17_at_6.06.16_PM.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_03.png" alt="dreambooth_03" class="bg-primary mb-1" width="700px">
+
+Encouraging diversity with prior-preservation loss
+:::
 
 ## Experiments
 
@@ -210,7 +169,11 @@ DreamBooth 논문에서 세 가지의 모델 평가 metric 을 소개합니다. 
 
 Textual Inversion 과 비교했을때, 세 개의 metric 에서 모두 DreamBooth 가 더 좋은 성능을 보여주는 것을 확인할 수 있습니다. 
 
-![Screen Shot 2023-05-29 at 1.22.03 PM.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/Screen_Shot_2023-05-29_at_1.22.03_PM.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_04.png" alt="dreambooth_04" class="bg-primary mb-1" width="700px">
+
+Comparison of models
+:::
 
 ## Ablation Studies
 
@@ -224,23 +187,30 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 
 논문에서 DreamBooth 를 활용한 여러 application 도 소개합니다. 
 
-![스크린샷 2023-05-17 190822.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_190822.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_05.png" alt="dreambooth_05" class="bg-primary mb-1" width="700px">
+
+Applications of DreamBooth
+:::
 
 1. Recontextualization 
 - Prompt: “a [V] [class noun] [context description]”
 - 다음과 같은 prompt 입력 시, 사전에 보지 못했던 새로운 pose 나 articulation 을 잘 표현하는 부분을 확인할 수 있습니다.
-    
-    ![스크린샷 2023-05-17 184648.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_184648.png)
-    
 
-1. Art Renditions 
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_06.png" alt="dreambooth_06" class="bg-primary mb-1" width="700px">
+
+Recontextualization
+::: 
+
+2. Art Renditions 
 - Prompt: “a painting of a [V] [class noun] in the style of [famous painter]” or “a statue of a [V] [class noun] in the style of [famous sculptor]”
 - Style Transfer 와 다르게 동일한 구조를 유지한 채 style 만 바꾸는 것이 아니라 다양한 pose 형태도 생성 가능합니다.
 
-1. Novel View Synthesis 
+3. Novel View Synthesis 
 - 동일한 subject 에 대해 다양한 각도에서 보는 이미지 생성도 가능합니다.
 
-1. Property Modification 
+4. Property Modification 
 - Prompt: “a cross of a [V] dog and a [target species]”
 - 사전 학습한 subject 의 고유 feature 들이 다른 target species 에서도 반영이 되는 부분을 확인할 수 있습니다.
 
@@ -248,10 +218,14 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 
 하지만 DreamBooth 모델에 다음과 같은 한계점도 존재합니다. 
 
-![스크린샷 2023-05-17 192243.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_192243.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_07.png" alt="dreambooth_07" class="bg-primary mb-1" width="700px">
+
+Limitations of DreamBooth
+:::
 
 - Incorrect context synthesis := 대표적으로 training set 에 자주 나타나지 않는 subject, prompt, context 에 대해서 낮은 성능을 보여줍니다.
-- Context-appearance entanglement := ****유지하고자 하는 대상의 appearance (e.g, color) 가 prompted context 에 의해 달라지는 현상
+- Context-appearance entanglement := 유지하고자 하는 대상의 appearance (e.g, color) 가 prompted context 에 의해 달라지는 현상
 - Overfitting := 사전학습된 데이터와 유사한 prompt 입력 시, overfitting 현상 발생
 
 마지막으로 subject 대상에 따라 모델 성능(fidelity)이 차이를 보인다고 합니다. 
@@ -260,6 +234,14 @@ Prior Preservation Loss (PPL) 과 Class-Prior 에 대한 Ablation Studies 결과
 
 마지막으로, 논문 본문에 소개되고 있지는 않지만 Appendix 부문에서도 흥미로운 결과들을 확인할 수 있습니다. Figure 20 은 fine tuning 하는 이미지 개수에 따른 DreamBooth 학습결과를 보여주는데, 단 한 장만으로도 identity 의 전반적인 특징을 잘 담는 것을 확인할 수 있습니다. Figure 18 은 만화 캐릭터의 identity 를 유지한 상태로 다양한 만화 사진들을 모델이 생성하는 사례들을 보여줍니다. 
 
-![스크린샷 2023-05-17 193322.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_193322.png)
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_08.png" alt="dreambooth_08" class="bg-primary mb-1" width="700px">
 
-![스크린샷 2023-05-17 193452.png](%EC%A0%9C%EB%AA%A9%20%EC%97%86%EC%9D%8C%20e5fb19d686244a9fa9c36753d5472f45/%25EC%258A%25A4%25ED%2581%25AC%25EB%25A6%25B0%25EC%2583%25B7_2023-05-17_193452.png)
+Appendix-1
+:::
+
+:::{figure-md} markdown-fig
+<img src="../../pics/dreambooth/dreambooth_09.png" alt="dreambooth_09" class="bg-primary mb-1" width="700px">
+
+Appendix-2
+:::

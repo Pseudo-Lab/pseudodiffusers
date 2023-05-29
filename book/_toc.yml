@@ -10,3 +10,4 @@ parts:
   - file: docs/review/DDPM
   - file: docs/review/DDIM
   - file: docs/review/diffusion_beats_GANs
+  - file: docs/review/dreambooth

@@ -15,7 +15,9 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 문광수 [Kwangsu Mun] | [Github](https://github.com/mksoo) | [Linkedin](https://www.linkedin.com/in/%EA%B4%91%EC%88%98-%EB%AC%B8-95681b229/) |
 - 김지수 [Jisu Kim] | Github |  [Linkedin](https://www.linkedin.com/in/%EC%A7%80%EC%88%98-%EA%B9%80-5a0b2320a/) |
 - 박범수 [Beomsoo Park] | [Github](https://github.com/hanlyang0522) | Linkedin
+- 지승환 [] | Github | Linkedin
 - 고동근 [Donggeun "Sean" Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
+- 조남경 [] | Github | Linkedin
 
 ## Schedule 
 | idx | Date | Presenter | Paper / Code | 

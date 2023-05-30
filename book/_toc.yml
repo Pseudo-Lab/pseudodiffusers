@@ -11,3 +11,4 @@ parts:
   - file: docs/review/DDIM
   - file: docs/review/diffusion_beats_GANs
   - file: docs/review/dreambooth
+  - file: docs/review/ControlNet

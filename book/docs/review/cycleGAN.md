@@ -12,7 +12,7 @@
 - **Last updated on Apr. 12, 2023**
 ```
 
-# Cycle-Consistent Adversarial Networks (CycleGAN)
+# CycleGAN
 
 ## Abstract
 

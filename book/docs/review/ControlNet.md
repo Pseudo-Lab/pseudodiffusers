@@ -10,7 +10,7 @@
 - **Last updated on May. 28, 2023**
 ```
 
-# Adding Conditional Control to Text-to-Image Diffusion Models
+# ControlNet
 
 ### Additional Control with Image-based condition
 

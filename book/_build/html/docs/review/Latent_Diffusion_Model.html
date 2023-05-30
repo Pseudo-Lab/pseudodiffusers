@@ -64,12 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/StyleGAN';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Latent_Diffusion_Model';</script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DDPM" href="DDPM.html" />
-    <link rel="prev" title="CycleGAN" href="cycleGAN.html" />
+    <link rel="prev" title="ControlNet" href="ControlNet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -165,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
 
 
@@ -175,7 +174,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">StyleGAN</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">StyleGAN</a></li>
 </ul>
 
     </div>
@@ -247,7 +246,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/StyleGAN.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Latent_Diffusion_Model.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -277,7 +276,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/docs/review/StyleGAN.md" target="_blank"
+      <li><a href="../../_sources/docs/review/Latent_Diffusion_Model.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -388,24 +387,25 @@ document.write(`
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
-<li><p><strong>Title:</strong> A Style-Based Generator Architecture for Generative Adversarial Networks (CVPR 2019)</p></li>
+<li><p><strong>Title:</strong> High-Resolution Image Synthesis with Latent Diffusion Models (CVPR 2022)</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
-<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/1812.04948">https://arxiv.org/abs/1812.04948</a></p></li>
-<li><p>Code: <a class="github reference external" href="https://github.com/huangzh13/StyleGAN.pytorch">huangzh13/StyleGAN.pytorch</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2112.10752">https://arxiv.org/abs/2112.10752</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/CompVis/latent-diffusion">CompVis/latent-diffusion</a></p></li>
 </ul>
 </li>
-<li><p><strong>Author:</strong> Jisu Kim</p></li>
-<li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
+<li><p><strong>Author:</strong> Namkyeong Cho</p></li>
+<li><p><strong>Last updated on May. 31, 2023</strong></p></li>
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="stylegan">
 <h1>StyleGAN<a class="headerlink" href="#stylegan" title="Permalink to this heading">#</a></h1>
-<p>오늘 알아볼 모델은 StyleGAN입니다. 기존에 다뤘던 GAN과 같이 이미지를 생성하는 모델입니다. generator 구조를 변경함으로써 성능을 올리고 feature의 control이 가능하게 했습니다. loss나 discriminator 구조 개선에 관한 논문은 아닙니다. 먼저 결과를 보도록 하죠.</p>
+<p>오늘 알아볼 모델은 StyleGAN입니다.
+기존에 다뤘던 GAN과 같이 이미지를 생성하는 모델입니다. generator 구조를 변경함으로써 성능을 올리고 feature의 control이 가능하게 했습니다. loss나 discriminator 구조 개선에 관한 논문은 아닙니다. 먼저 결과를 보도록 하죠.</p>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig1.png"><img alt="stylegan_01" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Images generated by StyleGAN</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Images generated by StyleGAN</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이 논문의 contribution은 다음과 같습니다.</p>
@@ -429,7 +429,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig2.png"><img alt="stylegan_02" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Structure of StyleGAN</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Structure of StyleGAN</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="mapping-network">
@@ -437,7 +437,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig3.png"><img alt="stylegan_03" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Mappings with <span class="math notranslate nohighlight">\(w\)</span> and without <span class="math notranslate nohighlight">\(w\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Mappings with <span class="math notranslate nohighlight">\(w\)</span> and without <span class="math notranslate nohighlight">\(w\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>기존 GAN을 생각해보면 z를 input으로 받아서 generator를 거쳐서 이미지를 생성하는 구조입니다. 이 z는 보통 Gaussian distribution에서 샘플링으로 얻습니다. GAN은 학습을 통해 Gaussian distribution을 data distribution으로 보내는 방법을 배우게 될 것이고, 이 분포는 (b)처럼 생기게 될 것입니다. 그런데 데이터가 (a)처럼 주어져서 특정한 데이터가 없거나 적을 수도 있을 것입니다. 예를 들어, 데이터에 피부가 희면서 머리가 긴 샘플들이 없다고 해봅시다. 그러면 피부색과 머리 길이라는 두 feature는 서로 얽히게(entangled)되어, 하나를 바꿀 때 다른 하나도 같이 바뀌는 현상이 일어나게 됩니다. 이런 현상을 완화하기 위해 논문에서는 Gaussian에서 뽑은 z를 바로 사용하는 것이 아니라 mapping network를 통해 learnable distribution에서 뽑은 w를 사용합니다.</p>
@@ -448,7 +448,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig4.png"><img alt="stylegan_04" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig4.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Normalization methods</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Normalization methods</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>adaptive instance normalization (AdaIN) 은 instance normalization에 scale을 곱해주고 bias를 더해주는 형태입니다. 그런데 이 scale과 bias가 style vector의 linear transformation으로 주어지는 형태입니다. linear layer를 통해서 w는 <span class="math notranslate nohighlight">\(\mathbf{y}=(\mathbf{y}_{s},\mathbf{y}_{b})\)</span>로 보내지게 됩니다. AdaIN의 수식은 아래와 같습니다.</p>
@@ -510,7 +510,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig5.png"><img alt="stylegan_05" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Mixing two styles</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Mixing two styles</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -520,14 +520,14 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig6.png"><img alt="stylegan_06" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Examples of stochastic variation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Examples of stochastic variation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 그림에서 (a)는 모든 layer에 noise를 준 경우, (b)는 noise를 주지 않은 경우, (c)는 fine layers (<span class="math notranslate nohighlight">\(64^2 - 1024^2\)</span>)에만 noise를 준 경우, (d)는 coarse layers (<span class="math notranslate nohighlight">\(4^2 - 32^2\)</span>)에만 noise를 준 경우입니다. (b)를 보면 noise가 없을 경우 머리카락같은 디테일이 제대로 살아있지 않은 것을 볼 수 있습니다. (c)와 (d)를 보면 fine layers에 들어간 noise가 머리카락의 더 세밀한 부분에 영향을 끼친다는 것을 볼 수 있습니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig7.png"><img alt="stylegan_07" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Effect of noise inputs at different layers</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">Effect of noise inputs at different layers</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -541,7 +541,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/styleGAN/styleGAN_fig8.png"><img alt="stylegan_08" class="bg-primary mb-1" src="pics/styleGAN/styleGAN_fig8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">FID for various generator designs</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">FID for various generator designs</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -579,22 +579,13 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="cycleGAN.html"
+       href="ControlNet.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CycleGAN</p>
+        <p class="prev-next-title">ControlNet</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="DDPM.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DDPM</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div></div>
   

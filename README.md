@@ -42,7 +42,9 @@ pip install jupyter-book==0.15.1
 pip install ghp-import==2.1.0
 ```
 
-3. Change the contents in ```book/docs``` folder with the following format and update ```_toc.yml``` file accordingly (check [https://github.com/Pseudo-Lab/SegCrew-Book](https://github.com/Pseudo-Lab/SegCrew-Book) for reference)
+3. Change the contents in ```book/docs``` folder with the following format and update ```_toc.yml``` file accordingly
+- reference: [https://github.com/Pseudo-Lab/SegCrew-Book](https://github.com/Pseudo-Lab/SegCrew-Book 
+- default template: [https://github.com/Pseudo-Lab/Jupyter-Book-Template](https://github.com/Pseudo-Lab/Jupyter-Book-Template) 
 
 - 3.1. Add information section on top of the markdown page 
 ```{admonition} Information

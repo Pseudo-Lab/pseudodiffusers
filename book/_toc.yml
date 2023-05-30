@@ -12,3 +12,5 @@ parts:
   - file: docs/review/diffusion_beats_GANs
   - file: docs/review/dreambooth
   - file: docs/review/ControlNet
+  - file: docs/review/Latent_Diffusion_Model
+

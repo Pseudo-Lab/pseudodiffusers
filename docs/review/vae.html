@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Variational AutoEncoder (VAE) &#8212; Text-to-Image Generation</title>
+    <title>VAE &#8212; Text-to-Image Generation</title>
   
   
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Generative Adversarial Network (GAN)" href="gan.html" />
+    <link rel="next" title="GAN" href="gan.html" />
     <link rel="prev" title="[PseudoLab] Text-to-Image Generation (feat. Diffusion)" href="../../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -162,17 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variational AutoEncoder (VAE)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Cycle-Consistent Adversarial Networks (CycleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DDPM.html">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DDIM.html">Denoising Diffusion Implicit Models(DDIM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 </ul>
 
     </div>
@@ -356,7 +357,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variational AutoEncoder (VAE)</h1>
+    <h1>VAE</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,8 +397,8 @@ document.write(`
 <li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder-vae">
-<h1>Variational AutoEncoder (VAE)<a class="headerlink" href="#variational-autoencoder-vae" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="vae">
+<h1>VAE<a class="headerlink" href="#vae" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>논문의 Introduction 에 다음과 같은 문구가 적혀있는데요.</p>
@@ -526,7 +527,7 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -558,7 +559,7 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generative Adversarial Network (GAN)</p>
+        <p class="prev-next-title">GAN</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

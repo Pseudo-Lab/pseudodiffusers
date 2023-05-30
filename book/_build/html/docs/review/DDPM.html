@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Denoising Diffusion Probabilistic Models(DDPM) &#8212; Text-to-Image Generation</title>
+    <title>DDPM &#8212; Text-to-Image Generation</title>
   
   
   
@@ -68,8 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Denoising Diffusion Implicit Models(DDIM)" href="DDIM.html" />
-    <link rel="prev" title="A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)" href="StyleGAN.html" />
+    <link rel="next" title="DDIM" href="DDIM.html" />
+    <link rel="prev" title="StyleGAN" href="StyleGAN.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,17 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vae.html">Variational AutoEncoder (VAE)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Cycle-Consistent Adversarial Networks (CycleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DDPM</a></li>
 
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DDIM.html">Denoising Diffusion Implicit Models(DDIM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 </ul>
 
     </div>
@@ -356,7 +357,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Denoising Diffusion Probabilistic Models(DDPM)</h1>
+    <h1>DDPM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -366,7 +367,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DDPM</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span></a></li>
@@ -412,8 +413,8 @@ document.write(`
 <li><p><strong>Last updated on Apr. 19, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="denoising-diffusion-probabilistic-models-ddpm">
-<h1>Denoising Diffusion Probabilistic Models(DDPM)<a class="headerlink" href="#denoising-diffusion-probabilistic-models-ddpm" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="ddpm">
+<h1>DDPM<a class="headerlink" href="#ddpm" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img1.png"><img alt="DDPM_01" class="bg-primary mb-1" src="../../_images/img1.png" style="width: 700px;" /></a>
 <figcaption>
@@ -924,7 +925,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -948,7 +949,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</p>
+        <p class="prev-next-title">StyleGAN</p>
       </div>
     </a>
     <a class="right-next"
@@ -956,7 +957,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Denoising Diffusion Implicit Models(DDIM)</p>
+        <p class="prev-next-title">DDIM</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -978,7 +979,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DDPM</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span></a></li>

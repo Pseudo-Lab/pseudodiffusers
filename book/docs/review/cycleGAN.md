@@ -12,7 +12,7 @@
 - **Last updated on Apr. 12, 2023**
 ```
 
-# Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)
+# CycleGAN
 
 ## Abstract
 

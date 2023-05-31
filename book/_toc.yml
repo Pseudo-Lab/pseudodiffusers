@@ -7,3 +7,10 @@ parts:
   - file: docs/review/gan
   - file: docs/review/cycleGAN
   - file: docs/review/StyleGAN
+  - file: docs/review/DDPM
+  - file: docs/review/DDIM
+  - file: docs/review/diffusion_beats_GANs
+  - file: docs/review/dreambooth
+  - file: docs/review/ControlNet
+  - file: docs/review/Latent_Diffusion_Model
+

@@ -7,9 +7,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN) &#8212; Text-to-Image Generation</title>
+    <title>CycleGAN &#8212; Text-to-Image Generation</title>
   
   
   
@@ -66,8 +66,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="A Style-Based Generator Architecture for Generative Adversarial Networks" href="StyleGAN.html" />
-    <link rel="prev" title="Generative Adversarial Network (GAN)" href="gan.html" />
+    <link rel="next" title="StyleGAN" href="StyleGAN.html" />
+    <link rel="prev" title="GAN" href="gan.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -160,10 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vae.html">Variational AutoEncoder (VAE)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 </ul>
 
     </div>
@@ -347,7 +355,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)</h1>
+    <h1>CycleGAN</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -423,8 +431,8 @@ document.write(`
 <li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="unpaired-image-to-image-translation-using-cycle-consistent-adversarial-networks-cyclegan">
-<h1>Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks (cycleGAN)<a class="headerlink" href="#unpaired-image-to-image-translation-using-cycle-consistent-adversarial-networks-cyclegan" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="cyclegan">
+<h1>CycleGAN<a class="headerlink" href="#cyclegan" title="Permalink to this heading">#</a></h1>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -437,15 +445,15 @@ document.write(`
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <section id="image-to-image-translation">
 <h3>참고) Image-to-Image translation이란?<a class="headerlink" href="#image-to-image-translation" title="Permalink to this heading">#</a></h3>
-<center><img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" style="width: 30%;"></center>
+<center><img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>Image-to-image translation은 input image를 다른 스타일, 속성, 구조 등을 가진 output image로 변환하는 것입니다. 예를 들어 사진을 그림으로 변환한다거나, 낮에 찍은 사진을 밤에 찍은 것 처럼 변환하는 것을 말합니다. 흔히 translation은 input과 output으로 짝이 지어진 data를 바탕으로 학습이 이루어져 있었는데요. 짝이 지어진 사진 데이터를 얻는 것은 어렵고 값이 비싼 일이 됩니다.</p>
-<center><img src="../../pics/cyclegan/fig1.png" style="width: 30%;"></center>
+<center><img src="../../pics/cyclegan/fig1.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>이 논문에서는 input image와 output image가 일대일로 짝지어지지 않은 상태에서 하나의 image 모음의 특성을 캡쳐하고, 이러한 특성을 다른 image 모음으로 변환할 수 있는 방법을 제시합니다.<br />
 GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제공되고, model의 output과, Y가 discriminator에 의해 구별할 수 없도록 G:X-&gt;Y를 학습합니다. 하지만, 이게 개별 입력 x와 출력 y가 무조건 유의미하게 쌍을 이룬다는 것을 뜻하지는 않습니다. G가 생성할 수 있는 image에는 무한한 경우의 수가 있기 때문. 종종 mode collapse가 일어나기도 합니다.</p>
 </section>
 <section id="mode-collapse">
 <h3>mode collapse란?<a class="headerlink" href="#mode-collapse" title="Permalink to this heading">#</a></h3>
-<center><img src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" style="width: 30%"></center>
+<center><img src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" width="{800px}"></center>
 <ul class="simple">
 <li><p>어떤 input image든 모두 같은 output image로 매핑하면서 최적화에 실패하는 현상. 이 현상은 generator 입장에서, Discriminator가 이 사진이 진짜 Y인지 가짜인 Y^인지 구별하는 것을 ‘<strong>속이기만</strong>’ 하면 되기 때문에 우리의 목적과 전혀 상관이 없는 데이터를 generator가 만들더라도 문제가 생기지 않아서 발생함</p></li>
 <li><p>참고: <a class="reference external" href="http://dl-ai.blogspot.com/2017/08/gan-problems.html">http://dl-ai.blogspot.com/2017/08/gan-problems.html</a></p></li>
@@ -504,11 +512,11 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <li><p>예비 실험에서 L1 norm을 adversarial loss로 대체해봤는데, 성능 향상을 관찰할 수 없었음.</p></li>
 <li><p>cycle consistency loss를 통해 유도된 결과는 아래 그림에서 볼 수 있었음.</p></li>
 </ul>
-<center><img src="../../pics/cyclegan/fig4.L_cyc.png" style="width: 30%"></center>
+<center><img src="../../pics/cyclegan/fig4.L_cyc.png" class="bg-primary mb-1" width="{800px}"></center>
 </section>
 <section id="full-objective">
 <h3>full objective - 전체 목적식<a class="headerlink" href="#full-objective" title="Permalink to this heading">#</a></h3>
-<center><img src="../../pics/cyclegan/fig6.whole_function.png" style="width: 30%"></center>
+<center><img src="../../pics/cyclegan/fig6.whole_function.png" class="bg-primary mb-1" width="{800px}"></center>
 <ul class="simple">
 <li><p>이 때 consistency loss 앞에 붙은 가중치 (lambda)는 GAN Loss와의 상대적 중요도에 따라 결정됨.</p></li>
 </ul>
@@ -544,9 +552,9 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <ul class="simple">
 <li><p>이해는 못했고, 이런게 있구나 정도로만 알 수 있었음.</p></li>
 </ul>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>(원래 Discriminator는 이보다 더 고차원이지만) 간략히 2차원을 표방하면 결정경계를 위와 같이 나타낼 수 있습니다. 윗 쪽이 가짜 영역, 아래 쪽이 진짜 영역입니다 이 때, 아래에 보면 진짜 데이터 샘플과 거리가 먼 가짜 데이터 샘플이 존재합니다. 즉, NLL Loss를 사용한다면, Generator의 입장에서는 이미 Discriminator를 잘 속이고 있기 때문에 학습할 필요가 없습니다. 즉, Vanishing Gradient가 일어나기 때문에, Discriminator를 잘 속인다는 이유만으로, 안 좋은 샘플을 생성하는 것에 대해 패널티를 줄 수가 없게 됩니다. 이 때, LS GAN을 사용한다면 실제 데이터 분포와 가짜 데이터 샘플이 거리가 먼 것에 대해서도 패널티를 주게 됩니다.</p>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <ul class="simple">
 <li><p>Generator는 Discriminator를 속이는 것을 넘어서, 실제 데이터 분포와 유사한 분포를 가지게끔 해야합니다.</p></li>
 </ul>
@@ -577,33 +585,33 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </section>
 <section id="comparison-against-baselines">
 <h3>Comparison against baselines<a class="headerlink" href="#comparison-against-baselines" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>figure 5, figure 6에서 볼 수 있듯이 어떤 baseline에서도 강력한 결과를 얻을 수 없었음. 반면에 cycleGAN은 fully supervise인 pix2pix와 비슷한 품질의 translation을 생성할 수 있음.</p>
 </section>
 <section id="human-study">
 <h3>Human study<a class="headerlink" href="#human-study" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>표 1은 AMT perceptual realism task에 대한 성능을 나타냄. 여기서 지도에서 항공 사진, 항공 사진에서 지도 모두에서 약 1/4의 참가자를 속일 수 있었음. 그 외 모든 baseline은 참가자를 거의 속일 수 없었다.</p>
 </section>
 <section id="fcn">
 <h3>FCN 등<a class="headerlink" href="#fcn" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>표 2는 도시 풍경에 대한 label –&gt; photo task의 성능을 평가하고 표 3은 반대 매핑을 평가함. 두 경우 모두 cycleGAN이 baseline들의 성능을 능가한다.</p>
 </section>
 <section id="analysis-of-the-loss-function">
 <h3>Analysis of the loss function<a class="headerlink" href="#analysis-of-the-loss-function" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>GAN, cycle consistency의 중요성을 보여주는 자료.<br />
 table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 것처럼 결과가 크게 저하됨. 따라서 두 term 모두 결과에 중요하다고 결론을 내릴 수 있음. 또한 한 방향에서만 cycle loss를 통해 각 메소드를 평가함. GAN + forward cycle만 돌렸을 때와, GAN + backward cycle만 돌렸을 때 이따금씩 학습에 불안정성을 보이고, mode collapse를 유발하는 것을 발견함(특히 제거된 매핑의 방향에 대해서 그런 경향을 보임). 그림 7을 보면 그런 경향을 볼 수 잇었음.</p>
 </section>
 <section id="image-reconstruction-quality">
 <h3>Image reconstruction quality<a class="headerlink" href="#image-reconstruction-quality" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>그림 4에서 재구성된 이미지의 몇가지 무작위 샘플을 보여줌. 지도 –&gt; 항공 사진과 같이 하나의 도메인이 훨씬 더 다양한 정보를 나타내는 경우에도 재구성된 이미지가 훈련 및 테스트 시간 모두 원래 입력 x에 가까운 경우가 많았음.</p>
 </section>
 <section id="paired-dataset">
 <h3>paired dataset에 대한 추가 결과<a class="headerlink" href="#paired-dataset" title="Permalink to this heading">#</a></h3>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>그림 8은 CMP Façade Database의 건축 레이블 &lt;–&gt; 사진, UT Zapoos50K dataset의 edge &lt;–&gt; 신발과 같이 pix2pix에 사용된 다른 paired dataset에 대한 몇 가지 예시 결과를 보여줌. cycleGAN의 이미지 품질은 fully supervised pix2pix에 대의 생성된 것과 비슷하지만 cycleGAN은 paired supervision 없이 학습이 된다.(우리가 짱이다!)</p>
 </section>
 </section>
@@ -646,7 +654,7 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
 <hr class="docutils" />
 <section id="limitations-and-discusssion">
 <h2>Limitations and Discusssion<a class="headerlink" href="#limitations-and-discusssion" title="Permalink to this heading">#</a></h2>
-<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" style="width: 30%"></center>
+<center><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" class="bg-primary mb-1" width="{800px}"></center>
 <p>이 방법은 많은 경우에 흥미로운 결과를 얻을 수 있지만, 결과는 결과가 균일하게 좋은 것은 아니었습니다.</p>
 <ol class="arabic simple">
 <li><p>(해석) 개&lt;-&gt;고양이 task와 같은 경우는 input image에서 최소한의 변화만 주어, 사람이 보았을 때 실제로 변화가 안되는 경우도 있었고, 형체가 애매해진 경우도 있음. 이런걸 보았을 때, 세부적인 구조(geometry? 라는 표현을 보아), 눈, 코, 입에 대한 정확한 구조를 구현하는데 한계가 있어 보임.</p></li>
@@ -695,7 +703,7 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Generative Adversarial Network (GAN)</p>
+        <p class="prev-next-title">GAN</p>
       </div>
     </a>
     <a class="right-next"
@@ -703,7 +711,7 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">A Style-Based Generator Architecture for Generative Adversarial Networks</p>
+        <p class="prev-next-title">StyleGAN</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

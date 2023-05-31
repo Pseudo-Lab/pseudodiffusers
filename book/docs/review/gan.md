@@ -11,7 +11,7 @@
 - **Last updated on Apr. 12, 2023**
 ```
 
-# Generative Adversarial Network (GAN)
+# GAN
 
 
 ## Introduction

@@ -34,7 +34,7 @@ image-to-image translation
 Image-to-image translation은 input image를 다른 스타일, 속성, 구조 등을 가진 output image로 변환하는 것입니다. 예를 들어 사진을 그림으로 변환한다거나, 낮에 찍은 사진을 밤에 찍은 것 처럼 변환하는 것을 말합니다. 흔히 translation은 input과 output으로 짝이 지어진 data를 바탕으로 학습이 이루어져 있었는데요. 짝이 지어진 사진 데이터를 얻는 것은 어렵고 값이 비싼 일이 됩니다.
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig1.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
 
 paired and unpaired data
 :::
@@ -95,7 +95,7 @@ cycleGAN 도식화 자료
 G: X --> Y와 Dy에 대한 목적식은 다음과 같음.
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig3.L_gan.png" style="width:30%">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnvzuE%2Fbtr725OfuJy%2FI1IgwK5PIzXpzINWnJxysK%2Fimg.png" style="width:800px">
 
 :::
 
@@ -104,7 +104,7 @@ G: X --> Y와 Dy에 대한 목적식은 다음과 같음.
 ### Cycle consistency Loss
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig5.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
 
 cycle consistency loss result
 :::
@@ -114,7 +114,7 @@ cycle consistency loss result
 -   cycle consistency loss를 통해 유도된 결과는 아래 그림에서 볼 수 있었음.
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig4.L_cyc.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
 
 cycle consistency loss function
 :::
@@ -122,7 +122,7 @@ cycle consistency loss function
 ### full objective - 전체 목적식
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig6.whole_function.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" width="{800px}">
 
 full objective function
 :::

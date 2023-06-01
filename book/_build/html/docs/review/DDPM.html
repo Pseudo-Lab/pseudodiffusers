@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DDPM &#8212; Text-to-Image Generation</title>
   
@@ -177,7 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
 
 
 
@@ -429,7 +430,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img1.png"><img alt="DDPM_01" class="bg-primary mb-1" src="../../_images/img1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -439,7 +440,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img2.png"><img alt="DDPM_02" class="bg-primary mb-1" src="../../_images/img2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Diffusion model</strong>은 <strong>variational inference로 학습시켜 데이터를 생성하는 parameterized Markov chain</strong>. Diffusion model은 Markov가 데이터가 normal distribution의 형태를 할 때까지 <strong>noise를 더해가는 diffusion process</strong>와 <strong>이를 역으로 거치며 학습하는 reverse process</strong>로 구성됨.</p>
@@ -459,7 +460,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img3.png"><img alt="DDPM_03" class="bg-primary mb-1" src="../../_images/img3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">
@@ -542,7 +543,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img8.png"><img alt="DDPM_08" class="bg-primary mb-1" src="../../_images/img8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -551,7 +552,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img9.png"><img alt="DDPM_09" class="bg-primary mb-1" src="../../_images/img9.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -583,13 +584,13 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img10.png"><img alt="DDPM_10" class="bg-primary mb-1" src="../../_images/img10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img11.png"><img alt="DDPM_11" class="bg-primary mb-1" src="../../_images/img11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최종 loss는 위와 같이 나타난다. Ground truth - estimated output간 MSE loss를 줄이는 과정이 denoising과 비슷해 DDPM이라는 이름이 붙음.</p>
@@ -597,7 +598,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img12.png"><img alt="DDPM_12" class="bg-primary mb-1" src="../../_images/img12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -908,7 +909,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img13.png"><img alt="DDPM_13" class="bg-primary mb-1" src="../../_images/img13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>FID, IS로 metric 계산. Unconditional model인데도 conditional model보다 우월. Codelength에서 차이가 없기 때문에 overfitting의 가능성도 적음.</p>

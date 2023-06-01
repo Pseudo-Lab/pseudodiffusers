@@ -17,7 +17,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 박범수 [Beomsoo Park] | [Github](https://github.com/hanlyang0522) | Linkedin
 - 지승환 [] | Github | Linkedin
 - 고동근 [Donggeun "Sean" Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
-- 조남경 [] | Github | Linkedin
+- 조남경 [Namkyeong Cho] | Github | Linkedin
 
 ## Schedule 
 | idx | Date | Presenter | Paper / Code | 
@@ -26,7 +26,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 2 | 2023.04.05 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593) (ICCV 2017) <br> [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (CVPR 2019)| 
 | 3 | 2023.04.12 | 박범수 [Beomsoo Park] <br> 지승환 [] | [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (NeurIPS 2020) <br> [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502) (ICLR 2021)|
 | 4 | 2023.05.10 | 고동근 [Donggeun "Sean" Ko] | [Diffusion Models Beat GANs in Image Synthesis](https://arxiv.org/abs/2105.05233) (NeurIPS 2021)|
-| 5 | 2023.05.17 | 조남경 [] <br> 조상우 [Sangwoo Jo] | [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) (CVPR 2022) <br> [DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation](https://arxiv.org/abs/2208.12242) (CVPR 2023)|
+| 5 | 2023.05.17 | 조남경 [Namkyeong Cho] <br> 조상우 [Sangwoo Jo] | [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) (CVPR 2022) <br> [DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation](https://arxiv.org/abs/2208.12242) (CVPR 2023)|
 | 6 | 2023.05.24 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion](https://arxiv.org/abs/2208.01618) <br> [Adding Conditional Control to Text-to-Image Diffusion Models](https://arxiv.org/abs/2302.05543)|
 
 

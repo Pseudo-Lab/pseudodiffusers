@@ -17,10 +17,11 @@
 ```
 이미지 3-5장으로 새로운 개념(또는 콘셉트, concept)을 학습해 관련된 이미지를 뽑아내는 모델
 ```
- text-to-image model은 자연어를 통한 creation에 전례없는 자유도를 주었다. 하지만, 특정한 contept를 생성하고, 그것의 생김새를 바꾸거나, 새로운 역할이 주어지거나 참신한 장면이 그려지는건 아직 불분명하다. 즉, '이것을 그려줘'라고 말할 때, '이것'에 대한 설명을 prompt로 어떻게 할 것이냐는 물음에는 아직 한계가 있는 것 같다. 이를 해결하기 위해, 저자는 image를 3-5개만으로 사물이나 스타일과 같은 concept, 즉 새로운 '단어'를 고정된 text-to-image model의 embedding space에서 표현하는 방법을 제안한다. 이러한 '단어'는 자연어 문장에 녹아들어가, 직관적인 방법으로 '개인화된' 이미지 생성을 이끌어 낸다. 특히, 독자적이면서 다양한 콘셉트를 capture하기 위해서는 single word embedding이 충분하다는 것을 알게 되었다.
+
+ text-to-image model은 자연어를 통한 creation에 전례없는 자유도를 주었다. 하지만, 특정한 contept를 생성하고, 그것의 생김새를 바꾸거나, 새로운 역할이 주어지거나 참신한 장면이 그려지는건 아직 불분명하다. 즉, '이것을 그려줘'라고 말할 때, '이것'에 대한 설명을 prompt로 어떻게 할 것이냐는 물음에는 아직 한계가 있는 것 같다. 이를 해결하기 위해, 저자는 image를 3-5개만으로 사물이나 스타일과 같은 concept, 즉 새로운 '단어'를 고정된 text-to-image model의 embedding space에서 표현하는 방법을 제안한다. 이러한 '단어'는 자연어 문장에 녹아들어가, 직관적인 방법으로 '개인화된' 이미지 생성을 이끌어 낸다. 특히, 독자적이면서 다양한 콘셉트를 capture하기 위해서는 single word embedding이 충분하다는 것을 알게 되었다.
 
 :::{figure-md} textual inverison example
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbIVL03%2Fbtsg8b6ssL1%2FsZQKABrsLJG58fJuvqd5MK%2Fimg.png" alt="{textual inverison example}" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbIVL03%2Fbtsg8b6ssL1%2FsZQKABrsLJG58fJuvqd5MK%2Fimg.png" alt="textual inverison example" class="bg-primary mb-1" width="800px">
 
 textual inversion example \  (source: https://arxiv.org/abs/2208.01618)
 :::
@@ -30,11 +31,11 @@ textual inversion example \  (source: https://arxiv.org/abs/2208.01618)
 
 
 :::{figure-md} architecture
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0jLjp%2Fbtsg9DuSNQj%2FkjfhEfeTTA212mS5htrb71%2Fimg.png" alt="architecture" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0jLjp%2Fbtsg9DuSNQj%2FkjfhEfeTTA212mS5htrb71%2Fimg.png" alt="architecture" class="bg-primary mb-1" width="800px">
 
 architecture \  (source: https://arxiv.org/abs/2208.01618)
 :::
-위 figure에서, "A photo of S*"은 tokenizer를 지나면서 각각 '508', '701', '73', '*'과 같은 형태의 token set으로 변환되고, 이후 각 토큰은 자체 임베딩 벡터로 변환되고 이러한 벡터는 다운스트림 모델을 통해 제공됨.
+위 figure에서, "A photo of S*"은 tokenizer를 지나면서 각각 '508', '701', '73', '*'과 같은 형태의 token set으로 변환되고, 이후 각 토큰은 자체 임베딩 벡터로 변환되고 이러한 벡터는 다운스트림 모델을 통해 제공됨.
 
 input image의 concept를 나타내는, 새로운 pseudo-word인 S*를 이용해 새로운 embedding vector(v*)를 나타낸다. 이후 이 vector는 다른 단어와 같이 처리되며 생성 모델에 대한 새로운 text query를 구성하는데 사용될 수 있음. 따라서 이 query는 generator에 들어가서 사용자가 의도한바와 일치하도록 새로운 image를 생성하도록 하는 것이 전반적인 그림이라고 볼 수 있음.
 
@@ -68,7 +69,7 @@ Our goal is to enable language-guided generation of new, user-specified concepts
 출처) - https://hyoseok-personality.tistory.com/entry/GAN-Inversion
 
 :::{figure-md} GAN inversion
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpomZT%2Fbtsg9EHfVqc%2F4a4K6BmSPZV5ncVQXtfCHk%2Fimg.png" alt="GAN inversion" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpomZT%2Fbtsg9EHfVqc%2F4a4K6BmSPZV5ncVQXtfCHk%2Fimg.png" alt="GAN inversion" class="bg-primary mb-1" width="800px">
 
 GAN inversion \  (source: https://hyoseok-personality.tistory.com/entry/GAN-Inversion)
 :::
@@ -79,14 +80,14 @@ GAN inversion \  (source: https://hyoseok-personality.tistory.com/entry/GAN-Inve
 논문에서는 생성모델로서 LDM(Latent Diffusion Model)을 사용함. 이전에 말했듯이, LDM은 하나도 건들지 않음.
 
 :::{figure-md} LDM objective function
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdw5kRl%2FbtshgoiBpt4%2Fz72rzU3tvL8kLFbtBXwWVk%2Fimg.png" alt="LDM objective function" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdw5kRl%2FbtshgoiBpt4%2Fz72rzU3tvL8kLFbtBXwWVk%2Fimg.png" alt="LDM objective function" class="bg-primary mb-1" width="800px">
 
 LDM objective function \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
 
 ## Text Embeddings
 :::{figure-md} Text-Embedding
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0EWv%2Fbtsg9e9ZI4u%2FzfXraAXg1vpKpxemZLtVPk%2Fimg.png" alt="Text-Embedding" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0EWv%2Fbtsg9e9ZI4u%2FzfXraAXg1vpKpxemZLtVPk%2Fimg.png" alt="Text-Embedding" class="bg-primary mb-1" width="800px">
 
 Text-Embedding \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -97,7 +98,7 @@ Text-Embedding \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 새로운 embedding을 찾기 위해 작은 규모의 dataset(3-5장)을 사용해 다양한 배경 또는 포즈와 같은 여러 설정에 걸쳐 목표 concept을 묘사함. 이러한 작은 dataset에서 LDM loss를 최소화하는 과정을 통해 V를 최적화함. 생성 조건을 고정하기 위해 CLIP ImageNet 템플릿에서 파생된 중립 컨텍스트 텍스트를 무작위로 샘플링한다. 여기에는 "A photo of S*", "A rendition of S*" 등의 형식 프롬프트가 포함된다.(아마 원본 이미지와 최대한 비슷하게 만들어서 원본과 비교하기 위한 목적이 아닐까 싶음) 최적화 목표식은 다음과 같음.
 
 :::{figure-md} textual inversion objective function
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqY4nD%2FbtshiHP4k6T%2FvZrYjfSUAE2XePwon4rTIk%2Fimg.png" alt="textual inversion objective function" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqY4nD%2FbtshiHP4k6T%2FvZrYjfSUAE2XePwon4rTIk%2Fimg.png" alt="textual inversion objective function" class="bg-primary mb-1" width="800px">
 
 textual inversion objective function \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -107,7 +108,7 @@ LDM loss함수와 매우 유사함. 여기서 CΘ와 eΘ는 고정. 해당 따�
 # 성능평가
 ## DALL:E-2와 비교
 :::{figure-md} compare with DALLE-2
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkJvkY%2Fbtsg95YTKmc%2FX6lxVI5tL30ZP5gKEmoAv1%2Fimg.png" alt="compare with DALLE-2" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkJvkY%2Fbtsg95YTKmc%2FX6lxVI5tL30ZP5gKEmoAv1%2Fimg.png" alt="compare with DALLE-2" class="bg-primary mb-1" width="800px">
 
 compare with DALLE-2 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -116,7 +117,7 @@ compare with DALLE-2 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 ## Text guided synthesis
 
 :::{figure-md} text guided synthesis
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRLYR1%2Fbtsg95SasXe%2FaUe9K6FVb2yC9sZqoK5eSk%2Fimg.png" alt="text guided synthesis" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRLYR1%2Fbtsg95SasXe%2FaUe9K6FVb2yC9sZqoK5eSk%2Fimg.png" alt="text guided synthesis" class="bg-primary mb-1" width="800px">
 
 text guided synthesis - 입력 이미지의 스타일과 유사하면서도 text guide에 맞춰서 잘 진행함.
  \  (source: https://arxiv.org/pdf/2208.01618.pdf)
@@ -125,7 +126,7 @@ text guided synthesis - 입력 이미지의 스타일과 유사하면서도 text
 - Textual Inversion 모델은 새로운 주제에 대해 더 정확하게 개념을 보존하고, 새로운 임베딩과 나머지 캡션들에 대해서도 모두 추론이 가능했음.
 
 :::{figure-md} style transfer
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLlXhf%2Fbtsg8cEna6l%2FgiZvyYgqCaPj6X5wKTIzZk%2Fimg.png" alt="style transfer" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLlXhf%2Fbtsg8cEna6l%2FgiZvyYgqCaPj6X5wKTIzZk%2Fimg.png" alt="style transfer" class="bg-primary mb-1" width="800px">
 
 style transfer \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -134,14 +135,14 @@ style transfer \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 ## pseudo word 두 개 사용
 
 :::{figure-md} two pseudo word
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJtPJY%2Fbtsg9OinOOb%2FMLn4k48Hk7CP7vGv1yAaYk%2Fimg.png" alt="two pseudo word" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJtPJY%2Fbtsg9OinOOb%2FMLn4k48Hk7CP7vGv1yAaYk%2Fimg.png" alt="two pseudo word" class="bg-primary mb-1" width="800px">
 
 two pseudo word \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
 
 ## Bias Reduction
 :::{figure-md} Bias reduction
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPakAR%2Fbtsg9OvWWW9%2FJZkKl1AFTKJgEKJsA2rb2K%2Fimg.png" alt="Bias reduction" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPakAR%2Fbtsg9OvWWW9%2FJZkKl1AFTKJgEKJsA2rb2K%2Fimg.png" alt="Bias reduction" class="bg-primary mb-1" width="800px">
 
 Bias reduction \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -162,7 +163,7 @@ GAN inversion에서 영감을 받은 실험 환경 설정에 따름. 생략
 
 ## 결과
 :::{figure-md} quantative evaluation1
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxKm1h%2Fbtshb63SIYh%2FNflBiQZTV5V0yh0I3EYpq1%2Fimg.png" alt="quantative evaluation1" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxKm1h%2Fbtshb63SIYh%2FNflBiQZTV5V0yh0I3EYpq1%2Fimg.png" alt="quantative evaluation1" class="bg-primary mb-1" width="800px">
 
 quantative evaluation1 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::
@@ -181,7 +182,7 @@ quantative evaluation1 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 ## 사용자평가
 
 :::{figure-md} human test
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frx5Ei%2Fbtsg9MSpakC%2FFsPkgODR3zTGIBnvq6RXik%2Fimg.png" alt="human test" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frx5Ei%2Fbtsg9MSpakC%2FFsPkgODR3zTGIBnvq6RXik%2Fimg.png" alt="human test" class="bg-primary mb-1" width="800px">
 
 human test \  (source: https://arxiv.org/pdf/2208.01618.pdf)
 :::

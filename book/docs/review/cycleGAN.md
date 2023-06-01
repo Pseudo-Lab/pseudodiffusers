@@ -35,7 +35,7 @@ image-to-image translation
 Image-to-image translation은 input image를 다른 스타일, 속성, 구조 등을 가진 output image로 변환하는 것입니다. 예를 들어 사진을 그림으로 변환한다거나, 낮에 찍은 사진을 밤에 찍은 것 처럼 변환하는 것을 말합니다. 흔히 translation은 input과 output으로 짝이 지어진 data를 바탕으로 학습이 이루어져 있었는데요. 짝이 지어진 사진 데이터를 얻는 것은 어렵고 값이 비싼 일이 됩니다.
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 paired and unpaired data
 :::
@@ -46,7 +46,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 ### mode collapse란?
 
 :::{figure-md} markdown-fig
-<img src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" width="800px">
 
 mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 :::
@@ -76,7 +76,7 @@ mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 ## Formulation
 
 :::{figure-md} markdown-fig
-<img src="../../pics/cyclegan/fig2.png" class="bg-primary mb-1" width="{800px}">
+<img src="../../pics/cyclegan/fig2.png" class="bg-primary mb-1" width="800px">
 
 cycleGAN 도식화 자료
 :::
@@ -95,9 +95,10 @@ cycleGAN 도식화 자료
 
 G: X --> Y와 Dy에 대한 목적식은 다음과 같음.
 
-:::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnvzuE%2Fbtr725OfuJy%2FI1IgwK5PIzXpzINWnJxysK%2Fimg.png" style="width:800px">
+:::{figure-md} L_GAN Loss function
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnvzuE%2Fbtr725OfuJy%2FI1IgwK5PIzXpzINWnJxysK%2Fimg.png" alt="L_GAN Loss function" style="width:800px">
 
+L_GAN Loss function (source: https://arxiv.org/abs/1703.10593)
 :::
 
 -   GAN에서 쓰이는 loss function과 동일. 대신에 X -> Y로 갈 때와 Y -> X로 갈 때 총 두개의 수식이 나오며, F:Y->X와 Dx에 대해서도 F, Dx를 넣은, 같은 수식을 사용함.
@@ -105,7 +106,7 @@ G: X --> Y와 Dy에 대한 목적식은 다음과 같음.
 ### Cycle consistency Loss
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 cycle consistency loss result
 :::
@@ -115,7 +116,7 @@ cycle consistency loss result
 -   cycle consistency loss를 통해 유도된 결과는 아래 그림에서 볼 수 있었음.
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 cycle consistency loss function
 :::
@@ -123,7 +124,7 @@ cycle consistency loss function
 ### full objective - 전체 목적식
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 full objective function
 :::
@@ -161,7 +162,7 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 -   이해는 못했고, 이런게 있구나 정도로만 알 수 있었음.
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 출처: https://velog.io/@sjinu/CycleGAN
 :::
@@ -169,7 +170,7 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 (원래 Discriminator는 이보다 더 고차원이지만) 간략히 2차원을 표방하면 결정경계를 위와 같이 나타낼 수 있습니다. 윗 쪽이 가짜 영역, 아래 쪽이 진짜 영역입니다 이 때, 아래에 보면 진짜 데이터 샘플과 거리가 먼 가짜 데이터 샘플이 존재합니다. 즉, NLL Loss를 사용한다면, Generator의 입장에서는 이미 Discriminator를 잘 속이고 있기 때문에 학습할 필요가 없습니다. 즉, Vanishing Gradient가 일어나기 때문에, Discriminator를 잘 속인다는 이유만으로, 안 좋은 샘플을 생성하는 것에 대해 패널티를 줄 수가 없게 됩니다. 이 때, LS GAN을 사용한다면 실제 데이터 분포와 가짜 데이터 샘플이 거리가 먼 것에 대해서도 패널티를 주게 됩니다.
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 출처: https://velog.io/@sjinu/CycleGAN
 :::
@@ -199,7 +200,7 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 ### Comparison against baselines
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 Comparison aginst baselines
 :::
@@ -209,7 +210,7 @@ figure 5, figure 6에서 볼 수 있듯이 어떤 baseline에서도 강력한 �
 ### Human study
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 AMT score
 :::
@@ -219,7 +220,7 @@ AMT score
 ### FCN 등
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 FCN scores
 :::
@@ -229,7 +230,7 @@ FCN scores
 ### Analysis of the loss function
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 Analysis of loss function
 :::
@@ -240,7 +241,7 @@ table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 �
 ### Image reconstruction quality
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 cycle consistency result
 :::
@@ -250,7 +251,7 @@ cycle consistency result
 ### paired dataset에 대한 추가 결과
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 compare with paired dataset
 :::
@@ -298,7 +299,7 @@ Lidentity가 없으면, 생성자 G와 F는 굳이 필요하지 않을 때 입�
 ## Limitations and Discusssion
 
 :::{figure-md} markdown-fig
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" class="bg-primary mb-1" width="800px">
 
 Limitation and Discussion
 :::

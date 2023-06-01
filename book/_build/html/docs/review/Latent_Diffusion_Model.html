@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Latent Diffusion Model &#8212; Text-to-Image Generation</title>
   
@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Abstract" href="Textual_Inversion.html" />
+    <link rel="next" title="Textual Inversion" href="Textual_Inversion.html" />
     <link rel="prev" title="ControlNet" href="ControlNet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -177,7 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Latent Diffusion Model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
 
 
 
@@ -414,7 +415,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Unet.png"><img alt="../../_images/Unet.png" class="bg-primary mb-1" src="../../_images/Unet.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H\times W \times 3}\)</span>이 input으로 주어졌을때 이를 encoder <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>를 통해서 <span class="math notranslate nohighlight">\(z=\mathcal{E}(x) \in \mathbb{R}^{h\times w\times c }\)</span>로 인코딩 하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>
@@ -449,27 +450,27 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/experiment1.png"><img alt="../../_images/experiment1.png" class="bg-primary mb-1" src="../../_images/experiment1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/text_to_image.png"><img alt="../../_images/text_to_image.png" class="bg-primary mb-1" src="../../_images/text_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>실험을 통해서 나온 결과 <span class="math notranslate nohighlight">\(m=2,3,4\)</span> 혹은 <span class="math notranslate nohighlight">\(f=4, 8, 16\)</span>인 경우 적절한 FID 점수와 효율성을 보여주었습니다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/trade_off.png"><img alt="../../_images/trade_off.png" class="bg-primary mb-1" src="../../_images/trade_off.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과입니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/layout_to_image.png"><img alt="../../_images/layout_to_image.png" class="bg-primary mb-1" src="../../_images/layout_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -519,7 +520,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Abstract</p>
+        <p class="prev-next-title">Textual Inversion</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

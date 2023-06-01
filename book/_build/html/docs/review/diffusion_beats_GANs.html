@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Diffusion Models Beat GANs on Image Synthesis &#8212; Text-to-Image Generation</title>
   
@@ -177,7 +177,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Abstract</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
 
 
 
@@ -460,13 +461,13 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ddpm_pipeline.png"><img alt="ddpm_pipeline" class="bg-primary mb-1" src="../../_images/ddpm_pipeline.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 39 </span><span class="caption-text">DDPM Pipeline</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">DDPM Pipeline</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DDPM_eq.png"><img alt="ddpm_eq" class="bg-primary mb-1" src="../../_images/DDPM_eq.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 40 </span><span class="caption-text">DDPM Equation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">DDPM Equation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -475,7 +476,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/improved_ddpm_pic.png"><img alt="improved_ddpm_pic" class="bg-primary mb-1" src="../../_images/improved_ddpm_pic.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -488,7 +489,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/improved_ddpm_eq.png"><img alt="improved_ddpm_eq" class="bg-primary mb-1" src="../../_images/improved_ddpm_eq.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Improved DDPM Equation</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Improved DDPM Equation</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -497,7 +498,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ddim_pipe.png"><img alt="ddim_pipe" class="bg-primary mb-1" src="../../_images/ddim_pipe.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 43 </span><span class="caption-text">DDIM Pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">DDIM Pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -507,7 +508,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DDIM_pic.png"><img alt="ddim_pic" class="bg-primary mb-1" src="../../_images/DDIM_pic.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 44 </span><span class="caption-text">DDIM Sampling Equation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">DDIM Sampling Equation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -525,13 +526,13 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_1.png"><img alt="architect_1" class="bg-primary mb-1" src="../../_images/architect_1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Table 1: Ablation of various architecture changes</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Table 1: Ablation of various architecture changes</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_2.png"><img alt="architect_2" class="bg-primary mb-1" src="../../_images/architect_2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>** 3-1. Best Architecture **</p>
@@ -547,7 +548,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_3.png"><img alt="architect_3" class="bg-primary mb-1" src="../../_images/architect_3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -567,7 +568,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/adagn_table.png"><img alt="adagn_table" class="bg-primary mb-1" src="../../_images/adagn_table.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 48 </span><span class="caption-text">AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -594,13 +595,13 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/class_eq1.png"><img alt="class_eq1" class="bg-primary mb-1" src="../../_images/class_eq1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Classifier Guidance 유도 식 1,2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Classifier Guidance 유도 식 1,2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/class_eq2.png"><img alt="classifier_2" class="bg-primary mb-1" src="../../_images/class_eq2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Classifier Guidance 유도 식 3~7</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Classifier Guidance 유도 식 3~7</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -609,7 +610,7 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/algorithm.png"><img alt="algorithm" class="bg-primary mb-1" src="../../_images/algorithm.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Algorithm 1 &amp; 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Algorithm 1 &amp; 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -625,7 +626,7 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/classifier_guidance_vis.png"><img alt="class_guidance_vis" class="bg-primary mb-1" src="../../_images/classifier_guidance_vis.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Classifier Guidance scaling의 영향 시각화</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Classifier Guidance scaling의 영향 시각화</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -640,7 +641,7 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/plot_result.png"><img alt="plot result" class="bg-primary mb-1" src="../../_images/plot_result.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Fidelity vs Diversity Trade-off 결과</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Fidelity vs Diversity Trade-off 결과</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -659,7 +660,7 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_results.png"><img alt="img_results" class="bg-primary mb-1" src="../../_images/img_results.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">

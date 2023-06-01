@@ -26,10 +26,11 @@
 ### 참고) Image-to-Image translation이란?
 
 :::{figure-md} markdown-fig
-<img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" width="{800px}">
+<img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" width="800px"/>
 
 image-to-image translation
 :::
+
 
 Image-to-image translation은 input image를 다른 스타일, 속성, 구조 등을 가진 output image로 변환하는 것입니다. 예를 들어 사진을 그림으로 변환한다거나, 낮에 찍은 사진을 밤에 찍은 것 처럼 변환하는 것을 말합니다. 흔히 translation은 input과 output으로 짝이 지어진 data를 바탕으로 학습이 이루어져 있었는데요. 짝이 지어진 사진 데이터를 얻는 것은 어렵고 값이 비싼 일이 됩니다.
 

@@ -11,6 +11,7 @@
 - **Last updated on May. 31. 2023**
 ```
 
+# Textual Inversion
 
 # Abstract
 ```

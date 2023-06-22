@@ -1,4 +1,4 @@
-```{admonition} Information
+``` {admonition} Information
 - **Title:** {Zero-shot text-to-image generation}, {ICML 2021}
 
 - **Reference**

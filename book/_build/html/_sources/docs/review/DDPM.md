@@ -12,7 +12,7 @@
 ```
 
 
-# DDPM
+# Denoising Diffusion Probabilistic Models(DDPM)
 
 
 :::{figure-md} markdown-fig

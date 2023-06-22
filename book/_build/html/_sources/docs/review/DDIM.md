@@ -10,7 +10,7 @@
 - **Last updated on April. 23, 2023**
 ```
 
-# Denoising Diffusion Implicit Models(DDIM)
+# DDIM
 ## Abstract
 
 - DDPM의 단점인 Markov Process를 Non markovian process로 정의함으로서 Time efficient,  deterministic한 Sampling이 가능한 모델을 제안

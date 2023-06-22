@@ -205,6 +205,7 @@ Performance on GPT-3
 :::{figure-md} markdown-fig
 <img src="../../pics/LoRA/image (6).png" alt="LoRA_06" class="bg-primary mb-1" width="700px">
 
+Validation accuracy table with different hyper-parameters
 :::
 
 :::{figure-md} markdown-fig

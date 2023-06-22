@@ -3,7 +3,7 @@
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2105.05233](https://arxiv.org/abs/2105.05233)
-    - Code: [Official](https://github.com/openai/guided-diffusion)
+    - Code: [Official:](https://github.com/openai/guided-diffusion)
     
 - **Author:** Donggeun Sean Ko
 
@@ -40,23 +40,17 @@
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/ddpm_pipeline.png" alt="ddpm_pipeline" class="bg-primary mb-1" width="700px">
-
-DDPM Pipeline
 :::
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/DDPM_eq.png" alt="ddpm_eq" class="bg-primary mb-1" width="700px">
-
-DDPM Equation
 :::
 
 ### Improved DDPM
 
 :::{figure-md} markdown-fig
 
-<img src="../../pics/diffusion_model_beats_gans/improved_ddpm_pic.png" alt="improved_ddpm_pic" class="bg-primary mb-1" width="700px">
-
-Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)
+<img src="../../pics/diffusion_model_beats_gans/improved_ddpm_pic.png" alt="improved_ddpm_schedule" class="bg-primary mb-1" width="700px">
 :::
 
 - 더 적은 diffusion step으로 샘플링 함.
@@ -67,17 +61,13 @@ Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/improved_ddpm_eq.png" alt="improved_ddpm_eq" class="bg-primary mb-1" width="700px">
-
-Improved DDPM Equation
 :::
 
 
 ### DDIM
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/ddim_pipe.png" alt="ddim_pipe" class="bg-primary mb-1" width="700px">
-
-DDIM Pipeline
+<img src="../../pics/diffusion_model_beats_gans/ddim_pipe.png" alt="ddim_pipeline" class="bg-primary mb-1" width="700px">
 :::
 
 - Markovian Chain Process를 끊고 Non-Markovian 형태로 Deterministic 하게 수식을 바꿈
@@ -85,8 +75,6 @@ DDIM Pipeline
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/DDIM_pic.png" alt="ddim_pic" class="bg-primary mb-1" width="700px">
-
-DDIM Sampling Equation
 :::
 
 ## 3. Architectural Improvements
@@ -100,15 +88,11 @@ DDIM Sampling Equation
 - Residual Connection을 1/√2 로 rescaling 해보기
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/architect_1.png" alt="architect_1" class="bg-primary mb-1" width="700px">
-
-Table 1: Ablation of various architecture changes
+<img src="../../pics/diffusion_model_beats_gans/architect_1.png" alt="ablation1" class="bg-primary mb-1" width="700px">
 :::
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/architect_2.png" alt="architect_2" class="bg-primary mb-1" width="700px">
-
-Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)
+<img src="../../pics/diffusion_model_beats_gans/architect_2.png" alt="ablation2" class="bg-primary mb-1" width="700px">
 :::
 
 ** 3-1. Best Architecture **
@@ -122,9 +106,7 @@ Table 2: Ablation of various attention configurations. Attention head 가 32일�
 - 위와 같은 parameter를 통해 제일 좋은 FID 결과가 나옴
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/architect_3.png" alt="architect_3" class="bg-primary mb-1" width="700px">
-
-Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블
+<img src="../../pics/diffusion_model_beats_gans/architect_3.png" alt="ablation3" class="bg-primary mb-1" width="700px">
 :::
 
 ## 4. Adaptive Group Normalization
@@ -140,9 +122,7 @@ where $h =$ residual block and $y = [y_s,y_b]$ time-step embedding and class emb
 **4-1 AdaGN의 성능**
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/adagn_table.png" alt="adagn_table" class="bg-primary mb-1" width="700px">
-
-AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.
+<img src="../../pics/diffusion_model_beats_gans/adagn_table.png" alt="adagn" class="bg-primary mb-1" width="700px">
 :::
 
 - 기존 DDPM은 Addition + GroupNorm layer을 사용했는데, AdaGN 을 사용하는 것이 FID가 더 낮게 (즉 더 좋은 성능) 나온 것을 볼 수 있다
@@ -164,23 +144,17 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 - 식 유도는 아래와 같다. 본문의 (3) ~ (10) 번식이므로 본 논문을 참고하면 좋다.
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/class_eq1.png" alt="class_eq1" class="bg-primary mb-1" width="700px">
-
-Classifier Guidance 유도 식 1,2
+<img src="../../pics/diffusion_model_beats_gans/class_eq1.png" alt="classifier_1" class="bg-primary mb-1" width="700px">
 :::
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/class_eq2.png" alt="classifier_2" class="bg-primary mb-1" width="700px">
-
-Classifier Guidance 유도 식 3~7
 :::
 
 ## 6. Algorithm
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/algorithm.png" alt="algorithm" class="bg-primary mb-1" width="700px">
-
-Algorithm 1 & 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법
 :::
 
 - Algorithm 1 은 일반 DDPM에서 샘플링 하는 방법이다. 똑같이 Gaussian distribution에서 샘플링 할 시, classifier의 gradient를 활용하여 $x_{t-1}$를 sample한다.
@@ -197,25 +171,25 @@ Algorithm 1 & 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algori
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/classifier_guidance_vis.png" alt="class_guidance_vis" class="bg-primary mb-1" width="700px">
-
-Classifier Guidance scaling의 영향 시각화
-:::
 - classifier guidance 앞에 hyperparameter \bf{s} 의 값에 따라 classifier가 줄 수 있는 scaling이 다르다.
 - scale을 1.0으로 주면 웰시코기라는 class의 scale 영향을 덜 받아 "웰시코기스러운" 강아지가 생성이 많이 되지는 않는다.
 - scale을 10.0으로 주면 웰시코기 class라는 scaling의 영향을 많이 받아 웰시코기 분위기의 강아지의 이미지가 더 많이 생성 되는 것을 볼 수 있다.
 - epsilon이라는 모델이 결국 scale에 따라 gradient의 영향을 얼마나 많이 받는지 sampling할 때 볼 수 있다.
+:::
+
 ## 8. Results
 
 :::{figure-md} markdown-fig
 <img src="../../pics/diffusion_model_beats_gans/plot_result.png" alt="plot result" class="bg-primary mb-1" width="700px">
-
-Fidelity vs Diversity Trade-off 결과
 :::
 
 - gradient scale이 높을수록 recall은 낮지만, precision은 높다. 즉 trade-off 가 생기는데, recall이 낮을수록 diveristy가 낮다는 의미이고, precision이 높을수록 fidelity가 높다는 뜻이다.
 - scale을 높일수록 다양한 이미지가 생성되는 것이 아닌, classifier가 준 label쪽으로 guide가 생기므로 일정한 class의 사진이 나온다.
 - FID와 sFID는 diversity와 fidelity의 trade-off로 도출되는 값이므로, 최고의 값은 중간 지점에서 나왔다.
 
+:::{figure-md} markdown-fig
+<img src="../../pics/diffusion_model_beats_gans/algorithm.png" alt="algorithm" class="bg-primary mb-1" width="700px">
+:::
 
 **8-1. Result Table**
 - ADM은 Ablated Diffusion Model의 약자이며, ADM-G는 Ablated Diffusion Model with Guidance의 약자이다.
@@ -225,9 +199,7 @@ Fidelity vs Diversity Trade-off 결과
 ## 8-2. Image Synthesis Results
 
 :::{figure-md} markdown-fig
-<img src="../../pics/diffusion_model_beats_gans/img_results.png" alt="img_results" class="bg-primary mb-1" width="700px">
-
-Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)
+<img src="../../pics/diffusion_model_beats_gans/img_results.png" alt="plot result" class="bg-primary mb-1" width="700px">
 :::
 
 - 두번쨰 플라밍고 생성된 사진을 볼때, BigGAN은 이미지간들의 diversity가 없다. 학습된 플라밍고가 다수 플라밍고 시 비슷한 느낌의 이미지만 뽑아낸다.

@@ -1,15 +1,13 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>CycleGAN &#8212; Text-to-Image Generation</title>
+<<<<<<< HEAD
   
   
   
@@ -22,144 +20,115 @@
   <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 <link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+=======
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/cycleGAN';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="StyleGAN" href="StyleGAN.html" />
     <link rel="prev" title="GAN" href="gan.html" />
+<<<<<<< HEAD
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-  
-
-<a class="navbar-brand logo" href="../../intro.html">
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+      
+      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Paper/Code Review
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
+<<<<<<< HEAD
 <li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">CycleGAN</a></li>
@@ -186,97 +155,79 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+=======
+ <li class="toctree-l1">
+  <a class="reference internal" href="vae.html">
+   VAE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gan.html">
+   GAN
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   CycleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyleGAN.html">
+   StyleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDPM.html">
+   DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDIM.html">
+   DDIM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="diffusion_beats_GANs.html">
+   Diffusion Models Beat GANs on Image Synthesis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dreambooth.html">
+   DreamBooth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ControlNet.html">
+   ControlNet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Latent_Diffusion_Model.html">
+   Latent Diffusion Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Textual_Inversion.html">
+   Textual Inversion
+  </a>
+ </li>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/cycleGAN.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
+<<<<<<< HEAD
 
 
 <div class="dropdown dropdown-download-buttons">
@@ -373,12 +324,81 @@ document.write(`
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
+=======
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/review/cycleGAN.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
+                    class="fab fa-github"></i>저장소</button></a>
+        <a class="issues-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/cycleGAN.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<<<<<<< HEAD
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-image-translation">참고) Image-to-Image translation이란?</a></li>
@@ -418,17 +438,347 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-discusssion">Limitations and Discusssion</a></li>
+=======
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-to-image-translation">
+     참고) Image-to-Image translation이란?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mode-collapse">
+     mode collapse란?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-work">
+   Related work(관련 연구)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formulation">
+   Formulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adversarial-loss">
+     Adversarial loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-consistency-loss">
+     Cycle consistency Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#full-objective">
+     full objective - 전체 목적식
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-details">
+     Training details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-square-loss">
+     least-square loss 추가 설명
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     기타
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#result">
+   Result
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baseline">
+     Baseline
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-against-baselines">
+     Comparison against baselines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#human-study">
+     Human study
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fcn">
+     FCN 등
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-of-the-loss-function">
+     Analysis of the loss function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-reconstruction-quality">
+     Image reconstruction quality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paired-dataset">
+     paired dataset에 대한 추가 결과
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collection-style-transfer">
+     Collection style transfer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#object-transfiguration">
+     Object transfiguration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#season-transfer">
+     season transfer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photo-generation-from-paintings">
+     Photo generation from paintings **
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photo-enhancement">
+     Photo enhancement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-with-gatys">
+     Comparison with Gatys
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-and-discusssion">
+   Limitations and Discusssion
+  </a>
+ </li>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>CycleGAN</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 내용 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-to-image-translation">
+     참고) Image-to-Image translation이란?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mode-collapse">
+     mode collapse란?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-work">
+   Related work(관련 연구)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#formulation">
+   Formulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adversarial-loss">
+     Adversarial loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cycle-consistency-loss">
+     Cycle consistency Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#full-objective">
+     full objective - 전체 목적식
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implementation">
+   Implementation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#training-details">
+     Training details
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#least-square-loss">
+     least-square loss 추가 설명
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id9">
+     기타
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#result">
+   Result
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#baseline">
+     Baseline
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-against-baselines">
+     Comparison against baselines
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#human-study">
+     Human study
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fcn">
+     FCN 등
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#analysis-of-the-loss-function">
+     Analysis of the loss function
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#image-reconstruction-quality">
+     Image reconstruction quality
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#paired-dataset">
+     paired dataset에 대한 추가 결과
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#applications">
+   Applications
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#collection-style-transfer">
+     Collection style transfer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#object-transfiguration">
+     Object transfiguration
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#season-transfer">
+     season transfer
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photo-generation-from-paintings">
+     Photo generation from paintings **
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#photo-enhancement">
+     Photo enhancement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#comparison-with-gatys">
+     Comparison with Gatys
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limitations-and-discusssion">
+   Limitations and Discusssion
+  </a>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
@@ -446,9 +796,13 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="cyclegan">
+<<<<<<< HEAD
 <h1>CycleGAN<a class="headerlink" href="#cyclegan" title="Permalink to this heading">#</a></h1>
+=======
+<h1>CycleGAN<a class="headerlink" href="#cyclegan" title="Permalink to this headline">¶</a></h1>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Image-to-image translation(이하 translation)은 한 이미지 도메인을 다른 이미지 도메인으로 변환시키는 computer vision의 한 task.</p></li>
 <li><p>translation은 보통 input과 output이 짝이 지어진 상태에서 학습. 하지만 짝이 지어진 학습 데이터를 얻는 것이 어렵습니다. 따라서 cycleGAN 논문에서는 짝지어진 예시 없이 X라는 domain으로부터 얻은 이미지를 target domain Y로 바꾸는 방법을 제안. 이 연구는 Adversarial loss를 활용해, G(x)로부터 생성된 이미지 데이터의 분포와 Y로부터의 이미지 데이터의 분포가 구분이 불가능하도록 “함수 G:X -&gt; Y”를 학습시키는 것을 목표로 합니다. X –&gt; Y로의 mapping에 제약을 가해서 원하는 이미지를 강제하기 위해 F: Y -&gt; X와 같은 역방향 매핑을 함께 진행하고, F(G(x))가 X와 유사해지도록 강제하는 Cycle consistency loss를 도입했습니다.</p></li>
@@ -456,31 +810,51 @@ document.write(`
 </ul>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <section id="image-to-image-translation">
+<<<<<<< HEAD
 <h3>참고) Image-to-Image translation이란?<a class="headerlink" href="#image-to-image-translation" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://phillipi.github.io/pix2pix/images/teaser_v3.png"><img alt="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">image-to-image translation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+=======
+<h3>참고) Image-to-Image translation이란?<a class="headerlink" href="#image-to-image-translation" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://phillipi.github.io/pix2pix/images/teaser_v3.png"><img alt="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">image-to-image translation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>Image-to-image translation은 input image를 다른 스타일, 속성, 구조 등을 가진 output image로 변환하는 것입니다. 예를 들어 사진을 그림으로 변환한다거나, 낮에 찍은 사진을 밤에 찍은 것 처럼 변환하는 것을 말합니다. 흔히 translation은 input과 output으로 짝이 지어진 data를 바탕으로 학습이 이루어져 있었는데요. 짝이 지어진 사진 데이터를 얻는 것은 어렵고 값이 비싼 일이 됩니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbhMGUZ%2Fbtr7HimHXN5%2FHvjTh02iCzP5Sgk8UYkKO0%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">paired and unpaired data</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">paired and unpaired data</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>이 논문에서는 input image와 output image가 일대일로 짝지어지지 않은 상태에서 하나의 image 모음의 특성을 캡쳐하고, 이러한 특성을 다른 image 모음으로 변환할 수 있는 방법을 제시합니다.<br />
 GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제공되고, model의 output과, Y가 discriminator에 의해 구별할 수 없도록 G:X-&gt;Y를 학습합니다. 하지만, 이게 개별 입력 x와 출력 y가 무조건 유의미하게 쌍을 이룬다는 것을 뜻하지는 않습니다. G가 생성할 수 있는 image에는 무한한 경우의 수가 있기 때문. 종종 mode collapse가 일어나기도 합니다.</p>
 </section>
 <section id="mode-collapse">
+<<<<<<< HEAD
 <h3>mode collapse란?<a class="headerlink" href="#mode-collapse" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png"><img alt="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 11 </span><span class="caption-text">mode collapsing 출처: <a class="reference external" href="http://dl-ai.blogspot.com/2017/08/gan-problems.html">http://dl-ai.blogspot.com/2017/08/gan-problems.html</a></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+=======
+<h3>mode collapse란?<a class="headerlink" href="#mode-collapse" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png"><img alt="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">mode collapsing 출처: <a class="reference external" href="http://dl-ai.blogspot.com/2017/08/gan-problems.html">http://dl-ai.blogspot.com/2017/08/gan-problems.html</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -496,7 +870,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </section>
 <hr class="docutils" />
 <section id="related-work">
-<h2>Related work(관련 연구)<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<h2>Related work(관련 연구)<a class="headerlink" href="#related-work" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>GAN</p></li>
 <li><p>Image-to-Image Translation</p></li>
@@ -508,18 +882,26 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </section>
 <hr class="docutils" />
 <section id="formulation">
+<<<<<<< HEAD
 <h2>Formulation<a class="headerlink" href="#formulation" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig2.png"><img alt="../../_images/fig2.png" class="bg-primary mb-1" src="../../_images/fig2.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 12 </span><span class="caption-text">cycleGAN 도식화 자료</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+=======
+<h2>Formulation<a class="headerlink" href="#formulation" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig2.png"><img alt="../../_images/fig2.png" class="bg-primary mb-1" src="../../_images/fig2.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">cycleGAN 도식화 자료</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>목표: X, Y를 mapping하는 function을 학습하는 것</p></li>
 <li><p>용어 정리</p></li>
 </ul>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>data 분포를 x ~ pdata(x), y ~ pdata(y)로 표시</p></li>
 <li><p>G : X -&gt; Y, F: Y -&gt; X</p></li>
 <li><p>Dx, Dy는 discriminator</p></li>
@@ -531,12 +913,16 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </li>
 </ol>
 <section id="adversarial-loss">
-<h3>Adversarial loss<a class="headerlink" href="#adversarial-loss" title="Permalink to this heading">#</a></h3>
+<h3>Adversarial loss<a class="headerlink" href="#adversarial-loss" title="Permalink to this headline">¶</a></h3>
 <p>G: X –&gt; Y와 Dy에 대한 목적식은 다음과 같음.</p>
 <figure class="align-default" id="l-gan-loss-function">
 <img alt="L_GAN Loss function" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnvzuE%2Fbtr725OfuJy%2FI1IgwK5PIzXpzINWnJxysK%2Fimg.png" />
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">L_GAN Loss function (source: <a class="reference external" href="https://arxiv.org/abs/1703.10593">https://arxiv.org/abs/1703.10593</a>)</span><a class="headerlink" href="#l-gan-loss-function" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">L_GAN Loss function (source: <a class="reference external" href="https://arxiv.org/abs/1703.10593">https://arxiv.org/abs/1703.10593</a>)</span><a class="headerlink" href="#l-gan-loss-function" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -544,11 +930,19 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 <section id="cycle-consistency-loss">
+<<<<<<< HEAD
 <h3>Cycle consistency Loss<a class="headerlink" href="#cycle-consistency-loss" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">cycle consistency loss result</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+=======
+<h3>Cycle consistency Loss<a class="headerlink" href="#cycle-consistency-loss" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">cycle consistency loss result</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -559,16 +953,28 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">cycle consistency loss function</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">cycle consistency loss function</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 </section>
 <section id="full-objective">
+<<<<<<< HEAD
 <h3>full objective - 전체 목적식<a class="headerlink" href="#full-objective" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">full objective function</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+=======
+<h3>full objective - 전체 목적식<a class="headerlink" href="#full-objective" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">full objective function</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -578,7 +984,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </section>
 <hr class="docutils" />
 <section id="implementation">
-<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this headline">¶</a></h2>
 <p>baseline architecture로서 neural style transfer와 super-resolution에 인상적인 결과를 보여준 논문에서 사용된 구조를 채택함.</p>
 <ul class="simple">
 <li><p>3개의 convolutions and several residual blocks,</p></li>
@@ -588,7 +994,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <li><p>instance normalization</p></li>
 </ul>
 <section id="training-details">
-<h3>Training details<a class="headerlink" href="#training-details" title="Permalink to this heading">#</a></h3>
+<h3>Training details<a class="headerlink" href="#training-details" title="Permalink to this headline">¶</a></h3>
 <p>모델 학습을 안정화시키기 위해 아래와 같은 테크닉을 추가로 적용합니다.</p>
 <ul class="simple">
 <li><p>GAN의 Loss function에서 nll loss를 least-squared loss로 변경</p></li>
@@ -596,7 +1002,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 <section id="least-square-loss">
-<h3>least-square loss 추가 설명<a class="headerlink" href="#least-square-loss" title="Permalink to this heading">#</a></h3>
+<h3>least-square loss 추가 설명<a class="headerlink" href="#least-square-loss" title="Permalink to this headline">¶</a></h3>
 <p>참고)</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://velog.io/&#64;sjinu/CycleGAN">https://velog.io/&#64;sjinu/CycleGAN</a></p></li>
@@ -609,14 +1015,22 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 17 </span><span class="caption-text">출처: <a class="reference external" href="https://velog.io/&#64;sjinu/CycleGAN">https://velog.io/&#64;sjinu/CycleGAN</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">출처: <a class="reference external" href="https://velog.io/&#64;sjinu/CycleGAN">https://velog.io/&#64;sjinu/CycleGAN</a></span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>(원래 Discriminator는 이보다 더 고차원이지만) 간략히 2차원을 표방하면 결정경계를 위와 같이 나타낼 수 있습니다. 윗 쪽이 가짜 영역, 아래 쪽이 진짜 영역입니다 이 때, 아래에 보면 진짜 데이터 샘플과 거리가 먼 가짜 데이터 샘플이 존재합니다. 즉, NLL Loss를 사용한다면, Generator의 입장에서는 이미 Discriminator를 잘 속이고 있기 때문에 학습할 필요가 없습니다. 즉, Vanishing Gradient가 일어나기 때문에, Discriminator를 잘 속인다는 이유만으로, 안 좋은 샘플을 생성하는 것에 대해 패널티를 줄 수가 없게 됩니다. 이 때, LS GAN을 사용한다면 실제 데이터 분포와 가짜 데이터 샘플이 거리가 먼 것에 대해서도 패널티를 주게 됩니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHsUiX%2Fbtr77PQw99h%2F0Er06IYIGYlBGw2rVufXc0%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 18 </span><span class="caption-text">출처: <a class="reference external" href="https://velog.io/&#64;sjinu/CycleGAN">https://velog.io/&#64;sjinu/CycleGAN</a></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">출처: <a class="reference external" href="https://velog.io/&#64;sjinu/CycleGAN">https://velog.io/&#64;sjinu/CycleGAN</a></span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -624,7 +1038,11 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 <section id="id9">
+<<<<<<< HEAD
 <h3>기타<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+=======
+<h3>기타<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 <ul class="simple">
 <li><p>모든 실험에서 람다를 10으로 설정했다.</p></li>
 <li><p>batch size == 1, 아담을 사용했다.</p></li>
@@ -634,76 +1052,124 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </section>
 <hr class="docutils" />
 <section id="result">
-<h2>Result<a class="headerlink" href="#result" title="Permalink to this heading">#</a></h2>
+<h2>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h2>
 <p>모델 성능 평가를 위해 아래와 같은 세 개의 지표를 사용.</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>AMT perceptual studies: 참가자들은 실제 사진이미지 vs 가짜 이미지, 또는 지도 이미지 vs 가짜이미지에 노출된 후 진짜라고 생각되는 이미지를 선택하게 함.</p></li>
 <li><p>FCN Score: 1번 study가 테스트에 있어 매우 좋은 기준임에도 불구하고, 사람을 대상으로 한 실험이 아닌, 양적인 기준을 찾았는데, FCN score임. FCN은 생성된 사진에 대한 레이블 맵을 예측합니다. 이 레이블 맵은 아래에서 설명하는 표준 시맨틱 분할 메트릭을 사용하여 input ground truth label과 비교할 수 있다. “도로 상의 자동차”라는 label에서 사진 이미지를 생성하면, 생성된 이미지에 적용된 FCN이 “도로 상의 자동차”를 감지하면 성공한 것입니다.</p></li>
 <li><p>사진 –&gt; 라벨링 성능을 평가: pixel당 정확도, class 당 정확도, IoU(Intersection-Over-Union)을 포함하는 cityscapes benchmark의 표준 metric</p></li>
 </ol>
 <section id="baseline">
-<h3>Baseline<a class="headerlink" href="#baseline" title="Permalink to this heading">#</a></h3>
+<h3>Baseline<a class="headerlink" href="#baseline" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>coGAN, SimGAN, pix2pix</p></li>
 </ul>
 </section>
 <section id="comparison-against-baselines">
+<<<<<<< HEAD
 <h3>Comparison against baselines<a class="headerlink" href="#comparison-against-baselines" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Comparison aginst baselines</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+=======
+<h3>Comparison against baselines<a class="headerlink" href="#comparison-against-baselines" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Comparison aginst baselines</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>figure 5, figure 6에서 볼 수 있듯이 어떤 baseline에서도 강력한 결과를 얻을 수 없었음. 반면에 cycleGAN은 fully supervise인 pix2pix와 비슷한 품질의 translation을 생성할 수 있음.</p>
 </section>
 <section id="human-study">
+<<<<<<< HEAD
 <h3>Human study<a class="headerlink" href="#human-study" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">AMT score</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+=======
+<h3>Human study<a class="headerlink" href="#human-study" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">AMT score</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>표 1은 AMT perceptual realism task에 대한 성능을 나타냄. 여기서 지도에서 항공 사진, 항공 사진에서 지도 모두에서 약 1/4의 참가자를 속일 수 있었음. 그 외 모든 baseline은 참가자를 거의 속일 수 없었다.</p>
 </section>
 <section id="fcn">
+<<<<<<< HEAD
 <h3>FCN 등<a class="headerlink" href="#fcn" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">FCN scores</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+=======
+<h3>FCN 등<a class="headerlink" href="#fcn" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">FCN scores</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>표 2는 도시 풍경에 대한 label –&gt; photo task의 성능을 평가하고 표 3은 반대 매핑을 평가함. 두 경우 모두 cycleGAN이 baseline들의 성능을 능가한다.</p>
 </section>
 <section id="analysis-of-the-loss-function">
+<<<<<<< HEAD
 <h3>Analysis of the loss function<a class="headerlink" href="#analysis-of-the-loss-function" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Analysis of loss function</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+=======
+<h3>Analysis of the loss function<a class="headerlink" href="#analysis-of-the-loss-function" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Analysis of loss function</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>GAN, cycle consistency의 중요성을 보여주는 자료.<br />
 table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 것처럼 결과가 크게 저하됨. 따라서 두 term 모두 결과에 중요하다고 결론을 내릴 수 있음. 또한 한 방향에서만 cycle loss를 통해 각 메소드를 평가함. GAN + forward cycle만 돌렸을 때와, GAN + backward cycle만 돌렸을 때 이따금씩 학습에 불안정성을 보이고, mode collapse를 유발하는 것을 발견함(특히 제거된 매핑의 방향에 대해서 그런 경향을 보임). 그림 7을 보면 그런 경향을 볼 수 잇었음.</p>
 </section>
 <section id="image-reconstruction-quality">
+<<<<<<< HEAD
 <h3>Image reconstruction quality<a class="headerlink" href="#image-reconstruction-quality" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">cycle consistency result</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+=======
+<h3>Image reconstruction quality<a class="headerlink" href="#image-reconstruction-quality" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">cycle consistency result</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>그림 4에서 재구성된 이미지의 몇가지 무작위 샘플을 보여줌. 지도 –&gt; 항공 사진과 같이 하나의 도메인이 훨씬 더 다양한 정보를 나타내는 경우에도 재구성된 이미지가 훈련 및 테스트 시간 모두 원래 입력 x에 가까운 경우가 많았음.</p>
 </section>
 <section id="paired-dataset">
+<<<<<<< HEAD
 <h3>paired dataset에 대한 추가 결과<a class="headerlink" href="#paired-dataset" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">compare with paired dataset</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+=======
+<h3>paired dataset에 대한 추가 결과<a class="headerlink" href="#paired-dataset" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">compare with paired dataset</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>그림 8은 CMP Façade Database의 건축 레이블 &lt;–&gt; 사진, UT Zapoos50K dataset의 edge &lt;–&gt; 신발과 같이 pix2pix에 사용된 다른 paired dataset에 대한 몇 가지 예시 결과를 보여줌. cycleGAN의 이미지 품질은 fully supervised pix2pix에 대의 생성된 것과 비슷하지만 cycleGAN은 paired supervision 없이 학습이 된다.(우리가 짱이다!)</p>
@@ -711,30 +1177,30 @@ table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 �
 </section>
 <hr class="docutils" />
 <section id="applications">
-<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
+<h2>Applications<a class="headerlink" href="#applications" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>** 이미지가 너무 많아 이미지는 생략하겠습니다.ㅠ**</p></li>
 <li><p>paired data가 없는 상태에서 의 application 예시. traning data에서 transslation이 test data에서 한것보다 더 매력적이다. training and test data에 대한 application은 웹사이트에 있다.</p></li>
 </ul>
 <section id="collection-style-transfer">
-<h3>Collection style transfer<a class="headerlink" href="#collection-style-transfer" title="Permalink to this heading">#</a></h3>
+<h3>Collection style transfer<a class="headerlink" href="#collection-style-transfer" title="Permalink to this headline">¶</a></h3>
 <p>신경 스타일 전달”[13]에 대한 최근 작업과 달리, 우리의 방법은 선택한 단일 예술 작품의 스타일을 전달하는 대신 전체 예술 작품 컬렉션의 스타일을 모방하는 방법을 학습합니다. 그래서 ‘별이 빛나는 밤에’처럼 그리는 것 보다 ‘반 고흐’를 따라하는 느낌을 따라한다.</p>
 </section>
 <section id="object-transfiguration">
-<h3>Object transfiguration<a class="headerlink" href="#object-transfiguration" title="Permalink to this heading">#</a></h3>
+<h3>Object transfiguration<a class="headerlink" href="#object-transfiguration" title="Permalink to this headline">¶</a></h3>
 <p>Turmukhambetov et al. [50] 하나의 객체를 동일한 범주의 다른 객체로 변환하는 부분 공간 모델을 제안하는 반면, 우리의 방법은 시각적으로 유사한 두 범주 사이의 객체 변형에 중점을 둡니다.<br />
 Turning a horse video into a zebra video (by CycleGAN)</p>
 </section>
 <section id="season-transfer">
-<h3>season transfer<a class="headerlink" href="#season-transfer" title="Permalink to this heading">#</a></h3>
+<h3>season transfer<a class="headerlink" href="#season-transfer" title="Permalink to this headline">¶</a></h3>
 </section>
 <section id="photo-generation-from-paintings">
-<h3>Photo generation from paintings **<a class="headerlink" href="#photo-generation-from-paintings" title="Permalink to this heading">#</a></h3>
+<h3>Photo generation from paintings **<a class="headerlink" href="#photo-generation-from-paintings" title="Permalink to this headline">¶</a></h3>
 <p>그림을 사진으로 바꿀 때, 입력과 출력 간 색 구성을 보존하기 위해 추가적인 loss를 도입하는 것이 유용하다는 것을 발견할 수 있습니다. 특히, Taigman et al. [49]의 기술을 채택하여 제너레이터가 대상 도메인의 실제 샘플을 입력으로 제공받을 때 identity mapping 근처에 있도록 정규화합니다. 즉, **Lidentity(G,F) = Ey_pdata(y)[∥G(y) − y∥1] + Ex∼pdata (x) [∥F (x) − x∥1 ]**입니다.</p>
 <p>Lidentity가 없으면, 생성자 G와 F는 굳이 필요하지 않을 때 입력 이미지의 색조를 자유롭게 변경할 수 있습니다. 예를 들어, Monet의 그림과 Flickr 사진 간의 매핑을 학습할 때, 생성자는 종종 낮에 그린 그림을 일몰 시간에 찍은 사진에 매핑합니다. 왜냐하면 적대적 손실과 사이클 일관성 손실 아래에서 이러한 매핑이 동등하게 유효할 수 있기 때문입니다. 이러한 identity mapping 손실의 효과는 그림 9에서 보여집니다. figure 12, figure 9는 학습 데이터셋에 포함되어 있는 그림, 하지만 다른 set은 오직 test set으로부터 그려진 그림. training set이 paired datqa를 포함하고 있지 않아서, 학습 세트 그림에 대한 타당한 translation을 찾는 것은 쉬운 일이 아니다. 실제로, Monet이 새 그림을 그릴 수 없기 때문에, 보지 않은 test set 그림에 대한 generalization은 not pressing problem</p>
 </section>
 <section id="photo-enhancement">
-<h3>Photo enhancement<a class="headerlink" href="#photo-enhancement" title="Permalink to this heading">#</a></h3>
+<h3>Photo enhancement<a class="headerlink" href="#photo-enhancement" title="Permalink to this headline">¶</a></h3>
 <p>우리는 우리의 방법이 얕은 깊이의 초점을 가진 사진을 생성하는 데 사용될 수 있음을 보여줍니다. 우리는 Flickr에서 다운로드한 꽃 사진을 기반으로 모델을 훈련합니다. 소스 도메인은 스마트폰으로 찍힌 꽃 사진으로 구성되어 있으며, 보통 작은 조리개로 인해 깊은 DoF(초점 깊이)를 가지고 있습니다. 대상은 조리개가 큰 DSLR로 촬영된 사진을 포함합니다. 우리 모델은 스마트폰으로 촬영된 사진으로부터 더 얕은 깊이의 초점을 가진 사진을 성공적으로 생성합니다.</p>
 <blockquote>
 <div><p>: shallow depth of field: 얕은 초점. 초점이 맞은 대상과 배경이 흐릿하게 보이는 효과. 인물 사진 / 작품 사진에 활용. 구목하고자 하는 대상을 강조하기 위해 활용.<br />
@@ -742,20 +1208,28 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
 </div></blockquote>
 </section>
 <section id="comparison-with-gatys">
-<h3>Comparison with Gatys<a class="headerlink" href="#comparison-with-gatys" title="Permalink to this heading">#</a></h3>
+<h3>Comparison with Gatys<a class="headerlink" href="#comparison-with-gatys" title="Permalink to this headline">¶</a></h3>
 </section>
 </section>
 <hr class="docutils" />
 <section id="limitations-and-discusssion">
+<<<<<<< HEAD
 <h2>Limitations and Discusssion<a class="headerlink" href="#limitations-and-discusssion" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 25 </span><span class="caption-text">Limitation and Discussion</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+=======
+<h2>Limitations and Discusssion<a class="headerlink" href="#limitations-and-discusssion" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJc1k5%2Fbtr76zUPUWj%2F27Mk0oQ5VanEHANWWmaseK%2Fimg.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Limitation and Discussion</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>이 방법은 많은 경우에 흥미로운 결과를 얻을 수 있지만, 결과는 결과가 균일하게 좋은 것은 아니었습니다.</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>(해석) 개&lt;-&gt;고양이 task와 같은 경우는 input image에서 최소한의 변화만 주어, 사람이 보았을 때 실제로 변화가 안되는 경우도 있었고, 형체가 애매해진 경우도 있음. 이런걸 보았을 때, 세부적인 구조(geometry? 라는 표현을 보아), 눈, 코, 입에 대한 정확한 구조를 구현하는데 한계가 있어 보임.</p></li>
 <li><p>말&lt;–&gt; 얼룩말 예제의 경우, 말은 사람이 타는 모습이 많았는데, 얼룩말의 경우는 사람이 타는 사진이 없다보니, 사람 뿐만 아니라 배경도 얼룩 그림을 그림을 그리거나, 단순히 얼룩말에서 노랗게 칠한 경우가 생김.</p></li>
 <li><p>때때로 photo –&gt; image task에서 나무와 건물의 label을 바꾸는 경우도 있었음.<br />
@@ -777,16 +1251,17 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
-            path: "./docs\review"
+            kernelName: "python3",
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
+<<<<<<< HEAD
 
               
               
@@ -804,13 +1279,23 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">GAN</p>
       </div>
+=======
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="gan.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">GAN</p>
+        </div>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
     </a>
-    <a class="right-next"
-       href="StyleGAN.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="StyleGAN.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">StyleGAN</p>
+<<<<<<< HEAD
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -914,14 +1399,30 @@ By PseudoLab
         
 
       </main>
+=======
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      으로 PseudoLab<br/>
+    
+        &copy; 저작권 2021.<br/>
+  </p>
+</footer>
+</main>
 
-  <footer class="bd-footer">
-  </footer>
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>

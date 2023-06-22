@@ -1,15 +1,13 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DDPM &#8212; Text-to-Image Generation</title>
+<<<<<<< HEAD
   
   
   
@@ -22,146 +20,117 @@
   <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 <link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
 <link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+=======
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DDPM';</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DDIM" href="DDIM.html" />
     <link rel="prev" title="StyleGAN" href="StyleGAN.html" />
+<<<<<<< HEAD
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+=======
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-  
-
-<a class="navbar-brand logo" href="../../intro.html">
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+      
+      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Paper/Code Review
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
+<<<<<<< HEAD
 <li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
@@ -188,97 +157,79 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+=======
+ <li class="toctree-l1">
+  <a class="reference internal" href="vae.html">
+   VAE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gan.html">
+   GAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycleGAN.html">
+   CycleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyleGAN.html">
+   StyleGAN
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDIM.html">
+   DDIM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="diffusion_beats_GANs.html">
+   Diffusion Models Beat GANs on Image Synthesis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dreambooth.html">
+   DreamBooth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ControlNet.html">
+   ControlNet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Latent_Diffusion_Model.html">
+   Latent Diffusion Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Textual_Inversion.html">
+   Textual Inversion
+  </a>
+ </li>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DDPM.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
+<<<<<<< HEAD
 
 
 <div class="dropdown dropdown-download-buttons">
@@ -375,12 +326,81 @@ document.write(`
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
+=======
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/review/DDPM.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
+                    class="fab fa-github"></i>저장소</button></a>
+        <a class="issues-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DDPM.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<<<<<<< HEAD
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DDPM</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="visible nav section-nav flex-column">
@@ -400,18 +420,215 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-quality">4-1. Sample quality</a></li>
 </ul>
 </li>
+=======
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   DDPM
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2. Background
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">
+     2-1. Forward(diffusion) process
+     <span class="math notranslate nohighlight">
+      \(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t">
+     2-2. Reverse process
+     <span class="math notranslate nohighlight">
+      \(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loss-function-l">
+     2-3. Loss Function
+     <span class="math notranslate nohighlight">
+      \(L\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diffusion-models-and-denoising-encoders">
+   3. Diffusion models and denoising encoders
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-process-and-l-t">
+     3-1. Forward process and
+     <span class="math notranslate nohighlight">
+      \(L_T\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-process-and-l-1-t-1">
+     3-2. Reverse process and
+     <span class="math notranslate nohighlight">
+      \(L_{1:T-1}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-scaling-reverse-process-decoder-and-l-0">
+     3-3. Data scaling, reverse process decoder and
+     <span class="math notranslate nohighlight">
+      \(L_0\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-training-objective">
+     3-4. Simplified training objective
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   4. Experiments
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-quality">
+     4-1. Sample quality
+    </a>
+   </li>
+  </ul>
+ </li>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </ul>
 
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>DDPM</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 내용 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   DDPM
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background">
+   2. Background
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">
+     2-1. Forward(diffusion) process
+     <span class="math notranslate nohighlight">
+      \(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t">
+     2-2. Reverse process
+     <span class="math notranslate nohighlight">
+      \(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loss-function-l">
+     2-3. Loss Function
+     <span class="math notranslate nohighlight">
+      \(L\)
+     </span>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diffusion-models-and-denoising-encoders">
+   3. Diffusion models and denoising encoders
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#forward-process-and-l-t">
+     3-1. Forward process and
+     <span class="math notranslate nohighlight">
+      \(L_T\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#reverse-process-and-l-1-t-1">
+     3-2. Reverse process and
+     <span class="math notranslate nohighlight">
+      \(L_{1:T-1}\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-scaling-reverse-process-decoder-and-l-0">
+     3-3. Data scaling, reverse process decoder and
+     <span class="math notranslate nohighlight">
+      \(L_0\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simplified-training-objective">
+     3-4. Simplified training objective
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   4. Experiments
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-quality">
+     4-1. Sample quality
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
@@ -428,21 +645,33 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="ddpm">
+<<<<<<< HEAD
 <h1>DDPM<a class="headerlink" href="#ddpm" title="Permalink to this heading">#</a></h1>
+=======
+<h1>DDPM<a class="headerlink" href="#ddpm" title="Permalink to this headline">¶</a></h1>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img11.png"><img alt="DDPM_01" class="bg-primary mb-1" src="../../_images/img11.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 34 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img21.png"><img alt="DDPM_02" class="bg-primary mb-1" src="../../_images/img21.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 35 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p><strong>Diffusion model</strong>은 <strong>variational inference로 학습시켜 데이터를 생성하는 parameterized Markov chain</strong>. Diffusion model은 Markov가 데이터가 normal distribution의 형태를 할 때까지 <strong>noise를 더해가는 diffusion process</strong>와 <strong>이를 역으로 거치며 학습하는 reverse process</strong>로 구성됨.</p>
@@ -458,15 +687,19 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
+<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h1>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img31.png"><img alt="DDPM_03" class="bg-primary mb-1" src="../../_images/img31.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 36 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <section id="forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">
-<h2>2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span><a class="headerlink" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1" title="Permalink to this heading">#</a></h2>
+<h2>2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span><a class="headerlink" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[
 q\left(\mathbf{x}_{1: T} \mid \mathbf{x}_0\right):=\prod_{t=1}^T q\left(\mathbf{x}_t \mid \mathbf{x}_{t-1}\right), \quad q\left(\mathbf{x}_t \mid \mathbf{x}_{t-1}\right):=\mathcal{N}\left(\mathbf{x}_t ; \sqrt{1-\beta_t} \mathbf{x}_{t-1}, \beta_t \mathbf{I}\right)
@@ -480,7 +713,7 @@ q\left(\mathbf{x}_{1: T} \mid \mathbf{x}_0\right):=\prod_{t=1}^T q\left(\mathbf{
 </ul>
 </section>
 <section id="reverse-process-p-mathbf-x-t-1-mathbf-x-t">
-<h2>2-2. Reverse process <span class="math notranslate nohighlight">\(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)</span><a class="headerlink" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t" title="Permalink to this heading">#</a></h2>
+<h2>2-2. Reverse process <span class="math notranslate nohighlight">\(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)</span><a class="headerlink" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[
 p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right), \quad p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right):=\mathcal{N}\left(\mathbf{x}_{t-1} ; \boldsymbol{\mu}_\theta\left(\mathbf{x}_t, t\right), \boldsymbol{\Sigma}_\theta\left(\mathbf{x}_t, t\right)\right)
@@ -493,7 +726,7 @@ p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T
 </ul>
 </section>
 <section id="loss-function-l">
-<h2>2-3. Loss Function <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#loss-function-l" title="Permalink to this heading">#</a></h2>
+<h2>2-3. Loss Function <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#loss-function-l" title="Permalink to this headline">¶</a></h2>
 <p>Diffusion model의 목적은 **noise를 어떻게 제거할 것인가?**이다. <span class="math notranslate nohighlight">\(x_t\)</span>가 들어왔을 때 <span class="math notranslate nohighlight">\(x_{t-1}\)</span>을 예측할 수 있다면 <span class="math notranslate nohighlight">\(x_0\)</span> 또한 예측이 가능해짐.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -517,18 +750,18 @@ p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="diffusion-models-and-denoising-encoders">
-<h1>3. Diffusion models and denoising encoders<a class="headerlink" href="#diffusion-models-and-denoising-encoders" title="Permalink to this heading">#</a></h1>
+<h1>3. Diffusion models and denoising encoders<a class="headerlink" href="#diffusion-models-and-denoising-encoders" title="Permalink to this headline">¶</a></h1>
 <p>DDPM에서는 <strong>inductive bias를 늘려</strong> 모델을 더 stable하고 성능도 개선할 수 있었음.</p>
 <blockquote>
 <div><p>Inductive bias: 학습 모델이 지금까지 만나보지 못했던 상황에서 정확한 예측을 하기 위해 사용하는 <strong>추가적인 가정</strong>, 즉 우리가 풀려는 문제에 대한 정보를 모델에 적용하는 것</p>
 </div></blockquote>
 <section id="forward-process-and-l-t">
-<h2>3-1. Forward process and <span class="math notranslate nohighlight">\(L_T\)</span><a class="headerlink" href="#forward-process-and-l-t" title="Permalink to this heading">#</a></h2>
+<h2>3-1. Forward process and <span class="math notranslate nohighlight">\(L_T\)</span><a class="headerlink" href="#forward-process-and-l-t" title="Permalink to this headline">¶</a></h2>
 <p><strong><span class="math notranslate nohighlight">\(\beta_t\)</span>를 고정</strong>했더니 학습이 잘됨. 10^-4 ~ 0.02로 linear하게 image에 가까울수록 noise를 적게 주는 방식으로 설정.</p>
 <p>따라서 <span class="math notranslate nohighlight">\(q\)</span>에는 학습 가능한 parameter가 없어 <strong><span class="math notranslate nohighlight">\(L_T\)</span>는 0이 되기 때문에 삭제</strong>할 수 있었음.</p>
 </section>
 <section id="reverse-process-and-l-1-t-1">
-<h2>3-2. Reverse process and <span class="math notranslate nohighlight">\(L_{1:T-1}\)</span><a class="headerlink" href="#reverse-process-and-l-1-t-1" title="Permalink to this heading">#</a></h2>
+<h2>3-2. Reverse process and <span class="math notranslate nohighlight">\(L_{1:T-1}\)</span><a class="headerlink" href="#reverse-process-and-l-1-t-1" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[
 L_{t-1}=D_{K L}\left(q\left(x_{t-1} \mid x_t, x_0\right) \| p_\theta\left(x_{t-1} \mid x_t\right)\right)
@@ -545,7 +778,11 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img81.png"><img alt="DDPM_08" class="bg-primary mb-1" src="../../_images/img81.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 37 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -554,7 +791,11 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img91.png"><img alt="DDPM_09" class="bg-primary mb-1" src="../../_images/img91.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 38 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -562,7 +803,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 </ul>
 </section>
 <section id="data-scaling-reverse-process-decoder-and-l-0">
-<h2>3-3. Data scaling, reverse process decoder and <span class="math notranslate nohighlight">\(L_0\)</span><a class="headerlink" href="#data-scaling-reverse-process-decoder-and-l-0" title="Permalink to this heading">#</a></h2>
+<h2>3-3. Data scaling, reverse process decoder and <span class="math notranslate nohighlight">\(L_0\)</span><a class="headerlink" href="#data-scaling-reverse-process-decoder-and-l-0" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -582,17 +823,25 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </ul>
 </section>
 <section id="simplified-training-objective">
-<h2>3-4. Simplified training objective<a class="headerlink" href="#simplified-training-objective" title="Permalink to this heading">#</a></h2>
+<h2>3-4. Simplified training objective<a class="headerlink" href="#simplified-training-objective" title="Permalink to this headline">¶</a></h2>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img101.png"><img alt="DDPM_10" class="bg-primary mb-1" src="../../_images/img101.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 39 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img111.png"><img alt="DDPM_11" class="bg-primary mb-1" src="../../_images/img111.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 40 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>최종 loss는 위와 같이 나타난다. Ground truth - estimated output간 MSE loss를 줄이는 과정이 denoising과 비슷해 DDPM이라는 이름이 붙음.</p>
@@ -600,7 +849,11 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img12.png"><img alt="DDPM_12" class="bg-primary mb-1" src="../../_images/img12.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 41 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -672,7 +925,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="experiments">
-<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>T: 1000</p></li>
 <li><p>backbone: U-Net<br />
@@ -907,11 +1160,15 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </pre></div>
 </div>
 <section id="sample-quality">
-<h2>4-1. Sample quality<a class="headerlink" href="#sample-quality" title="Permalink to this heading">#</a></h2>
+<h2>4-1. Sample quality<a class="headerlink" href="#sample-quality" title="Permalink to this headline">¶</a></h2>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img13.png"><img alt="DDPM_13" class="bg-primary mb-1" src="../../_images/img13.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
 <p><span class="caption-number">Fig. 42 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+=======
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>FID, IS로 metric 계산. Unconditional model인데도 conditional model보다 우월. Codelength에서 차이가 없기 때문에 overfitting의 가능성도 적음.</p>
@@ -938,16 +1195,17 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
-            path: "./docs\review"
+            kernelName: "python3",
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
+<<<<<<< HEAD
 
               
               
@@ -965,13 +1223,23 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">StyleGAN</p>
       </div>
+=======
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="StyleGAN.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">StyleGAN</p>
+        </div>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
     </a>
-    <a class="right-next"
-       href="DDIM.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="DDIM.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">DDIM</p>
+<<<<<<< HEAD
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1056,14 +1324,30 @@ By PseudoLab
         
 
       </main>
+=======
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      으로 PseudoLab<br/>
+    
+        &copy; 저작권 2021.<br/>
+  </p>
+</footer>
+</main>
 
-  <footer class="bd-footer">
-  </footer>
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>

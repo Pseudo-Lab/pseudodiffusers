@@ -16,3 +16,8 @@ parts:
   - file: docs/review/Latent_Diffusion_Model
   - file: docs/review/Textual_Inversion
   - file: docs/review/CustomDiffusion
+  - file: docs/review/dreambooth
+  - file: docs/review/ControlNet
+  - file: docs/review/Latent_Diffusion_Model
+  - file: docs/review/Textual_Inversion
+  - file: docs/review/CustomDiffusion

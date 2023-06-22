@@ -24,10 +24,12 @@
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig1.png" alt="fig1" class="bg-primary mb-1" width="700px">
 
+Images generated using DALL-E
 :::
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig2.png" alt="fig2" class="bg-primary mb-1" width="700px">
+
 Images generated using DALL-E
 :::
 
@@ -126,11 +128,13 @@ DALL-E 파이프라인 \ (source:https://www.youtube.com/watch?v=CQoM0r2kMvI&t=1
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig9.png" alt="fig9" class="bg-primary mb-1" width="700px">
+
 equation 1
 :::
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig10.png" alt="fig10" class="bg-primary mb-1" width="700px">
+
 equation 2: Maximizing ELBO
 :::
 
@@ -166,6 +170,7 @@ x: images, y: captions , z: encoded RGB image tokens
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig11.png" alt="fig11" class="bg-primary mb-1" width="700px">
+
 Text-to-text attention: causal attention mask
 Image-to-image attention: row/column/convolutional attention mask 적용
 :::
@@ -179,8 +184,8 @@ Image-to-image attention: row/column/convolutional attention mask 적용
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig12.png" alt="fig12" class="bg-primary mb-1" width="700px">
-DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prompt랑 더 유사한 결과물이 나옴. 
 
+DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prompt랑 더 유사한 결과물이 나옴. 
 :::
 
 - 생성한 512개 이미지 중 CLIP 알고리즘을 통해 similarity score이 제일 높은 이미지를 뽑음.
@@ -190,6 +195,7 @@ DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prom
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig13.png" alt="fig13" class="bg-primary mb-1" width="700px">
 
+선택하는 이미지 개수에 따른 성능 향상
 :::
 
 
@@ -199,6 +205,7 @@ DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prom
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig14.png" alt="fig14" class="bg-primary mb-1" width="700px">
+
 DF-GAN 이랑 Qualitative Results 비교
 :::
 
@@ -212,6 +219,7 @@ DF-GAN 이랑 Qualitative Results 비교
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig15.png" alt="fig15" class="bg-primary mb-1" width="700px">
+
 MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
 :::
 
@@ -229,5 +237,6 @@ MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
 
 :::{figure-md} markdown-fig
 <img src="../../pics/dalle/fig16.png" alt="fig16" class="bg-primary mb-1" width="700px">
+
 Limitation을 보여주는 결과물. 
 :::

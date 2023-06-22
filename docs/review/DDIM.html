@@ -7,9 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DDIM &#8212; Text-to-Image Generation</title>
+<<<<<<< HEAD
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+=======
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 
     
   <link rel="stylesheet"
@@ -61,12 +76,17 @@
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Diffusion Models Beat GANs on Image Synthesis" href="diffusion_beats_GANs.html" />
     <link rel="prev" title="DDPM" href="DDPM.html" />
+<<<<<<< HEAD
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+=======
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
 
     <!-- Google Analytics -->
     
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
@@ -110,6 +130,34 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
+<<<<<<< HEAD
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+=======
  <li class="toctree-l1">
   <a class="reference internal" href="vae.html">
    VAE
@@ -165,6 +213,7 @@
    Textual Inversion
   </a>
  </li>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </ul>
 
     </div>
@@ -180,6 +229,104 @@
           
 
 
+<<<<<<< HEAD
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/DDIM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DDIM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+=======
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
@@ -187,6 +334,7 @@
     <div class="topbar-contents row">
         <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
         <div class="col pl-md-4 topbar-main">
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
             
             <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
                 data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
@@ -380,7 +528,11 @@
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="ddim">
+<<<<<<< HEAD
+<h1>DDIM<a class="headerlink" href="#ddim" title="Permalink to this heading">#</a></h1>
+=======
 <h1>DDIM<a class="headerlink" href="#ddim" title="Permalink to this headline">¶</a></h1>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -445,7 +597,11 @@
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/00.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/00.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">DDPM &amp; DDIM Architectures</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 43 </span><span class="caption-text">DDPM &amp; DDIM Architectures</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -473,13 +629,21 @@
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/01.png"><img alt="DDIM_01" class="bg-primary mb-1" src="../../_images/01.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 44 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/02.png"><img alt="DDIM_02" class="bg-primary mb-1" src="../../_images/02.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 45 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -494,13 +658,21 @@
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/03.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/03.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 46 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/04.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/04.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 47 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ol class="simple">
@@ -513,7 +685,11 @@
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/05.png"><img alt="DDIM_05" class="bg-primary mb-1" src="../../_images/05.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 48 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 </li>
@@ -537,7 +713,11 @@
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/06.png"><img alt="DDIM_06" class="bg-primary mb-1" src="../../_images/06.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Equation 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 49 </span><span class="caption-text">Equation 6</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ol class="simple">
@@ -546,14 +726,22 @@
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/07.png"><img alt="DDIM_07" class="bg-primary mb-1" src="../../_images/07.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Explanation of σ</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 50 </span><span class="caption-text">Explanation of σ</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <p>4.2. Accelerated Generation Processes</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/08.png"><img alt="DDIM_08" class="bg-primary mb-1" src="../../_images/08.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Explanation of accelated method</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 51 </span><span class="caption-text">Explanation of accelated method</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -571,13 +759,21 @@
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/09.png"><img alt="DDIM_09" class="bg-primary mb-1" src="../../_images/09.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 52 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/010.png"><img alt="DDIM_010" class="bg-primary mb-1" src="../../_images/010.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Euqation 7</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 53 </span><span class="caption-text">Euqation 7</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -593,7 +789,11 @@
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/011.png"><img alt="DDIM_011" class="bg-primary mb-1" src="../../_images/011.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Figure 4, 5</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 54 </span><span class="caption-text">Figure 4, 5</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -603,7 +803,11 @@
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/012.png"><img alt="DDIM_012" class="bg-primary mb-1" src="../../_images/012.png" style="width: 700px;" /></a>
 <figcaption>
+<<<<<<< HEAD
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+=======
 <p><span class="caption-number">Fig. 55 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
 </figcaption>
 </figure>
 <ul class="simple">
@@ -749,6 +953,25 @@
 
               </div>
               
+<<<<<<< HEAD
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DDPM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DDPM</p>
+      </div>
+=======
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
@@ -758,6 +981,7 @@
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">DDPM</p>
         </div>
+>>>>>>> 0e9adfaa6d9a6431b8485e37c49b5fd525d01c7f
     </a>
     <a class='right-next' id="next-link" href="diffusion_beats_GANs.html" title="next page">
     <div class="prev-next-info">

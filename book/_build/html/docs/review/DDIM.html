@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Denoising Diffusion Implicit Models(DDIM) &#8212; Text-to-Image Generation</title>
+    <title>DDIM &#8212; Text-to-Image Generation</title>
   
   
   
@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Diffusion Models Beat GANs on Image Synthesis" href="diffusion_beats_GANs.html" />
-    <link rel="prev" title="Denoising Diffusion Probabilistic Models(DDPM)" href="DDPM.html" />
+    <link rel="prev" title="DDPM" href="DDPM.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -162,17 +162,32 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vae.html">Variational AutoEncoder (VAE)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Cycle-Consistent Adversarial Networks (CycleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DDPM.html">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
 
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Denoising Diffusion Implicit Models(DDIM)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DDIM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
 </ul>
 
     </div>
@@ -356,7 +371,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Denoising Diffusion Implicit Models(DDIM)</h1>
+    <h1>DDIM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,8 +416,8 @@ document.write(`
 <li><p><strong>Last updated on April. 23, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="denoising-diffusion-implicit-models-ddim">
-<h1>Denoising Diffusion Implicit Models(DDIM)<a class="headerlink" href="#denoising-diffusion-implicit-models-ddim" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="ddim">
+<h1>DDIM<a class="headerlink" href="#ddim" title="Permalink to this heading">#</a></h1>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -467,7 +482,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/00.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/00.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">DDPM &amp; DDIM Architectures</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">DDPM &amp; DDIM Architectures</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -495,13 +510,13 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/01.png"><img alt="DDIM_01" class="bg-primary mb-1" src="../../_images/01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/02.png"><img alt="DDIM_02" class="bg-primary mb-1" src="../../_images/02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -516,13 +531,13 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/03.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/04.png"><img alt="DDIM_00" class="bg-primary mb-1" src="../../_images/04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -535,7 +550,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/05.png"><img alt="DDIM_05" class="bg-primary mb-1" src="../../_images/05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -559,7 +574,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/06.png"><img alt="DDIM_06" class="bg-primary mb-1" src="../../_images/06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Equation 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Equation 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -568,14 +583,14 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/07.png"><img alt="DDIM_07" class="bg-primary mb-1" src="../../_images/07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Explanation of σ</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">Explanation of σ</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>4.2. Accelerated Generation Processes</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/08.png"><img alt="DDIM_08" class="bg-primary mb-1" src="../../_images/08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Explanation of accelated method</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Explanation of accelated method</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -593,13 +608,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/09.png"><img alt="DDIM_09" class="bg-primary mb-1" src="../../_images/09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/010.png"><img alt="DDIM_010" class="bg-primary mb-1" src="../../_images/010.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Euqation 7</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Euqation 7</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -615,7 +630,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/011.png"><img alt="DDIM_011" class="bg-primary mb-1" src="../../_images/011.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Figure 4, 5</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">Figure 4, 5</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -625,7 +640,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/012.png"><img alt="DDIM_012" class="bg-primary mb-1" src="../../_images/012.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -786,7 +801,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Denoising Diffusion Probabilistic Models(DDPM)</p>
+        <p class="prev-next-title">DDPM</p>
       </div>
     </a>
     <a class="right-next"

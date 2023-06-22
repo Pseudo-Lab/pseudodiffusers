@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Zero-shot text-to-image generation &#8212; PseudoLab [Study Name]</title>
+    <title>Zero-shot text-to-image generation &#8212; Text-to-Image Generation</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DreamBooth" href="dreambooth.html" />
+    <link rel="prev" title="Diffusion Models Beat GANs on Image Synthesis" href="diffusion_beats_GANs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,13 +156,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Jupyter Book Template for PseudoLab
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../markdown-example.html">markdown 예시</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebook-example.html">.ipynb 파일 예시</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
 </ul>
 
     </div>
@@ -215,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fdocs/review/dalle.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/dalle.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -429,7 +456,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig3.png"><img alt="fig3" class="bg-primary mb-1" src="../../_images/fig3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Transformer 아키텍쳐 \ (source: <a class="reference external" href="https://arxiv.org/pdf/2005.14165.pdf">https://arxiv.org/pdf/2005.14165.pdf</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Transformer 아키텍쳐 \ (source: <a class="reference external" href="https://arxiv.org/pdf/2005.14165.pdf">https://arxiv.org/pdf/2005.14165.pdf</a>)</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -443,13 +470,13 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig5.png"><img alt="fig5" class="bg-primary mb-1" src="../../_images/fig5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">VQ-VAE 아키텍쳐, Loss 함수 \ (source: <a class="reference external" href="https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1">https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">VQ-VAE 아키텍쳐, Loss 함수 \ (source: <a class="reference external" href="https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1">https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1</a>)</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig6.png"><img alt="fig6" class="bg-primary mb-1" src="../../_images/fig6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Quantization of VQ-VAE</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Quantization of VQ-VAE</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -497,13 +524,13 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig7.png"><img alt="fig7" class="bg-primary mb-1" src="../../_images/fig7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">DALL-E 시각화 \ (source:<a class="reference external" href="https://jiho-ml.com/weekly-nlp-40/">https://jiho-ml.com/weekly-nlp-40/</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">DALL-E 시각화 \ (source:<a class="reference external" href="https://jiho-ml.com/weekly-nlp-40/">https://jiho-ml.com/weekly-nlp-40/</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig8.png"><img alt="fig8" class="bg-primary mb-1" src="../../_images/fig8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">DALL-E 파이프라인 \ (source:<a class="reference external" href="https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;amp;t=1729s">https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;t=1729s</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">DALL-E 파이프라인 \ (source:<a class="reference external" href="https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;amp;t=1729s">https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;t=1729s</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -614,6 +641,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="diffusion_beats_GANs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diffusion Models Beat GANs on Image Synthesis</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="dreambooth.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">DreamBooth</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

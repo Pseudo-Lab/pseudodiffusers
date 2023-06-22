@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Jupyter Book Template for PseudoLab &#8212; PseudoLab [Study Name]</title>
+    <title>[PseudoLab] Text-to-Image Generation (feat. Diffusion) &#8212; Text-to-Image Generation</title>
   
   
   
@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="This is an h1 tag" href="docs/markdown-example.html" />
+    <link rel="next" title="VAE" href="docs/review/vae.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,13 +153,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Jupyter Book Template for PseudoLab
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="docs/markdown-example.html">markdown 예시</a></li>
-<li class="toctree-l1"><a class="reference internal" href="docs/notebook-example.html">.ipynb 파일 예시</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="docs/review/vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="docs/review/DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docs/review/Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="docs/review/Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="docs/review/CustomDiffusion.html">Custom Diffusion</a></li>
 </ul>
 
     </div>
@@ -214,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -231,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -341,7 +366,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Jupyter Book Template for PseudoLab</h1>
+    <h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -355,9 +380,13 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="jupyter-book-template-for-pseudolab">
-<h1>Jupyter Book Template for PseudoLab<a class="headerlink" href="#jupyter-book-template-for-pseudolab" title="Permalink to this heading">#</a></h1>
-<p>가짜연구소 자료 정리를 위한 Jupyter Book Template 입니다.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="pseudolab-text-to-image-generation-feat-diffusion">
+<h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)<a class="headerlink" href="#pseudolab-text-to-image-generation-feat-diffusion" title="Permalink to this heading">#</a></h1>
+<p>This is the repository of Pseudo Lab’s Text-to-Image Generation (feat. Diffusion) team.</p>
+<p>:bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning Diffusion based models.</p>
+<p><a class="reference external" href="https://www.linkedin.com/company/pseudolab/">About Us - Pseudo Lab</a></p>
+<p><a class="reference external" href="https://pseudo-lab.com/Text-to-Image-Generation-feat-Diffusion-cc12047d1bfc4bdfa70122c11ff90aee">About Us - Text-to-Image Generation (feat. Diffusion) Team</a></p>
+<p>참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -394,11 +423,11 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="docs/markdown-example.html"
+       href="docs/review/vae.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">This is an h1 tag</p>
+        <p class="prev-next-title">VAE</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -1,4 +1,4 @@
-``` {admonition} Information
+```{admonition} Information
 - **Title:** {Zero-shot text-to-image generation}, {ICML 2021}
 
 - **Reference**
@@ -225,7 +225,7 @@ MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
 - Zero-shot learning에서 다른 모델보다 훌륭한 일반화 성능을 보임
 - 정량적 / 정성적 평가에서 준수한 성능을 보이고 있으며 다양한 이미지 생성이 가능함.
 
-* Limitations: *
+** Limitations: **
 - 생성하고 싶은 이미지에 다양한 객체가 포함되면 어려움을 겪음 
 - (b)에 보면 고슴도치가 2마리거나 강아지와 고슴도치 둘다 크리스마스 스웨터를 입고 있음.
 
@@ -236,7 +236,3 @@ MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
 <img src="../../pics/dalle/fig16.png" alt="fig16" class="bg-primary mb-1" width="700px">
 Limitation을 보여주는 결과물. 
 :::
-
-
-
-

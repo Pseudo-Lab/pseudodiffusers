@@ -1,12 +1,12 @@
 #######################################################################################
 # Book settings
-title : PseudoLab [Study Name]
+title : Text-to-Image Generation
 author: PseudoLab
 logo: 'PseudoLab_logo.png'
 
 # Short description about the book
 description: >-
-  Basic Jupyter Book template for PseudoLab studies
+  Paper/code review and experimental findings related to Text-to-Image Generation models
 
 #######################################################################################
 # Execution settings
@@ -25,7 +25,7 @@ notebook_interface            : "notebook"
 #######################################################################################
 # Launch button settings
 repository:
-  url                         : https://github.com/pseudo-lab/Jupyter-Book-Template
+  url                         : https://github.com/pseudo-lab/text-to-image-generation
   path_to_book                : "book"
 
 latex:

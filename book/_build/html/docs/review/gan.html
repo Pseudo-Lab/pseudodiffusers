@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>GAN &#8212; PseudoLab [Study Name]</title>
+    <title>GAN &#8212; Text-to-Image Generation</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CycleGAN" href="cycleGAN.html" />
+    <link rel="prev" title="VAE" href="vae.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,13 +156,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Jupyter Book Template for PseudoLab
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../markdown-example.html">markdown 예시</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebook-example.html">.ipynb 파일 예시</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
 </ul>
 
     </div>
@@ -215,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fdocs/review/gan.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/gan.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,14 +422,14 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_01.png"><img alt="gan_01" class="bg-primary mb-1" src="../../_images/gan_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Taxonomy of Generative Models</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Taxonomy of Generative Models</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 그림과 같이 GAN 은 크게 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 로부터 가짜 데이터를 생성하는 Generator 와 그로부터 생성된 데이터와 실제 training 데이터를 구분하는 Discriminator 로 구성이 되어 있습니다. 다시 말해서 Discriminator 는 실제 데이터가 들어오면 1, 그리고 가짜로 생성된 데이터가 들어오면 0 을 출력하는 binary classification task 를 진행합니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_03.png"><img alt="gan_03" class="bg-primary mb-1" src="../../_images/gan_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Generative Adversarial Network(GAN) Architecture</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Generative Adversarial Network(GAN) Architecture</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Generator 와 Discriminator 구현 코드도 같이 살펴보겠습니다.</p>
@@ -470,7 +497,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_02.png"><img alt="gan_02" class="bg-primary mb-1" src="../../_images/gan_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Generative Adversarial Network(GAN) Training Procedure</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Generative Adversarial Network(GAN) Training Procedure</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -537,7 +564,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_04.png"><img alt="gan_04" class="bg-primary mb-1" src="../../_images/gan_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Alternative to Vanishing Gradient when Training the Generator</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Alternative to Vanishing Gradient when Training the Generator</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이렇게 학습함으로써 최적화된 solution 에서는 Generator 가 training 데이터 분포를 완벽히 복원하고 Discriminator 는 binary classification 확률을 언제나 1/2 로 내뱉게 됩니다.</p>
@@ -615,6 +642,24 @@ V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="vae.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">VAE</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cycleGAN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CycleGAN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

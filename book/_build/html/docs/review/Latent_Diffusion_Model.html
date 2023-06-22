@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Latent Diffusion Model &#8212; PseudoLab [Study Name]</title>
+    <title>Latent Diffusion Model &#8212; Text-to-Image Generation</title>
   
   
   
@@ -68,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Textual Inversion" href="Textual_Inversion.html" />
+    <link rel="prev" title="ControlNet" href="ControlNet.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -154,13 +156,38 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    Jupyter Book Template for PseudoLab
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
-        <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../markdown-example.html">markdown 예시</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../notebook-example.html">.ipynb 파일 예시</a></li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
 </ul>
 
     </div>
@@ -215,7 +242,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -232,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Latent_Diffusion_Model.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Latent_Diffusion_Model.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -390,7 +417,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Unet.png"><img alt="../../_images/Unet.png" class="bg-primary mb-1" src="../../_images/Unet.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H\times W \times 3}\)</span>이 input으로 주어졌을때 이를 encoder <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>를 통해서 <span class="math notranslate nohighlight">\(z=\mathcal{E}(x) \in \mathbb{R}^{h\times w\times c }\)</span>로 인코딩 하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>
@@ -425,27 +452,27 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/experiment1.png"><img alt="../../_images/experiment1.png" class="bg-primary mb-1" src="../../_images/experiment1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/text_to_image.png"><img alt="../../_images/text_to_image.png" class="bg-primary mb-1" src="../../_images/text_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>실험을 통해서 나온 결과 <span class="math notranslate nohighlight">\(m=2,3,4\)</span> 혹은 <span class="math notranslate nohighlight">\(f=4, 8, 16\)</span>인 경우 적절한 FID 점수와 효율성을 보여주었습니다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/trade_off.png"><img alt="../../_images/trade_off.png" class="bg-primary mb-1" src="../../_images/trade_off.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과입니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/layout_to_image.png"><img alt="../../_images/layout_to_image.png" class="bg-primary mb-1" src="../../_images/layout_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -481,6 +508,24 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="ControlNet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ControlNet</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Textual_Inversion.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Textual Inversion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>

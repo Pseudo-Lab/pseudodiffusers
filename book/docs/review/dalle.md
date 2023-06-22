@@ -11,12 +11,7 @@
 - **Last updated on June 22 2023**
 ```
 
-# Diffusion Models Beat GANs on Image Synthesis
-## Abstract
-
-- Diffusion 모델들은 기존 unconditional 이미지 생성 모델들의 SOTA를 뛰어넘음.
-- Conditional image synthesis 부분에서도 classifier guidance를 활용해 diffusion model을 활용하여 좋은 성능을 보여준다고 주장함.
-- Classifier guidance를 활용해 diversity와 fidelity의 trade-off에 대해서도 분석
+# Zero-shot text-to-image generation
 
 ## 1. Introduction
 

@@ -27,7 +27,7 @@
     
 ## 2. Background
 - DDPM, DDIM, Improved DDPM은 이전에 설명되있으므로, 각 background 논문들의 핵심 부분만 설명하겠습니다.
-- 
+
 ### DDPM
 
 

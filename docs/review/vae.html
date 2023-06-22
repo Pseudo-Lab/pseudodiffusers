@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Variational AutoEncoder (VAE) &#8212; Text-to-Image Generation</title>
+    <title>VAE &#8212; PseudoLab [Study Name]</title>
   
   
   
@@ -68,8 +68,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Generative Adversarial Network (GAN)" href="gan.html" />
-    <link rel="prev" title="[PseudoLab] Text-to-Image Generation (feat. Diffusion)" href="../../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -156,23 +154,13 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                    Jupyter Book Template for PseudoLab
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Variational AutoEncoder (VAE)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">Cycle-Consistent Adversarial Networks (CycleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">A Style-Based Generator Architecture for Generative Adversarial Networks (StyleGAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DDPM.html">Denoising Diffusion Probabilistic Models(DDPM)</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="DDIM.html">Denoising Diffusion Implicit Models(DDIM)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../markdown-example.html">markdown 예시</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../notebook-example.html">.ipynb 파일 예시</a></li>
 </ul>
 
     </div>
@@ -227,7 +215,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -244,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/vae.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fdocs/review/vae.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -356,7 +344,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Variational AutoEncoder (VAE)</h1>
+    <h1>VAE</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -396,8 +384,8 @@ document.write(`
 <li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="variational-autoencoder-vae">
-<h1>Variational AutoEncoder (VAE)<a class="headerlink" href="#variational-autoencoder-vae" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="vae">
+<h1>VAE<a class="headerlink" href="#vae" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>논문의 Introduction 에 다음과 같은 문구가 적혀있는데요.</p>
@@ -413,14 +401,14 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_01.png"><img alt="vae_01" class="bg-primary mb-1" src="../../_images/vae_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Variational Autoencoder(VAE) Architecture</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Variational Autoencoder(VAE) Architecture</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Variational Autoencoder (VAE) 는 AutoEncoder 와 달리 확률 분포를 이용해 어떤 새로운 데이터를 생성하는 Decoder 부분에 초점을 둡니다. 이때 논문에서 다음과 같은 assumption 들을 내립니다. 첫번째로 <span class="math notranslate nohighlight">\(p_{\theta}(z)\)</span> 와 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 는 parametric 한 distribution 을 가지고 있고, 이는 <span class="math notranslate nohighlight">\(\theta\)</span> 와 <span class="math notranslate nohighlight">\(z\)</span> 에 대해 differentiable 하다는 가정을 내립니다. 이 때, 대표적으로 <span class="math notranslate nohighlight">\(p_{\theta}(z)\)</span> 는 Gaussian distribution 을 따르고 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 는 생성하고자 하는 데이터 성질에 따라 Bernoulli 혹은 Gaussian distribution 을 따르도록 정의합니다. 그리고 <span class="math notranslate nohighlight">\(p_{\theta}(x|z)\)</span> 의 파라미터 <span class="math notranslate nohighlight">\(p\)</span> 혹은 <span class="math notranslate nohighlight">\((\mu, \sigma)\)</span> 는 아래 그림과 같이 뉴럴 네트워크로 구성된 Decoder 로부터 계산이 됩니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_07.png"><img alt="vae_07" class="bg-primary mb-1" src="../../_images/vae_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Overview of Bernoulli(left) and Gaussian(right) Decoder</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Overview of Bernoulli(left) and Gaussian(right) Decoder</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이를 기반으로 우리는 ML/MAP estimation 을 통해 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 최대화시키는 파라미터 <span class="math notranslate nohighlight">\(\theta\)</span> 를 구하는 것이 목적입니다. 하지만, <span class="math notranslate nohighlight">\(p_{\theta}(x) = \int p_{\theta}(z)p_{\theta}(x|z) \ dz\)</span>  는 intractable 하기 때문에 <span class="math notranslate nohighlight">\(p_{\theta}(z|x)\)</span> 를 계산하기 위한 Encoder 가 등장하게 됩니다.</p>
@@ -432,7 +420,7 @@ p_{\theta}(x) = p_{\theta}(x|z)p_{\theta}(z)/p_{\theta}(z|x)
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_08.png"><img alt="vae_08" class="bg-primary mb-1" src="../../_images/vae_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Overview of Gaussian Encoder and Decoder</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Overview of Gaussian Encoder and Decoder</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>해당 implementation code 도 확인해보겠습니다.</p>
@@ -503,7 +491,7 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_05.png"><img alt="vae_05" class="bg-primary mb-1" src="../../_images/vae_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Overview of Reparameterization Trick</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-text">Overview of Reparameterization Trick</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -544,24 +532,6 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="../../intro.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">[PseudoLab] Text-to-Image Generation (feat. Diffusion)</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="gan.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Generative Adversarial Network (GAN)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>

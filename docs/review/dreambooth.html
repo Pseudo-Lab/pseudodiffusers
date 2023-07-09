@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ControlNet" href="ControlNet.html" />
-    <link rel="prev" title="Zero-shot text-to-image generation" href="dalle.html" />
+    <link rel="prev" title="DALL-E" href="dalle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
@@ -198,6 +198,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
 </ul>
 
     </div>
@@ -432,7 +437,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_01.png"><img alt="dreambooth_01" class="bg-primary mb-1" src="../../_images/dreambooth_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Subject-Driven Generation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Subject-Driven Generation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DreamBooth 가 무엇인지 자세히 알아보기 전에 text-to-image diffusion model 에 대해 다시 한번 개념 정리를 해볼 필요가 있습니다.</p>
@@ -550,7 +555,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_02.png"><img alt="dreambooth_02" class="bg-primary mb-1" src="../../_images/dreambooth_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Fine-tuning</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Fine-tuning</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>우선, Gaussian 노이즈 이미지와 <em>“A V [class noun]”</em> 형태의 text prompt 를 사전학습된 text-to-image diffusion 모델에 입력하여 이미지를 생성한 후, 원본 이미지와의 <em>Reconstruction Loss</em> 를 계산합니다. 그리고 비슷한 과정으로 Gaussian 노이즈 이미지와 <em>“A [class noun]”</em> 형태의 text prompt 를 학습하고자 하는 모델, 그리고 freeze 시킨 또 다른 pre-trained diffusion 모델에 각각 입력하여 이미지를 생성한 후 <em>Class-Specific Prior Preservation Loss</em> 를 계산합니다. 이에 대한 training objective 를 수식적으로 표현하면 다음과 같습니다.</p>
@@ -562,7 +567,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_03.png"><img alt="dreambooth_03" class="bg-primary mb-1" src="../../_images/dreambooth_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Encouraging diversity with prior-preservation loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Encouraging diversity with prior-preservation loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -578,7 +583,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_04.png"><img alt="dreambooth_04" class="bg-primary mb-1" src="../../_images/dreambooth_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Comparison of models</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Comparison of models</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -597,7 +602,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_05.png"><img alt="dreambooth_05" class="bg-primary mb-1" src="../../_images/dreambooth_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Applications of DreamBooth</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Applications of DreamBooth</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -610,7 +615,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_06.png"><img alt="dreambooth_06" class="bg-primary mb-1" src="../../_images/dreambooth_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Recontextualization</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Recontextualization</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
@@ -640,7 +645,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_07.png"><img alt="dreambooth_07" class="bg-primary mb-1" src="../../_images/dreambooth_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Limitations of DreamBooth</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Limitations of DreamBooth</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -656,13 +661,13 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_08.png"><img alt="dreambooth_08" class="bg-primary mb-1" src="../../_images/dreambooth_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Appendix-1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Appendix-1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_09.png"><img alt="dreambooth_09" class="bg-primary mb-1" src="../../_images/dreambooth_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Appendix-2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Appendix-2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -705,7 +710,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Zero-shot text-to-image generation</p>
+        <p class="prev-next-title">DALL-E</p>
       </div>
     </a>
     <a class="right-next"

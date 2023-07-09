@@ -33,14 +33,14 @@ LLM은 기본적으로 pre-trained model을 특정 task에 맞게 fine-tuning을
 
 **LoRA는 기존 pre-trained weight는 고정하고, 몇 개의 dense layer만 rank decomposition matrices를 최적화하는 방식으로 학습**시키기로 함. 
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (0).png" alt="LoRA_00" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(0).png" alt="LoRA_00" class="bg-primary mb-1" width="700px">
 
 LoRA structure
 :::
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (1).png" alt="LoRA_01" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(1).png" alt="LoRA_01" class="bg-primary mb-1" width="700px">
 
 LoRA structure 2
 :::
@@ -88,8 +88,8 @@ $$
 기존에도 transfer learning에서 parameter-/compute-effecient를 위한 방법은 몇 가지가 있었음. 
 
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (2).png" alt="LoRA_02" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(2).png" alt="LoRA_02" class="bg-primary mb-1" width="700px">
 
 Performance Comparison
 :::
@@ -181,20 +181,20 @@ LoRA를 이용하면 inference시 latency 성능 하락이 없음. 또한 다른
 ---
 # 5.Empirical Experiments
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (3).png" alt="LoRA_03" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(3).png" alt="LoRA_03" class="bg-primary mb-1" width="700px">
 
 Performance on BERT
 :::
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (4).png" alt="LoRA_04" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(4).png" alt="LoRA_04" class="bg-primary mb-1" width="700px">
 
 Performance on GPT-2
 :::
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (5).png" alt="LoRA_05" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(5).png" alt="LoRA_05" class="bg-primary mb-1" width="700px">
 
 Performance on GPT-3
 :::
@@ -202,14 +202,14 @@ Performance on GPT-3
 
 대부분의 경우에서 성능이 좋음
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (6).png" alt="LoRA_06" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(6).png" alt="LoRA_06" class="bg-primary mb-1" width="700px">
 
 Validation accuracy table with different hyper-parameters
 :::
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (7).png" alt="LoRA_07" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(7).png" alt="LoRA_07" class="bg-primary mb-1" width="700px">
 
 Validation accuracy table with different hyper-parameters
 :::
@@ -219,8 +219,8 @@ Transformer에서 한 projection matrix에 큰 r을 적용하는 것보다 모�
 ---
 # +a) IA3
 
-:::{figure-md} markdown-fig
-<img src="../../pics/LoRA/image (8).png" alt="LoRA_08" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/LoRA/image(8).png" alt="LoRA_08" class="bg-primary mb-1" width="700px">
 
 IA3 structure
 :::

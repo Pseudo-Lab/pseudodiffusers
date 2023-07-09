@@ -3,7 +3,7 @@
     
 - **Author:** Sangwoo Jo
 
-- **Last updated on Jun. 09, 2023**
+- **Last updated on Jul. 09, 2023**
 ```
 
 # Training DreamBooth on Naver Webtoon Face Dataset 
@@ -14,29 +14,12 @@
 
 우선적으로 학습데이터는 [https://github.com/bryandlee/naver-webtoon-data](https://github.com/bryandlee/naver-webtoon-data) 에 공개된 YOLOv5 모델 및 Waifu2x 후처리 기법을 활용하여 프리드로우에 등장하는 인물 사진들을 수집했습니다. 논문에서는 3-5 장으로 fine-tuning 이 가능하다고 제시되어있지만, 인물 사진 같은 경우 더 많은 데이터로 학습하면 성능이 더 좋아져서 15-20 장의 이미지로 학습하였습니다. 학습한 이미지들 예시입니다. 
 
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp_01/swjo_exp_01.png" alt="swjo_exp_01" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_01.png" alt="swjo_exp_01" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_01
 :::
 
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_02.png" alt="swjo_exp_02" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_03.png" alt="swjo_exp_03" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_04.png" alt="swjo_exp_04" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
 
 DreamBooth 를 실험하면서 대표적으로 instance prompt, guidance scale, negative prompt, 그리고 마지막으로 prior preservation loss 를 반영하는 정도를 조절하는 prior_loss_weight 를 바꿔가면서 학습해보았습니다. 사전학습된 text-to-image 모델로 처음에는 *hakurei/waifu-diffusion* 모델을 시도해봤지만 결과가 만족스럽지 못해 *runwayml/stable-diffusion-v1-5* 모델로 fine-tuning 작업을 진행했습니다. 
 
@@ -110,54 +93,19 @@ class_prompt = "A photo of a girl"
 
 - **Inference Prompt: "A photo of *sks* girl with pink hair” (with prior-preservation loss)**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp_01/swjo_exp_05.png" alt="swjo_exp_05" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_02.png" alt="swjo_exp_02" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_02
 :::
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp_01/swjo_exp_06.png" alt="swjo_exp_06" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp_01/swjo_exp_07.png" alt="swjo_exp_07" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp_01/swjo_exp_08.png" alt="swjo_exp_08" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
 - **Inference Prompt: " A photo of *sks* girl with pink hair” (w/o prior-preservation loss)**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_09.png" alt="swjo_exp_09" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_03.png" alt="swjo_exp_03" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_10.png" alt="swjo_exp_10" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_11.png" alt="swjo_exp_11" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_12.png" alt="swjo_exp_12" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_03
 :::
     
 
@@ -167,56 +115,21 @@ Negative Prompt 에 대한 Ablation Study 도 진행했습니다. 캐릭터의 �
 
 - **Inference Prompt: " A photo of *sks* girl with pink hair” (w/o negative prompt)**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_13.png" alt="swjo_exp_13" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_03.png" alt="swjo_exp_03" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_03
 :::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_14.png" alt="swjo_exp_14" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_15.png" alt="swjo_exp_15" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_16.png" alt="swjo_exp_16" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
     
 - **Inference Prompt: " A photo of *sks* girl with pink hair”**
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_17.png" alt="swjo_exp_17" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_04.png" alt="swjo_exp_04" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_18.png" alt="swjo_exp_18" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_19.png" alt="swjo_exp_19" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_20.png" alt="swjo_exp_20" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_04
 :::
     
 
@@ -290,28 +203,10 @@ Inference 시, 프리드로우의 그림체가 반영된 남자가 생성되도�
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_21.png" alt="swjo_exp_21" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_05.png" alt="swjo_exp_05" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_22.png" alt="swjo_exp_22" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_23.png" alt="swjo_exp_23" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_24.png" alt="swjo_exp_24" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_05
 :::
     
 
@@ -319,56 +214,21 @@ Inference step 을 늘려가면서 추론된 인물 이미지의 퀄리티가 �
 
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps=100 / with prior-preservation loss)**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_25.png" alt="swjo_exp_25" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_06.png" alt="swjo_exp_06" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_06
 :::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_26.png" alt="swjo_exp_26" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_27.png" alt="swjo_exp_27" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_28.png" alt="swjo_exp_28" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
     
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps = 100 / with prior-preservation loss)**
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_29.png" alt="swjo_exp_29" class="bg-primary mb-1" width="700px">
+:::{figure-md}
+<img src="../../pics/swjo_exp/swjo_exp_07.png" alt="swjo_exp_07" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_30.png" alt="swjo_exp_30" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_31.png" alt="swjo_exp_31" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_32.png" alt="swjo_exp_32" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_07
 :::
     
 
@@ -378,28 +238,10 @@ Subject-Driven Generation
     
     **+ guidance_scale = 4**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_33.png" alt="swjo_exp_33" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_08.png" alt="swjo_exp_08" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_34.png" alt="swjo_exp_34" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_35.png" alt="swjo_exp_35" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_36.png" alt="swjo_exp_36" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_08
 :::
     
 
@@ -409,28 +251,10 @@ Subject-Driven Generation
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_37.png" alt="swjo_exp_37" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_09.png" alt="swjo_exp_09" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_38.png" alt="swjo_exp_38" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_39.png" alt="swjo_exp_39" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_40.png" alt="swjo_exp_40" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_09
 :::
     
 
@@ -442,28 +266,10 @@ Subject-Driven Generation
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_41.png" alt="swjo_exp_41" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_10.png" alt="swjo_exp_10" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_42.png" alt="swjo_exp_42" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_43.png" alt="swjo_exp_43" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_44.png" alt="swjo_exp_44" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_10
 :::
     
 
@@ -471,77 +277,30 @@ Subject-Driven Generation
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_45.png" alt="swjo_exp_45" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_11.png" alt="swjo_exp_11" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_11
 :::
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_46.png" alt="swjo_exp_46" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_47.png" alt="swjo_exp_47" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_48.png" alt="swjo_exp_48" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
     
 - **Inference Prompt: “A hand drawing of a boy in the style of *sks*” (num_inference_steps = 100 / w/o prior-preservation loss)**
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_49.png" alt="swjo_exp_49" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/swjo_exp/swjo_exp_12.png" alt="swjo_exp_12" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
+swjo_exp_12
 :::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_50.png" alt="swjo_exp_50" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_51.png" alt="swjo_exp_51" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_52.png" alt="swjo_exp_52" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_53.png" alt="swjo_exp_53" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
-:::
-    
 
 마지막으로 하단의 좌측과 우측 사진은 각각 “A photo of *sks* girl” 그리고 “A photo of a girl in the style of *sks*” 이라는 prompt 로 DreamBooth 모델을 각각 학습한 후, 나비를 생성하라는 동일한 prompt 로 추론해본 결과입니다. *sks* 가 수식하는 명사가 girl 이 아닌 style 이도록 prompt 를 수정함으로써, butterfly 사진을 생성할때 조금이나마 더 프리드로우 웹툰의 그림체를 반영할 수 있었던 부분도 확인할 수 있었습니다. 
 
 - **Inference Prompt: “A photo of a butterfly in the style of *sks*” (num_inference_steps = 100 / with prior-preservation loss)**
     
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_54.png" alt="swjo_exp_54" class="bg-primary mb-1" width="700px">
+:::{figure-md}
+<img src="../../pics/swjo_exp/swjo_exp_13.png" alt="swjo_exp_13" class="bg-primary mb-1" width="700px">
 
-Subject-Driven Generation
-:::
-    
-:::{figure-md} markdown-fig
-<img src="../../pics/swjo_exp/swjo_exp_55.png" alt="swjo_exp_55" class="bg-primary mb-1" width="700px">
-
-Subject-Driven Generation
+swjo_exp_13
 :::

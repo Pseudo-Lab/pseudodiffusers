@@ -2,7 +2,7 @@
 
 This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion) team.
 
-:bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning Diffusion based models.
+:bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.
 
 [About Us - Pseudo Lab](https://www.linkedin.com/company/pseudolab/)
 

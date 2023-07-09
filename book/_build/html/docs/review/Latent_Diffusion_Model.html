@@ -173,7 +173,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Latent Diffusion Model</a></li>
@@ -198,6 +198,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
 </ul>
 
     </div>
@@ -427,7 +432,7 @@ document.write(`
 <figure class="align-default" id="markdown-fig">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Unet.png"><img alt="../../_images/Unet.png" class="bg-primary mb-1" src="../../_images/Unet.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H\times W \times 3}\)</span>이 input으로 주어졌을때 이를 encoder <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>를 통해서 <span class="math notranslate nohighlight">\(z=\mathcal{E}(x) \in \mathbb{R}^{h\times w\times c }\)</span>로 인코딩 하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>
@@ -462,27 +467,27 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/experiment1.png"><img alt="../../_images/experiment1.png" class="bg-primary mb-1" src="../../_images/experiment1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/text_to_image.png"><img alt="../../_images/text_to_image.png" class="bg-primary mb-1" src="../../_images/text_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 106 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>실험을 통해서 나온 결과 <span class="math notranslate nohighlight">\(m=2,3,4\)</span> 혹은 <span class="math notranslate nohighlight">\(f=4, 8, 16\)</span>인 경우 적절한 FID 점수와 효율성을 보여주었습니다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/trade_off.png"><img alt="../../_images/trade_off.png" class="bg-primary mb-1" src="../../_images/trade_off.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 107 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과입니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/layout_to_image.png"><img alt="../../_images/layout_to_image.png" class="bg-primary mb-1" src="../../_images/layout_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 108 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

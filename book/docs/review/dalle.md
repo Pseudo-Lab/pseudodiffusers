@@ -11,7 +11,7 @@
 - **Last updated on June 22 2023**
 ```
 
-# Zero-shot text-to-image generation
+# DALL-E
 
 ## 1. Introduction
 
@@ -21,13 +21,13 @@
 - 아래 그림과 같이 text input에 따라 diverse한 이미지 생성
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig1.png" alt="fig1" class="bg-primary mb-1" width="700px">
 
 Images generated using DALL-E
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig2.png" alt="fig2" class="bg-primary mb-1" width="700px">
 
 Images generated using DALL-E
@@ -44,15 +44,16 @@ Images generated using DALL-E
 - 약 1750억 parameter 개수의 모델
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig3.png" alt="fig3" class="bg-primary mb-1" width="700px">
 
 Transformer 아키텍쳐 \ (source: https://arxiv.org/pdf/2005.14165.pdf)
 
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 ![GPT-3 GIF](../../pics/dalle/fig4.gif)
+
 GPT 3 Animation \ (source: https://jalammar.github.io/how-gpt3-works-visualizations-animations/)
 :::
 
@@ -62,7 +63,7 @@ GPT 3 Animation \ (source: https://jalammar.github.io/how-gpt3-works-visualizati
 - CNN (encoder) 을 거친 각 D차원의 위치에 $H \times W$ 그리드로 이미지를 나누고 embedding space (Codebook) 에서 $𝑒_1$부터 $𝑒_𝑘$ 중에서 가까운 1개 embedding code로 변환. 
 - Quantization: Encoding output $z_{e}(x)$ representation 과 유사한 codebook embedding $e_j$ 를 찾아서 $k$ 값을 부여함.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig5.png" alt="fig5" class="bg-primary mb-1" width="700px">
 
 VQ-VAE 아키텍쳐, Loss 함수 \ (source: https://velog.io/@p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1)
@@ -71,7 +72,7 @@ VQ-VAE 아키텍쳐, Loss 함수 \ (source: https://velog.io/@p2yeong/Understand
 
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig6.png" alt="fig6" class="bg-primary mb-1" width="700px">
 
 Quantization of VQ-VAE
@@ -109,13 +110,13 @@ Quantization of VQ-VAE
 ## DALL-E Pipeline 예시
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig7.png" alt="fig7" class="bg-primary mb-1" width="700px">
 
 DALL-E 시각화 \ (source:https://jiho-ml.com/weekly-nlp-40/)
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig8.png" alt="fig8" class="bg-primary mb-1" width="700px">
 
 DALL-E 파이프라인 \ (source:https://www.youtube.com/watch?v=CQoM0r2kMvI&t=1729s)
@@ -126,13 +127,13 @@ DALL-E 파이프라인 \ (source:https://www.youtube.com/watch?v=CQoM0r2kMvI&t=1
 
 ### DALL-E Equations
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig9.png" alt="fig9" class="bg-primary mb-1" width="700px">
 
 equation 1
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig10.png" alt="fig10" class="bg-primary mb-1" width="700px">
 
 equation 2: Maximizing ELBO
@@ -168,7 +169,7 @@ x: images, y: captions , z: encoded RGB image tokens
 - Image token은 dVAE Encoder logit에서 Argmax sampling을 통해 생성
 - Text token은 소문자화 후 16,384 개의 vocabulary를 BPE-encoding 통해 한번에 최대 256 token을 활용
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig11.png" alt="fig11" class="bg-primary mb-1" width="700px">
 
 Text-to-text attention: causal attention mask
@@ -182,7 +183,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용
 
 - 우수한 이미지를 고르기 위해 CLIP (Contrastive Language-Image Pretraining, 2021) 논문에서 제시한 text 와 k 번째로 similarity 점수가 높은 이미지를 선택함 (k=1)
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig12.png" alt="fig12" class="bg-primary mb-1" width="700px">
 
 DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prompt랑 더 유사한 결과물이 나옴. 
@@ -192,7 +193,7 @@ DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prom
 - Ours (DALL-E) vs 다른 baseline method 와 비교 시 text에 더욱 알맞은 이미지를 생성한 것을 확인 할 수 있음.
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig13.png" alt="fig13" class="bg-primary mb-1" width="700px">
 
 선택하는 이미지 개수에 따른 성능 향상
@@ -203,7 +204,7 @@ DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prom
 - Best-of-Five votes 중에 DF-GAN보다 매번 압도적인 차이로 투표 수를 받았음.
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig14.png" alt="fig14" class="bg-primary mb-1" width="700px">
 
 DF-GAN 이랑 Qualitative Results 비교
@@ -217,7 +218,7 @@ DF-GAN 이랑 Qualitative Results 비교
 - CUB에서는 SOTA를 찍지 못하였고 Inception score에서는 낮은 점수를 기록함.
 - 저자들은 Fine-tuning 으로 CUB에 성능 계선을 할 수 있다고 생각함.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig15.png" alt="fig15" class="bg-primary mb-1" width="700px">
 
 MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
@@ -235,7 +236,7 @@ MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교
 - CUB dataset 처럼 다소 아쉬운 성능을 보인 데이터셋이 있지만 fine-tuning으로 해결
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/dalle/fig16.png" alt="fig16" class="bg-primary mb-1" width="700px">
 
 Limitation을 보여주는 결과물. 

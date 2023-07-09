@@ -1,12 +1,12 @@
 ``` {admonition} Information
-- **Title:** Sytnthetic Data with Stable Diffusion for Foliar Disease Classification
+- **Title:** Synthetic Data with Stable Diffusion for Foliar Disease Classification
     
 - **Author:** Jisu Kim
 
 - **Last updated on Jul. 05, 2023**
 ```
 
-# Sytnthetic Data with Stable Diffusion for Foliar Disease Classification
+# Synthetic Data with Stable Diffusion for Foliar Disease Classification
 
 ## 1. 개요
 

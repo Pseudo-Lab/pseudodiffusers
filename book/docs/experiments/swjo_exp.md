@@ -17,9 +17,8 @@
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_01.png" alt="swjo_exp_01" class="bg-primary mb-1" width="700px">
 
-swjo_exp_01
+Training Data
 :::
-
 
 DreamBooth 를 실험하면서 대표적으로 instance prompt, guidance scale, negative prompt, 그리고 마지막으로 prior preservation loss 를 반영하는 정도를 조절하는 prior_loss_weight 를 바꿔가면서 학습해보았습니다. 사전학습된 text-to-image 모델로 처음에는 *hakurei/waifu-diffusion* 모델을 시도해봤지만 결과가 만족스럽지 못해 *runwayml/stable-diffusion-v1-5* 모델로 fine-tuning 작업을 진행했습니다. 
 
@@ -96,18 +95,16 @@ class_prompt = "A photo of a girl"
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_02.png" alt="swjo_exp_02" class="bg-primary mb-1" width="700px">
 
-swjo_exp_02
+With Prior Preservation Loss
 :::
     
-
 - **Inference Prompt: " A photo of *sks* girl with pink hair” (w/o prior-preservation loss)**
     
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_03.png" alt="swjo_exp_03" class="bg-primary mb-1" width="700px">
 
-swjo_exp_03
+Without Prior Preservation Loss
 :::
-    
 
 ### Negative Prompt
 
@@ -118,10 +115,9 @@ Negative Prompt 에 대한 Ablation Study 도 진행했습니다. 캐릭터의 �
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_03.png" alt="swjo_exp_03" class="bg-primary mb-1" width="700px">
 
-swjo_exp_03
+Without Negative Prompt
 :::
 
-    
 - **Inference Prompt: " A photo of *sks* girl with pink hair”**
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
@@ -129,10 +125,9 @@ swjo_exp_03
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_04.png" alt="swjo_exp_04" class="bg-primary mb-1" width="700px">
 
-swjo_exp_04
+With Negative Prompt
 :::
     
-
 ### Instance Prompt / Guidance Scale
 
 DreamBooth 논문에서 제시한 instance prompt 외에 “A photo of a girl in the style of *sks*” 라는 prompt 로 학습을 시도해보기도 했습니다. *sks* 라는 unique identifier 에 특정 여자 캐릭터에 대한 정보뿐만 아니라 프리드로우 그림체 자체를 담아내기 위한 목적이였습니다. 
@@ -206,10 +201,9 @@ Inference 시, 프리드로우의 그림체가 반영된 남자가 생성되도�
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_05.png" alt="swjo_exp_05" class="bg-primary mb-1" width="700px">
 
-swjo_exp_05
+Instance Prompt
 :::
     
-
 Inference step 을 늘려가면서 추론된 인물 이미지의 퀄리티가 상승하는 부분도 확인할 수 있었습니다. 또한, guidance scale 에 대한 실험도 진행했는데 guidance scale 이 작을수록 prompt 와 무관한 random 한 이미지들을 생성하게 됩니다. 최종적으로 num_inference steps 와 guidance scale 의 값은 각각 100 과 7.5 로 설정하였습니다. 
 
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps=100 / with prior-preservation loss)**
@@ -217,9 +211,8 @@ Inference step 을 늘려가면서 추론된 인물 이미지의 퀄리티가 �
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_06.png" alt="swjo_exp_06" class="bg-primary mb-1" width="700px">
 
-swjo_exp_06
+Increasing Number of Inference Steps 
 :::
-
     
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps = 100 / with prior-preservation loss)**
     
@@ -228,9 +221,8 @@ swjo_exp_06
 :::{figure-md}
 <img src="../../pics/swjo_exp/swjo_exp_07.png" alt="swjo_exp_07" class="bg-primary mb-1" width="700px">
 
-swjo_exp_07
+Increasing Number of Inference Steps / Negative Prompt
 :::
-    
 
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps = 100 / with prior-preservation loss)**
     
@@ -241,10 +233,9 @@ swjo_exp_07
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_08.png" alt="swjo_exp_08" class="bg-primary mb-1" width="700px">
 
-swjo_exp_08
+Guidance Scale
 :::
     
-
 동일한 inference prompt 로 prior-preservation loss 를 제외해본 결과, 생성된 남자의 머리카락이 더 길어지고 더 여성스러운 생김새를 가지는 놀라운 사실도 발견했습니다. 
 
 - **Inference Prompt: “A photo of a boy in the style of *sks*” (num_inference_steps = 100 / w/o prior-preservation loss)**
@@ -254,10 +245,9 @@ swjo_exp_08
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_09.png" alt="swjo_exp_09" class="bg-primary mb-1" width="700px">
 
-swjo_exp_09
+Without Prior Preservation Loss
 :::
     
-
 ## Appendix
 
 그 외 다양한 inference prompt 에 따른 재미있는 실험결과들을 공유합니다. 아직 손의 모양을 text-to-image 모델이 생성하지 못하는 부분도 재차 확인할 수 있었습니다. 
@@ -269,10 +259,9 @@ swjo_exp_09
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_10.png" alt="swjo_exp_10" class="bg-primary mb-1" width="700px">
 
-swjo_exp_10
+Appendix 1
 :::
     
-
 - **Inference Prompt: “A painting of a boy in the style of *sks*” (num_inference_steps = 100 / w/o prior-preservation loss)**
     
     **+** **Negative Prompt: “ugly, disfigured, deformed, low resolution”**
@@ -280,9 +269,8 @@ swjo_exp_10
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_11.png" alt="swjo_exp_11" class="bg-primary mb-1" width="700px">
 
-swjo_exp_11
+Appendix 2
 :::
-    
     
 - **Inference Prompt: “A hand drawing of a boy in the style of *sks*” (num_inference_steps = 100 / w/o prior-preservation loss)**
     
@@ -291,9 +279,8 @@ swjo_exp_11
 :::{figure-md} 
 <img src="../../pics/swjo_exp/swjo_exp_12.png" alt="swjo_exp_12" class="bg-primary mb-1" width="700px">
 
-swjo_exp_12
+Appendix 3
 :::
-
 
 마지막으로 하단의 좌측과 우측 사진은 각각 “A photo of *sks* girl” 그리고 “A photo of a girl in the style of *sks*” 이라는 prompt 로 DreamBooth 모델을 각각 학습한 후, 나비를 생성하라는 동일한 prompt 로 추론해본 결과입니다. *sks* 가 수식하는 명사가 girl 이 아닌 style 이도록 prompt 를 수정함으로써, butterfly 사진을 생성할때 조금이나마 더 프리드로우 웹툰의 그림체를 반영할 수 있었던 부분도 확인할 수 있었습니다. 
 
@@ -302,5 +289,5 @@ swjo_exp_12
 :::{figure-md}
 <img src="../../pics/swjo_exp/swjo_exp_13.png" alt="swjo_exp_13" class="bg-primary mb-1" width="700px">
 
-swjo_exp_13
+Appendix 4
 :::

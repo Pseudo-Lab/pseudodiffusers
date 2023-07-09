@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Sytnthetic Data with Stable Diffusion for Foliar Disease Classification &#8212; Text-to-Image Generation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/experiments/js_exp';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Training DreamBooth on Naver Webtoon Face Dataset" href="swjo_exp.html" />
+    <link rel="prev" title="LoRA" href="../review/LoRA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../review/vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../review/DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/dalle.html">Zero-shot text-to-image generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../review/Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../review/CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sytnthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/experiments/js_exp.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/experiments/js_exp.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sytnthetic Data with Stable Diffusion for Foliar Disease Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 개요</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline">2. Baseline 구축</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-diffusion-fine-tuning">3. Stable diffusion fine tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. 성능 비교</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Sytnthetic Data with Stable Diffusion for Foliar Disease Classification</p></li>
+<li><p><strong>Author:</strong> Jisu Kim</p></li>
+<li><p><strong>Last updated on Jul. 05, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="sytnthetic-data-with-stable-diffusion-for-foliar-disease-classification">
+<h1>Sytnthetic Data with Stable Diffusion for Foliar Disease Classification<a class="headerlink" href="#sytnthetic-data-with-stable-diffusion-for-foliar-disease-classification" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>1. 개요<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>사과 나무의 잎에 생기는 질병을 이미지로 판별하는 Kaggle competition (<a class="reference external" href="https://www.kaggle.com/competitions/plant-pathology-2020-fgvc7">링크</a>)에서 아이디어를 얻어서 진행한 프로젝트입니다.</p></li>
+<li><p>해당 competition은 사과나무 잎에 걸린 질병에 따라 잎 이미지를 4개의 class로 분류하는 task입니다.</p></li>
+</ul>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/4classes.png"><img alt="4classes" class="bg-primary mb-1" src="../../_images/4classes.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 142 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>competition을 설명한 article (<a class="reference external" href="https://bsapubs.onlinelibrary.wiley.com/doi/10.1002/aps3.11390">링크</a>)에서 전체적인 accuracy는 97%이지만 multiple diseases class의 경우 accuracy가 51%에 불과했다고 언급합니다.</p></li>
+<li><p>multiple diseases class의 이미지 개수가 다른 class에 비해 적은 점에 주목했고, stable diffusion을 사용하여 해당 클래스의 데이터 개수를 늘려서 classifier 학습에 사용하면 더 좋은 성능의 classifier를 얻을 수 있을 것으로 기대했습니다.</p></li>
+</ul>
+</section>
+<section id="baseline">
+<h2>2. Baseline 구축<a class="headerlink" href="#baseline" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>문제 상황을 재현하기 위해 기존 데이터로 image classifier를 학습하여 baseline으로 잡았습니다.</p></li>
+<li><p>모델은 pretrained된 ResNet18에 linear layer를 붙여서 사용했습니다.</p></li>
+<li><p>전체 accuracy는 97.7%, class별 accuracy는 healthy: 99.6%, multiple diseases: 73.6%, rust: 99.2%, scab: 98.1%</p></li>
+<li><p>multiple diseases class는 이미지 개수 91개로 다른 클래스들에 비해서 개수가 적습니다.</p></li>
+<li><p>class별 data imbalance가 성능을 낮추는 원인일 것이라 가정하고 stable diffusion으로 multiple diseases class의 data를 추가로 생성해보기로 했습니다.</p></li>
+<li><p>multiple diseases class 예시</p></li>
+</ul>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_ex.png"><img alt="multiple_ex" class="bg-primary mb-1" src="../../_images/multiple_ex.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="stable-diffusion-fine-tuning">
+<h2>3. Stable diffusion fine tuning<a class="headerlink" href="#stable-diffusion-fine-tuning" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>pretraned stable diffusion의 경우 multiple diseases class에 대한 정보가 없어서 이미지를 생성할 경우 아래와 같이 관련없는 이미지가 생성됩니다.</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_sd.png"><img alt="multiple_sd" class="bg-primary mb-1" src="../../_images/multiple_sd.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">prompt: “a photo of leaves with multiple diseases</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>따라서 stable diffusion model (<a class="reference external" href="https://huggingface.co/runwayml/stable-diffusion-v1-5">링크</a>)에 해당 class에 대한 정보를 넣어주기 위해 dreambooth (<a class="reference external" href="https://arxiv.org/abs/2208.12242">링크</a>)를 사용하여 stable diffusion을 fine tuning했습니다.</p></li>
+<li><p>training에 사용한 prompt는 “a photo of a &lt;diseaes-leaf&gt; leaf”이며, 생성한 이미지의 예시는 아래와 같습니다.</p></li>
+<li><p>생성 이미지 예시</p></li>
+</ul>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_db.png"><img alt="multiple_db" class="bg-primary mb-1" src="../../_images/multiple_db.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">prompt: “a photo of a &lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>prompt engineering을 수행하던 중 의도하지않은 결과를 발견했습니다.</p></li>
+<li><p>아래는 이에 대한 예시로 fine tuning 전의 stable diffusion model의 결과와 비교입니다.</p></li>
+<li><p>상황1 (prompt: “a photo of a leaf”)</p></li>
+</ul>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_sd.png"><img alt="leaf_sd" class="bg-primary mb-1" src="../../_images/leaf_sd.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_db.png"><img alt="leaf_db" class="bg-primary mb-1" src="../../_images/leaf_db.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>상황1을 보면 multiple diseases class 정보를 담은 unique identifier &lt;diseaes-leaf&gt;가 없음에도 multiple diseases의 정보를 담은 잎들만 생성됩니다. 이는 같은 class (leaf)에 속하는 다른 이미지들을 생성해내지 못하고 있다는 것입니다. 이 현상을 language drift라고 하며, 모델이 multiple diseases class의 leaf가 아닌 일반적인 leaf class에 관한 정보를 잊어버렸기 때문입니다.</p></li>
+<li><p>상황2 (prompt: “a photo”)</p></li>
+</ul>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_sd.png"><img alt="photo_sd" class="bg-primary mb-1" src="../../_images/photo_sd.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_db.png"><img alt="photo_db" class="bg-primary mb-1" src="../../_images/photo_db.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>상황2를 보면 photo라는 prompt만 사용하였는데도 생성한 이미지들에 multiple diseases class의 특징들이 나타납니다.</p></li>
+<li><p>dreambooth에서는 language drift를 prior preservation loss를 사용해서 해결하였으므로 같은 방법을 사용했습니다. 상황2를 해결하기 위해 training prompt에서 “photo”를 제외하고 최대한 단순한 prompt “&lt;diseases-leaf&gt; leaf”를 사용하여 stable diffusion model을 다시 fine tuning했습니다.</p></li>
+</ul>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_pp.png"><img alt="multiple_pp" class="bg-primary mb-1" src="../../_images/multiple_pp.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">multiple diseases class 이미지 생성 결과, prompt: “&lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_pp.png"><img alt="leaf_pp" class="bg-primary mb-1" src="../../_images/leaf_pp.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">leaf 생성 결과, prompt: “leaf”</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>재훈련 결과, fine tuning 이후에도 기존 stable diffusion model로 “leaf”를 생성하였을 때와 비슷한 이미지가 생성됩니다.</p></li>
+</ul>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_pp.png"><img alt="photo_pp" class="bg-primary mb-1" src="../../_images/photo_pp.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">photo 생성 결과, prompt: “photo”</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>“photo”의 경우에는 여전히 multiple diseases class의 영향을 받은 것같은 이미지들이 생성됩니다. photo의 경우에는 여러 대상들과 사용되는 일반적인 특성을 가지고있어서 그런 것이라는 생각이 들었고, 이를 체크해보기 위해 특정한 대상들과 photo와 비슷한 용도로 사용되는 다른 prompt들로 이미지들을 생성보았습니다.</p></li>
+<li><p>특정한 대상 세가지로는 cat, sea, pirate을 사용했고, photo와 비슷하게 사용되는 텍스트 세가지는 illustration, animation, wallpaper를 사용했습니다. (이미지는 글 마지막 부분의 appendix에 있습니다.)</p></li>
+<li><p>이미지 생성 결과, 특정한 대상을 지칭하는 텍스트의 경우 대상의 특징이 잘 드러나는 이미지가 생성되었지만, 여러 대상과 함께 쓰이는 텍스트의 경우 잎사귀의 특징을 가지는 이미지들이 일부 생성되었습니다.</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>4. 성능 비교<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>fine tuning한 stable diffusion model로 multiple diseases class의 이미지를 400장 생성하여 classifier를 다시 훈련했습니다.</p></li>
+</ul>
+<p>baseline</p>
+<ul class="simple">
+<li><p>전체 accuracy는 97.7%, class별 accuracy는 healthy: 99.6%, multiple diseases: 73.6%, rust: 99.2%, scab: 98.1%</p></li>
+</ul>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_base.png"><img alt="result_base" class="bg-primary mb-1" src="../../_images/result_base.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">result_base</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>생성한 이미지를 추가 데이터로 활용한 경우</p>
+<ul class="simple">
+<li><p>전체 accuracy는 97.9%, class별 accuracy는 healthy: 98.1%, multiple diseases: 84.6%, rust: 98.2%, scab: 99.3%</p></li>
+</ul>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_new.png"><img alt="result_new" class="bg-primary mb-1" src="../../_images/result_new.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">result_now</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>kaggle에서 제공하는 test set에 적용했을 때는 baseline이 94.6%, stable diffusion으로 생성한 이미지들을 사용한 경우가 93.7%여서 baseline보다 좋은 성능을 얻지는 못 했습니다.</p></li>
+</ul>
+</section>
+<section id="discussion">
+<h2>5. Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>stable diffusion 훈련 중간중간에 일정 step마다 이미지를 생성하게해서 훈련에 대한 모니터링이 있으면 좋겠다는 생각을 했습니다.</p></li>
+<li><p>stable diffusion 훈련시 hyperparameter tuning을 좀 더 철저하게 해야겠다는 생각을 했습니다.</p></li>
+<li><p>stable diffusion으로 생성한 이미지가 실제로 multiple diseases class 조건을 만족하는지 검수할 방안이 필요합니다.</p></li>
+<li><p>multiple diseases 내에서도 카테고리를 나눌 수 있다면 나눠서 각각에 대한 stable diffusion model을 fine tuning할 수도 있을 것입니다.</p></li>
+<li><p>다른 diffusion model fine tuning 방법을 활용해볼 수도 있을 것입니다.</p></li>
+<li><p>submission score에서 baseline을 이기지 못 했지만 text-to-image model을 이용한 synthetic data의 가능성을 볼 수 있었다고 생각합니다.</p></li>
+</ul>
+</section>
+<section id="appendix">
+<h2>6. Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>앞에서 언급한 prompt에 대한 이미지 생성 예시입니다. 일부 이미지는 NSFW로 판단되어 검은색으로 나왔습니다.</p></li>
+</ul>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cat.png"><img alt="cat" class="bg-primary mb-1" src="../../_images/cat.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">cat 생성 결과, prompt: “cat”</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sea.png"><img alt="sea" class="bg-primary mb-1" src="../../_images/sea.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">sea 생성 결과, prompt: “sea”</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id18">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/pirate.png"><img alt="pirate" class="bg-primary mb-1" src="../../_images/pirate.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">pirate 생성 결과, prompt: “pirate”</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id19">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/illustration.png"><img alt="illustration" class="bg-primary mb-1" src="../../_images/illustration.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">illustration 생성 결과, prompt: “illustration”</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id20">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/animation.png"><img alt="animation" class="bg-primary mb-1" src="../../_images/animation.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">animation 생성 결과, prompt: “animation”</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id21">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/wallpaper.png"><img alt="wallpaper" class="bg-primary mb-1" src="../../_images/wallpaper.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">wallpaper 생성 결과, prompt: “wallpaper”</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/experiments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../review/LoRA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LoRA</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="swjo_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Training DreamBooth on Naver Webtoon Face Dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 개요</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline">2. Baseline 구축</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-diffusion-fine-tuning">3. Stable diffusion fine tuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4. 성능 비교</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

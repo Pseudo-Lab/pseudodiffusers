@@ -17,6 +17,7 @@ parts:
   - file: docs/review/Textual_Inversion
   - file: docs/review/CustomDiffusion
   - file: docs/review/LoRA
+  - file: docs/review/I-DDPM
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

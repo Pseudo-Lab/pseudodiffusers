@@ -18,6 +18,7 @@ parts:
   - file: docs/review/CustomDiffusion
   - file: docs/review/LoRA
   - file: docs/review/I-DDPM
+  - file: docs/review/StyO
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

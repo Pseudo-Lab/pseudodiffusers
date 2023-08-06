@@ -1,3 +1,14 @@
+```{admonition} Information
+- **Title:** {A Multi-Concept Customiziation of Text-To-Image Diffusion}, {VCPR 2023}
+
+- **Reference**
+    - Paper:  [https://arxiv.org/abs/2212.04488](https://arxiv.org/abs/2212.04488)
+    - Code: [Official:](https://github.com/adobe-research/custom-diffusion)
+    
+- **Author:** Seunghwan Ji
+
+- **Last updated on Aug. 6, 2023**
+```
 # Custom Diffusion
 
 ## 학습 자료

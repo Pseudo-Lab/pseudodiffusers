@@ -4,12 +4,10 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
-    <title>[PseudoLab] Text-to-Image Generation (feat. Diffusion) &#8212; Text-to-Image Generation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jupyter Book Template for PseudoLab &#8212; PseudoLab [Study Name]</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -21,10 +19,14 @@
 
     
       
+  <link rel="stylesheet"
+    href="_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -32,43 +34,37 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="VAE" href="docs/review/vae.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
+    <link rel="next" title="This is an h1 tag" href="docs/markdown-example.html" />
 
-    <!-- Google Analytics -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
-
     
 
     <div class="container-xl">
@@ -77,136 +73,39 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
-      
-      <img src="_static/PseudoLab_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
-      
-    </a>
+<a class="navbar-brand text-wrap" href="index.html">
+  
+  <img src="_static/PseudoLab_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">PseudoLab [Study Name]</h1>
+  
+</a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1 current active">
   <a class="reference internal" href="#">
-   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+   Jupyter Book Template for PseudoLab
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Paper/Code Review
- </span>
-</p>
-<ul class="nav bd-sidenav">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/vae.html">
-   VAE
+  <a class="reference internal" href="docs/markdown-example.html">
+   markdown 예시
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/gan.html">
-   GAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/cycleGAN.html">
-   CycleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/StyleGAN.html">
-   StyleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/DDPM.html">
-   DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/DDIM.html">
-   DDIM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/diffusion_beats_GANs.html">
-   Diffusion Models Beat GANs on Image Synthesis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/dalle.html">
-   DALL-E
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/dreambooth.html">
-   DreamBooth
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/ControlNet.html">
-   ControlNet
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/Latent_Diffusion_Model.html">
-   Latent Diffusion Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/Textual_Inversion.html">
-   Textual Inversion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/CustomDiffusion.html">
-   Custom Diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/LoRA.html">
-   LoRA
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/I-DDPM.html">
-   I-DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/review/StyO.html">
-   StyO
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Experiments
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/experiments/js_exp.html">
-   Synthetic Data with Stable Diffusion for Foliar Disease Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="docs/experiments/swjo_exp.html">
-   Training DreamBooth on Naver Webtoon Face Dataset
+  <a class="reference internal" href="docs/notebook-example.html">
+   .ipynb 파일 예시
   </a>
  </li>
 </ul>
 
-    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -222,23 +121,23 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
-                title="탐색 전환" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
 <div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
 
     <div class="dropdown-buttons">
@@ -246,76 +145,59 @@
         
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
+        <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
-                    class="fab fa-github"></i>저장소</button></a>
+            href="https://github.com/pseudo-lab/Jupyter-Book-Template"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/pseudo-lab/Jupyter-Book-Template/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
     </div>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
-        title="전체 화면으로보기"><i
-            class="fas fa-expand"></i></button></a>
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
+        <!-- Launch buttons -->
 
-        </div>
+    </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                    </div>
-                </div>
-            </div>
-            
+        
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pseudolab-text-to-image-generation-feat-diffusion">
-<h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)<a class="headerlink" href="#pseudolab-text-to-image-generation-feat-diffusion" title="Permalink to this headline">¶</a></h1>
-<p>This is the repository of Pseudo Lab’s Text-to-Image Generation (feat. Diffusion) team.</p>
-<p>:bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.</p>
-<p><a class="reference external" href="https://www.linkedin.com/company/pseudolab/">About Us - Pseudo Lab</a></p>
-<p><a class="reference external" href="https://pseudo-lab.com/Text-to-Image-Generation-feat-Diffusion-cc12047d1bfc4bdfa70122c11ff90aee">About Us - Text-to-Image Generation (feat. Diffusion) Team</a></p>
-<p>참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!</p>
+  <div class="section" id="jupyter-book-template-for-pseudolab">
+<h1>Jupyter Book Template for PseudoLab<a class="headerlink" href="#jupyter-book-template-for-pseudolab" title="Permalink to this headline">¶</a></h1>
+<p>가짜연구소 자료 정리를 위한 Jupyter Book Template 입니다.</p>
 <div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
 </div>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -339,35 +221,35 @@
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="docs/review/vae.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">VAE</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
         </div>
     </div>
-    <footer class="footer">
-  <p>
     
-      으로 PseudoLab<br/>
     
-        &copy; 저작권 2021.<br/>
-  </p>
-</footer>
+    <div class='prev-next-bottom'>
+        
+    <a class='right-next' id="next-link" href="docs/markdown-example.html" title="next page">This is an h1 tag</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By PseudoLab<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
 </main>
 
 
       </div>
     </div>
-  
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
+    
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
   </body>
 </html>

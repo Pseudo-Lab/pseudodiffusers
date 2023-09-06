@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>I-DDPM &#8212; Text-to-Image Generation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/I-DDPM';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="StyO" href="StyO.html" />
+    <link rel="prev" title="LoRA" href="LoRA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/I-DDPM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/I-DDPM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>I-DDPM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-models">2. Denoising Diffusion Probabilistic Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-the-log-likelihood">3. Improving the Log-likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improcing-sampling-speed">4. Improcing Sampling Speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-gans">5. Comparison to GANs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-model-size">6. Scaling Model Size</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> {Improved Denoising Diffusion Probabilistic Models}, {CVPR 2021}</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2102.09672">https://arxiv.org/abs/2102.09672</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Seunghwan Ji</p></li>
+<li><p><strong>Last updated on Aug. 6, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="i-ddpm">
+<h1>I-DDPM<a class="headerlink" href="#i-ddpm" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p><strong>Improved Denoising Diffusion Probabilistic Models</strong></p>
+<p><a class="reference external" href="https://arxiv.org/pdf/2102.09672.pdf">https://arxiv.org/pdf/2102.09672.pdf</a></p>
+<hr class="docutils" />
+<p><strong>CVPR 2021, Alex Nichol</strong></p>
+</section>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>DDPM을 약간 수정함으로써 High Quality를 유지하고, Log Likelihood수치도 개선할 수 있는 향상된 모델을 제안</p></li>
+<li><p>Sampling시 Base 보다 더 적은 Step으로 비슷한 퀄리티의 결과를 낼 수 있는 방법을 제안</p></li>
+<li><p>Model의 Scale과 Diffusion Step에 따른 Sample Quailty와 Likelihood 수치간의 관계를 연구</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>최근 DDPM(Ho et al.) 모델은 Generate 분야에서 High Quality의 이미지를 생성해내는 수준까지 왔다.</p></li>
+<li><p>하지만, Image의 Quality에 반해 log-likelihood 수치는 다른 generative 모델에비해 현저히 떨어졌다. (e.g. VAE)</p></li>
+<li><p>또 DDPM이 Diversity가 낮은 Dataset(CIFAR-10, LSUN)에서는 잘 동작했지만, High Diversity Dataset에서의 동작은 증명되지 못했다.</p></li>
+<li><p>I-DDPM에서는</p>
+<ol class="arabic simple">
+<li><p>Log-Likelihood 수치 개선</p></li>
+<li><p>ImageNet같은 Diversity가 높은 Dataset에서도 잘 동작</p></li>
+<li><p>Reverse Process에서의 Loss Term 개선</p></li>
+</ol>
+<p>한 모델을 제안하였다.</p>
+</li>
+<li><p>추가로 연구 과정 중, I-DDPM이 Base (DDPM) 모델에 비해 훨씬 더 적은 Step으로 비슷한 Quality를 내는 것을 확인</p></li>
+</ul>
+<p><strong>Log-Likelihood 값이 중요한 이유</strong></p>
+<ul class="simple">
+<li><p>기존 연구들에서 Loglikelihood 수치와 Sample의 Quality간의 연관성을 보이는 연구들이 많았다.</p>
+<ul>
+<li><p><em>Data의 Distribution에 대해 Model이 학습한 정도를 수치화한 느낌</em></p></li>
+</ul>
+</li>
+<li><p>수치가 좋아지면 Sample Quality도 따라 증가하는 경향을 보였다.</p></li>
+<li><p>따라서 DDPM에서도 LogLikelihood 수치를 개선한다면 Sample Quality도 따라서 더 증가할 가능성이 있지 않을까?</p></li>
+<li><p><a class="reference external" href="https://angeloyeo.github.io/2020/07/17/MLE.html">https://angeloyeo.github.io/2020/07/17/MLE.html</a></p></li>
+</ul>
+</section>
+<section id="denoising-diffusion-probabilistic-models">
+<h2>2. Denoising Diffusion Probabilistic Models<a class="headerlink" href="#denoising-diffusion-probabilistic-models" title="Permalink to this heading">#</a></h2>
+<p><strong>DDPM</strong></p>
+<ul>
+<li><p>Process</p>
+<ul>
+<li><p>Forward Process</p>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img01.png"><img alt="I-DDPM_00" class="bg-primary mb-1" src="../../_images/img01.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Reverse Process</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="I-DDPM_01" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Forward Process에서 입힌 Noise를 Neural Model의 Reverse Process로 예측하도록 학습하는 형태</p></li>
+<li><p>이 때 Noising &amp; Denoising에 관한 (Hyper) Parameter로 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 사용</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\({B_{t}}\)</span> : time step 에 따른 noising할 정도</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>하지만 DDPM에서는 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 대신 <span class="math notranslate nohighlight">\({B_{t}}\)</span>를 사용해도 비슷한 수치를 보여서 <span class="math notranslate nohighlight">\({B_{t}}\)</span> (constant)로 고정</p></li>
+</ul>
+</section>
+<section id="improving-the-log-likelihood">
+<h2>3. Improving the Log-likelihood<a class="headerlink" href="#improving-the-log-likelihood" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>위의 문장 (<span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 대신 <span class="math notranslate nohighlight">\({B_{t}}\)</span>를 사용)에서 의문점</p>
+<ul>
+<li><p>사실 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?</p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Diffusion Step간 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>하지만 Figure.2를 보면 모델의 성능은 대부분 Step 초반에 결정되는데, Step 초반에는 두 값의 차이가 큰 것을 확인할 수 있다.</p>
+<ul class="simple">
+<li><p><em>Model의 성능이 결정되는 부분 = Loss 가 급격하게 떨어지는 부분</em></p></li>
+</ul>
+<p>⇒ 따라서, <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 동일한 값으로 두고 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 Non Trainable Parameter로 두는것은 설계의 Miss</p>
+</li>
+<li><p>하지만, <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 자체를 학습하기에는 값의 범위가 너무 작아서 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 Interpolation 값을 Predict하도록 설계</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Hybrid Loss</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(L_{hyprid} = L_{simple} + λL_{vlb}\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Noise Schedule</p>
+<ul class="simple">
+<li><p>DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인</p></li>
+<li><p>Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적</p></li>
+</ul>
+</li>
+<li><p>Gradient Noise</p>
+<ul>
+<li><p>Model을 <span class="math notranslate nohighlight">\(L_{vlb}\)</span>를 Direct로 최적화하도록 설계하면 Best</p></li>
+<li><p>하지만 아래 이미지와같이 Loss 자체가 unstable해서 직접 최적화에는 어려움이 있음</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="I-DDPM_09" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>따라서 <span class="math notranslate nohighlight">\(L_{vlb}\)</span>의 Variance를 줄이기위해(=stable) Importance Sampling 기법을 도입</p></li>
+<li><p>위 Fig.2에서 보면 학습 말기는 Loss의 변화에 큰 영향이 없으므로 확률적으로 학습 초반의 데이터를 좀더 sampling해서 학습하도록 설계</p></li>
+<li><p>실제로 적용해본 결과 <span class="math notranslate nohighlight">\(L_{hybrid}\)</span>보다 더 낮은 Loss 를 보임</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_{hybrid}\)</span>에 Importance Sampling을 적용하면?</p>
+<ul class="simple">
+<li><p>적용 전보다 좋지 않은 결과를 보인다..</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Result</strong></p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="I-DDPM_10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="I-DDPM_11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>DDPM에서 다소 취약했던 ImageNet 64x64와 CIDAR-10 데이터를 기준</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(L_{vlb}\)</span>의 경우 Importance sampling을 적용한 결과</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img121.png"><img alt="I-DDPM_12" class="bg-primary mb-1" src="../../_images/img121.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Convolution 모델이나 Diffusion 모델중에서는 뛰어나지만, Fully Transformer 모델에 비해서는 다소 부족한 면이 있음</p></li>
+</ul>
+</section>
+<section id="improcing-sampling-speed">
+<h2>4. Improcing Sampling Speed<a class="headerlink" href="#improcing-sampling-speed" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Sampling Speed를 높이기 위한 방법을 제안</p>
+<ul>
+<li><p>Training 시에는 전체 Step(1, … , T)을 학습</p></li>
+<li><p>Sampling 시에는 몇몇 Step만 Sampling</p></li>
+</ul>
+</li>
+<li><p>결과는?</p></li>
+</ul>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img131.png"><img alt="I-DDPM_13" class="bg-primary mb-1" src="../../_images/img131.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img141.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img141.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>⇒ 100 Step만 가도 Full Model과 비슷한 FiD값을 보임</p>
+</section>
+<section id="comparison-to-gans">
+<h2>5. Comparison to GANs<a class="headerlink" href="#comparison-to-gans" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Class Conditional Generation + P&amp;R Metric으로 GAN 모델(BigGAN)과 성능을 비교</p>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="I-DDPM_15" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Big-GAN Deep 모델보다 생성 타겟에 대한 FiD 수치나 Recall metric에서 더 뛰어난 성능을 보임</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="scaling-model-size">
+<h2>6. Scaling Model Size<a class="headerlink" href="#scaling-model-size" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>다양한 Capacity를 가진 모델의 FiD와 NLL 값을 비교</p></li>
+</ul>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="I-DDPM_16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="I-DDPM_17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>⇒ 모델의 크기와 학습량 모두 Step에 어느정도 비례함</p>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LoRA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LoRA</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="StyO.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">StyO</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-models">2. Denoising Diffusion Probabilistic Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improving-the-log-likelihood">3. Improving the Log-likelihood</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improcing-sampling-speed">4. Improcing Sampling Speed</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-gans">5. Comparison to GANs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-model-size">6. Scaling Model Size</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

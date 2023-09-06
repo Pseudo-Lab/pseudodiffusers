@@ -1,0 +1,206 @@
+```{admonition} Information
+- **Title:** {An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion}, {cs.CV}
+
+- **Reference**
+    - Paper:  [https://arxiv.org/pdf/2208.01618.pdf](https://arxiv.org/pdf/2208.01618.pdf)
+    - Code: [https://textual-inversion.github.io/](https://textual-inversion.github.io/)
+    - Review: [https://devocean.sk.com/blog/techBoardDetail.do?page=&query=&ID=164320&boardType=writer&searchData=sam56903&subIndex=&idList=&pnwriterID=sam56903](https://devocean.sk.com/blog/techBoardDetail.do?page=&query=&ID=164320&boardType=writer&searchData=sam56903&subIndex=&idList=&pnwriterID=sam56903)
+    
+- **Author:** Kwang-Su Mun
+
+- **Last updated on May. 31. 2023**
+```
+
+# Textual Inversion
+
+# Abstract
+```
+이미지 3-5장으로 새로운 개념(또는 콘셉트, concept)을 학습해 관련된 이미지를 뽑아내는 모델
+```
+
+ text-to-image model은 자연어를 통한 creation에 전례없는 자유도를 주었다. 하지만, 특정한 contept를 생성하고, 그것의 생김새를 바꾸거나, 새로운 역할이 주어지거나 참신한 장면이 그려지는건 아직 불분명하다. 즉, '이것을 그려줘'라고 말할 때, '이것'에 대한 설명을 prompt로 어떻게 할 것이냐는 물음에는 아직 한계가 있는 것 같다. 이를 해결하기 위해, 저자는 image를 3-5개만으로 사물이나 스타일과 같은 concept, 즉 새로운 '단어'를 고정된 text-to-image model의 embedding space에서 표현하는 방법을 제안한다. 이러한 '단어'는 자연어 문장에 녹아들어가, 직관적인 방법으로 '개인화된' 이미지 생성을 이끌어 낸다. 특히, 독자적이면서 다양한 콘셉트를 capture하기 위해서는 single word embedding이 충분하다는 것을 알게 되었다.
+
+:::{figure-md} textual inverison example
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbIVL03%2Fbtsg8b6ssL1%2FsZQKABrsLJG58fJuvqd5MK%2Fimg.png" alt="textual inverison example" class="bg-primary mb-1" width="800px">
+
+textual inversion example \  (source: https://arxiv.org/abs/2208.01618)
+:::
+
+# Introduction
+대규모 학습된 모델에 새로운 개념을 도입하는 일은 어려운 일이다. 각 새로운 개념에 대해 확장된 데이터 셋을 사용해 모델을 retraining하는 것은 엄청나게 비용이 많이 들고, 몇 가지 예제에 해서 fine-tuning은 보통 치명적인 망각을 초래한다. 따라서 저자들은 사전 훈련된 텍스트-이미지 모델의 텍스트 임베딩 공간에서 새로운 단어를 찾아 이러한 문제를 극복할 것을 제안.
+
+
+:::{figure-md} architecture
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0jLjp%2Fbtsg9DuSNQj%2FkjfhEfeTTA212mS5htrb71%2Fimg.png" alt="architecture" class="bg-primary mb-1" width="800px">
+
+architecture \  (source: https://arxiv.org/abs/2208.01618)
+:::
+위 figure에서, "A photo of S*"은 tokenizer를 지나면서 각각 '508', '701', '73', '*'과 같은 형태의 token set으로 변환되고, 이후 각 토큰은 자체 임베딩 벡터로 변환되고 이러한 벡터는 다운스트림 모델을 통해 제공됨.
+
+input image의 concept를 나타내는, 새로운 pseudo-word인 S*를 이용해 새로운 embedding vector(v*)를 나타낸다. 이후 이 vector는 다른 단어와 같이 처리되며 생성 모델에 대한 새로운 text query를 구성하는데 사용될 수 있음. 따라서 이 query는 generator에 들어가서 사용자가 의도한바와 일치하도록 새로운 image를 생성하도록 하는 것이 전반적인 그림이라고 볼 수 있음.
+
+여기서 중요한 것은, 이 과정에서 생성모델(여기서는 LDM이 쓰임)은 untouched되어 있다는 것(즉, 따로 수정이 들어가지 않는듯함). 그렇게 함으로써 새로운 task에 대한 fine-tuning을 할 때 일반적으로 손실되는 text에 대한 이해도나 generalization을 유지할 수 있음.
+
+이러한 '유사단어'를 찾기 위해, 이 작업을 하나로 inversion시켜 프레임화 한다. 그리고 고정된, pre-trained text-to-image model을 사용하고, 3-5개의 concept를 나타내는 small image set이 주어진다. 저자들은 'a photo of S*'와 같은 형태의 문장을 설정해 주어진 작은 dataset에서 이미지를 재구성 하는 것으로 이어지는 single-word embedding을 찾는 것을 목표로 함. 
+
+이 모델의 목표는 **새로운 concept인 입력 이미지를 나타내는 S*를 표현하는 방법을 찾는 것**이며, 이러한 task를 **'textual inversion'**이라고 한다고 함.
+
+```
+This embedding is found through an optimization process, which we refer to as “Textual Inversion”.
+```
+
+# Related work
+- text-guided synthesis
+- GAN inversion
+- Diffusion-based inversion
+- personalization
+  - PALAVRA: image를 S*으로 바꾸는데 사용되는 기술로 추정. 
+  - pre-trained CLIP model을 이용해서 personalized object의 복구 및 segmentation을 수행. PALAVRA는 특정 개체를 참조하는 CLIP의 textual embedding space에서 pseudo-word를 식별함. 그 다음 검색을 위해 이미지를 설명하거나 어떤 장면에서 특정 개체를 분할하기 위해 사용됨. figure 5에서 보듯이, 그들의 접근 방식은 새로운 장면에서 그럴듯한 재구성 또는 합성에 필요한 세부 정보를 캡처하지 못함.
+
+# Method
+```
+Our goal is to enable language-guided generation of new, user-specified concepts.
+```
+- 의역) 목표: 유저가 의도한 것에 초첨을 맞춘, 새로운 concept를 embedding으로 잘 가이드해서 괜찮은 성과물을 내는 것.
+
+따라서 pre-trained text-to-image model의 중간 단계의 representation으로 이러한 새로운 'concepts'을 인코딩하는데 초점을 맞춤. 일반적인 text-to-image model에서는 image의 representation에 대한 후보군을 text encoder의 word-embedding 단계에서 찾는다. 그러나 이러한 접근 방식은 이미지에 대한 in-depth visual understanding을 필요로 하지 않는다(생성자가 이미지에 대해서 시각적인 이해? 없이 그린다.) 따라서 여기서는 GAN inversion에서 영감을 받은 visual reconstruction objective를 제시. 
+
+## cf) GAN Inversion(이해 못함)
+출처) - https://hyoseok-personality.tistory.com/entry/GAN-Inversion
+
+:::{figure-md} GAN inversion
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpomZT%2Fbtsg9EHfVqc%2F4a4K6BmSPZV5ncVQXtfCHk%2Fimg.png" alt="GAN inversion" class="bg-primary mb-1" width="800px">
+
+GAN inversion \  (source: https://hyoseok-personality.tistory.com/entry/GAN-Inversion)
+:::
+
+- 입력 이미지와 유사한 결과 이미지를 얻을 수 있도록 하는 latent vector를 찾는 과정. GAN이 학습되면 random latent vector로부터 이미지를 생성해낸다. GAN inversion은 이의 역과정으로써 GAN의 latent space로 input image를 inverting시켜 latent vector를 알아가는 과정.
+
+## LDM(Latent Diffusion Model)
+논문에서는 생성모델로서 LDM(Latent Diffusion Model)을 사용함. 이전에 말했듯이, LDM은 하나도 건들지 않음.
+
+:::{figure-md} LDM objective function
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdw5kRl%2FbtshgoiBpt4%2Fz72rzU3tvL8kLFbtBXwWVk%2Fimg.png" alt="LDM objective function" class="bg-primary mb-1" width="800px">
+
+LDM objective function \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+## Text Embeddings
+:::{figure-md} Text-Embedding
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0EWv%2Fbtsg9e9ZI4u%2FzfXraAXg1vpKpxemZLtVPk%2Fimg.png" alt="Text-Embedding" class="bg-primary mb-1" width="800px">
+
+Text-Embedding \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+- 입력된 문자열의 각 단어, 하위 단어는 tokenizer를 통과하며, 미리 정의된 dictionary에서 index token으로 변환함. 각 토큰을 통해 찾을 수 있는 고유한 임베딩 벡터에 연결됨.
+- index에 의한 embedding vector는 일반적으로 text encoder인 C_Θ의 일부로 학습된다. 이러한 space를 inversion target으로 삼았음. 새로운 개념을 나타내기 위해 자리표시자 문자열인 S*를 새롭게 지정함. 이 과정에서 PALAVRA를 사용했을 것으로 추정함. 임베딩 process에 개입해서 tokenize된 문자열과 관련된 vector를 새로운 학습된 embedding V*로 대체하여 본질적으로 어휘(pseudo-word)에 개념을 주입함. 이렇게 함으로써 다른 단어와 마찬가지로 concept를 포함하는 새로운 문장을 만들 수 있었음.
+
+## Textual Inversion
+새로운 embedding을 찾기 위해 작은 규모의 dataset(3-5장)을 사용해 다양한 배경 또는 포즈와 같은 여러 설정에 걸쳐 목표 concept을 묘사함. 이러한 작은 dataset에서 LDM loss를 최소화하는 과정을 통해 V를 최적화함. 생성 조건을 고정하기 위해 CLIP ImageNet 템플릿에서 파생된 중립 컨텍스트 텍스트를 무작위로 샘플링한다. 여기에는 "A photo of S*", "A rendition of S*" 등의 형식 프롬프트가 포함된다.(아마 원본 이미지와 최대한 비슷하게 만들어서 원본과 비교하기 위한 목적이 아닐까 싶음) 최적화 목표식은 다음과 같음.
+
+:::{figure-md} textual inversion objective function
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqY4nD%2FbtshiHP4k6T%2FvZrYjfSUAE2XePwon4rTIk%2Fimg.png" alt="textual inversion objective function" class="bg-primary mb-1" width="800px">
+
+textual inversion objective function \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+LDM loss함수와 매우 유사함. 여기서 CΘ와 eΘ는 고정. 해당 따라서 학습된 embedding이 개념에 미세한 시각적 detail을 포착할 수 있을것으로 기대함.
+
+# 성능평가
+## DALL:E-2와 비교
+:::{figure-md} compare with DALLE-2
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkJvkY%2Fbtsg95YTKmc%2FX6lxVI5tL30ZP5gKEmoAv1%2Fimg.png" alt="compare with DALLE-2" class="bg-primary mb-1" width="800px">
+
+compare with DALLE-2 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+- input image에 대한 디테일을 더 잘 포착하는 모습을 볼 수 있다.
+
+## Text guided synthesis
+
+:::{figure-md} text guided synthesis
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRLYR1%2Fbtsg95SasXe%2FaUe9K6FVb2yC9sZqoK5eSk%2Fimg.png" alt="text guided synthesis" class="bg-primary mb-1" width="800px">
+
+text guided synthesis - 입력 이미지의 스타일과 유사하면서도 text guide에 맞춰서 잘 진행함.
+ \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+- Textual Inversion 모델은 새로운 주제에 대해 더 정확하게 개념을 보존하고, 새로운 임베딩과 나머지 캡션들에 대해서도 모두 추론이 가능했음.
+
+:::{figure-md} style transfer
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLlXhf%2Fbtsg8cEna6l%2FgiZvyYgqCaPj6X5wKTIzZk%2Fimg.png" alt="style transfer" class="bg-primary mb-1" width="800px">
+
+style transfer \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+- 적은 데이터셋으로도 style을 보존하면서 표현한 그림
+
+## pseudo word 두 개 사용
+
+:::{figure-md} two pseudo word
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJtPJY%2Fbtsg9OinOOb%2FMLn4k48Hk7CP7vGv1yAaYk%2Fimg.png" alt="two pseudo word" class="bg-primary mb-1" width="800px">
+
+two pseudo word \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+## Bias Reduction
+:::{figure-md} Bias reduction
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPakAR%2Fbtsg9OvWWW9%2FJZkKl1AFTKJgEKJsA2rb2K%2Fimg.png" alt="Bias reduction" class="bg-primary mb-1" width="800px">
+
+Bias reduction \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+기존 모델의 결과를 보면, 위 사진에서와 같이 '의사'라는 단어를 사용하면, 보통 백인 남성 의사를 잘 그려냈음. 이는 기존 데이터셋에서 남성 의사 사진 데이터가 많았음을 보여준다. 보다 작은 imageset에서 새로운 embedding을 학습함으로써 이러한 bias를 줄일 수 있음을 보여준다(즉, 성별 및 인종적 다양성에 대한 인식을 높일 수 있음).
+
+# 정량평가
+
+latent space embedding의 품질을 분석.
+
+1. reconstruction(y축?):  target concept를 얼마나 잘 복제하는지. 특정 이미지가 아닌 개념에 대한 변형을 생성하므로 의미적 CLIP 공간 거리를 고려하여 유사성을 측정.(이미지에 자체가 아닌, 이미지가 가진 '개념'에 대해 latent space를 생성하므로)  각 컨셉에 대해 "A photo of S*"라는 prompt를 사용해 64개의 이미지를 생성.
+2. editability(x축?): text prompt를 사용해 개념을 수정하는 능력을 평가. 다양한 난이도와 다양한 설정의 prompt를 사용해 일련의 이미지를 생성.
+
+각 prompt 별로, 50 DDIM step을 사용해 64개의 샘플을 만들고, CLIP-space embedding을 평가, textual prompt의 CLIP-space embedding에서 cosine similarity를 계산. 높은 스코어는 더 높은 editing capability와 prompt의 신뢰도를 보여줌.
+
+## 평가 setups
+GAN inversion에서 영감을 받은 실험 환경 설정에 따름. 생략
+
+## 결과
+:::{figure-md} quantative evaluation1
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxKm1h%2Fbtshb63SIYh%2FNflBiQZTV5V0yh0I3EYpq1%2Fimg.png" alt="quantative evaluation1" class="bg-primary mb-1" width="800px">
+
+quantative evaluation1 \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+### 주목할 점
+
+1. 많은 baseline과 우리 방법의 semantic reconstruction quality는 단순히 training set에서 임의의 이미지를 샘플링하는 것과 비슷함(== 원본 이미지와 생성된 이미지가 큰 차이가 없었다?)
+
+2. single-word method는 비슷한 reconstruction quality를 달성하고, 모든 multi-word baseline에서 상당히 향상된 editablity을 달성. 이러한 점은 text embedding space의 인상적인 유연성을 나타내고, 단일 pseudo word만 사용하면서 높은 정확도로 새로운 개념을 캡처하는데 도움이 될 수 있음을 보여줌.
+
+3. baseline이 distortion-editability tradeoff 곡선의 outline을 그리며 실제 단어 분포에 더 가까운 embedding이 더 쉽게 수정될 수 있음. 그러나 target의 세부 정보를 캡처하지는 못함. 반대로, 단어 분포에서 멀리 벗어나면 editability가 크게 감소하는 대신 향상된 reconstruction이 가능해짐. 특히 single embedding model은 단순히 learning rate를 변경해 이 곡선을 따라 이동할 수 있으므로 사용자에게 이 tradeoff에 대한 어느 정도의 제어를 제공함.
+
+4. concept에 대한 human description을 사용하면 유사성을 포착하지 못하면서도, editability가 감소함.
+
+
+## 사용자평가
+
+:::{figure-md} human test
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frx5Ei%2Fbtsg9MSpakC%2FFsPkgODR3zTGIBnvq6RXik%2Fimg.png" alt="human test" class="bg-primary mb-1" width="800px">
+
+human test \  (source: https://arxiv.org/pdf/2208.01618.pdf)
+:::
+
+두 개의 설문지: 
+1) 사용자는 concept의 training set에서 4개의 이미지를 제공받았고, 이미지와의 유사성에 따라 5개의 모델에서 생성된 결과의 순위를 매김.
+
+2) 이미지 context를 설명하는 텍스트를 제공받았고, 텍스트와 생성된 이미지의 유사성에 따라 순위를 매김.
+
+각 질문별로 600개씩 총 1,200개의 응답을 수집.
+
+# Limitation
+1. 이미지 생성에 더 많은 자유도를 제공하지만, concept의 의미론적인 본질을 파악하거나, 정확한 shape를 학습하는데 한계.
+2. 최적화가 오래 걸린다. 하나의 concept를 학습하는데 약 2시간이 소요됨.
+
+# 마무리
+: 새로운 설정과 장면에서 특정 concept의 이미지를 생성하기 위해 text-to-image model를 활용하는 개인화되며, language-guided generation을 소개함. 여기서 사용한 'text inversion'은 pretrained text-to-image 모델의 text embedding space 내에서 concept를 새로운 pseudo word로 inverse하여 작동함. 이러한 pseudo-word는 간단한 자연어 설명을 사용해 새로운 장면에 삽입할 수 있으므로 간단하고 직관적인 수정이 가능함.
+
+ 어떤 의미에서 이 방법은 사용자가 편집하기 쉽도록 텍스트 기반 interpace를 사용하지만 자연 언어의 한계에 접근할 때 시각적 단서를 제공하는 등 multi modal 정보를 활용할 수 있도록 함.
+
+ 이러한 접근 방식은 공개적으로 사용가능한 가장 큰 text-to-image model인 LDM을 통해 구현됨. 그러나 접근 방식에 아키텍처 세부 정보에 의존하지 않음. 따라서 textual inversion은 추가적인 대규모 text-to-image model에 쉽게 적용할 수 있다고 생각. 거기에서 text-to-image alignment, shape preseravation, image generation fidelity가 더 향상될 수 있음.

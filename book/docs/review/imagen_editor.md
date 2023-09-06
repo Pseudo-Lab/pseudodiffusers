@@ -11,8 +11,6 @@
 
 # Imagen Editor
 
-**Introduction**
-
 이번 시간에는 Google Research 에서 소개하는 Imagen 모델 기반의 text-guided image inpainting 모델 Imagen Editor 와 text-guided impainting 의 평가기법 EditBench 에 대해 알아볼 예정입니다. 
 
 Text-guided image inpainting 에서 기존에는 mask 영역을 random 하게 지정하여 학습을 진행했습니다. 이는 입력된 text prompt 와 무관한 영역을 masking 하게 됨으로써 모델이 prompt 를 참조하지 않고 오로지 image content 만으로 학습하게 되는 현상이 발생합니다. Imagen Editor 는 이를 해결하기 위해 Object Masking 기법을 소개합니다. Prompt 에 해당하는 객체 전체를 masking 함으로써 모델이 text prompt 를 더 참조할 수 있도록 유도하는 것이 목표입니다. SSD MobileNet v2 모델을 Object Detector 로 사용함으로써 모델 성능이 크게 개선되는 부분을 확인할 수 있었다고 합니다.  
@@ -44,7 +42,7 @@ EditBench 이미지 데이터셋의 절반은 open source 로 공개된 computer
 예를 들어서, ‘a=metal|o=cat|s=outdoor’ 요소들을 포함하는 문구를 ‘a metal cat standing in the middle of a farm field’ 처럼 생성하는 것입니다. 앞써 언급한 3가지 prompt 는 해당사진처럼 *Mask-Simple*, *Mask-Rich*, 그리고 *Full* 로 정의합니다. 
 
 :::{figure-md} 
-<img src="../../pics/imagen_editor/imagen_editor_03.png" alt="imagen_editor_03" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen_editor/imagen_editor_03.png" alt="imagen_editor_03" class="bg-primary mb-1" width="600px">
 
 EditBench example
 :::
@@ -52,7 +50,7 @@ EditBench example
 데이터셋 구축시, mask 크기도 다양하게 설정하여 mask 크기에 따른 모델 성능도 확인할 수 있었습니다. 성능을 측정해본 결과, Object masking 으로 학습한 모델이 random masking 으로 학습한 모델보다 small/medium masks 에서 성능적으로 월등히 좋다는 것을 확인할 수 있습니다. 
 
 :::{figure-md} 
-<img src="../../pics/imagen_editor/imagen_editor_04.png" alt="imagen_editor_04" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen_editor/imagen_editor_04.png" alt="imagen_editor_04" class="bg-primary mb-1" width="500px">
 
 Human Evaluations on EditBench
 :::
@@ -60,7 +58,7 @@ Human Evaluations on EditBench
 또한, object-rendering 에 비해 text-rendering 성능이 저하되는 부분을 확인할 수 있고, material/color/size 속성보다 count/size 속성에 더 취약한 부분도 확인할 수 있었습니다. 
 
 :::{figure-md} 
-<img src="../../pics/imagen_editor/imagen_editor_05.png" alt="imagen_editor_05" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen_editor/imagen_editor_05.png" alt="imagen_editor_05" class="bg-primary mb-1" width="500px">
 
 Imagen Editor failure cases by attribute
 :::
@@ -68,7 +66,7 @@ Imagen Editor failure cases by attribute
 마지막으로, 동일한 prompt 에 대해 Stable Diffusion, DALL-E2, Imagen Editor 모델로 inpainting 한 결과를 비교한 예시 사진입니다.
 
 :::{figure-md} 
-<img src="../../pics/imagen_editor/imagen_editor_06.png" alt="imagen_editor_06" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen_editor/imagen_editor_06.png" alt="imagen_editor_06" class="bg-primary mb-1" width="500px">
 
 Example model outputs for Mask-Simple vs MaskRich prompts
 :::

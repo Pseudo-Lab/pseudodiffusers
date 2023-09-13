@@ -31,7 +31,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 7 | 2023.05.31 | 박범수 [Beomsoo Park] <br> 지승환 [Seunghwan Ji] | [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) <br> [Multi-Concept Customization of Text-to-Image Diffusion](https://arxiv.org/abs/2212.04488) (CVPR 2023) |
 | 8 | 2023.08.30 | 고동근 [Donggeun Sean Ko]  <br> 조상우 [Sangwoo Jo] | [Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding](https://arxiv.org/abs/2205.11487) <br> [Imagen Editor and EditBench: Advancing and Evaluating Text-Guided Image Inpainting](https://arxiv.org/abs/2212.06909) (CVPR 2023) |
 
-
+ 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  
 ```bash

@@ -7,7 +7,9 @@
 - **Author:** Donggeun Sean Ko
 
 - **Last updated on Sep. 13, 2023**
+
 ```
+
 
 # Introduction
 - Multi-modal learning, 특히 text-to-image generation 에서 contrastive learning이 최근에 많은 주목을 받고 있음. 

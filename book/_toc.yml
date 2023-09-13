@@ -19,8 +19,8 @@ parts:
   - file: docs/review/LoRA
   - file: docs/review/I-DDPM
   - file: docs/review/StyO
-  - file: docs/review/imagen_editor
   - file: docs/review/imagen
+  - file: docs/review/imagen_editor
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

@@ -10,15 +10,17 @@
 
 ```
 
+# Imagen
+
 
 # Introduction
 - Multi-modal learning, 특히 text-to-image generation 에서 contrastive learning이 최근에 많은 주목을 받고 있음. 
 
 - Contrastive learning 과 더불어 large language model (LLM) 들과 diffusion model 들을 사용하여 독창적인 image 생성도 가능함
 
-- 텍스트 전용 말뭉치 (text corpus)로 학습된 LLM들의 text embedding들은 text-to-image 합성에 매우 효과적이라고 함
+- 텍스트 전용 말뭉치 (text corpus)로 학습된 LLM들의 text embedding들은 text-to-image 합성에 매우 효과적이라고 함.
 
-- Classifier-free guidance 사용하여, 더 높은 충실도 (fidelity)의 이미지를 생성하는 새로운 샘플링 기술을 사용함 
+- Classifier-free guidance 사용하여, 더 높은 충실도 (fidelity)의 이미지를 생성하는 새로운 샘플링 기술을 사용함.
 
 :::{figure-md} 
 <img src="../../pics/imagen/imagen_1.png" alt="imagen_1" class="bg-primary mb-1" width="700px">

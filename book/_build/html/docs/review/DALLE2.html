@@ -442,14 +442,38 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 <ul class="simple">
 <li><p><strong>DALL-E 2 결과물</strong></p></li>
 </ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_00.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_00.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">vibrant portrait of Salvador Dali with a robotic half face from DALLE2</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_01.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_01.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Salvador Dali 의 생전 모습</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>위 그림은 DALLE2 에게 “vibrant portrait of Salvador Dali with a robotic half face” 를 prompt 로 주고 생성해낸 이미지입니다.
 실제 Salvador dali 의 모습이 보이네요.
 게다가 Salvador dali 의 초현실주의적 그림체가 반영된 것 같기도 합니다.
 놀라운 이미지입니다.</p>
 <p>아래의 corgi 그림은 어떤가요 ?</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_02.png"><img alt="img_02" class="bg-primary mb-1" src="../../_images/img_02.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">a corgi’s head depicted as an explosion of a nebula from DALLE2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>corgi 의 모습을 성운의 폭발로 묘사해달라고 했을 때 생성된 그림입니다.
 아래의 그림은, 실제 NASA 에서 촬영한 초신성 폭발의 잔해입니다.</p>
 <p>정말 그럴듯하지 않나요?</p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_03.png"><img alt="img_03" class="bg-primary mb-1" src="../../_images/img_03.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">This mosaic image, one of the largest ever taken by NASA’s Hubble Space Telescope of the Crab Nebula, is a six-light-year-wide expanding remnant of a star’s supernova explosion.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul>
 <li><p><strong>학습 목표 및 주의사항</strong></p>
 <ul class="simple">
@@ -460,9 +484,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 <ul>
 <li><p>The fundamental principles of training CLIP are quite simple:</p>
 <ol class="arabic simple">
-<li><p>First, all images and their associated captions are passed through their respective encoders, mapping all objects into an *m-*dimensional space.</p></li>
+<li><p>First, all images and their associated captions are passed through their respective encoders, mapping all objects into an m-dimensional space.</p></li>
 <li><p>Then, the cosine similarity of each <em>(image, text)</em> pair is computed.</p></li>
-<li><p>The training objective is to simultaneously <strong>maximize the cosine similarity</strong> between N <strong>correct</strong> encoded image/caption ****pairs and <strong>minimize the cosine similarity</strong> between N - N <strong>incorrect</strong> encoded image/caption pairs.</p></li>
+<li><p>The training objective is to simultaneously <strong>maximize the cosine similarity</strong> between N <strong>correct</strong> encoded image/caption pairs and <strong>minimize the cosine similarity</strong> between N - N <strong>incorrect</strong> encoded image/caption pairs.</p></li>
 </ol>
 </li>
 </ul>
@@ -475,25 +499,38 @@ CLIP 을 사용하지 않은 IMAGEN 에게 SOTA 를 내주었습니다.</p></li>
 </ul>
 </li>
 <li><p><strong>아키텍쳐 찍먹하기</strong></p>
-<p>특정 이미지 내의 Semantics 와 style 을 모두 포착해낼 수 있는
-CLIP 의 이미지 표현 능력을 끌어올리기 위해서,
-저자들은 CLIP 과 Diffusion 모델을 통합한 Two-stage model 을 제안합니다.
-이것이 바로 DALLE2 인데요. 저자들은 이 모델을 unCLIP 이라고 부릅니다.</p>
-</li>
-</ul>
+<p>특정 이미지 내의 Semantics 와 style 을 모두 포착해낼 수 있는 CLIP 의 이미지 표현 능력을 끌어올리기 위해서, 저자들은 CLIP 과 Diffusion 모델을 통합한 Two-stage model 을 제안합니다. 이것이 바로 DALLE2 인데요. 저자들은 이 모델을 unCLIP 이라고 부릅니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_06.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 188 </span><span class="caption-text">A high level overview of the architecture.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p>DALLE2 paper 의 그림은 좀 복잡해보이니,
 Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살펴볼게요.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_07.png"><img alt="img_07" class="bg-primary mb-1" src="../../_images/img_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">A high level overview of the architecture from AssemblyAI youtube.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=F1X4fHzF4mQ&amp;t=360s&amp;ab_channel=AssemblyAI">https://www.youtube.com/watch?v=F1X4fHzF4mQ&amp;t=360s&amp;ab_channel=AssemblyAI</a></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- **Prior** : 텍스트 캡션을 받아서, 상응하는 CLIP image embedding 을 생성합니다.
-    - Autogregressive prior 와 Diffusion prior 를 비교하는 실험 수행했습니다.
-    - Diffusion prior 가 computationally efficient 하고, 고품질 이미지 생성합니다. 따라서 후반부에는 Diffusion prior 만 사용해서 실험합니다.
-- **Decoder** : CLIP image embedding 을 받아서, 이미지를 생성합니다.
-    - Diffusion 모델만 사용했습니다.
-</pre></div>
-</div>
 <ul class="simple">
-<li><p><strong>왜 CLIP 이랑 Diffusion 을 사용했을까요</strong></p>
+<li><p><strong>Prior</strong> : 텍스트 캡션을 받아서, 상응하는 CLIP image embedding 을 생성합니다.</p>
 <ul>
+<li><p>Autogregressive prior 와 Diffusion prior 를 비교하는 실험 수행했습니다.</p></li>
+<li><p>Diffusion prior 가 computationally efficient 하고, 고품질 이미지 생성합니다. 따라서 후반부에는 Diffusion prior 만 사용해서 실험합니다.</p></li>
+</ul>
+</li>
+<li><p><strong>Decoder</strong> : CLIP image embedding 을 받아서, 이미지를 생성합니다.</p>
+<ul>
+<li><p>Diffusion 모델만 사용했습니다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>왜 CLIP 이랑 Diffusion 을 사용했을까요</strong></p>
+<ul class="simple">
 <li><p><strong>CLIP</strong></p>
 <ul>
 <li><p>CLIP 이 images representation 을 학습하는데 에 큰 성공을 거두고 있었습니다.</p></li>
@@ -514,8 +551,20 @@ Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살�
 </ul>
 </li>
 </ul>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_08.png"><img alt="img_08" class="bg-primary mb-1" src="../../_images/img_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Variations of an input image by encoding with CLIP and then decoding with a diffusion model.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul>
-<li><p><strong>아키텍쳐 설명 좀 자세히 해줘</strong></p>
+<li><p><strong>아키텍쳐 파헤치기</strong></p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_09.png"><img alt="img_09" class="bg-primary mb-1" src="../../_images/img_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">A high level overview of the architecture from AssemblyAI youtube.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=F1X4fHzF4mQ&amp;t=360s&amp;ab_channel=AssemblyAI">https://www.youtube.com/watch?v=F1X4fHzF4mQ&amp;t=360s&amp;ab_channel=AssemblyAI</a></p>
 <ul>
 <li><p><strong>Prior</strong></p>
@@ -533,8 +582,7 @@ Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살�
 </li>
 <li><p><strong>설명</strong></p>
 <ul>
-<li><p>사실 Prior 은 CLIP text embedding 만 조건으로 받는 것이 아니라
-Caption 자체도 받습니다. (물론 embedding vector 로 받을 것)
+<li><p>사실 Prior 은 CLIP text embedding 만 조건으로 받는 것이 아니라 Caption 자체도 받습니다. (물론 embedding vector 로 받겠죠)
 CLIP text embedding 과, 그 Caption 은 서로 1대1 대응되기 때문에,
 Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.</p></li>
 <li><p>샘플 퀄리티를 높이기 위해서,
@@ -560,7 +608,7 @@ Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.</
 </li>
 <li><p><strong>설명</strong></p>
 <ul class="simple">
-<li><p>modified GLIDE model 을 Decoder 로 사용했습니다.
+<li><p>modified GLIDE model 을 Decoder 로 사용했습니다.<br>
 → 따라서, <strong>projected CLIP text embeddings 를 아키텍쳐</strong>에 통합시킬 수 있다고 주장합니다.</p></li>
 </ul>
 <p>어떻게 통합시키냐하면,</p>
@@ -569,6 +617,12 @@ Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.</
 <li><p>4개의 extra context tokens 을 만들어서 GLIDE text encoder 의 output sequence 에 concat 하는거죠.</p></li>
 </ol>
 <p>이 방법으로 <strong>CLIP image embeddings 를 받아서, 원본 영상을 생성하는 것</strong> 입니다.</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_10.png"><img alt="img_10" class="bg-primary mb-1" src="../../_images/img_10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">GLIDE training process</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>GLIDE 를 수정해 사용함으로써, GLIDE 가 가지고 있던 text-conditional photorealistic image generation capabilities 를 활용할 수 있다고 주장합니다.</p></li>
 </ul>
@@ -586,11 +640,23 @@ Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.</
 (3) 추가적으로, CLIP image embeddings 를 생성해내는 Prior 를 갖추고 실험</p></li>
 </ol>
 <p>결과 (3) 이 가장 훌륭했습니다. 특히 image diversity 가 뛰어났습니다.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  - 하지만.. **95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.** 따라서 공정한 실험이라고 보긴 어려울 것 같습니다.
-  - 또한.. **Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.**
-  - 개인적으로 저는 이러한 결과들을 보고, Prior 를 반드시 써야하는 근거에 대한 설득력이 조금 떨어진다고 생각했습니다.
-</pre></div>
-</div>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_11.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">3가지 경우의 아키텍쳐에 따른 실험 결과 from AssemblyAI youtube.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_12.png"><img alt="img_12" class="bg-primary mb-1" src="../../_images/img_12.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Samples using different conditioning signals for the same decoder.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>하지만.. <strong>95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.</strong> 따라서 공정한 실험이라고 보긴 어려울 것 같습니다.</p></li>
+<li><p>또한.. <strong>Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.</strong></p></li>
+<li><p>개인적으로 저는 이러한 결과들을 보고, Prior 를 반드시 써야하는 근거에 대한 설득력이 조금 떨어진다고 생각했습니다.</p></li>
+</ul>
 </li>
 <li><p><strong>왜 CLIP 을 써야할가요?</strong></p>
 <ol class="arabic">
@@ -801,17 +867,17 @@ True conditional distribution 인 P(x|y) 샘플링이 가능해짐</p></li>
 </ul>
 <p>이번 시간에는 Google Research 에서 소개하는 Imagen 모델 기반의 text-guided image inpainting 모델 Imagen Editor 와 text-guided impainting 의 평가기법 EditBench 에 대해 알아볼 예정입니다.</p>
 <p>Text-guided image inpainting 에서 기존에는 mask 영역을 random 하게 지정하여 학습을 진행했습니다. 이는 입력된 text prompt 와 무관한 영역을 masking 하게 됨으로써 모델이 prompt 를 참조하지 않고 오로지 image content 만으로 학습하게 되는 현상이 발생합니다. Imagen Editor 는 이를 해결하기 위해 Object Masking 기법을 소개합니다. Prompt 에 해당하는 객체 전체를 masking 함으로써 모델이 text prompt 를 더 참조할 수 있도록 유도하는 것이 목표입니다. SSD MobileNet v2 모델을 Object Detector 로 사용함으로써 모델 성능이 크게 개선되는 부분을 확인할 수 있었다고 합니다.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_01.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">Effect of Object Masking</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Effect of Object Masking</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Imagen Editor 에서 또 다른 특징은 Imagen 모델 기반의 cascaded diffusion model architecture 를 지니고 있다는 점입니다. 이때, SR3, Palette, GLIDE 와 유사하게 이미지와 mask 가 Encoder 를 거친 후, diffusion latent 와 concatenate 하면서 conditioning input 으로 들어가게 되며, 모두 1024x1024 해상도를 가진다고 합니다. 따라서, base diffusion 64x64 모델 그리고 64x64 → 256x256 super resolution 모델에 입력 시, downsampling 작업 후 모델 input 으로 입력합니다. 또한, conditioning 이미지와 mask 없을 시 Imagen 모델을 사용하는 것과 동일한 효과를 내기 위해, 새로 추가되는 input channel weights 는 0으로 초기화해서 학습을 진행했다고 소개합니다.</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_02.png"><img alt="img_02" class="bg-primary mb-1" src="../../_images/img_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Imagen Editor Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Imagen Editor Architecture</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Imagen 에서 소개되었던 Classifier-Free Guidance 를 동일하게 사용하고, 이때 guidance weight 를 1부터 30 까지 범위 내에서 변화시키는 oscillating guidance 기법을 적용함으로써 생성된 이미지 퀄리티 및 text-image alignment 가 상승되는 효과를 볼 수 있었다고 합니다.</p>
@@ -823,31 +889,31 @@ True conditional distribution 인 P(x|y) 샘플링이 가능해짐</p></li>
 <li><p>Scenes (indoor, outdoor, realistic, paintings)</p></li>
 </ul>
 <p>예를 들어서, ‘a=metal|o=cat|s=outdoor’ 요소들을 포함하는 문구를 ‘a metal cat standing in the middle of a farm field’ 처럼 생성하는 것입니다. 앞써 언급한 3가지 prompt 는 해당사진처럼 <em>Mask-Simple</em>, <em>Mask-Rich</em>, 그리고 <em>Full</em> 로 정의합니다.</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_03.png"><img alt="img_03" class="bg-primary mb-1" src="../../_images/img_03.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">EditBench example</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">EditBench example</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>데이터셋 구축시, mask 크기도 다양하게 설정하여 mask 크기에 따른 모델 성능도 확인할 수 있었습니다. 성능을 측정해본 결과, Object masking 으로 학습한 모델이 random masking 으로 학습한 모델보다 small/medium masks 에서 성능적으로 월등히 좋다는 것을 확인할 수 있습니다.</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_04.png"><img alt="img_04" class="bg-primary mb-1" src="../../_images/img_04.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Human Evaluations on EditBench</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Human Evaluations on EditBench</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, object-rendering 에 비해 text-rendering 성능이 저하되는 부분을 확인할 수 있고, material/color/size 속성보다 count/size 속성에 더 취약한 부분도 확인할 수 있었습니다.</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_05.png"><img alt="img_05" class="bg-primary mb-1" src="../../_images/img_05.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Imagen Editor failure cases by attribute</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Imagen Editor failure cases by attribute</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로, 동일한 prompt 에 대해 Stable Diffusion, DALL-E2, Imagen Editor 모델로 inpainting 한 결과를 비교한 예시 사진입니다.</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_06.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_06.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Example model outputs for Mask-Simple vs MaskRich prompts</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Example model outputs for Mask-Simple vs MaskRich prompts</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

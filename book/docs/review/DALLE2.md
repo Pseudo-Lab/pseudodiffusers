@@ -21,12 +21,14 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 - **DALL-E 2 결과물**
 
 :::{figure-md} 
-<img src="../../pics/DALLE2/img_00.png" alt="img_00" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DALLE2/img_00.png" alt="img_00" class="bg-primary mb-1" width="350px">
+
 vibrant portrait of Salvador Dali with a robotic half face from DALLE2
 :::
 
 :::{figure-md} 
-<img src="../../pics/DALLE2/img_01.png" alt="img_01" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DALLE2/img_01.png" alt="img_01" class="bg-primary mb-1" width="350px">
+
 Salvador Dali 의 생전 모습
 :::
 
@@ -37,7 +39,8 @@ Salvador Dali 의 생전 모습
 
 아래의 corgi 그림은 어떤가요 ?
 :::{figure-md} 
-<img src="../../pics/DALLE2/img_02.png" alt="img_02" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DALLE2/img_02.png" alt="img_02" class="bg-primary mb-1" width="350px">
+
 a corgi's head depicted as an explosion of a nebula from DALLE2
 :::
 
@@ -47,7 +50,8 @@ corgi 의 모습을 성운의 폭발로 묘사해달라고 했을 때 생성된 
 정말 그럴듯하지 않나요?
 
 :::{figure-md} 
-<img src="../../pics/DALLE2/img_03.png" alt="img_03" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DALLE2/img_03.png" alt="img_03" class="bg-primary mb-1" width="350px">
+
 This mosaic image, one of the largest ever taken by NASA's Hubble Space Telescope of the Crab Nebula, is a six-light-year-wide expanding remnant of a star's supernova explosion.
 :::
 
@@ -56,9 +60,9 @@ This mosaic image, one of the largest ever taken by NASA's Hubble Space Telesco
     - DALL-E 2 는 CLIP 과 Diffusion Model 을 통합시켰습니다. (최초는 x)
         - CLIP 은, 이미지와 text 를 학습한 multi-modal 모델입니다.
             - The fundamental principles of training CLIP are quite simple:
-                1. First, all images and their associated captions are passed through their respective encoders, mapping all objects into an *m-*dimensional space.
+                1. First, all images and their associated captions are passed through their respective encoders, mapping all objects into an m-dimensional space.
                 2. Then, the cosine similarity of each *(image, text)* pair is computed.
-                3. The training objective is to simultaneously **maximize the cosine similarity** between N **correct** encoded image/caption ****pairs and **minimize the cosine similarity** between N - N **incorrect** encoded image/caption pairs.
+                3. The training objective is to simultaneously **maximize the cosine similarity** between N **correct** encoded image/caption pairs and **minimize the cosine similarity** between N - N **incorrect** encoded image/caption pairs.
                 
     - 하지만 CLIP 을 사용하는 것이 정답은 아닙니다.
     DALL-E 2 는 22년 5월, 
@@ -66,30 +70,30 @@ This mosaic image, one of the largest ever taken by NASA's Hubble Space Telesco
     
 - **아키텍쳐 찍먹하기**
     
-    특정 이미지 내의 Semantics 와 style 을 모두 포착해낼 수 있는
-    CLIP 의 이미지 표현 능력을 끌어올리기 위해서, 
-    저자들은 CLIP 과 Diffusion 모델을 통합한 Two-stage model 을 제안합니다.
-    이것이 바로 DALLE2 인데요. 저자들은 이 모델을 unCLIP 이라고 부릅니다.
+    특정 이미지 내의 Semantics 와 style 을 모두 포착해낼 수 있는 CLIP 의 이미지 표현 능력을 끌어올리기 위해서, 저자들은 CLIP 과 Diffusion 모델을 통합한 Two-stage model 을 제안합니다. 이것이 바로 DALLE2 인데요. 저자들은 이 모델을 unCLIP 이라고 부릅니다.
     
-:::{figure-md} 
-<img src="../../pics/DALLE2/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
-A high level overview of the architecture.
-:::
-    
-DALLE2 paper 의 그림은 좀 복잡해보이니,
-Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살펴볼게요.
+    :::{figure-md} 
+    <img src="../../pics/DALLE2/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
 
-:::{figure-md} 
-<img src="../../pics/DALLE2/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
-A high level overview of the architecture from AssemblyAI youtube.
-:::
-[https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI](https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI)
+    A high level overview of the architecture.
+    :::
+    
+    DALLE2 paper 의 그림은 좀 복잡해보이니,
+    Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살펴볼게요.
+
+    :::{figure-md} 
+    <img src="../../pics/DALLE2/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
+
+    A high level overview of the architecture from AssemblyAI youtube.
+    :::
+    [https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI](https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI)
 
     - **Prior** : 텍스트 캡션을 받아서, 상응하는 CLIP image embedding 을 생성합니다.
         - Autogregressive prior 와 Diffusion prior 를 비교하는 실험 수행했습니다.
         - Diffusion prior 가 computationally efficient 하고, 고품질 이미지 생성합니다. 따라서 후반부에는 Diffusion prior 만 사용해서 실험합니다.
     - **Decoder** : CLIP image embedding 을 받아서, 이미지를 생성합니다.
         - Diffusion 모델만 사용했습니다.
+
 - **왜 CLIP 이랑 Diffusion 을 사용했을까요**
     - **CLIP**
         - CLIP 이 images representation 을 학습하는데 에 큰 성공을 거두고 있었습니다.
@@ -105,13 +109,15 @@ A high level overview of the architecture from AssemblyAI youtube.
             
 :::{figure-md} 
 <img src="../../pics/DALLE2/img_08.png" alt="img_08" class="bg-primary mb-1" width="700px">
+
 Variations of an input image by encoding with CLIP and then decoding with a diffusion model.
 :::
 
-- **아키텍쳐 설명 좀 자세히 해줘**
+- **아키텍쳐 파헤치기**
     
     :::{figure-md} 
     <img src="../../pics/DALLE2/img_09.png" alt="img_09" class="bg-primary mb-1" width="700px">
+
     A high level overview of the architecture from AssemblyAI youtube.
     :::    
     [https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI](https://www.youtube.com/watch?v=F1X4fHzF4mQ&t=360s&ab_channel=AssemblyAI)
@@ -123,8 +129,7 @@ Variations of an input image by encoding with CLIP and then decoding with a diff
         - **output**
             - **Generated CLIP Image embedding** 입니다.
         - **설명**
-            - 사실 Prior 은 CLIP text embedding 만 조건으로 받는 것이 아니라 
-            Caption 자체도 받습니다. (물론 embedding vector 로 받을 것) 
+            - 사실 Prior 은 CLIP text embedding 만 조건으로 받는 것이 아니라 Caption 자체도 받습니다. (물론 embedding vector 로 받겠죠) 
             CLIP text embedding 과, 그 Caption 은 서로 1대1 대응되기 때문에, 
             Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.
             - 샘플 퀄리티를 높이기 위해서, 
@@ -138,18 +143,19 @@ Variations of an input image by encoding with CLIP and then decoding with a diff
         - **Output**
             - Generated Image
         - **설명**
-            - modified GLIDE model 을 Decoder 로 사용했습니다.
+            - modified GLIDE model 을 Decoder 로 사용했습니다.<br>
             → 따라서, **projected CLIP text embeddings 를 아키텍쳐**에 통합시킬 수 있다고 주장합니다.
             
             어떻게 통합시키냐하면,
 
-            1. GLIDE timestep embedding 에 추가하고, 
+            1. GLIDE timestep embedding 에 추가하고,
             2. 4개의 extra context tokens 을 만들어서 GLIDE text encoder 의 output sequence 에 concat 하는거죠.
             
             이 방법으로 **CLIP image embeddings 를 받아서, 원본 영상을 생성하는 것** 입니다.
                 
             :::{figure-md} 
             <img src="../../pics/DALLE2/img_10.png" alt="img_10" class="bg-primary mb-1" width="700px">
+
             GLIDE training process
             :::    
                 
@@ -163,19 +169,23 @@ Variations of an input image by encoding with CLIP and then decoding with a diff
     (3) 추가적으로, CLIP image embeddings 를 생성해내는 Prior 를 갖추고 실험
     
     결과 (3) 이 가장 훌륭했습니다. 특히 image diversity 가 뛰어났습니다.
-        
+
     :::{figure-md} 
     <img src="../../pics/DALLE2/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+
     3가지 경우의 아키텍쳐에 따른 실험 결과 from AssemblyAI youtube.
     :::
+
     :::{figure-md} 
     <img src="../../pics/DALLE2/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
+
     Samples using different conditioning signals for the same decoder.
     :::
-                
-        - 하지만.. **95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.** 따라서 공정한 실험이라고 보긴 어려울 것 같습니다.
-        - 또한.. **Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.**
-        - 개인적으로 저는 이러한 결과들을 보고, Prior 를 반드시 써야하는 근거에 대한 설득력이 조금 떨어진다고 생각했습니다.
+
+    - 하지만.. **95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.** 따라서 공정한 실험이라고 보긴 어려울 것 같습니다.
+    - 또한.. **Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.**
+    - 개인적으로 저는 이러한 결과들을 보고, Prior 를 반드시 써야하는 근거에 대한 설득력이 조금 떨어진다고 생각했습니다.
+
 - **왜 CLIP 을 써야할가요?**
     1. CLIP 은 어떤 객체를 묘사한 텍스트와, 그 객체의 시각적 발현 사이의 의미론적 관계를 학습했습니다. 따라서 저자들은 이러한 CLIP 의 능력이 Text-to-Image task 에서 매우 중요하다고 주장합니다.
     2. **CLIP 을 활용한 덕분에 이미지를 Manipulation 할 수 있습니다.**

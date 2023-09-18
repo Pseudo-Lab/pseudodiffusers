@@ -46,7 +46,7 @@ SD와 다르게 UNet 내의 transformer 블록의 heterogeneous 분포를 사용
 
 
 ## 2.2 Micro-Conditioning
-:::{figure-md} markdown-fig
+:::{figure-md} Figure 2
 <img src="../../pics/SDXL/fig_2.png" alt="fig_2" class="bg-primary mb-1" width="600">
 
 Figure 2
@@ -60,8 +60,8 @@ SD 1.4/1.5 같은 경우 512 픽셀 이하 크기의 이미지는 제외하고 �
 
 Inference 때, 사용자가 size-conditioning을 통해 해상도를 정할 수 있다. 모델은 conditioning 크기를 해상도에 의존적인 이미지 feature과 연관시키도록 하는 방법을 학습했다.
 
-:::{figure-md} markdown-fig
-<img src="../../pics/SDXL/fig_3.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+:::{figure-md} Figure 3
+<img src="../../pics/SDXL/fig_3.png" alt="fig_3" class="bg-primary mb-1" width="600">
 
 Figure 3
 :::
@@ -69,7 +69,7 @@ Figure 3
 또 ImageNet으로 평가를 진행해 size-conditiong에 대한 우수성을 입증했다.
 
 :::{figure-md} Table 2
-<img src="../../pics/SDXL/table_2.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/table_2.png" alt="table_2" class="bg-primary mb-1" width="600">
 
 Table 2
 :::
@@ -79,7 +79,7 @@ _CIN-512-only_ 는 512 미만의 이미지를 제외하고 학습을 시켰고(7
 
 ### Conditioning the Model on Cropping Parameters
 :::{figure-md} Figure 4
-<img src="../../pics/SDXL/fig_4.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/fig_4.png" alt="fig_4" class="bg-primary mb-1" width="600">
 
 Figure 4
 :::
@@ -97,7 +97,7 @@ Figure 4
 따라서, 다양한 비율을 동시에 다룰수 있도록 모델을 파인튜닝했다. 픽셀수를 1024x1024 만큼 수를 최대한 유지하면서 다양한 비율의 데이터를 사용했고, 64의 배수를 지니도록 했다.
 
 :::{figure-md} /Multi aspect ratio
-<img src="../../pics/StyO/multi_aspect_ratio.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/multi_aspect_ratio.png" alt="multi_aspect_ratio" class="bg-primary mb-1" width="600">
 
 Multi aspect ratio
 :::
@@ -110,7 +110,7 @@ Multi aspect ratio
 SD는 LDM 중 하나이고, autoencoder의 latent space를 학습한다. semantic composition은 LDM으로부터 표현되지만 저자들은 local, high frequency 디테일한 부분을 향상하고자 autoencoder를 향상했다. 끝으로, 원래의 SD를 사용한 autoencoder 아키텍처에서 더 큰 배치사이즈(256 vs 9)로 학습했고 추가로 exponential moving average를 사용한 가중치를 사용했다. 결과 autoencoder의 성능이 reconstruction 메트릭에 좋은 결과를 가져왔다.
 
 :::{figure-md} Table 3
-<img src="../../pics/SDXL/table_3.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/table_3.png" alt="table_3" class="bg-primary mb-1" width="600">
 
 Table 3
 :::
@@ -122,7 +122,7 @@ Table 3
 
 ### Refinement Stage
 :::{figure-md} Figure 6
-<img src="../../pics/SDXL/fig_6.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/fig_6.png" alt="fig_6" class="bg-primary mb-1" width="600">
 
 Figure 6
 :::
@@ -132,7 +132,7 @@ Figure 6
 이를 해결하기 위해, 고품질, 고해상도 데이터에 특화된 latent space 내에서 별도의 LDM을 학습했다. 기본 모델의 샘플에 대해 SDEdit에서 도입한 노이즈 제거 과정을 사용했다. eDiff-I 방법을 따랐으며, 이를 첫 200 노이즈 스케일에 refinement 모델을 사용했다. inference에서, base SDXL에서 latent를 추출하고 바로 diffuse와 denoise를 refinement 모델에 넣었다. 이 스텝은 선택이지만 배경 및 사람 얼굴과 같은 디테일에서 향상된 결과(그림 6, 13)를 얻을 수 있었다.
 
 :::{figure-md} Figure 13
-<img src="../../pics/SDXL/fig_13.png" alt="sdxl_result" class="bg-primary mb-1" width="600">
+<img src="../../pics/SDXL/fig_13.png" alt="fig_13" class="bg-primary mb-1" width="600">
 
 Figure 13
 :::

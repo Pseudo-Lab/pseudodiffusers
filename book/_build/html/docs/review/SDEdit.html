@@ -1,0 +1,642 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>SDEdit &#8212; Text-to-Image Generation</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="DALLE2" href="DALLE2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Paper/Code Review
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vae.html">
+   VAE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gan.html">
+   GAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycleGAN.html">
+   CycleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyleGAN.html">
+   StyleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDPM.html">
+   DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDIM.html">
+   DDIM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="diffusion_beats_GANs.html">
+   Diffusion Models Beat GANs on Image Synthesis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dalle.html">
+   DALL-E
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dreambooth.html">
+   DreamBooth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ControlNet.html">
+   ControlNet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Latent_Diffusion_Model.html">
+   Latent Diffusion Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Textual_Inversion.html">
+   Textual Inversion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CustomDiffusion.html">
+   Custom Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LoRA.html">
+   LoRA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="I-DDPM.html">
+   I-DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyO.html">
+   StyO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imagen.html">
+   Imagen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imagen_editor.html">
+   Imagen Editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DALLE2.html">
+   DALLE2
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   SDEdit
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Experiments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../experiments/js_exp.html">
+   Synthetic Data with Stable Diffusion for Foliar Disease Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../experiments/swjo_exp.html">
+   Training DreamBooth on Naver Webtoon Face Dataset
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/review/SDEdit.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
+                    class="fab fa-github"></i>저장소</button></a>
+        <a class="issues-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/SDEdit.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   학습 자료
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-works">
+   2. Related Works
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#score-based-generated-model">
+     2.1. Score Based Generated Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#score-based-generated-diffusion-model-sde-smld">
+     2.2. Score Based Generated Diffusion Model (SDE, SMLD)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   3. Methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   4. Experiments
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>SDEdit</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 내용 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   학습 자료
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#related-works">
+   2. Related Works
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#score-based-generated-model">
+     2.1. Score Based Generated Model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#score-based-generated-diffusion-model-sde-smld">
+     2.2. Score Based Generated Diffusion Model (SDE, SMLD)
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#methods">
+   3. Methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   4. Experiments
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="sdedit">
+<h1>SDEdit<a class="headerlink" href="#sdedit" title="Permalink to this headline">¶</a></h1>
+<section id="id1">
+<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p><strong>SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations</strong></p>
+<p><a class="reference external" href="https://arxiv.org/pdf/2108.01073.pdf">https://arxiv.org/pdf/2108.01073.pdf</a></p>
+</section>
+<hr class="docutils" />
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>최근 이미지 생성 분야에서의 놀라운 진화 속도가 계속 되어오고있다. (GAN, Diffusion etc..)</p></li>
+<li><p>이 중 이미지에 random noise를 추가해 denoising 과정을 학습하는 Diffusion을 통해 high quality의 이미지를 생성할 수 있다.</p></li>
+<li><p>또, 생성되는 이미지를 사용자가 원하는 방향으로 이끌어내려는 연구 분야도 활발히 진행되고있다 (a.k.a Editing)</p></li>
+<li><p>하지만, GAN 또는 Diffusion을 포함한 방식으로의 Editing에는 몇가지 단점이 있고, SDEdit은 그런 문제점을 해결해나아갔다는 점을 논문의 핵심 Contribution으로 제시하였다.</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Abstract에서 말한 Editing이란, 유저가 생성하고자 하는 Guide를 제시하면 모델은 해당 Guide를 기반으로 이미지를 생성해내는 Vision Task를 의미한다.</p></li>
+<li><p>이때 두가지의 평가요소가 있는데</p>
+<ol class="simple">
+<li><p>faithful : 유저의 Guide를 얼마나 잘 따르는지</p></li>
+<li><p>realistic : 생성된 이미지가 얼마나 real한지</p></li>
+</ol>
+</li>
+<li><p>기존의 연구방식은 크게 두가지로 나뉜다.</p>
+<ol class="simple">
+<li><p>GAN(Generative Adversarial Network) 기반</p></li>
+<li><p>Diffusion 기반</p></li>
+</ol>
+</li>
+<li><p>이 중 기존에 SOTA를 이룬 GAN 방식을 살펴보면 다시 크게 두가지로 나뉜다.</p>
+<ol class="simple">
+<li><p>conditional GAN</p>
+<ul>
+<li><p>특징 : 원본 이미지에서 Edit된 Pair 이미지를 직접 학습</p></li>
+<li><p>단점 : Pair Dataset이 반드시 필요하고, Condition마다 재학습을 요구</p></li>
+</ul>
+</li>
+<li><p>GAN Inversion</p>
+<ul>
+<li><p>특징 : 이미지를 Latent space로 Inversion한 후, Latent vactor를 조작해(manipulate) Edited image를 생성</p></li>
+<li><p>단점 : 새로운 loss function이 정의되어야하고, condition마다 재학습을 요구</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>그에 반해 SDEdit은</p>
+<ol class="simple">
+<li><p>Pair Dataset이 필요하지 않다.</p></li>
+<li><p>추가적인 loss function과 재학습이 모두 필요하지 않다.</p></li>
+<li><p>단 한개의 pretrained weight로 모든 condition의 이미지를 생성할 수 있다.</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="related-works">
+<h2>2. Related Works<a class="headerlink" href="#related-works" title="Permalink to this headline">¶</a></h2>
+<section id="score-based-generated-model">
+<h3>2.1. Score Based Generated Model<a class="headerlink" href="#score-based-generated-model" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="markdown-fig">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img02.png"><img alt="SDEdit_00" class="bg-primary mb-1" src="../../_images/img02.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Image 1</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Key Idea</p>
+<ul>
+<li><p><em>“Real 이미지들은 실제 데이터 확률 분포에서 높은 값을 유지할 것이다. 따라서, 이미지를 분포가 높은곳으로 update 해나가면 좋은 퀄리티의 이미지를 생성하는 모델을 얻어낼 수 있다.”</em></p></li>
+</ul>
+</li>
+<li><p>이 때, score는 확률 밀도 함수의 순간 기울기(미분값)로 정의한다.</p></li>
+</ul>
+</section>
+<section id="score-based-generated-diffusion-model-sde-smld">
+<h3>2.2. Score Based Generated Diffusion Model (SDE, SMLD)<a class="headerlink" href="#score-based-generated-diffusion-model-sde-smld" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img19.png"><img alt="SDEdit_01" class="bg-primary mb-1" src="../../_images/img19.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Image 2</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>위에서 제시한 Score Based Generated Model에 Diffusion 방식을 적용한 모델</p></li>
+<li><p>Forward Process 과정에서 이미지에 noise를 주입하는데, 이 때 Stochastic Differential Equation 수식을 이용해 noise를 주입한다.</p></li>
+<li><p>또다른 Diffusion 모델인 (Probability based) DDPM과의 차이는 Forward, Reverse process에서 정의하는 equation의 차이 정도이다.</p></li>
+<li><p>paper : <a class="reference external" href="https://arxiv.org/abs/1907.05600">https://arxiv.org/abs/1907.05600</a></p></li>
+</ul>
+</section>
+</section>
+<section id="methods">
+<h2>3. Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Pre-Setup</p>
+<ul class="simple">
+<li><p>Guide image의 Level을 정의한다.</p>
+<ol class="simple">
+<li><p>low-level guide : real 이미지위에 image patch를 추가</p></li>
+<li><p>mid-level guide : real 이미지위에 stroke를 추가</p></li>
+<li><p>high-level guide : 단순히 coarse한 stroke의 이미지</p></li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>Procedure</p>
+<ul>
+<li><p>DDPM과 달리 SDE의 경우, 완전히 noise화된 이미지 즉, random noise로부터 denoising을 진행할 필요가 없다.</p></li>
+<li><p>즉, 적절한 <span class="math notranslate nohighlight">\(t_{0} \in [0,1]\)</span>를 지정한 후 denoising process가 가능하다.</p></li>
+<li><p>이 때, 적절한 <span class="math notranslate nohighlight">\(t_{0}\)</span>를 정의해야하는데,</p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(t_{0}\)</span> = 1 (i.e. random noise)이면, realistic하지만, faithful 하지않은 이미지</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_{0}\)</span> = 0 이면, faithful하지만, artistic한 이미지</p></li>
+</ol>
+<p>를 얻게된다.</p>
+</li>
+<li><p>아래는 SDEdit의 적용 과정이다.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="experiments">
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Score</p>
+<ul>
+<li><p>Metric</p>
+<ul>
+<li><p>realistic : Kid score (lower is better)</p></li>
+<li><p>faithful : <span class="math notranslate nohighlight">\(L_{2}\)</span> score (lower is better)</p></li>
+<li><p>그 외 종합적인 평가 지표로 survey를 통한 수치를 제시하였다.</p></li>
+</ul>
+</li>
+<li><p>기존의 GAN 방식들과 비교했을 때 Kid, <span class="math notranslate nohighlight">\(L_{2}\)</span> score 모두 더 좋은 수치를 보이는 것을 확인할 수 있다.</p></li>
+</ul>
+</li>
+<li><p>Comparison with GAN (styleGAN-ADA + Inversion)</p>
+<ul>
+<li><p>SDEdit이 GAN Based model보다 더 자연스럽고(realistic), 유저의 guide를 잘 따르는(faithful)것을 확인할 수 있다.</p></li>
+</ul>
+</li>
+<li><p>Comparison with original blending technique</p>
+<ul>
+<li><p>기존의 전통적인 방식의 몇가지 blending 기법과 비교해도 더 좋은 성능과 수치를 보이는 것을 확인할 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="DALLE2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">DALLE2</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../experiments/js_exp.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      으로 PseudoLab<br/>
+    
+        &copy; 저작권 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

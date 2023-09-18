@@ -573,8 +573,8 @@ Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살�
 <p>위 왼쪽의 그림처럼, Salvador dali 의 그림에서 중요한 objects 들은 보존됩니다.<br>
 하지만 그들이 표현되는 방식이나 전체적인 그림의 style 은 조금씩 바뀝니다.<br>
 그럼에도, Salvador dali 특유의 초현실주의적 화풍은 유지되는 것 같네요.<br>
-Diffusion Decoder 덕분에, Non-essential details 는<br>
-마치 변주곡처럼 매번 새롭게 연주해낼 수 있는겁니다.</p>
+Diffusion Decoder 덕분에, <strong>Non-essential details</strong> 는<br>
+마치 <strong>변주곡처럼 매번 새롭게 연주</strong>해낼 수 있는겁니다.</p>
 </li>
 </ul>
 </li>
@@ -668,7 +668,7 @@ we combine the CLIP image embedding decoder with a prior model, <br>
 which generates possible CLIP image embeddings from a given text caption <br></p></li>
 </ol>
 <p>라고 하지만.. 딱히 와닿지는 않습니다.<br>
-실망하긴 이릅니다.<br>
+하지만 아직 실망하긴 이릅니다.<br>
 Prior 의 유무에 따라, 생성된 이미지의 품질을 비교하는 실험을 수행했다고 합니다.<br>
 한번 살펴볼까요?</p>
 <ol class="arabic simple" start="2">
@@ -677,7 +677,8 @@ Prior 의 유무에 따라, 생성된 이미지의 품질을 비교하는 실험
 (2) 추가적으로, CLIP text embeddings 를 조건으로 주어 실험<br>
 (3) 추가적으로, CLIP image embeddings 를 생성해내는 Prior 를 갖추고 실험<br>
 <br>
-실험 결과, (3) 이 가장 훌륭했습니다. 특히 image diversity 가 뛰어났습니다.</p></li>
+실험 결과, (3) 이 가장 훌륭했습니다.<br>
+특히 image diversity 가 뛰어났습니다.</p></li>
 </ol>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_11.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_11.png" style="width: 700px;" /></a>
@@ -694,12 +695,15 @@ Prior 의 유무에 따라, 생성된 이미지의 품질을 비교하는 실험
 <p>그렇지만, 의문이 말끔히 해소되지는 않습니다.
 왜냐하면..</p>
 <ul class="simple">
-<li><p><strong>95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.</strong> <br>
+<li><p><strong>95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를,</strong><br>
+<strong>(1) 과 (2) 방식에 그대로 적용해 실험했습니다.</strong> <br>
 따라서 공정한 실험이라고 보긴 어려울 것 같습니다.</p></li>
-<li><p><strong>Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.</strong></p></li>
+<li><p><strong>Decoder 를, True CLIP Image embeddings 와 Generated CLIP Image embeddings 로</strong><br>
+<strong>각각 학습시켰을 때의 성능 비교 실험은 없습니다.</strong>
+<br>
+개인적으로 저는 이러한 결과들을 보고,<br>
+Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 생각했습니다.</p></li>
 </ul>
-<p>개인적으로 저는 이러한 결과들을 보고,<br>
-Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 생각했습니다.</p>
 </li>
 </ul>
 <br>
@@ -718,11 +722,15 @@ Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 �
 </figure>
 <p>어떻게 이미지를 Manipulation 하는지는 곧 자세히 살펴보겠습니다.</p>
 </li>
+</ul>
+<br>
+<ul>
 <li><p><strong>그래서 이 모델은 뭐가 좋은가요?</strong></p>
 <ul>
 <li><p><strong>Evaluation 결과, Diversity 가 뛰어났습니다.</strong></p>
 <ul class="simple">
-<li><p>모델을 평가하기 위해서, 주어진 Caption 에 대한 GLIDE 의 생성물과 unCLIP 의 생성물을 사람들에게 제시하고,<br>
+<li><p>모델을 평가하기 위해서,<br>
+주어진 Caption 에 대한 GLIDE 의 생성물과 unCLIP 의 생성물을 사람들에게 제시하고,<br>
 <strong>Photorealism, Caption Similarity, Diversity</strong> 에 대해서 <strong>점수를 매기도록</strong> 했습니다.<br></p></li>
 </ul>
 <figure class="align-default" id="id13">
@@ -765,6 +773,7 @@ Decoder 가 x 를 복원하는데 필요한 잔여 정보들을 지닙니다.</p
 </ul>
 </li>
 </ul>
+  <br>
 <ol class="arabic">
 <li><p><strong>Variations</strong></p>
 <figure class="align-default" id="id16">
@@ -780,10 +789,12 @@ bipartite representation 에 DDIM with η &gt; 0 for sampling decoder 를 적용
 <li><p>η 가 커질수록, sampling steps 에는 stochasticity 가 생기고,<br>
 원본 이미지 x 근처에서 perceptually “centereed” 된 variations 를 만들어낼 것입니다.</p></li>
 <li><p>η 를 키우면, 우리는 CLIP image embedding 에 어떤 정보가 존재하고 어떤 정보가 유실되었는지 탐색 가능합니다.<br>
-<strong>→ 즉, CLIP latent space 를 탐색해낼 수 있는거죠 !</strong>
-<br></p></li>
+<strong>→ 즉, CLIP latent space 를 탐색해낼 수 있는거죠 !</strong></p></li>
 </ul>
 </li>
+</ol>
+  <br>
+<ol class="arabic" start="2">
 <li><p><strong>Interpolations</strong></p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_18.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_18.png" style="width: 700px;" /></a>
@@ -794,10 +805,12 @@ bipartite representation 에 DDIM with η &gt; 0 for sampling decoder 를 적용
 <ul class="simple">
 <li><p>이런 것도 됩니다.<br>
 input image 두 장의 CLIP image embeddings 를 interpolation 해서 Decoder 에 준다면,<br>
-interpolated image 를 생성할 수 있습니다.
-<br></p></li>
+interpolated image 를 생성할 수 있습니다.</p></li>
 </ul>
 </li>
+</ol>
+  <br>
+<ol class="arabic" start="3">
 <li><p><strong>Text Diffs</strong></p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_19.png"><img alt="img_19" class="bg-primary mb-1" src="../../_images/img_19.png" style="width: 700px;" /></a>
@@ -814,7 +827,7 @@ interpolated image 를 생성할 수 있습니다.
 <li><p><strong>z_t = target CLIP text embedding</strong> 이라면,</p></li>
 </ul>
 <figure class="align-default" id="id19">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_19_2.png"><img alt="img_19_2" class="bg-primary mb-1" src="../../_images/img_19_2.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_19_2.png"><img alt="img_19_2" class="bg-primary mb-1" src="../../_images/img_19_2.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 202 </span><span class="caption-text">text diff method</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -829,7 +842,7 @@ interpolated image 를 생성할 수 있습니다.
 </ul>
   <br>
 <ul>
-<li><p><strong>Robustness against typographic attaks</strong></p>
+<li><p><strong>typographic attaks 에 대해서, Robust 합니다.</strong></p>
 <ul>
 <li><p><strong>typographic attacks</strong> : 이미지 내 사물 위에, 글씨가 쓰여 있는 경우입니다.</p></li>
 <li><p>Multimodal 로 학습한 CLIP 은 텍스트에 있는 정보를 더 많이 활용해<br>
@@ -851,7 +864,11 @@ interpolated image 를 생성할 수 있습니다.
 </li>
 </ul>
 </li>
+</ul>
+<br>
+<ul>
 <li><p><strong>이 모델, 단점은 없나요?</strong></p>
+  <br>
 <ol class="arabic simple">
 <li><p><strong>객체(cubes)와 그들의 속성(colors) 을 매칭시키는 능력이 떨어집니다.</strong></p></li>
 </ol>
@@ -862,9 +879,11 @@ interpolated image 를 생성할 수 있습니다.
 </figcaption>
 </figure>
 <p>위 그림처럼, 파란 큐브 위에 빨간 큐브를 그려달라고 했을 때, <br>
-DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (attributes) 를 부여해야할지</strong> 헷갈려합니다.
-<br>
-2. <strong>텍스트를 일관성있게 생성하는 능력이 떨어집니다</strong></p>
+DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (attributes) 를 부여해야할지</strong> 헷갈려합니다.</p>
+  <br>
+<ol class="arabic simple" start="2">
+<li><p><strong>텍스트를 일관성있게 생성하는 능력이 떨어집니다</strong></p></li>
+</ol>
 <figure class="align-default" id="id22">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_22.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_22.png" style="width: 700px;" /></a>
 <figcaption>
@@ -872,9 +891,11 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 </figcaption>
 </figure>
 <p>물론 이것은 DALLE2 만의 문제는 아닙니다.<br>
-많은 text-to-image models 가 어려워하는 문제입니다.
-<br>
-3. <strong>복잡한 상황에서 디테일을 묘사하는 능력이 떨어집니다</strong></p>
+많은 text-to-image models 가 어려워하는 문제입니다.</p>
+  <br>
+<ol class="arabic simple" start="3">
+<li><p><strong>복잡한 상황에서 디테일을 묘사하는 능력이 떨어집니다</strong></p></li>
+</ol>
 <figure class="align-default" id="id23">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_23.png"><img alt="img_23" class="bg-primary mb-1" src="../../_images/img_23.png" style="width: 700px;" /></a>
 <figcaption>
@@ -883,17 +904,23 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 </figure>
 <p>복잡한 네온 사인들의 디테일들이 좀 떨어지는 것을 확인하실 수 있습니다.</p>
 </li>
-<li><p><strong>Method - Training</strong></p>
+</ul>
+<br>
 <ul>
+<li><p><strong>Method - Training</strong></p>
+<ul class="simple">
 <li><p>본 논문의 Method 에서는, unCLIP 모델의 아키텍쳐에 대한 수학적 justify 를 하고 있습니다.</p></li>
 <li><p>Training 데이터셋의 이미지를 x 라 합시다.</p></li>
 <li><p>그에 상응하는 text captions 을 y 라 합시다.</p></li>
 <li><p>각각에 대한 embeddings 인 Z_i, Z_t 를 기존의 CLIP 으로  생성합니다.</p>
-<ul class="simple">
+<ul>
 <li><p>image <strong>x —CLIP Image encoder—&gt; Z_i</strong> image embeddings</p></li>
 <li><p>text caption <strong>y —CLIP text encoder—&gt; Z_t</strong> text embeddings</p></li>
 </ul>
 </li>
+</ul>
+  <br>
+<ul>
 <li><p>저자의 주장</p>
 <ul>
 <li><p>unCLIP 으로, text caption y 로부터 image x 를 샘플링할 수 있다고 합니다.</p>
@@ -908,6 +935,9 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 <li><p><em><strong>The second equality holds because of the chain rule.</strong></em></p></li>
 </ul>
 </li>
+</ul>
+  <br>
+<ul>
 <li><p><strong>포스팅을 위한 부가 설명</strong></p>
 <ul>
 <li><p>z_t 도 y 의 deterministic function 이므로, 다음과 같이 쓸 수 있죠.</p>
@@ -924,25 +954,30 @@ True conditional distribution 인 P(x|y) 샘플링이 가능해지는 것입니�
 </li>
 </ul>
 </li>
+</ul>
+<br>
+<ul>
 <li><p><strong>DALL-E 2 Bias</strong></p>
+  <br>
 <p>개인적으로 DALLe2 와 같은 모델에 Bias 는 없는지 궁금해서 추가적으로 공부해봤습니다.<br>
 DALLE2 에 Bias 가 있는지,<br>
 Bias 가 있다면 해소하기 위해 어떤 노력을 하고있는지,<br>
-Bias 는 대체 어떻게 정량적으로 평가할 수 있는지 조사해봤습니다.<br>
-<br>
-결과부터 말씀드리면, DALLE2 처럼, 웹크롤링 데이터를 학습한 모델은 Bias 가 존재한다고 합니다.<br>
+Bias 는 대체 어떻게 정량적으로 평가할 수 있는지 조사해봤습니다.<br></p>
+<p>결과부터 말씀드리면, DALLE2 처럼, 웹크롤링 데이터를 학습한 모델은 Bias 가 존재한다고 합니다.<br>
 이런 Bias 를 해소하기 위해서 OpenAI 는 어떤 노력을 하고있는지부터 살펴볼까요?</p>
 <p><a class="github reference external" href="https://github.com/openai/dalle-2-preview/blob/main/system-card.md">openai/dalle-2-preview</a></p>
-<ul>
+<ul class="simple">
 <li><p><strong>현재 OpenAI 가 DALL-E 2 의 Safety 를 위해 하고 있는 노력</strong></p>
 <ol class="arabic simple">
 <li><p>학습 데이터에서 violent, hate, or adult images 를 제거함으로써<br>
 이러한 이미지들에 DALL-E 2 가 노출되는 시간을 최소화했다고 합니다.</p></li>
 <li><p>Safety policies 를 위반한 text prompts 혹은 생성된 images 를 자정하는 시스템을 보유하고 있다고 합니다.</p></li>
-<li><p>신뢰할 수 있는 전문가들과 DALL-E 2 에 대한 사전 검토를 진행했다고 합니다.
-<br></p></li>
+<li><p>신뢰할 수 있는 전문가들과 DALL-E 2 에 대한 사전 검토를 진행했다고 합니다.</p></li>
 </ol>
 </li>
+</ul>
+  <br>
+<ul>
 <li><p><strong>DALL-EVAL : 이미지 생성형 AI 의 Bias 를 평가하는 방법 소개</strong></p>
 <p>DALLE 와 같은 Text-to-Image 생성형 모델을 정량적으로 평가하는 기법이 있습니다.<br>
 바로 DALL-EVAL 입니다.</p>
@@ -1010,6 +1045,9 @@ BLIP-2 의 답변을 기반으로 Attributes Bias 측정합니다.</p></li>
 unbiased uniform distribution 으로부터 얼마나 skewed 되어있는지 측정합니다.</p></li>
 </ol>
 </li>
+</ul>
+  <br>
+<ul>
 <li><p><strong>실험 결과</strong></p>
 <figure class="align-default" id="id27">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_28.png"><img alt="img_28" class="bg-primary mb-1" src="../../_images/img_28.png" style="width: 700px;" /></a>
@@ -1029,12 +1067,12 @@ unbiased uniform distribution 으로부터 얼마나 skewed 되어있는지 측�
 <p><span class="caption-number">Fig. 212 </span><span class="caption-text">Comparison of overall gender and skin tone bias of each model.</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>위 실험 결과와 같이, Text-to-Image models 를 정량적으로 평가하는데에 성공했습니다.
-또한 Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델은 Bias 가 존재했습니다.
-이처럼 생성형 AI 의 Bias 를 측정하기 위한 다양한 노력이 지속되고 있습니다.
-미래에도 생성형 AI 가 더 안전하게 활용될 수 있기를 기대합니다.</p>
 </li>
 </ul>
+<p>위 실험 결과와 같이, DALL-EVAL 은 Text-to-Image models 를 정량적으로 평가하는데에 성공했습니다.<br>
+Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델은 Bias 가 존재했습니다.<br>
+이처럼 생성형 AI 의 Bias 를 측정하기 위한 다양한 노력이 지속되고 있습니다.<br>
+미래에는 생성형 AI 가 더 안전하게 활용될 수 있기를 기대합니다.</p>
 </li>
 </ul>
 </li>

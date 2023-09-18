@@ -132,8 +132,8 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
         위 왼쪽의 그림처럼, Salvador dali 의 그림에서 중요한 objects 들은 보존됩니다.<br>
         하지만 그들이 표현되는 방식이나 전체적인 그림의 style 은 조금씩 바뀝니다.<br>
         그럼에도, Salvador dali 특유의 초현실주의적 화풍은 유지되는 것 같네요.<br>
-        Diffusion Decoder 덕분에, Non-essential details 는<br>
-        마치 변주곡처럼 매번 새롭게 연주해낼 수 있는겁니다.
+        Diffusion Decoder 덕분에, **Non-essential details** 는<br>
+        마치 **변주곡처럼 매번 새롭게 연주**해낼 수 있는겁니다.
 
 
 <br>
@@ -197,7 +197,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     which generates possible CLIP image embeddings from a given text caption <br>
 
     라고 하지만.. 딱히 와닿지는 않습니다.<br>
-    실망하긴 이릅니다.<br>
+    하지만 아직 실망하긴 이릅니다.<br>
     Prior 의 유무에 따라, 생성된 이미지의 품질을 비교하는 실험을 수행했다고 합니다.<br>
     한번 살펴볼까요?
 
@@ -206,7 +206,8 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     (2) 추가적으로, CLIP text embeddings 를 조건으로 주어 실험<br>
     (3) 추가적으로, CLIP image embeddings 를 생성해내는 Prior 를 갖추고 실험<br>
     <br>
-    실험 결과, (3) 이 가장 훌륭했습니다. 특히 image diversity 가 뛰어났습니다.
+    실험 결과, (3) 이 가장 훌륭했습니다.<br>
+    특히 image diversity 가 뛰어났습니다.
 
     :::{figure-md} 
     <img src="../../pics/DALLE2/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
@@ -223,10 +224,12 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     그렇지만, 의문이 말끔히 해소되지는 않습니다.
     왜냐하면..
 
-    - **95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를, (1) 과 (2) 방식에 그대로 적용해 실험했습니다.** <br>
+    - **95% 의 학습 시간 동안, (3) 방식으로 학습한 Decoder 를,**<br>
+    **(1) 과 (2) 방식에 그대로 적용해 실험했습니다.** <br>
     따라서 공정한 실험이라고 보긴 어려울 것 같습니다.
-    - **Decoder 를 True CLIP Image embeddings 와 Generated CLIP Image embeddings 로 각각 학습시켰을 때의 성능 비교 실험은 없습니다.**
-    
+    - **Decoder 를, True CLIP Image embeddings 와 Generated CLIP Image embeddings 로**<br>
+    **각각 학습시켰을 때의 성능 비교 실험은 없습니다.**
+    <br>
     개인적으로 저는 이러한 결과들을 보고,<br>
     Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 생각했습니다.
 
@@ -244,10 +247,13 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     :::
 
     어떻게 이미지를 Manipulation 하는지는 곧 자세히 살펴보겠습니다.
-        
+
+<br>
+
 - **그래서 이 모델은 뭐가 좋은가요?**
     - **Evaluation 결과, Diversity 가 뛰어났습니다.**
-        - 모델을 평가하기 위해서, 주어진 Caption 에 대한 GLIDE 의 생성물과 unCLIP 의 생성물을 사람들에게 제시하고,<br>
+        - 모델을 평가하기 위해서,<br>
+        주어진 Caption 에 대한 GLIDE 의 생성물과 unCLIP 의 생성물을 사람들에게 제시하고,<br>
         **Photorealism, Caption Similarity, Diversity** 에 대해서 **점수를 매기도록** 했습니다.<br>
         
             
@@ -284,6 +290,8 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
             - x_T 는 DDIM inversion 을 z_i 가 condition 된 x 에 적용해 얻으며,<br> 
             Decoder 가 x 를 복원하는데 필요한 잔여 정보들을 지닙니다.
         
+        <br>
+
         1. **Variations**
 
             :::{figure-md} 
@@ -299,7 +307,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
             원본 이미지 x 근처에서 perceptually “centereed” 된 variations 를 만들어낼 것입니다.
             - η 를 키우면, 우리는 CLIP image embedding 에 어떤 정보가 존재하고 어떤 정보가 유실되었는지 탐색 가능합니다.<br> 
             **→ 즉, CLIP latent space 를 탐색해낼 수 있는거죠 !**
+        
         <br>
+
         2. **Interpolations**
             
             :::{figure-md} 
@@ -311,7 +321,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
             - 이런 것도 됩니다.<br>
             input image 두 장의 CLIP image embeddings 를 interpolation 해서 Decoder 에 준다면,<br>
             interpolated image 를 생성할 수 있습니다.
+        
         <br>
+
         3. **Text Diffs**
             
             :::{figure-md} 
@@ -327,7 +339,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
                 - **z_t = target CLIP text embedding** 이라면,
                 
                 :::{figure-md} 
-                <img src="../../pics/DALLE2/img_19_2.png" alt="img_19_2" class="bg-primary mb-1" width="700px">
+                <img src="../../pics/DALLE2/img_19_2.png" alt="img_19_2" class="bg-primary mb-1" width="400px">
 
                 text diff method
                 :::
@@ -337,7 +349,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     
     <br>
     
-    - **Robustness against typographic attaks**
+    - **typographic attaks 에 대해서, Robust 합니다.**
         - **typographic attacks** : 이미지 내 사물 위에, 글씨가 쓰여 있는 경우입니다.
         - Multimodal 로 학습한 CLIP 은 텍스트에 있는 정보를 더 많이 활용해<br> 
         사물을 판단하는 경향이 있습니다.
@@ -352,8 +364,12 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
             
             이처럼 DALLE2 는 typographic attacks 에 더욱 robust 합니다.
 
-        
+<br>
+
 - **이 모델, 단점은 없나요?**
+    
+    <br>
+
     1. **객체(cubes)와 그들의 속성(colors) 을 매칭시키는 능력이 떨어집니다.**
         
     :::{figure-md} 
@@ -364,7 +380,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 
     위 그림처럼, 파란 큐브 위에 빨간 큐브를 그려달라고 했을 때, <br>
     DALLE2 는 **아래의 큐브와 위의 큐브에 각각 어떤 색상 (attributes) 를 부여해야할지** 헷갈려합니다.
+    
     <br>
+
     2. **텍스트를 일관성있게 생성하는 능력이 떨어집니다**
         
     :::{figure-md} 
@@ -375,7 +393,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     
     물론 이것은 DALLE2 만의 문제는 아닙니다.<br>
     많은 text-to-image models 가 어려워하는 문제입니다.
+    
     <br>
+    
     3. **복잡한 상황에서 디테일을 묘사하는 능력이 떨어집니다**
         
     :::{figure-md} 
@@ -385,7 +405,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
     :::
     
     복잡한 네온 사인들의 디테일들이 좀 떨어지는 것을 확인하실 수 있습니다.
-    
+
+<br>
+
 - **Method - Training**
     - 본 논문의 Method 에서는, unCLIP 모델의 아키텍쳐에 대한 수학적 justify 를 하고 있습니다.
     - Training 데이터셋의 이미지를 x 라 합시다.
@@ -394,6 +416,8 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
         - image **x —CLIP Image encoder—> Z_i** image embeddings
         - text caption **y —CLIP text encoder—> Z_t** text embeddings
     
+    <br>
+
     - 저자의 주장
         - unCLIP 으로, text caption y 로부터 image x 를 샘플링할 수 있다고 합니다.
             
@@ -406,6 +430,8 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
         - ***The first equality holds because z_i is a deterministic function of x.***
         - ***The second equality holds because of the chain rule.***
     
+    <br>
+
     - **포스팅을 위한 부가 설명**
         - z_t 도 y 의 deterministic function 이므로, 다음과 같이 쓸 수 있죠.
             
@@ -417,14 +443,18 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
         Prior 를 사용해 Z_t 로부터 Z_i 를 샘플링하고,<br>
         Decoder 를 사용해 x 를 샘플링함으로써<br>
         True conditional distribution 인 P(x|y) 샘플링이 가능해지는 것입니다.
-    
+
+<br>
+
 - **DALL-E 2 Bias**
-    
+
+    <br>
+
     개인적으로 DALLe2 와 같은 모델에 Bias 는 없는지 궁금해서 추가적으로 공부해봤습니다.<br>
     DALLE2 에 Bias 가 있는지,<br>
     Bias 가 있다면 해소하기 위해 어떤 노력을 하고있는지,<br>
     Bias 는 대체 어떻게 정량적으로 평가할 수 있는지 조사해봤습니다.<br>
-    <br>
+    
     결과부터 말씀드리면, DALLE2 처럼, 웹크롤링 데이터를 학습한 모델은 Bias 가 존재한다고 합니다.<br>
     이런 Bias 를 해소하기 위해서 OpenAI 는 어떤 노력을 하고있는지부터 살펴볼까요?
 
@@ -435,7 +465,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
         이러한 이미지들에 DALL-E 2 가 노출되는 시간을 최소화했다고 합니다.
         2. Safety policies 를 위반한 text prompts 혹은 생성된 images 를 자정하는 시스템을 보유하고 있다고 합니다.
         3. 신뢰할 수 있는 전문가들과 DALL-E 2 에 대한 사전 검토를 진행했다고 합니다.
+    
     <br>
+    
     - **DALL-EVAL : 이미지 생성형 AI 의 Bias 를 평가하는 방법 소개**
         
         DALLE 와 같은 Text-to-Image 생성형 모델을 정량적으로 평가하는 기법이 있습니다.<br>
@@ -485,6 +517,9 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
                     BLIP-2 의 답변을 기반으로 Attributes Bias 측정합니다.
             3. 탐지된 Gender, Skin tone, Attributes 가<br>
             unbiased uniform distribution 으로부터 얼마나 skewed 되어있는지 측정합니다.
+        
+        <br>
+
         - **실험 결과**
             
             :::{figure-md} 
@@ -505,7 +540,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
             Comparison of overall gender and skin tone bias of each model. 
             :::
 
-            위 실험 결과와 같이, Text-to-Image models 를 정량적으로 평가하는데에 성공했습니다.
-            또한 Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델은 Bias 가 존재했습니다.
-            이처럼 생성형 AI 의 Bias 를 측정하기 위한 다양한 노력이 지속되고 있습니다.
-            미래에도 생성형 AI 가 더 안전하게 활용될 수 있기를 기대합니다.
+        위 실험 결과와 같이, DALL-EVAL 은 Text-to-Image models 를 정량적으로 평가하는데에 성공했습니다.<br>
+        Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델은 Bias 가 존재했습니다.<br>
+        이처럼 생성형 AI 의 Bias 를 측정하기 위한 다양한 노력이 지속되고 있습니다.<br>
+        미래에는 생성형 AI 가 더 안전하게 활용될 수 있기를 기대합니다.

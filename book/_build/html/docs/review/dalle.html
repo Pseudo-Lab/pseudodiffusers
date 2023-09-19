@@ -1,520 +1,456 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>DALL-E &#8212; Text-to-Image Generation</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/dalle';</script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DreamBooth" href="dreambooth.html" />
     <link rel="prev" title="Diffusion Models Beat GANs on Image Synthesis" href="diffusion_beats_GANs.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Text-to-Image Generation</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   [PseudoLab] Text-to-Image Generation (feat. Diffusion)
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Paper/Code Review
- </span>
-</p>
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="vae.html">
-   VAE
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gan.html">
-   GAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="cycleGAN.html">
-   CycleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="StyleGAN.html">
-   StyleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DDPM.html">
-   DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DDIM.html">
-   DDIM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="diffusion_beats_GANs.html">
-   Diffusion Models Beat GANs on Image Synthesis
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   DALL-E
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dreambooth.html">
-   DreamBooth
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ControlNet.html">
-   ControlNet
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Latent_Diffusion_Model.html">
-   Latent Diffusion Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Textual_Inversion.html">
-   Textual Inversion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CustomDiffusion.html">
-   Custom Diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LoRA.html">
-   LoRA
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="I-DDPM.html">
-   I-DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="StyO.html">
-   StyO
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagen.html">
-   Imagen
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagen_editor.html">
-   Imagen Editor
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DALLE2.html">
-   DALLE2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="SDEdit.html">
-   SDEdit
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Experiments
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../experiments/js_exp.html">
-   Synthetic Data with Stable Diffusion for Foliar Disease Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../experiments/swjo_exp.html">
-   Training DreamBooth on Naver Webtoon Face Dataset
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
-                title="탐색 전환" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/review/dalle.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
-                    class="fab fa-github"></i>저장소</button></a>
-        <a class="issues-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/dalle.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/dalle.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
-        title="전체 화면으로보기"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/dalle.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DALL-E</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 내용
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#background">
-   2. Background
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gpt-3">
-     GPT-3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vq-vae">
-     VQ-VAE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology">
-   3. Methodology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitation-of-previous-works">
-   Limitation of Previous Works
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dall-e-overview">
-   DALL-E Overview
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stage-1-training-vq-vae">
-     Stage 1: Training VQ-VAE
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stage-2-training-an-autoregressive-transformer">
-     Stage 2: Training an Autoregressive Transformer
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dall-e-pipeline">
-   DALL-E Pipeline 예시
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology-details">
-   Methodology Details
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-equations">
-     DALL-E Equations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-stage-1-learning-the-visual-codebook">
-     DALL-E 학습과정 Stage 1: Learning the VIsual Codebook
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-stage-2-learning-the-prior">
-     DALL-E 학습과정 Stage 2: Learning the Prior
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpt-3">GPT-3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vq-vae">VQ-VAE</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">3. Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation-of-previous-works">Limitation of Previous Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-overview">DALL-E Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-training-vq-vae">Stage 1: Training VQ-VAE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-training-an-autoregressive-transformer">Stage 2: Training an Autoregressive Transformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-pipeline">DALL-E Pipeline 예시</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-details">Methodology Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-equations">DALL-E Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-stage-1-learning-the-visual-codebook">DALL-E 학습과정 Stage 1: Learning the VIsual Codebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-stage-2-learning-the-prior">DALL-E 학습과정 Stage 2: Learning the Prior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>DALL-E</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> 내용 </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   1. Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#background">
-   2. Background
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gpt-3">
-     GPT-3
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#vq-vae">
-     VQ-VAE
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology">
-   3. Methodology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitation-of-previous-works">
-   Limitation of Previous Works
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dall-e-overview">
-   DALL-E Overview
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stage-1-training-vq-vae">
-     Stage 1: Training VQ-VAE
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stage-2-training-an-autoregressive-transformer">
-     Stage 2: Training an Autoregressive Transformer
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#dall-e-pipeline">
-   DALL-E Pipeline 예시
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#methodology-details">
-   Methodology Details
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-equations">
-     DALL-E Equations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-stage-1-learning-the-visual-codebook">
-     DALL-E 학습과정 Stage 1: Learning the VIsual Codebook
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dall-e-stage-2-learning-the-prior">
-     DALL-E 학습과정 Stage 2: Learning the Prior
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#results">
-   Results
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
@@ -531,9 +467,9 @@
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="dall-e">
-<h1>DALL-E<a class="headerlink" href="#dall-e" title="Permalink to this headline">¶</a></h1>
+<h1>DALL-E<a class="headerlink" href="#dall-e" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>GPT-3 기반 모델이며 120억개 parameter 수와 2.5억 데이터 (text,image) set으로 학습</p></li>
 <li><p>Autoregressive 한 모델링을 통하여 image와 text를 이용하여 text-to-image generation task를 수행</p></li>
@@ -543,24 +479,24 @@
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig1.png"><img alt="fig1" class="bg-primary mb-1" src="../../_images/fig1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Images generated using DALL-E</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 72 </span><span class="caption-text">Images generated using DALL-E</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig21.png"><img alt="fig2" class="bg-primary mb-1" src="../../_images/fig21.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Images generated using DALL-E</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 73 </span><span class="caption-text">Images generated using DALL-E</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="background">
-<h2>2. Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<h2>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>GPT-3와 VQ-VAE를 활용하여 나온 논문.</p></li>
 <li><p>VQ-VAE를 먼저 학습하고, Autoregressive Transformer을 순차적으로 학습하여 zero-shot architecture을 구축.</p></li>
 </ul>
 <section id="gpt-3">
-<h3>GPT-3<a class="headerlink" href="#gpt-3" title="Permalink to this headline">¶</a></h3>
+<h3>GPT-3<a class="headerlink" href="#gpt-3" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Autoregressive Language Model며 few-shot learning을 통해 fine-tuning 없이 높은 성능을 냄 *(fine-tuning 을 할 수는 있지만 본 논문에서는 task-agnostic performance 에 중점을 맞춰 Few shot을 함)</p></li>
 <li><p>GPT-3 는 transformer에서 decoder 부분만 사용 (GPT-2 와 유사한 구조를 가지고 있음 )</p></li>
@@ -569,18 +505,18 @@
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig3.png"><img alt="fig3" class="bg-primary mb-1" src="../../_images/fig3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Transformer 아키텍쳐 \ (source: <a class="reference external" href="https://arxiv.org/pdf/2005.14165.pdf">https://arxiv.org/pdf/2005.14165.pdf</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 74 </span><span class="caption-text">Transformer 아키텍쳐 \ (source: <a class="reference external" href="https://arxiv.org/pdf/2005.14165.pdf">https://arxiv.org/pdf/2005.14165.pdf</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <img alt="GPT-3 GIF" src="../../_images/fig4.gif" />
 <figcaption>
-<p><span class="caption-number">Fig. 75 </span><span class="caption-text">GPT 3 Animation \ (source: <a class="reference external" href="https://jalammar.github.io/how-gpt3-works-visualizations-animations/">https://jalammar.github.io/how-gpt3-works-visualizations-animations/</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 75 </span><span class="caption-text">GPT 3 Animation \ (source: <a class="reference external" href="https://jalammar.github.io/how-gpt3-works-visualizations-animations/">https://jalammar.github.io/how-gpt3-works-visualizations-animations/</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="vq-vae">
-<h3>VQ-VAE<a class="headerlink" href="#vq-vae" title="Permalink to this headline">¶</a></h3>
+<h3>VQ-VAE<a class="headerlink" href="#vq-vae" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Encoder에서 나온 output은 discrete 하며 posterior 과 prior 이 categorical distribution을 갖는다고 가정함.</p></li>
 <li><p>CNN (encoder) 을 거친 각 D차원의 위치에 <span class="math notranslate nohighlight">\(H \times W\)</span> 그리드로 이미지를 나누고 embedding space (Codebook) 에서 <span class="math notranslate nohighlight">\(𝑒_1\)</span>부터 <span class="math notranslate nohighlight">\(𝑒_𝑘\)</span> 중에서 가까운 1개 embedding code로 변환.</p></li>
@@ -589,29 +525,29 @@
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig5.png"><img alt="fig5" class="bg-primary mb-1" src="../../_images/fig5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 76 </span><span class="caption-text">VQ-VAE 아키텍쳐, Loss 함수 \ (source: <a class="reference external" href="https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1">https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 76 </span><span class="caption-text">VQ-VAE 아키텍쳐, Loss 함수 \ (source: <a class="reference external" href="https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1">https://velog.io/&#64;p2yeong/Understanding-VQ-VAE-DALL-E-Explained-Pt.-1</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig6.png"><img alt="fig6" class="bg-primary mb-1" src="../../_images/fig6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Quantization of VQ-VAE</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 77 </span><span class="caption-text">Quantization of VQ-VAE</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="methodology">
-<h2>3. Methodology<a class="headerlink" href="#methodology" title="Permalink to this headline">¶</a></h2>
+<h2>3. Methodology<a class="headerlink" href="#methodology" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="limitation-of-previous-works">
-<h2>Limitation of Previous Works<a class="headerlink" href="#limitation-of-previous-works" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
+<h2>Limitation of Previous Works<a class="headerlink" href="#limitation-of-previous-works" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
 <li><p>Memory/Bottleneck Issue</p></li>
 </ol>
 <ul class="simple">
 <li><p>각 Image에서 나오는 pixel을 직접적으로 image token을 사용하면 고화질 이미지일수록 너무 많은 메모리량이 필요해서 “비효율적”</p></li>
 </ul>
-<ol class="simple">
+<ol class="arabic simple" start="2">
 <li><p>Short-range dependence modeling between pixels</p></li>
 </ol>
 <ul class="simple">
@@ -621,9 +557,9 @@
 <p>이 2가지 문제점을 극복하고자 Two-stage training process 제안</p>
 </section>
 <section id="dall-e-overview">
-<h2>DALL-E Overview<a class="headerlink" href="#dall-e-overview" title="Permalink to this headline">¶</a></h2>
+<h2>DALL-E Overview<a class="headerlink" href="#dall-e-overview" title="Permalink to this heading">#</a></h2>
 <section id="stage-1-training-vq-vae">
-<h3>Stage 1: Training VQ-VAE<a class="headerlink" href="#stage-1-training-vq-vae" title="Permalink to this headline">¶</a></h3>
+<h3>Stage 1: Training VQ-VAE<a class="headerlink" href="#stage-1-training-vq-vae" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>\textbf{Discrete VAE}를 이용하여 <span class="math notranslate nohighlight">\(256 \times 256\)</span> RGB image \rightarrow  <span class="math notranslate nohighlight">\(32 \times 32\)</span> 이미지 토큰으로 압축</p></li>
 <li><p>각 이미지 토큰은 8,192개의 code 값 중에 하나 배정</p></li>
@@ -631,7 +567,7 @@
 </ul>
 </section>
 <section id="stage-2-training-an-autoregressive-transformer">
-<h3>Stage 2: Training an Autoregressive Transformer<a class="headerlink" href="#stage-2-training-an-autoregressive-transformer" title="Permalink to this headline">¶</a></h3>
+<h3>Stage 2: Training an Autoregressive Transformer<a class="headerlink" href="#stage-2-training-an-autoregressive-transformer" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>\textbf{최대 256 BPE-Encoded text tokens}들과 1024 image tokens (<span class="math notranslate nohighlight">\(32 \times 32\)</span>) 를 연속적으로 입력함 (concatenate)</p></li>
 <li><p>Text token과 Image Tokens 들의 joint distribution (결합 분포)를 모델링하여 autoregressive transformer을 학습</p></li>
@@ -639,34 +575,34 @@
 </section>
 </section>
 <section id="dall-e-pipeline">
-<h2>DALL-E Pipeline 예시<a class="headerlink" href="#dall-e-pipeline" title="Permalink to this headline">¶</a></h2>
+<h2>DALL-E Pipeline 예시<a class="headerlink" href="#dall-e-pipeline" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig7.png"><img alt="fig7" class="bg-primary mb-1" src="../../_images/fig7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 78 </span><span class="caption-text">DALL-E 시각화 \ (source:<a class="reference external" href="https://jiho-ml.com/weekly-nlp-40/">https://jiho-ml.com/weekly-nlp-40/</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 78 </span><span class="caption-text">DALL-E 시각화 \ (source:<a class="reference external" href="https://jiho-ml.com/weekly-nlp-40/">https://jiho-ml.com/weekly-nlp-40/</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig8.png"><img alt="fig8" class="bg-primary mb-1" src="../../_images/fig8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 79 </span><span class="caption-text">DALL-E 파이프라인 \ (source:<a class="reference external" href="https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;t=1729s">https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;t=1729s</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 79 </span><span class="caption-text">DALL-E 파이프라인 \ (source:<a class="reference external" href="https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;amp;t=1729s">https://www.youtube.com/watch?v=CQoM0r2kMvI&amp;t=1729s</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="methodology-details">
-<h2>Methodology Details<a class="headerlink" href="#methodology-details" title="Permalink to this headline">¶</a></h2>
+<h2>Methodology Details<a class="headerlink" href="#methodology-details" title="Permalink to this heading">#</a></h2>
 <section id="dall-e-equations">
-<h3>DALL-E Equations<a class="headerlink" href="#dall-e-equations" title="Permalink to this headline">¶</a></h3>
+<h3>DALL-E Equations<a class="headerlink" href="#dall-e-equations" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig9.png"><img alt="fig9" class="bg-primary mb-1" src="../../_images/fig9.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 80 </span><span class="caption-text">equation 1</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 80 </span><span class="caption-text">equation 1</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig10.png"><img alt="fig10" class="bg-primary mb-1" src="../../_images/fig10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 81 </span><span class="caption-text">equation 2: Maximizing ELBO</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 81 </span><span class="caption-text">equation 2: Maximizing ELBO</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>x: images, y: captions , z: encoded RGB image tokens</p>
@@ -675,7 +611,7 @@
 <p><strong><span style="color: purple;">𝑝<sub>ψ (purple)</sub></span></strong>: transformer 모델로 모델링한 text와 image token들의 결합 분포 (joint distribution)</p>
 </section>
 <section id="dall-e-stage-1-learning-the-visual-codebook">
-<h3>DALL-E 학습과정 Stage 1: Learning the VIsual Codebook<a class="headerlink" href="#dall-e-stage-1-learning-the-visual-codebook" title="Permalink to this headline">¶</a></h3>
+<h3>DALL-E 학습과정 Stage 1: Learning the VIsual Codebook<a class="headerlink" href="#dall-e-stage-1-learning-the-visual-codebook" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Transformer을 고정하고 dVAE encoder &amp; decoder (𝑞_Φ , 𝑝_𝜃) 을 학습함</p>
 <ul>
@@ -694,7 +630,7 @@
 </ul>
 </section>
 <section id="dall-e-stage-2-learning-the-prior">
-<h3>DALL-E 학습과정 Stage 2: Learning the Prior<a class="headerlink" href="#dall-e-stage-2-learning-the-prior" title="Permalink to this headline">¶</a></h3>
+<h3>DALL-E 학습과정 Stage 2: Learning the Prior<a class="headerlink" href="#dall-e-stage-2-learning-the-prior" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Transformer을 고정하고 dVAE encoder &amp; decoder (<span class="math notranslate nohighlight">\(q_{phi}\)</span> , <span class="math notranslate nohighlight">\(p_{\theta}\)</span>) transformer의 prior distribution <span class="math notranslate nohighlight">\(p_{\psi}\)</span>를 학습함.</p></li>
 <li><p>이때, <span class="math notranslate nohighlight">\(p_{\psi}\)</span>의 ELB를 maximize 하며 120억개의 parameter를 가진 sparse transformer 구조를 사용함</p></li>
@@ -705,13 +641,13 @@
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig11.png"><img alt="fig11" class="bg-primary mb-1" src="../../_images/fig11.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 82 </span><span class="caption-text">Text-to-text attention: causal attention mask
-Image-to-image attention: row/column/convolutional attention mask 적용</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+Image-to-image attention: row/column/convolutional attention mask 적용</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="results">
-<h2>Results<a class="headerlink" href="#results" title="Permalink to this headline">¶</a></h2>
+<h2>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>추론 시에는 text에 대하여 N개의 이미지를 생성.</p></li>
 <li><p>Best of N개는 \textbf{N개 생성 후 best}를 골라서 선택 함.</p></li>
@@ -720,7 +656,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig12.png"><img alt="fig12" class="bg-primary mb-1" src="../../_images/fig12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 83 </span><span class="caption-text">DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prompt랑 더 유사한 결과물이 나옴.</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 83 </span><span class="caption-text">DALL-E 결과물. Best를 고를때 N 수가 증가할수록 주어진 text prompt랑 더 유사한 결과물이 나옴.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -730,7 +666,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig13.png"><img alt="fig13" class="bg-primary mb-1" src="../../_images/fig13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 84 </span><span class="caption-text">선택하는 이미지 개수에 따른 성능 향상</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 84 </span><span class="caption-text">선택하는 이미지 개수에 따른 성능 향상</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -740,7 +676,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig14.png"><img alt="fig14" class="bg-primary mb-1" src="../../_images/fig14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 85 </span><span class="caption-text">DF-GAN 이랑 Qualitative Results 비교</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 85 </span><span class="caption-text">DF-GAN 이랑 Qualitative Results 비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -752,12 +688,12 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig15.png"><img alt="fig15" class="bg-primary mb-1" src="../../_images/fig15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 86 </span><span class="caption-text">MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 86 </span><span class="caption-text">MS-COCO 와 CUB dataset에서 FID/IS 결과값 비교</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>GPT-3의 확장 모델로 120억개의 parameter과 autoregressive Transformer (Decoder only) 기반 모델링을 통해 text-to-image generation task를 뛰어나게 해결함.</p></li>
 <li><p>Zero-shot learning에서 다른 모델보다 훌륭한 일반화 성능을 보임</p></li>
@@ -772,7 +708,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig16.png"><img alt="fig16" class="bg-primary mb-1" src="../../_images/fig16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Limitation을 보여주는 결과물.</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">Limitation을 보여주는 결과물.</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -790,52 +726,130 @@ Image-to-image attention: row/column/convolutional attention mask 적용</span><
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./docs/review"
+            name: "python3",
+            path: "./docs\review"
         },
         predefinedOutput: true
     }
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="diffusion_beats_GANs.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Diffusion Models Beat GANs on Image Synthesis</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="diffusion_beats_GANs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diffusion Models Beat GANs on Image Synthesis</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="dreambooth.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="dreambooth.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">DreamBooth</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      으로 PseudoLab<br/>
-    
-        &copy; 저작권 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gpt-3">GPT-3</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vq-vae">VQ-VAE</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology">3. Methodology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitation-of-previous-works">Limitation of Previous Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-overview">DALL-E Overview</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-training-vq-vae">Stage 1: Training VQ-VAE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-training-an-autoregressive-transformer">Stage 2: Training an Autoregressive Transformer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-pipeline">DALL-E Pipeline 예시</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methodology-details">Methodology Details</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-equations">DALL-E Equations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-stage-1-learning-the-visual-codebook">DALL-E 학습과정 Stage 1: Learning the VIsual Codebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dall-e-stage-2-learning-the-prior">DALL-E 학습과정 Stage 2: Learning the Prior</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
 
-      </div>
-    </div>
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

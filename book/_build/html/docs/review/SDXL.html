@@ -1,0 +1,694 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis &#8212; Text-to-Image Generation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/SDXL';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/SDXL.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/SDXL.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-conditioning">2.2 Micro-Conditioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-the-model-on-cropping-parameters">Conditioning the Model on Cropping Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-aspect-training">2.3 Multi-Aspect Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-autoencoder">2.4 Improved Autoencoder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-everything-together">2.5 Putting Everything Together</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refinement-stage">Refinement Stage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> {An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion}, {<a class="reference external" href="http://cs.CV">cs.CV</a>}</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/pdf/2307.01952.pdf">https://arxiv.org/pdf/2307.01952.pdf</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/Stability-AI/generative-models">Stability-AI/generative-models</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> <span class="xref myst">Jun-Hyoung Lee</span></p></li>
+<li><p><strong>Last updated on May. 31. 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="sdxl-improving-latent-diffusion-models-for-high-resolution-image-synthesis">
+<h1>SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis<a class="headerlink" href="#sdxl-improving-latent-diffusion-models-for-high-resolution-image-synthesis" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<p>SDXL은 T2I latent diffusion 모델이다. Stable Diffusion과 비교하면, SDXL은 세 배 더 큰 규모의 UNet을 포함한다. 더 많은 attention 블록과 더 큰 cross attention context 가 SDXL에서 두 번째 text encoder로 사용되면서 모델 파라미터가 증가했다. 다수의 새로운 conditioning 방법과 다양한 비율에 맞도록 SDXL을 학습할 수 있도록 설계했다. 또한 후처리 방식의 image to image 기술을 사용해 SDXL의 생성 샘플의 시각적인 fidelity를 향상시킨 refinement model을 소개한다. SDXL은 대폭 향상된 성능을 보여준다.</p>
+<figure class="align-default" id="sdxl-result">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sdxl_result.png"><img alt="sdxl_result" class="bg-primary mb-1" src="../../_images/sdxl_result.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">SDXL result</span><a class="headerlink" href="#sdxl-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p>세 가지 주요 기능이라 볼 수 있는데,</p>
+<ol class="arabic simple">
+<li><p>3배 더 큰 UNet backbone,</p></li>
+<li><p>어떤 형태의 추가 감독(supervision)없는 간단하면서도 효과적인 추가의 conditioning 기술</p></li>
+<li><p>noising-denoising 과정을 적용해 시각적 품질을 향상하는 latent를 생성할 수 있는 별개의 diffusion 기반 img-to-img refinement 모델을 포함한다.</p></li>
+</ol>
+<figure class="align-default" id="figure-1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 1</span><a class="headerlink" href="#figure-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>그림 1에서 왼쪽 그림을 보면 추가의 refinement 단계를 추가해 성능을 높인 SDXL이 기존 SD보다 성능이 우수한 것을 확인할 수 있다. 오른쪽 그림은 아키텍처를 시각화했는데, 128x128 크기의 latent를 생성한다. 그 후 고해상도 refinement 모델을 활용하고 동일한 프롬프트를 활용해 첫 번째 단계에서 생성된 latent를 SDEdit을 적용한다. SDXL과 refinement 모델은 동일한 autoencoder를 사용한다.</p>
+<figure class="align-default" id="table-1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_1.png"><img alt="table_1" class="bg-primary mb-1" src="../../_images/table_1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Table 1</span><a class="headerlink" href="#table-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SD와 다르게 UNet 내의 transformer 블록의 heterogeneous 분포를 사용했다는 점이다. 테이블 1을 참고하면 highest feature level에서 transformer 블럭을 사용했고, lower level에서는 2, 10 개의 블럭을 사용했고, UNet에서 lowest level(8x downsampling)을 제거했다. text conditioning을 위한 pretrained 된 text encoder를 사용했다. 특히, CLIP Vit-L과 함께 OpenCLIP ViT-bigG를 사용했고, 채널 축에 두 번째 text encoder의 output을 concat 했다. 게다가 text input으로 모델에 condition을 주기 위해 cross attention 레이어를 사용했으며, 또 OpenCLIP로부터 pooled text embedding을 모델에 condition으로 추가했다. 이러한 변화는 UNet의 파라미터 사이즈가 2.6B로 증가했다. text encoder는 817M 파라미터를 가지고 있다.</p>
+<section id="micro-conditioning">
+<h2>2.2 Micro-Conditioning<a class="headerlink" href="#micro-conditioning" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="figure-2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_2.png"><img alt="fig_2" class="bg-primary mb-1" src="../../_images/fig_2.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 2</span><a class="headerlink" href="#figure-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SD 1.4/1.5 같은 경우 512 픽셀 이하 크기의 이미지는 제외하고 학습을 시키거나, 너무 작은 이미지는 upscale하여 학습을 시켰다. 이는 학습할 때의 최소 크기가 정해지는 문제점이 발생한다. 따라서 성능을 저하시키거나, 일반화를 잘 못할 수 있다.</p>
+<p>그림 2를 보면 SDXL의 데이터 셋의 분포를 시각화해주는 그림이다. 제안된 size-conditiong 없이, 256x256 픽셀 크기 미만의 데이터가 39%나 달한다. upscale 하게 된다면 최종 결과물이 blur 한 결과를 가져와 좋지 않은 아티팩트가 생긴다.</p>
+<p>대신, 저자들은 원래의 이미지 해상도에서 UNet 모델에 condition을 주었다. 특히 어떠한 rescaling 전의 원래의 크기인  <span class="math notranslate nohighlight">\(c_\text{size}=(h_\text{original}, w_\text{original})\)</span>를 제공해 추가의 condition을 줄 수 있게 했다. UNet의 denoising 할 때의 condition으로 추가된다.</p>
+<p>Inference 때, 사용자가 size-conditioning을 통해 해상도를 정할 수 있다. 모델은 conditioning 크기를 해상도에 의존적인 이미지 feature과 연관시키도록 하는 방법을 학습했다.</p>
+<figure class="align-default" id="figure-3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_3.png"><img alt="fig_3" class="bg-primary mb-1" src="../../_images/fig_3.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>또 ImageNet으로 평가를 진행해 size-conditiong에 대한 우수성을 입증했다.</p>
+<figure class="align-default" id="table-2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_2.png"><img alt="table_2" class="bg-primary mb-1" src="../../_images/table_2.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Table 2</span><a class="headerlink" href="#table-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><em>CIN-512-only</em> 는 512 미만의 이미지를 제외하고 학습을 시켰고(70k 장), <em>CIN-nocond</em> 는 모든 ImageNet 이미지를 사용했으며, <em>CIN-size-cond</em> 는 추가 size-condition을 사용했다. 표 2에서 보다시피 <em>CIN-size-cond</em> 모델이 FID, IS 모두 높은 성능을 보였다.</p>
+<section id="conditioning-the-model-on-cropping-parameters">
+<h3>Conditioning the Model on Cropping Parameters<a class="headerlink" href="#conditioning-the-model-on-cropping-parameters" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="figure-4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_4.png"><img alt="fig_4" class="bg-primary mb-1" src="../../_images/fig_4.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 4</span><a class="headerlink" href="#figure-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>그림 4에서 SD 같은 경우 고양이 머리가 잘려진 결과를 얻었다. 이러한 이유는 학습할 때, random cropping으로 인해 생성되었기 때문이다.</p>
+<p>이러한 문제를 해결하기 위해, 간단한 효과적인 방법을 제안한다. 데이터를 loading 할 때, 균등하게  <span class="math notranslate nohighlight">\(c_\text{top}\)</span>과  <span class="math notranslate nohighlight">\(c_\text{left}\)</span> (높이 및 너비 축을 따라 왼쪽 상단 모서리에서 잘린 픽셀의 양을 지정하는 정수)를 샘플링한다. 그 후 Fourier feature 임베딩을 통해 conditioning 파라미터로써 모델에 입력한다. 위에서 언급한 size conditioning과 비슷하다. concat 된 임베딩  <span class="math notranslate nohighlight">\(c_\text{crop}\)</span>은 추가의 conditioning 파라미터로 사용된다.</p>
+<p>저자들은 LDM 뿐만 아니라 어떠한 DM에서도 사용될 수 있다고 강조한다. crop 및 size-conditioning은 쉽게 결합될 수 있다. 이러한 경우, crop 및 size-conditioning을 feature 임베딩을 채널 축에 concat 하고 UNet의 타임스텝 임베딩에 추가한다.</p>
+</section>
+</section>
+<section id="multi-aspect-training">
+<h2>2.3 Multi-Aspect Training<a class="headerlink" href="#multi-aspect-training" title="Permalink to this heading">#</a></h2>
+<p>일반적인 T2I 모델에서 결과물의 크기는 512x512, 1024x1024 로 얻을 수 있는데, 이는 현실 세계에서 부자연스럽다. 이유는 현실 세계에서는 다양한 크기, 비율을 가진 이미지가 많고, 풍경 같은 경우 16:9 비율의 크기를 지니고 있다.</p>
+<p>따라서, 다양한 비율을 동시에 다룰수 있도록 모델을 파인튜닝했다. 픽셀수를 1024x1024 만큼 수를 최대한 유지하면서 다양한 비율의 데이터를 사용했고, 64의 배수를 지니도록 했다.</p>
+<figure class="align-default" id="multi-aspect-ratio">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multi_aspect_ratio.png"><img alt="multi_aspect_ratio" class="bg-primary mb-1" src="../../_images/multi_aspect_ratio.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Multi aspect ratio</span><a class="headerlink" href="#multi-aspect-ratio" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>최적화 동안, 학습 배치는 동일한 버킷(같은 비율의 이미지들?)의 이미지로 구성되며, 각 훈련 스텝마다 버킷 크기를 번갈아 가며 사용했다. 추가적으로, 모델은 버킷 크기(혹은 타겟 크기)를 conditioning으로 주었으며, 위에서 언급한 size, crop conditioning과 유사하게 Fourier 공간에 임베딩되는  <span class="math notranslate nohighlight">\(c_\text{ar}=(h_\text{tgt}, w_\text{tgt})\)</span>  형태로 표현된다.</p>
+<p>실제로, 모델이 고정된 비율및 해상도의 데이터로 pretraining이 마친 후 파인튜닝 단계에서는 다양한 비율의 데이터로 학습했고, 채널 축으로 concat 하는 2.2절에서 소개한 conditioning 기술과 함께 결합했다. 이를 아래의 그림 16에서 코드로 확인할 수 있다.</p>
+</section>
+<section id="improved-autoencoder">
+<h2>2.4 Improved Autoencoder<a class="headerlink" href="#improved-autoencoder" title="Permalink to this heading">#</a></h2>
+<p>SD는 LDM 중 하나이고, autoencoder의 latent space를 학습한다. semantic composition은 LDM으로부터 표현되지만 저자들은 local, high frequency 디테일한 부분을 향상하고자 autoencoder를 향상했다. 끝으로, 원래의 SD를 사용한 autoencoder 아키텍처에서 더 큰 배치사이즈(256 vs 9)로 학습했고 추가로 exponential moving average를 사용한 가중치를 사용했다. 결과 autoencoder의 성능이 reconstruction 메트릭에 좋은 결과를 가져왔다.</p>
+<figure class="align-default" id="table-3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_3.png"><img alt="table_3" class="bg-primary mb-1" src="../../_images/table_3.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Table 3</span><a class="headerlink" href="#table-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="putting-everything-together">
+<h2>2.5 Putting Everything Together<a class="headerlink" href="#putting-everything-together" title="Permalink to this heading">#</a></h2>
+<p>학습 파라미터를 정리해주는 절입니다. diffusion time step은 1000 step을 사용했다. 우선, base model를 내부 데이터 셋으로 그림 2에 나와있는 높이-너비 분포에 맞게 학습을 시켰다. 600,000 step을 사용했으며, 256x256 사이즈로, 배치는 2048로, size &amp; crop conditioning을 사용했다. 그 후 512x512 이미지를 추가로 200,000 최적화 step으로 학습시켰고, 마침내 offset 노이즈 [11, 25] 0.05 수준과 함께 다중 비율 학습을 활용하여 ~ 1024x1024 영역의 다양한 비율로 모델을 학습했다.</p>
+<section id="refinement-stage">
+<h3>Refinement Stage<a class="headerlink" href="#refinement-stage" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="figure-6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_6.png"><img alt="fig_6" class="bg-primary mb-1" src="../../_images/fig_6.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 6</span><a class="headerlink" href="#figure-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>경험적으로, 그림 6처럼 특정 부분 퀄리티가 낮은 샘플의 결과를 찾았다. 왼쪽 그림이 refinement stage 적용 전, 오른쪽 그림이 refinement stage를 적용한 그림이다.</p>
+<p>이를 해결하기 위해, 고품질, 고해상도 데이터에 특화된 latent space 내에서 별도의 LDM을 학습했다. 기본 모델의 샘플에 대해 SDEdit에서 도입한 노이즈 제거 과정을 사용했다. eDiff-I 방법을 따랐으며, 이를 첫 200 노이즈 스케일에 refinement 모델을 사용했다. inference에서, base SDXL에서 latent를 추출하고 바로 diffuse와 denoise를 refinement 모델에 넣었다. 이 스텝은 선택이지만 배경 및 사람 얼굴과 같은 디테일에서 향상된 결과(그림 6, 13)를 얻을 수 있었다.</p>
+<figure class="align-default" id="figure-13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_13.png"><img alt="fig_13" class="bg-primary mb-1" src="../../_images/fig_13.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-text">Figure 13</span><a class="headerlink" href="#figure-13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-conditioning">2.2 Micro-Conditioning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-the-model-on-cropping-parameters">Conditioning the Model on Cropping Parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-aspect-training">2.3 Multi-Aspect Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#improved-autoencoder">2.4 Improved Autoencoder</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-everything-together">2.5 Putting Everything Together</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#refinement-stage">Refinement Stage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

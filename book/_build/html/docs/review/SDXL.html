@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -69,6 +68,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="SDEdit" href="SDEdit.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -79,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -169,7 +161,7 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
@@ -218,6 +210,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -378,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -389,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -466,7 +461,7 @@ document.write(`
 <figure class="align-default" id="sdxl-result">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sdxl_result.png"><img alt="sdxl_result" class="bg-primary mb-1" src="../../_images/sdxl_result.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">SDXL result</span><a class="headerlink" href="#sdxl-result" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 226 </span><span class="caption-text">SDXL result</span><a class="headerlink" href="#sdxl-result" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -481,14 +476,14 @@ document.write(`
 <figure class="align-default" id="figure-1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 1</span><a class="headerlink" href="#figure-1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#figure-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>그림 1에서 왼쪽 그림을 보면 추가의 refinement 단계를 추가해 성능을 높인 SDXL이 기존 SD보다 성능이 우수한 것을 확인할 수 있다. 오른쪽 그림은 아키텍처를 시각화했는데, 128x128 크기의 latent를 생성한다. 그 후 고해상도 refinement 모델을 활용하고 동일한 프롬프트를 활용해 첫 번째 단계에서 생성된 latent를 SDEdit을 적용한다. SDXL과 refinement 모델은 동일한 autoencoder를 사용한다.</p>
 <figure class="align-default" id="table-1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_1.png"><img alt="table_1" class="bg-primary mb-1" src="../../_images/table_1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Table 1</span><a class="headerlink" href="#table-1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#table-1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SD와 다르게 UNet 내의 transformer 블록의 heterogeneous 분포를 사용했다는 점이다. 테이블 1을 참고하면 highest feature level에서 transformer 블럭을 사용했고, lower level에서는 2, 10 개의 블럭을 사용했고, UNet에서 lowest level(8x downsampling)을 제거했다. text conditioning을 위한 pretrained 된 text encoder를 사용했다. 특히, CLIP Vit-L과 함께 OpenCLIP ViT-bigG를 사용했고, 채널 축에 두 번째 text encoder의 output을 concat 했다. 게다가 text input으로 모델에 condition을 주기 위해 cross attention 레이어를 사용했으며, 또 OpenCLIP로부터 pooled text embedding을 모델에 condition으로 추가했다. 이러한 변화는 UNet의 파라미터 사이즈가 2.6B로 증가했다. text encoder는 817M 파라미터를 가지고 있다.</p>
@@ -497,7 +492,7 @@ document.write(`
 <figure class="align-default" id="figure-2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_2.png"><img alt="fig_2" class="bg-primary mb-1" src="../../_images/fig_2.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 2</span><a class="headerlink" href="#figure-2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#figure-2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>SD 1.4/1.5 같은 경우 512 픽셀 이하 크기의 이미지는 제외하고 학습을 시키거나, 너무 작은 이미지는 upscale하여 학습을 시켰다. 이는 학습할 때의 최소 크기가 정해지는 문제점이 발생한다. 따라서 성능을 저하시키거나, 일반화를 잘 못할 수 있다.</p>
@@ -507,14 +502,14 @@ document.write(`
 <figure class="align-default" id="figure-3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_3.png"><img alt="fig_3" class="bg-primary mb-1" src="../../_images/fig_3.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또 ImageNet으로 평가를 진행해 size-conditiong에 대한 우수성을 입증했다.</p>
 <figure class="align-default" id="table-2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_2.png"><img alt="table_2" class="bg-primary mb-1" src="../../_images/table_2.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Table 2</span><a class="headerlink" href="#table-2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#table-2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><em>CIN-512-only</em> 는 512 미만의 이미지를 제외하고 학습을 시켰고(70k 장), <em>CIN-nocond</em> 는 모든 ImageNet 이미지를 사용했으며, <em>CIN-size-cond</em> 는 추가 size-condition을 사용했다. 표 2에서 보다시피 <em>CIN-size-cond</em> 모델이 FID, IS 모두 높은 성능을 보였다.</p>
@@ -523,7 +518,7 @@ document.write(`
 <figure class="align-default" id="figure-4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_4.png"><img alt="fig_4" class="bg-primary mb-1" src="../../_images/fig_4.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 4</span><a class="headerlink" href="#figure-4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#figure-4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>그림 4에서 SD 같은 경우 고양이 머리가 잘려진 결과를 얻었다. 이러한 이유는 학습할 때, random cropping으로 인해 생성되었기 때문이다.</p>
@@ -538,7 +533,7 @@ document.write(`
 <figure class="align-default" id="multi-aspect-ratio">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multi_aspect_ratio.png"><img alt="multi_aspect_ratio" class="bg-primary mb-1" src="../../_images/multi_aspect_ratio.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Multi aspect ratio</span><a class="headerlink" href="#multi-aspect-ratio" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Multi aspect ratio</span><a class="headerlink" href="#multi-aspect-ratio" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최적화 동안, 학습 배치는 동일한 버킷(같은 비율의 이미지들?)의 이미지로 구성되며, 각 훈련 스텝마다 버킷 크기를 번갈아 가며 사용했다. 추가적으로, 모델은 버킷 크기(혹은 타겟 크기)를 conditioning으로 주었으며, 위에서 언급한 size, crop conditioning과 유사하게 Fourier 공간에 임베딩되는  <span class="math notranslate nohighlight">\(c_\text{ar}=(h_\text{tgt}, w_\text{tgt})\)</span>  형태로 표현된다.</p>
@@ -550,7 +545,7 @@ document.write(`
 <figure class="align-default" id="table-3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_3.png"><img alt="table_3" class="bg-primary mb-1" src="../../_images/table_3.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Table 3</span><a class="headerlink" href="#table-3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#table-3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -562,7 +557,7 @@ document.write(`
 <figure class="align-default" id="figure-6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_6.png"><img alt="fig_6" class="bg-primary mb-1" src="../../_images/fig_6.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 6</span><a class="headerlink" href="#figure-6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#figure-6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>경험적으로, 그림 6처럼 특정 부분 퀄리티가 낮은 샘플의 결과를 찾았다. 왼쪽 그림이 refinement stage 적용 전, 오른쪽 그림이 refinement stage를 적용한 그림이다.</p>
@@ -570,7 +565,7 @@ document.write(`
 <figure class="align-default" id="figure-13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_13.png"><img alt="fig_13" class="bg-primary mb-1" src="../../_images/fig_13.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-text">Figure 13</span><a class="headerlink" href="#figure-13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Figure 13</span><a class="headerlink" href="#figure-13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -590,7 +585,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -602,12 +597,34 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="SDEdit.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SDEdit</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -685,8 +702,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

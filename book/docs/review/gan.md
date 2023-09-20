@@ -18,7 +18,7 @@
 
 Ian Goodfellow 가 2014년에 발표한 GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood $p_{\theta}(x)$ 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다. 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/gan/gan_01.png" alt="gan_01" class="bg-primary mb-1" width="700px">
 
 Taxonomy of Generative Models
@@ -26,7 +26,7 @@ Taxonomy of Generative Models
 
 아래 그림과 같이 GAN 은 크게 잠재변수 $z$ 로부터 가짜 데이터를 생성하는 Generator 와 그로부터 생성된 데이터와 실제 training 데이터를 구분하는 Discriminator 로 구성이 되어 있습니다. 다시 말해서 Discriminator 는 실제 데이터가 들어오면 1, 그리고 가짜로 생성된 데이터가 들어오면 0 을 출력하는 binary classification task 를 진행합니다. 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/gan/gan_03.png" alt="gan_03" class="bg-primary mb-1" width="700px">
 
 Generative Adversarial Network(GAN) Architecture
@@ -97,7 +97,7 @@ $$
 
 논문에서 제시한 학습 알고리즘과 실제 implementation code 를 비교해보겠습니다. 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/gan/gan_02.png" alt="gan_02" class="bg-primary mb-1" width="700px">
 
 Generative Adversarial Network(GAN) Training Procedure
@@ -165,7 +165,7 @@ Generative Adversarial Network(GAN) Training Procedure
 
 이렇게 Discriminator 와 Generator 는 각각 $V(D,G)$ 가 최대화하고 최소화하는 방향으로 stochastic gradient descent 를 진행하게 됩니다. 하지만 아래 그림처럼 실제로 Generator를 학습할 때, 초반에 $D(G(z)) \approx 0$ 일 경우 학습하지 못하는 상황이 발생합니다. 이 때, $log(1-D(G(z))$ 를 최소화하지 않고 $log(D(G(z))$ 를 최대화하는 방향으로 Generator 를 학습하는 기법도 있습니다.  
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/gan/gan_04.png" alt="gan_04" class="bg-primary mb-1" width="700px">
 
 Alternative to Vanishing Gradient when Training the Generator 

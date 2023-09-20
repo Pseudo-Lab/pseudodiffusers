@@ -38,13 +38,13 @@
 - 아래와 같이 $L_{simple}$ 을 새로운 Loss function으로 제안한다.
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/ddpm_pipeline.png" alt="ddpm_pipeline" class="bg-primary mb-1" width="700px">
 
 DDPM Pipeline
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/DDPM_eq.png" alt="ddpm_eq" class="bg-primary mb-1" width="700px">
 
 DDPM Equation
@@ -52,7 +52,7 @@ DDPM Equation
 
 ### Improved DDPM
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 
 <img src="../../pics/diffusion_model_beats_gans/improved_ddpm_pic.png" alt="improved_ddpm_pic" class="bg-primary mb-1" width="700px">
 
@@ -65,7 +65,7 @@ Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)
 - 분산  $\Sigma_\theta(X_t,t)$을 학습에도 활용 
 - $L_{hybrid}$라는 새로운 loss 함수 제시
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/improved_ddpm_eq.png" alt="improved_ddpm_eq" class="bg-primary mb-1" width="700px">
 
 Improved DDPM Equation
@@ -74,7 +74,7 @@ Improved DDPM Equation
 
 ### DDIM
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/ddim_pipe.png" alt="ddim_pipe" class="bg-primary mb-1" width="700px">
 
 DDIM Pipeline
@@ -83,7 +83,7 @@ DDIM Pipeline
 - Markovian Chain Process를 끊고 Non-Markovian 형태로 Deterministic 하게 수식을 바꿈
 - DDPM 보다 더 적은 iteration으로 image synthesis 가능
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/DDIM_pic.png" alt="ddim_pic" class="bg-primary mb-1" width="700px">
 
 DDIM Sampling Equation
@@ -99,13 +99,13 @@ DDIM Sampling Equation
 - 일반 ResNet Residual Block이 아닌 BigGAN의 residual block을 채택하여 upsampling / downsampling 사용 해보기
 - Residual Connection을 1/√2 로 rescaling 해보기
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/architect_1.png" alt="architect_1" class="bg-primary mb-1" width="700px">
 
 Table 1: Ablation of various architecture changes
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/architect_2.png" alt="architect_2" class="bg-primary mb-1" width="700px">
 
 Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)
@@ -121,7 +121,7 @@ Table 2: Ablation of various attention configurations. Attention head 가 32일�
 - Rescaling X 
 - 위와 같은 parameter를 통해 제일 좋은 FID 결과가 나옴
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/architect_3.png" alt="architect_3" class="bg-primary mb-1" width="700px">
 
 Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블
@@ -139,7 +139,7 @@ where $h =$ residual block and $y = [y_s,y_b]$ time-step embedding and class emb
 
 **4-1 AdaGN의 성능**
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/adagn_table.png" alt="adagn_table" class="bg-primary mb-1" width="700px">
 
 AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.
@@ -163,13 +163,13 @@ $log_\phi p(y|x_t)$가 $\Sigma^-1$ 에 비해 곡률이 낮으며, 이 가정을
 - classifier의 gradient를 활용해서 학습을 같이 해준다. 
 - 식 유도는 아래와 같다. 본문의 (3) ~ (10) 번식이므로 본 논문을 참고하면 좋다.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/class_eq1.png" alt="class_eq1" class="bg-primary mb-1" width="700px">
 
 Classifier Guidance 유도 식 1,2
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/class_eq2.png" alt="classifier_2" class="bg-primary mb-1" width="700px">
 
 Classifier Guidance 유도 식 3~7
@@ -177,7 +177,7 @@ Classifier Guidance 유도 식 3~7
 
 ## 6. Algorithm
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/algorithm.png" alt="algorithm" class="bg-primary mb-1" width="700px">
 
 Algorithm 1 & 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법
@@ -195,7 +195,7 @@ Algorithm 1 & 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algori
 
 ## 7. Impact of parameter s in classifier guidance
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/classifier_guidance_vis.png" alt="class_guidance_vis" class="bg-primary mb-1" width="700px">
 
 Classifier Guidance scaling의 영향 시각화
@@ -206,7 +206,7 @@ Classifier Guidance scaling의 영향 시각화
 - epsilon이라는 모델이 결국 scale에 따라 gradient의 영향을 얼마나 많이 받는지 sampling할 때 볼 수 있다.
 ## 8. Results
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/diffusion_model_beats_gans/plot_result.png" alt="plot result" class="bg-primary mb-1" width="700px">
 
 Fidelity vs Diversity Trade-off 결과
@@ -224,7 +224,7 @@ Fidelity vs Diversity Trade-off 결과
 
 ## 8-2. Image Synthesis Results
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/diffusion_model_beats_gans/img_results.png" alt="img_results" class="bg-primary mb-1" width="700px">
 
 Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)

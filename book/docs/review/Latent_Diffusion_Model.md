@@ -17,7 +17,7 @@
 
 Latent Diffusion Model은 전반적으로 아래와 같은 구조를 가집니다.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/Latent_Diffusion_Model/Unet.png"  class="bg-primary mb-1" width="700px">
 
 Structure of Latent Diffusion Model
@@ -57,14 +57,14 @@ $$
 해당 논문에서는 다양한 task에 대해서 실험을 진행하였는데, 그중 일부만 소개하도록 하겠다.
 아래의 그림은 다양한 dataset에서 뽑은 샘플과 text to image sample들입니다.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/Latent_Diffusion_Model/experiment1.png" class="bg-primary mb-1" width="700px">
 
 Sample images
 :::
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/Latent_Diffusion_Model/text_to_image.png"  class="bg-primary mb-1" width="700px">
 
 text to image on LAION
@@ -72,14 +72,14 @@ text to image on LAION
 
 실험을 통해서 나온 결과 $m=2,3,4$ 혹은 $f=4, 8, 16$인 경우 적절한 FID 점수와 효율성을 보여주었습니다.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/Latent_Diffusion_Model/trade_off.png" class="bg-primary mb-1" width="700px">
 
 text to image on LAION
 :::
 
 Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과입니다. 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/Latent_Diffusion_Model/layout_to_image.png" class="bg-primary mb-1" width="700px">
 
 layout-to-image

@@ -19,6 +19,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 고동근 [Donggeun Sean Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 - 조남경 [Namkyeong Cho] | Github | Linkedin
 - 김선훈 [SeonHoon Kim] | [Github](https://github.com/egshkim) | [Linkedin](https://www.linkedin.com/in/seonhoonkim/) | 
+- 이준형 [Junhyoung Lee] | [Github] | [Linkedin] | 
 
 ## Schedule 
 | idx | Date | Presenter | Paper / Code | 
@@ -31,7 +32,8 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 6 | 2023.05.24 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion](https://arxiv.org/abs/2208.01618) <br> [Adding Conditional Control to Text-to-Image Diffusion Models](https://arxiv.org/abs/2302.05543)|
 | 7 | 2023.05.31 | 박범수 [Beomsoo Park] <br> 지승환 [Seunghwan Ji] | [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) <br> [Multi-Concept Customization of Text-to-Image Diffusion](https://arxiv.org/abs/2212.04488) (CVPR 2023) |
 | 8 | 2023.08.30 | 고동근 [Donggeun Sean Ko]  <br> 조상우 [Sangwoo Jo] | [Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding](https://arxiv.org/abs/2205.11487) <br> [Imagen Editor and EditBench: Advancing and Evaluating Text-Guided Image Inpainting](https://arxiv.org/abs/2212.06909) (CVPR 2023) |
-| 9 | 2023.09.06 | 김선훈 [SeonHoon Kim] <br> 지승환 [Seunghwan Ji] | [Hierarchical Text-Conditional Image Generation with CLIP Latents](https://arxiv.org/pdf/2204.06125v1.pdf) <br> [SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations](https://arxiv.org/pdf/2108.01073.pdf) |
+| 9 | 2023.09.06 | 김선훈 [SeonHoon Kim] <br> 지승환 [Seunghwan Ji] | [Hierarchical Text-Conditional Image Generation with CLIP Latents](https://arxiv.org/abs/2204.06125) <br> [SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations](https://arxiv.org/abs/2108.01073) (ICLR 2022) |
+| 10 | 2023.09.13 | 조남경 [Namkyeong Cho] <br> 이준형 [Junhyoung Lee] | [DeepFloyd IF](https://www.deepfloyd.ai/deepfloyd-if) <br> [SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis](https://arxiv.org/abs/2307.01952) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

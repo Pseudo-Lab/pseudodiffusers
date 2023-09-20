@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -220,6 +210,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -380,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -391,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -497,25 +490,25 @@ document.write(`
 <li><p>공분산 <span class="math notranslate nohighlight">\(\Sigma_\theta(X_t,t)\)</span>은 학습 불가능한 매개변수로 설정되며 constant 값을 가진다.</p></li>
 <li><p>아래와 같이 <span class="math notranslate nohighlight">\(L_{simple}\)</span> 을 새로운 Loss function으로 제안한다.</p></li>
 </ul>
-<figure class="align-default" id="markdown-fig">
+<figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ddpm_pipeline.png"><img alt="ddpm_pipeline" class="bg-primary mb-1" src="../../_images/ddpm_pipeline.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 56 </span><span class="caption-text">DDPM Pipeline</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">DDPM Pipeline</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DDPM_eq.png"><img alt="ddpm_eq" class="bg-primary mb-1" src="../../_images/DDPM_eq.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 57 </span><span class="caption-text">DDPM Equation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">DDPM Equation</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="improved-ddpm">
 <h3>Improved DDPM<a class="headerlink" href="#improved-ddpm" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/improved_ddpm_pic.png"><img alt="improved_ddpm_pic" class="bg-primary mb-1" src="../../_images/improved_ddpm_pic.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">Improved DDPM scheduling comparison with DDPM (Linear vs Cosine)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -525,29 +518,29 @@ document.write(`
 <li><p>분산  <span class="math notranslate nohighlight">\(\Sigma_\theta(X_t,t)\)</span>을 학습에도 활용</p></li>
 <li><p><span class="math notranslate nohighlight">\(L_{hybrid}\)</span>라는 새로운 loss 함수 제시</p></li>
 </ul>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/improved_ddpm_eq.png"><img alt="improved_ddpm_eq" class="bg-primary mb-1" src="../../_images/improved_ddpm_eq.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Improved DDPM Equation</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">Improved DDPM Equation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="ddim">
 <h3>DDIM<a class="headerlink" href="#ddim" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ddim_pipe.png"><img alt="ddim_pipe" class="bg-primary mb-1" src="../../_images/ddim_pipe.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 60 </span><span class="caption-text">DDIM Pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">DDIM Pipeline</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Markovian Chain Process를 끊고 Non-Markovian 형태로 Deterministic 하게 수식을 바꿈</p></li>
 <li><p>DDPM 보다 더 적은 iteration으로 image synthesis 가능</p></li>
 </ul>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DDIM_pic.png"><img alt="ddim_pic" class="bg-primary mb-1" src="../../_images/DDIM_pic.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 61 </span><span class="caption-text">DDIM Sampling Equation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">DDIM Sampling Equation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -562,16 +555,16 @@ document.write(`
 <li><p>일반 ResNet Residual Block이 아닌 BigGAN의 residual block을 채택하여 upsampling / downsampling 사용 해보기</p></li>
 <li><p>Residual Connection을 1/√2 로 rescaling 해보기</p></li>
 </ul>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_1.png"><img alt="architect_1" class="bg-primary mb-1" src="../../_images/architect_1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Table 1: Ablation of various architecture changes</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Table 1: Ablation of various architecture changes</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_2.png"><img alt="architect_2" class="bg-primary mb-1" src="../../_images/architect_2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">Table 2: Ablation of various attention configurations. Attention head 가 32일때 FID 값이 제일 낮다 (좋다)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>** 3-1. Best Architecture **</p>
@@ -584,10 +577,10 @@ document.write(`
 <li><p>Rescaling X</p></li>
 <li><p>위와 같은 parameter를 통해 제일 좋은 FID 결과가 나옴</p></li>
 </ul>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architect_3.png"><img alt="architect_3" class="bg-primary mb-1" src="../../_images/architect_3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Table 3: 다양한 parameter 튜닝을 통한 제일 좋은 FID 성능 테이블</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -604,10 +597,10 @@ document.write(`
 \[AdaGN(h,y) = y_s + GroupNorm(h) + y_b\]</div>
 <p>where <span class="math notranslate nohighlight">\(h =\)</span> residual block and <span class="math notranslate nohighlight">\(y = [y_s,y_b]\)</span> time-step embedding and class embedding’s linear projection respectively</p>
 <p><strong>4-1 AdaGN의 성능</strong></p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/adagn_table.png"><img alt="adagn_table" class="bg-primary mb-1" src="../../_images/adagn_table.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 65 </span><span class="caption-text">AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 65 </span><span class="caption-text">AdaGN과 Additon+GroupNorm 비교 테이블. DDPM에서 사용한 normalization보다 더 좋은 성능을 보여주고 있음.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -631,25 +624,25 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 <li><p>classifier의 gradient를 활용해서 학습을 같이 해준다.</p></li>
 <li><p>식 유도는 아래와 같다. 본문의 (3) ~ (10) 번식이므로 본 논문을 참고하면 좋다.</p></li>
 </ul>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/class_eq1.png"><img alt="class_eq1" class="bg-primary mb-1" src="../../_images/class_eq1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Classifier Guidance 유도 식 1,2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 66 </span><span class="caption-text">Classifier Guidance 유도 식 1,2</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/class_eq2.png"><img alt="classifier_2" class="bg-primary mb-1" src="../../_images/class_eq2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Classifier Guidance 유도 식 3~7</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 67 </span><span class="caption-text">Classifier Guidance 유도 식 3~7</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="algorithm">
 <h2>6. Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/algorithm.png"><img alt="algorithm" class="bg-primary mb-1" src="../../_images/algorithm.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Algorithm 1 &amp; 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 68 </span><span class="caption-text">Algorithm 1 &amp; 2 sampling method. Algorithm 1은 일반적인 DDPM 기준, Algorithm 2는 DDIM 기준 guidance 한 sampling 방법</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -662,10 +655,10 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 </section>
 <section id="impact-of-parameter-s-in-classifier-guidance">
 <h2>7. Impact of parameter s in classifier guidance<a class="headerlink" href="#impact-of-parameter-s-in-classifier-guidance" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id13">
+<figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/classifier_guidance_vis.png"><img alt="class_guidance_vis" class="bg-primary mb-1" src="../../_images/classifier_guidance_vis.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Classifier Guidance scaling의 영향 시각화</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 69 </span><span class="caption-text">Classifier Guidance scaling의 영향 시각화</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -677,10 +670,10 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 </section>
 <section id="results">
 <h2>8. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id14">
+<figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/plot_result.png"><img alt="plot result" class="bg-primary mb-1" src="../../_images/plot_result.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Fidelity vs Diversity Trade-off 결과</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 70 </span><span class="caption-text">Fidelity vs Diversity Trade-off 결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -696,10 +689,10 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 </section>
 <section id="image-synthesis-results">
 <h2>8-2. Image Synthesis Results<a class="headerlink" href="#image-synthesis-results" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id15">
+<figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_results.png"><img alt="img_results" class="bg-primary mb-1" src="../../_images/img_results.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 71 </span><span class="caption-text">Generated Images (Left: BigGAN, Center: DMs, Right: Train Dataset)</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -741,7 +734,7 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -753,10 +746,11 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="DDIM.html"
@@ -776,7 +770,10 @@ $<span class="math notranslate nohighlight">\(p_{\theta, \phi }(x_t|x_{t+1},y) =
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -854,8 +851,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

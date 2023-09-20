@@ -40,7 +40,7 @@
 
 ### DDPM
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/00.png" alt="DDIM_00" class="bg-primary mb-1" width="700px">
 
 DDPM & DDIM Architectures
@@ -59,13 +59,13 @@ DDPM & DDIM Architectures
 
 - Inference’s Distribution 정의
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/01.png" alt="DDIM_01" class="bg-primary mb-1" width="700px">
 
 Equation 1
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/02.png" alt="DDIM_02" class="bg-primary mb-1" width="700px">
 
 Equation 2
@@ -76,13 +76,13 @@ Equation 2
 
 **3.2. Generative Process And Unified Variational Inference Objective (Reverse Process)**
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/03.png" alt="DDIM_00" class="bg-primary mb-1" width="700px">
 
 Equation 3
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/04.png" alt="DDIM_00" class="bg-primary mb-1" width="700px">
 
 Equation 4
@@ -95,7 +95,7 @@ Equation 4
 
 - noise(ε)와 $X_{0}$, $X_{t}$의 관계
     
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/DDIM/05.png" alt="DDIM_05" class="bg-primary mb-1" width="700px">
     
     Equation 5
@@ -112,20 +112,20 @@ Equation 4
 
 1. If σ → 0
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/06.png" alt="DDIM_06" class="bg-primary mb-1" width="700px">
 
 Equation 6
 :::
 
 1. σ가 특정 값을 가질 때 DDPM의 generative process의 수식과 동일하다.
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/07.png" alt="DDIM_07" class="bg-primary mb-1" width="700px">
 
 Explanation of σ
 :::
 4.2. Accelerated Generation Processes
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/08.png" alt="DDIM_08" class="bg-primary mb-1" width="700px">
 
 Explanation of accelated method
@@ -140,13 +140,13 @@ Explanation of accelated method
 - DDIM은 Object(e.g. 이미지)의 Encoding이 가능한 식을 유도할 수 있다.
 
 ## 5. Experiments
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/09.png" alt="DDIM_09" class="bg-primary mb-1" width="700px">
 
 Table1
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/010.png" alt="DDIM_010" class="bg-primary mb-1" width="700px">
 
 Euqation 7
@@ -157,14 +157,14 @@ Euqation 7
 - 모든 비교 모델이 S(sampling 횟수)의 값이 커질수록 더 낮은 FiD를 보여준다.
 - Fig.3의 DDIM은 다른 모델(η가 0이 아닌 모델)과 다르게 sampling step에 consistency한 결과를 보여준다.
 
-:::{figure-md} markdown-fig
+:::{figure-md}
 <img src="../../pics/DDIM/011.png" alt="DDIM_011" class="bg-primary mb-1" width="700px">
 
 Figure 4, 5
 :::
 - Step과 Inference time이 linear한 관계를 갖는다.
 - 적은 sampling step에서도 어느정도의 object를 보여준다.
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDIM/012.png" alt="DDIM_012" class="bg-primary mb-1" width="700px">
 
 Figure 6

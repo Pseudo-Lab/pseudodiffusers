@@ -15,7 +15,7 @@
 # DDPM
 
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img1.png" alt="DDPM_01" class="bg-primary mb-1" width="700px">
 
 DDPM samples \ (source: https://arxiv.org/abs/2006.11239)
@@ -25,7 +25,7 @@ DDPM samples \ (source: https://arxiv.org/abs/2006.11239)
 ---
 # 1. Introduction
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img2.png" alt="DDPM_02" class="bg-primary mb-1" width="700px">
 
 Diffusion models \ (source: https://velog.io/@yetsyl0705/What-are-Diffusion-Models)
@@ -43,7 +43,7 @@ Diffusion model은 정의하기 쉽고 학습시키는 것도 편리함. 또한 
 ---
 # 2. Background
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img3.png" alt="DDPM_03" class="bg-primary mb-1" width="700px">
 
 Graphical model of DDPM \ (source: https://arxiv.org/abs/2006.11239)
@@ -127,7 +127,7 @@ $
 
 $L_{1:T-1}$는 forward progress posterior를 예측하는 loss. $\mathbf{x}_{t-1}$에서 noise를 더해 $\mathbf{x}_{t}$를 만들었을때, 그 과정을 복원 $p(\mathbf{x}_{t-1}|\mathbf{x}_t)$ 하는 과정을 학습.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img8.png" alt="DDPM_08" class="bg-primary mb-1" width="700px">
 
 Loss Simplication \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models)
@@ -135,7 +135,7 @@ Loss Simplication \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%
 
 - $\Sigma_\theta$: $\beta$를 상수로 가정했고 $p(\mathbf{x}_{t-1}|\mathbf{x}_t)$의 variance가 $\beta$에 영향을 받기 때문에 학습시키지 않아도 된다고 생각해 **variance term을 제거**함.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img9.png" alt="DDPM_09" class="bg-primary mb-1" width="700px">
 
 Residual Estimation \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models)
@@ -166,13 +166,13 @@ $L_0$은 두 normal distribution 사이의 KL divergence를 나타냄.
 
 ## 3-4. Simplified training objective
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img10.png" alt="DDPM_10" class="bg-primary mb-1" width="700px">
 
 Simplified training objective \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models)
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img11.png" alt="DDPM_11" class="bg-primary mb-1" width="700px">
 
 Final Loss \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models)
@@ -182,7 +182,7 @@ Final Loss \ (source: https://velog.io/@sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%E
 
 Simplified objective을 통해 diffusion process를 학습하면 매우 작은 t 에서뿐만 아니라 **큰 t에 대해서도 network 학습이 가능하기 때문에 매우 효과적**.
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img12.png" alt="DDPM_12" class="bg-primary mb-1" width="700px">
 
 Psuedo code of training process \ (source: https://arxiv.org/abs/2006.11239)
@@ -490,7 +490,7 @@ class SinusoidalPosEmb(nn.Module):
 
 ## 4-1. Sample quality
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/DDPM/img13.png" alt="DDPM_13" class="bg-primary mb-1" width="700px">
 
 Train score of DDPM \ (source: https://arxiv.org/abs/2006.11239)

@@ -54,13 +54,13 @@
 
 - Process
     - Forward Process
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img0.png" alt="I-DDPM_00" class="bg-primary mb-1" width="350px">
     
         Equation 1
         :::
     - Reverse Process
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img1.png" alt="I-DDPM_01" class="bg-primary mb-1" width="350px">
     
         Equation 2
@@ -71,7 +71,7 @@
 - 이 때 Noising & Denoising에 관한 (Hyper) Parameter로 ${B_{t}}$와 $\tilde{B_{t}}$를 사용
     - ${B_{t}}$ : time step 에 따른 noising할 정도
     - $\tilde{B_{t}}$ : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img2.png" alt="I-DDPM_02" class="bg-primary mb-1" width="350px">
     
         Equation 3
@@ -83,14 +83,14 @@
 
 - 위의 문장 ($\tilde{B_{t}}$ 대신 ${B_{t}}$를 사용)에서 의문점
     - 사실 ${B_{t}}$와 $\tilde{B_{t}}$는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img3.png" alt="I-DDPM_03" class="bg-primary mb-1" width="350px">
     
         Figure 1
         :::
         
     - Diffusion Step간 ${B_{t}}$와 $\tilde{B_{t}}$의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img4.png" alt="I-DDPM_04" class="bg-primary mb-1" width="350px">
     
         Figure 2
@@ -102,7 +102,7 @@
         ⇒ 따라서, ${B_{t}}$와 $\tilde{B_{t}}$를 동일한 값으로 두고 $\tilde{B_{t}}$를 Non Trainable Parameter로 두는것은 설계의 Miss
         
     - 하지만, $\tilde{B_{t}}$ 자체를 학습하기에는 값의 범위가 너무 작아서 ${B_{t}}$와 $\tilde{B_{t}}$의 Interpolation 값을 Predict하도록 설계
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img5.png" alt="I-DDPM_05" class="bg-primary mb-1" width="350px">
     
         Figure 3
@@ -113,7 +113,7 @@
 - Noise Schedule
     - DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인
     - Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적
-    :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img6.png" alt="I-DDPM_06" class="bg-primary mb-1" width="350px">
     
         Equation 4
@@ -125,14 +125,14 @@
     ⇒ 결국 Linear mode를 사용하면 특정 Step 이후의 Noise는 학습에 의미있는 영향을 미치지 못한다.
     
     - I-DDPM에서는 이러한 scheduling Equation을 새로 정의
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img7.png" alt="I-DDPM_07" class="bg-primary mb-1" width="350px">
     
         Equation 5
         :::
 
     - 새로 정의한 식은 중간 단계에서는 Noise가 강하게 입혀지지만 0과 T 부근에서는 비교적 덜 Noisy해짐
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img8.png" alt="I-DDPM_08" class="bg-primary mb-1" width="350px">
     
         Figure 3
@@ -141,7 +141,7 @@
 - Gradient Noise
     - Model을 $L_{vlb}$를 Direct로 최적화하도록 설계하면 Best
     - 하지만 아래 이미지와같이 Loss 자체가 unstable해서 직접 최적화에는 어려움이 있음
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/I-DDPM/img9.png" alt="I-DDPM_09" class="bg-primary mb-1" width="350px">
     
         Figure 4
@@ -155,13 +155,13 @@
 
 **Result**
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img10.png" alt="I-DDPM_10" class="bg-primary mb-1" width="350px">
 
 Table 1
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img11.png" alt="I-DDPM_11" class="bg-primary mb-1" width="350px">
 
 Table 2
@@ -170,7 +170,7 @@ Table 2
 - DDPM에서 다소 취약했던 ImageNet 64x64와 CIDAR-10 데이터를 기준
     - $L_{vlb}$의 경우 Importance sampling을 적용한 결과
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img12.png" alt="I-DDPM_12" class="bg-primary mb-1" width="350px">
 
 Table 3
@@ -185,13 +185,13 @@ Table 3
     - Sampling 시에는 몇몇 Step만 Sampling
 - 결과는?
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img13.png" alt="I-DDPM_13" class="bg-primary mb-1" width="350px">
 
 Figure 5
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img14.png" alt="I-DDPM_14" class="bg-primary mb-1" width="350px">
 
 Figure 6
@@ -202,7 +202,7 @@ Figure 6
 ## 5. Comparison to GANs
 
 - Class Conditional Generation + P&R Metric으로 GAN 모델(BigGAN)과 성능을 비교
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/I-DDPM/img15.png" alt="I-DDPM_15" class="bg-primary mb-1" width="350px">
     
     Figure 7
@@ -215,13 +215,13 @@ Figure 6
 
 - 다양한 Capacity를 가진 모델의 FiD와 NLL 값을 비교
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img16.png" alt="I-DDPM_16" class="bg-primary mb-1" width="350px">
 
 Figure 8
 :::
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/I-DDPM/img17.png" alt="I-DDPM_17" class="bg-primary mb-1" width="350px">
 
 Figure 9

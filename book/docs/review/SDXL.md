@@ -1,4 +1,4 @@
-﻿```{admonition} Information
+```{admonition} Information
 - **Title:** {An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion}, {cs.CV}
 
 - **Reference**
@@ -10,9 +10,9 @@
 - **Last updated on May. 31. 2023**
 ```
 
-# SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis
+# SDXL
 
-# Abstract
+## Abstract
 SDXL은 T2I latent diffusion 모델이다. Stable Diffusion과 비교하면, SDXL은 세 배 더 큰 규모의 UNet을 포함한다. 더 많은 attention 블록과 더 큰 cross attention context 가 SDXL에서 두 번째 text encoder로 사용되면서 모델 파라미터가 증가했다. 다수의 새로운 conditioning 방법과 다양한 비율에 맞도록 SDXL을 학습할 수 있도록 설계했다. 또한 후처리 방식의 image to image 기술을 사용해 SDXL의 생성 샘플의 시각적인 fidelity를 향상시킨 refinement model을 소개한다. SDXL은 대폭 향상된 성능을 보여준다.
 
 :::{figure-md} SDXL result
@@ -21,7 +21,7 @@ SDXL은 T2I latent diffusion 모델이다. Stable Diffusion과 비교하면, SDX
 SDXL result
 :::
 
-# Introduction
+## Introduction
 세 가지 주요 기능이라 볼 수 있는데, 
 1. 3배 더 큰 UNet backbone, 
 2. 어떤 형태의 추가 감독(supervision)없는 간단하면서도 효과적인 추가의 conditioning 기술

@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -219,6 +209,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -379,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -390,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -455,10 +449,10 @@ document.write(`
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>최근에 DALL-E2, Imagen, Stable Diffusion 등 다양한 text-to-image generation 모델들이 등장하였지만, 어떠한 동일한 subject 에 대해서 다른 context 에 적용하는 부분에서 부족한 면들을 보여주고 있습니다. DreamBooth 논문은 이러한 문제점을 개선하기 위해 text-to-image 모델을 fine-tuning 하는 기법으로 소개되었고, 단 3-5장의 이미지를 학습하면 되며 이를 NVIDIA A100 으로 학습하는데 5분 정도밖에 소요되지 않는다고 합니다.</p>
-<figure class="align-default" id="markdown-fig">
+<figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_01.png"><img alt="dreambooth_01" class="bg-primary mb-1" src="../../_images/dreambooth_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Subject-Driven Generation</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">Subject-Driven Generation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DreamBooth 가 무엇인지 자세히 알아보기 전에 text-to-image diffusion model 에 대해 다시 한번 개념 정리를 해볼 필요가 있습니다.</p>
@@ -573,10 +567,10 @@ document.write(`
 <h2>Fine-tuning<a class="headerlink" href="#fine-tuning" title="Permalink to this heading">#</a></h2>
 <p>DreamBooth 에서 pre-trained 된 text-to-image generation 모델을 fine-tuning 할 때 <em>“a [unique identifier] [class noun]”</em> 그리고 <em>“a [class noun]”</em>  형태의 두 가지 text prompt 를 사용합니다. 이때, <em>unique identifier</em> 에 유지하고자 하는 대상에 대한 정보를 담는 것을 목표로 하기 때문에 사전 정보가 없는 rare token 을 사용하는 것이 중요하다고 합니다. 논문에서는 3개 이하의 Unicode character 혹은 T5-XXL tokenizer 를 랜덤하게 샘플링해서 token 을 생성하고 이를 기반으로 <em>unique identifier</em> 를 정의합니다.</p>
 <p>또한, 논문에서 <em>Language Drift</em> 그리고 <em>Reduced Output Diversity</em> 두 가지 문제점을 해결하기 위해 Class-specific Prior Preservation Loss 를 소개합니다. 이를 활용하여 모델을 fine-tuning 하는 방법은 다음과 같습니다.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_02.png"><img alt="dreambooth_02" class="bg-primary mb-1" src="../../_images/dreambooth_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Fine-tuning</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">Fine-tuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>우선, Gaussian 노이즈 이미지와 <em>“A V [class noun]”</em> 형태의 text prompt 를 사전학습된 text-to-image diffusion 모델에 입력하여 이미지를 생성한 후, 원본 이미지와의 <em>Reconstruction Loss</em> 를 계산합니다. 그리고 비슷한 과정으로 Gaussian 노이즈 이미지와 <em>“A [class noun]”</em> 형태의 text prompt 를 학습하고자 하는 모델, 그리고 freeze 시킨 또 다른 pre-trained diffusion 모델에 각각 입력하여 이미지를 생성한 후 <em>Class-Specific Prior Preservation Loss</em> 를 계산합니다. 이에 대한 training objective 를 수식적으로 표현하면 다음과 같습니다.</p>
@@ -585,10 +579,10 @@ document.write(`
 \mathbb{E}_{x,c,\epsilon,\epsilon^{'},t}[w_t || \hat{x}_{\theta}(\alpha_tx + \sigma_t\epsilon, c) - x ||_{2}^{2} + \lambda w_{t^{'}} || \hat{x}_{\theta}(\alpha_{t^{'}} x_{pr} + \sigma_{t^{'}}\epsilon^{'}, c_{pr}) - x_{pr} ||_{2}^{2}]
 \]</div>
 <p><em>Class-Specific Prior Preservation Loss</em> 를 추가함으로써 class prior 에 대한 정보를 유지하게 되고, 이로써 동일한 class 에 대해 더 다양한 이미지들을 생성할 수 있는 부분을 아래 그림에서 확인할 수 있습니다.</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_03.png"><img alt="dreambooth_03" class="bg-primary mb-1" src="../../_images/dreambooth_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Encouraging diversity with prior-preservation loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">Encouraging diversity with prior-preservation loss</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -601,10 +595,10 @@ document.write(`
 <li><p>CLIP-T := 입력 prompt 와 생성된 이미지의 CLIP embedding 의 평균 pairwise cosine similarity</p></li>
 </ul>
 <p>Textual Inversion 과 비교했을때, 세 개의 metric 에서 모두 DreamBooth 가 더 좋은 성능을 보여주는 것을 확인할 수 있습니다.</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_04.png"><img alt="dreambooth_04" class="bg-primary mb-1" src="../../_images/dreambooth_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Comparison of models</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Comparison of models</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -620,10 +614,10 @@ document.write(`
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
 <p>논문에서 DreamBooth 를 활용한 여러 application 도 소개합니다.</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_05.png"><img alt="dreambooth_05" class="bg-primary mb-1" src="../../_images/dreambooth_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Applications of DreamBooth</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Applications of DreamBooth</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -633,10 +627,10 @@ document.write(`
 <li><p>Prompt: “a [V] [class noun] [context description]”</p></li>
 <li><p>다음과 같은 prompt 입력 시, 사전에 보지 못했던 새로운 pose 나 articulation 을 잘 표현하는 부분을 확인할 수 있습니다.</p></li>
 </ul>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_06.png"><img alt="dreambooth_06" class="bg-primary mb-1" src="../../_images/dreambooth_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Recontextualization</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Recontextualization</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple" start="2">
@@ -663,10 +657,10 @@ document.write(`
 <section id="limitations">
 <h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>하지만 DreamBooth 모델에 다음과 같은 한계점도 존재합니다.</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_07.png"><img alt="dreambooth_07" class="bg-primary mb-1" src="../../_images/dreambooth_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Limitations of DreamBooth</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 94 </span><span class="caption-text">Limitations of DreamBooth</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -679,16 +673,16 @@ document.write(`
 <section id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
 <p>마지막으로, 논문 본문에 소개되고 있지는 않지만 Appendix 부문에서도 흥미로운 결과들을 확인할 수 있습니다. Figure 20 은 fine tuning 하는 이미지 개수에 따른 DreamBooth 학습결과를 보여주는데, 단 한 장만으로도 identity 의 전반적인 특징을 잘 담는 것을 확인할 수 있습니다. Figure 18 은 만화 캐릭터의 identity 를 유지한 상태로 다양한 만화 사진들을 모델이 생성하는 사례들을 보여줍니다.</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_08.png"><img alt="dreambooth_08" class="bg-primary mb-1" src="../../_images/dreambooth_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Appendix-1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 95 </span><span class="caption-text">Appendix-1</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreambooth_09.png"><img alt="dreambooth_09" class="bg-primary mb-1" src="../../_images/dreambooth_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Appendix-2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 96 </span><span class="caption-text">Appendix-2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -707,7 +701,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -719,10 +713,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="dalle.html"
@@ -742,7 +737,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -812,8 +810,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

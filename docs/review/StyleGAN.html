@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -219,6 +209,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -379,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -390,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -421,7 +415,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-and-adain">Style and AdaIN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-variation">Stochastic Variation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixing-regularization">Mixing Regularization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">실험 결과</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">실험 결과</a></li>
 </ul>
             </nav>
         </div>
@@ -450,10 +444,10 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="stylegan">
 <h1>StyleGAN<a class="headerlink" href="#stylegan" title="Permalink to this heading">#</a></h1>
 <p>오늘 알아볼 모델은 StyleGAN입니다. 기존에 다뤘던 GAN과 같이 이미지를 생성하는 모델입니다. generator 구조를 변경함으로써 성능을 올리고 feature의 control이 가능하게 했습니다. loss나 discriminator 구조 개선에 관한 논문은 아닙니다. 먼저 결과를 보도록 하죠.</p>
-<figure class="align-default" id="markdown-fig">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig1.png"><img alt="stylegan_01" class="bg-primary mb-1" src="../../_images/styleGAN_fig1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Images generated by StyleGAN</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Images generated by StyleGAN</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이 논문의 contribution은 다음과 같습니다.</p>
@@ -474,18 +468,18 @@ document.write(`
 <li><p>noise와 B (stochastic variation)</p></li>
 </ol>
 <p>이 각각에 대해서 알아보도록 합시다.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig2.png"><img alt="stylegan_02" class="bg-primary mb-1" src="../../_images/styleGAN_fig2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Structure of StyleGAN</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Structure of StyleGAN</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="mapping-network">
 <h2>Mapping Network<a class="headerlink" href="#mapping-network" title="Permalink to this heading">#</a></h2>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig3.png"><img alt="stylegan_03" class="bg-primary mb-1" src="../../_images/styleGAN_fig3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Mappings with <span class="math notranslate nohighlight">\(w\)</span> and without <span class="math notranslate nohighlight">\(w\)</span></span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Mappings with <span class="math notranslate nohighlight">\(w\)</span> and without <span class="math notranslate nohighlight">\(w\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>기존 GAN을 생각해보면 z를 input으로 받아서 generator를 거쳐서 이미지를 생성하는 구조입니다. 이 z는 보통 Gaussian distribution에서 샘플링으로 얻습니다. GAN은 학습을 통해 Gaussian distribution을 data distribution으로 보내는 방법을 배우게 될 것이고, 이 분포는 (b)처럼 생기게 될 것입니다. 그런데 데이터가 (a)처럼 주어져서 특정한 데이터가 없거나 적을 수도 있을 것입니다. 예를 들어, 데이터에 피부가 희면서 머리가 긴 샘플들이 없다고 해봅시다. 그러면 피부색과 머리 길이라는 두 feature는 서로 얽히게(entangled)되어, 하나를 바꿀 때 다른 하나도 같이 바뀌는 현상이 일어나게 됩니다. 이런 현상을 완화하기 위해 논문에서는 Gaussian에서 뽑은 z를 바로 사용하는 것이 아니라 mapping network를 통해 learnable distribution에서 뽑은 w를 사용합니다.</p>
@@ -493,10 +487,10 @@ document.write(`
 <section id="style-and-adain">
 <h2>Style and AdaIN<a class="headerlink" href="#style-and-adain" title="Permalink to this heading">#</a></h2>
 <p>instance normalization은 샘플 하나의 각 채널마다 정규화를 취해주는 방법입니다.</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig4.png"><img alt="stylegan_04" class="bg-primary mb-1" src="../../_images/styleGAN_fig4.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Normalization methods</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Normalization methods</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>adaptive instance normalization (AdaIN) 은 instance normalization에 scale을 곱해주고 bias를 더해주는 형태입니다. 그런데 이 scale과 bias가 style vector의 linear transformation으로 주어지는 형태입니다. linear layer를 통해서 w는 <span class="math notranslate nohighlight">\(\mathbf{y}=(\mathbf{y}_{s},\mathbf{y}_{b})\)</span>로 보내지게 됩니다. AdaIN의 수식은 아래와 같습니다.</p>
@@ -555,27 +549,27 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 </div>
 <p>code from <a class="github reference external" href="https://github.com/huangzh13/StyleGAN.pytorch">huangzh13/StyleGAN.pytorch</a></p>
 <p>아래 그림은 source A의 style 중 일부를 source B의 style로 변경해서 만든 이미지들입니다. style은 총 18곳에서 사용되는데 처음 4곳 (<span class="math notranslate nohighlight">\(4^2 - 8^2\)</span>)을 coarse, 그다음 4곳 (<span class="math notranslate nohighlight">\(16^2-32^2\)</span>)을 middle, 마지막 10곳 (<span class="math notranslate nohighlight">\(64^2-1024^2\)</span>)을 fine style로 정의하였습니다. 그림을 보시면 윗 부분에서는 포즈나 전체적인 머리 스타일같이 coarse style은 source B의 것을 유지하고, 아래로 갈수록 source A의 큰 틀을 유지하면서 세부적인 부분들을 B에서 가져왔음을 볼 수 있습니다.</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig5.png"><img alt="stylegan_05" class="bg-primary mb-1" src="../../_images/styleGAN_fig5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Mixing two styles</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Mixing two styles</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="stochastic-variation">
 <h2>Stochastic Variation<a class="headerlink" href="#stochastic-variation" title="Permalink to this heading">#</a></h2>
 <p>한 사람의 이미지 안에는 확률적으로 바뀔 수 있는 부분이 있습니다. (주근깨, 머릿결, 피부) 이를 모델링하기 위해서 noise를 추가적인 input으로 사용하여 각 convolution layer 다음에 더해집니다. 아래 그림에서 (a)의 생성된 한 사람의 이미지 안에서도 디테일들은 (b)와 같이 달라질 수 있습니다. (c)와 같이 standard deviation을 구해봤을 때 얼굴형과 같은 attribute는 변하지않지만 noise에 의해서 머리카락과 같은 부분은 variation이 생김을 볼 수 있습니다.</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig6.png"><img alt="stylegan_06" class="bg-primary mb-1" src="../../_images/styleGAN_fig6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Examples of stochastic variation</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Examples of stochastic variation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 그림에서 (a)는 모든 layer에 noise를 준 경우, (b)는 noise를 주지 않은 경우, (c)는 fine layers (<span class="math notranslate nohighlight">\(64^2 - 1024^2\)</span>)에만 noise를 준 경우, (d)는 coarse layers (<span class="math notranslate nohighlight">\(4^2 - 32^2\)</span>)에만 noise를 준 경우입니다. (b)를 보면 noise가 없을 경우 머리카락같은 디테일이 제대로 살아있지 않은 것을 볼 수 있습니다. (c)와 (d)를 보면 fine layers에 들어간 noise가 머리카락의 더 세밀한 부분에 영향을 끼친다는 것을 볼 수 있습니다.</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig7.png"><img alt="stylegan_07" class="bg-primary mb-1" src="../../_images/styleGAN_fig7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Effect of noise inputs at different layers</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Effect of noise inputs at different layers</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -583,13 +577,13 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 <h2>Mixing Regularization<a class="headerlink" href="#mixing-regularization" title="Permalink to this heading">#</a></h2>
 <p>논문에서는 localization이 더 잘 되게하기 위해 style mixing이라는 방법을 훈련에 사용합니다. 두 개의 style vector <span class="math notranslate nohighlight">\(\mathbf{w}_{1},\mathbf{w}_{2}\)</span>를 사용하여 앞 쪽 layer에는 <span class="math notranslate nohighlight">\(\mathbf{w}_{1}\)</span>을, 뒤 쪽 layer에는 <span class="math notranslate nohighlight">\(\mathbf{w}_{2}\)</span>를 사용하는 방법입니다. 이는 generator가 인접한 style끼리 correlated되어있다고 학습하는 것을 막아서 localization을 더 잘 되게 하는 목적입니다.</p>
 </section>
-<section id="id7">
-<h2>실험 결과<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>실험 결과<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>마지막으로 저자들이 제안한 방법들이 실제로 효과가 있었는지 확인해봅시다. 아래 표와 같이 실험적으로 보았을 때 저자들이 제안한 방법들을 모두 사용한 경우 FID가 가장 우수하게 나왔습니다.</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/styleGAN_fig8.png"><img alt="stylegan_08" class="bg-primary mb-1" src="../../_images/styleGAN_fig8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">FID for various generator designs</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">FID for various generator designs</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -608,7 +602,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -620,10 +614,11 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="cycleGAN.html"
@@ -643,7 +638,10 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -662,7 +660,7 @@ AdaIN(\mathbf{x}_{i},\mathbf{y})=\mathbf{y}_{s,i}\frac{\mathbf{x}_{i}-\mu(\mathb
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-and-adain">Style and AdaIN</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-variation">Stochastic Variation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mixing-regularization">Mixing Regularization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">실험 결과</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">실험 결과</a></li>
 </ul>
   </nav></div>
 
@@ -710,8 +708,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

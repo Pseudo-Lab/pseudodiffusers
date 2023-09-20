@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -219,6 +209,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -379,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -390,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -501,18 +495,18 @@ document.write(`
 <li><p>Process</p>
 <ul>
 <li><p>Forward Process</p>
-<figure class="align-default" id="markdown-fig">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img01.png"><img alt="I-DDPM_00" class="bg-primary mb-1" src="../../_images/img01.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>Reverse Process</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="I-DDPM_01" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -523,10 +517,10 @@ document.write(`
 <ul>
 <li><p><span class="math notranslate nohighlight">\({B_{t}}\)</span> : time step 에 따른 noising할 정도</p></li>
 <li><p><span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -541,18 +535,18 @@ document.write(`
 <li><p>위의 문장 (<span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 대신 <span class="math notranslate nohighlight">\({B_{t}}\)</span>를 사용)에서 의문점</p>
 <ul>
 <li><p>사실 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>Diffusion Step간 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -563,10 +557,10 @@ document.write(`
 <p>⇒ 따라서, <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 동일한 값으로 두고 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 Non Trainable Parameter로 두는것은 설계의 Miss</p>
 </li>
 <li><p>하지만, <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 자체를 학습하기에는 값의 범위가 너무 작아서 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 Interpolation 값을 Predict하도록 설계</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -578,19 +572,47 @@ document.write(`
 </ul>
 </li>
 <li><p>Noise Schedule</p>
-<ul class="simple">
+<ul>
 <li><p>DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인</p></li>
-<li><p>Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적</p></li>
+<li><p>Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img62.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img62.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Step이 거듭날수록 Linear schedule(상단)의 이미지가 너무 빠르게 Noisy해짐</p></li>
+<li><p>추가로 Reverse Process의 20%를 Skip해도 성능에 큰 영향이 없음을 확인</p></li>
+</ul>
+<p>⇒ 결국 Linear mode를 사용하면 특정 Step 이후의 Noise는 학습에 의미있는 영향을 미치지 못한다.</p>
+<ul>
+<li><p>I-DDPM에서는 이러한 scheduling Equation을 새로 정의</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img72.png"><img alt="I-DDPM_07" class="bg-primary mb-1" src="../../_images/img72.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>새로 정의한 식은 중간 단계에서는 Noise가 강하게 입혀지지만 0과 T 부근에서는 비교적 덜 Noisy해짐</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img82.png"><img alt="I-DDPM_08" class="bg-primary mb-1" src="../../_images/img82.png" style="width: 350px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 </li>
 <li><p>Gradient Noise</p>
 <ul>
 <li><p>Model을 <span class="math notranslate nohighlight">\(L_{vlb}\)</span>를 Direct로 최적화하도록 설계하면 Best</p></li>
 <li><p>하지만 아래 이미지와같이 Loss 자체가 unstable해서 직접 최적화에는 어려움이 있음</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="I-DDPM_09" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -606,16 +628,16 @@ document.write(`
 </li>
 </ul>
 <p><strong>Result</strong></p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="I-DDPM_10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="I-DDPM_11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -625,10 +647,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img121.png"><img alt="I-DDPM_12" class="bg-primary mb-1" src="../../_images/img121.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -646,16 +668,16 @@ document.write(`
 </li>
 <li><p>결과는?</p></li>
 </ul>
-<figure class="align-default" id="id13">
+<figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img131.png"><img alt="I-DDPM_13" class="bg-primary mb-1" src="../../_images/img131.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id14">
+<figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img141.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img141.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 100 Step만 가도 Full Model과 비슷한 FiD값을 보임</p>
@@ -664,10 +686,10 @@ document.write(`
 <h2>5. Comparison to GANs<a class="headerlink" href="#comparison-to-gans" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Class Conditional Generation + P&amp;R Metric으로 GAN 모델(BigGAN)과 성능을 비교</p>
-<figure class="align-default" id="id15">
+<figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="I-DDPM_15" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -681,16 +703,16 @@ document.write(`
 <ul class="simple">
 <li><p>다양한 Capacity를 가진 모델의 FiD와 NLL 값을 비교</p></li>
 </ul>
-<figure class="align-default" id="id16">
+<figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="I-DDPM_16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id17">
+<figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="I-DDPM_17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 모델의 크기와 학습량 모두 Step에 어느정도 비례함</p>
@@ -711,7 +733,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -723,10 +745,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="LoRA.html"
@@ -746,7 +769,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -816,8 +842,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

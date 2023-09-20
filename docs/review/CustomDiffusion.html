@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -219,6 +209,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -379,10 +373,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -390,7 +384,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -571,10 +565,10 @@ document.write(`
 <ul>
 <li><p>Backbone으로 Latent Diffusion Model을 채택</p></li>
 <li><p>(L)DM의 학습 Concept</p>
-<figure class="align-default" id="markdown-fig">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img0.png"><img alt="CD_00" class="bg-primary mb-1" src="../../_images/img0.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Equation 0</span><a class="headerlink" href="#markdown-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Equation 0</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -593,20 +587,20 @@ document.write(`
 <li><p>이러한 LDM 모델을 fine tuning할때는 Model의 모든 Layer에대해 update하는게 기본</p></li>
 <li><p>하지만 이러한 finetuning 방식은 Resource가 비효율적으로 많이들고, 새로운 Concept 이미지에 overfitting되기 쉬움</p></li>
 <li><p>Finetuning 과정 중 모델의 Weight 변화량을 체크</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img1.png"><img alt="CD_01" class="bg-primary mb-1" src="../../_images/img1.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Delta of Weight while Training</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Delta of Weight while Training</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>다른 부분에비해 Cross Attention 연산의 Wegith 변화량이 가장 큼</p></li>
 <li><p>Cross Attention</p></li>
 </ul>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img2.png"><img alt="CD_02" class="bg-primary mb-1" src="../../_images/img2.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Fig.4 Cross Attention</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Fig.4 Cross Attention</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -622,10 +616,10 @@ document.write(`
 <ul class="simple">
 <li><p>Language Draft</p></li>
 </ul>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img3.png"><img alt="CD_03" class="bg-primary mb-1" src="../../_images/img3.png" style="width: 650px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Moongate 이미지를 생성해버림</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Moongate 이미지를 생성해버림</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -655,10 +649,10 @@ document.write(`
 <ul class="simple">
 <li><p>각각 Single Concept으로 학습된 weight를 merge</p></li>
 </ul>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img4.png"><img alt="CD_04" class="bg-primary mb-1" src="../../_images/img4.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -692,10 +686,10 @@ document.write(`
 <ul class="simple">
 <li><p>Qualitative Evaluation</p></li>
 </ul>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img5.png"><img alt="CD_05" class="bg-primary mb-1" src="../../_images/img5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Qualitative Evaluation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Qualitative Evaluation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -706,28 +700,28 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img6.png"><img alt="CD_06" class="bg-primary mb-1" src="../../_images/img6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 정성적, 정량적 평가 모두 Custom Diffusion &gt; Dreambooth, Textual Inversion</p>
 <p>Multiple Concept Finetuning</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img7.png"><img alt="CD_07" class="bg-primary mb-1" src="../../_images/img7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Multiple Concept Finetuning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Multiple Concept Finetuning</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Joint Training &gt; Optimization by custom diffusion &gt; Dreambooth</p></li>
 </ul>
 <p>Human Preference Study</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img8.png"><img alt="CD_08" class="bg-primary mb-1" src="../../_images/img8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -738,10 +732,10 @@ document.write(`
 <p>Ablation Study</p>
 <ol class="arabic">
 <li><p>Regularization Image</p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img9.png"><img alt="CD_09" class="bg-primary mb-1" src="../../_images/img9.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -756,10 +750,10 @@ document.write(`
 <ul class="simple">
 <li><p>customizing이 가능하고 training resourse가 매우 적은 finetuning 기법 소개</p></li>
 </ul>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img10.png"><img alt="CD_10" class="bg-primary mb-1" src="../../_images/img10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Limitation Of Custom Diffusion</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Limitation Of Custom Diffusion</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -781,7 +775,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -793,10 +787,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="Textual_Inversion.html"
@@ -816,7 +811,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -895,8 +893,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

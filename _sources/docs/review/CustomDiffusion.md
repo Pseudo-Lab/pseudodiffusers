@@ -86,7 +86,7 @@ CVPR 2023. Adobe
 
 - Backbone으로 Latent Diffusion Model을 채택
 - (L)DM의 학습 Concept
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/CustomDiffusion/img0.png" alt="CD_00" class="bg-primary mb-1" width="350px">
 
     Equation 0
@@ -103,14 +103,14 @@ CVPR 2023. Adobe
 - 이러한 LDM 모델을 fine tuning할때는 Model의 모든 Layer에대해 update하는게 기본
 - 하지만 이러한 finetuning 방식은 Resource가 비효율적으로 많이들고, 새로운 Concept 이미지에 overfitting되기 쉬움
 - Finetuning 과정 중 모델의 Weight 변화량을 체크
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/CustomDiffusion/img1.png" alt="CD_01" class="bg-primary mb-1" width="500px">
 
     Delta of Weight while Training
     :::
 - 다른 부분에비해 Cross Attention 연산의 Wegith 변화량이 가장 큼
 - Cross Attention
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img2.png" alt="CD_02" class="bg-primary mb-1" width="500px">
 
 Fig.4 Cross Attention
@@ -123,7 +123,7 @@ Fig.4 Cross Attention
 - Fine Tuning할 때 $V^{*}$은 실제로는 잘 쓰지않는 단어로 사용하고 “*A [$V^{*}$] [Class]”* 형식으로 이미지를 Captioning한 후에 학습
 - 또 Finetuning중에 일반적인 concept을 잊어버리는 Language Draft 현상이 있을수있음
   - Language Draft
-  :::{figure-md} markdown-fig
+  :::{figure-md} 
   <img src="../../pics/CustomDiffusion/img3.png" alt="CD_03" class="bg-primary mb-1" width="650px">
     
   Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Moongate 이미지를 생성해버림
@@ -141,7 +141,7 @@ Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Mo
         - ($V^{i}$*, for $i$ is # of concepts*)
 - Constrained optimization to merge concepts
     - 각각 Single Concept으로 학습된 weight를 merge
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/CustomDiffusion/img4.png" alt="CD_04" class="bg-primary mb-1" width="450px">
 
     Equation 4
@@ -164,7 +164,7 @@ Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Mo
 Single Concept Finetuning
 
 - Qualitative Evaluation
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img5.png" alt="CD_05" class="bg-primary mb-1" width="700px">
 
 Qualitative Evaluation
@@ -174,7 +174,7 @@ Qualitative Evaluation
     - text alignment : prompt에 얼마나 대응되는 이미지를 생성해냈는가
     - image alignment : training image의 concept을 얼마나 잘 표현해냈는가
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img6.png" alt="CD_06" class="bg-primary mb-1" width="700px">
 
 Table 1
@@ -183,7 +183,7 @@ Table 1
 
 Multiple Concept Finetuning
 
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img7.png" alt="CD_07" class="bg-primary mb-1" width="700px">
 
 Multiple Concept Finetuning
@@ -192,7 +192,7 @@ Multiple Concept Finetuning
 - Joint Training > Optimization by custom diffusion > Dreambooth
 
 Human Preference Study
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img8.png" alt="CD_08" class="bg-primary mb-1" width="700px">
 
 Table 2
@@ -205,7 +205,7 @@ Table 2
 Ablation Study
 
 1. Regularization Image
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/CustomDiffusion/img9.png" alt="CD_09" class="bg-primary mb-1" width="700px">
 
     Table 3
@@ -217,7 +217,7 @@ Ablation Study
 ## 5. Discussion & Limitation
 
 - customizing이 가능하고 training resourse가 매우 적은 finetuning 기법 소개
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/CustomDiffusion/img10.png" alt="CD_10" class="bg-primary mb-1" width="700px">
 
 Limitation Of Custom Diffusion

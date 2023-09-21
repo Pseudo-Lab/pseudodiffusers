@@ -1,12 +1,12 @@
 #######################################################################################
 # Book settings
-title : Text-to-Image Generation
+title : Text-to-Image Generation-feat-Diffusion
 author: PseudoLab
 logo: 'PseudoLab_logo.png'
 
 # Short description about the book
 description: >-
-  Paper/code review and experimental findings related to Text-to-Image Generation models
+  Paper/code review and experimental findings related to image generation, text-to-image generation, and diffusion-based models
 
 #######################################################################################
 # Execution settings
@@ -25,7 +25,7 @@ notebook_interface            : "notebook"
 #######################################################################################
 # Launch button settings
 repository:
-  url                         : https://github.com/pseudo-lab/text-to-image-generation
+  url                         : https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion
   path_to_book                : "book"
 
 latex:

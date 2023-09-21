@@ -199,18 +199,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -524,7 +516,6 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 </section>
-<hr class="docutils" />
 <section id="related-work">
 <h2>Related work(관련 연구)<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -536,7 +527,6 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 <p>논문과 관련된 기존 연구에 대한 내용이었음. 관련 중요한 개념들은 위 introduction에서 설명했고, 나머지는 cycleGAN 스터디와는 딱히 관련이 없어 보여서 스킵했음.</p>
 </section>
-<hr class="docutils" />
 <section id="formulation">
 <h2>Formulation<a class="headerlink" href="#formulation" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id5">
@@ -606,7 +596,6 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 </section>
-<hr class="docutils" />
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
 <p>baseline architecture로서 neural style transfer와 super-resolution에 인상적인 결과를 보여준 논문에서 사용된 구조를 채택함.</p>
@@ -662,7 +651,6 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 </ul>
 </section>
 </section>
-<hr class="docutils" />
 <section id="result">
 <h2>Result<a class="headerlink" href="#result" title="Permalink to this heading">#</a></h2>
 <p>모델 성능 평가를 위해 아래와 같은 세 개의 지표를 사용.</p>
@@ -739,7 +727,6 @@ table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 �
 <p>그림 8은 CMP Façade Database의 건축 레이블 &lt;–&gt; 사진, UT Zapoos50K dataset의 edge &lt;–&gt; 신발과 같이 pix2pix에 사용된 다른 paired dataset에 대한 몇 가지 예시 결과를 보여줌. cycleGAN의 이미지 품질은 fully supervised pix2pix에 대의 생성된 것과 비슷하지만 cycleGAN은 paired supervision 없이 학습이 된다.(우리가 짱이다!)</p>
 </section>
 </section>
-<hr class="docutils" />
 <section id="applications">
 <h2>Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -775,7 +762,6 @@ Turning a horse video into a zebra video (by CycleGAN)</p>
 <h3>Comparison with Gatys<a class="headerlink" href="#comparison-with-gatys" title="Permalink to this heading">#</a></h3>
 </section>
 </section>
-<hr class="docutils" />
 <section id="limitations-and-discusssion">
 <h2>Limitations and Discusssion<a class="headerlink" href="#limitations-and-discusssion" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id17">

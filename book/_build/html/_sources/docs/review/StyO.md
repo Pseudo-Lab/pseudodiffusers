@@ -59,7 +59,7 @@
 ## 3. Method
 
 ### 3.2. Framework of StyO
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/StyO/img.png" alt="StyO_00" class="bg-primary mb-1" width="600">
 
 Figure 1
@@ -83,7 +83,7 @@ Figure 1
     2. auxiliary 이미지에는 없는 src 이미지만의 정보를 $C_{src}$ 에 주입
     3. src 이미지의 style과 tgt 이미지의 style을 구별하는데 도움을 줌
 - Full Loss
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/StyO/img1.png" alt="StyO_01" class="bg-primary mb-1" width="500px">
     
     Equation 1
@@ -91,7 +91,7 @@ Figure 1
     
 - 이러한 IDL의 학습만으로 src 이미지와 tgt 이미지의 style transfer가 가능하다.
     - `“a drawing with $S_{tgt}$ not $S_{src}$ style of $C_{src}$ not $C_{tgt}$ portrait”`
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/StyO/img2.png" alt="StyO_02" class="bg-primary mb-1" width="500px">
     
         Figure 2
@@ -110,7 +110,7 @@ Figure 1
     - 따라서 src 이미지의 attention mask를 generate 과정에 주입합으로써 content 정보를 좀 더 잘 유지하도록 유도
     - 단, attention map의 모든 값을 replace하지않고, content에 관한 Index만 선택적으로 replace
         - content index : '$C_{src}$`, `not`, `$C_{tgt}$`, `portrait`
-            :::{figure-md} markdown-fig
+            :::{figure-md} 
             <img src="../../pics/StyO/img3.png" alt="StyO_03" class="bg-primary mb-1" width="450px">
     
             Equation 3
@@ -135,7 +135,7 @@ Figure 1
     - 나머지는 LDM과 동일
 
 **Comparison with SOTA methods**
-:::{figure-md} markdown-fig
+:::{figure-md} 
 <img src="../../pics/StyO/img4.png" alt="StyO_04" class="bg-primary mb-1" width="600px">
 
 Figure 3
@@ -144,7 +144,7 @@ Figure 3
 - StyO가 src 이미지의 face identity와 local detail 모두 잘 유지함과 동시에, style 정보를 자연스럽게 입힌 결과물을 생성해낸다.
 - User Study도 다른 모델들에 비해 좋은 결과를 보였다.
     
-    :::{figure-md} markdown-fig
+    :::{figure-md} 
     <img src="../../pics/StyO/img5.png" alt="StyO_05" class="bg-primary mb-1" width="500px">
 
     Table 1
@@ -155,7 +155,7 @@ Figure 3
 
 1. *Effect of Contrastive Disentangled Prompt Template*
     - negative prompt 없이 positive prompt만 넣고 학습할경우 학습 이미지의 overfitting이 심하고, style과 content 정보의 분리에 어려움을 보인다.
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/StyO/img6.png" alt="StyO_06" class="bg-primary mb-1" width="500px">
 
         Figure 4
@@ -164,7 +164,7 @@ Figure 3
     - 또, source 이미지의 local detail을 유지하기위해 auxiliary set의 trick도 적용하는것이 Best Quality의 결과물을 생성해냈다.
 2. *Effect of Fine-grained Content Controller*
     - FCC 없이 Inference할 경우 generated 이미지의 높은 diversity를 보이지만, FCC를 포함할 경우 src 이미지의 fidelity가 높아져 좀더 significant한 이미지가 생성되는것을 보여주었다.
-        :::{figure-md} markdown-fig
+        :::{figure-md} 
         <img src="../../pics/StyO/img7.png" alt="StyO_07" class="bg-primary mb-1" width="500px">
 
         Figure 5

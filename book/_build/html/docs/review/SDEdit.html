@@ -68,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis" href="SDXL.html" />
+    <link rel="next" title="SDXL" href="SDXL.html" />
     <link rel="prev" title="DALLE2" href="DALLE2.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -201,18 +201,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SDEdit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -532,7 +524,7 @@ document.write(`
 <ul>
 <li><p>Guide image의 Level을 정의한다.</p>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img24.png"><img alt="SDEdit_02" class="bg-primary mb-1" src="../../_images/img24.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img23.png"><img alt="SDEdit_02" class="bg-primary mb-1" src="../../_images/img23.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 218 </span><span class="caption-text">Image 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -550,7 +542,7 @@ document.write(`
 <li><p>DDPM과 달리 SDE의 경우, 완전히 noise화된 이미지 즉, random noise로부터 denoising을 진행할 필요가 없다.</p></li>
 <li><p>즉, 적절한 <span class="math notranslate nohighlight">\(t_{0} \in [0,1]\)</span>를 지정한 후 denoising process가 가능하다.</p>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img34.png"><img alt="SDEdit_03" class="bg-primary mb-1" src="../../_images/img34.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img33.png"><img alt="SDEdit_03" class="bg-primary mb-1" src="../../_images/img33.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 219 </span><span class="caption-text">Image 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -563,7 +555,7 @@ document.write(`
 </ol>
 <p>를 얻게된다.</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img43.png"><img alt="SDEdit_04" class="bg-primary mb-1" src="../../_images/img43.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img42.png"><img alt="SDEdit_04" class="bg-primary mb-1" src="../../_images/img42.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 220 </span><span class="caption-text">Image 5</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -571,7 +563,7 @@ document.write(`
 </li>
 <li><p>아래는 SDEdit의 적용 과정이다.</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img53.png"><img alt="SDEdit_05" class="bg-primary mb-1" src="../../_images/img53.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img52.png"><img alt="SDEdit_05" class="bg-primary mb-1" src="../../_images/img52.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 221 </span><span class="caption-text">Image 6</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -592,7 +584,7 @@ document.write(`
 <li><p>faithful : <span class="math notranslate nohighlight">\(L_{2}\)</span> score (lower is better)</p></li>
 <li><p>그 외 종합적인 평가 지표로 survey를 통한 수치를 제시하였다.</p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img63.png"><img alt="SDEdit_06" class="bg-primary mb-1" src="../../_images/img63.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img62.png"><img alt="SDEdit_06" class="bg-primary mb-1" src="../../_images/img62.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 222 </span><span class="caption-text">Image 7</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -605,7 +597,7 @@ document.write(`
 </li>
 <li><p>Comparison with GAN (styleGAN-ADA + Inversion)</p>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img73.png"><img alt="SDEdit_07" class="bg-primary mb-1" src="../../_images/img73.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img72.png"><img alt="SDEdit_07" class="bg-primary mb-1" src="../../_images/img72.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 223 </span><span class="caption-text">Image 8</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -680,7 +672,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis</p>
+        <p class="prev-next-title">SDXL</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

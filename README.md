@@ -1,4 +1,4 @@
-# text-to-image-generation
+# text-to-image-generation-feat-diffusion
 
 This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion) team.
 

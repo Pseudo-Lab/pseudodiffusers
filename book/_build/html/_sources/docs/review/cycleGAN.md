@@ -59,7 +59,6 @@ mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 -   정방향, 역방향 adversarial Loss(X -> Y & Y -> X)
 -   Cycle consistency loss: X ~= F(G(x))
 
----
 
 ## Related work(관련 연구)
 
@@ -71,7 +70,6 @@ mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 
 논문과 관련된 기존 연구에 대한 내용이었음. 관련 중요한 개념들은 위 introduction에서 설명했고, 나머지는 cycleGAN 스터디와는 딱히 관련이 없어 보여서 스킵했음.
 
----
 
 ## Formulation
 
@@ -131,7 +129,6 @@ full objective function
 
 -   이 때 consistency loss 앞에 붙은 가중치 (lambda)는 GAN Loss와의 상대적 중요도에 따라 결정됨.
 
----
 
 ## Implementation
 
@@ -183,7 +180,6 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 -   batch size == 1, 아담을 사용했다.
 -   모든 네트워크는 learning rate를 0.0002로 사용했다. 첫 100 에포크 동안에는 같은 ln을 사용했고, 다음 100 에포크마다 0으로 조금식 수렴하게 했다.
 
----
 
 ## Result
 
@@ -258,7 +254,6 @@ compare with paired dataset
 
 그림 8은 CMP Façade Database의 건축 레이블 <--> 사진, UT Zapoos50K dataset의 edge <--> 신발과 같이 pix2pix에 사용된 다른 paired dataset에 대한 몇 가지 예시 결과를 보여줌. cycleGAN의 이미지 품질은 fully supervised pix2pix에 대의 생성된 것과 비슷하지만 cycleGAN은 paired supervision 없이 학습이 된다.(우리가 짱이다!)
 
----
 
 ## Applications
 - ** 이미지가 너무 많아 이미지는 생략하겠습니다.ㅠ**
@@ -294,7 +289,6 @@ Lidentity가 없으면, 생성자 G와 F는 굳이 필요하지 않을 때 입�
 
 ### Comparison with Gatys
 
----
 
 ## Limitations and Discusssion
 

@@ -1,12 +1,15 @@
+```{admonition} Information
+- **Title:** SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations
+
+- **Reference**
+    - Paper: [https://arxiv.org/pdf/2108.01073.pdf](https://arxiv.org/pdf/2108.01073.pdf)
+
+- **Author:** Seunghwan Ji
+
+- **Last updated on Oct. 03, 2023**
+```
+
 # SDEdit
-
-## 학습 자료
-
-**SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations**
-
-[https://arxiv.org/pdf/2108.01073.pdf](https://arxiv.org/pdf/2108.01073.pdf)
-
----
 
 ## Abstract
 

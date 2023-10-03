@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {StyO: Stylize Your Face in Only One-Shot}
+- **Title:** StyO: Stylize Your Face in Only One-Shot
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2303.03231](https://arxiv.org/abs/2303.03231)

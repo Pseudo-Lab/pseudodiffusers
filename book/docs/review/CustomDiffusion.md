@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {A Multi-Concept Customiziation of Text-To-Image Diffusion}, {VCPR 2023}
+- **Title:** A Multi-Concept Customiziation of Text-To-Image Diffusion (CVPR 2023)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2212.04488](https://arxiv.org/abs/2212.04488)

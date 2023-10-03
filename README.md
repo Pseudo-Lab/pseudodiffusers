@@ -14,10 +14,10 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 조상우 [Sangwoo Jo] | [Github](https://github.com/jasonjo97) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 - 문광수 [Kwangsu Mun] | [Github](https://github.com/mksoo) | [Linkedin](https://www.linkedin.com/in/%EA%B4%91%EC%88%98-%EB%AC%B8-95681b229/) |
 - 김지수 [Jisu Kim] | Github |  [Linkedin](https://www.linkedin.com/in/%EC%A7%80%EC%88%98-%EA%B9%80-5a0b2320a/) |
-- 박범수 [Beomsoo Park] | [Github](https://github.com/hanlyang0522) | Linkedin
-- 지승환 [Seunghwan Ji] | [Github](https://github.com/hwansnaa) | [Linkedin](https://www.linkedin.com/in/%EC%8A%B9%ED%99%98-%EC%A7%80-0169b425a/)
+- 박범수 [Beomsoo Park] | [Github](https://github.com/hanlyang0522) | Linkedin |
+- 지승환 [Seunghwan Ji] | [Github](https://github.com/hwansnaa) | [Linkedin](https://www.linkedin.com/in/%EC%8A%B9%ED%99%98-%EC%A7%80-0169b425a/) | 
 - 고동근 [Donggeun Sean Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
-- 조남경 [Namkyeong Cho] | Github | Linkedin
+- 조남경 [Namkyeong Cho] | Github | Linkedin |
 - 김선훈 [SeonHoon Kim] | [Github](https://github.com/egshkim) | [Linkedin](https://www.linkedin.com/in/seonhoonkim/) | 
 - 이준형 [Junhyoung Lee] | Github | Linkedin | 
 
@@ -27,13 +27,15 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 1 | 2023.03.29 | 조상우 [Sangwoo Jo] | [Auto-Encoding Variational Bayes](https://arxiv.org/abs/1312.6114) (ICLR 2014) <br> [Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (NIPS 2014)| 
 | 2 | 2023.04.05 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks](https://arxiv.org/abs/1703.10593) (ICCV 2017) <br> [A Style-Based Generator Architecture for Generative Adversarial Networks](https://arxiv.org/abs/1406.2661) (CVPR 2019)| 
 | 3 | 2023.04.12 | 박범수 [Beomsoo Park] <br> 지승환 [Seunghwan Ji] | [Denoising Diffusion Probabilistic Models](https://arxiv.org/abs/2006.11239) (NeurIPS 2020) <br> [Denoising Diffusion Implicit Models](https://arxiv.org/abs/2010.02502) (ICLR 2021)|
-| 4 | 2023.05.10 | 고동근 [Donggeun Sean Ko] | [Diffusion Models Beat GANs in Image Synthesis](https://arxiv.org/abs/2105.05233) (NeurIPS 2021) <br> [Zero-Shot Text-to-Image Generation](https://arxiv.org/abs/2102.12092) (PMLR 2021) |
+| 4 | 2023.05.10 | 고동근 [Donggeun Sean Ko] | [Diffusion Models Beat GANs in Image Synthesis](https://arxiv.org/abs/2105.05233) (NeurIPS 2021) <br> [Zero-Shot Text-to-Image Generation](https://arxiv.org/abs/2102.12092) (ICML 2021) |
 | 5 | 2023.05.17 | 조남경 [Namkyeong Cho] <br> 조상우 [Sangwoo Jo] | [High-Resolution Image Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2112.10752) (CVPR 2022) <br> [DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation](https://arxiv.org/abs/2208.12242) (CVPR 2023)|
 | 6 | 2023.05.24 | 문광수 [Kwangsu Mun] <br> 김지수 [Jisu Kim] | [An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion](https://arxiv.org/abs/2208.01618) <br> [Adding Conditional Control to Text-to-Image Diffusion Models](https://arxiv.org/abs/2302.05543)|
 | 7 | 2023.05.31 | 박범수 [Beomsoo Park] <br> 지승환 [Seunghwan Ji] | [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/abs/2106.09685) <br> [Multi-Concept Customization of Text-to-Image Diffusion](https://arxiv.org/abs/2212.04488) (CVPR 2023) |
 | 8 | 2023.08.30 | 고동근 [Donggeun Sean Ko]  <br> 조상우 [Sangwoo Jo] | [Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding](https://arxiv.org/abs/2205.11487) <br> [Imagen Editor and EditBench: Advancing and Evaluating Text-Guided Image Inpainting](https://arxiv.org/abs/2212.06909) (CVPR 2023) |
 | 9 | 2023.09.06 | 김선훈 [SeonHoon Kim] <br> 지승환 [Seunghwan Ji] | [Hierarchical Text-Conditional Image Generation with CLIP Latents](https://arxiv.org/abs/2204.06125) <br> [SDEdit: Guided Image Synthesis and Editing with Stochastic Differential Equations](https://arxiv.org/abs/2108.01073) (ICLR 2022) |
 | 10 | 2023.09.13 | 조남경 [Namkyeong Cho] <br> 이준형 [Junhyoung Lee] | [DeepFloyd IF](https://www.deepfloyd.ai/deepfloyd-if) <br> [SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis](https://arxiv.org/abs/2307.01952) |
+| 11 | 2023.09.20 | 조형서 [HyoungSeo Cho] <br> 조상우 [Sangwoo Jo] | [HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models](https://arxiv.org/abs/2307.06949) <br> [T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models](https://arxiv.org/abs/2302.08453) |
+| 12 | 2023.09.27 | 박세환 [Sehwan Park] <br> 이준형 [Junhyoung Lee] | [GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models](https://arxiv.org/abs/2112.10741) (ICML 2022) <br> [Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning](https://arxiv.org/abs/2309.02591) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

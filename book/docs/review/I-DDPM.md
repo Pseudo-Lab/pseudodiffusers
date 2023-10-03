@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {Improved Denoising Diffusion Probabilistic Models}, {CVPR 2021}
+- **Title:** Improved Denoising Diffusion Probabilistic Models (CVPR 2021)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2102.09672](https://arxiv.org/abs/2102.09672)

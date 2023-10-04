@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {A Multi-Concept Customiziation of Text-To-Image Diffusion}, {VCPR 2023}
+- **Title:** A Multi-Concept Customiziation of Text-To-Image Diffusion (CVPR 2023)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2212.04488](https://arxiv.org/abs/2212.04488)
@@ -10,16 +10,6 @@
 - **Last updated on Aug. 6, 2023**
 ```
 # Custom Diffusion
-
-## 학습 자료
-
-**A Multi-Concept Customiziation of Text-To-Image Diffusion**
-
-[https://arxiv.org/pdf/2212.04488.pdf](https://arxiv.org/pdf/2212.04488.pdf)
-
-CVPR 2023. Adobe
-
----
 
 ## Abstract
 

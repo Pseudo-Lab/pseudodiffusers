@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>StyO &#8212; Text-to-Image Generation</title>
+    <title>StyO &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -205,6 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -264,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/StyO.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/StyO.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,7 +404,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">
@@ -431,7 +431,7 @@ document.write(`
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
-<li><p><strong>Title:</strong> {StyO: Stylize Your Face in Only One-Shot}</p></li>
+<li><p><strong>Title:</strong> StyO: Stylize Your Face in Only One-Shot</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
 <li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2303.03231">https://arxiv.org/abs/2303.03231</a></p></li>
@@ -443,13 +443,6 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="styo">
 <h1>StyO<a class="headerlink" href="#styo" title="Permalink to this heading">#</a></h1>
-<section id="id1">
-<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><strong>StyO: Stylize Your Face in Only One-Shot</strong></p>
-<p><a class="reference external" href="https://arxiv.org/pdf/2303.03231.pdf">https://arxiv.org/pdf/1812.04948.pdf</a></p>
-<hr class="docutils" />
-<p><em>arXiv:2303.03231v2 [<a class="reference external" href="http://cs.cv/">cs.CV</a>] 7 Mar 2023</em></p>
-</section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -514,10 +507,10 @@ document.write(`
 <h2>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
 <section id="framework-of-styo">
 <h3>3.2. Framework of StyO<a class="headerlink" href="#framework-of-styo" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img.png"><img alt="StyO_00" class="bg-primary mb-1" src="../../_images/img.png" style="width: 600px;" /></a>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img.png"><img alt="StyO_00" class="bg-primary mb-1" src="../../_images/img.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -548,20 +541,20 @@ document.write(`
 </ol>
 </li>
 <li><p>Full Loss</p>
-<figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img19.png"><img alt="StyO_01" class="bg-primary mb-1" src="../../_images/img19.png" style="width: 500px;" /></a>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img19.png"><img alt="StyO_01" class="bg-primary mb-1" src="../../_images/img19.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>이러한 IDL의 학습만으로 src 이미지와 tgt 이미지의 style transfer가 가능하다.</p>
 <ul>
 <li><p><code class="docutils literal notranslate"><span class="pre">“a</span> <span class="pre">drawing</span> <span class="pre">with</span> <span class="pre">$S_{tgt}$</span> <span class="pre">not</span> <span class="pre">$S_{src}$</span> <span class="pre">style</span> <span class="pre">of</span> <span class="pre">$C_{src}$</span> <span class="pre">not</span> <span class="pre">$C_{tgt}$</span> <span class="pre">portrait”</span></code></p>
-<figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img24.png"><img alt="StyO_02" class="bg-primary mb-1" src="../../_images/img24.png" style="width: 500px;" /></a>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img24.png"><img alt="StyO_02" class="bg-primary mb-1" src="../../_images/img24.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -587,10 +580,10 @@ document.write(`
 <li><p>단, attention map의 모든 값을 replace하지않고, content에 관한 Index만 선택적으로 replace</p>
 <ul>
 <li><p>content index : ‘<span class="math notranslate nohighlight">\(C_{src}\)</span><code class="docutils literal notranslate"><span class="pre">,</span> </code>not<code class="docutils literal notranslate"><span class="pre">,</span> </code><span class="math notranslate nohighlight">\(C_{tgt}\)</span><code class="docutils literal notranslate"><span class="pre">,</span> </code>portrait`</p>
-<figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img34.png"><img alt="StyO_03" class="bg-primary mb-1" src="../../_images/img34.png" style="width: 450px;" /></a>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img34.png"><img alt="StyO_03" class="bg-primary mb-1" src="../../_images/img34.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -628,19 +621,19 @@ document.write(`
 </li>
 </ul>
 <p><strong>Comparison with SOTA methods</strong></p>
-<figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img43.png"><img alt="StyO_04" class="bg-primary mb-1" src="../../_images/img43.png" style="width: 600px;" /></a>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img43.png"><img alt="StyO_04" class="bg-primary mb-1" src="../../_images/img43.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 165 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
 <li><p>StyO가 src 이미지의 face identity와 local detail 모두 잘 유지함과 동시에, style 정보를 자연스럽게 입힌 결과물을 생성해낸다.</p></li>
 <li><p>User Study도 다른 모델들에 비해 좋은 결과를 보였다.</p>
-<figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img53.png"><img alt="StyO_05" class="bg-primary mb-1" src="../../_images/img53.png" style="width: 500px;" /></a>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img53.png"><img alt="StyO_05" class="bg-primary mb-1" src="../../_images/img53.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 166 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -650,10 +643,10 @@ document.write(`
 <li><p><em>Effect of Contrastive Disentangled Prompt Template</em></p>
 <ul>
 <li><p>negative prompt 없이 positive prompt만 넣고 학습할경우 학습 이미지의 overfitting이 심하고, style과 content 정보의 분리에 어려움을 보인다.</p>
-<figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img63.png"><img alt="StyO_06" class="bg-primary mb-1" src="../../_images/img63.png" style="width: 500px;" /></a>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img63.png"><img alt="StyO_06" class="bg-primary mb-1" src="../../_images/img63.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 167 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -663,10 +656,10 @@ document.write(`
 <li><p><em>Effect of Fine-grained Content Controller</em></p>
 <ul>
 <li><p>FCC 없이 Inference할 경우 generated 이미지의 높은 diversity를 보이지만, FCC를 포함할 경우 src 이미지의 fidelity가 높아져 좀더 significant한 이미지가 생성되는것을 보여주었다.</p>
-<figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img73.png"><img alt="StyO_07" class="bg-primary mb-1" src="../../_images/img73.png" style="width: 500px;" /></a>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img73.png"><img alt="StyO_07" class="bg-primary mb-1" src="../../_images/img73.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 168 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -755,7 +748,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Custom Diffusion &#8212; Text-to-Image Generation</title>
+    <title>Custom Diffusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -205,6 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -264,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/CustomDiffusion.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/CustomDiffusion.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,7 +404,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">
@@ -434,7 +434,7 @@ document.write(`
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
-<li><p><strong>Title:</strong> {A Multi-Concept Customiziation of Text-To-Image Diffusion}, {VCPR 2023}</p></li>
+<li><p><strong>Title:</strong> A Multi-Concept Customiziation of Text-To-Image Diffusion (CVPR 2023)</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
 <li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2212.04488">https://arxiv.org/abs/2212.04488</a></p></li>
@@ -447,13 +447,6 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="custom-diffusion">
 <h1>Custom Diffusion<a class="headerlink" href="#custom-diffusion" title="Permalink to this heading">#</a></h1>
-<section id="id1">
-<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><strong>A Multi-Concept Customiziation of Text-To-Image Diffusion</strong></p>
-<p><a class="reference external" href="https://arxiv.org/pdf/2212.04488.pdf">https://arxiv.org/pdf/2212.04488.pdf</a></p>
-<p>CVPR 2023. Adobe</p>
-</section>
-<hr class="docutils" />
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -557,10 +550,10 @@ document.write(`
 <ul>
 <li><p>Backbone으로 Latent Diffusion Model을 채택</p></li>
 <li><p>(L)DM의 학습 Concept</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img0.png"><img alt="CD_00" class="bg-primary mb-1" src="../../_images/img0.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Equation 0</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Equation 0</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -579,20 +572,20 @@ document.write(`
 <li><p>이러한 LDM 모델을 fine tuning할때는 Model의 모든 Layer에대해 update하는게 기본</p></li>
 <li><p>하지만 이러한 finetuning 방식은 Resource가 비효율적으로 많이들고, 새로운 Concept 이미지에 overfitting되기 쉬움</p></li>
 <li><p>Finetuning 과정 중 모델의 Weight 변화량을 체크</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img1.png"><img alt="CD_01" class="bg-primary mb-1" src="../../_images/img1.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Delta of Weight while Training</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Delta of Weight while Training</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>다른 부분에비해 Cross Attention 연산의 Wegith 변화량이 가장 큼</p></li>
 <li><p>Cross Attention</p></li>
 </ul>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img2.png"><img alt="CD_02" class="bg-primary mb-1" src="../../_images/img2.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Fig.4 Cross Attention</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">Fig.4 Cross Attention</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -608,10 +601,10 @@ document.write(`
 <ul class="simple">
 <li><p>Language Draft</p></li>
 </ul>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img3.png"><img alt="CD_03" class="bg-primary mb-1" src="../../_images/img3.png" style="width: 650px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Moongate 이미지를 생성해버림</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">Fine tuning 후에 Photo of a moon 이미지를 생성하면 Finetuning했던 Moongate 이미지를 생성해버림</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -641,10 +634,10 @@ document.write(`
 <ul class="simple">
 <li><p>각각 Single Concept으로 학습된 weight를 merge</p></li>
 </ul>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img4.png"><img alt="CD_04" class="bg-primary mb-1" src="../../_images/img4.png" style="width: 450px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -678,10 +671,10 @@ document.write(`
 <ul class="simple">
 <li><p>Qualitative Evaluation</p></li>
 </ul>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img5.png"><img alt="CD_05" class="bg-primary mb-1" src="../../_images/img5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Qualitative Evaluation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 128 </span><span class="caption-text">Qualitative Evaluation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -692,28 +685,28 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img6.png"><img alt="CD_06" class="bg-primary mb-1" src="../../_images/img6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 129 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 정성적, 정량적 평가 모두 Custom Diffusion &gt; Dreambooth, Textual Inversion</p>
 <p>Multiple Concept Finetuning</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img7.png"><img alt="CD_07" class="bg-primary mb-1" src="../../_images/img7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Multiple Concept Finetuning</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 130 </span><span class="caption-text">Multiple Concept Finetuning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Joint Training &gt; Optimization by custom diffusion &gt; Dreambooth</p></li>
 </ul>
 <p>Human Preference Study</p>
-<figure class="align-default" id="id10">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img8.png"><img alt="CD_08" class="bg-primary mb-1" src="../../_images/img8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -724,10 +717,10 @@ document.write(`
 <p>Ablation Study</p>
 <ol class="arabic">
 <li><p>Regularization Image</p>
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img9.png"><img alt="CD_09" class="bg-primary mb-1" src="../../_images/img9.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -742,10 +735,10 @@ document.write(`
 <ul class="simple">
 <li><p>customizing이 가능하고 training resourse가 매우 적은 finetuning 기법 소개</p></li>
 </ul>
-<figure class="align-default" id="id12">
+<figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img10.png"><img alt="CD_10" class="bg-primary mb-1" src="../../_images/img10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Limitation Of Custom Diffusion</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">Limitation Of Custom Diffusion</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -821,7 +814,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">

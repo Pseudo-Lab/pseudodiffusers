@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion}, {cs.CV}
+- **Title:** An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
 
 - **Reference**
     - Paper:  [https://arxiv.org/pdf/2208.01618.pdf](https://arxiv.org/pdf/2208.01618.pdf)

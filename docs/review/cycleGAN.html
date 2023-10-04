@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>CycleGAN &#8212; Text-to-Image Generation</title>
+    <title>CycleGAN &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -203,6 +203,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -262,7 +263,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -279,7 +280,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/cycleGAN.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/cycleGAN.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -566,7 +567,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <section id="cycle-consistency-loss">
 <h3>Cycle consistency Loss<a class="headerlink" href="#cycle-consistency-loss" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">cycle consistency loss result</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -577,7 +578,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <li><p>cycle consistency loss를 통해 유도된 결과는 아래 그림에서 볼 수 있었음.</p></li>
 </ul>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">cycle consistency loss function</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -586,7 +587,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <section id="full-objective">
 <h3>full objective - 전체 목적식<a class="headerlink" href="#full-objective" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FUyaOu%2Fbtr724Pl3Rj%2FigjKaeukv5m8Cbdzulp5jK%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 16 </span><span class="caption-text">full objective function</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -678,7 +679,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <section id="human-study">
 <h3>Human study<a class="headerlink" href="#human-study" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id12">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">AMT score</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -688,7 +689,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <section id="fcn">
 <h3>FCN 등<a class="headerlink" href="#fcn" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id13">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">FCN scores</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -698,7 +699,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 <section id="analysis-of-the-loss-function">
 <h3>Analysis of the loss function<a class="headerlink" href="#analysis-of-the-loss-function" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id14">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Analysis of loss function</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -709,7 +710,7 @@ table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 �
 <section id="image-reconstruction-quality">
 <h3>Image reconstruction quality<a class="headerlink" href="#image-reconstruction-quality" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id15">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 23 </span><span class="caption-text">cycle consistency result</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -719,7 +720,7 @@ table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 �
 <section id="paired-dataset">
 <h3>paired dataset에 대한 추가 결과<a class="headerlink" href="#paired-dataset" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id16">
-<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png"><img alt="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 24 </span><span class="caption-text">compare with paired dataset</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>

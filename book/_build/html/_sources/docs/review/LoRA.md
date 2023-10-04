@@ -34,7 +34,7 @@ LLM은 기본적으로 pre-trained model을 특정 task에 맞게 fine-tuning을
 **LoRA는 기존 pre-trained weight는 고정하고, 몇 개의 dense layer만 rank decomposition matrices를 최적화하는 방식으로 학습**시키기로 함. 
 
 :::{figure-md} 
-<img src="../../pics/LoRA/image(0).png" alt="LoRA_00" class="bg-primary mb-1" width="700px">
+<img src="../../pics/LoRA/image(0).png" alt="LoRA_00" class="bg-primary mb-1" width="550px">
 
 LoRA structure
 :::

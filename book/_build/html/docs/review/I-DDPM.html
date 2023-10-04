@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>I-DDPM &#8212; Text-to-Image Generation</title>
+    <title>I-DDPM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -205,6 +205,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -264,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation" target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
    title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -281,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation/issues/new?title=Issue%20on%20page%20%2Fdocs/review/I-DDPM.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/I-DDPM.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -403,7 +404,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-models">2. Denoising Diffusion Probabilistic Models</a></li>
@@ -425,7 +425,7 @@ document.write(`
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
-<li><p><strong>Title:</strong> {Improved Denoising Diffusion Probabilistic Models}, {CVPR 2021}</p></li>
+<li><p><strong>Title:</strong> Improved Denoising Diffusion Probabilistic Models (CVPR 2021)</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
 <li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2102.09672">https://arxiv.org/abs/2102.09672</a></p></li>
@@ -437,13 +437,6 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="i-ddpm">
 <h1>I-DDPM<a class="headerlink" href="#i-ddpm" title="Permalink to this heading">#</a></h1>
-<section id="id1">
-<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
-<p><strong>Improved Denoising Diffusion Probabilistic Models</strong></p>
-<p><a class="reference external" href="https://arxiv.org/pdf/2102.09672.pdf">https://arxiv.org/pdf/2102.09672.pdf</a></p>
-<hr class="docutils" />
-<p><strong>CVPR 2021, Alex Nichol</strong></p>
-</section>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
@@ -487,18 +480,18 @@ document.write(`
 <li><p>Process</p>
 <ul>
 <li><p>Forward Process</p>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img01.png"><img alt="I-DDPM_00" class="bg-primary mb-1" src="../../_images/img01.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img01.png"><img alt="I-DDPM_00" class="bg-primary mb-1" src="../../_images/img01.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 143 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>Reverse Process</p>
-<figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="I-DDPM_01" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="I-DDPM_01" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 144 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -509,10 +502,10 @@ document.write(`
 <ul>
 <li><p><span class="math notranslate nohighlight">\({B_{t}}\)</span> : time step 에 따른 noising할 정도</p></li>
 <li><p><span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의</p>
-<figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -527,18 +520,18 @@ document.write(`
 <li><p>위의 문장 (<span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 대신 <span class="math notranslate nohighlight">\({B_{t}}\)</span>를 사용)에서 의문점</p>
 <ul>
 <li><p>사실 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?</p>
-<figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>Diffusion Step간 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)</p>
-<figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -549,10 +542,10 @@ document.write(`
 <p>⇒ 따라서, <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 동일한 값으로 두고 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>를 Non Trainable Parameter로 두는것은 설계의 Miss</p>
 </li>
 <li><p>하지만, <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 자체를 학습하기에는 값의 범위가 너무 작아서 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 Interpolation 값을 Predict하도록 설계</p>
-<figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -567,10 +560,10 @@ document.write(`
 <ul>
 <li><p>DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인</p></li>
 <li><p>Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적</p>
-<figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img61.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img61.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img61.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img61.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -580,18 +573,18 @@ document.write(`
 <p>⇒ 결국 Linear mode를 사용하면 특정 Step 이후의 Noise는 학습에 의미있는 영향을 미치지 못한다.</p>
 <ul>
 <li><p>I-DDPM에서는 이러한 scheduling Equation을 새로 정의</p>
-<figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img71.png"><img alt="I-DDPM_07" class="bg-primary mb-1" src="../../_images/img71.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img71.png"><img alt="I-DDPM_07" class="bg-primary mb-1" src="../../_images/img71.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>새로 정의한 식은 중간 단계에서는 Noise가 강하게 입혀지지만 0과 T 부근에서는 비교적 덜 Noisy해짐</p>
-<figure class="align-default" id="id10">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img82.png"><img alt="I-DDPM_08" class="bg-primary mb-1" src="../../_images/img82.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img82.png"><img alt="I-DDPM_08" class="bg-primary mb-1" src="../../_images/img82.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -601,10 +594,10 @@ document.write(`
 <ul>
 <li><p>Model을 <span class="math notranslate nohighlight">\(L_{vlb}\)</span>를 Direct로 최적화하도록 설계하면 Best</p></li>
 <li><p>하지만 아래 이미지와같이 Loss 자체가 unstable해서 직접 최적화에는 어려움이 있음</p>
-<figure class="align-default" id="id11">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="I-DDPM_09" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="I-DDPM_09" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -620,16 +613,16 @@ document.write(`
 </li>
 </ul>
 <p><strong>Result</strong></p>
-<figure class="align-default" id="id12">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="I-DDPM_10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="I-DDPM_10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id13">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="I-DDPM_11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="I-DDPM_11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -639,10 +632,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="id14">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img121.png"><img alt="I-DDPM_12" class="bg-primary mb-1" src="../../_images/img121.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img121.png"><img alt="I-DDPM_12" class="bg-primary mb-1" src="../../_images/img121.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -660,16 +653,16 @@ document.write(`
 </li>
 <li><p>결과는?</p></li>
 </ul>
-<figure class="align-default" id="id15">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img131.png"><img alt="I-DDPM_13" class="bg-primary mb-1" src="../../_images/img131.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img131.png"><img alt="I-DDPM_13" class="bg-primary mb-1" src="../../_images/img131.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id16">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img141.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img141.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img141.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img141.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 100 Step만 가도 Full Model과 비슷한 FiD값을 보임</p>
@@ -678,10 +671,10 @@ document.write(`
 <h2>5. Comparison to GANs<a class="headerlink" href="#comparison-to-gans" title="Permalink to this heading">#</a></h2>
 <ul>
 <li><p>Class Conditional Generation + P&amp;R Metric으로 GAN 모델(BigGAN)과 성능을 비교</p>
-<figure class="align-default" id="id17">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="I-DDPM_15" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="I-DDPM_15" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -695,16 +688,16 @@ document.write(`
 <ul class="simple">
 <li><p>다양한 Capacity를 가진 모델의 FiD와 NLL 값을 비교</p></li>
 </ul>
-<figure class="align-default" id="id18">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="I-DDPM_16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="I-DDPM_16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 159 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id19">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="I-DDPM_17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 350px;" /></a>
+<figure class="align-default" id="id18">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="I-DDPM_17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 모델의 크기와 학습량 모두 Step에 어느정도 비례함</p>
@@ -778,7 +771,6 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probabilistic-models">2. Denoising Diffusion Probabilistic Models</a></li>

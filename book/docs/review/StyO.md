@@ -10,16 +10,6 @@
 ```
 # StyO
 
-## 학습 자료
-
-**StyO: Stylize Your Face in Only One-Shot**
-
-[https://arxiv.org/pdf/1812.04948.pdf](https://arxiv.org/pdf/2303.03231.pdf)
-
----
-
-*arXiv:2303.03231v2 [[cs.CV](http://cs.cv/)] 7 Mar 2023*
-
 ## Abstract
 
 - “**Sty**lize the face in only **O**ne-shot.”
@@ -60,7 +50,7 @@
 
 ### 3.2. Framework of StyO
 :::{figure-md} 
-<img src="../../pics/StyO/img.png" alt="StyO_00" class="bg-primary mb-1" width="600">
+<img src="../../pics/StyO/img.png" alt="StyO_00" class="bg-primary mb-1" width="800">
 
 Figure 1
 :::
@@ -84,7 +74,7 @@ Figure 1
     3. src 이미지의 style과 tgt 이미지의 style을 구별하는데 도움을 줌
 - Full Loss
     :::{figure-md} 
-    <img src="../../pics/StyO/img1.png" alt="StyO_01" class="bg-primary mb-1" width="500px">
+    <img src="../../pics/StyO/img1.png" alt="StyO_01" class="bg-primary mb-1" width="700px">
     
     Equation 1
     :::
@@ -92,7 +82,7 @@ Figure 1
 - 이러한 IDL의 학습만으로 src 이미지와 tgt 이미지의 style transfer가 가능하다.
     - `“a drawing with $S_{tgt}$ not $S_{src}$ style of $C_{src}$ not $C_{tgt}$ portrait”`
         :::{figure-md} 
-        <img src="../../pics/StyO/img2.png" alt="StyO_02" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/StyO/img2.png" alt="StyO_02" class="bg-primary mb-1" width="700px">
     
         Figure 2
         :::
@@ -111,7 +101,7 @@ Figure 1
     - 단, attention map의 모든 값을 replace하지않고, content에 관한 Index만 선택적으로 replace
         - content index : '$C_{src}$`, `not`, `$C_{tgt}$`, `portrait`
             :::{figure-md} 
-            <img src="../../pics/StyO/img3.png" alt="StyO_03" class="bg-primary mb-1" width="450px">
+            <img src="../../pics/StyO/img3.png" alt="StyO_03" class="bg-primary mb-1" width="700px">
     
             Equation 3
             :::
@@ -136,7 +126,7 @@ Figure 1
 
 **Comparison with SOTA methods**
 :::{figure-md} 
-<img src="../../pics/StyO/img4.png" alt="StyO_04" class="bg-primary mb-1" width="600px">
+<img src="../../pics/StyO/img4.png" alt="StyO_04" class="bg-primary mb-1" width="700px">
 
 Figure 3
 :::
@@ -145,7 +135,7 @@ Figure 3
 - User Study도 다른 모델들에 비해 좋은 결과를 보였다.
     
     :::{figure-md} 
-    <img src="../../pics/StyO/img5.png" alt="StyO_05" class="bg-primary mb-1" width="500px">
+    <img src="../../pics/StyO/img5.png" alt="StyO_05" class="bg-primary mb-1" width="700px">
 
     Table 1
     :::
@@ -156,7 +146,7 @@ Figure 3
 1. *Effect of Contrastive Disentangled Prompt Template*
     - negative prompt 없이 positive prompt만 넣고 학습할경우 학습 이미지의 overfitting이 심하고, style과 content 정보의 분리에 어려움을 보인다.
         :::{figure-md} 
-        <img src="../../pics/StyO/img6.png" alt="StyO_06" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/StyO/img6.png" alt="StyO_06" class="bg-primary mb-1" width="700px">
 
         Figure 4
         :::
@@ -165,7 +155,7 @@ Figure 3
 2. *Effect of Fine-grained Content Controller*
     - FCC 없이 Inference할 경우 generated 이미지의 높은 diversity를 보이지만, FCC를 포함할 경우 src 이미지의 fidelity가 높아져 좀더 significant한 이미지가 생성되는것을 보여주었다.
         :::{figure-md} 
-        <img src="../../pics/StyO/img7.png" alt="StyO_07" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/StyO/img7.png" alt="StyO_07" class="bg-primary mb-1" width="700px">
 
         Figure 5
         :::

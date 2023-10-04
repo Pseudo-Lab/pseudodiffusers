@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {Zero-shot text-to-image generation}, {ICML 2021}
+- **Title:** Zero-shot text-to-image generation (ICML 2021)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2102.12092](https://arxiv.org/abs/2102.12092)
@@ -45,7 +45,7 @@ Images generated using DALL-E
 
 
 :::{figure-md} 
-<img src="../../pics/dalle/fig3.png" alt="fig3" class="bg-primary mb-1" width="700px">
+<img src="../../pics/dalle/fig3.png" alt="fig3" class="bg-primary mb-1" width="600px">
 
 Transformer 아키텍쳐 \ (source: https://arxiv.org/pdf/2005.14165.pdf)
 
@@ -128,13 +128,13 @@ DALL-E 파이프라인 \ (source:https://www.youtube.com/watch?v=CQoM0r2kMvI&t=1
 ### DALL-E Equations
 
 :::{figure-md} 
-<img src="../../pics/dalle/fig9.png" alt="fig9" class="bg-primary mb-1" width="700px">
+<img src="../../pics/dalle/fig9.png" alt="fig9" class="bg-primary mb-1" width="600px">
 
 equation 1
 :::
 
 :::{figure-md} 
-<img src="../../pics/dalle/fig10.png" alt="fig10" class="bg-primary mb-1" width="700px">
+<img src="../../pics/dalle/fig10.png" alt="fig10" class="bg-primary mb-1" width="600px">
 
 equation 2: Maximizing ELBO
 :::

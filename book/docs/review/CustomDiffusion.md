@@ -11,16 +11,6 @@
 ```
 # Custom Diffusion
 
-## 학습 자료
-
-**A Multi-Concept Customiziation of Text-To-Image Diffusion**
-
-[https://arxiv.org/pdf/2212.04488.pdf](https://arxiv.org/pdf/2212.04488.pdf)
-
-CVPR 2023. Adobe
-
----
-
 ## Abstract
 
 - Large Scale Data를 학습한 Generate 모델이 뛰어난 성능을 보이는 추세

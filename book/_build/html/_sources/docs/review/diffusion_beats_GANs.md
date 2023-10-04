@@ -1,5 +1,5 @@
 ```{admonition} Information
-- **Title:** {Diffusion Models Beat GANs on Image Synthesis}, {NIPS 2021}
+- **Title:** Diffusion Models Beat GANs on Image Synthesis (NeurIPS 2021)
 
 - **Reference**
     - Paper:  [https://arxiv.org/abs/2105.05233](https://arxiv.org/abs/2105.05233)

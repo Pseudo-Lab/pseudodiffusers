@@ -103,7 +103,7 @@ Comparison among no thresholding, static thresholding and dynamic thresholding, 
 - Lower resolution block에서 residual blocks를 더 추가함
 
 :::{figure-md} 
-<img src="../../pics/imagen/imagen_8.png" alt="imagen_8" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen/imagen_8.png" alt="imagen_8" class="bg-primary mb-1" width="600px">
 
 Architecture of Super Resolution Diffusion Model used in Imagen
 :::
@@ -131,7 +131,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set
 
 
 :::{figure-md} 
-<img src="../../pics/imagen/imagen_9.png" alt="imagen_9" class="bg-primary mb-1" width="700px">
+<img src="../../pics/imagen/imagen_9.png" alt="imagen_9" class="bg-primary mb-1" width="550px">
 
 Screenshot of DrawBench dataset
 :::

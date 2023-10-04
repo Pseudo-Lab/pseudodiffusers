@@ -44,7 +44,7 @@
 
 ### 2.1. Score Based Generated Model
 :::{figure-md} 
-<img src="../../pics/SDEdit/img0.png" alt="SDEdit_00" class="bg-primary mb-1" width="350px">
+<img src="../../pics/SDEdit/img0.png" alt="SDEdit_00" class="bg-primary mb-1" width="700px">
 
 Image 1
 :::
@@ -55,7 +55,7 @@ Image 1
 
 ### 2.2. Score Based Generated Diffusion Model (SDE, SMLD)
 :::{figure-md} 
-<img src="../../pics/SDEdit/img1.png" alt="SDEdit_01" class="bg-primary mb-1" width="350px">
+<img src="../../pics/SDEdit/img1.png" alt="SDEdit_01" class="bg-primary mb-1" width="700px">
 
 Image 2
 :::
@@ -71,7 +71,7 @@ Image 2
 1. Pre-Setup
     - Guide image의 Level을 정의한다.
         :::{figure-md} 
-        <img src="../../pics/SDEdit/img2.png" alt="SDEdit_02" class="bg-primary mb-1" width="350px">
+        <img src="../../pics/SDEdit/img2.png" alt="SDEdit_02" class="bg-primary mb-1" width="700px">
         
         Image 3
         :::
@@ -84,7 +84,7 @@ Image 2
     - 즉, 적절한 $t_{0} \in [0,1]$를 지정한 후 denoising process가 가능하다.
         
         :::{figure-md} 
-        <img src="../../pics/SDEdit/img3.png" alt="SDEdit_03" class="bg-primary mb-1" width="350px">
+        <img src="../../pics/SDEdit/img3.png" alt="SDEdit_03" class="bg-primary mb-1" width="700px">
         
         Image 4
         :::
@@ -95,14 +95,14 @@ Image 2
         를 얻게된다.
         
         :::{figure-md} 
-        <img src="../../pics/SDEdit/img4.png" alt="SDEdit_04" class="bg-primary mb-1" width="350px">
+        <img src="../../pics/SDEdit/img4.png" alt="SDEdit_04" class="bg-primary mb-1" width="700px">
         
         Image 5
         :::
     - 아래는 SDEdit의 적용 과정이다.
         
         :::{figure-md} 
-        <img src="../../pics/SDEdit/img5.png" alt="SDEdit_05" class="bg-primary mb-1" width="350px">
+        <img src="../../pics/SDEdit/img5.png" alt="SDEdit_05" class="bg-primary mb-1" width="700px">
         
         Image 6
         :::
@@ -116,7 +116,7 @@ Image 2
         - 그 외 종합적인 평가 지표로 survey를 통한 수치를 제시하였다.
             
             :::{figure-md} 
-            <img src="../../pics/SDEdit/img6.png" alt="SDEdit_06" class="bg-primary mb-1" width="350px">
+            <img src="../../pics/SDEdit/img6.png" alt="SDEdit_06" class="bg-primary mb-1" width="700px">
             
             Image 7
             :::
@@ -124,7 +124,7 @@ Image 2
 - Comparison with GAN (styleGAN-ADA + Inversion)
     
     :::{figure-md} 
-    <img src="../../pics/SDEdit/img7.png" alt="SDEdit_07" class="bg-primary mb-1" width="350px">
+    <img src="../../pics/SDEdit/img7.png" alt="SDEdit_07" class="bg-primary mb-1" width="700px">
     
     Image 8
     :::
@@ -132,13 +132,13 @@ Image 2
 - Comparison with original blending technique
     
     :::{figure-md} 
-    <img src="../../pics/SDEdit/img8.png" alt="SDEdit_08" class="bg-primary mb-1" width="350px">
+    <img src="../../pics/SDEdit/img8.png" alt="SDEdit_08" class="bg-primary mb-1" width="700px">
     
     Image 9
     :::
 
     :::{figure-md} 
-    <img src="../../pics/SDEdit/img9.png" alt="SDEdit_09" class="bg-primary mb-1" width="350px">
+    <img src="../../pics/SDEdit/img9.png" alt="SDEdit_09" class="bg-primary mb-1" width="700px">
     
     Image 10
     :::

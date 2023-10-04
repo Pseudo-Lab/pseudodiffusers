@@ -662,7 +662,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <p>Adapter 종류로는 크게 structure 에 대한 conditioning 과 color 에 대한 conditioning 으로 분류할 수 있습니다. Structure controlling 으로는 대표적으로 sketch, depth map, semantic segmentation map, keypose 등이 있습니다. Color map 은 이미지를 우선적으로 <em>high bicubic downsampling</em> 을 통해 semantic 및 structural 한 정보를 제외시키고, <em>nearest upsampling</em> 기법으로 다시 원본 이미지 크기로 복원하는 작업을 통해 생성합니다.</p>
 <p>앞써 설명한 부분처럼 추가 학습 없이 여러 adapter 로 conditioning 할 수도 있습니다. Multi-adapter 로 controlling 할 시, 다음과 같이 각 adapter 로부터 나온 condition feature 에 weight <span class="math notranslate nohighlight">\(w_k\)</span> 를 부여해 최종 condition feature 를 정의하게 됩니다.</p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_08.png"><img alt="t2i_adapter_08" class="bg-primary mb-1" src="../../_images/t2i_adapter_08.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_08.png"><img alt="t2i_adapter_08" class="bg-primary mb-1" src="../../_images/t2i_adapter_08.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 244 </span><span class="caption-text">Multi-Adapter Conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -777,7 +777,7 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 </figure>
 <p>마지막으로, 장점들 중 하나로 명시되었던 generalization ability 를 보여준 사례입니다. 학습 완료한 Adapter 를 동일한 구조를 가진 T2I 모델에 적용 가능한 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id16">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_16.png"><img alt="t2i_adapter_16" class="bg-primary mb-1" src="../../_images/t2i_adapter_16.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_16.png"><img alt="t2i_adapter_16" class="bg-primary mb-1" src="../../_images/t2i_adapter_16.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 252 </span><span class="caption-text">Generalizable Controlling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>

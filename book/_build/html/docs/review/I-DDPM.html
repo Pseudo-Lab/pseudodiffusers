@@ -503,7 +503,7 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\({B_{t}}\)</span> : time step 에 따른 noising할 정도</p></li>
 <li><p><span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 145 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -521,7 +521,7 @@ document.write(`
 <ul>
 <li><p>사실 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?</p>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 146 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -529,7 +529,7 @@ document.write(`
 </li>
 <li><p>Diffusion Step간 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)</p>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img41.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img41.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 147 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -543,7 +543,7 @@ document.write(`
 </li>
 <li><p>하지만, <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 자체를 학습하기에는 값의 범위가 너무 작아서 <span class="math notranslate nohighlight">\({B_{t}}\)</span>와 <span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span>의 Interpolation 값을 Predict하도록 설계</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img51.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img51.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 148 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -561,7 +561,7 @@ document.write(`
 <li><p>DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인</p></li>
 <li><p>Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img61.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img61.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img61.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img61.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 149 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>

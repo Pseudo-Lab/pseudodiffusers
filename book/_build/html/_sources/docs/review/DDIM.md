@@ -66,7 +66,7 @@ Equation 1
 :::
 
 :::{figure-md} 
-<img src="../../pics/DDIM/02.png" alt="DDIM_02" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DDIM/02.png" alt="DDIM_02" class="bg-primary mb-1" width="600px">
 
 Equation 2
 :::
@@ -77,13 +77,13 @@ Equation 2
 **3.2. Generative Process And Unified Variational Inference Objective (Reverse Process)**
 
 :::{figure-md} 
-<img src="../../pics/DDIM/03.png" alt="DDIM_00" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DDIM/03.png" alt="DDIM_00" class="bg-primary mb-1" width="600px">
 
 Equation 3
 :::
 
 :::{figure-md} 
-<img src="../../pics/DDIM/04.png" alt="DDIM_00" class="bg-primary mb-1" width="700px">
+<img src="../../pics/DDIM/04.png" alt="DDIM_00" class="bg-primary mb-1" width="600px">
 
 Equation 4
 :::

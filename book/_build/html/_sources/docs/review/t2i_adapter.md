@@ -233,7 +233,7 @@ Adapter 종류로는 크게 structure 에 대한 conditioning 과 color 에 대�
 앞써 설명한 부분처럼 추가 학습 없이 여러 adapter 로 conditioning 할 수도 있습니다. Multi-adapter 로 controlling 할 시, 다음과 같이 각 adapter 로부터 나온 condition feature 에 weight $w_k$ 를 부여해 최종 condition feature 를 정의하게 됩니다. 
 
 :::{figure-md} 
-<img src="../../pics/t2i_adapter/t2i_adapter_08.png" alt="t2i_adapter_08" class="bg-primary mb-1" width="500px">
+<img src="../../pics/t2i_adapter/t2i_adapter_08.png" alt="t2i_adapter_08" class="bg-primary mb-1" width="350px">
 
 Multi-Adapter Conditioning 
 :::
@@ -340,7 +340,7 @@ Composable Controlling
 마지막으로, 장점들 중 하나로 명시되었던 generalization ability 를 보여준 사례입니다. 학습 완료한 Adapter 를 동일한 구조를 가진 T2I 모델에 적용 가능한 것을 확인할 수 있습니다.  
 
 :::{figure-md} 
-<img src="../../pics/t2i_adapter/t2i_adapter_16.png" alt="t2i_adapter_16" class="bg-primary mb-1" width="700px">
+<img src="../../pics/t2i_adapter/t2i_adapter_16.png" alt="t2i_adapter_16" class="bg-primary mb-1" width="600px">
 
 Generalizable Controlling
 :::

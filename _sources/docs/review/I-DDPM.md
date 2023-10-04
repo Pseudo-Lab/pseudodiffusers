@@ -62,7 +62,7 @@
     - ${B_{t}}$ : time step 에 따른 noising할 정도
     - $\tilde{B_{t}}$ : Reverse Step에서 Denoising을 위한 Parameter로 아래와같이 정의
         :::{figure-md} 
-        <img src="../../pics/I-DDPM/img2.png" alt="I-DDPM_02" class="bg-primary mb-1" width="400px">
+        <img src="../../pics/I-DDPM/img2.png" alt="I-DDPM_02" class="bg-primary mb-1" width="500px">
     
         Equation 3
         :::
@@ -74,14 +74,14 @@
 - 위의 문장 ($\tilde{B_{t}}$ 대신 ${B_{t}}$를 사용)에서 의문점
     - 사실 ${B_{t}}$와 $\tilde{B_{t}}$는 정 반대의 역할을 하는 Parameter인데 왜 비슷한 결과를 보였고, 결국 같은 값으로 Fix를 하는게 맞을까?
         :::{figure-md} 
-        <img src="../../pics/I-DDPM/img3.png" alt="I-DDPM_03" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/I-DDPM/img3.png" alt="I-DDPM_03" class="bg-primary mb-1" width="600px">
     
         Figure 1
         :::
         
     - Diffusion Step간 ${B_{t}}$와 $\tilde{B_{t}}$의 차이를 비교해보면 Diffusion Step이 커질수록 두개의 값은 거의 동일해진다. (Figure.1)
         :::{figure-md} 
-        <img src="../../pics/I-DDPM/img4.png" alt="I-DDPM_04" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/I-DDPM/img4.png" alt="I-DDPM_04" class="bg-primary mb-1" width="600px">
     
         Figure 2
         :::
@@ -93,7 +93,7 @@
         
     - 하지만, $\tilde{B_{t}}$ 자체를 학습하기에는 값의 범위가 너무 작아서 ${B_{t}}$와 $\tilde{B_{t}}$의 Interpolation 값을 Predict하도록 설계
         :::{figure-md} 
-        <img src="../../pics/I-DDPM/img5.png" alt="I-DDPM_05" class="bg-primary mb-1" width="400px">
+        <img src="../../pics/I-DDPM/img5.png" alt="I-DDPM_05" class="bg-primary mb-1" width="500px">
     
         Figure 3
         :::
@@ -104,7 +104,7 @@
     - DDPM의 경우 High Resolution 이미지에대해 잘 동작하지만, Low-Resolution (e.g. 32x32, 64x64)의 이미지에 대해서는 잘 동작하지 않는것을 확인
     - Noise Scheduling에서 Linear mode의 Limitation이 있음을 지적
         :::{figure-md} 
-        <img src="../../pics/I-DDPM/img6.png" alt="I-DDPM_06" class="bg-primary mb-1" width="500px">
+        <img src="../../pics/I-DDPM/img6.png" alt="I-DDPM_06" class="bg-primary mb-1" width="700px">
     
         Equation 4
         :::

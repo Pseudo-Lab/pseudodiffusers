@@ -1,0 +1,737 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HyperDreamBooth &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/HyperDreamBooth';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="T2I-Adapter" href="t2i_adapter.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">HyperDreamBooth</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/HyperDreamBooth.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/HyperDreamBooth.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>HyperDreamBooth</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelimiaries">Prelimiaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lightweight-dreambooth-lidb">Lightweight DreamBooth (LiDB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypernetwork">HyperNetwork</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-relaxed-fast-finetuning">Rank-Relaxed Fast Finetuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-ups">Follow-ups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models (ICML 2023)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2307.06949.pdf">https://arxiv.org/pdf/2307.06949.pdf</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Hyoungseo Cho</p></li>
+<li><p><strong>Last updated on Oct. 10, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="hyperdreambooth">
+<h1>HyperDreamBooth<a class="headerlink" href="#hyperdreambooth" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Personalization 는 Generative AI 분야에서 떠오르고 있는 주제입니다. 이는 high-fidelity와 identity를 유지한 상태로 다양한 맥락과 스타일을 생성할 수 있도록 합니다. 본 논문은 <a class="reference external" href="https://pseudo-lab.github.io/text-to-image-generation-feat-diffusion/docs/review/dreambooth.html">Dreambooth</a> 를 기반으로 진행되었기 때문에 <a class="reference external" href="https://pseudo-lab.github.io/text-to-image-generation-feat-diffusion/docs/review/dreambooth.html">Dreambooth</a> 논문을 먼저 읽어 보시기를 추천드립니다.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_01.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">HyperDreamBooth</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="contribution">
+<h2>Contribution<a class="headerlink" href="#contribution" title="Permalink to this heading">#</a></h2>
+<p>본 논문의 Contribution은 크게 3가지로 볼 수 있습니다. Lighweight DreamBooth (LiDB), New HyperNetwork architecture 그리고 rank-relaxed finetuning 입니다. 위 3가지 방법을 활용하여 기존 DreamBooth의 핵심 능력을 유지하면서 크기를 줄이고 속도를 높일 수 있었습니다.</p>
+</section>
+<section id="related-work">
+<h2>Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<p><strong>Text-to-image Models</strong> <br/>
+본 논문에서는 Stable Diffusion 모델을 활용하여 HyperDreamBooth를 구현했지만, 이 부분은 다른 텍스트-이미지 모델 (Imagen, DALL-E2 등) 도 적용이 가능합니다.</p>
+<p><strong>Personalization of Generative Models</strong> <br/>
+Generative Adversarial Network 기반의 기술들은 fidelity가 떨어지거나 다양한 문맥을 제공하지 못하는 문제가 있습니다. 이에 따라 HyperNetwork를 도입한 연구를 진행했습니다.</p>
+<p><strong>T2I Personalization via Finetuning</strong> <br/>
+다음으로, text-to-image personalization을 위한 Finetuning에 대한 연구가 있습니다. CustomDiffusion, SVDiff, LoRA, StyleDrop, DreamArtist 등의 예시가 있습니다. 하지만 이는 속도 측면에서 느리다는 단점을 가지고 있습니다.</p>
+<p>이러한 관련 연구들을 볼 때, HyperDreamBooth는 속도와 효율성 측면에서 큰 발전을 이루었다고 볼 수 있습니다.</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_02.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">HyperDreamBooth Training and Fast Fine-Tuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="prelimiaries">
+<h2>Prelimiaries<a class="headerlink" href="#prelimiaries" title="Permalink to this heading">#</a></h2>
+<p><strong>Latent Diffusion Models (LDM)</strong> <br/>
+본 논문에서는 Stable Diffusion 모델을 활용하여 HyperDreamBooth를 구현했지만, 이 부분은 다른 텍스트-이미지 모델 (Imagen, DALL-E2 등) 도 적용이 가능합니다.</p>
+<p><strong>DreamBooth</strong> <br/>
+이전에 나온 DreamBooth는 특정 주제의 이미지를 생성하기 위해 T2I denoising 네트워크를 finetuning하는 전략을 활용했습니다. 이 방법은 HyperDreamBooth의 영감원 중 하나로 활용되었습니다.</p>
+<p><strong>Low Rank Adaptation (LoRA)</strong> <br/>
+LoRA는 모델의 가중치를 낮은 랭크의 행렬로 근사화하여 모델의 크기와 복잡성을 줄이는 방법입니다. 본 논문에서는 이 LoRA 기술을 활용하여 더 빠르고 효율적인 personalization이 가능하도록 합니다.</p>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<p>위에서 살펴 본 Contribution의 내용을 자세히 살펴보도록 하겠습니다.</p>
+<section id="lightweight-dreambooth-lidb">
+<h3>Lightweight DreamBooth (LiDB)<a class="headerlink" href="#lightweight-dreambooth-lidb" title="Permalink to this heading">#</a></h3>
+<p>HyperdreamBooth 의 핵심 기술 중 하나인 Lightweight DreamBooth, 줄여서 LiDB에 대해 설명드리겠습니다. LiDB는 rank-1 LoRA residuals의 가중치 공간을 더 세분화하는 것이 핵심 아이디어입니다. 분해 과정에서 rank-1 LoRA weight-space 내에서 random orthogonal basis를 활용하여 decompose 합니다.</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_03.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_03.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Lightweight DreamBooth</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>이 접근 방식은 LoRA의 A와 B 행렬을 각각 두 개의 행렬로 분해하는 것으로도 이해할 수 있습니다. 더 구체적으로 살펴보면, A 행렬은 <span class="math notranslate nohighlight">\(A_{aux}\)</span> 와 <span class="math notranslate nohighlight">\(A_{train}\)</span> 으로 분해되며, B 행렬은 <span class="math notranslate nohighlight">\(B_{aux}\)</span> 와 <span class="math notranslate nohighlight">\(B_{train}\)</span> 으로 분해할 수 있습니다. 여기서 <span class="math notranslate nohighlight">\(aux\)</span> 레이어는 행별로 직교하는 벡터로 무작위 초기화되고 freeze 되어 있으며, <span class="math notranslate nohighlight">\(train\)</span> 레이어는 학습되는 가중치입니다. 따라서 LiDB 선형 레이어의 weight-residual은 다음과 같이 표현할 수 있습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta W_x = A_{aux} A_{train} B_{train} B_{aux}
+\]</div>
+<p>여기서 <span class="math notranslate nohighlight">\(aux\)</span> 레이어는 experimentally fix 되었으며 이 과정을 통해 trainable parameter 개수는 약 30K개, 사이즈는 약 120KB로 경량화 할 수 있습니다. 이렇게 작은 크기와 변수만으로 fidelity, editability, style 그리고 diversity 등을 유지할 수 있다는 것이 포인트입니다.</p>
+</section>
+<section id="hypernetwork">
+<h3>HyperNetwork<a class="headerlink" href="#hypernetwork" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_04.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_04.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">HyperNetwork Architecture</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>다음은 Hypernetwork 입니다. 본 논문에서는 사전에 훈련된 T2I 모델을 빠르게 personalization 하기 위해 HyperNetwork를 제안합니다. 여기서 <span class="math notranslate nohighlight">\(\tilde{\theta}\)</span> 는 모든 LiDB residual 행렬을 나타내며, 각 T2I 모델의 cross-attention 및 self-attention 레이어에 대한 <span class="math notranslate nohighlight">\(A_{train}\)</span> 및 <span class="math notranslate nohighlight">\(B_{train}\)</span> 입니다. 이 핵심 아이디어는 주어진 이미지 x를 입력으로 받고, 이 이미지를 사용하여 LiDB의 low-rank residual인 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> 을 예측하는 HyperNetwork <span class="math notranslate nohighlight">\(H_{\eta}\)</span> 를 돌입하는 것입니다.HyperNetwork는 도메인 특화 이미지 데이터셋에서 훈련되며, 일반적인 확산 노이즈 제거 손실과 가중치 공간 손실을 가지고 있습니다.</p>
+<div class="math notranslate nohighlight">
+\[
+L(x) = \alpha \left\| D_\hat{\theta}  (x + {\epsilon} , c) - x \right\|_{2}^{2} + \beta \left\|\hat{\theta}  -  {\theta} \right\|_{2}^{2}
+\]</div>
+<p>여기서 <span class="math notranslate nohighlight">\(x\)</span> 는 reference image를 의미합니다. HyperDreamBooth의 목표는 주어진 참조 이미지 x를 기반으로 해당 이미지와 유사한 새로운 이미지를 생성하는 것입니다. <span class="math notranslate nohighlight">\(\theta\)</span> 는 <span class="math notranslate nohighlight">\(x\)</span> 에 대한 pre-optimized 된 가중치 paramters입니다. 이러한 가중치는 HyperDreamBooth 모델을 personalization 하기 위해 이미지 <span class="math notranslate nohighlight">\(x\)</span> 와 관련된 텍스트와 함께 조정됩니다. <span class="math notranslate nohighlight">\(D_{\theta}\)</span> 는 diffusion model을 나타냅니다. 이 모델은 이미지 <span class="math notranslate nohighlight">\(x + \epsilon\)</span> 및 Supervisory Text Prompt <span class="math notranslate nohighlight">\(c\)</span> 로 조건이 설정된 상태에서 사용됩니다. 이 모델은 이미지 생성 및 개인화에 사용됩니다. <span class="math notranslate nohighlight">\(\alpha\)</span> 와 <span class="math notranslate nohighlight">\(\beta\)</span> 는 상대적인 loss의 가중치를 제어하기 위한 hyperparameters 입니다. 이러한 hyperparameters 는 각 loss 항목의 중요성을 조절하는 데 사용됩니다.</p>
+<p><strong>Supervisory Text Prompt</strong> <br/>
+Supervisory Text Prompt는 이미지 생성을 지원하기 위한 텍스트 입력입니다. 주어진 텍스트 프롬프트는 이미지 생성에 대한 지시사항 또는 조건을 제공합니다. HyperDreamBooth에서는 “a [V] face” 와 같은 텍스트 프롬프트를 사용하여 개인화된 이미지를 생성합니다. [V] 는 드물지만 다양한 의미 수정을 삽입할 수 있는 역할을 합니다.</p>
+<p><strong>HyperNetwork Architecture</strong> <br/>
+HyperNetwork는 HyperDreamBooth에서 사용되는 모델로, 개인화된 이미지 생성을 위한 가중치를 예측하는 역할을 합니다. HyperNetwork는 보통 다른 신경망 구조로 구성되며, 주어진 이미지를 입력으로 받아서 T2I 모델의 가중치를 예측합니다. 이러한 개인화된 이미지 생성을 위한 핵심 구성 요소 중 하나입니다. 여기서 예측한 가중치를 이후 Stable Diffusion 모델의 가중치에 더하여 개인화를 실행합니다.</p>
+<p><strong>Iterative Prediction</strong> <br/>
+HyperDreamBooth에서 사용되는 HyperNetwork는 반복적 예측을 수행합니다. 이것은 HyperNetwork가 초기 예측을 한 후에도 추가 반복적인 예측 단계를 통해 결과를 개선하려고 시도하는 것을 의미합니다. 초기 HyperNetwork 예측은 방향성이 올바르고 대상과 얼굴과 유사한 semantic 특성을 생성하지만 미세만 세부 정보를 충분히 잡아내지 못할 수 있습니다. 따라서 반복적인 예측을 통해 초기 예측을 fine-tuning하고 더 나은 이미지를 생성합니다. 이 때에 image encoding은 단 한 번만 수행되며, 추출된 특징 f는 반복적인 예측 과정에서 사용됩니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_05.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">HyperNetwork + Fast Finetuning</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="rank-relaxed-fast-finetuning">
+<h3>Rank-Relaxed Fast Finetuning<a class="headerlink" href="#rank-relaxed-fast-finetuning" title="Permalink to this heading">#</a></h3>
+<p>초기 HyperNetwork를 실행하고 나면 semantic 속성과 방향성에 대해서 올바르게 생성이 되지만 세부적인 detail은 잘 잡아내지 못합니다. 이를 위해 마지막으로 fast finetuning 단계를 제안합니다. 이 단계를 통해, DreamBooth보다 훨씬 빠르지만 강한 subject fidelity, editability 그리고 style diversity를 동일하게 유지할 수 있습니다.
+먼저 HyperNetwork를 사용하여 개인화된 diffusion model 가중치를 예측합니다. 이후 diffusion model의 가중치를 초기화된 이미지 x와 함께 주어진 텍스트 지시어 c에 대한 diffusion noise loss <span class="math notranslate nohighlight">\(L(x)\)</span> 를 최소화하도록 조정합니다. 여기서 주요한 점은 <em><strong>rank-relaxed</strong></em> 의 개념입니다. 이것은 초기 모델의 rank(주로 1)를 완화하여 더 높은 rank로 LoRA 모델을 fine tuning 하는 것을 의미합니다. 구체적으로, HyperNetwork의 예측된 가중치 모델의 전체 가중치에 추가하고 더 높은 rank로 LoRA fine tuning을 수행합니다. 이를 통해 모델은 주체의 고주파수 세부 사항을 더 잘 근사화할 수 있으며 이로 인해 다른 낮은 rank로 제한된 업데이트보다 더 높은 주제 충실도를 달성할 수 있습니다. 이러한 rank-relaxed의 개념은 HyperDreamBooth를 다른 방식보다 더 우수하게 만드는 요인입니다. 여기서도 동일한 Supervisory Text Prompt “a [V] face” 를 사용하는데 이 프롬프트는 이미지 개인화를 지원하며 모델이 얼굴에 관련된 다양한 특성과 스타일을 캡처하는 데 도움이 됩니다. 그리고 HyperNetwork의 초기화된 가중치를 고려할 때, fast finetuning 단계를 40번의 반복으로 완료할 수 있습니다. 이는 DreamBooth 및 LoRA DreamBooth와 비교했을 때 25배 빠른 속도라는 것을 의미합니다.</p>
+</section>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<p>본 HyperDreamBooth는 Stable Diffusion v1.5 을 활용하여 구현했습니다. 이 모델에서는 Stable Diffusion v1.5의 다양한 요소 중 하나인 diffusion UNet의 cross and self-attention 레이어에 대한 LoRA 가중치를 예측합니다. 또한 텍스트 정보를 활용하기 위해 CLIP 텍스트 인코더도 예측합니다. 이미지 생성 모델을 개인화하기 위해 시각화에 사용되는 모든 얼굴 이미지는 SFHQ(Synthetic Face Headquarters) 데이터셋을 활용했습니다. 모델을 훈련시키기 위해 CelebA-HQ 데이터셋에서 15,000개의 실제 얼굴 이미지가 활용되었습니다.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_06.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Result Gallery</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>왼쪽 위에서 오른쪽 아래로 “인스타그램 셀카 [V] 얼굴”, “Pixar 캐릭터 [V] 얼굴”, “bark skin의 [V] 얼굴”, “록 스타 [V] 얼굴”, 가장 오른쪽: ” 전문적인 [V] 얼굴 촬영” 프롬프트를 활용했습니다.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_07.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_08.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Comparisons Table</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="comparisons">
+<h2>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h2>
+<p>Hyperdreambooth, DreamBooth 그리고 Textual Inversion의 무작위 생성된 샘플을 비교한 이미지와 표입니다. 정량적 평가를 위해 DINO와 같은 지표를 활용했습니다.</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_09.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Comparisons with DreamBooth</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위 표는 DreamBooth와 비교하는 부분입니다. DreamBooth의 hyperparameter를 다르게 조정하여 비교했습니다. 그 결과 학습률을 증가시키고 반복 횟수(iterations)를 감소시키면 결과의 저하가 있었습니다. DreamBooth-Agg-1은 400번의 반복을 시행하고, DreamBooth-Agg-2는 일반적인 Dreambooth의 1200번 대신 40번의 반복을 사용했습니다.</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_10.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">HyperNetwork Ablation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위 부분은 여러 가지 구성 요소로 나누어 실험한 표입니다. 실험 중에는 하이퍼네트워크를 사용하지 않는 경우, 하이퍼네트워크 예측만 사용하고 fast-finetuning을 사용하지 않은 경우, 반복 예측 없이 전체 방법을 1번만 사용한 경우를 비교합니다. 결과적으로 전체 방법이 모든 신뢰성 지표에서 가장 우수한 결과를 달성한다는 것을 보여주고 있습니다.</p>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_11.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>얼굴 인식 메트릭 이 특정 시나리오에서 상대적으로 약하다고 합니다. 얼굴 인식 네트워크가 실제 이미지에만 훈련되어 있고 다양한 스타일에서 동일한 사람을 인식하도록 훈련되어 있지 않기 때문이라고 주장하며 이를 보완하기 위해 user study를 진행했습니다. 여기서도 HyperDreamBooth, DreamBooth, Textual Inversion을 비교하고 사용자들의 평가를 받았습니다.</p>
+</section>
+<section id="follow-ups">
+<h2>Follow-ups<a class="headerlink" href="#follow-ups" title="Permalink to this heading">#</a></h2>
+<p>하지만 여전히 follow-ups가 존재합니다. 먼저 <strong>semantic directional error</strong> 라고 하는 초기 예측에서 잘못된 시맨틱 정보가 나올 수 있는 에러입니다. 잘못된 눈 색깔이나 헤어 타입, 성별 등이 나올 수 있습니다. 다음으로 <strong>incorrect subject detail capture</strong> 라는 오류가 있습니다. 다음은 <strong>underfitting</strong> 입니다. Fast finetuning 단계에서 identity는 지켜지더라도 유사하지 않은 샘플이 생성될 수 있습니다. 다음으로 HyperNetwork와 fast-finetuning 모두 일부 스타일에 대해 낮은 editability 가 나올 수 있습니다. 이러한 문제점은 빛, 포즈 등으로 인해 OOD인 샘플에서 나타날 수 있습니다.</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>본 연구에서는 HyperDreamBooth라는 새로운 방법을 소개했습니다. 이 방법은 텍스트에서 이미지로 변환하는 diffusion model을 빠르고 가벼운 방식으로 개인화하는 것을 목표로 합니다. HyperDreamBooth는 HyperNetwork라는 구성 요소를 활용하여 diffusion model의 가벼운 파라미터인 LiDB(Lightweight DreamBooth)파라미터를 생성하며, 이어서 DreamBooth 및 기타 최적화 기반 개인화 작업에 비해 크기와 속도를 상당히 줄이면서 fast rank-relaxed fine tuning을 수행합니다. 이를 통해 모델의 무결성을 유지하면서 다양한 스타일과 의미적 수정이 적용된 다양한 고품질 이미지를 생성할 수 있음을 입증하였습니다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="t2i_adapter.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">T2I-Adapter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelimiaries">Prelimiaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lightweight-dreambooth-lidb">Lightweight DreamBooth (LiDB)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hypernetwork">HyperNetwork</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rank-relaxed-fast-finetuning">Rank-Relaxed Fast Finetuning</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#follow-ups">Follow-ups</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

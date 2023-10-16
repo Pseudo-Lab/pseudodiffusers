@@ -28,13 +28,13 @@ DreamBooth 를 실험하면서 대표적으로 instance prompt, guidance scale, 
 
 Prior Preservation Loss 를 제외한 동일한 configuration 으로 모델 학습한 결과입니다. 
 
-```python
+```
 # with prior-preservation loss
 MODEL_NAME = “runwayml/stable-diffusion-v1-5”
 instance_prompt = "A photo of sks girl"
 class_prompt = "A photo of a girl"
 
-!python3 train_dreambooth.py \
+python3 train_dreambooth.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --pretrained_vae_name_or_path="stabilityai/sd-vae-ft-mse" \
   --output_dir=$OUTPUT_DIR \
@@ -58,13 +58,13 @@ class_prompt = "A photo of a girl"
   --concepts_list="concepts_list.json"
 ```
 
-```python
+```
 # w/o prior-preservation loss
 MODEL_NAME = “runwayml/stable-diffusion-v1-5”
 instance_prompt = "A photo of sks girl"
 class_prompt = "A photo of a girl"
 
-!python3 train_dreambooth.py \
+python3 train_dreambooth.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --pretrained_vae_name_or_path="stabilityai/sd-vae-ft-mse" \
   --output_dir=$OUTPUT_DIR \
@@ -132,13 +132,13 @@ With Negative Prompt
 
 DreamBooth 논문에서 제시한 instance prompt 외에 “A photo of a girl in the style of *sks*” 라는 prompt 로 학습을 시도해보기도 했습니다. *sks* 라는 unique identifier 에 특정 여자 캐릭터에 대한 정보뿐만 아니라 프리드로우 그림체 자체를 담아내기 위한 목적이였습니다. 
 
-```python
+```
 # different instance prompt with prior-preservation loss
-****MODEL_NAME = “runwayml/stable-diffusion-v1-5”
+MODEL_NAME = “runwayml/stable-diffusion-v1-5”
 instance_prompt = "A photo of a girl in the style of sks"
 class_prompt = "A photo of a girl"
 
-!python3 train_dreambooth.py \
+python3 train_dreambooth.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --pretrained_vae_name_or_path="stabilityai/sd-vae-ft-mse" \
   --output_dir=$OUTPUT_DIR \
@@ -162,13 +162,13 @@ class_prompt = "A photo of a girl"
   --concepts_list="concepts_list.json"
 ```
 
-```python
-# different instance prompt w/o ****prior-preservation loss
-****MODEL_NAME = “runwayml/stable-diffusion-v1-5”
+```
+# different instance prompt w/o prior-preservation loss
+MODEL_NAME = “runwayml/stable-diffusion-v1-5”
 instance_prompt = "A photo of a girl in the style of sks"
 class_prompt = "A photo of a girl"
 
-!python3 train_dreambooth.py \
+python3 train_dreambooth.py \
   --pretrained_model_name_or_path=$MODEL_NAME \
   --pretrained_vae_name_or_path="stabilityai/sd-vae-ft-mse" \
   --output_dir=$OUTPUT_DIR \

@@ -5,7 +5,7 @@
     - Paper:  [https://arxiv.org/pdf/2307.01952.pdf](https://arxiv.org/pdf/2307.01952.pdf)
     - Code: [https://github.com/Stability-AI/generative-models](https://github.com/Stability-AI/generative-models)
     
-- **Author:** [Jun-Hyoung Lee](www.linkedin.com/in/jjuun0)
+- **Author:** Jun-Hyoung Lee
 
 - **Last updated on May. 31. 2023**
 ```

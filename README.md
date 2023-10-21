@@ -19,7 +19,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 고동근 [Donggeun Sean Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 - 조남경 [Namkyeong Cho] | Github | Linkedin |
 - 김선훈 [SeonHoon Kim] | [Github](https://github.com/egshkim) | [Linkedin](https://www.linkedin.com/in/seonhoonkim/) | 
-- 이준형 [Junhyoung Lee] | Github | Linkedin | 
+- 이준형 [Junhyoung Lee] | [Github](https://github.com/jjuun0) | [Linkedin](www.linkedin.com/in/jjuun0) | 
 - 조형서 [Hyoungseo Cho] | [Github](https://github.com/ChoHyoungSeo) | [Linkedin](https://www.linkedin.com/in/hyoungseo-cho/) |
 
 ## Schedule 

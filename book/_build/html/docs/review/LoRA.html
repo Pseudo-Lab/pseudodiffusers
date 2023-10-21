@@ -46,6 +46,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
@@ -207,6 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -476,13 +479,13 @@ document.write(`
 <p>이전 연구에서 over-parameterized model들은 low intrinsic dimension에 기반하고 있다는 사실에 기반해, 저자는 학습 과정에서도 모델은 <code class="docutils literal notranslate"><span class="pre">low</span> <span class="pre">intrinsic</span> <span class="pre">rank</span></code>을 갖고 있을 것이라 가정함.</p>
 <p><strong>LoRA는 기존 pre-trained weight는 고정하고, 몇 개의 dense layer만 rank decomposition matrices를 최적화하는 방식으로 학습</strong>시키기로 함.</p>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(0).png"><img alt="LoRA_00" class="bg-primary mb-1" src="../../_images/image(0).png" style="width: 550px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(0).png"><img alt="LoRA_00" class="bg-primary mb-1" src="../../_images/image%280%29.png" style="width: 550px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 134 </span><span class="caption-text">LoRA structure</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(1).png"><img alt="LoRA_01" class="bg-primary mb-1" src="../../_images/image(1).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(1).png"><img alt="LoRA_01" class="bg-primary mb-1" src="../../_images/image%281%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 135 </span><span class="caption-text">LoRA structure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -530,7 +533,7 @@ document.write(`
 <h1>3. Aren’t Existing Solutions Good Enough?<a class="headerlink" href="#aren-t-existing-solutions-good-enough" title="Permalink to this heading">#</a></h1>
 <p>기존에도 transfer learning에서 parameter-/compute-effecient를 위한 방법은 몇 가지가 있었음.</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(2).png"><img alt="LoRA_02" class="bg-primary mb-1" src="../../_images/image(2).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(2).png"><img alt="LoRA_02" class="bg-primary mb-1" src="../../_images/image%282%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 136 </span><span class="caption-text">Performance Comparison</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -620,32 +623,32 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 <section class="tex2jax_ignore mathjax_ignore" id="empirical-experiments">
 <h1>5.Empirical Experiments<a class="headerlink" href="#empirical-experiments" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(3).png"><img alt="LoRA_03" class="bg-primary mb-1" src="../../_images/image(3).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(3).png"><img alt="LoRA_03" class="bg-primary mb-1" src="../../_images/image%283%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 137 </span><span class="caption-text">Performance on BERT</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(4).png"><img alt="LoRA_04" class="bg-primary mb-1" src="../../_images/image(4).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(4).png"><img alt="LoRA_04" class="bg-primary mb-1" src="../../_images/image%284%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 138 </span><span class="caption-text">Performance on GPT-2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(5).png"><img alt="LoRA_05" class="bg-primary mb-1" src="../../_images/image(5).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(5).png"><img alt="LoRA_05" class="bg-primary mb-1" src="../../_images/image%285%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 139 </span><span class="caption-text">Performance on GPT-3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>대부분의 경우에서 성능이 좋음</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(6).png"><img alt="LoRA_06" class="bg-primary mb-1" src="../../_images/image(6).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(6).png"><img alt="LoRA_06" class="bg-primary mb-1" src="../../_images/image%286%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 140 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(7).png"><img alt="LoRA_07" class="bg-primary mb-1" src="../../_images/image(7).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(7).png"><img alt="LoRA_07" class="bg-primary mb-1" src="../../_images/image%287%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 141 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -656,7 +659,7 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 <section class="tex2jax_ignore mathjax_ignore" id="a-ia3">
 <h1>+a) IA3<a class="headerlink" href="#a-ia3" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(8).png"><img alt="LoRA_08" class="bg-primary mb-1" src="../../_images/image(8).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(8).png"><img alt="LoRA_08" class="bg-primary mb-1" src="../../_images/image%288%29.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 142 </span><span class="caption-text">IA3 structure</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -744,7 +747,7 @@ h=W_0 x+\Delta W x=W_0 x+B A x
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

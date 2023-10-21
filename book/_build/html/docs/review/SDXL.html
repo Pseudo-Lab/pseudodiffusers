@@ -46,6 +46,7 @@
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
@@ -207,6 +208,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -428,21 +431,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <div class="admonition-information admonition">
-<p class="admonition-title">Information</p>
-<ul class="simple">
-<li><p><strong>Title:</strong> An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion</p></li>
-<li><p><strong>Reference</strong></p>
-<ul>
-<li><p>Paper:  <a class="reference external" href="https://arxiv.org/pdf/2307.01952.pdf">https://arxiv.org/pdf/2307.01952.pdf</a></p></li>
-<li><p>Code: <a class="github reference external" href="https://github.com/Stability-AI/generative-models">Stability-AI/generative-models</a></p></li>
-</ul>
-</li>
-<li><p><strong>Author:</strong> Jun-Hyoung Lee</p></li>
-<li><p><strong>Last updated on May. 31. 2023</strong></p></li>
-</ul>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="sdxl">
+  <section class="tex2jax_ignore mathjax_ignore" id="sdxl">
 <h1>SDXL<a class="headerlink" href="#sdxl" title="Permalink to this heading">#</a></h1>
 <section id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
@@ -575,7 +564,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

@@ -27,6 +27,7 @@ parts:
   - file: docs/review/t2i_adapter
   - file: docs/review/HyperDreamBooth
   - file: docs/review/CM3leon
+  - file: docs/review/Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

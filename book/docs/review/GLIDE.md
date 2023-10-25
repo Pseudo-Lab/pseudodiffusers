@@ -6,7 +6,7 @@
     
 - **Author:** Sehwan Park
 
-- **Last updated on Oct. 13, 2023**
+- **Last updated on Oct. 20, 2023**
 ```
 
 

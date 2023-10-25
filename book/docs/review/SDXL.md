@@ -1,11 +1,11 @@
-```{admonition} Information
-- **Title:** An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion
+```{admonition}
+- **Title:** SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis
 
 - **Reference**
-    - Paper:  [https://arxiv.org/pdf/2307.01952.pdf](https://arxiv.org/pdf/2307.01952.pdf)
+    - Paper:  [https://arxiv.org/abs/2307.01952](https://arxiv.org/abs/2307.01952)
     - Code: [https://github.com/Stability-AI/generative-models](https://github.com/Stability-AI/generative-models)
-    
-- **Author:** [Jun-Hyoung Lee](www.linkedin.com/in/jjuun0)
+
+- **Author:** Jun-Hyoung Lee
 
 - **Last updated on May. 31. 2023**
 ```
@@ -13,6 +13,7 @@
 # SDXL
 
 ## Abstract
+
 SDXL은 T2I latent diffusion 모델이다. Stable Diffusion과 비교하면, SDXL은 세 배 더 큰 규모의 UNet을 포함한다. 더 많은 attention 블록과 더 큰 cross attention context 가 SDXL에서 두 번째 text encoder로 사용되면서 모델 파라미터가 증가했다. 다수의 새로운 conditioning 방법과 다양한 비율에 맞도록 SDXL을 학습할 수 있도록 설계했다. 또한 후처리 방식의 image to image 기술을 사용해 SDXL의 생성 샘플의 시각적인 fidelity를 향상시킨 refinement model을 소개한다. SDXL은 대폭 향상된 성능을 보여준다.
 
 :::{figure-md} SDXL result
@@ -22,11 +23,12 @@ SDXL result
 :::
 
 ## Introduction
+
 세 가지 주요 기능이라 볼 수 있는데, 
+
 1. 3배 더 큰 UNet backbone, 
 2. 어떤 형태의 추가 감독(supervision)없는 간단하면서도 효과적인 추가의 conditioning 기술
 3. noising-denoising 과정을 적용해 시각적 품질을 향상하는 latent를 생성할 수 있는 별개의 diffusion 기반 img-to-img refinement 모델을 포함한다.
-
 
 :::{figure-md} Figure 1
 <img src="../../pics/SDXL/fig_1.png" alt="fig_1" class="bg-primary mb-1" width="600">
@@ -44,8 +46,8 @@ Table 1
 
 SD와 다르게 UNet 내의 transformer 블록의 heterogeneous 분포를 사용했다는 점이다. 테이블 1을 참고하면 highest feature level에서 transformer 블럭을 사용했고, lower level에서는 2, 10 개의 블럭을 사용했고, UNet에서 lowest level(8x downsampling)을 제거했다. text conditioning을 위한 pretrained 된 text encoder를 사용했다. 특히, CLIP Vit-L과 함께 OpenCLIP ViT-bigG를 사용했고, 채널 축에 두 번째 text encoder의 output을 concat 했다. 게다가 text input으로 모델에 condition을 주기 위해 cross attention 레이어를 사용했으며, 또 OpenCLIP로부터 pooled text embedding을 모델에 condition으로 추가했다. 이러한 변화는 UNet의 파라미터 사이즈가 2.6B로 증가했다. text encoder는 817M 파라미터를 가지고 있다.
 
-
 ## 2.2 Micro-Conditioning
+
 :::{figure-md} Figure 2
 <img src="../../pics/SDXL/fig_2.png" alt="fig_2" class="bg-primary mb-1" width="600">
 
@@ -76,8 +78,8 @@ Table 2
 
 _CIN-512-only_ 는 512 미만의 이미지를 제외하고 학습을 시켰고(70k 장), _CIN-nocond_ 는 모든 ImageNet 이미지를 사용했으며, _CIN-size-cond_ 는 추가 size-condition을 사용했다. 표 2에서 보다시피 _CIN-size-cond_ 모델이 FID, IS 모두 높은 성능을 보였다.
 
-
 ### Conditioning the Model on Cropping Parameters
+
 :::{figure-md} Figure 4
 <img src="../../pics/SDXL/fig_4.png" alt="fig_4" class="bg-primary mb-1" width="600">
 
@@ -90,8 +92,8 @@ Figure 4
 
 저자들은 LDM 뿐만 아니라 어떠한 DM에서도 사용될 수 있다고 강조한다. crop 및 size-conditioning은 쉽게 결합될 수 있다. 이러한 경우, crop 및 size-conditioning을 feature 임베딩을 채널 축에 concat 하고 UNet의 타임스텝 임베딩에 추가한다.
 
-
 ## 2.3 Multi-Aspect Training
+
 일반적인 T2I 모델에서 결과물의 크기는 512x512, 1024x1024 로 얻을 수 있는데, 이는 현실 세계에서 부자연스럽다. 이유는 현실 세계에서는 다양한 크기, 비율을 가진 이미지가 많고, 풍경 같은 경우 16:9 비율의 크기를 지니고 있다.
 
 따라서, 다양한 비율을 동시에 다룰수 있도록 모델을 파인튜닝했다. 픽셀수를 1024x1024 만큼 수를 최대한 유지하면서 다양한 비율의 데이터를 사용했고, 64의 배수를 지니도록 했다.
@@ -107,6 +109,7 @@ Multi aspect ratio
 실제로, 모델이 고정된 비율및 해상도의 데이터로 pretraining이 마친 후 파인튜닝 단계에서는 다양한 비율의 데이터로 학습했고, 채널 축으로 concat 하는 2.2절에서 소개한 conditioning 기술과 함께 결합했다. 이를 아래의 그림 16에서 코드로 확인할 수 있다.
 
 ## 2.4 Improved Autoencoder
+
 SD는 LDM 중 하나이고, autoencoder의 latent space를 학습한다. semantic composition은 LDM으로부터 표현되지만 저자들은 local, high frequency 디테일한 부분을 향상하고자 autoencoder를 향상했다. 끝으로, 원래의 SD를 사용한 autoencoder 아키텍처에서 더 큰 배치사이즈(256 vs 9)로 학습했고 추가로 exponential moving average를 사용한 가중치를 사용했다. 결과 autoencoder의 성능이 reconstruction 메트릭에 좋은 결과를 가져왔다.
 
 :::{figure-md} Table 3
@@ -115,12 +118,12 @@ SD는 LDM 중 하나이고, autoencoder의 latent space를 학습한다. semanti
 Table 3
 :::
 
-
 ## 2.5 Putting Everything Together
 
 학습 파라미터를 정리해주는 절입니다. diffusion time step은 1000 step을 사용했다. 우선, base model를 내부 데이터 셋으로 그림 2에 나와있는 높이-너비 분포에 맞게 학습을 시켰다. 600,000 step을 사용했으며, 256x256 사이즈로, 배치는 2048로, size & crop conditioning을 사용했다. 그 후 512x512 이미지를 추가로 200,000 최적화 step으로 학습시켰고, 마침내 offset 노이즈 [11, 25] 0.05 수준과 함께 다중 비율 학습을 활용하여 ~ 1024x1024 영역의 다양한 비율로 모델을 학습했다.
 
 ### Refinement Stage
+
 :::{figure-md} Figure 6
 <img src="../../pics/SDXL/fig_6.png" alt="fig_6" class="bg-primary mb-1" width="600">
 
@@ -136,4 +139,3 @@ Figure 6
 
 Figure 13
 :::
-

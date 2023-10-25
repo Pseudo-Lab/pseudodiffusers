@@ -1,0 +1,1002 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>CM3leon &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/CM3leon';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data from Diffusion Models Improves ImageNet Classification" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html" />
+    <link rel="prev" title="HyperDreamBooth" href="HyperDreamBooth.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/CM3leon.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/CM3leon.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CM3leon</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">CM3leon</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-1-introduction">Abstract &amp; 1. Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">2. Pretraining</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">2.1 Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-tokenization">Image Tokenization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmentation">Retrieval Augmentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">2.2 Objective Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">2.3 Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">2.4 Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-results">3. Text-To-Image Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-decoding-strategies">3.1 Importance of Decoding Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperatured-sampling">Temperatured Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topp-sampling">TopP Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifier-free-guidance-cfg">Classifier Free Guidance (CFG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-decoding-topk-cd-k">Contrastive Decoding TopK (CD-K)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-evaluation">3.2 Quantitative Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">4. Supervised Fine-Tuning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructable-image-generation">4.1 Instructable Image Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-guided-image-editing">Text-Guided Image Editing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-image-grounded-generation">Image-to-Image Grounded Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatially-grounded-image-generation">Spatially Grounded Image Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-captioning-visual-question-answering-task">Image captioning &amp; visual question answering task</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3c67a6&amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;_nc_ht=scontent-gmp1-1.xx&amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;oe=652FF632">https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3c67a6&amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;_nc_ht=scontent-gmp1-1.xx&amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;oe=652FF632</a></p></li>
+<li><p>Code: X</p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> <span class="xref myst">Jun-Hyoung Lee</span></p></li>
+<li><p><strong>Last updated on Oct. 15. 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="cm3leon">
+<h1>CM3leon<a class="headerlink" href="#cm3leon" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="cm3leon-result">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cm3leon_result.png"><img alt="cm3leon_result" class="bg-primary mb-1" src="../../_images/cm3leon_result.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">CM3leon result</span><a class="headerlink" href="#cm3leon-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>복잡하게 구성된 객체(손, 텍스트)도 잘 생성한다.</p></li>
+</ul>
+<section id="abstract-1-introduction">
+<h2>Abstract &amp; 1. Introduction<a class="headerlink" href="#abstract-1-introduction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>CM3Leon</p>
+<ul>
+<li><p>텍스트와 이미지 둘 다 잘 생성하는 능력을 가진 검색-증강, 토큰 기반, 디코더 전용 멀티 모달 모델이다.</p></li>
+<li><p>CM3 멀티 모델 아키텍처를 사용하며 scaling up 및 다양한 구조적-스타일 데이터에 tunning 할 수 있는 능력을 가졌다.</p></li>
+</ul>
+</li>
+<li><p>Training</p>
+<ul>
+<li><p>처음에는 멀티 모달 모델을 “텍스트 기반” language 모델에 맞도록 학습했다. (large scale의 검색 증강 pretraining 단계를 포함한다.)</p>
+<ul>
+<li><p>데이터는 라이센스가 있는 Shutterstock의 large-scale로 학습한다.</p></li>
+</ul>
+</li>
+<li><p>그 후 supervised fine tuning (SFT) 단계로 진행했다.</p>
+<ul>
+<li><p>입력과 출력 모두 이미지와 텍스트 토큰을 섞을 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>기존 이미지 생성 모델은 텍스트 프롬프트에 맞는 이미지만 잘 생성하는데,</p>
+<ul>
+<li><p>CM3leon은 텍스트와 이미지 모두 잘 생성한다.</p>
+<ul>
+<li><p>이미지 생성</p>
+<ul>
+<li><p>고해상도 output을 생성할 수 있는 self-contained contrastive decoding 방법을 소개한다.</p></li>
+<li><p>text guided iamge editing 부터 image controlled generation, segmentation까지 가능하다.</p></li>
+</ul>
+</li>
+<li><p>텍스트 생성</p>
+<ul>
+<li><p>Shutterstock의 3억 개의 텍스트 토큰으로 학습했는데, image-to-text generation도 잘 수행한다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>학습 연산을 5배로 줄였다.</p></li>
+<li><p>zero shot COCO로 FID를 측정한 결과 4.88 점으로, Google의 Parti 모델의 성능과 비슷한 수준을 달성했다.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pretraining">
+<h1>2. Pretraining<a class="headerlink" href="#pretraining" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>RA-CM3를 기반으로 T2I 도메인에서 토큰 기반 디코더 모델의 잠재력을 연구했다.</p></li>
+</ul>
+<section id="data">
+<h2>2.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<section id="image-tokenization">
+<h3>Image Tokenization<a class="headerlink" href="#image-tokenization" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Gafni의 image tokenizer를 사용했다.</p>
+<ul>
+<li><p>이 tokenizer는 256x256 이미지를 8192개의 vocabulary에서 1024개의 토큰으로 인코딩을 진행한다.</p></li>
+</ul>
+</li>
+<li><p>텍스트에서는, Zhang의 커스텀 tokenizer(56320 vocabulary size)를 학습했다.</p></li>
+<li><p>추가로, 새로운 스페셜한 토큰인 **<code class="docutils literal notranslate"><span class="pre">&lt;break&gt;</span></code>**을 소개한다.</p></li>
+</ul>
+<figure class="align-default" id="figure-8-9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_8_9.png"><img alt="figure_8_9" class="bg-primary mb-1" src="../../_images/figure_8_9.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Figure_8_9</span><a class="headerlink" href="#figure-8-9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-   이는 modality간 transition을 하게 한다.
+</pre></div>
+</div>
+</section>
+<section id="retrieval-augmentation">
+<h3>Retrieval Augmentation<a class="headerlink" href="#retrieval-augmentation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>목적: 입력 sequence에 맞춰 관련성이 높고 다양한 멀티 모달 문서(from memory bank)를 검색하는 것이다.</p>
+<ul>
+<li><p>dense retriever 와 retrieval strategy을 포함하고 있다.</p></li>
+</ul>
+</li>
+<li><p>dense retriever</p>
+<ul>
+<li><p>쿼리 <span class="math notranslate nohighlight">\(q\)</span> (예: input sequence)와 memory bank <span class="math notranslate nohighlight">\(\mathcal M\)</span> 로부터 후보 문서 <span class="math notranslate nohighlight">\(m\)</span> 를 가지고 관련성 점수<span class="math notranslate nohighlight">\(r(q, m)\)</span> 를 return 해준다.</p></li>
+<li><p>dense retriver 방법은 CLIP 기반인 bi-encoder 구조를 따랐다. (Karpukhin)</p>
+<ul>
+<li><p>멀티 모달 문서를 text / image 파트로 분리하고, 각각 CLIP 인코더(ViT-B-32)를 통해 인코딩을 한다.</p></li>
+<li><p>그 후 문서의 vector representation로써 두 개를 평균을 낸다.</p></li>
+</ul>
+</li>
+<li><p>최종 검색은 관련성 점수에 따라 정렬된 후보 문서 목록을 얻기 위해 Maximum Inner Product Search로 수행한다.</p></li>
+</ul>
+</li>
+<li><p>학습 때 generator를 위한 유용한 검색 문서를 추출하기 위해 세 가지 요소를 고려했다.</p>
+<ul>
+<li><p>relevance</p>
+<ul>
+<li><p>검색된 문서는 입력 sequence에 관련있어야 한다.</p></li>
+<li><p>CLIP 기반 dense retriever 점수를 사용한다.</p></li>
+</ul>
+</li>
+<li><p>modality</p>
+<ul>
+<li><p>이미지와 텍스트로 구성된 멀티 모달 문서로 검색 &gt; 이미지 또는 텍스트로 검색하는 것이다.</p></li>
+</ul>
+</li>
+<li><p>diversity</p>
+<ul>
+<li><p>다양성은 검색된 문서에서 중복성을 피하기 위한 필수적인 절차다.</p></li>
+<li><p>단순하게 관련성 점수에 기반해 top K 문서만 가져온다면 중복이 발생할 수 있다.</p>
+<ul>
+<li><p>또한 downstream pretraining 에 안좋은 영향을 끼칠 수 있다.</p></li>
+</ul>
+</li>
+<li><p>실제로, 관련성 점수가 0.9 이하로 검색된 문서로 사용했고,</p>
+<ul>
+<li><p>query dropout(검색에 사용된 쿼리의 일부 20% 토큰을 삭제)를 적용했다.</p></li>
+<li><p>따라서 다양성과 학습에 정규화를 시켰다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>이미지와 텍스트를 기반으로 각각 두 개의 문서를 검색한다.</p></li>
+<li><p>학습에서는 데이터셋의 모든 캡션-이미지 쌍에 대해 검색된 샘플 3개를 무작위로 선택한다.</p>
+<ul>
+<li><p>이는 사실상 사전 학습에서 사용할 수 있는 토큰 수의 4배이다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="objective-function">
+<h2>2.2 Objective Function<a class="headerlink" href="#objective-function" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>CM3 objective</p>
+<ul>
+<li><p>input</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Image</span> <span class="pre">of</span> <span class="pre">a</span> <span class="pre">chameleon:</span> <span class="pre">[image]&quot;</span></code> 을 변형시켜 <code class="docutils literal notranslate"><span class="pre">&quot;Image</span> <span class="pre">of</span> <span class="pre">&lt;mask&gt;:</span> <span class="pre">[image]</span> <span class="pre">&lt;infill&gt;</span> <span class="pre">a</span> <span class="pre">chameleon”</span></code> 로 표현한다.
+: <code class="docutils literal notranslate"><span class="pre">&lt;mask&gt;,</span> <span class="pre">&lt;infill&gt;</span></code> 이 추가되었고, 단어의 재배치가 진행됐다.</p></li>
+</ul>
+</li>
+<li><p>학습에는 일반적인 다음 토큰을 예측하는 loss를 사용했다.</p>
+<ul>
+<li><p>그 결과 이미지, 텍스트 둘 다 생성하는 다용도 모델의 결과를 가져왔다.</p></li>
+</ul>
+</li>
+<li><p>caption-to-image generation에서는 CM3가 “Image of a chameleon:” 프롬프트로 부터 이미지를 생성하고,</p>
+<ul>
+<li><p>image-to-caption generation에서는 CM3는 <code class="docutils literal notranslate"><span class="pre">“Image</span> <span class="pre">of</span> <span class="pre">&lt;mask&gt;:</span> <span class="pre">[image]</span> <span class="pre">&lt;infill&gt;”</span></code> 프롬프트를 활용한다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="model">
+<h2>2.3 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>CM3Leon 모델은 디코더만 사용하는 transformer 아키텍쳐를 사용한다.</p></li>
+<li><p>Zhang에 비해 bias term, dropout, layer norm의 학습 가능한 파라미터를 제거했다.</p></li>
+<li><p>sequence length를 2048 → 4096까지 확장했다.</p></li>
+<li><p>weight 초기화: 평균 0, 표준 편차 0.006 인 truncated(표준 편차 3으로 잘린) normal distribution 사용했다.</p></li>
+<li><p>output layer: 0으로 초기화, 0에 가까운 표준 편차 0.0002로 positional embedding 초기화한다.</p></li>
+<li><p><a class="reference external" href="https://github.com/facebookresearch/metaseq">Metaseq</a>로 학습됐다.</p></li>
+</ul>
+</section>
+<section id="training">
+<h2>2.4 Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="training-result">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_result.png"><img alt="training_result" class="bg-primary mb-1" src="../../_images/training_result.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">Training result</span><a class="headerlink" href="#training-result" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>세 가지 모델 사이즈(350M, 760M, 7B)로 학습 진행했다. (→ 1.4T(Trillion), 1.9T, 2.4T tokens)</p>
+<ul>
+<li><p>주요한 하이퍼 파라미터는 learning rate, batch size로 멀티모달 scaling 에 맞게 설정했다.</p></li>
+</ul>
+</li>
+<li><p>참고</p>
+<ul>
+<li><p>Perplexity, PPL: 언어 모델의 평가 방법 중 하나이다. (헷갈리는 정도, 값이 낮을 수록 좋다.)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="text-to-image-results">
+<h2>3. Text-To-Image Results<a class="headerlink" href="#text-to-image-results" title="Permalink to this heading">#</a></h2>
+<section id="importance-of-decoding-strategies">
+<h3>3.1 Importance of Decoding Strategies<a class="headerlink" href="#importance-of-decoding-strategies" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>autoregressive T2I 모델에서 decoding 알고리즘에 대해 상당한 연구가 진행되어 왔다.</p>
+<ul>
+<li><p>그 중 DALL-E는 최종 아웃풋의 퀄리티가 향상되는 결과를 가져왔다.</p>
+<ul>
+<li><p>DALL-E 는 temperature 샘플링과 512개 후보 프롬프트에 CLIP re-ranking 전략을 채택했다.</p></li>
+</ul>
+</li>
+<li><p>PARTI 와 Make-A-Scene 과 같은 모델은 토큰 기반의 classifier-free guidance로, re-ranking에 대해 오직 16 개의 샘플만 필요하게 됨으로써 후보의 수를 줄였다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="temperatured-sampling">
+<h3>Temperatured Sampling<a class="headerlink" href="#temperatured-sampling" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>autoregressive 모델에서 확률적 기술로 사용된다.</p>
+<ul>
+<li><p>이 방법은 샘플링에서 softmax의 temperature를 수정해 예측 무작위성을 제어한다.</p></li>
+<li><ul>
+<li><p>Classifier Free Guidance 적용했다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="topp-sampling">
+<h3>TopP Sampling<a class="headerlink" href="#topp-sampling" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>nucleus 샘플링으로도 불리고, 미리 정의한 임계값을 초과하는 누적 확률을 가진 가장 작은 상위 토큰 세트에서 샘플링을 포함한다.</p>
+<ul>
+<li><ul>
+<li><p>Classifier Free Guidance 적용했다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="classifier-free-guidance-cfg">
+<h3>Classifier Free Guidance (CFG)<a class="headerlink" href="#classifier-free-guidance-cfg" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+&amp; \operatorname{logits}_{\text {cond }}=T\left(t_y \mid t_x\right), \text { logits }_{\text {uncond }}=T\left(t_y \mid&lt;\bf { mask }&gt;\right) \\
+&amp; \operatorname{logits}_{\mathrm{cf}}=\operatorname{logits}_{\text {uncond }}+\alpha_c \cdot\left(\text { logits }_{\text {cond }}-\text { logits }_{\text {uncond }}\right)
+\end{aligned}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>CFG는 unconditional 샘플을 conditional 샘플에 맞도록 하는 것을 의미한다.</p></li>
+<li><p>unconditional 샘플을 text를 CM3 목표의 마스크 토큰으로 대체한다.</p></li>
+<li><p>이는 CM3 목표를 사용한 학습의 핵심 이점 중 하나이며, finetuning 없이, classifier 없는 guidance를 수행할 수 있다.</p></li>
+<li><p>추론에서는 두 개의 토큰 stream을 생성한다.</p>
+<ul>
+<li><p>입력 텍스트에 따라 달라지는 토큰 stream과</p></li>
+<li><p>mask 토큰에 따라 condition된 unconditional 토큰 stream</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="contrastive-decoding-topk-cd-k">
+<h3>Contrastive Decoding TopK (CD-K)<a class="headerlink" href="#contrastive-decoding-topk-cd-k" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>CFG에서 logit의 뺄셈 연산이 텍스트에서 contrastive decoding 방법의 log probability를 뺄셈하는 연산과 비슷하다.</p></li>
+</ul>
+</section>
+</section>
+<section id="quantitative-evaluation">
+<h2>3.2 Quantitative Evaluation<a class="headerlink" href="#quantitative-evaluation" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="evaluation">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/evalution.png"><img alt="evalution" class="bg-primary mb-1" src="../../_images/evalution.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">Evaluation</span><a class="headerlink" href="#evaluation" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>MS-COCO (30K) zero shot 예측, FID 측정했다.</p>
+<ul>
+<li><p>CM3Leon-7B 모델이 FID 4.88 점으로 가장 좋다.</p></li>
+</ul>
+</li>
+<li><p>retrieval-augmented decoder-only 모델의 효율성이 좋다.</p>
+<ul>
+<li><p>CM3Leon-7B 모델이 추론에서 1개/2개로 검색된 예제로 동작할 때 우수한 FID 점수를 기록했다.</p>
+<ul>
+<li><p>이는 고품질 이미지를 생성하는 능력을 확장시키는 검색의 중요성을 보여준다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="supervised-fine-tuning">
+<h2>4. Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="figure5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_5.png"><img alt="figure_5" class="bg-primary mb-1" src="../../_images/figure_5.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Figure5</span><a class="headerlink" href="#figure5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Supervised fine-tuning (SFT)는 LLM에서 중요한 학습 단계이다.</p>
+<ul>
+<li><p>명령어 또는 프롬프트를 잘 이해하는 것을 도와주며, zero shot task에서도 향상되는 결과를 얻었다.</p></li>
+</ul>
+</li>
+<li><p>명령어 튜닝이 다양한 task에 멀티모달 모델 성능을 눈에 띄게 증폭시키는 것을 발견했다.</p></li>
+<li><p>CM3Leon을 이미지와 텍스트 task를 섞어 넓은 범위에서 fine tuning 했다.</p></li>
+<li><p>finetuning 과정은 pretraining 단계를 따르며, task instruction과 출력을 결합해 동일한 CM3 objective를 사용한다.</p></li>
+</ul>
+<section id="instructable-image-generation">
+<h3>4.1 Instructable Image Generation<a class="headerlink" href="#instructable-image-generation" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="figure6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_6.png"><img alt="figure_6" class="bg-primary mb-1" src="../../_images/figure_6.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Figure6</span><a class="headerlink" href="#figure6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="text-guided-image-editing">
+<h3>Text-Guided Image Editing<a class="headerlink" href="#text-guided-image-editing" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>text instruction 에 기반한 initial image를 수정하는 task이다.</p></li>
+<li><p>InstructPix2Pix 방법 사용했다.</p></li>
+<li><p>예시: “하늘의 색을 파란색으로 변경해줘”와 같은 프롬프트로 이미지 편집이 가능하다.</p>
+<ul>
+<li><p>이것은 CM3leon이 텍스트와 이미지를 동시에 이해하고 있어서 가능하다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="image-to-image-grounded-generation">
+<h3>Image-to-Image Grounded Generation<a class="headerlink" href="#image-to-image-grounded-generation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>다양한 feature과 텍스트 프롬프트로 grounding image를 생산하는 task이다.</p></li>
+<li><p>ControlNet 적용했다.</p></li>
+</ul>
+</section>
+<section id="spatially-grounded-image-generation">
+<h3>Spatially Grounded Image Generation<a class="headerlink" href="#spatially-grounded-image-generation" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="figure6-1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_6_1.png"><img alt="figure_6_1" class="bg-primary mb-1" src="../../_images/figure_6_1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">Figure6-1</span><a class="headerlink" href="#figure6-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>이미지 생성에 있어서 공간적 정보(위치)를 텍스트 프롬프트에 통합시킬 수 있도록 하는 task이다.</p></li>
+</ul>
+</section>
+<section id="image-captioning-visual-question-answering-task">
+<h3>Image captioning &amp; visual question answering task<a class="headerlink" href="#image-captioning-visual-question-answering-task" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="figure16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_16.png"><img alt="figure_16" class="bg-primary mb-1" src="../../_images/figure_16.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Figure16</span><a class="headerlink" href="#figure16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Flamingo(1000억 토큰), OpenFlamingo(400억 토큰)에 비해 CM3leon(30억 토큰)은 적은 토큰임에도 불구하고, 동등한 성능을 달성했다.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="HyperDreamBooth.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">HyperDreamBooth</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data from Diffusion Models Improves ImageNet Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">CM3leon</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-1-introduction">Abstract &amp; 1. Introduction</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pretraining">2. Pretraining</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">2.1 Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-tokenization">Image Tokenization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieval-augmentation">Retrieval Augmentation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-function">2.2 Objective Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">2.3 Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">2.4 Training</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-results">3. Text-To-Image Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#importance-of-decoding-strategies">3.1 Importance of Decoding Strategies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temperatured-sampling">Temperatured Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topp-sampling">TopP Sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classifier-free-guidance-cfg">Classifier Free Guidance (CFG)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contrastive-decoding-topk-cd-k">Contrastive Decoding TopK (CD-K)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-evaluation">3.2 Quantitative Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-fine-tuning">4. Supervised Fine-Tuning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructable-image-generation">4.1 Instructable Image Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-guided-image-editing">Text-Guided Image Editing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-image-grounded-generation">Image-to-Image Grounded Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatially-grounded-image-generation">Spatially Grounded Image Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-captioning-visual-question-answering-task">Image captioning &amp; visual question answering task</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

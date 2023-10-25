@@ -19,8 +19,9 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 - 고동근 [Donggeun Sean Ko] | [Github](https://github.com/seanko29) | [Linkedin](https://www.linkedin.com/in/sangwoojo/) | 
 - 조남경 [Namkyeong Cho] | Github | Linkedin |
 - 김선훈 [SeonHoon Kim] | [Github](https://github.com/egshkim) | [Linkedin](https://www.linkedin.com/in/seonhoonkim/) | 
-- 이준형 [Junhyoung Lee] | Github | Linkedin | 
+- 이준형 [Junhyoung Lee] | [Github](https://github.com/jjuun0) | [Linkedin](www.linkedin.com/in/jjuun0) | 
 - 조형서 [Hyoungseo Cho] | [Github](https://github.com/ChoHyoungSeo) | [Linkedin](https://www.linkedin.com/in/hyoungseo-cho/) |
+- 유정화 [Jeonghwa Yoo] | [Github](https://github.com/jeongHwarr) | [Linkedin](https://www.linkedin.com/in/jeonghwa-yoo-8403a716b/) |
 
 ## Schedule 
 | idx | Date | Presenter | Paper / Code | 
@@ -37,6 +38,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 10 | 2023.09.13 | 조남경 [Namkyeong Cho] <br> 이준형 [Junhyoung Lee] | [DeepFloyd IF](https://www.deepfloyd.ai/deepfloyd-if) <br> [SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis](https://arxiv.org/abs/2307.01952) |
 | 11 | 2023.09.20 | 조형서 [HyoungSeo Cho] <br> 조상우 [Sangwoo Jo] | [HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models](https://arxiv.org/abs/2307.06949) <br> [T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models](https://arxiv.org/abs/2302.08453) |
 | 12 | 2023.09.27 | 박세환 [Sehwan Park] <br> 이준형 [Junhyoung Lee] | [GLIDE: Towards Photorealistic Image Generation and Editing with Text-Guided Diffusion Models](https://arxiv.org/abs/2112.10741) (ICML 2022) <br> [Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning](https://arxiv.org/abs/2309.02591) |
+| 13 | 2023.10.11 | 유정화 [Jeonghwa Yoo] <br>  | [Synthetic Data from Diffusion Models Improves ImageNet Classification](https://arxiv.org/abs/2304.08466)  <br>  |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

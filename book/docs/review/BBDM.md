@@ -1,0 +1,675 @@
+``` {admonition} Information
+- **Title:** {BBDM: Image-to-image Translation with Brownian Bridge Diffusion Models}, {CVPR 2023}
+
+- **Reference**
+    - Paper:  [https://arxiv.org/abs/2205.07680](https://arxiv.org/abs/2205.07680)
+    - Code: [https://github.com/xuekt98/BBDM](https://github.com/xuekt98/BBDM)
+    
+- **Author:** [https://www.linkedin.com/in/seonhoonkim/](SeonHoon Kim)
+
+- **Edited by:** [https://www.linkedin.com/in/seonhoonkim/](SeonHoon Kim)
+- **Related Youtube:** [](Youtube video)
+
+- **Last updated on Nov. 08, 2023**
+```
+
+# BBDM
+
+- **BBDM**
+    - BBDM 은 Brownian Bridge 를 Diffusion Model 에 도입한 최초의 모델
+    - Image to Image Translation 분야에서 Conditional Diffusion Models 의 한계를 극복함
+- **Stochastic Process**
+    - 시간의 흐름에 따라 불확실성을 가지고 변하는 확률 변수들의 집합
+    - Stochastic process 는 $X_t$ 와 같이 나타낼 수 있는데, 
+    여기서 X 는 확률 변수를,
+    t 는 확률 변수가 관찰된 시간을 나타냄
+    - X 와 t 는 각각 Discrete 혹은 Continuous 로 구분할 수 있음
+        - Discrete RANDOM VARIABLE & Discrete TIME
+        - Discrete RANDOM VARIABLE & Continuous TIME
+        - **Continuous RANDOM VARIABLE & Discrete TIME**
+        - **Continuous RANDOM VARIABLE & Continuous TIME**
+- **Brownian Motion Process (Wiener Process) 소개**
+    - **Brownian Motion**
+        - 유체의 미소입자가 불규칙하게 운동하는 현상
+            
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_00.png" alt="img_00" class="bg-primary mb-1" width="350px">
+
+        굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
+        :::
+            
+    - **Brownian Motion Process (Wiener Process)**
+        - Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_01.png" alt="img_01" class="bg-primary mb-1" width="350px">
+
+        $W_0$ = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과
+        :::
+        
+    - **Brownian Motion Process (Wiener Process)** 는 
+    **Continuous RANDOM VARIABLE & Continuous TIME 를 갖는 Stochastic Process** 로, 
+    $W_t$ 와 같이 나타낸다.
+- **Brownian Motion Process (Wiener Process) 를 이해해보자**
+    - **가정해보자**
+        1. $t = 0 → W_t = W_0 = 0$ 이라고 하자.
+        2. 쉽게 이해하기 위해, TIME t 가 Discrete 하다고 가정해보자.
+        (BBDM 은 t 를 정수 0~1000 으로 설정)
+    - **Requirements**
+        1. Brownian Motion Process 는 Stochastic Process 이다. 
+        **TIME t 마다 stochasticity 가 부여되어야** 한다.
+        2. **시간 간격과 W 의 변화량이 비례해야 한다.**
+    - **Notation**
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_02.png" alt="img_02" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
+        :::
+        
+        - $\Delta t$ = 시간 간격
+        - n = 살펴보고자 하는 시간 간격의 수
+        - $T = n * \Delta t$
+        - i.i.d $\epsilon_t \sim N(0, 1)$
+        - $\Delta W_t$ = t 시점에서 그 다음 시간 간격까지 증가한 W 의 값
+        $= W_{t+\Delta t} - W_t$
+         = $\epsilon_t \sqrt {\Delta t}$
+    - **이해**
+        - $**\Delta W_t = W_{t+\Delta t} - W_t = \epsilon_t \sqrt {\Delta t}$ 라고 정의해 본 근거를 
+        위의 Requirements 에서 찾아보면..**
+            - **확률 변수 $\epsilon$ 를 도입함으로써 stochasticity 부여**
+            - $**\Delta t$ 를 도입**함으로써 **시간 간격도 고려 가능**
+        - **그렇다면 왜 하필 $\sqrt {\Delta t}$ 를 곱했을까?**
+            1. $**\Delta t$ 가 0 에 가까워질 때, $\sqrt{\Delta t}$ 는 천천히 0 에 수렴**함.
+            **만약 TIME t 가 continuous 하다면, $\Delta t$ 는 매우 작은 값**이 됨. 
+            **$\Delta W_t = \epsilon_t {\Delta t}$ 라면 $\Delta W_t$ 가 너무 작아짐.** 
+            2. $**\Delta t$ 가 커질 때, $\sqrt{\Delta t}$ 는 천천히 커짐**
+        - **주의할 사항**
+            - i.i.d $\epsilon_t \sim N(0, 1)$ 이므로, 
+            $\Delta W_t = \epsilon_t \sqrt {\Delta t}$ 에서 $**\Delta W_0$ 와 $\Delta W_1$ 은 서로 독립**인 것이 맞지만, 
+            **$W_0$ 과 $W_1$ 이 독립이라는 말은 아님.**
+        - $\Delta W_0 = \epsilon_0 \sqrt {\Delta t}$ 이므로,
+        $W_{\Delta t} = W_0 + \epsilon_0 \sqrt {\Delta t} = 0 + \epsilon_0 \sqrt {\Delta t} = \epsilon_0 \sqrt {\Delta t}$
+        - $\Delta W_{\Delta t} = \epsilon_{\Delta t} \sqrt {\Delta t}$ 이므로,
+        $W_{2\Delta t} = W_{\Delta t} + \epsilon_{\Delta t} \sqrt {\Delta t} = (\epsilon_0 +  \epsilon_{\Delta t}) * \sqrt {\Delta t}$
+            - $Var(\Delta W_{\Delta t}) = Var(\epsilon_{\Delta t} \sqrt {\Delta t}) = Var(\epsilon_{\Delta t}) * \sqrt {\Delta t}^2 = 1 * \sqrt {\Delta t}^2 = \Delta t$
+            - $\mathbb{E}(\Delta W_{\Delta t}) = \mathbb{E}(\epsilon_{\Delta t} \sqrt {\Delta t}) = \mathbb{E}(\epsilon_{\Delta t}) * \sqrt {\Delta t} = 0 * \sqrt {\Delta t} = 0$
+        - $\Delta W_{T-\Delta t} = \epsilon_{T-\Delta t} \sqrt {\Delta t}$
+        $W_T = (\epsilon_0 +  \epsilon_{\Delta t} + \epsilon_{2\Delta t} + ... + \epsilon_{T-\Delta t}) * \sqrt {\Delta t}$
+            - $\mathbb{E}(W_T) = 0$
+            - $Var(W_T) = n * \Delta t = T$ (각각의 $\epsilon$ 은 서로 i.i.d 이므로 공분산은 0)
+            - 즉, $W_T \sim N(0,T)$
+                
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_03.png" alt="img_03" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
+        :::
+                
+                파란색 점들은, Brownian Motion Process 를 진행한 특정한 경우 
+                (one representation) 를 나타냄
+                보라색 점처럼, W_T 는 확률에 의해 여러 경우의 수가 존재할 수 있음
+                
+                :::{figure-md} 
+        <img src="../../pics/BBDM/img_04.png" alt="img_04" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
+        :::
+                
+            - t=0 부터 t=T 까지 Wiener Process 를 수행하면, 
+            $W_t$ 는 $W_T - W_0$ 만큼 변한다.
+                - $(W_T - W_0) \sim N(0, T-0)$
+                - $(W_{t_2}-W_{t_1}) \sim N(0,t_2-t_1)$
+                    - ex. 5분 에서 10분으로 Wiener Process 를 진행하면, $W_5$ 는 0 이 아닐 수 있으나, 그 변화량 $(W_{t_{10}}-W_{t_5})$ 은 N(0, 10 - 5) 를 따른다.
+            
+- **Linear Bridge between Standard Wiener Process**
+    - Z 가 Standard Wiener Process 라고 하자. 
+    0 시점과 T 시점의 Z 값을 알고,
+    0<t<T 일 때, 
+    Z(t) 는 무엇일까?
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+        :::
+        
+    - **가장 간단한 Bridge 는, 선형으로 연결된 Bridge 일 것**
+    - 위의 Bridge 는 다음과 같이 표현할 수 있다.
+        
+        $$
+        y={Z(T)−Z(0) \over T} x+Z(0)
+        $$
+        
+    - 시점 t 에서의 y 값인 $y_t$ 를 B(t) 와 같이 표현해보자.
+    
+    $$
+    y_t = B(t)= {t\over T} Z(T) \because Z(0) = 0
+    $$
+    
+    - $B(t)$ 는 Wiener Process 일까? 
+    그러기 위해서는,
+    $W_T \sim N(0,T)$ 에 의해서,
+    $Var(B(t)) = t$ 이어야 한다.
+        - **분산 = 편차의 제곱의 평균** = 제곱의 평균 - 평균의 제곱
+    - $Var(B(t)) = \mathbb{E} ((B(t) - \mathbb{E} (B(t)))^2) = \mathbb{E} ((B(t) - 0)^2) = \mathbb{E} (B(t)^2)$ 이다.
+    - $Var(B(t)) = \mathbb{E} (B(t)^2) = \mathbb{E}({t^2 \over T^2} Z(T)^2) = {t^2 \over T^2} \mathbb{E}(Z(T)^2) = {t^2 \over T^2 }T = {t^2 \over T}$
+        - $Var(Z(T)) = \mathbb{E}(Z(T)^2) - \mathbb{E}(Z(T))^2 =$  $\mathbb{E}(Z(T)^2)$ = **T**
+    - 따라서, **단순히 선형으로 연결한 Bridge 는 Wiener Process 가 될 수 없다.**
+- **Brownian Bridge 만들기**
+    - Linear Bridge 의 우변에 $W(t)−{t\over T}W(T)$ 를 더해보자. 
+    $W$ 는 $Z$ 와 독립인 새로운 Wiener Process 이다.
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+        :::
+        
+    - 위 식에는 
+    t = 0 을 대입해도 0 이 나오고,
+    t = T 를 대입해도 0 이 나온다.
+    즉 0 의 시점과 T 의 시점을 연결하는 다리가 될 수 있다.
+- **Brownian Bridge 의 Wiener Process 로서의 성질 증명하기**
+    - $y_t = B(t)= {t\over T} Z(T) +W(t)−{t\over T}W(T)$
+    - **위의 B(t) 는 Wiener Process 일까?**
+        - **표준정규분포를 따르는 Z 와 W** 로 이루어져 있으니 **정규분포**이다.
+        - **표준정규분포를 따르는 Z 와 W 의 1차 결합**이므로, **평균은 0** 이다.
+        
+        $Var(B(t)) = \mathbb{E}(B(t)^2) - \mathbb{E}(B(t))^2 = \mathbb{E}(B(t)^2) - 0 = \mathbb{E}(B(t)^2)$
+        
+        $B(t)^2$ = $({t\over T})^2 Z(T)^2$ + $2{t\over T}Z(T)(W(t)−{t\over T}W(T))$ + $(W(t)−{t\over T}W(T))^2$
+        
+        $\mathbb{E}(({t\over T})^2 Z(T)^2) = {t^2 \over T}$ $\because \mathbb{E}(Z(T)^2)=T$
+        
+        $\mathbb{E}(2{t\over T}Z(T)(W(t)−{t\over T}W(T))) = 0$ **$\because$ Z(T) 와 W 는 독립**
+        
+        $\mathbb{E}((W(t)−{t\over T}W(T))^2) = \mathbb{E}(W(t)^2) - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T^2}\mathbb{E}(W(T)^2)$
+        
+        $= t - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T}$
+        
+        $= t - 2 {t \over T}t + {t^2 \over T}$
+        
+        $= t - {t^2 \over T}$
+        
+        $\because$ $W(t)$ 와 $W(T) - W(t)$ 는 독립이므로,
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_07.png" alt="img_07" class="bg-primary mb-1" width="350px">
+        :::
+        
+        따라서,
+        
+        $Var(B(t)) = \mathbb{E}(B(t)^2) = {t^2\over T} + t - {t^2 \over T} = t$
+        
+         이므로,  $B(t)$ 는 Wiener Process 이다.
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="350px">
+
+        $W_0$ = 0 에서 $W_1000$ = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과
+        :::
+        
+- $T_0$ 과 $T$ 라는 두 시점에 대하여, $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
+    - $**T_0 ≤ t ≤ T$ 일 때,
+    $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$**
+    - 아래 그림 참고
+        
+        :::{figure-md} 
+        <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="350px">
+
+        그림 출처. [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+        :::
+
+- **Abstrcat**
+    
+    :::{figure-md} 
+    <img src="../../pics/BBDM/img_09.png" alt="img_09" class="bg-primary mb-1" width="350px">
+    :::
+    
+    - **기존의 Diffusion 모델**들은,  
+    Image-to-Image 변환을 **Conditional generation process** 로 다룸. 
+    이로 인해, **매우 상이한 도메인 사이의 변환**에는 **어려움**이 있음.
+    - 이를 **해결하기 위해**, 본 논문은 **Brownian Bridge** **에 기반한 
+    Image-to-Image 변환 방법을 제시**함
+    - **BBDM** 은 Conditional generation process 가 아닌 
+    **Stochastic Brownian Bridge Process** 로 두 도메인 사이의 변환을 모델링하므로, **Bidirectional Diffusion Process** 임.
+    - Brownian Bridge diffusion process 를 Image-to-Image 변환에 접목한 최초의 논문임
+    - BBDM 모델의 훌륭한 성능을 실험적으로 증명함
+1. **Introduction**
+    - I2I 변환에서 **Non-diffusion models 의 한계**
+        - Pix2Pix 와 같은 **conditional GANs** 는 **fideltiy 가 높았으나,**
+        학습이 어렵고, **DIversity 가 떨어진다.**
+            - Diversity 가 떨어지는 이유 : conditional GANs 는 input image 를 output image 에 one-to-one mapping 하는 방법을 학습하기 때문
+        - **VAE** 같은 **생성형 모델**들은 GANs 만큼의 I2I 성능이 안나오고, 
+        **Applicability** 가 GANs 보다 **떨어진다.**
+    - I2I 변환에서 **conditional diffusion models 의 한계**
+        - conditional diffusion models 는 **reference image** 의 encoded feature 를 **직접 U-Net 에 통합**시킴으로써 diffusion models 의 reverse process 를 guide 함
+        - 하지만 이렇게 **생성된 결과가 desired conditional distribution 을 추론해낸다는 명료한 이론적 근거가 없음**
+        - 대부분의 **conditional diffusion models 는 generalization 이 잘 안되므로,** 
+        conditional input domain 과 output domain 이 유사한 
+        몇몇 applications 에서만 잘 활용될 수 있음
+            - ex. inpainting 혹은 super-resolution
+        - **LDM** 이 latent space 에서 diffusion process 를 수행함으로써 
+        **generalization 을 개선**하긴 했으나 **여전히 conditional generation process** 임
+        - **LDM** 의 경우, **복잡한 attention mechanism 으로 multi-modal condition** 이 주어지므로, **이론적 근거를 제시하기가 더 힘듦**
+    - **본 논문에서 제안하는 BBDM 모델**
+        
+        :::{figure-md} 
+    <img src="../../pics/BBDM/img_10.png" alt="img_10" class="bg-primary mb-1" width="350px">
+    :::
+        
+        - **BBDM** 모델은 **input 과 output 도메인 간의 mapping** 을 
+        **Brownian Bridge stochastic process 를 통해 구축**함
+        - 가속을 위해 Latent space 에서 diffusion process 를 수행함
+    1. **Related Work**
+        - **2.1. Image-to-Image Translation**
+            - introduction 참고
+        - **2,2. Duffusion Models**
+            - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - $**p(x_t|y)$ 가 objective 에 드러나 있지 않으므로,** 
+            **desired conditional distribution 에 도달할 수 있을 것**이라는 **이론적 보장이 없음**
+        - **2.3. Brownian Bridge**
+            - **Brownian Bridge** 는 **diffusion process 동안의 확률 분포가** 
+            **starting state (t=0)** 와 **ending state (t=T)** 에 **conditioned 되어 있는,** 
+            **time stochastic model** 임
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_13.png" alt="img_13" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - $**T_0 ≤ t ≤ T$ 일 때,
+            $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$**
+            
+            이었다.
+            ****
+            - $T_0 = 0, Z(t) = x_t$ 로 바꿔보자.
+            - $B(t) = x_0 - {t\over T}x_0 + {t\over T}x_T + W(t) - {t\over T}W(T)$ 가 된다.
+    2. **Method**
+        - **3.1. Brownian Bridge Diffusion Model (BBDM)**
+            - **Forward diffusion process**
+                - **Conditional diffusion models** : **Gaussian noise 를 향해 Forward process 진행**
+                - **BBDM : conditional input y 자체를 향해 Brownian Bridge process 진행**
+                - VQGAN 의 latent space 에서 diffusion process 를 수행
+                - **x** 가 **A 도메인 영상의 latent features** 이고, 
+                **y** 가 **B 도메인 영상의 latent features** 일 때, 
+                **Forward diffusion process 는 다음과 같이 정의**됨
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - **T** 는 diffusion process 의 **total steps** 이다.
+                - $**δ_t**$ 는 **분산**이다.
+                - 식 (3) 에 나타난 분산 $δ_t={t(T −t)\over T}$ 를 사용하게 되면, 
+                **가능한 최대 분산값**은, **middle step 인 $T\over 2$ 에서의 분산값인 $δ_{T\over 2} = {T \over 4}$ 가 됨**
+                - T 값이 커지면, 최대 분산값도 커지는데, **이 분산 값은 다루기에 너무 큼**
+                - $x_0,y \sim N(0,I)$ 이면서 서로 독립일 때,
+                Brownian Bridge diffusion process 를 위한 **분산 scheduling** 을 
+                다음과 같이 해볼 수 있다.
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_15.png" alt="img_15" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                    - 만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
+                    $\delta_t$ 는
+                        
+                        :::{figure-md} 
+    <img src="../../pics/BBDM/img_16.png" alt="img_16" class="bg-primary mb-1" width="350px">
+    :::
+                        
+                    - diffusion process 가 시작하는 **t = 0 에서는, 
+                    $m_0$ = 0** 이고, 
+                    **평균은 $x_0$** 이며 
+                    **분산은 0** 이 된다.
+                    - diffusion process 가 끝나는 **t = T 에서는,**
+                    $m_T$ **= 1** 이고,
+                    **평균은 y** 이고,
+                    **분산은 0** 이 된다.
+                    - **분산이,**
+                    diffusion process 의 **중간 지점까지는 최대 0.5 까지 증가**하다가,
+                    중간 지점부터 **끝나는 지점까지는 0 으로 감소**
+                    - **Brownian Bridge diffusion process** 에서의 **sampling diversity** 는 
+                    **최대 분산값, 즉 middle step 인 $t = {T\over 2}$ 에서의 분산값에 의해 결정**됨
+                    - **분산을 스케일링하는 변수 s** **를 두어** **sampling diversity 를 조절**할 수 있다.
+                        
+                        :::{figure-md} 
+    <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="350px">
+    :::
+                        
+                    - 이 논문에서 **s 의 디폴트 값은 1**
+        - **3.1.1 Forward Process**
+            - **식 (4)** 에서는 **step t 에서의 marginal distribution 만 제공**
+            - **training 과 inference process 를 위해**서는 **forward transition probability** 인 $**q_{BB}(x_t|x_{t-1}, y)$ 를 알아야함**
+            - **식 (4) 에 의해, $x_0$ 와 $y$ 가 주어졌을 때의 $x_t$ 와** $x_{t-1}$ 은 다음과 같이 쓸 수 있음
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="350px">
+    :::
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_18.png" alt="img_18" class="bg-primary mb-1" width="350px">
+    :::
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
+            - **식 (6) 의 $x_0$ 를 식 (7) 의 $x_0$ 로 대체**하면, 
+            **Forward transition probability $q_{BB}(x_t|x_{t-1}, y)$** 가 아래의 **식 (8)** 과 같이 유도됨
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - 증명
+                    - 식(7) 을 다음과 같이 쓸 수 있음
+                        - $x_0 = {x_{t-1}-m_{t-1}y-\sqrt {\delta_{t-1}} \epsilon_{t-1} \over 1-m_{t-1}}$
+                    - 식(6) 의 $x_0$ 에 위의 $x_0$ 를 대입
+                        - $x_t = {(1-m_t)x_{t-1} \over (1-m_{t-1})} - {(1-m_t)m_{t-1}y \over (1-m_{t-1})} - {(1-m_t)\sqrt {\delta_{t-1}}\epsilon_{t-1} \over (1-m_{t-1})} + m_ty + \sqrt{\delta_t} \epsilon_t$
+                        - $= {(1-m_t)x_{t-1} \over (1-m_{t-1})} + y(m_t - {(1-m_t) \over (1-m_{t-1})}m_{t-1}) + \sqrt {\delta_t}\epsilon_t - {(1-m_t)\sqrt {\delta_{t-1}}\epsilon_{t-1} \over (1-m_{t-1})}$
+                - 이후, $Var(x_t)$ 를 구하면, 아래의 $\delta_{t|t-1}$ 와 같이 유도됨
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_21.png" alt="img_21" class="bg-primary mb-1" width="350px">
+    :::
+                    
+            
+            - 식(8) 에 의해, t=T 가 될 때 $m_T = 1$, $x_T = y$ 임. 
+            ↓
+            ”아, Forward diffusion process 는 확실히.. 
+            A 도메인으로부터 B 도메인으로의 fixed mapping 을 정의하는구나”
+        
+        - **3.1.2 Reverse Process**
+            - **conditional diffusion models** 의 **reverse process** 는, 
+            **Gaussian noise 로부터 시작**하며, 
+            매 스텝마다 조금씩 noise 를 제거해나감
+            - 반면, **BBDM 의 Brownian Bridge process 는 $x_T = y$ 로 둠으로써, 
+            conditional input 그 자체에서 Reverse process 를 시작**함
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - $**\mu_\theta (x_t,t)$ 는 U-Net 에 의해 예측된 노이즈 평균값**이며, $**\tilde{\delta_t}$ 는 노이즈의 분산**
+            - DDPM 처럼, 임의의 parameters $\theta$ 를 갖는 신경망 **U-Net 은 $\mu_\theta (x_t,t)$ 를 학습**
+        
+        - **3.1.3. Training Objective**
+            - **참고.**
+                - **DDPM 의 Loss**
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_23.png" alt="img_23" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="350px">
+    :::
+                    
+            - **Brownian Bridge diffusion process** 의 **ELBO**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_24.png" alt="img_24" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - **첫 번째 term :** $x_T$ 가 곧 y 이므로 무시할 수 있음
+            - **세 번째 term** : 매우 작은 값이 되므로 무시할 수 있음
+            - **베이즈 이론과 Markov chain property 를 식 (4) 와 식 (8) 에 적용**하여, 
+            다음과 같이 **식 (11) 이 도출**된다.
+                - 참고. Markovian Chain
+                    - $q(x_t|x_{t-1}) = q(x_t|x_{t-1}, x_{t-2}, … , x_0)$
+                    - Markov chain property 에 의해,
+                    $**q_{BB}(x_t|x_{t-1},y) = q_{BB}(x_t|x_{t-1},x_0,y)$ 가 성립됨을 활용**
+                - 식(4)
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - 식(8)
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - 식(11) & 식(13)
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_25.png" alt="img_25" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_26.png" alt="img_26" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                    - 증명
+                        - ${q_{BB}(x_{t}|x_{t-1},y)q_{BB}(x_{t-1}|x_{0},y)\over q_{BB}(x_{t}|x_{0},y)}$
+                        - $= {{q_{BB}(x_{t},x_{t-1},y) \over q_{BB}(x_{t-1},y)} {q_{BB}(x_{t-1},x_{0},y) \over q_{BB}(x_{0},y)} \over {q_{BB}(x_{t},x_{0},y)\over  q_{BB}(x_{0},y)}}$
+                        - $= q_{BB}(x_{t}|x_{t-1},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+                        - $= q_{BB}(x_{t}|x_{t-1},x_{0},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+                        - $= {q_{BB}(x_{t},x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+                        - $= q_{BB}(x_{t-1}|x_{t},x_{0},y)$
+            
+            ---
+            
+            - 위 식 (11) 의 평균은, 식 (12) 와 같이 정리됨
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_27.png" alt="img_27" class="bg-primary mb-1" width="350px">
+    :::
+                
+            - 식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
+            $\tilde {\mu_t}$ 를 다음과 같이 변형할 수 있음
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_28.png" alt="img_28" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - 참고. 식(4)
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="350px">
+    :::
+                    
+            
+            - 하지만, 실제로 U-Net 은 전체 $\tilde {\mu_t}$ 를 예측하는 것이 아니라, 
+            노이즈를 예측하도록 학습됨.
+            - 이 내용을 식에 명시하기 위해,
+            **식(9) 에 명시된 $\mu_\theta$ 를 
+            $x_t$ 와 y, 그리고 예측된 노이즈 $\epsilon_\theta$ 의 linear combination 으로 변형**해 
+            식(14) 와 같이 쓸 수 있음
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="350px">
+    :::
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - $**\epsilon_\theta (x_t,t)$  는 $m_t(y-x_0)+\sqrt {\delta_t}\epsilon$ 을 근사하도록 학습되어야겠네 !**
+            
+            :::{figure-md} 
+    <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="350px">
+    :::
+            
+            - ELBO 의 두 번째 term 을 다시 살펴보면,
+                - **두 번째 term** :
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                    - $arg \space min_\theta \space D_{KL}(q_{BB}(x_{t-1}|x_t, x_0, y)||p_\theta (x_{t-1}|x_t,y))$
+                    =$arg \space min_\theta \space (\tilde {\mu}_t(x_t,y) - \mu_\theta (x_t,y,t))$
+                    =$arg \space min_\theta \space (c_{\epsilon_t}(m_t(y-x_0) + \sqrt {\delta_t}\epsilon) - c_{\epsilon_t}\epsilon_\theta(x_t,t))$
+                    =$arg \space min_\theta \space (c_{\epsilon_t} (m_t(y-x_0) + \sqrt {\delta_t}\epsilon - \epsilon_\theta(x_t,t)))$
+                - 따라서, ELBO 는 다음과 같이 단순화될 수 있음
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_31.png" alt="img_31" class="bg-primary mb-1" width="350px">
+    :::
+                    
+            
+            - **Training Algorithm 정리**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="350px">
+    :::
+                
+        
+        - **3.2. Accelerated Sampling Processes**
+            - **DDIM 과 비슷하게, BBDM 의 inference processes** 도 
+            **non-Markovian process 를 사용해서 가속시킬 수 있음**
+            - Sampling steps 의 길이를 S 라고 두었을 때, 
+            **inference process** 는 **latent varibales $x_{1:T}$ 의 subset** 에 의해 다음과 같이 정의됨
+                - l**atent varibales $x_{1:T}$ 의 subset**
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - **inference process**
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_34.png" alt="img_34" class="bg-primary mb-1" width="350px">
+    :::
+                    
+                - **Sampling Algorithm**
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_35.png" alt="img_35" class="bg-primary mb-1" width="350px">
+    :::
+                    
+            - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
+    3. **Experiments**
+        - **4.1. Experiment Setup**
+            - **모델 & 하이퍼마라미터**
+                - BBDM 프레임워크는 pretrained VQGAN 과 BBDM 으로 이루어짐
+                - **Latent Diffusion Model 에서 사용된 것과 같은 pretrained VQGAN 을 사용**
+                - training stage 에서의 time steps 는 1,000
+                - inference stage 에서의 sampling steps 는 200
+            - **Evaluation**
+                - FID 와 LPIPS 사용
+                - 생성물의 diversity 를 평가하기 위해서, 
+                하나의 conditional input y 마다 5개의 샘플을 생성하고, 
+                각 픽셀 마다의 표준편차의 평균을 구함.
+                그 후 전체 test 데이터셋에 대해서 평균 냄.
+            - **Datasets**
+                - BBDM 의 I2I 변환 능력을 평가하기 위해서, 여러 task 로 실험함
+                1. **Semantic Synthesis 능력**을 CelebAMask-HQ dataset 으로 실험
+                    1. semantic layout 만 주고 photorealistic 한 images 를 생성해내는 능력 평가
+                2. **sketch-to-photo 능력**을 edges2shoes 와 edges2handbags 로 실험
+                    1. edges 만 주고 realistic images 생성해내는 능력 평가
+                3. **style transfer 능력**을 faces2comics 로 실험
+                    1. 위 두 실험은 서로 상이한 domains 간의 변환 능력을 평가했다면, 
+                    Style transfer 실험에서는 서로 비슷한 domains 간의 I2I 변환 능력을 평가
+        - **4.2. Qualitative Comparison**
+            
+            :::{figure-md} 
+    <img src="../../pics/BBDM/img_36.png" alt="img_36" class="bg-primary mb-1" width="350px">
+    :::
+            
+            :::{figure-md} 
+    <img src="../../pics/BBDM/img_37.png" alt="img_37" class="bg-primary mb-1" width="350px">
+    :::
+            
+            :::{figure-md} 
+    <img src="../../pics/BBDM/img_38.png" alt="img_38" class="bg-primary mb-1" width="350px">
+    :::
+            
+            - Pix2Pix 는 지도 학습 방식으로 학습하므로, 괜찮은 결과를 냄
+            - 반면 **CycleGAN** 은 **작은 스케일의 데이터셋**에서는 **성능이 떨어짐**
+            - DRIT++ 은 GAN 기반 모델들 중에서는 좋은 성능을 냈으나, 
+            변환된 이미지들이 oversmoothed 되어 있었고, 
+            ground truth distribution 과는 거리가 멀었음
+            - conditional diffusion model 인 **CDE** 와 **LDM** 은 
+            GAN 기반 모델들보다는 **좋은 성능**을 냈으나, 
+            **conditional information 에 큰 영향**을 받음
+                - **Figure 3 의 첫 번째 줄**을 보면 i**rregular occlusions** 가 나타나는데, 
+                **CDE 와 LDM 은 이에 큰 영향**을 받음
+            - 반면 **BBDM 은 두 도메인 간의 직접적인 diffusion process 를 학습**하므로 
+            **이러한 문제로부터 자유로움**
+            - 또한 Brownian Bridge 의 stochastic 한 특성으로 인해 
+            fidelity 와 diversity 가 높은 이미지들을 생성해냄
+        - **4.3. Quantitative Comparison**
+            - Table 1 과 2 를 보면, BBDM 이 모든 실험에서 가장 좋은 FID 값을 기록했으며, 훌륭한 LPIPS 값을 기록함
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_39.png" alt="img_39" class="bg-primary mb-1" width="350px">
+    :::
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_40.png" alt="img_40" class="bg-primary mb-1" width="350px">
+    :::
+                
+        
+        - **4.4. 다른 Translation Tasks**
+            - **BBDM 의 generalization 성능을 검증**하기 위해서, 다른 tasks 에 대해서도 실험했음
+            - 아래 그림과 같이, **다른 tasks 에서도 camparable  한 성능을 기**록함
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_41.png" alt="img_41" class="bg-primary mb-1" width="350px">
+    :::
+                
+        
+        - **4.5. Ablation Study**
+            - **pre-trained latent space 의 영향**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_42.png" alt="img_42" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - **BBDM 과 LDM** 에 대해서, 
+                **VQGAN downsampling factor** 를 **각각 4, 8, 16 으로 두고 성능 비교 실험 수행**
+                - **BBDM 은 down sampling factor 에 robust** 했음
+            - **Sampling steps 의 영향**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_43.png" alt="img_43" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - **Sampling steps 가 작을 때 (200 이하) 는, 조금만 늘려도 성능이 크게 증가**
+            - **Brownian Bridge 의 maximum variance 의 영향**
+                
+                :::{figure-md} 
+    <img src="../../pics/BBDM/img_44.png" alt="img_44" class="bg-primary mb-1" width="350px">
+    :::
+                
+                - 식 (5) 에 나타난 것처럼, **scaling factor s 의 값을 변경**함으로써, 
+                **Brownian Bridge 의 최대 분산값 (t = T/2 일 때의 분산값) 조절 가능.** 
+                **이렇게 diversity 조절 가능.**
+                    
+                    :::{figure-md} 
+    <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="350px">
+    :::
+                    
+        1. **Conclusion and Future Work**
+            - **Brownian Bridge 에 기반한 새로운 I2I 변환 방법 제시**
+            - 이 방법은 기존의 conditional 한 방법과 달리, 
+            **Brownian Bridge diffusion process 를 통해 두 도메인 간의 mapping 을 직접 학습**
+            - **여러 tasks 에서의 실험을 통해 BBDM 의 성능 검증**
+            - text-to-image 와 같은 multi-modal tasks 에도 BBDM 을 적용해볼 예정
+
+- **참고 자료**
+    - [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
+    - [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)

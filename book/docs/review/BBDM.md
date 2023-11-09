@@ -218,7 +218,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
 $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
 
 - 아래 그림 참고
-            
+
     :::{figure-md} 
     <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
 

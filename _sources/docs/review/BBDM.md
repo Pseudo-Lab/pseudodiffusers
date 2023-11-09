@@ -212,10 +212,10 @@
         $W_0$ = 0 에서 $W_1000$ = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과
         :::
         
-- $T_0$ 과 $T$ 라는 두 시점에 대하여, <br>
-$W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
-- $T_0 ≤ t ≤ T$ 일 때,<br>
-$B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
+    - $T_0$ 과 $T$ 라는 두 시점에 대하여, <br>
+    $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
+    - $T_0 ≤ t ≤ T$ 일 때,<br>
+    $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
 
 - **Abstrcat**
     
@@ -269,7 +269,7 @@ $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)
             - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                 
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="300px">
 
             Diffusion Models 의 Simplified objective
             :::
@@ -277,7 +277,7 @@ $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)
             - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
                 
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="300px">
 
             Conditional Diffusion Models 의 Simplified objective
             :::

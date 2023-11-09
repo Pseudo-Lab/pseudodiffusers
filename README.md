@@ -42,7 +42,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 13 | 2023.10.11 | 유정화 [Jeonghwa Yoo] <br> 김선훈 [SeonHoon Kim] | [Synthetic Data from Diffusion Models Improves ImageNet Classification](https://arxiv.org/abs/2304.08466) <br> [Your Diffusion Model is Secretly a Zero-Shot Classifier](https://arxiv.org/abs/2303.16203) (ICCV 2023) |
 | 14 | 2023.10.18 | 지승환 [Seunghwan Ji] | [A Study on the Evaluation of Generative Models](https://arxiv.org/abs/2206.10935) |
 | 15 | 2023.10.25 | 조상우 [Sangwoo Jo] <br> 조형서 [HyoungSeo Cho] | [Progressive Distillation for Fast Sampling of Diffusion Models](https://arxiv.org/abs/2202.00512) (ICLR 2022) <br> [ConceptLab: Creative Generation using Diffusion Prior Constraints](https://arxiv.org/abs/2308.02669) |
-| 16 | 2023.11.01 | 김선훈 [SeonHoon Kim] <br> 유정화 [Jeonghwa Yoo] | [Make-A-Video: Text-to-Video Generation without Text-Video Data](https://arxiv.org/abs/2209.14792) |
+| 16 | 2023.11.01 | 김선훈 [SeonHoon Kim] <br> 유정화 [Jeonghwa Yoo] | [BBDM: Image-to-image Translation with Brownian Bridge Diffusion Models](https://arxiv.org/abs/2205.07680) (CVPR 2023) <br>  [Make-A-Video: Text-to-Video Generation without Text-Video Data](https://arxiv.org/abs/2209.14792) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

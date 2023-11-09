@@ -12,7 +12,7 @@
 - **Last updated on Nov. 09, 2023**
 ```
 
-# **Your Diffusion Model is Secretly a Zero-Shot Classifier**
+# Your Diffusion Model is Secretly a Zero-Shot Classifier
 
 - **핵심**
     - 학습된 **Diffusion Models 에서 Classifier 를  추가 학습 없이 획득**할 수 있다.

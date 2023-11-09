@@ -214,16 +214,16 @@
         
 - $T_0$ 과 $T$ 라는 두 시점에 대하여, <br>
 $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
-    - $T_0 ≤ t ≤ T$ 일 때,<br>
-    $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
+- $T_0 ≤ t ≤ T$ 일 때,<br>
+$B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
 
-    - 아래 그림 참고
-            
-    :::{figure-md} 
-    <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
+- 아래 그림 참고
+        
+:::{figure-md} 
+<img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
 
-    Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
-    :::<br>
+Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+:::<br>
 
 - **Abstrcat**
     
@@ -388,7 +388,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             :::
                         
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="300px">
 
             $\epsilon$ 은 i.i.d 하게 N(0, I) 를 따른다
             :::
@@ -451,7 +451,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                             
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="300px">
 
             DDPM 의 simplified objective
             :::
@@ -608,7 +608,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             - **latent varibales $x_{1:T}$ 의 subset**
                 
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="300px">
 
             **latent varibales $x_{1:T}$ 의 subset**
             :::

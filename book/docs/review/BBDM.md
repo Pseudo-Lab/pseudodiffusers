@@ -34,6 +34,7 @@
             
         :::{figure-md} 
         <img src="../../pics/BBDM/img_00.png" alt="img_00" class="bg-primary mb-1" width="700px">
+        
         굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
         :::
             
@@ -110,7 +111,7 @@
         보라색 점처럼, W_T 는 확률에 의해 여러 경우의 수가 존재할 수 있음
                 
         :::{figure-md} 
-        <img src="../../pics/BBDM/img_04.png" alt="img_04" class="bg-primary mb-1" width="700px">
+        <img src="../../pics/BBDM/img_04.png" alt="img_04" class="bg-primary mb-1" width="400px">
 
         Source : [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
         :::
@@ -127,11 +128,11 @@
     0<t<T 일 때, 
     Z(t) 는 무엇일까?
         
-        :::{figure-md} 
-        <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
+    :::{figure-md} 
+    <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
 
-        Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
-        :::
+    Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+    :::
         
     - **가장 간단한 Bridge 는, 선형으로 연결된 Bridge 일 것**
     - 위의 Bridge 는 다음과 같이 표현할 수 있다.
@@ -159,11 +160,11 @@
     - Linear Bridge 의 우변에 $W(t)−{t\over T}W(T)$ 를 더해보자. <br>
     $W$ 는 $Z$ 와 독립인 새로운 Wiener Process 이다.
         
-        :::{figure-md} 
-        <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
+    :::{figure-md} 
+    <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
 
-        Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
-        :::
+    Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+    :::
         
     - 위 식에는 
     t = 0 을 대입해도 0 이 나오고,<br>
@@ -195,6 +196,7 @@
         
         :::{figure-md} 
         <img src="../../pics/BBDM/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
+
         :::
         
         따라서,
@@ -215,11 +217,11 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
     $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
     - 아래 그림 참고
         
-        :::{figure-md} 
-        <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
+:::{figure-md} 
+<img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
 
-        Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
-        :::
+Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+:::<br>
 
 - **Abstrcat**
     
@@ -235,7 +237,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
     - **BBDM** 은 Conditional generation process 가 아닌 <br>
     **Stochastic Brownian Bridge Process** 로 두 도메인 사이의 변환을 모델링하므로, <br>**Bidirectional Diffusion Process** 임.
     - Brownian Bridge diffusion process 를 Image-to-Image 변환에 접목한 최초의 논문임
-    - BBDM 모델의 훌륭한 성능을 실험적으로 증명함
+    - BBDM 모델의 훌륭한 성능을 실험적으로 증명함<br>
 1. **Introduction**
     - I2I 변환에서 **Non-diffusion models 의 한계**
         - Pix2Pix 와 같은 **conditional GANs** 는 **fideltiy 가 높았으나,**
@@ -257,11 +259,12 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
         
         :::{figure-md} 
         <img src="../../pics/BBDM/img_10.png" alt="img_10" class="bg-primary mb-1" width="700px">
+
         :::
         
         - **BBDM** 모델은 **input 과 output 도메인 간의 mapping** 을 
         **Brownian Bridge stochastic process 를 통해 구축**함
-        - 가속을 위해 Latent space 에서 diffusion process 를 수행함
+        - 가속을 위해 Latent space 에서 diffusion process 를 수행함<br>
     1. **Related Work**
         - **2.1. Image-to-Image Translation**
             - introduction 참고
@@ -270,12 +273,14 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+
                 :::
                 
             - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
+
                 :::
                 
             - $p(x_t|y)$ 가 objective 에 드러나 있지 않으므로,
@@ -287,15 +292,15 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_13.png" alt="img_13" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - $T_0 ≤ t ≤ T$ 일 때,
             $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$
             
             이었다.
-            ****
             - $T_0 = 0, Z(t) = x_t$ 로 바꿔보자.
-            - $B(t) = x_0 - {t\over T}x_0 + {t\over T}x_T + W(t) - {t\over T}W(T)$ 가 된다.
+            - $B(t) = x_0 - {t\over T}x_0 + {t\over T}x_T + W(t) - {t\over T}W(T)$ 가 된다.<br>
     2. **Method**
         - **3.1. Brownian Bridge Diffusion Model (BBDM)**
             - **Forward diffusion process**
@@ -308,6 +313,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+
                 :::
                     
                 - **T** 는 diffusion process 의 **total steps** 이다.
@@ -321,6 +327,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_15.png" alt="img_15" class="bg-primary mb-1" width="700px">
+
                 :::
                     
                 - 만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
@@ -328,6 +335,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                         
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_16.png" alt="img_16" class="bg-primary mb-1" width="700px">
+
                 :::
                         
                 - diffusion process 가 시작하는 **t = 0 에서는, $m_0$ = 0** 이고, 
@@ -346,6 +354,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                         
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
+
                 :::
                         
                 - 이 논문에서 **s 의 디폴트 값은 1**
@@ -356,14 +365,17 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+
                 :::
                             
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_18.png" alt="img_18" class="bg-primary mb-1" width="700px">
+
                 :::
                             
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
+
                 :::
                 
             - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
@@ -372,6 +384,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - 증명
@@ -384,6 +397,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_21.png" alt="img_21" class="bg-primary mb-1" width="700px">
+
             :::
 
             - 식(8) 에 의해, t=T 가 될 때 $m_T = 1$, $x_T = y$ 임.
@@ -400,6 +414,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - $\mu_\theta (x_t,t)$ 는 U-Net 에 의해 예측된 노이즈 평균값이며, $\tilde{\delta_t}$ 는 노이즈의 분산
@@ -411,18 +426,21 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_23.png" alt="img_23" class="bg-primary mb-1" width="700px">
+
             :::
                             
                         - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                             
-                            :::{figure-md} 
+            :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+
             :::
                     
             - **Brownian Bridge diffusion process** 의 **ELBO**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_24.png" alt="img_24" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - **첫 번째 term :** $x_T$ 가 곧 y 이므로 무시할 수 있음
@@ -437,22 +455,26 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+
             :::
                     
                 - 식(8)
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="700px">
+
             :::
                     
                 - 식(11) & 식(13)
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_25.png" alt="img_25" class="bg-primary mb-1" width="700px">
+
             :::
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_26.png" alt="img_26" class="bg-primary mb-1" width="700px">
+
             :::
                     
             - 증명
@@ -469,6 +491,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_27.png" alt="img_27" class="bg-primary mb-1" width="700px">
+
                 :::
                 
             - 식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
@@ -476,12 +499,14 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_28.png" alt="img_28" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - 참고. 식(4)
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+
             :::
                                 
             
@@ -494,16 +519,19 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="700px">
+
             :::
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - $\epsilon_\theta (x_t,t)$  는 $m_t(y-x_0)+\sqrt {\delta_t}\epsilon$ 을 근사하도록 학습되어야겠네 !
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
+
             :::
             
             - ELBO 의 두 번째 term 을 다시 살펴보면,
@@ -511,10 +539,12 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
                     :::{figure-md} 
                     <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
+
                     :::
                     
                     :::{figure-md} 
                     <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="700px">
+
                     :::
                     
                     - $arg \space min_\theta \space D_{KL}(q_{BB}(x_{t-1}|x_t, x_0, y)||p_\theta (x_{t-1}|x_t,y))$
@@ -525,6 +555,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
                     :::{figure-md} 
                     <img src="../../pics/BBDM/img_31.png" alt="img_31" class="bg-primary mb-1" width="700px">
+
                     :::
                     
             
@@ -532,6 +563,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="700px">
+
                 :::
                 
         
@@ -544,18 +576,21 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="700px">
+
             :::
                 
             - **inference process**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_34.png" alt="img_34" class="bg-primary mb-1" width="700px">
+
             :::
                     
             - **Sampling Algorithm**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_35.png" alt="img_35" class="bg-primary mb-1" width="700px">
+
             :::
                     
             - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
@@ -585,14 +620,17 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_36.png" alt="img_36" class="bg-primary mb-1" width="700px">
+
             :::
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_37.png" alt="img_37" class="bg-primary mb-1" width="700px">
+
             :::
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_38.png" alt="img_38" class="bg-primary mb-1" width="700px">
+
             :::
             
             - Pix2Pix 는 지도 학습 방식으로 학습하므로, 괜찮은 결과를 냄
@@ -614,10 +652,12 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_39.png" alt="img_39" class="bg-primary mb-1" width="700px">
+
                 :::
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_40.png" alt="img_40" class="bg-primary mb-1" width="700px">
+
                 :::
                 
         
@@ -627,6 +667,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_41.png" alt="img_41" class="bg-primary mb-1" width="700px">
+
                 :::
                 
         
@@ -635,6 +676,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_42.png" alt="img_42" class="bg-primary mb-1" width="700px">
+
                 :::
                 
                 - **BBDM 과 LDM** 에 대해서, 
@@ -644,6 +686,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_43.png" alt="img_43" class="bg-primary mb-1" width="700px">
+
                 :::
                 
                 - **Sampling steps 가 작을 때 (200 이하) 는, 조금만 늘려도 성능이 크게 증가**
@@ -651,6 +694,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                 
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_44.png" alt="img_44" class="bg-primary mb-1" width="700px">
+
                 :::
                 
                 - 식 (5) 에 나타난 것처럼, **scaling factor s 의 값을 변경**함으로써, 
@@ -659,6 +703,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
                     
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
+
                 :::
                     
         1. **Conclusion and Future Work**

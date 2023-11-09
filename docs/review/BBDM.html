@@ -69,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="YDMSZC 발표 자료" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html" />
+    <link rel="next" title="Your Diffusion Model is Secretly a Zero-Shot Classifier" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html" />
     <link rel="prev" title="GLIDE" href="GLIDE.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BBDM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">YDMSZC 발표 자료</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html"><strong>Your Diffusion Model is Secretly a Zero-Shot Classifier</strong></a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -477,7 +477,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <li><p>유체의 미소입자가 불규칙하게 운동하는 현상</p></li>
 </ul>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_001.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_001.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_001.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_001.png" style="width: 400px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 293 </span><span class="caption-text">굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -488,7 +488,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <li><p>Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것</p></li>
 </ul>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_011.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_011.png" style="width: 1400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_011.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_011.png" style="width: 2000px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 294 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -684,7 +684,8 @@ t = T 를 대입해도 0 이 나온다.<br>
 <p><span class="math notranslate nohighlight">\(= t - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T}\)</span></p>
 <p><span class="math notranslate nohighlight">\(= t - 2 {t \over T}t + {t^2 \over T}\)</span></p>
 <p><span class="math notranslate nohighlight">\(= t - {t^2 \over T}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\because\)</span> <span class="math notranslate nohighlight">\(W(t)\)</span> 와 <span class="math notranslate nohighlight">\(W(T) - W(t)\)</span> 는 독립이므로,</p>
+<p><span class="math notranslate nohighlight">\(\because\)</span> <span class="math notranslate nohighlight">\(W(t)\)</span> 와 <span class="math notranslate nohighlight">\(W(T) - W(t)\)</span> 는 독립이므로,
+$\mathbb{E}(W(t)W(T)) = \mathbb{E}(W(t)(W(T)-W(t))) + \mathbb{E}(W(t)^2) = \mathbb{E}(W(t))\mathbb{E}(W(T)-W(t)) + t = t</p>
 <p>따라서,</p>
 <p><span class="math notranslate nohighlight">\(Var(B(t)) = \mathbb{E}(B(t)^2) = {t^2\over T} + t - {t^2 \over T} = t\)</span></p>
 <p>이므로,  <span class="math notranslate nohighlight">\(B(t)\)</span> 는 Wiener Process 이다.</p>
@@ -752,7 +753,7 @@ t = T 를 대입해도 0 이 나온다.<br>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">YDMSZC 발표 자료</p>
+        <p class="prev-next-title"><strong>Your Diffusion Model is Secretly a Zero-Shot Classifier</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

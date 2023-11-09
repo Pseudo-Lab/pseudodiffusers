@@ -388,7 +388,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             :::
                         
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="300px">
 
             $\epsilon$ 은 i.i.d 하게 N(0, I) 를 따른다
             :::
@@ -451,7 +451,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                             
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="300px">
 
             DDPM 의 simplified objective
             :::
@@ -608,7 +608,7 @@ $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
             - **latent varibales $x_{1:T}$ 의 subset**
                 
             :::{figure-md} 
-            <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="300px">
 
             **latent varibales $x_{1:T}$ 의 subset**
             :::

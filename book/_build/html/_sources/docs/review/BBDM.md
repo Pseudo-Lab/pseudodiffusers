@@ -33,7 +33,7 @@
         - 유체의 미소입자가 불규칙하게 운동하는 현상
         
         :::{figure-md}
-        <img src="../../pics/BBDM/img_00.png" alt="img_00" class="bg-primary mb-1" width="700px">
+        <img src="../../pics/BBDM/img_00.png" alt="img_00" class="bg-primary mb-1" width="400px">
         
         굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
         :::
@@ -42,7 +42,7 @@
         - Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것
         
         :::{figure-md}
-        <img src="../../pics/BBDM/img_01.png" alt="img_01" class="bg-primary mb-1" width="1400px">
+        <img src="../../pics/BBDM/img_01.png" alt="img_01" class="bg-primary mb-1" width="2000px">
 
         $W_0$ = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과
         :::
@@ -192,11 +192,13 @@
         $= t - {t^2 \over T}$
         
         $\because$ $W(t)$ 와 $W(T) - W(t)$ 는 독립이므로,
-        
-        :::{figure-md} 
-        <img src="../../pics/BBDM/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
+        $\mathbb{E}(W(t)W(T)) = \mathbb{E}(W(t)(W(T)-W(t))) + \mathbb{E}(W(t)^2) = \mathbb{E}(W(t))\mathbb{E}(W(T)-W(t)) + t = t
 
-        :::
+        % :::{figure-md} 
+        % <img src="../../pics/BBDM/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
+
+        
+        % :::
         
         따라서,
         
@@ -226,6 +228,8 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
     
     :::{figure-md} 
     <img src="../../pics/BBDM/img_09.png" alt="img_09" class="bg-primary mb-1" width="700px">
+
+    Conditional Diffusion Models 와 BBDM 의 비교
     :::
     
     - **기존의 Diffusion 모델**들은,  <br>
@@ -259,6 +263,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
         :::{figure-md}
         <img src="../../pics/BBDM/img_10.png" alt="img_10" class="bg-primary mb-1" width="700px">
 
+        BBDM 의 아키텍쳐
         :::
         
         - **BBDM** 모델은 **input 과 output 도메인 간의 mapping** 을 
@@ -273,6 +278,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
 
+            Diffusion Models 의 Simplified objective
             :::
                 
             - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
@@ -280,6 +286,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
 
+            Conditional Diffusion Models 의 Simplified objective
             :::
                 
             - $p(x_t|y)$ 가 objective 에 드러나 있지 않으므로,
@@ -292,6 +299,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_13.png" alt="img_13" class="bg-primary mb-1" width="700px">
 
+            식(3)
             :::
                 
             - $T_0 ≤ t ≤ T$ 일 때,
@@ -313,6 +321,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
+                식(4)
                 :::
                     
                 - **T** 는 diffusion process 의 **total steps** 이다.
@@ -327,6 +336,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_15.png" alt="img_15" class="bg-primary mb-1" width="700px">
 
+                Brownian Bridge diffusion process 를 위한 분산 Scheduling
                 :::
                     
                 - 만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
@@ -335,6 +345,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_16.png" alt="img_16" class="bg-primary mb-1" width="700px">
 
+                $\delta_t$ 를 시각화한 결과
                 :::
                         
                 - diffusion process 가 시작하는 **t = 0 에서는, $m_0$ = 0** 이고, 
@@ -354,6 +365,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
 
+                식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling
                 :::
                         
                 - 이 논문에서 **s 의 디폴트 값은 1**
@@ -365,16 +377,19 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
+            식(4)
             :::
                         
             :::{figure-md} 
             <img src="../../pics/BBDM/img_18.png" alt="img_18" class="bg-primary mb-1" width="700px">
 
+            식(6) & 식(7)
             :::
                         
             :::{figure-md} 
             <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
 
+            $\epsilon$ 은 i.i.d 하게 N(0, I) 를 따른다
             :::
                 
             - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
@@ -384,6 +399,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="700px">
 
+            식(8)
             :::
                 
             - 증명
@@ -397,6 +413,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_21.png" alt="img_21" class="bg-primary mb-1" width="700px">
 
+            $\delta_{t|t-1}$ 식
             :::
 
             - 식(8) 에 의해, t=T 가 될 때 $m_T = 1$, $x_T = y$ 임.
@@ -414,6 +431,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="700px">
 
+            식(9)
             :::
                 
             - $\mu_\theta (x_t,t)$ 는 U-Net 에 의해 예측된 노이즈 평균값이며, $\tilde{\delta_t}$ 는 노이즈의 분산
@@ -426,6 +444,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_23.png" alt="img_23" class="bg-primary mb-1" width="700px">
 
+            DDPM 의 Loss
             :::
                             
             - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
@@ -433,6 +452,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
 
+            DDPM 의 simplified objective
             :::
                     
             - **Brownian Bridge diffusion process** 의 **ELBO**
@@ -440,6 +460,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_24.png" alt="img_24" class="bg-primary mb-1" width="700px">
 
+            식(10) : BBDM 의 ELBO
             :::
                 
             - **첫 번째 term :** $x_T$ 가 곧 y 이므로 무시할 수 있음
@@ -455,6 +476,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
+            식(4)
             :::
                     
             - 식(8)
@@ -462,6 +484,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="700px">
 
+            식(8)
             :::
                     
             - 식(11) & 식(13)
@@ -469,11 +492,13 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_25.png" alt="img_25" class="bg-primary mb-1" width="700px">
 
+            식(11)
             :::
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_26.png" alt="img_26" class="bg-primary mb-1" width="700px">
 
+            식(13)
             :::
                     
             - 증명
@@ -489,6 +514,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_27.png" alt="img_27" class="bg-primary mb-1" width="700px">
 
+            식(12)
             :::
                 
             - 식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
@@ -497,6 +523,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_28.png" alt="img_28" class="bg-primary mb-1" width="700px">
 
+            식(12) 의 변형
             :::
                 
             - 참고. 식(4)
@@ -504,6 +531,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
+            식(4)
             :::
                                 
             
@@ -517,11 +545,13 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="700px">
 
+            식(9)
             :::
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="700px">
 
+            식(14)
             :::
                 
             - $\epsilon_\theta (x_t,t)$  는 $m_t(y-x_0)+\sqrt {\delta_t}\epsilon$ 을 근사하도록 학습되어야겠네 !
@@ -529,6 +559,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
 
+            $\tilde {\mu}_t$ 의 정리된 식
             :::
             
             - ELBO 의 두 번째 term 을 다시 살펴보면,
@@ -537,11 +568,13 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                     :::{figure-md} 
                     <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
 
+                    $\tilde {\mu}_t$ 의 정리된 식
                     :::
                     
                     :::{figure-md} 
                     <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="700px">
 
+                    식(14)
                     :::
                     
                     - $arg \space min_\theta \space D_{KL}(q_{BB}(x_{t-1}|x_t, x_0, y)||p_\theta (x_{t-1}|x_t,y))$
@@ -553,6 +586,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_31.png" alt="img_31" class="bg-primary mb-1" width="700px">
 
+                BBDM 의 Simplified ELBO
                 :::
                     
             
@@ -561,6 +595,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="700px">
 
+            Algorithm 1 : Training. 실제 Loss 에는 BBDM 의 Simplified ELBO 에서 계수 $C_{\epsilon_t}$ 가 빠진 것을 확인할 수 있다.
             :::
                 
         
@@ -569,11 +604,12 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             **non-Markovian process 를 사용해서 가속시킬 수 있음**
             - Sampling steps 의 길이를 S 라고 두었을 때, 
             **inference process** 는 **latent varibales $x_{1:T}$ 의 subset** 에 의해 다음과 같이 정의됨
-            - l**atent varibales $x_{1:T}$ 의 subset**
+            - **latent varibales $x_{1:T}$ 의 subset**
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_33.png" alt="img_33" class="bg-primary mb-1" width="700px">
 
+            **latent varibales $x_{1:T}$ 의 subset**
             :::
                 
             - **inference process**
@@ -581,6 +617,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_34.png" alt="img_34" class="bg-primary mb-1" width="700px">
 
+            inference process
             :::
                     
             - **Sampling Algorithm**
@@ -588,6 +625,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_35.png" alt="img_35" class="bg-primary mb-1" width="700px">
 
+            Algorithm 2 : Sampling
             :::
                     
             - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
@@ -618,16 +656,19 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_36.png" alt="img_36" class="bg-primary mb-1" width="700px">
 
+            Figure 3. CelebAMask-HQ 데이터셋에 대한 추론 결과
             :::
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_37.png" alt="img_37" class="bg-primary mb-1" width="700px">
 
+            Figure 4. 다른 Image-to-Image 변환 task 에 대한 추론 결과
             :::
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_38.png" alt="img_38" class="bg-primary mb-1" width="700px">
 
+            Figure 5. 다른 Image-to-Image 변환 task 에 대한 추론 결과
             :::
             
             - Pix2Pix 는 지도 학습 방식으로 학습하므로, 괜찮은 결과를 냄
@@ -650,11 +691,13 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_39.png" alt="img_39" class="bg-primary mb-1" width="700px">
 
+            Table 1. CelebAMask-HQ 데이터셋에 대한 FID, LPIPS 성능은 BBDM 이 가장 뛰어남
             :::
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_40.png" alt="img_40" class="bg-primary mb-1" width="700px">
 
+            Table 2. BBDM 은 FID, LPIPS 점수가 매우 뛰어났음
             :::
                 
         
@@ -665,6 +708,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             :::{figure-md} 
             <img src="../../pics/BBDM/img_41.png" alt="img_41" class="bg-primary mb-1" width="700px">
 
+            Figure 6. Face-to-label, 색상화, inpainting 등의 다른 tasks 에서도 뛰어난 성능을 기록함
             :::
                 
         
@@ -674,6 +718,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_42.png" alt="img_42" class="bg-primary mb-1" width="700px">
 
+                Table 3. BBDM 은 LDM 에 비해 Downsampling factor 에 대해 robust 했음
                 :::
                 
                 - **BBDM 과 LDM** 에 대해서, 
@@ -684,6 +729,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_43.png" alt="img_43" class="bg-primary mb-1" width="700px">
 
+                Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함
                 :::
                 
                 - **Sampling steps 가 작을 때 (200 이하) 는, 조금만 늘려도 성능이 크게 증가**
@@ -692,6 +738,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_44.png" alt="img_44" class="bg-primary mb-1" width="700px">
 
+                Table 5. Sampling diversity 조절 계수에 의해 실제로 Diversity 가 조절 되었음
                 :::
                 
                 - 식 (5) 에 나타난 것처럼, **scaling factor s 의 값을 변경**함으로써, 
@@ -701,6 +748,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
 
+                식(5)
                 :::
                     
         1. **Conclusion and Future Work**

@@ -30,6 +30,7 @@ parts:
   - file: docs/review/Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification
   - file: docs/review/GLIDE
   - file: docs/review/BBDM
+  - file: docs/review/Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier
 
 - caption: Experiments
   chapters:

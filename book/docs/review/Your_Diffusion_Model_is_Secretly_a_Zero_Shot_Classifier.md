@@ -32,10 +32,11 @@ Diffusion Classifier 아키텍쳐
 :::
     
 - **예시로 먼저 살펴보기.**
-- 예를 들어, 어떤 동물 이미지 X 를 Stable Diffusion 으로 Classification 하고 싶다면..
+- 예를 들어, 어떤 동물 이미지 X 를 Stable Diffusion 으로 Classification 하고 싶다면..<br>
         1. 일단 해당 동물의 클래스를 포함하고 있을 만한 데이터셋을 구한다.<br>
-        37개의 동물 클래스가 존재하는 Pets 데이터셋을 사용한다고 치자.
-        2. text prompts 로 “호랑이” 가 주어진 Stable Diffusion 으로, X 의 Noised Image 에서 Reverse process 를 진행한다. 그럼 Loss 를 획득할 수 있을 것이다.
+        37개의 동물 클래스가 존재하는 Pets 데이터셋을 사용한다고 치자.<br>
+        2. text prompts 로 “호랑이” 가 주어진 Stable Diffusion 으로, <br>
+        X 의 Noised Image 에서 Reverse process 를 진행한다. 그럼 Loss 를 획득할 수 있을 것이다.<br>
         3. 37개의 모든 Pets Classes 에 대해서 이를 수행해서, <br>
         가장 Loss 가 작은 Class 를 판별한다. <br>
         이 Class 가 바로 이미지 X 의 클래스이다.
@@ -58,10 +59,10 @@ Algorithm 1 : Diffusion Classifier 학습 알고리즘
         - 예를 들어서, Stable Diffusion 의 Zero-shot classification 을 수행하기 위해서는, <br>
         (Stable Diffusion 이 학습하지는 않았지만) 37개의 클래스가 정의되어 있는 <br>
         Pets 와 같은 데이터셋으로 Classification 을 수행할 수 있다.
-- 하지만, Class 마다 n_samples 수 만큼 t 를 샘플링하고,
-또 X_t 를 구하고,
-Diffusion Model 로 노이즈를 추론하고,
-loss 를 구하는 것은 Inference times 가 많이 소모됨.
+- 하지만, Class 마다 n_samples 수 만큼 t 를 샘플링하고,<br>
+또 X_t 를 구하고,<br>
+Diffusion Model 로 노이즈를 추론하고,<br>
+loss 를 구하는 것은 Inference times 가 많이 소모됨.<br>
 따라서 다음의 방법을 활용해 inference times 을 줄인다.
             
 :::{figure-md} 
@@ -166,22 +167,22 @@ Table 1
 :::
     
 - 본 논문에서 제시한 Diffusion Classifier 가 Classification 능력이 나쁘지 않았다.
-1. Diffusion 모델에서 knowledge 를 추출해내는 다른 방법들보다 성능이 뛰어났다.
+1. Diffusion 모델에서 knowledge 를 추출해내는 다른 방법들보다 성능이 뛰어났다.<br>
         - Diffusion Classifier 는 **Zero-shot 성능**이, <br>
-        **“Stable Diffusion 으로 생성된 영상을“ 학습한** **ResNet-50** **classifier** 보다 뛰어났다.
+        **“Stable Diffusion 으로 생성된 영상을“ 학습한** **ResNet-50** **classifier** 보다 뛰어났다.<br>
         - **Synthetic SD data :** <br>
         Class 마다 10,000 장의 이미지를 Stable Diffusion 2.0 으로 생성해 <br>
         데이터셋을 구축하고 (90% train / 10% validation), <br>
-        해당 데이터셋으로 ResNet-50 classifier 를 학습시켜서 classification 수행한 결과
+        해당 데이터셋으로 ResNet-50 classifier 를 학습시켜서 classification 수행한 결과<br>
         - Diffusion Classifier 는 **Classification 성능**이, <br>
         **Stable Diffusion 의 intermediate U-Net layer 를 추출해 학습시킨 <br>
-        ResNet-based 모델**보다 뛰어났다.
+        ResNet-based 모델**보다 뛰어났다.<br>
         - **SD features :** <br>
         Input 이미지에 따른 Stable Diffusion 의 Intermediate U-Net features 를 <br>
         ResNet 기반의 classifier 에 전달해서 추론. <br>
-        이 때 classifier 는 모든 데이터셋을 직접 학습한다. 따라서 zero-shot 은 아니다.
+        이 때 classifier 는 모든 데이터셋을 직접 학습한다. 따라서 zero-shot 은 아니다.<br>
 2. **CLIP ResNet-50 모델보다도 성능이 뛰어났다.**
-3. **OpenCLIP ViT-H/14 모델에 competitive** 했다. (비벼볼 만 했다.)
+3. **OpenCLIP ViT-H/14 모델에 competitive** 했다.
         
 - **Table 2**
     
@@ -194,7 +195,8 @@ Table 2
 - **Stable Diffusion 은** <br>
 Resolution 이 높은지, Aesthetic 한지, Safe-for-work 한지에 따라서 **filtered 된 <br>
 LAION-5B 데이터셋을 학습**했다.
-- 이와 같은 기준으로 filtering 하면, **CIFAR10, Pets, Flowers, STL10, ImageNet 데이터셋의 test set 은 97~100% 가 filtered out** 된다.
+- 이와 같은 기준으로 filtering 하면, <br>
+**CIFAR10, Pets, Flowers, STL10, ImageNet 데이터셋의 test set 은 97~100% 가 filtered out** 된다.
 - 따라서, **이들 데이터셋은 Stable Diffusion 에게 완전한 out-of-distribution 데이터**이다.
 - 따라서, **필터링이 안된 데이터로 Stable Diffusion 을 추가 학습시키면<br>
 classification 성능도 올라갈 것**이다.

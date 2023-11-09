@@ -31,8 +31,8 @@
 - **Brownian Motion Process (Wiener Process) 소개**
     - **Brownian Motion**
         - 유체의 미소입자가 불규칙하게 운동하는 현상
-            
-        :::{figure-md} 
+        
+        :::{figure-md}
         <img src="../../pics/BBDM/img_00.png" alt="img_00" class="bg-primary mb-1" width="700px">
         
         굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
@@ -41,7 +41,7 @@
     - **Brownian Motion Process (Wiener Process)**
         - Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것
         
-        :::{figure-md} 
+        :::{figure-md}
         <img src="../../pics/BBDM/img_01.png" alt="img_01" class="bg-primary mb-1" width="1400px">
 
         $W_0$ = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과
@@ -106,11 +106,10 @@
         Source : [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
         :::
                 
-        파란색 점들은, Brownian Motion Process 를 진행한 특정한 경우 
-        (one representation) 를 나타냄
+        파란색 점들은, Brownian Motion Process 를 진행한 특정한 경우 (one representation) 를 나타냄<br>
         보라색 점처럼, W_T 는 확률에 의해 여러 경우의 수가 존재할 수 있음
                 
-        :::{figure-md} 
+        :::{figure-md}
         <img src="../../pics/BBDM/img_04.png" alt="img_04" class="bg-primary mb-1" width="400px">
 
         Source : [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
@@ -206,7 +205,7 @@
          이므로,  $B(t)$ 는 Wiener Process 이다.
         
         :::{figure-md} 
-        <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="1400px">
+        <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="2000px">
 
         $W_0$ = 0 에서 $W_1000$ = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과
         :::
@@ -257,7 +256,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
         - **LDM** 의 경우, **복잡한 attention mechanism 으로 multi-modal condition** 이 주어지므로, **이론적 근거를 제시하기가 더 힘듦**
     - **본 논문에서 제안하는 BBDM 모델**
         
-        :::{figure-md} 
+        :::{figure-md}
         <img src="../../pics/BBDM/img_10.png" alt="img_10" class="bg-primary mb-1" width="700px">
 
         :::
@@ -271,17 +270,17 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
         - **2,2. Duffusion Models**
             - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
             - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
             - $p(x_t|y)$ 가 objective 에 드러나 있지 않으므로,
             **desired conditional distribution 에 도달할 수 있을 것**이라는 **이론적 보장이 없음**
@@ -308,7 +307,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 - **BBDM : conditional input y 자체를 향해 Brownian Bridge process 진행**
                 - VQGAN 의 latent space 에서 diffusion process 를 수행
                 - **x** 가 **A 도메인 영상의 latent features** 이고, 
-                **y** 가 **B 도메인 영상의 latent features** 일 때, 
+                **y** 가 **B 도메인 영상의 latent features** 일 때, <br>
                 **Forward diffusion process 는 다음과 같이 정의**됨
                     
                 :::{figure-md} 
@@ -363,20 +362,20 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             - **training 과 inference process 를 위해**서는 **forward transition probability** 인 $q_{BB}(x_t|x_{t-1}, y)$ 를 알아야함
             - **식 (4) 에 의해, $x_0$ 와 $y$ 가 주어졌을 때의 $x_t$ 와** $x_{t-1}$ 은 다음과 같이 쓸 수 있음
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
-                :::
-                            
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_18.png" alt="img_18" class="bg-primary mb-1" width="700px">
+            :::
+                        
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_18.png" alt="img_18" class="bg-primary mb-1" width="700px">
 
-                :::
-                            
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
+            :::
+                        
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
             - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
             - **식 (6) 의 $x_0$ 를 식 (7) 의 $x_0$ 로 대체**하면, 
@@ -429,7 +428,7 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
 
             :::
                             
-                        - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
+            - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
                             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="700px">
@@ -447,25 +446,25 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
             - **세 번째 term** : 매우 작은 값이 되므로 무시할 수 있음
             - **베이즈 이론과 Markov chain property 를 식 (4) 와 식 (8) 에 적용**하여, 
             다음과 같이 **식 (11) 이 도출**된다.
-                - 참고. Markovian Chain
-                    - $q(x_t|x_{t-1}) = q(x_t|x_{t-1}, x_{t-2}, … , x_0)$
-                    - Markov chain property 에 의해,
-                    $q_{BB}(x_t|x_{t-1},y) = q_{BB}(x_t|x_{t-1},x_0,y)$ 가 성립됨을 활용
-                - 식(4)
+            - 참고. Markovian Chain
+                - $q(x_t|x_{t-1}) = q(x_t|x_{t-1}, x_{t-2}, … , x_0)$
+                - Markov chain property 에 의해,
+                $q_{BB}(x_t|x_{t-1},y) = q_{BB}(x_t|x_{t-1},x_0,y)$ 가 성립됨을 활용
+            - 식(4)
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
 
             :::
                     
-                - 식(8)
+            - 식(8)
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_20.png" alt="img_20" class="bg-primary mb-1" width="700px">
 
             :::
                     
-                - 식(11) & 식(13)
+            - 식(11) & 식(13)
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_25.png" alt="img_25" class="bg-primary mb-1" width="700px">
@@ -485,14 +484,12 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                 - $= {q_{BB}(x_{t},x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
                 - $= q_{BB}(x_{t-1}|x_{t},x_{0},y)$
             
-            ---
-            
             - 위 식 (11) 의 평균은, 식 (12) 와 같이 정리됨
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_27.png" alt="img_27" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_27.png" alt="img_27" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
             - 식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
             $\tilde {\mu_t}$ 를 다음과 같이 변형할 수 있음
@@ -553,18 +550,18 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
                     =$arg \space min_\theta \space (c_{\epsilon_t} (m_t(y-x_0) + \sqrt {\delta_t}\epsilon - \epsilon_\theta(x_t,t)))$
                 - 따라서, ELBO 는 다음과 같이 단순화될 수 있음
                     
-                    :::{figure-md} 
-                    <img src="../../pics/BBDM/img_31.png" alt="img_31" class="bg-primary mb-1" width="700px">
+                :::{figure-md} 
+                <img src="../../pics/BBDM/img_31.png" alt="img_31" class="bg-primary mb-1" width="700px">
 
-                    :::
+                :::
                     
             
             - **Training Algorithm 정리**
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
         
         - **3.2. Accelerated Sampling Processes**
@@ -650,25 +647,25 @@ Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.c
         - **4.3. Quantitative Comparison**
             - Table 1 과 2 를 보면, BBDM 이 모든 실험에서 가장 좋은 FID 값을 기록했으며, 훌륭한 LPIPS 값을 기록함
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_39.png" alt="img_39" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_39.png" alt="img_39" class="bg-primary mb-1" width="700px">
 
-                :::
-                
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_40.png" alt="img_40" class="bg-primary mb-1" width="700px">
+            :::
+            
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_40.png" alt="img_40" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
         
         - **4.4. 다른 Translation Tasks**
             - **BBDM 의 generalization 성능을 검증**하기 위해서, 다른 tasks 에 대해서도 실험했음
             - 아래 그림과 같이, **다른 tasks 에서도 camparable  한 성능을 기**록함
                 
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_41.png" alt="img_41" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_41.png" alt="img_41" class="bg-primary mb-1" width="700px">
 
-                :::
+            :::
                 
         
         - **4.5. Ablation Study**

@@ -10,7 +10,7 @@
 
 - **Related Youtube:** <a href="https://youtu.be/WbeofpQpj3M">Youtube video</a>
 
-- **Last updated on Nov. 08, 2023**
+- **Last updated on Nov. 13, 2023**
 ```
 
 # BBDM
@@ -78,9 +78,9 @@
         - $\Delta W_t = W_{t+\Delta t} - W_t = \epsilon_t \sqrt {\Delta t}$ 라고 정의해 본 근거를 
         위의 Requirements 에서 찾아보면..
             - **확률 변수 $\epsilon$ 를 도입함으로써 stochasticity 부여**
-            - $\Delta t$ 를 도입**함으로써 **시간 간격도 고려 가능**
+            - $\Delta t$ 를 도입함으로써 **시간 간격도 고려 가능**
         - **그렇다면 왜 하필 $\sqrt {\Delta t}$ 를 곱했을까?**
-            1. $\Delta t$ 가 0 에 가까워질 때, $\sqrt{\Delta t}$ 는 천천히 0 에 수렴**함.
+            1. $\Delta t$ 가 0 에 가까워질 때, $\sqrt{\Delta t}$ 는 천천히 0 에 수렴함.
             **만약 TIME t 가 continuous 하다면, $\Delta t$ 는 매우 작은 값**이 됨. 
             **$\Delta W_t = \epsilon_t {\Delta t}$ 라면 $\Delta W_t$ 가 너무 작아짐.** 
             2. $\Delta t$ 가 커질 때, $\sqrt{\Delta t}$ 는 천천히 커짐
@@ -121,101 +121,34 @@
             - $(W_{t_2}-W_{t_1}) \sim N(0,t_2-t_1)$
                 - ex. 5분 에서 10분으로 Wiener Process 를 진행하면, $W_5$ 는 0 이 아닐 수 있으나, 그 변화량 $(W_{t_{10}}-W_{t_5})$ 은 N(0, 10 - 5) 를 따른다.
             
-- **Linear Bridge between Standard Wiener Process**
-    - Z 가 Standard Wiener Process 라고 하자. <br>
-    0 시점과 T 시점의 Z 값을 알고,<br>
-    0<t<T 일 때, 
-    Z(t) 는 무엇일까?
+- **Brownian Bridge**
+    - X 가 Standard Wiener Process 라고 하자. <br>
+    0 시점과 T 시점의 X 값을 알고,<br>
+    0<t<T 일 때,
+    두 점을 선형으로 연결하는 Linear Bridge X(t) 는 다음과 같다.
         
     :::{figure-md} 
     <img src="../../pics/BBDM/img_05.png" alt="img_05" class="bg-primary mb-1" width="700px">
 
-    Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+    Brownian Bridge 이해를 위한 Linear Bridge
     :::
-        
-    - **가장 간단한 Bridge 는, 선형으로 연결된 Bridge 일 것**
-    - 위의 Bridge 는 다음과 같이 표현할 수 있다.
-        
-        $$
-        y={Z(T)−Z(0) \over T} x+Z(0)
-        $$
-        
-    - 시점 t 에서의 y 값인 $y_t$ 를 B(t) 와 같이 표현해보자.
     
-    $$
-    y_t = B(t)= {t\over T} Z(T) \because Z(0) = 0
-    $$
-    
-    - $B(t)$ 는 Wiener Process 일까? <br>
-    그러기 위해서는,<br>
-    $W_T \sim N(0,T)$ 에 의해서,<br>
-    $Var(B(t)) = t$ 이어야 한다.<br>
-        - **분산 = 편차의 제곱의 평균** = 제곱의 평균 - 평균의 제곱<br>
-    - $Var(B(t)) = \mathbb{E} ((B(t) - \mathbb{E} (B(t)))^2) = \mathbb{E} ((B(t) - 0)^2) = \mathbb{E} (B(t)^2)$ 이다.
-    - $Var(B(t)) = \mathbb{E} (B(t)^2) = \mathbb{E}({t^2 \over T^2} Z(T)^2) = {t^2 \over T^2} \mathbb{E}(Z(T)^2) = {t^2 \over T^2 }T = {t^2 \over T}$
-        - 왜냐하면, $Var(Z(T)) = \mathbb{E}(Z(T)^2) - \mathbb{E}(Z(T))^2 =$  $\mathbb{E}(Z(T)^2)$ = **T** <br>
-    - 따라서, **단순히 선형으로 연결한 Bridge 는 Wiener Process 가 될 수 없다.**
-- **Brownian Bridge 만들기**
-    - Linear Bridge 의 우변에 $W(t)−{t\over T}W(T)$ 를 더해보자. <br>
-    $W$ 는 $Z$ 와 독립인 새로운 Wiener Process 이다.
-        
+    Brownian Bridge 는 Standard Wiener Process 의 Conditional Probability Distribution 이다.
+    Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.
+    아래와 같이 정의될 수 있다.
+
     :::{figure-md} 
     <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
 
-    Source : [https://sine-qua-none.tistory.com/158](https://sine-qua-none.tistory.com/158)
+    Brownian Bridge
     :::
-        
-    - 위 식에는 
-    t = 0 을 대입해도 0 이 나오고,<br>
-    t = T 를 대입해도 0 이 나온다.<br>
-    즉 0 의 시점과 T 의 시점을 연결하는 다리가 될 수 있다.<br>
-- **Brownian Bridge 의 Wiener Process 로서의 성질 증명하기**
-    - $y_t = B(t)= {t\over T} Z(T) +W(t)−{t\over T}W(T)$
-    - **위의 B(t) 는 Wiener Process 일까?**
-        - **표준정규분포를 따르는 Z 와 W** 로 이루어져 있으니 **정규분포**이다.
-        - **표준정규분포를 따르는 Z 와 W 의 1차 결합**이므로, **평균은 0** 이다.
-        <br>
-        $Var(B(t)) = \mathbb{E}(B(t)^2) - \mathbb{E}(B(t))^2 = \mathbb{E}(B(t)^2) - 0 = \mathbb{E}(B(t)^2)$
-        
-        $B(t)^2$ = $({t\over T})^2 Z(T)^2$ + $2{t\over T}Z(T)(W(t)−{t\over T}W(T))$ + $(W(t)−{t\over T}W(T))^2$
-        
-        $\mathbb{E}(({t\over T})^2 Z(T)^2) = {t^2 \over T}$ $\because \mathbb{E}(Z(T)^2)=T$
-        
-        $\mathbb{E}(2{t\over T}Z(T)(W(t)−{t\over T}W(T))) = 0$ **$\because$ Z(T) 와 W 는 독립**
-        
-        $\mathbb{E}((W(t)−{t\over T}W(T))^2) = \mathbb{E}(W(t)^2) - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T^2}\mathbb{E}(W(T)^2)$
-        
-        $= t - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T}$
-        
-        $= t - 2 {t \over T}t + {t^2 \over T}$
-        
-        $= t - {t^2 \over T}$
-        
-        $\because$ $W(t)$ 와 $W(T) - W(t)$ 는 독립이므로,
-        $\mathbb{E}(W(t)W(T)) = \mathbb{E}(W(t)(W(T)-W(t))) + \mathbb{E}(W(t)^2) = \mathbb{E}(W(t))\mathbb{E}(W(T)-W(t)) + t = t
 
-        % :::{figure-md} 
-        % <img src="../../pics/BBDM/img_07.png" alt="img_07" class="bg-primary mb-1" width="700px">
 
-        
-        % :::
-        
-        따라서,
-        
-        $Var(B(t)) = \mathbb{E}(B(t)^2) = {t^2\over T} + t - {t^2 \over T} = t$
-        
-         이므로,  $B(t)$ 는 Wiener Process 이다.
-        
-        :::{figure-md} 
-        <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="2000px">
+    :::{figure-md} 
+    <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="2000px">
 
-        $W_0$ = 0 에서 $W_1000$ = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과
-        :::
-        
-    - $T_0$ 과 $T$ 라는 두 시점에 대하여, <br>
-    $W_0 ≠ 0$ 인 **두 점 사이의 Brownian Bridge 를 만들 때는?**
-    - $T_0 ≤ t ≤ T$ 일 때,<br>
-    $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$<br>
+    $W_0$ = 0 에서 $W_1000$ = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과
+    :::
 
 - **Abstrcat**
     
@@ -294,13 +227,16 @@
 
             식(3)
             :::
-                
-            - $T_0 ≤ t ≤ T$ 일 때,
-            $B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)$
             
-            이었다.
-            - $T_0 = 0, Z(t) = x_t$ 로 바꿔보자.
-            - $B(t) = x_0 - {t\over T}x_0 + {t\over T}x_T + W(t) - {t\over T}W(T)$ 가 된다.<br>
+            앞서 보았던 Brownian Bridge 의 식을 다시 보자.
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
+
+            Brownian Bridge
+            :::
+
+
+
     2. **Method**
         - **3.1. Brownian Bridge Diffusion Model (BBDM)**
             - **Forward diffusion process**
@@ -622,7 +558,7 @@
             :::
                     
             - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
-    3. **Experiments**
+    4. **Experiments**
         - **4.1. Experiment Setup**
             - **모델 & 하이퍼마라미터**
                 - BBDM 프레임워크는 pretrained VQGAN 과 BBDM 으로 이루어짐
@@ -744,12 +680,12 @@
                 식(5)
                 :::
                     
-        1. **Conclusion and Future Work**
-            - **Brownian Bridge 에 기반한 새로운 I2I 변환 방법 제시**
-            - 이 방법은 기존의 conditional 한 방법과 달리, 
-            **Brownian Bridge diffusion process 를 통해 두 도메인 간의 mapping 을 직접 학습**
-            - **여러 tasks 에서의 실험을 통해 BBDM 의 성능 검증**
-            - text-to-image 와 같은 multi-modal tasks 에도 BBDM 을 적용해볼 예정
+    5. **Conclusion and Future Work**
+        - **Brownian Bridge 에 기반한 새로운 I2I 변환 방법 제시**
+        - 이 방법은 기존의 conditional 한 방법과 달리, 
+        **Brownian Bridge diffusion process 를 통해 두 도메인 간의 mapping 을 직접 학습**
+        - **여러 tasks 에서의 실험을 통해 BBDM 의 성능 검증**
+        - text-to-image 와 같은 multi-modal tasks 에도 BBDM 을 적용해볼 예정
 
 - **참고 자료**
     - [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)

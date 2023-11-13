@@ -442,7 +442,7 @@ document.write(`
 <li><p><strong>Author:</strong> <a href="https://www.linkedin.com/in/seonhoonkim/">SeonHoon Kim</a></p></li>
 <li><p><strong>Edited by:</strong> <a href="https://www.linkedin.com/in/seonhoonkim/">SeonHoon Kim</a></p></li>
 <li><p><strong>Related Youtube:</strong> <a href="https://youtu.be/WbeofpQpj3M">Youtube video</a></p></li>
-<li><p><strong>Last updated on Nov. 08, 2023</strong></p></li>
+<li><p><strong>Last updated on Nov. 13, 2023</strong></p></li>
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="bbdm">
@@ -538,12 +538,12 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 위의 Requirements 에서 찾아보면..</p>
 <ul>
 <li><p><strong>확률 변수 <span class="math notranslate nohighlight">\(\epsilon\)</span> 를 도입함으로써 stochasticity 부여</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> 를 도입**함으로써 <strong>시간 간격도 고려 가능</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> 를 도입함으로써 <strong>시간 간격도 고려 가능</strong></p></li>
 </ul>
 </li>
 <li><p><strong>그렇다면 왜 하필 <span class="math notranslate nohighlight">\(\sqrt {\Delta t}\)</span> 를 곱했을까?</strong></p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> 가 0 에 가까워질 때, <span class="math notranslate nohighlight">\(\sqrt{\Delta t}\)</span> 는 천천히 0 에 수렴**함.
+<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> 가 0 에 가까워질 때, <span class="math notranslate nohighlight">\(\sqrt{\Delta t}\)</span> 는 천천히 0 에 수렴함.
 <strong>만약 TIME t 가 continuous 하다면, <span class="math notranslate nohighlight">\(\Delta t\)</span> 는 매우 작은 값</strong>이 됨.
 <strong><span class="math notranslate nohighlight">\(\Delta W_t = \epsilon_t {\Delta t}\)</span> 라면 <span class="math notranslate nohighlight">\(\Delta W_t\)</span> 가 너무 작아짐.</strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> 가 커질 때, <span class="math notranslate nohighlight">\(\sqrt{\Delta t}\)</span> 는 천천히 커짐</p></li>
@@ -604,103 +604,34 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 </li>
 </ul>
 </li>
-<li><p><strong>Linear Bridge between Standard Wiener Process</strong></p>
+<li><p><strong>Brownian Bridge</strong></p>
 <ul class="simple">
-<li><p>Z 가 Standard Wiener Process 라고 하자. <br>
-0 시점과 T 시점의 Z 값을 알고,<br>
+<li><p>X 가 Standard Wiener Process 라고 하자. <br>
+0 시점과 T 시점의 X 값을 알고,<br>
 0&lt;t&lt;T 일 때,
-Z(t) 는 무엇일까?</p></li>
+두 점을 선형으로 연결하는 Linear Bridge X(t) 는 다음과 같다.</p></li>
 </ul>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_05.png"><img alt="img_05" class="bg-primary mb-1" src="../../_images/img_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Source : <a class="reference external" href="https://sine-qua-none.tistory.com/158">https://sine-qua-none.tistory.com/158</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 298 </span><span class="caption-text">Brownian Bridge 이해를 위한 Linear Bridge</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<ul>
-<li><p><strong>가장 간단한 Bridge 는, 선형으로 연결된 Bridge 일 것</strong></p></li>
-<li><p>위의 Bridge 는 다음과 같이 표현할 수 있다.</p>
-<div class="math notranslate nohighlight">
-\[
-        y={Z(T)−Z(0) \over T} x+Z(0)
-        \]</div>
-</li>
-<li><p>시점 t 에서의 y 값인 <span class="math notranslate nohighlight">\(y_t\)</span> 를 B(t) 와 같이 표현해보자.</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[
-    y_t = B(t)= {t\over T} Z(T) \because Z(0) = 0
-    \]</div>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(B(t)\)</span> 는 Wiener Process 일까? <br>
-그러기 위해서는,<br>
-<span class="math notranslate nohighlight">\(W_T \sim N(0,T)\)</span> 에 의해서,<br>
-<span class="math notranslate nohighlight">\(Var(B(t)) = t\)</span> 이어야 한다.<br></p>
-<ul>
-<li><p><strong>분산 = 편차의 제곱의 평균</strong> = 제곱의 평균 - 평균의 제곱<br></p></li>
-</ul>
-</li>
-<li><p><span class="math notranslate nohighlight">\(Var(B(t)) = \mathbb{E} ((B(t) - \mathbb{E} (B(t)))^2) = \mathbb{E} ((B(t) - 0)^2) = \mathbb{E} (B(t)^2)\)</span> 이다.</p></li>
-<li><p><span class="math notranslate nohighlight">\(Var(B(t)) = \mathbb{E} (B(t)^2) = \mathbb{E}({t^2 \over T^2} Z(T)^2) = {t^2 \over T^2} \mathbb{E}(Z(T)^2) = {t^2 \over T^2 }T = {t^2 \over T}\)</span></p>
-<ul>
-<li><p>왜냐하면, <span class="math notranslate nohighlight">\(Var(Z(T)) = \mathbb{E}(Z(T)^2) - \mathbb{E}(Z(T))^2 =\)</span>  <span class="math notranslate nohighlight">\(\mathbb{E}(Z(T)^2)\)</span> = <strong>T</strong> <br></p></li>
-</ul>
-</li>
-<li><p>따라서, <strong>단순히 선형으로 연결한 Bridge 는 Wiener Process 가 될 수 없다.</strong></p></li>
-</ul>
-</li>
-<li><p><strong>Brownian Bridge 만들기</strong></p>
-<ul class="simple">
-<li><p>Linear Bridge 의 우변에 <span class="math notranslate nohighlight">\(W(t)−{t\over T}W(T)\)</span> 를 더해보자. <br>
-<span class="math notranslate nohighlight">\(W\)</span> 는 <span class="math notranslate nohighlight">\(Z\)</span> 와 독립인 새로운 Wiener Process 이다.</p></li>
-</ul>
+<p>Brownian Bridge 는 Standard Wiener Process 의 Conditional Probability Distribution 이다.
+Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.
+아래와 같이 정의될 수 있다.</p>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_061.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_061.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Source : <a class="reference external" href="https://sine-qua-none.tistory.com/158">https://sine-qua-none.tistory.com/158</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 299 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p>위 식에는
-t = 0 을 대입해도 0 이 나오고,<br>
-t = T 를 대입해도 0 이 나온다.<br>
-즉 0 의 시점과 T 의 시점을 연결하는 다리가 될 수 있다.<br></p></li>
-</ul>
-</li>
-<li><p><strong>Brownian Bridge 의 Wiener Process 로서의 성질 증명하기</strong></p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(y_t = B(t)= {t\over T} Z(T) +W(t)−{t\over T}W(T)\)</span></p></li>
-<li><p><strong>위의 B(t) 는 Wiener Process 일까?</strong></p>
-<ul class="simple">
-<li><p><strong>표준정규분포를 따르는 Z 와 W</strong> 로 이루어져 있으니 <strong>정규분포</strong>이다.</p></li>
-<li><p><strong>표준정규분포를 따르는 Z 와 W 의 1차 결합</strong>이므로, <strong>평균은 0</strong> 이다.
-<br>
-<span class="math notranslate nohighlight">\(Var(B(t)) = \mathbb{E}(B(t)^2) - \mathbb{E}(B(t))^2 = \mathbb{E}(B(t)^2) - 0 = \mathbb{E}(B(t)^2)\)</span></p></li>
-</ul>
-<p><span class="math notranslate nohighlight">\(B(t)^2\)</span> = <span class="math notranslate nohighlight">\(({t\over T})^2 Z(T)^2\)</span> + <span class="math notranslate nohighlight">\(2{t\over T}Z(T)(W(t)−{t\over T}W(T))\)</span> + <span class="math notranslate nohighlight">\((W(t)−{t\over T}W(T))^2\)</span></p>
-<p><span class="math notranslate nohighlight">\(\mathbb{E}(({t\over T})^2 Z(T)^2) = {t^2 \over T}\)</span> <span class="math notranslate nohighlight">\(\because \mathbb{E}(Z(T)^2)=T\)</span></p>
-<p><span class="math notranslate nohighlight">\(\mathbb{E}(2{t\over T}Z(T)(W(t)−{t\over T}W(T))) = 0\)</span> <strong><span class="math notranslate nohighlight">\(\because\)</span> Z(T) 와 W 는 독립</strong></p>
-<p><span class="math notranslate nohighlight">\(\mathbb{E}((W(t)−{t\over T}W(T))^2) = \mathbb{E}(W(t)^2) - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T^2}\mathbb{E}(W(T)^2)\)</span></p>
-<p><span class="math notranslate nohighlight">\(= t - 2{t\over T}\mathbb{E}(W(t)W(T)) + {t^2\over T}\)</span></p>
-<p><span class="math notranslate nohighlight">\(= t - 2 {t \over T}t + {t^2 \over T}\)</span></p>
-<p><span class="math notranslate nohighlight">\(= t - {t^2 \over T}\)</span></p>
-<p><span class="math notranslate nohighlight">\(\because\)</span> <span class="math notranslate nohighlight">\(W(t)\)</span> 와 <span class="math notranslate nohighlight">\(W(T) - W(t)\)</span> 는 독립이므로,
-$\mathbb{E}(W(t)W(T)) = \mathbb{E}(W(t)(W(T)-W(t))) + \mathbb{E}(W(t)^2) = \mathbb{E}(W(t))\mathbb{E}(W(T)-W(t)) + t = t</p>
-<p>따라서,</p>
-<p><span class="math notranslate nohighlight">\(Var(B(t)) = \mathbb{E}(B(t)^2) = {t^2\over T} + t - {t^2 \over T} = t\)</span></p>
-<p>이므로,  <span class="math notranslate nohighlight">\(B(t)\)</span> 는 Wiener Process 이다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_081.png"><img alt="img_08" class="bg-primary mb-1" src="../../_images/img_081.png" style="width: 2000px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 300 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 에서 <span class="math notranslate nohighlight">\(W_1000\)</span> = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-</li>
-<li><p><span class="math notranslate nohighlight">\(T_0\)</span> 과 <span class="math notranslate nohighlight">\(T\)</span> 라는 두 시점에 대하여, <br>
-<span class="math notranslate nohighlight">\(W_0 ≠ 0\)</span> 인 <strong>두 점 사이의 Brownian Bridge 를 만들 때는?</strong></p></li>
-<li><p><span class="math notranslate nohighlight">\(T_0 ≤ t ≤ T\)</span> 일 때,<br>
-<span class="math notranslate nohighlight">\(B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)\)</span><br></p></li>
-</ul>
 </li>
 <li><p><strong>Abstrcat</strong></p>
 <figure class="align-default" id="id9">
@@ -811,15 +742,13 @@ conditional input domain 과 output domain 이 유사한
 <p><span class="caption-number">Fig. 305 </span><span class="caption-text">식(3)</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(T_0 ≤ t ≤ T\)</span> 일 때,
-<span class="math notranslate nohighlight">\(B(t) = Z(T_0) + {(t - T_0)\over (T - T_0)}(Z(T)-Z(T_0)) + W(t-T_0) - {(t - T_0)\over (T - T_0)}W(T - T_0)\)</span></p></li>
-</ul>
-<p>이었다.</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(T_0 = 0, Z(t) = x_t\)</span> 로 바꿔보자.</p></li>
-<li><p><span class="math notranslate nohighlight">\(B(t) = x_0 - {t\over T}x_0 + {t\over T}x_T + W(t) - {t\over T}W(T)\)</span> 가 된다.<br></p></li>
-</ul>
+<p>앞서 보았던 Brownian Bridge 의 식을 다시 보자.</p>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_061.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_061.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -836,10 +765,10 @@ conditional input domain 과 output domain 이 유사한
 <strong>y</strong> 가 <strong>B 도메인 영상의 latent features</strong> 일 때, <br>
 <strong>Forward diffusion process 는 다음과 같이 정의</strong>됨</p></li>
 </ul>
-<figure class="align-default" id="id14">
+<figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_141.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_141.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 306 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 307 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -852,20 +781,20 @@ conditional input domain 과 output domain 이 유사한
 Brownian Bridge diffusion process 를 위한 <strong>분산 scheduling</strong> 을
 다음과 같이 해볼 수 있다.</p></li>
 </ul>
-<figure class="align-default" id="id15">
+<figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_151.png"><img alt="img_15" class="bg-primary mb-1" src="../../_images/img_151.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 307 </span><span class="caption-text">Brownian Bridge diffusion process 를 위한 분산 Scheduling</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 308 </span><span class="caption-text">Brownian Bridge diffusion process 를 위한 분산 Scheduling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
 <span class="math notranslate nohighlight">\(\delta_t\)</span> 는</p></li>
 </ul>
-<figure class="align-default" id="id16">
+<figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_161.png"><img alt="img_16" class="bg-primary mb-1" src="../../_images/img_161.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 308 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_t\)</span> 를 시각화한 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 309 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_t\)</span> 를 시각화한 결과</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -883,10 +812,10 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <strong>최대 분산값, 즉 middle step 인 <span class="math notranslate nohighlight">\(t = {T\over 2}\)</span> 에서의 분산값에 의해 결정</strong>됨</p></li>
 <li><p><strong>분산을 스케일링하는 변수 s</strong> <strong>를 두어</strong> <strong>sampling diversity 를 조절</strong>할 수 있다.</p></li>
 </ul>
-<figure class="align-default" id="id17">
+<figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_171.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_171.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 309 </span><span class="caption-text">식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 310 </span><span class="caption-text">식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -901,22 +830,22 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <li><p><strong>training 과 inference process 를 위해</strong>서는 <strong>forward transition probability</strong> 인 <span class="math notranslate nohighlight">\(q_{BB}(x_t|x_{t-1}, y)\)</span> 를 알아야함</p></li>
 <li><p><strong>식 (4) 에 의해, <span class="math notranslate nohighlight">\(x_0\)</span> 와 <span class="math notranslate nohighlight">\(y\)</span> 가 주어졌을 때의 <span class="math notranslate nohighlight">\(x_t\)</span> 와</strong> <span class="math notranslate nohighlight">\(x_{t-1}\)</span> 은 다음과 같이 쓸 수 있음</p></li>
 </ul>
-<figure class="align-default" id="id18">
+<figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_141.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_141.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 310 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id19">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_181.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_181.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 311 </span><span class="caption-text">식(6) &amp; 식(7)</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 311 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id20">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_181.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_181.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 312 </span><span class="caption-text">식(6) &amp; 식(7)</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_191.png"><img alt="img_19" class="bg-primary mb-1" src="../../_images/img_191.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 312 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\epsilon\)</span> 은 i.i.d 하게 N(0, I) 를 따른다</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 313 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\epsilon\)</span> 은 i.i.d 하게 N(0, I) 를 따른다</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -924,10 +853,10 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <li><p><strong>식 (6) 의 <span class="math notranslate nohighlight">\(x_0\)</span> 를 식 (7) 의 <span class="math notranslate nohighlight">\(x_0\)</span> 로 대체</strong>하면,
 <strong>Forward transition probability <span class="math notranslate nohighlight">\(q_{BB}(x_t|x_{t-1}, y)\)</span></strong> 가 아래의 <strong>식 (8)</strong> 과 같이 유도됨</p></li>
 </ul>
-<figure class="align-default" id="id21">
+<figure class="align-default" id="id22">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_201.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_201.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 313 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 314 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -948,10 +877,10 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 </li>
 <li><p>이후, <span class="math notranslate nohighlight">\(Var(x_t)\)</span> 를 구하면, 아래의 <span class="math notranslate nohighlight">\(\delta_{t|t-1}\)</span> 와 같이 유도됨</p></li>
 </ul>
-<figure class="align-default" id="id22">
+<figure class="align-default" id="id23">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_211.png"><img alt="img_21" class="bg-primary mb-1" src="../../_images/img_211.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 314 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_{t|t-1}\)</span> 식</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 315 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_{t|t-1}\)</span> 식</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -969,10 +898,10 @@ A 도메인으로부터 B 도메인으로의 fixed mapping 을 정의하는구�
 <li><p>반면, <strong>BBDM 의 Brownian Bridge process 는 <span class="math notranslate nohighlight">\(x_T = y\)</span> 로 둠으로써,
 conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></li>
 </ul>
-<figure class="align-default" id="id23">
+<figure class="align-default" id="id24">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_221.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_221.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 315 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 316 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -988,28 +917,28 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 </ul>
 </li>
 </ul>
-<figure class="align-default" id="id24">
+<figure class="align-default" id="id25">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_231.png"><img alt="img_23" class="bg-primary mb-1" src="../../_images/img_231.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 316 </span><span class="caption-text">DDPM 의 Loss</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 317 </span><span class="caption-text">DDPM 의 Loss</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><strong>Diffusion Models</strong> 의 simplified <strong>objective</strong> 는 다음과 같음</p></li>
 </ul>
-<figure class="align-default" id="id25">
+<figure class="align-default" id="id26">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_112.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_112.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 317 </span><span class="caption-text">DDPM 의 simplified objective</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 318 </span><span class="caption-text">DDPM 의 simplified objective</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><strong>Brownian Bridge diffusion process</strong> 의 <strong>ELBO</strong></p></li>
 </ul>
-<figure class="align-default" id="id26">
+<figure class="align-default" id="id27">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_241.png"><img alt="img_24" class="bg-primary mb-1" src="../../_images/img_241.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 318 </span><span class="caption-text">식(10) : BBDM 의 ELBO</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 319 </span><span class="caption-text">식(10) : BBDM 의 ELBO</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1026,34 +955,34 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 </li>
 <li><p>식(4)</p></li>
 </ul>
-<figure class="align-default" id="id27">
+<figure class="align-default" id="id28">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_141.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_141.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 319 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 320 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>식(8)</p></li>
 </ul>
-<figure class="align-default" id="id28">
+<figure class="align-default" id="id29">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_201.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_201.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 320 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 321 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>식(11) &amp; 식(13)</p></li>
 </ul>
-<figure class="align-default" id="id29">
+<figure class="align-default" id="id30">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_25.png"><img alt="img_25" class="bg-primary mb-1" src="../../_images/img_25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 321 </span><span class="caption-text">식(11)</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 322 </span><span class="caption-text">식(11)</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id30">
+<figure class="align-default" id="id31">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_261.png"><img alt="img_26" class="bg-primary mb-1" src="../../_images/img_261.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 322 </span><span class="caption-text">식(13)</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 323 </span><span class="caption-text">식(13)</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1069,29 +998,29 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 </li>
 <li><p>위 식 (11) 의 평균은, 식 (12) 와 같이 정리됨</p></li>
 </ul>
-<figure class="align-default" id="id31">
+<figure class="align-default" id="id32">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_271.png"><img alt="img_27" class="bg-primary mb-1" src="../../_images/img_271.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 323 </span><span class="caption-text">식(12)</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 324 </span><span class="caption-text">식(12)</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
 <span class="math notranslate nohighlight">\(\tilde {\mu_t}\)</span> 를 다음과 같이 변형할 수 있음</p></li>
 </ul>
-<figure class="align-default" id="id32">
+<figure class="align-default" id="id33">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_281.png"><img alt="img_28" class="bg-primary mb-1" src="../../_images/img_281.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 324 </span><span class="caption-text">식(12) 의 변형</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 325 </span><span class="caption-text">식(12) 의 변형</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>참고. 식(4)</p></li>
 </ul>
-<figure class="align-default" id="id33">
+<figure class="align-default" id="id34">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_141.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_141.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 325 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 326 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1102,41 +1031,41 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <span class="math notranslate nohighlight">\(x_t\)</span> 와 y, 그리고 예측된 노이즈 <span class="math notranslate nohighlight">\(\epsilon_\theta\)</span> 의 linear combination 으로 변형</strong>해
 식(14) 와 같이 쓸 수 있음</p></li>
 </ul>
-<figure class="align-default" id="id34">
+<figure class="align-default" id="id35">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_221.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_221.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 326 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 327 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id35">
+<figure class="align-default" id="id36">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_291.png"><img alt="img_29" class="bg-primary mb-1" src="../../_images/img_291.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 327 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 328 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\epsilon_\theta (x_t,t)\)</span>  는 <span class="math notranslate nohighlight">\(m_t(y-x_0)+\sqrt {\delta_t}\epsilon\)</span> 을 근사하도록 학습되어야겠네 !</p></li>
 </ul>
-<figure class="align-default" id="id36">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_301.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_301.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 328 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\tilde {\mu}_t\)</span> 의 정리된 식</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<ul>
-<li><p>ELBO 의 두 번째 term 을 다시 살펴보면,</p>
-<ul>
-<li><p><strong>두 번째 term</strong> :</p>
 <figure class="align-default" id="id37">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_301.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_301.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 329 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\tilde {\mu}_t\)</span> 의 정리된 식</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<ul>
+<li><p>ELBO 의 두 번째 term 을 다시 살펴보면,</p>
+<ul>
+<li><p><strong>두 번째 term</strong> :</p>
 <figure class="align-default" id="id38">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_301.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_301.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 330 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\tilde {\mu}_t\)</span> 의 정리된 식</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id39">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_291.png"><img alt="img_29" class="bg-primary mb-1" src="../../_images/img_291.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 330 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 331 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1148,19 +1077,19 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 </li>
 <li><p>따라서, ELBO 는 다음과 같이 단순화될 수 있음</p></li>
 </ul>
-<figure class="align-default" id="id39">
+<figure class="align-default" id="id40">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_31.png"><img alt="img_31" class="bg-primary mb-1" src="../../_images/img_31.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 331 </span><span class="caption-text">BBDM 의 Simplified ELBO</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 332 </span><span class="caption-text">BBDM 의 Simplified ELBO</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p><strong>Training Algorithm 정리</strong></p></li>
 </ul>
-<figure class="align-default" id="id40">
+<figure class="align-default" id="id41">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_32.png"><img alt="img_32" class="bg-primary mb-1" src="../../_images/img_32.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 332 </span><span class="caption-text">Algorithm 1 : Training. 실제 Loss 에는 BBDM 의 Simplified ELBO 에서 계수 <span class="math notranslate nohighlight">\(C_{\epsilon_t}\)</span> 가 빠진 것을 확인할 수 있다.</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 333 </span><span class="caption-text">Algorithm 1 : Training. 실제 Loss 에는 BBDM 의 Simplified ELBO 에서 계수 <span class="math notranslate nohighlight">\(C_{\epsilon_t}\)</span> 가 빠진 것을 확인할 수 있다.</span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1172,28 +1101,28 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <strong>inference process</strong> 는 <strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong> 에 의해 다음과 같이 정의됨</p></li>
 <li><p><strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong></p></li>
 </ul>
-<figure class="align-default" id="id41">
+<figure class="align-default" id="id42">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_33.png"><img alt="img_33" class="bg-primary mb-1" src="../../_images/img_33.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 333 </span><span class="caption-text"><strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong></span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 334 </span><span class="caption-text"><strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong></span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><strong>inference process</strong></p></li>
 </ul>
-<figure class="align-default" id="id42">
+<figure class="align-default" id="id43">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_34.png"><img alt="img_34" class="bg-primary mb-1" src="../../_images/img_34.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 334 </span><span class="caption-text">inference process</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 335 </span><span class="caption-text">inference process</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p><strong>Sampling Algorithm</strong></p></li>
 </ul>
-<figure class="align-default" id="id43">
+<figure class="align-default" id="id44">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_35.png"><img alt="img_35" class="bg-primary mb-1" src="../../_images/img_35.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 335 </span><span class="caption-text">Algorithm 2 : Sampling</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 336 </span><span class="caption-text">Algorithm 2 : Sampling</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1249,22 +1178,22 @@ Style transfer 실험에서는 서로 비슷한 domains 간의 I2I 변환 능력
 </ul>
 </li>
 <li><p><strong>4.2. Qualitative Comparison</strong></p>
-<figure class="align-default" id="id44">
+<figure class="align-default" id="id45">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_36.png"><img alt="img_36" class="bg-primary mb-1" src="../../_images/img_36.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 336 </span><span class="caption-text">Figure 3. CelebAMask-HQ 데이터셋에 대한 추론 결과</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-default" id="id45">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_37.png"><img alt="img_37" class="bg-primary mb-1" src="../../_images/img_37.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 337 </span><span class="caption-text">Figure 4. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 337 </span><span class="caption-text">Figure 3. CelebAMask-HQ 데이터셋에 대한 추론 결과</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id46">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_37.png"><img alt="img_37" class="bg-primary mb-1" src="../../_images/img_37.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 338 </span><span class="caption-text">Figure 4. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id47">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_38.png"><img alt="img_38" class="bg-primary mb-1" src="../../_images/img_38.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 338 </span><span class="caption-text">Figure 5. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 339 </span><span class="caption-text">Figure 5. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1291,16 +1220,16 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 <ul class="simple">
 <li><p>Table 1 과 2 를 보면, BBDM 이 모든 실험에서 가장 좋은 FID 값을 기록했으며, 훌륭한 LPIPS 값을 기록함</p></li>
 </ul>
-<figure class="align-default" id="id47">
+<figure class="align-default" id="id48">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_39.png"><img alt="img_39" class="bg-primary mb-1" src="../../_images/img_39.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 339 </span><span class="caption-text">Table 1. CelebAMask-HQ 데이터셋에 대한 FID, LPIPS 성능은 BBDM 이 가장 뛰어남</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 340 </span><span class="caption-text">Table 1. CelebAMask-HQ 데이터셋에 대한 FID, LPIPS 성능은 BBDM 이 가장 뛰어남</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id48">
+<figure class="align-default" id="id49">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_40.png"><img alt="img_40" class="bg-primary mb-1" src="../../_images/img_40.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 340 </span><span class="caption-text">Table 2. BBDM 은 FID, LPIPS 점수가 매우 뛰어났음</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 341 </span><span class="caption-text">Table 2. BBDM 은 FID, LPIPS 점수가 매우 뛰어났음</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1309,20 +1238,20 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 <li><p><strong>BBDM 의 generalization 성능을 검증</strong>하기 위해서, 다른 tasks 에 대해서도 실험했음</p></li>
 <li><p>아래 그림과 같이, <strong>다른 tasks 에서도 camparable  한 성능을 기</strong>록함</p></li>
 </ul>
-<figure class="align-default" id="id49">
+<figure class="align-default" id="id50">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_41.png"><img alt="img_41" class="bg-primary mb-1" src="../../_images/img_41.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 341 </span><span class="caption-text">Figure 6. Face-to-label, 색상화, inpainting 등의 다른 tasks 에서도 뛰어난 성능을 기록함</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Figure 6. Face-to-label, 색상화, inpainting 등의 다른 tasks 에서도 뛰어난 성능을 기록함</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p><strong>4.5. Ablation Study</strong></p>
 <ul>
 <li><p><strong>pre-trained latent space 의 영향</strong></p>
-<figure class="align-default" id="id50">
+<figure class="align-default" id="id51">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_42.png"><img alt="img_42" class="bg-primary mb-1" src="../../_images/img_42.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 342 </span><span class="caption-text">Table 3. BBDM 은 LDM 에 비해 Downsampling factor 에 대해 robust 했음</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 343 </span><span class="caption-text">Table 3. BBDM 은 LDM 에 비해 Downsampling factor 에 대해 robust 했음</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1332,10 +1261,10 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 </ul>
 </li>
 <li><p><strong>Sampling steps 의 영향</strong></p>
-<figure class="align-default" id="id51">
+<figure class="align-default" id="id52">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_43.png"><img alt="img_43" class="bg-primary mb-1" src="../../_images/img_43.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 343 </span><span class="caption-text">Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1343,10 +1272,10 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 </ul>
 </li>
 <li><p><strong>Brownian Bridge 의 maximum variance 의 영향</strong></p>
-<figure class="align-default" id="id52">
+<figure class="align-default" id="id53">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_44.png"><img alt="img_44" class="bg-primary mb-1" src="../../_images/img_44.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 344 </span><span class="caption-text">Table 5. Sampling diversity 조절 계수에 의해 실제로 Diversity 가 조절 되었음</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">Table 5. Sampling diversity 조절 계수에 의해 실제로 Diversity 가 조절 되었음</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1354,17 +1283,17 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 <strong>Brownian Bridge 의 최대 분산값 (t = T/2 일 때의 분산값) 조절 가능.</strong>
 <strong>이렇게 diversity 조절 가능.</strong></p></li>
 </ul>
-<figure class="align-default" id="id53">
+<figure class="align-default" id="id54">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_171.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_171.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 345 </span><span class="caption-text">식(5)</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text">식(5)</span><a class="headerlink" href="#id54" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </li>
 </ul>
-<ol class="arabic simple">
+</li>
 <li><p><strong>Conclusion and Future Work</strong></p>
 <ul class="simple">
 <li><p><strong>Brownian Bridge 에 기반한 새로운 I2I 변환 방법 제시</strong></p></li>
@@ -1373,8 +1302,6 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄</p></li>
 <li><p><strong>여러 tasks 에서의 실험을 통해 BBDM 의 성능 검증</strong></p></li>
 <li><p>text-to-image 와 같은 multi-modal tasks 에도 BBDM 을 적용해볼 예정</p></li>
 </ul>
-</li>
-</ol>
 </li>
 </ol>
 </li>

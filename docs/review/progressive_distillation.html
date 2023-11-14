@@ -490,7 +490,7 @@ document.write(`
 <h3>2.2. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h3>
 <p>Diffusion model 의 objective 는 <span class="math notranslate nohighlight">\(\hat{x}_{\theta}(z_t)\)</span> 모델에서 <span class="math notranslate nohighlight">\(z_t \sim q(z_t | x)\)</span> 와 <span class="math notranslate nohighlight">\(\lambda_t\)</span> 를 입력받아 다음과 같이 Mean Squared Error Loss 를 최소화하는 방향으로 원본 이미지 <span class="math notranslate nohighlight">\(x\)</span> 를 예측하는 것입니다. 이때, <span class="math notranslate nohighlight">\(w(\lambda_t)\)</span> 를 <em>weighting function</em> 이라 부릅니다.</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_02.png"><img alt="progressive_distillation_02" class="bg-primary mb-1" src="../../_images/progressive_distillation_02.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_02.png"><img alt="progressive_distillation_02" class="bg-primary mb-1" src="../../_images/progressive_distillation_02.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 363 </span><span class="caption-text">Objective</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -525,7 +525,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <h4>2.3.2. Probability Flow ODE<a class="headerlink" href="#probability-flow-ode" title="Permalink to this heading">#</a></h4>
 <p>반면에, Song et al. (2021c) 에서 forward diffusion process 를 SDE 로 표현할 수 있고, 이를 통한 sampling process 를 <em>probabiility flow</em> ODE 로 표현해서 구할 수 있다고 제시합니다.</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_05.png"><img alt="progressive_distillation_05" class="bg-primary mb-1" src="../../_images/progressive_distillation_05.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_05.png"><img alt="progressive_distillation_05" class="bg-primary mb-1" src="../../_images/progressive_distillation_05.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 366 </span><span class="caption-text">Probability flow ODE</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -533,14 +533,14 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <p>이때, <span class="math notranslate nohighlight">\(f(z_t,t) = \frac{d \log \alpha_t}{dt}z_t, g^2(t) = \frac{dσ_t^2}{dt} − 2 \frac{d\log \alpha_t}{dt}\sigma_t^2, \text{and}\)</span>  <span class="math notranslate nohighlight">\(\nabla_z \log \hat{p}_{\theta}(z_t) = \frac{\alpha_t\hat{x}_{\theta}(z_t) -z_t}{\sigma_t^2}\)</span> 로 정의합니다.</p>
 <p>다시 말해 <span class="math notranslate nohighlight">\(z_1 \sim N(0,I)\)</span> 로부터 이미지 <span class="math notranslate nohighlight">\(x\)</span> 를 생성하는 task 를 위와 같이 ODE solver 문제로 해석할 수 있고, Euler rule 이나 Runge-Kutta method 등의 전통적인 ODE integrator 보다 DDIM sampler 를 적용했을때 성능이 가장 좋다고 논문에서 제시합니다. 아래 사진은 다양한 Probabiltity Flow ODE solver 들의 128x128 ImageNet 데이터셋 FID 성능을 비교한 결과입니다.</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_06.png"><img alt="progressive_distillation_06" class="bg-primary mb-1" src="../../_images/progressive_distillation_06.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_06.png"><img alt="progressive_distillation_06" class="bg-primary mb-1" src="../../_images/progressive_distillation_06.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 367 </span><span class="caption-text">FID scores on 128 × 128 ImageNet for various probability flow ODE integrators</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>참고로 DDIM sampler 를 ODE solver 문제로 해석하면 다음과 같이 표현할 수 있고, 이 수식은 앞으로 자주 보게 될 예정입니다.</p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_07.png"><img alt="progressive_distillation_07" class="bg-primary mb-1" src="../../_images/progressive_distillation_07.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_07.png"><img alt="progressive_distillation_07" class="bg-primary mb-1" src="../../_images/progressive_distillation_07.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 368 </span><span class="caption-text">DDIM sampler</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>

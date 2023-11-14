@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -229,6 +219,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -389,10 +380,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -400,7 +391,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -453,13 +444,13 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 <ul>
 <li><p><strong>DALL-E 2 결과물</strong></p>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_01.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_01.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_011.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_011.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 187 </span><span class="caption-text">Salvador Dali 의 생전 모습</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_00.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_00.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_001.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_001.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 188 </span><span class="caption-text">vibrant portrait of Salvador Dali with a robotic half face from DALLE2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -470,7 +461,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 놀라운 이미지입니다.</p>
 <p>아래의 corgi 그림은 어떤가요 ?</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_02.png"><img alt="img_02" class="bg-primary mb-1" src="../../_images/img_02.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_021.png"><img alt="img_02" class="bg-primary mb-1" src="../../_images/img_021.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 189 </span><span class="caption-text">a corgi’s head depicted as an explosion of a nebula from DALLE2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -479,7 +470,7 @@ DALLE2 로 생성해낸 결과물이 과연 어떻길래 세상을 놀라게 했
 아래의 그림은, 실제 NASA 에서 촬영한 초신성 폭발의 잔해입니다.</p>
 <p>정말 그럴듯하지 않나요?</p>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_03.png"><img alt="img_03" class="bg-primary mb-1" src="../../_images/img_03.png" style="width: 350px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_031.png"><img alt="img_03" class="bg-primary mb-1" src="../../_images/img_031.png" style="width: 350px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 190 </span><span class="caption-text">This mosaic image, one of the largest ever taken by NASA’s Hubble Space Telescope of the Crab Nebula, is a six-light-year-wide expanding remnant of a star’s supernova explosion.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -523,7 +514,7 @@ DALL-E 2 는 22년 5월, CLIP 을 사용하지 않은 IMAGEN 에게 SOTA 를 내
 이것이 바로 DALLE2 인데요.<br>
 저자들은 이 모델을 unCLIP 이라고 부릅니다.</p>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_06.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_06.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_061.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_061.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 191 </span><span class="caption-text">A high level overview of the architecture.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -575,7 +566,7 @@ Assembly AI 의 Youtube 에서 제공하는 좀 더 단순화된 그림을 살�
 <strong>image representation 의 semantics 와 style 은 유지</strong>할 수 있죠.</p></li>
 </ul>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_08.png"><img alt="img_08" class="bg-primary mb-1" src="../../_images/img_08.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_081.png"><img alt="img_08" class="bg-primary mb-1" src="../../_images/img_081.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 193 </span><span class="caption-text">Variations of an input image by encoding with CLIP and then decoding with a diffusion model.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -593,7 +584,7 @@ Diffusion Decoder 덕분에, <strong>Non-essential details</strong> 는<br>
 <ul>
 <li><p><strong>아키텍쳐 파헤치기</strong></p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_09.png"><img alt="img_09" class="bg-primary mb-1" src="../../_images/img_09.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_091.png"><img alt="img_09" class="bg-primary mb-1" src="../../_images/img_091.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 194 </span><span class="caption-text">A high level overview of the architecture from AssemblyAI youtube.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -654,7 +645,7 @@ Duel-conditioning 이 문제될 것은 없다고 저자들은 변론합니다.</
 이 방법으로 <strong>CLIP image embeddings 를 받아서, 원본 영상을 생성하는 것</strong> 입니다.</p></li>
 </ol>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_10.png"><img alt="img_10" class="bg-primary mb-1" src="../../_images/img_10.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_101.png"><img alt="img_10" class="bg-primary mb-1" src="../../_images/img_101.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 195 </span><span class="caption-text">GLIDE training process</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -691,13 +682,13 @@ Prior 의 유무에 따라, 생성된 이미지의 품질을 비교하는 실험
 특히 image diversity 가 뛰어났습니다.</p></li>
 </ol>
 <figure class="align-default" id="id10">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_11.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_11.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_111.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_111.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 196 </span><span class="caption-text">3가지 경우의 아키텍쳐에 따른 실험 결과 from AssemblyAI youtube.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_12.png"><img alt="img_12" class="bg-primary mb-1" src="../../_images/img_12.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_121.png"><img alt="img_12" class="bg-primary mb-1" src="../../_images/img_121.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 197 </span><span class="caption-text">Samples using different conditioning signals for the same decoder.</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -725,7 +716,7 @@ Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 �
 <li><p><strong>CLIP 을 활용한 덕분에 이미지를 Manipulation 할 수 있습니다.</strong></p></li>
 </ol>
 <figure class="align-default" id="id12">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_13.png"><img alt="img_13" class="bg-primary mb-1" src="../../_images/img_13.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_131.png"><img alt="img_13" class="bg-primary mb-1" src="../../_images/img_131.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 198 </span><span class="caption-text">Text diffs applied to images by interpolating between their CLIP image embeddings and a normalised difference of the CLIP text embeddings produced from the two descriptions.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -744,19 +735,19 @@ Prior 를 반드시 써야하는 근거에 대한 설득력이 떨어진다고 �
 <strong>Photorealism, Caption Similarity, Diversity</strong> 에 대해서 <strong>점수를 매기도록</strong> 했습니다.<br></p></li>
 </ul>
 <figure class="align-default" id="id13">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_14.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_14.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_141.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_141.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 199 </span><span class="caption-text">Samples when increasing guidance scale for both unCLIP and GLIDE.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id14">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_15.png"><img alt="img_15" class="bg-primary mb-1" src="../../_images/img_15.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_151.png"><img alt="img_15" class="bg-primary mb-1" src="../../_images/img_151.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 200 </span><span class="caption-text">Comparison of unCLIP and GLIDE for different evaluations.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_16.png"><img alt="img_16" class="bg-primary mb-1" src="../../_images/img_16.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_161.png"><img alt="img_16" class="bg-primary mb-1" src="../../_images/img_161.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 201 </span><span class="caption-text">FID versus guidance scale for unCLIP and GLIDE.</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -787,7 +778,7 @@ Decoder 가 x 를 복원하는데 필요한 잔여 정보들을 지닙니다.</p
 <ol class="arabic">
 <li><p><strong>Variations</strong></p>
 <figure class="align-default" id="id16">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_17.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_17.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_171.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_171.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 202 </span><span class="caption-text">Variations of an input image by encoding with CLIP and then decoding with a diffusion model.</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -807,7 +798,7 @@ bipartite representation 에 DDIM with η &gt; 0 for sampling decoder 를 적용
 <ol class="arabic" start="2">
 <li><p><strong>Interpolations</strong></p>
 <figure class="align-default" id="id17">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_18.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_18.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_181.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_181.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 203 </span><span class="caption-text">Variations between two images by interpolating their CLIP image embedding and then decoding with a diffusion model.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -823,7 +814,7 @@ interpolated image 를 생성할 수 있습니다.</p></li>
 <ol class="arabic" start="3">
 <li><p><strong>Text Diffs</strong></p>
 <figure class="align-default" id="id18">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_19.png"><img alt="img_19" class="bg-primary mb-1" src="../../_images/img_19.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_191.png"><img alt="img_19" class="bg-primary mb-1" src="../../_images/img_191.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 204 </span><span class="caption-text">Text diffs applied to images by interpolating between their CLIP image embeddings and a normalised difference of the CLIP text embeddings produced from the two descriptions.</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -863,7 +854,7 @@ interpolated image 를 생성할 수 있습니다.</p></li>
 <li><p>그럼에도 불구하고, 사과의 사진으로 recover 해냅니다.</p></li>
 </ol>
 <figure class="align-default" id="id20">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_20.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_20.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_201.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_201.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 206 </span><span class="caption-text">Variations of images featuring typographic attacks</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -883,7 +874,7 @@ interpolated image 를 생성할 수 있습니다.</p></li>
 <li><p><strong>객체(cubes)와 그들의 속성(colors) 을 매칭시키는 능력이 떨어집니다.</strong></p></li>
 </ol>
 <figure class="align-default" id="id21">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_21.png"><img alt="img_21" class="bg-primary mb-1" src="../../_images/img_21.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_211.png"><img alt="img_21" class="bg-primary mb-1" src="../../_images/img_211.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 207 </span><span class="caption-text">Samples from unCLIP and GLIDE for the prompt “a red cube on top of a blue cube”.</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -895,7 +886,7 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 <li><p><strong>텍스트를 일관성있게 생성하는 능력이 떨어집니다</strong></p></li>
 </ol>
 <figure class="align-default" id="id22">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_22.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_22.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_221.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_221.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 208 </span><span class="caption-text">Samples from unCLIP for the prompt, “A sign that says deep learning.”</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -907,7 +898,7 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 <li><p><strong>복잡한 상황에서 디테일을 묘사하는 능력이 떨어집니다</strong></p></li>
 </ol>
 <figure class="align-default" id="id23">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_23.png"><img alt="img_23" class="bg-primary mb-1" src="../../_images/img_23.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_231.png"><img alt="img_23" class="bg-primary mb-1" src="../../_images/img_231.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 209 </span><span class="caption-text">unCLIP samples show low levels of detail for some complex scenes.</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -935,7 +926,7 @@ DALLE2 는 <strong>아래의 큐브와 위의 큐브에 각각 어떤 색상 (at
 <ul>
 <li><p>unCLIP 으로, text caption y 로부터 image x 를 샘플링할 수 있다고 합니다.</p>
 <figure class="align-default" id="id24">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_24.png"><img alt="img_24" class="bg-primary mb-1" src="../../_images/img_24.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_241.png"><img alt="img_24" class="bg-primary mb-1" src="../../_images/img_241.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 210 </span><span class="caption-text">P(x|y) equation.</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1008,7 +999,7 @@ object counting 및 spaial relation 이해 능력은 떨어짐을 발견했습�
 </li>
 </ul>
 <figure class="align-default" id="id25">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_26.png"><img alt="img_26" class="bg-primary mb-1" src="../../_images/img_26.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_261.png"><img alt="img_26" class="bg-primary mb-1" src="../../_images/img_261.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 211 </span><span class="caption-text">Overview of DALL-EVAL evaluation process.</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1016,7 +1007,7 @@ object counting 및 spaial relation 이해 능력은 떨어짐을 발견했습�
 </li>
 <li><p><strong>Social Bias Evaluation 측정 방법 (Sec. 4.2.1 참고)</strong></p>
 <figure class="align-default" id="id26">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_27.png"><img alt="img_27" class="bg-primary mb-1" src="../../_images/img_27.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_271.png"><img alt="img_27" class="bg-primary mb-1" src="../../_images/img_271.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 212 </span><span class="caption-text">Overview of DALL-EVAL’s social bias evaluation process.</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1060,19 +1051,19 @@ unbiased uniform distribution 으로부터 얼마나 skewed 되어있는지 측�
 <ul>
 <li><p><strong>실험 결과</strong></p>
 <figure class="align-default" id="id27">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_28.png"><img alt="img_28" class="bg-primary mb-1" src="../../_images/img_28.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_281.png"><img alt="img_28" class="bg-primary mb-1" src="../../_images/img_281.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 213 </span><span class="caption-text">Gender, skin tone, and attribute detection results with automated and expert human evaluation.</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id28">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_29.png"><img alt="img_29" class="bg-primary mb-1" src="../../_images/img_29.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_291.png"><img alt="img_29" class="bg-primary mb-1" src="../../_images/img_291.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 214 </span><span class="caption-text">Per-profession examples and average gender bias or average skin tone bias of images.</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id29">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_30.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_30.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_301.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_301.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 215 </span><span class="caption-text">Comparison of overall gender and skin tone bias of each model.</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1102,7 +1093,7 @@ Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델�
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -1114,10 +1105,11 @@ Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델�
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="imagen_editor.html"
@@ -1137,7 +1129,10 @@ Satble Diffusion 처럼 웹크롤링을 활용해 데이터를 학습한 모델�
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -1186,8 +1181,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

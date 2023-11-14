@@ -1,11 +1,11 @@
-﻿```{admonition} Information
+```{admonition} Information
 - **Title:** Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning
 
 - **Reference**
     - Paper:  [https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=PLfU_UR_vYAAX_NagU8&_nc_ht=scontent-gmp1-1.xx&oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&oe=652FF632](https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&ccb=1-7&_nc_sid=3c67a6&_nc_ohc=PLfU_UR_vYAAX_NagU8&_nc_ht=scontent-gmp1-1.xx&oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&oe=652FF632)
     - Code: X
     
-- **Author:** [Jun-Hyoung Lee](www.linkedin.com/in/jjuun0)
+- **Author:** Jun-Hyoung Lee
 
 - **Last updated on Oct. 15. 2023**
 ```

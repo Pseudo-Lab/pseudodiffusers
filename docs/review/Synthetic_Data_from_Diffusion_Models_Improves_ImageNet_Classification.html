@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -79,15 +78,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -227,6 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -387,10 +378,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -398,7 +389,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -486,11 +477,19 @@ document.write(`
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
 <h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>Diffusion 모델의 등장으로 생성 기술이 크게 발전되었습니다. 현재 생성 기술 수준이 data augmentation으로 사용될 수 있을 만큼의 자연스러운 이미지를 생성하는 것도 가능할까?에 대한 질문이 나오는 것은 당연하고, 본 논문에서는 이에 대한 답을 찾고자 했습니다. 먼저 이 질문에 대한 답을 이야기 하면 아래와 같습니다.</p>
-<ul class="simple">
+<ul>
 <li><p>결과 요약</p>
 <ul>
 <li><p>ImageNet에 대해 fine-tuning된 Imagen이 FID, Inception Score, CAS 성능에 대해 SOTA 성능을 달성 하였다.</p></li>
-<li><p>합성 데이터와 실제 데이터를 결합하여 사용하고, 합성 데이터의 양이 많고, 훈련 시간이 길수록 생성 데이터로 훈련된 모델의 성능이 더욱 향상되었다.</p></li>
+<li><p>합성 데이터와 실제 데이터를 결합하여 사용하고, 합성 데이터의 양이 많고, 훈련 시간이 길수록 생성 데이터로 훈련된 모델의 성능이 더욱 향상되었다.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/1.png"><img alt="improved_imagenet_classification_00" class="bg-primary mb-1" src="../../_images/1.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교
+아래 그림: 합성 및 진짜 데이터를 사용하였을 때의 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
 </li>
 </ul>
@@ -512,10 +511,10 @@ document.write(`
 <h1>4. Generative Model Training and Sampling<a class="headerlink" href="#generative-model-training-and-sampling" title="Permalink to this heading">#</a></h1>
 <p>여기서는 실제로 저자들이 어떻게 text-to-image diffusion 모델을 학습하고, 샘플링을 하였는지에 대한 설명을 합니다.</p>
 <p>먼저 저자들은 text-to-image diffusion 모델로는 Imagen을 사용하였습니다. Text-to-image 모델을 어떻게 ImageNet 클래스와 alignment 할 지에 대한 고민이 필요했다고 합니다. 처음에는 CLIP에서 사용한 방법과 유사하게 짧은 텍스트를 ImageNet 클래스의 텍스트 프롬프트로 사용했다고 하였는데 이 경우에 성능이 좋지 않았다고 합니다. 이는 Imagen에서 high guidance weight를 사용하여 샘플의 다양성이 저하 되면서 생기는 현상일 수 있다고 합니다. 따라서, 저자들은 프롬프트를 한 두단어 클래스 이름으로 수정하고, 모델의 weight와 sampling parameter를 fine-tuning 했다고 합니다.</p>
-<figure class="align-default" id="id1">
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/2.png"><img alt="improved_imagenet_classification_01" class="bg-primary mb-1" src="../../_images/2.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림이 fine-tuning이 적용된 Imagen이 만들어낸 이미지고, 오른쪽이 fine-tuning이 적용되지 않은 Imagen입니다. 아래에서 두 번째 클래스인 Schipperke를 보면, 이것은 스키퍼키라는 개 품종을 의미하는데 fine-tuning이 적용되지 않은 Imagen의 경우는 꽃과 같은 전혀 엉뚱한 이미지를 만들고 있는 것을 볼 수 있습니다.</p>
@@ -523,10 +522,10 @@ document.write(`
 <h2>4.1. Imagen Fine-tuning<a class="headerlink" href="#imagen-fine-tuning" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 Imagen을 어떻게 fine-tuning 했는지를 설명하는 부분입니다.</p>
 <p>먼저 Imagen 구조는 아래와 같습니다.</p>
-<figure class="align-default" id="id2">
+<figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/3.png"><img alt="improved_imagenet_classification_02" class="bg-primary mb-1" src="../../_images/3.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>본 논문에서는 위의 Imagen 구조에서 빨간 원으로 표시된 부분에 대해서만 fine-tuning 했습니다. Frozen Text Encoder의 경우는 원래 Imagen에서도 학습을 하지 않는 부분이라 마찬가지로 학습을 하지 않았고, 1024x1024 Image를 출력으로 하는 마지막 Super-Resolution Diffusion Model의 경우 ImageNet에 고해상도의 데이터가 적어서 fine-tuning을 하지 않았다고 합니다.</p>
@@ -560,10 +559,10 @@ document.write(`
 <p>1차 sweep 결과 최적의 FID는 log-variance는 0이고 denoising step은 1000이었을 때라고 합니다.</p>
 <p>1차 sweep이 끝난 후에는 guidance weight에 대해서만 sweep을 합니다. 이 때에는 1.2M 이미지를 사용하고, 각 guidacne weight에 대해 FID, IS, CAS를 측정했다고 합니다.</p>
 <p>각 샘플링 하이퍼파라미터에 대한 실험 결과는 아래와 같습니다.</p>
-<figure class="align-default" id="id3">
+<figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/4.png"><img alt="improved_imagenet_classification_03" class="bg-primary mb-1" src="../../_images/4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림이 1차 sweep에 대한 결과고, 가운데와 오른쪽 그림이 2차 sweep에 대한 결과로 guidance weight에 따른 FID, IS, CAS를 나타낸 결과입니다.</p>
@@ -572,10 +571,10 @@ document.write(`
 - Noise conditioning augmentation: [0.0, 0.1, 0.2, 0.3, 0.4]
 - Log-variance mixing coefficients: [0,1, 0.3]
 - Denose steps: [129, 500, 1000]</p>
-<figure class="align-default" id="id4">
+<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/5.png"><img alt="improved_imagenet_classification_04" class="bg-primary mb-1" src="../../_images/5.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 그래프는 guidance weight를 1.0으로 설정하고 noise condition 파라미터를 변경했을 때 FID와 CAS의 그래프를 나타낸 그래프입니다. CAS 같은 경우는 logvar coeff가 0.3일 때 전반적으로 좋은 성능을 보였으며, FID 같은 경우도 logvar coeff가 0.3일 때 전반적으로 좋은 성능을 보인 것을 알 수 있습니다.</p>
@@ -609,10 +608,10 @@ document.write(`
 <section id="sample-quality-fid-and-is">
 <h2>5-1. Sample Quality: FID and IS<a class="headerlink" href="#sample-quality-fid-and-is" title="Permalink to this heading">#</a></h2>
 <p>먼저, 합성된 데이터의 품질을 합성 태스크에서 많이 사용되는 지표인 FID와 IS의 관점으로 봅니다.</p>
-<figure class="align-default" id="id5">
+<figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/6.png"><img alt="improved_imagenet_classification_05" class="bg-primary mb-1" src="../../_images/6.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 표에서 볼 수 있듯이, 본 논문의 파인 튜닝된 Imagen이 ImageNet에 대한 데이터 생성에 대해 다른 베이스모델들 보다 FID와 IS가 뛰어난 것을 알 수 있습니다. 이는 64x64 resolution과 256x256 resolution에서 모두 해당되었습니다.</p>
@@ -620,10 +619,10 @@ document.write(`
 <section id="classification-accuracy-score">
 <h2>5.2. Classification Accuracy Score<a class="headerlink" href="#classification-accuracy-score" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 CAS 성능 지표를 통해 본 논문에서 제안한 모델의 데이터 합성 능력을 확인하는 부분입니다.</p>
-<figure class="align-default" id="id6">
+<figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/7.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">CAS score</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">CAS score</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Figure 5에서 파란색 부분은 실제 학습 데이터로 학습된 모델의 분류 성능이고, 빨간색 부분은 합성된 데이터로 학습된 모델의 분류 성능입니다. 왼쪽 그림은 베이스라인 중 하나인 CDM 모델의 성능을 나타낸 그림이며, 가운데는 본 논문에서 256x256 resolution 모델의 성능, 오른쪽은 본 논문에서 제안한 1024x1024 resolution 모델의 성능을 나타낸 것입니다. 빨간색 부분이 파란색 부분보다 전반적으로 위쪽에 위치하면 모델의 성능이 좋다고 해석할 수 있습니다. 이 그림을 통해 본 논문에서 제안한 모델들이 베이스라인보다 좋은 성능을 보인다는 것을 알 수 있습니다.</p>
@@ -632,10 +631,10 @@ document.write(`
 <section id="classification-accuracy-with-different-models">
 <h2>5.3. Classification Accuracy with Different Models<a class="headerlink" href="#classification-accuracy-with-different-models" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 합성된 데이터를 여러 종류의 모델로 학습 시켰을 때, 각 모델의 분류 성능을 확인하는 부분입니다. CAS와 비슷하지만 CAS에서는 ResNet50 모델로 분류 성능을 확인했지만 여기서는 ResNet50 이외에 모델로도 분류 성능을 본다는 차이점이 있습니다.</p>
-<figure class="align-default" id="id7">
+<figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/8.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 280 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 표에서 확인할 수 있듯이, 다양한 모델에 대해서 분류 정확도를 살펴본 결과 생성된 데이터로만 학습될 경우에는 실제 데이터로 학습할 때 보다 성능이 낮았지만, 실제 데이터와 생성된 데이터를 합쳐서 학습할 경우 실제 데이터만 사용했을 때보다 성능이 증가한 것을 볼 수 있습니다. 이것은 onvNet기반 모델과 transformer 기반 모델에 대해서 동일한 양상을 보였습니다.</p>
@@ -643,17 +642,17 @@ document.write(`
 <section id="merging-real-and-synthetic-data-at-scale">
 <h2>5.4. Merging Real and Synthetic Data at Scale<a class="headerlink" href="#merging-real-and-synthetic-data-at-scale" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 합성 데이터 규모에 따른 ResNet-50의 성능을 분석한 부분입니다.</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/9.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/9.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 281 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>64x64 이미지의 경우 생성되는 데이터의 양이 증가함에 따라 성능이 지속적으로 향상되는 것을 볼 수 있습니다.</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/10.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/10.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 282 </span><span class="caption-text">Table 4</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">Table 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 다른 resolution에 대해서는 다른 양상을 보였습니다. 학습 데이터가 4.8M 규모가 될 때까지는 합성 데이터를 추가하는 것이 분류 성능에 좋았으나, 합성 데이터를 더 늘려 그 이상의 규모가 되었을 때는 오히려 성능이 떨어지는 것을 볼 수 있었습니다.</p>
@@ -686,7 +685,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -698,10 +697,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="CM3leon.html"
@@ -721,7 +721,10 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -802,8 +805,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

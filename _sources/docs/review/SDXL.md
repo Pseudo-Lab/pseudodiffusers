@@ -1,8 +1,8 @@
-```{admonition}
+```{admonition} Information
 - **Title:** SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis
 
 - **Reference**
-    - Paper:  [https://arxiv.org/abs/2307.01952](https://arxiv.org/abs/2307.01952)
+    - Paper: [https://arxiv.org/abs/2307.01952](https://arxiv.org/abs/2307.01952)
     - Code: [https://github.com/Stability-AI/generative-models](https://github.com/Stability-AI/generative-models)
 
 - **Author:** Jun-Hyoung Lee

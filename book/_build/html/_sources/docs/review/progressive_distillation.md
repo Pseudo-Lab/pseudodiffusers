@@ -42,7 +42,7 @@ Markovian Forward Process
 Diffusion model 의 objective 는 $\hat{x}_{\theta}(z_t)$ 모델에서 $z_t \sim q(z_t | x)$ 와 $\lambda_t$ 를 입력받아 다음과 같이 Mean Squared Error Loss 를 최소화하는 방향으로 원본 이미지 $x$ 를 예측하는 것입니다. 이때, $w(\lambda_t)$ 를 *weighting function* 이라 부릅니다.
 
 :::{figure-md} 
-<img src="../../pics/progressive_distillation/progressive_distillation_02.png" alt="progressive_distillation_02" class="bg-primary mb-1" width="700px">
+<img src="../../pics/progressive_distillation/progressive_distillation_02.png" alt="progressive_distillation_02" class="bg-primary mb-1" width="500px">
 
 Objective
 :::
@@ -80,7 +80,7 @@ Ancestral Sampler
 반면에, Song et al. (2021c) 에서 forward diffusion process 를 SDE 로 표현할 수 있고, 이를 통한 sampling process 를 *probabiility flow* ODE 로 표현해서 구할 수 있다고 제시합니다. 
 
 :::{figure-md} 
-<img src="../../pics/progressive_distillation/progressive_distillation_05.png" alt="progressive_distillation_05" class="bg-primary mb-1" width="700px">
+<img src="../../pics/progressive_distillation/progressive_distillation_05.png" alt="progressive_distillation_05" class="bg-primary mb-1" width="600px">
 
 Probability flow ODE 
 :::
@@ -90,7 +90,7 @@ Probability flow ODE
 다시 말해 $z_1 \sim N(0,I)$ 로부터 이미지 $x$ 를 생성하는 task 를 위와 같이 ODE solver 문제로 해석할 수 있고, Euler rule 이나 Runge-Kutta method 등의 전통적인 ODE integrator 보다 DDIM sampler 를 적용했을때 성능이 가장 좋다고 논문에서 제시합니다. 아래 사진은 다양한 Probabiltity Flow ODE solver 들의 128x128 ImageNet 데이터셋 FID 성능을 비교한 결과입니다. 
 
 :::{figure-md} 
-<img src="../../pics/progressive_distillation/progressive_distillation_06.png" alt="progressive_distillation_06" class="bg-primary mb-1" width="700px">
+<img src="../../pics/progressive_distillation/progressive_distillation_06.png" alt="progressive_distillation_06" class="bg-primary mb-1" width="600px">
 
 FID scores on 128 × 128 ImageNet for various probability flow ODE integrators
 :::
@@ -98,7 +98,7 @@ FID scores on 128 × 128 ImageNet for various probability flow ODE integrators
 참고로 DDIM sampler 를 ODE solver 문제로 해석하면 다음과 같이 표현할 수 있고, 이 수식은 앞으로 자주 보게 될 예정입니다.
 
 :::{figure-md} 
-<img src="../../pics/progressive_distillation/progressive_distillation_07.png" alt="progressive_distillation_07" class="bg-primary mb-1" width="700px">
+<img src="../../pics/progressive_distillation/progressive_distillation_07.png" alt="progressive_distillation_07" class="bg-primary mb-1" width="600px">
 
 DDIM sampler 
 :::

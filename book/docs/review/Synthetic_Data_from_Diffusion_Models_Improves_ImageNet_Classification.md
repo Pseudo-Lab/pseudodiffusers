@@ -41,10 +41,7 @@ Diffusion 모델의 등장으로 생성 기술이 크게 발전되었습니다. 
         :::{figure-md} 
         <img src="../../pics/Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification/1.png" alt="improved_imagenet_classification_00" class="bg-primary mb-1" width="500">
 
-        Figure 1
-
         위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교
-
         아래 그림: 합성 및 진짜 데이터를 사용하였을 때의 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교 
         :::
 

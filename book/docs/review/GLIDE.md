@@ -55,7 +55,12 @@ GLIDE image impainting
 
 DDPM에서는 임의의 time step t로 부터 noise가 껴있는 image $x_t$의 $\epsilon_t$가 얼만큼인지 예측한다. 예측한 $\epsilon_t$를 이용하여 noise가 일부 제거된 이전 step의 mean($\mu_{\theta}(x_t)$)을 구할 수 있고 variance($\sum_{\theta}(x_t)$)는 constant한 값으로 고정시킨다. DDPM에서 제시한 forward process와 reverse process는 다음과 같다.
 
-$q(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{\alpha_{t}}x_{t-1}, (1-\alpha_t)\mathcal{I})$<br/>$p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))$
+$$
+q(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{\alpha_{t}}x_{t-1}, (1-\alpha_t)\mathcal{I})
+$$ 
+$$ 
+p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
+$$
 
 * Score-based generative modeling through stochastic differential equations
 
@@ -79,6 +84,11 @@ Diffusion model beat GANS on Image Synthesis(Dharwial et al.)에서는 diffusion
 :::{figure-md}
 
 <img src="../../pics/GLIDE/glide6.png" alt="GLIDE_1" class="bg-primary mb-1" width="700px">
+
+Classifier guidance
+:::
+
+:::{figure-md}
 
 <img src="../../pics/GLIDE/glide10.png" alt="GLIDE_1" class="bg-primary mb-1" width="700px">
 

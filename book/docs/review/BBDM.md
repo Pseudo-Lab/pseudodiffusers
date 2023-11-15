@@ -41,7 +41,7 @@
         굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
         :::
 
-<br> 위 사진으로부터 Brownian motion process 를 직관적으로 이해해볼 수 있음.<br>
+    <br> 위 사진으로부터 Brownian motion process 를 직관적으로 이해해볼 수 있음.<br>
 
     - **Brownian Motion Process (Wiener Process)**
         - Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것
@@ -148,7 +148,7 @@
     Brownian Bridge
     :::
 
-<br>아래의 그림을 보면, 0 이라는 시작값과 123 이라는 마지막 값에 conditioned 되어 있는 것을 확인할 수 있다. <br> Brownian Bridge 의 분산은 0 에서 시작해서 증가하다가, T/2 시점에서 최대가 되었다가, 이후로는 감소하여 마지막엔 0 에 수렴하게된다.
+    <br>아래의 그림을 보면, 0 이라는 시작값과 123 이라는 마지막 값에 conditioned 되어 있는 것을 확인할 수 있다. <br> Brownian Bridge 의 분산은 0 에서 시작해서 증가하다가, T/2 시점에서 최대가 되었다가, 이후로는 감소하여 마지막엔 0 에 수렴하게된다.
 
     :::{figure-md} 
     <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="2000px">
@@ -294,7 +294,7 @@
             :::
             <br>
             
-            $m_t = {t\overT}$ 이고, $\delat_t = 2(m_t - m_t^2)$ 이므로,<br>
+            $m_t = t\overT$ 이고, $\delta_t = 2(m_t - m_t^2)$ 이므로,<br>
 
             - diffusion process 가 시작하는 **t = 0 에서는, $m_0$ = 0** 이고, 
             **평균은 $x_0$** 이며 
@@ -316,8 +316,8 @@
             식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling
             :::
                         
-            - 이 논문에서 **s 의 디폴트 값은 1**<br>
-            
+            - 이 논문에서 **s 의 디폴트 값은 1**
+            <br>
         - **3.1.1 Forward Process**<br>
             - **식 (4)** 에서는 **step t 에서의 marginal distribution 만 제공**
             - **training 과 inference process 를 위해**서는 **forward transition probability** 인 $q_{BB}(x_t|x_{t-1}, y)$ 를 알아야함
@@ -568,7 +568,7 @@
             Algorithm 2 : Sampling
             :::
                     
-            - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
+            - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음<br>
     4. **Experiments**<br>
         - **4.1. Experiment Setup**<br>
             - **모델 & 하이퍼마라미터**
@@ -689,7 +689,7 @@
 
                 식(5)
                 :::
-                    
+    
     5. **Conclusion and Future Work**
         - **Brownian Bridge 에 기반한 새로운 I2I 변환 방법 제시**
         - 이 방법은 기존의 conditional 한 방법과 달리, 

@@ -492,7 +492,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_01.png"><img alt="progressive_distillation_01" class="bg-primary mb-1" src="../../_images/progressive_distillation_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Markovian Forward Process</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 361 </span><span class="caption-text">Markovian Forward Process</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>where <span class="math notranslate nohighlight">\(0 \leq s &lt; t \leq 1\)</span>  and <span class="math notranslate nohighlight">\(\sigma_{t|s}^2 = (1-e^{\lambda_t - \lambda_s}) \sigma_t^2\)</span></p>
@@ -503,7 +503,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_02.png"><img alt="progressive_distillation_02" class="bg-primary mb-1" src="../../_images/progressive_distillation_02.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 360 </span><span class="caption-text">Objective</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 362 </span><span class="caption-text">Objective</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>where <span class="math notranslate nohighlight">\(t \sim U[0,1]\)</span></p>
@@ -521,14 +521,14 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_03.png"><img alt="progressive_distillation_03" class="bg-primary mb-1" src="../../_images/progressive_distillation_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 361 </span><span class="caption-text">Reverse Process</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 363 </span><span class="caption-text">Reverse Process</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이를 기반으로 <span class="math notranslate nohighlight">\(z_1 \sim N(0,I)\)</span> 로부터 다음과 같은 ancestral sampler 를 정의하게 됩니다. 이때, <span class="math notranslate nohighlight">\(\gamma\)</span> 는 sampling 시 얼마나 많은 noise 를 추가할지 설정하는 hyperparameter 입니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_04.png"><img alt="progressive_distillation_04" class="bg-primary mb-1" src="../../_images/progressive_distillation_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 362 </span><span class="caption-text">Ancestral Sampler</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 364 </span><span class="caption-text">Ancestral Sampler</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -538,7 +538,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_05.png"><img alt="progressive_distillation_05" class="bg-primary mb-1" src="../../_images/progressive_distillation_05.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 363 </span><span class="caption-text">Probability flow ODE</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 365 </span><span class="caption-text">Probability flow ODE</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(f(z_t,t) = \frac{d \log \alpha_t}{dt}z_t, g^2(t) = \frac{dσ_t^2}{dt} − 2 \frac{d\log \alpha_t}{dt}\sigma_t^2, \text{and}\)</span>  <span class="math notranslate nohighlight">\(\nabla_z \log \hat{p}_{\theta}(z_t) = \frac{\alpha_t\hat{x}_{\theta}(z_t) -z_t}{\sigma_t^2}\)</span> 로 정의합니다.</p>
@@ -546,14 +546,14 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_06.png"><img alt="progressive_distillation_06" class="bg-primary mb-1" src="../../_images/progressive_distillation_06.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 364 </span><span class="caption-text">FID scores on 128 × 128 ImageNet for various probability flow ODE integrators</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 366 </span><span class="caption-text">FID scores on 128 × 128 ImageNet for various probability flow ODE integrators</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>참고로 DDIM sampler 를 ODE solver 문제로 해석하면 다음과 같이 표현할 수 있고, 이 수식은 앞으로 자주 보게 될 예정입니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_07.png"><img alt="progressive_distillation_07" class="bg-primary mb-1" src="../../_images/progressive_distillation_07.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 365 </span><span class="caption-text">DDIM sampler</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 367 </span><span class="caption-text">DDIM sampler</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -565,7 +565,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_08.png"><img alt="progressive_distillation_08" class="bg-primary mb-1" src="../../_images/progressive_distillation_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 366 </span><span class="caption-text">Progressive Distillation</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 368 </span><span class="caption-text">Progressive Distillation</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -586,7 +586,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_09.png"><img alt="progressive_distillation_09" class="bg-primary mb-1" src="../../_images/progressive_distillation_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 367 </span><span class="caption-text">Pseudocode for Progresssive Distillation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 369 </span><span class="caption-text">Pseudocode for Progresssive Distillation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -599,7 +599,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_10.png"><img alt="progressive_distillation_10" class="bg-primary mb-1" src="../../_images/progressive_distillation_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 368 </span><span class="caption-text">Training loss on <span class="math notranslate nohighlight">\(\epsilon\)</span>-space and <span class="math notranslate nohighlight">\(x\)</span>-space</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 370 </span><span class="caption-text">Training loss on <span class="math notranslate nohighlight">\(\epsilon\)</span>-space and <span class="math notranslate nohighlight">\(x\)</span>-space</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서, 이는 이미지 <span class="math notranslate nohighlight">\(x\)</span> domain 에서 weighted reconstruction loss 를 적용하는 것과 동일하며 이때 weighting function <span class="math notranslate nohighlight">\(w(\lambda_t) = exp(\lambda_t), \lambda_t = \log[\alpha_t^2/\sigma_t^2]\)</span> 로 정의할 수 있습니다. 그러나 이러한 standard training procedure 는 progressive distillation 에 적합하지 않다고 주장합니다.</p>
@@ -608,20 +608,20 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_11.png"><img alt="progressive_distillation_11" class="bg-primary mb-1" src="../../_images/progressive_distillation_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 369 </span><span class="caption-text">Different parameterizations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Different parameterizations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Weighting function <span class="math notranslate nohighlight">\(w(\lambda_t)\)</span> 도 두 가지 방안으로 실험했습니다. 이는 signal-to-noise ratio 가 0 으로 수렴하는 현상을 방지하도록 설정되었다고 합니다.</p>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_12.png"><img alt="progressive_distillation_12" class="bg-primary mb-1" src="../../_images/progressive_distillation_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 370 </span><span class="caption-text">Different loss weighting functions</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Different loss weighting functions</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_13.png"><img alt="progressive_distillation_13" class="bg-primary mb-1" src="../../_images/progressive_distillation_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Visualization of different loss weighting functions</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Visualization of different loss weighting functions</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -634,7 +634,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_14.png"><img alt="progressive_distillation_14" class="bg-primary mb-1" src="../../_images/progressive_distillation_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Ablation Study on Parameterizations and Loss Weightings</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Ablation Study on Parameterizations and Loss Weightings</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>성능을 비교해본 결과 <span class="math notranslate nohighlight">\(v\)</span>-prediction/<span class="math notranslate nohighlight">\(x\)</span>-prediction 과 Truncated SNR loss function 을 사용했을때 성능이 가장 좋은 부분을 확인할 수 있습니다. 또한, <span class="math notranslate nohighlight">\(\epsilon\)</span>-prediction 과 Truncated SNR loss function 의 조합을 사용하여 학습 시, unstable 한 convergence 를 보이는 현상도 볼 수 있습니다.</p>
@@ -647,35 +647,35 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_15.png"><img alt="progressive_distillation_15" class="bg-primary mb-1" src="../../_images/progressive_distillation_15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Comparison between Distilled, DDIM, and Stochastic Sampler</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Comparison between Distilled, DDIM, and Stochastic Sampler</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>추가적으로 CIFAR-10 데이터셋에서 타 fast sampling method 들과 FID 성능을 비교해본 결과입니다.</p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_16.png"><img alt="progressive_distillation_16" class="bg-primary mb-1" src="../../_images/progressive_distillation_16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Comparison of fast sampling results</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 376 </span><span class="caption-text">Comparison of fast sampling results</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>그리고 64x64 ImageNet 데이터셋에 distilled 모델로 생성한 예시 이미지들입니다. 동일한 seed 에 대해서 input noise 로부터 output image 까지 mapping 이 잘되는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_17.png"><img alt="progressive_distillation_17" class="bg-primary mb-1" src="../../_images/progressive_distillation_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Random samples from distilled 64 × 64 ImageNet models</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 377 </span><span class="caption-text">Random samples from distilled 64 × 64 ImageNet models</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로 distillation scheduling 에 대한 ablation study 도 논문에서 진행했습니다. 첫번째 ablation study 로는 매 distillation iteration 마다 parameter update 횟수를 <span class="math notranslate nohighlight">\(50k\)</span> 에서 <span class="math notranslate nohighlight">\(25k, 10k, 5k\)</span>  로 점차 줄이면서 FID 성능을 비교해보고, 두번째 ablation study 로는 매 distillation iteration 마다 sampling step 을 2배 대신에 4배씩 줄여가면서 student model 을 학습하여 성능을 비교합니다. 그 결과 parameter update 횟수를 현저히 줄임에도 불구하고 FID 성능이 크게 줄지 않는 반면, 각 iteration 마다 sampling step 을 4배씩 줄이는 학습방식으로는 모델 성능이 좋지 못한 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_18.png"><img alt="progressive_distillation_18" class="bg-primary mb-1" src="../../_images/progressive_distillation_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 376 </span><span class="caption-text">Ablation study on fast sampling schedule</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Ablation study on fast sampling schedule</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일하게 CIFAR-10 외 ImageNet 그리고 LSUN 데이터셋에서 fast sampling schedule 을 적용한 성능 결과도 공유합니다.</p>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_19.png"><img alt="progressive_distillation_18" class="bg-primary mb-1" src="../../_images/progressive_distillation_19.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 377 </span><span class="caption-text">50k updates vs 10k updates on ImageNet/LSUN datasets</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 379 </span><span class="caption-text">50k updates vs 10k updates on ImageNet/LSUN datasets</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

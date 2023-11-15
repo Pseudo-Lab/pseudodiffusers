@@ -18,6 +18,9 @@
 - **BBDM**
     - BBDM 은 Brownian Bridge 를 Diffusion Model 에 도입한 최초의 모델
     - Image to Image Translation 분야에서 Conditional Diffusion Models 의 한계를 극복함
+    
+<br>BBDM 을 이해하기 위해서는 Brownian motion process 와 Brownian Bridge 를 이해해야함. Brownian motion process 는 stochastic process 에 해당함.<br>
+
 - **Stochastic Process**
     - 시간의 흐름에 따라 불확실성을 가지고 변하는 확률 변수들의 집합
     - Stochastic process 는 $X_t$ 와 같이 나타낼 수 있는데, <br>
@@ -37,7 +40,9 @@
         
         굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진
         :::
-            
+
+<br> 위 사진으로부터 Brownian motion process 를 직관적으로 이해해볼 수 있음.<br>
+
     - **Brownian Motion Process (Wiener Process)**
         - Brownian Motion 을 연속 시간 확률 과정으로 모델링한 것
         
@@ -58,7 +63,8 @@
     - **Requirements**
         1. Brownian Motion Process 는 Stochastic Process 이다. <br>
         **TIME t 마다 stochasticity 가 부여되어야** 한다.
-        2. **시간 간격과 W 의 변화량이 비례해야 한다.**
+        2. **시간 간격과 W 의 변화량이 비례해야 한다.**<br>
+        (즉, 더 오래 지났을수록 더 많이 변한다.)
     - **Notation**
         
         :::{figure-md} 
@@ -106,8 +112,7 @@
         Source : [https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB](https://www.youtube.com/watch?v=ld0rxwAJpkM&ab_channel=finRGB)
         :::
                 
-        파란색 점들은, Brownian Motion Process 를 진행한 특정한 경우 (one representation) 를 나타냄<br>
-        보라색 점처럼, W_T 는 확률에 의해 여러 경우의 수가 존재할 수 있음
+        파란색 점들은, Brownian Motion Process 를 1번 Sampling 한 결과임 (one representation) 를 나타냄<br>
                 
         :::{figure-md}
         <img src="../../pics/BBDM/img_04.png" alt="img_04" class="bg-primary mb-1" width="400px">
@@ -133,8 +138,8 @@
     Brownian Bridge 이해를 위한 Linear Bridge
     :::
     
-    Brownian Bridge 는 Standard Wiener Process 의 Conditional Probability Distribution 이다.
-    Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.
+    Brownian Bridge 는 Standard Wiener Process 의 Conditional Probability Distribution 이다.<br>
+    Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.<br>
     아래와 같이 정의될 수 있다.
 
     :::{figure-md} 
@@ -143,6 +148,7 @@
     Brownian Bridge
     :::
 
+<br>아래의 그림을 보면, 0 이라는 시작값과 123 이라는 마지막 값에 conditioned 되어 있는 것을 확인할 수 있다. <br> Brownian Bridge 의 분산은 0 에서 시작해서 증가하다가, T/2 시점에서 최대가 되었다가, 이후로는 감소하여 마지막엔 0 에 수렴하게된다.
 
     :::{figure-md} 
     <img src="../../pics/BBDM/img_08.png" alt="img_08" class="bg-primary mb-1" width="2000px">
@@ -195,11 +201,11 @@
         - **BBDM** 모델은 **input 과 output 도메인 간의 mapping** 을 
         **Brownian Bridge stochastic process 를 통해 구축**함
         - 가속을 위해 Latent space 에서 diffusion process 를 수행함<br>
-    1. **Related Work**
+    1. **Related Work**<br>
         - **2.1. Image-to-Image Translation**
-            - introduction 참고
-        - **2,2. Duffusion Models**
-            - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
+            - introduction 참고<br>
+        - **2,2. Duffusion Models**<br>
+            - **Diffusion Models** 의 simplified **objective** 를 잠깐 살펴보면, 다음과 같음.
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="300px">
@@ -207,7 +213,8 @@
             Diffusion Models 의 Simplified objective
             :::
                 
-            - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**
+            - 대부분의 **conditional Diffusion Models** 는 **condition 을 objective 에 직접 “주입”**.<br>
+            아래의 그림을 보면, conditional input image y 가 삽입된 것을 볼 수 있음.
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_12.png" alt="img_12" class="bg-primary mb-1" width="300px">
@@ -216,8 +223,8 @@
             :::
                 
             - $p(x_t|y)$ 가 objective 에 드러나 있지 않으므로,
-            **desired conditional distribution 에 도달할 수 있을 것**이라는 **이론적 보장이 없음**
-        - **2.3. Brownian Bridge**
+            **desired conditional distribution 에 도달할 수 있을 것**이라는 **이론적 보장이 없음**<br>
+        - **2.3. Brownian Bridge**<br>
             - **Brownian Bridge** 는 **diffusion process 동안의 확률 분포가** 
             **starting state (t=0)** 와 **ending state (t=T)** 에 **conditioned 되어 있는,** 
             **time stochastic model** 임
@@ -228,77 +235,90 @@
             식(3)
             :::
             
-            앞서 보았던 Brownian Bridge 의 식을 다시 보자.
+            앞서 보았던 Brownian Bridge 의 평균과 분산을 구해보자.<br>
+            위의 식과 같은 의미임을 알 수 있다.<br>
+
             :::{figure-md} 
             <img src="../../pics/BBDM/img_06.png" alt="img_06" class="bg-primary mb-1" width="700px">
 
             Brownian Bridge
             :::
+            <br>
 
+    3. **Method**<br>
+        - **3.1. Brownian Bridge Diffusion Model (BBDM)**<br>
 
+            - **Conditional diffusion models** : **Gaussian noise 를 향해 Forward process 진행**
+            - **BBDM : conditional input y 자체를 향해 Brownian Bridge process 진행**<br>
 
-    2. **Method**
-        - **3.1. Brownian Bridge Diffusion Model (BBDM)**
-            - **Forward diffusion process**
-                - **Conditional diffusion models** : **Gaussian noise 를 향해 Forward process 진행**
-                - **BBDM : conditional input y 자체를 향해 Brownian Bridge process 진행**
-                - VQGAN 의 latent space 에서 diffusion process 를 수행
-                - **x** 가 **A 도메인 영상의 latent features** 이고, 
-                **y** 가 **B 도메인 영상의 latent features** 일 때, <br>
-                **Forward diffusion process 는 다음과 같이 정의**됨
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_09.png" alt="img_09" class="bg-primary mb-1" width="700px">
+
+            Conditional Diffusion Models 와 BBDM 의 비교
+            :::
+            <br>
+
+            - VQGAN 의 latent space 에서 diffusion process 를 수행
+            - **x** 가 **A 도메인 영상의 latent features** 이고,<br> 
+            **y** 가 **B 도메인 영상의 latent features** 일 때, <br>
+            **Forward diffusion process 는 다음과 같이 정의**됨
+                
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+
+            식(4)
+            :::
+                
+            - **T** 는 diffusion process 의 **total steps** 이다.
+            - $δ_t$ 는 **분산**이다.
+            - 식 (3) 에 나타난 분산 $δ_t={t(T −t)\over T}$ 를 사용하게 되면, 
+            **가능한 최대 분산값**은, **middle step 인 $T\over 2$ 에서의 분산값인 $δ_{T\over 2} = {T \over 4}$ 가 됨**
+            - T 값이 커지면, 최대 분산값도 커지는데, **이 분산 값은 다루기에 너무 큼**
+            - $x_0,y \sim N(0,I)$ 이면서 서로 독립일 때,
+            Brownian Bridge diffusion process 를 위한 **분산 scheduling** 을 
+            다음과 같이 해볼 수 있다.
+                
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_15.png" alt="img_15" class="bg-primary mb-1" width="700px">
+
+            Brownian Bridge diffusion process 를 위한 분산 Scheduling
+            :::
+                
+            - 만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
+            $\delta_t$ 는 아래 그림과 같게 된다.
                     
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_14.png" alt="img_14" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_16.png" alt="img_16" class="bg-primary mb-1" width="700px">
 
-                식(4)
-                :::
+            $\delta_t$ 를 시각화한 결과
+            :::
+            <br>
+            
+            $m_t = {t\overT}$ 이고, $\delat_t = 2(m_t - m_t^2)$ 이므로,<br>
+
+            - diffusion process 가 시작하는 **t = 0 에서는, $m_0$ = 0** 이고, 
+            **평균은 $x_0$** 이며 
+            **분산은 0** 이 된다.<br>
+            - diffusion process 가 끝나는 **t = T 에서는,**
+            $m_T$ **= 1** 이고,
+            **평균은 y** 이고,
+            **분산은 0** 이 된다.<br>
+            - **분산이,**
+            diffusion process 의 **중간 지점까지는 최대 0.5 까지 증가**하다가,<br>
+            중간 지점부터 **끝나는 지점까지는 0 으로 감소**
+            - **Brownian Bridge diffusion process** 에서의 **sampling diversity** 는 
+            **최대 분산값,<br> 즉 middle step 인 $t = {T\over 2}$ 에서의 분산값에 의해 결정**됨
+            - **분산을 스케일링하는 변수 s** **를 두어** **sampling diversity 를 조절**할 수 있다.
                     
-                - **T** 는 diffusion process 의 **total steps** 이다.
-                - $δ_t$ 는 **분산**이다.
-                - 식 (3) 에 나타난 분산 $δ_t={t(T −t)\over T}$ 를 사용하게 되면, 
-                **가능한 최대 분산값**은, **middle step 인 $T\over 2$ 에서의 분산값인 $δ_{T\over 2} = {T \over 4}$ 가 됨**
-                - T 값이 커지면, 최대 분산값도 커지는데, **이 분산 값은 다루기에 너무 큼**
-                - $x_0,y \sim N(0,I)$ 이면서 서로 독립일 때,
-                Brownian Bridge diffusion process 를 위한 **분산 scheduling** 을 
-                다음과 같이 해볼 수 있다.
-                    
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_15.png" alt="img_15" class="bg-primary mb-1" width="700px">
+            :::{figure-md} 
+            <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
 
-                Brownian Bridge diffusion process 를 위한 분산 Scheduling
-                :::
-                    
-                - 만약 t 는 양의 정수의 discrete time 이고, 그 최댓값인 T=1000 이라면
-                $\delta_t$ 는
+            식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling
+            :::
                         
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_16.png" alt="img_16" class="bg-primary mb-1" width="700px">
-
-                $\delta_t$ 를 시각화한 결과
-                :::
-                        
-                - diffusion process 가 시작하는 **t = 0 에서는, $m_0$ = 0** 이고, 
-                **평균은 $x_0$** 이며 
-                **분산은 0** 이 된다.
-                - diffusion process 가 끝나는 **t = T 에서는,**
-                $m_T$ **= 1** 이고,
-                **평균은 y** 이고,
-                **분산은 0** 이 된다.
-                - **분산이,**
-                diffusion process 의 **중간 지점까지는 최대 0.5 까지 증가**하다가,
-                중간 지점부터 **끝나는 지점까지는 0 으로 감소**
-                - **Brownian Bridge diffusion process** 에서의 **sampling diversity** 는 
-                **최대 분산값, 즉 middle step 인 $t = {T\over 2}$ 에서의 분산값에 의해 결정**됨
-                - **분산을 스케일링하는 변수 s** **를 두어** **sampling diversity 를 조절**할 수 있다.
-                        
-                :::{figure-md} 
-                <img src="../../pics/BBDM/img_17.png" alt="img_17" class="bg-primary mb-1" width="700px">
-
-                식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling
-                :::
-                        
-                - 이 논문에서 **s 의 디폴트 값은 1**
-        - **3.1.1 Forward Process**
+            - 이 논문에서 **s 의 디폴트 값은 1**<br>
+            
+        - **3.1.1 Forward Process**<br>
             - **식 (4)** 에서는 **step t 에서의 marginal distribution 만 제공**
             - **training 과 inference process 를 위해**서는 **forward transition probability** 인 $q_{BB}(x_t|x_{t-1}, y)$ 를 알아야함
             - **식 (4) 에 의해, $x_0$ 와 $y$ 가 주어졌을 때의 $x_t$ 와** $x_{t-1}$ 은 다음과 같이 쓸 수 있음
@@ -314,14 +334,15 @@
 
             식(6) & 식(7)
             :::
-                        
+
+            - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
+
             :::{figure-md} 
             <img src="../../pics/BBDM/img_19.png" alt="img_19" class="bg-primary mb-1" width="300px">
 
             $\epsilon$ 은 i.i.d 하게 N(0, I) 를 따른다
             :::
                 
-            - 참고. 위 식 (7) 의 $m_ty$ 는 $m_{t-1}y$ 로 쓰는 것이 옳음
             - **식 (6) 의 $x_0$ 를 식 (7) 의 $x_0$ 로 대체**하면, 
             **Forward transition probability $q_{BB}(x_t|x_{t-1}, y)$** 가 아래의 **식 (8)** 과 같이 유도됨
                 
@@ -345,16 +366,16 @@
             $\delta_{t|t-1}$ 식
             :::
 
-            - 식(8) 에 의해, t=T 가 될 때 $m_T = 1$, $x_T = y$ 임.
+            - t=T 가 될 때 $m_T = 1$ 인데, 이때 식(8) 에 의해 $x_T = y$ 임.
             ↓
             ”아, Forward diffusion process 는 확실히.. 
             A 도메인으로부터 B 도메인으로의 fixed mapping 을 정의하는구나”
         
-        - **3.1.2 Reverse Process**
-            - **conditional diffusion models** 의 **reverse process** 는, 
-            **Gaussian noise 로부터 시작**하며, 
-            매 스텝마다 조금씩 noise 를 제거해나감
-            - 반면, **BBDM 의 Brownian Bridge process 는 $x_T = y$ 로 둠으로써, 
+        - **3.1.2 Reverse Process**<br>
+            - **conditional diffusion models** 의 **reverse process** 는, <br>
+            **Gaussian noise 로부터 시작**하며, <br>
+            매 스텝마다 조금씩 noise 를 제거해나감<br>
+            - 반면, **BBDM 의 Brownian Bridge process 는 $x_T = y$ 로 둠으로써, <br>
             conditional input 그 자체에서 Reverse process 를 시작**함
                 
             :::{figure-md} 
@@ -368,7 +389,7 @@
         
         - **3.1.3. Training Objective**
             - **참고.**
-                - **DDPM 의 Loss**
+                - 예전 **DDPM 의 Loss** 는 다음과 같았음.
                     
             :::{figure-md} 
             <img src="../../pics/BBDM/img_23.png" alt="img_23" class="bg-primary mb-1" width="700px">
@@ -376,7 +397,7 @@
             DDPM 의 Loss
             :::
                             
-            - **Diffusion Models** 의 simplified **objective** 는 다음과 같음
+            - 그리고, 이로부터 simplified 된 **objective** 는 다음과 같음
                             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_11.png" alt="img_11" class="bg-primary mb-1" width="300px">
@@ -398,7 +419,7 @@
             다음과 같이 **식 (11) 이 도출**된다.
             - 참고. Markovian Chain
                 - $q(x_t|x_{t-1}) = q(x_t|x_{t-1}, x_{t-2}, … , x_0)$
-                - Markov chain property 에 의해,
+                - Markov chain property 에 의해,<br>
                 $q_{BB}(x_t|x_{t-1},y) = q_{BB}(x_t|x_{t-1},x_0,y)$ 가 성립됨을 활용
             - 식(4)
                     
@@ -431,12 +452,12 @@
             :::
                     
             - 증명
-                - ${q_{BB}(x_{t}|x_{t-1},y)q_{BB}(x_{t-1}|x_{0},y)\over q_{BB}(x_{t}|x_{0},y)}$
-                - $= {{q_{BB}(x_{t},x_{t-1},y) \over q_{BB}(x_{t-1},y)} {q_{BB}(x_{t-1},x_{0},y) \over q_{BB}(x_{0},y)} \over {q_{BB}(x_{t},x_{0},y)\over  q_{BB}(x_{0},y)}}$
-                - $= q_{BB}(x_{t}|x_{t-1},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
-                - $= q_{BB}(x_{t}|x_{t-1},x_{0},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
-                - $= {q_{BB}(x_{t},x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
-                - $= q_{BB}(x_{t-1}|x_{t},x_{0},y)$
+            - ${q_{BB}(x_{t}|x_{t-1},y)q_{BB}(x_{t-1}|x_{0},y)\over q_{BB}(x_{t}|x_{0},y)}$
+            - $= {{q_{BB}(x_{t},x_{t-1},y) \over q_{BB}(x_{t-1},y)} {q_{BB}(x_{t-1},x_{0},y) \over q_{BB}(x_{0},y)} \over {q_{BB}(x_{t},x_{0},y)\over  q_{BB}(x_{0},y)}}$
+            - $= q_{BB}(x_{t}|x_{t-1},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+            - $= q_{BB}(x_{t}|x_{t-1},x_{0},y){q_{BB}(x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+            - $= {q_{BB}(x_{t},x_{t-1},x_{0},y)\over q_{BB}(x_{t},x_{0},y)}$
+            - $= q_{BB}(x_{t-1}|x_{t},x_{0},y)$
             
             - 위 식 (11) 의 평균은, 식 (12) 와 같이 정리됨
                 
@@ -446,7 +467,7 @@
             식(12)
             :::
                 
-            - 식(4) 와 식(12) 를 통합하고Reparameterization method 를 사용해서
+            - 식(4) 와 식(12) 를 통합하고 Reparameterization method 를 사용해서
             $\tilde {\mu_t}$ 를 다음과 같이 변형할 수 있음
                 
             :::{figure-md} 
@@ -467,9 +488,8 @@
             - 하지만, 실제로 U-Net 은 전체 $\tilde {\mu_t}$ 를 예측하는 것이 아니라, 
             노이즈를 예측하도록 학습됨.
             - 이 내용을 식에 명시하기 위해,
-            **식(9) 에 명시된 $\mu_\theta$ 를 
-            $x_t$ 와 y, 그리고 예측된 노이즈 $\epsilon_\theta$ 의 linear combination 으로 변형**해 
-            식(14) 와 같이 쓸 수 있음
+            **식(9) 에 명시된 $\mu_\theta$ 를 식(14) 와 같이 다시 써볼 수 있음.<br>
+            $x_t$ 와 y, 그리고 예측된 노이즈 $\epsilon_\theta$ 의 linear combination 으로 다시 써보는** 것임.
                 
             :::{figure-md} 
             <img src="../../pics/BBDM/img_22.png" alt="img_22" class="bg-primary mb-1" width="700px">
@@ -483,33 +503,24 @@
             식(14)
             :::
                 
-            - $\epsilon_\theta (x_t,t)$  는 $m_t(y-x_0)+\sqrt {\delta_t}\epsilon$ 을 근사하도록 학습되어야겠네 !
+            - 그런데, 아래 그림을 참고해보면 우리는 $\tilde {\mu_t}$ 에 근사하도록 $\mu_\theta$ 를 학습시켜야함.
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
 
             $\tilde {\mu}_t$ 의 정리된 식
             :::
+
+            - 즉, $\epsilon_\theta (x_t,t)$ 가 $m_t(y-x_0)+\sqrt {\delta_t}\epsilon$ 을 근사하도록 학습되어야하는 것임.
             
-            - ELBO 의 두 번째 term 을 다시 살펴보면,
-                - **두 번째 term** :
-                    
-                    :::{figure-md} 
-                    <img src="../../pics/BBDM/img_30.png" alt="img_30" class="bg-primary mb-1" width="700px">
-
-                    $\tilde {\mu}_t$ 의 정리된 식
-                    :::
-                    
-                    :::{figure-md} 
-                    <img src="../../pics/BBDM/img_29.png" alt="img_29" class="bg-primary mb-1" width="700px">
-
-                    식(14)
-                    :::
+            - ELBO 의 두 번째 term 을 다시 살펴보면,<br>
+                - **두 번째 term** : $D_{KL}(q_{BB}(x_{t-1}|x_t, x_0, y)||p_\theta (x_{t-1}|x_t,y))$<br>
                     
                     - $arg \space min_\theta \space D_{KL}(q_{BB}(x_{t-1}|x_t, x_0, y)||p_\theta (x_{t-1}|x_t,y))$
                     =$arg \space min_\theta \space (\tilde {\mu}_t(x_t,y) - \mu_\theta (x_t,y,t))$
                     =$arg \space min_\theta \space (c_{\epsilon_t}(m_t(y-x_0) + \sqrt {\delta_t}\epsilon) - c_{\epsilon_t}\epsilon_\theta(x_t,t))$
-                    =$arg \space min_\theta \space (c_{\epsilon_t} (m_t(y-x_0) + \sqrt {\delta_t}\epsilon - \epsilon_\theta(x_t,t)))$
+                    =$arg \space min_\theta \space (c_{\epsilon_t} (m_t(y-x_0) + \sqrt {\delta_t}\epsilon - \epsilon_\theta(x_t,t)))$<br>
+                    
                 - 따라서, ELBO 는 다음과 같이 단순화될 수 있음
                     
                 :::{figure-md} 
@@ -524,11 +535,11 @@
             :::{figure-md} 
             <img src="../../pics/BBDM/img_32.png" alt="img_32" class="bg-primary mb-1" width="700px">
 
-            Algorithm 1 : Training. 실제 Loss 에는 BBDM 의 Simplified ELBO 에서 계수 $C_{\epsilon_t}$ 가 빠진 것을 확인할 수 있다.
+            Algorithm 1 : Training. 마치 DDPM 에서 그러했듯이, BBDM 도 실제 Loss 에는 Simplified ELBO 에서의 계수 $C_{\epsilon_t}$ 가 빠진 것을 확인할 수 있다.
             :::
                 
         
-        - **3.2. Accelerated Sampling Processes**
+        - **3.2. Accelerated Sampling Processes**<br>
             - **DDIM 과 비슷하게, BBDM 의 inference processes** 도 
             **non-Markovian process 를 사용해서 가속시킬 수 있음**
             - Sampling steps 의 길이를 S 라고 두었을 때, 
@@ -558,29 +569,29 @@
             :::
                     
             - 본 논문에서는 **S 값의 디폴트**를 **200** 으로 두었음
-    4. **Experiments**
-        - **4.1. Experiment Setup**
+    4. **Experiments**<br>
+        - **4.1. Experiment Setup**<br>
             - **모델 & 하이퍼마라미터**
                 - BBDM 프레임워크는 pretrained VQGAN 과 BBDM 으로 이루어짐
                 - **Latent Diffusion Model 에서 사용된 것과 같은 pretrained VQGAN 을 사용**
                 - training stage 에서의 time steps 는 1,000
-                - inference stage 에서의 sampling steps 는 200
+                - inference stage 에서의 sampling steps 는 200<br>
             - **Evaluation**
                 - FID 와 LPIPS 사용
                 - 생성물의 diversity 를 평가하기 위해서, 
                 하나의 conditional input y 마다 5개의 샘플을 생성하고, 
                 각 픽셀 마다의 표준편차의 평균을 구함.
-                그 후 전체 test 데이터셋에 대해서 평균 냄.
+                그 후 전체 test 데이터셋에 대해서 평균 냄.<br>
             - **Datasets**
-                - BBDM 의 I2I 변환 능력을 평가하기 위해서, 여러 task 로 실험함
+                - BBDM 의 I2I 변환 능력을 평가하기 위해서, 여러 task 로 실험함<br>
                 1. **Semantic Synthesis 능력**을 CelebAMask-HQ dataset 으로 실험
-                    1. semantic layout 만 주고 photorealistic 한 images 를 생성해내는 능력 평가
+                    1. semantic layout 만 주고 photorealistic 한 images 를 생성해내는 능력 평가<br>
                 2. **sketch-to-photo 능력**을 edges2shoes 와 edges2handbags 로 실험
-                    1. edges 만 주고 realistic images 생성해내는 능력 평가
+                    1. edges 만 주고 realistic images 생성해내는 능력 평가<br>
                 3. **style transfer 능력**을 faces2comics 로 실험
                     1. 위 두 실험은 서로 상이한 domains 간의 변환 능력을 평가했다면, 
-                    Style transfer 실험에서는 서로 비슷한 domains 간의 I2I 변환 능력을 평가
-        - **4.2. Qualitative Comparison**
+                    Style transfer 실험에서는 서로 비슷한 domains 간의 I2I 변환 능력을 평가<br>
+        - **4.2. Qualitative Comparison**<br>
             
             :::{figure-md} 
             <img src="../../pics/BBDM/img_36.png" alt="img_36" class="bg-primary mb-1" width="700px">
@@ -613,8 +624,8 @@
             - 반면 **BBDM 은 두 도메인 간의 직접적인 diffusion process 를 학습**하므로 
             **이러한 문제로부터 자유로움**
             - 또한 Brownian Bridge 의 stochastic 한 특성으로 인해 
-            fidelity 와 diversity 가 높은 이미지들을 생성해냄
-        - **4.3. Quantitative Comparison**
+            fidelity 와 diversity 가 높은 이미지들을 생성해냄<br>
+        - **4.3. Quantitative Comparison**<br>
             - Table 1 과 2 를 보면, BBDM 이 모든 실험에서 가장 좋은 FID 값을 기록했으며, 훌륭한 LPIPS 값을 기록함
                 
             :::{figure-md} 
@@ -630,7 +641,7 @@
             :::
                 
         
-        - **4.4. 다른 Translation Tasks**
+        - **4.4. 다른 Translation Tasks**<br>
             - **BBDM 의 generalization 성능을 검증**하기 위해서, 다른 tasks 에 대해서도 실험했음
             - 아래 그림과 같이, **다른 tasks 에서도 camparable  한 성능을 기**록함
                 
@@ -641,7 +652,7 @@
             :::
                 
         
-        - **4.5. Ablation Study**
+        - **4.5. Ablation Study**<br>
             - **pre-trained latent space 의 영향**
                 
                 :::{figure-md} 
@@ -652,16 +663,15 @@
                 
                 - **BBDM 과 LDM** 에 대해서, 
                 **VQGAN downsampling factor** 를 **각각 4, 8, 16 으로 두고 성능 비교 실험 수행**
-                - **BBDM 은 down sampling factor 에 robust** 했음
+                - **BBDM 은 down sampling factor 에 robust** 했음<br>
             - **Sampling steps 의 영향**
-                
+                - **Sampling steps 가 작을 때 (200 이하) 는, 조금만 늘려도 성능이 크게 증가**<br>
                 :::{figure-md} 
                 <img src="../../pics/BBDM/img_43.png" alt="img_43" class="bg-primary mb-1" width="700px">
 
                 Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함
                 :::
-                
-                - **Sampling steps 가 작을 때 (200 이하) 는, 조금만 늘려도 성능이 크게 증가**
+                <br>
             - **Brownian Bridge 의 maximum variance 의 영향**
                 
                 :::{figure-md} 

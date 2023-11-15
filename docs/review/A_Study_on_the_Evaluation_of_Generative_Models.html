@@ -1,0 +1,882 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>A Study on the Evaluation of Generative Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=365ca57ee442770a23c6" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=365ca57ee442770a23c6"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/A_Study_on_the_Evaluation_of_Generative_Models';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Paper/Code Review</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/A_Study_on_the_Evaluation_of_Generative_Models.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/A_Study_on_the_Evaluation_of_Generative_Models.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>A Study on the Evaluation of Generative Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. BackGround</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kl-divergence-kullback-leibler-divergence">2.1. KL-Divergence(Kullback-Leibler divergence)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inception-score-is">2.2. Inception Score(IS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fid-frechet-inception-distance">2.3. FiD(Fréchet Inception Distance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-inception-distance">2.4. Kernel Inception Distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fid-is">2.5. FID∞ &amp; IS∞</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-fid">2.5. Clean FiD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-dataset-as-a-benchmark">3. Synthetic dataset as a benchmark</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-evaluation-metrics">4. Comparison between evaluation metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-inception-all-we-need">5. Is Inception all we need?</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="a-study-on-the-evaluation-of-generative-models">
+<h1>A Study on the Evaluation of Generative Models<a class="headerlink" href="#a-study-on-the-evaluation-of-generative-models" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>학습 자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<p>A Study on the Evaluation of Generative Models</p>
+<p><a class="reference external" href="https://arxiv.org/pdf/2206.10935.pdf">https://arxiv.org/pdf/2206.10935.pdf</a></p>
+</section>
+<hr class="docutils" />
+<section id="abstract">
+<h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>GAN, Diffusion등 생성 모델의 놀라운 발전이 이어지고있다.</p></li>
+<li><p>다만 이러한 생성모델을 평가하는 척도(metric)의 선정은 아직 어려운 문제로 남아있다.</p></li>
+<li><p>그나마 Inception Score(IS)나, FID Score를 통해 모델을 평가하고있지만 이 metric들도 완전하지 않음</p></li>
+<li><p>이 논문을 통해</p>
+<ul>
+<li><p>생성 평가의 지표에 대해 한번더 고찰하고</p></li>
+<li><p>현존하는 Metric에 대한 방향을 제시</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>최근 GAN, Diffusion 등 Implicit generative model들이 뛰어난 성능을 보여줌</p></li>
+<li><p>하지만 다른 task(classification, segmentation 등)와는 다르게 생성 모델의 metric을 정하는것은 challenging ( classification ; P&amp;R, F1 score / segmentation ; IOU(Intersection Over Union)</p></li>
+<li><p>그나마 이미지의 featue map이나 classfier score를 사용하는 FiD, Inception score가 잘 쓰이는 추세</p></li>
+<li><p>위 metric의 단점</p>
+<ol class="arabic simple">
+<li><p>real 이미지 분포의 space에서 해당 수치가 정말 유의미한 연관이 있는지 증명되지 않음</p></li>
+<li><p>pretrained model의 거대한 train set이 specific 이미지의 feature에 얼마나 좋은 성능을 미치는지 알수 없음(inception net ; imagenet / ddpm ; face)</p></li>
+</ol>
+</li>
+<li><p>Human study의 직관적인 방식도 있지만 time과 cost를 매우 필요로한다는 점과 model의 Diversity는 측정하기 어렵다는 단점</p>
+<ul>
+<li><p>e.g ) 하나의 좋은 이미지만 생성해도 좋은 score를 받을 수 있음</p></li>
+</ul>
+</li>
+<li><p>이 논문에서는</p>
+<ol class="arabic simple">
+<li><p>Image-GPT 모델을 통해 high quality의 new synthetic dataset을 생성</p></li>
+<li><p>여러 모델을 위의 데이터로 학습하고 FiD, IS등 다양한 metric을 측정</p></li>
+<li><p>이를 실제 KL Divergence, Reverse KL Divergence 값과 비교해서 metric의 유효성을 검증</p></li>
+<li><p>FID, IS등 다양한 metric의 base model로 쓰이는 Inception-V3과 CLIP 의 비교를 통해 Inception-V3 모델의 적합성을 검증</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="background">
+<h2>2. BackGround<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<section id="kl-divergence-kullback-leibler-divergence">
+<h3>2.1. KL-Divergence(Kullback-Leibler divergence)<a class="headerlink" href="#kl-divergence-kullback-leibler-divergence" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>두 확률분포의 유사도를 측정하는 지표</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+KL(P || Q) = \sum_{x} P(x) \log\left(\frac{P(x)}{Q(x)}\right)
+\]</div>
+<ul class="simple">
+<li><p>특징</p>
+<ul>
+<li><p>lower is better</p></li>
+<li><p>KL ≥ 0, (KL(p, q) = 0, if p ==q)</p></li>
+<li><p>KL(p, q) ≠ KL(q, p)  // not symmetric</p></li>
+<li><p>Reverse Kullback-Leibler Divergence(RKL) = KL(q, p)</p></li>
+<li><p>대부분 P가 True distribution, Q가 estimated distribution</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inception-score-is">
+<h3>2.2. Inception Score(IS)<a class="headerlink" href="#inception-score-is" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>생성된 이미지의 Fidelity와 Diversity를 측정</p>
+<ul>
+<li><p>fidelity : 특정 Label의 이미지를 얼마나 잘 예측하는지</p></li>
+<li><p>diversity : 다양한 class의 이미지들을 얼마나 고르게 생성해내는지</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img0.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_01" class="bg-primary mb-1" src="../../_images/img0.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{IS}(G) = \exp\left(\mathbb{E}_x \left[D_{\text{KL}}(P(y|x) \, || \, P(y))\right]\right)
+\]</div>
+<ul class="simple">
+<li><p>특징</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(P(y|x)\)</span> ; 모델의 Fidelity, <span class="math notranslate nohighlight">\(P(y)\)</span>; 모델의 Diversity</p></li>
+<li><p>higher is better</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="fid-frechet-inception-distance">
+<h3>2.3. FiD(Fréchet Inception Distance)<a class="headerlink" href="#fid-frechet-inception-distance" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>real 이미지와 generated 이미지의 Feature vector를 추출 후 평균과 공분산을 통해 계산(Frechet distance)하는 평가지표</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+FID = \lVert \mu_x - \mu_g \rVert^2 + \text{Tr}(\Sigma_x + \Sigma_g - 2(\Sigma_x\Sigma_g)^{1/2})
+\]</div>
+<ul class="simple">
+<li><p>특징</p>
+<ul>
+<li><p>Inception-V3의 마지막 pooling layer의 feature map을 사용</p></li>
+<li><p>Lower is better</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mu_x - \mu_g\)</span>; 이미지의 Quality를 측정</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Tr}(\Sigma_x + \Sigma_g - 2(\Sigma_x\Sigma_g)^{1/2}\)</span>; 모델의 Diversity를 측정</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="kernel-inception-distance">
+<h3>2.4. Kernel Inception Distance<a class="headerlink" href="#kernel-inception-distance" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>FiD에서 Frechet distance를 사용하는 대신 kernel trick을 사용해 확률 분포의 유사도를 계산</p></li>
+<li><p>특징</p>
+<ul>
+<li><p>적은 데이터셋의 평가에 효과적임</p></li>
+<li><p>FiD metric보다 속도가 오래걸림 (FiD : O(n), KiD : O(n^2))</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="fid-is">
+<h3>2.5. FID∞ &amp; IS∞<a class="headerlink" href="#fid-is" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/1911.07023.pdf">해당 논문</a>에서 FiD와 IS metric에 bias가 있음을 증명하고 dataset의 sampling 기법을 변경(gaussian random sampling → sobol sequence sampling)하여 unbiased 한 metric을 제안</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img1.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_02" class="bg-primary mb-1" src="../../_images/img1.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section id="clean-fid">
+<h3>2.5. Clean FiD<a class="headerlink" href="#clean-fid" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Inception-v3에 이미지를 통과하기위해 image resize 과정이 포함되는데 이는 score값에 영향을 줄수 있어 best percformance의 metric을 측정하기 위한 all in one process를 제안</p></li>
+</ul>
+</section>
+</section>
+<section id="synthetic-dataset-as-a-benchmark">
+<h2>3. Synthetic dataset as a benchmark<a class="headerlink" href="#synthetic-dataset-as-a-benchmark" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img2.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_03" class="bg-primary mb-1" src="../../_images/img2.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>imagenet의 데이터를 ImageGPT를 통해 재생성(a.k.a. NotImageNet)</p>
+<ul>
+<li><p>imageGPT</p>
+<ul>
+<li><p>vision 분야에 transformer(in gpt-2)를 사용 + labeling dataset이 필요없는 자기지도 학습 방식</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img3.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_04" class="bg-primary mb-1" src="../../_images/img3.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>imagenet challenge에서도 상당한 score를 보임</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>이를 생성모델에 통과한 <span class="math notranslate nohighlight">\(P_{2}(\hat{x})\)</span>과 <span class="math notranslate nohighlight">\(P_{1}(\hat{x})\)</span> 두 분포를 비교</p></li>
+<li><p>한계</p>
+<ul class="simple">
+<li><p>explicit model에만 적용 가능하고 implicit model에는 적용할 수 없음</p></li>
+<li><p>explicit model : 생성되는 데이터의 분포를 명시적으로 모델링하여 학습하고 주로 Gaussian Noise로부터 이미지를 생성 (VAE …)</p></li>
+<li><p>implicit model : 데이터의 생성 과정에 대해 학습하고 주로 주어진 데이터 분포로부터 샘플링하여 학습 (GAN …)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="comparison-between-evaluation-metrics">
+<h2>4. Comparison between evaluation metrics<a class="headerlink" href="#comparison-between-evaluation-metrics" title="Permalink to this heading">#</a></h2>
+<p><strong>4.1. Volatility</strong></p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img4.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_05" class="bg-primary mb-1" src="../../_images/img4.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 5</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>KL, RKL은 적은 양의 Epoch(15-20) 후에 바로 수렴하는 방면 FID와 IS는 큰 변동성을 보임</p></li>
+<li><p>모델의 Capacity가 증가할수록 KL과 RKL의 수치가 개선되는 것을 확인</p></li>
+<li><p>FID나 IS가 KL, RKL의 그래프와 매우 다른 형태를 띄는것을 확인(특히 IS)</p></li>
+</ul>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img5.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_06" class="bg-primary mb-1" src="../../_images/img5.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 6</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>FID나 (negative)IS가 KL과는 높은 colleration을 보이지만 RKL과는 높지 않은 colleration을 보인다.</p></li>
+<li><p>모델의 Capacity에 따라 KL, RKL의 수치 변화는 크지 않은 데 반해 FID나 IS는 굉장히 큰 수치의 변화를 보여준다.</p></li>
+</ul>
+<p><strong>4.1. Ranking Colleration</strong></p>
+<ul>
+<li><p>여러 모델에 대해 metric 별로 순위를 매겨 순위의 유사도를 비교</p></li>
+<li><p>Kendall’s τ</p>
+<ul class="simple">
+<li><p>ranking이 매겨진 수열 사이의 유사도를 측정</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">h</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">w</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">SignificanceResult</span><span class="p">(</span><span class="n">statistic</span><span class="o">=</span><span class="mf">0.9999999999999999</span><span class="p">,</span> <span class="n">pvalue</span><span class="o">=</span><span class="mf">0.016666666666666666</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">stats</span><span class="o">.</span><span class="n">kendalltau</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">SignificanceResult</span><span class="p">(</span><span class="n">statistic</span><span class="o">=</span><span class="mf">0.19999999999999998</span><span class="p">,</span> <span class="n">pvalue</span><span class="o">=</span><span class="mf">0.8166666666666667</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Result</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img6.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_07" class="bg-primary mb-1" src="../../_images/img6.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 7</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>KL - RKL의 유사도는 매우 높음(0.889)</p></li>
+<li><p>KL과의 유사도를 비교해보면 FID infinity &gt; FID &gt; IS</p></li>
+<li><p>CleanFID-KID(0.96)을 제외한 나머지 metric간 유사도는 굉장히 낮음</p></li>
+<li><p>Inception network 기반의 metric 중에서는 FID infinity이 가장 높고, IS와 IS infinity score가 가장 낮음</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="is-inception-all-we-need">
+<h2>5. Is Inception all we need?<a class="headerlink" href="#is-inception-all-we-need" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>FID, Inception Score 등 대부분의 metric이 이미지의 feature 혹은 score 측정을 위해 inception-v3를 사용하는데 과연 적절한가?</p></li>
+<li><p>가정</p>
+<ul class="simple">
+<li><p>FID, FID infinity는 feature space가 gaussian distribution을 따른다는 가정하에 측정되는 score</p></li>
+</ul>
+</li>
+<li><p>실험</p>
+<ol class="arabic simple">
+<li><p>따라서 생성 모델을 통해 10K의 이미지를 생성하고</p></li>
+<li><p>원본의 20K의 이미지를 sampling</p></li>
+<li><p>각각의 이미지를 Inception network와 CLIP network를 통해 feature vector를 추출</p></li>
+<li><p>Gaussian model에 feature vector를 fitting</p></li>
+<li><p>이때 gaussian model을 기반으로 각 샘플의 확률값을 계산한다.</p></li>
+</ol>
+</li>
+<li><p>결과</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img7.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_08" class="bg-primary mb-1" src="../../_images/img7.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 8</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>확률 값이 낮은 tail 부분의 feature vector의 원본 이미지들을 퀄리티가 낮아야함</p></li>
+<li><p>실제로 tail 부분의 확률을 갖는 이미지들을 확인해보면 CLIP을 보면 확실히 퀄리티가 떨어지는 반면 Inception의 이미지들은 좋은 퀄리티를 보이고 있음 → Gaussian 분포의 가정에 위배</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>5.2 Normality test for latent representation</strong></p>
+<ul>
+<li><p>위의 feature vector들을 1 Dimension에 투영시켜 normal distribution을 따르는 지 확인한다.</p></li>
+<li><p>실험</p>
+<ol class="arabic simple">
+<li><p>Inception, CLIP을 통해 feature vector를 추출한다.</p></li>
+<li><p>linear transformation 연산을 통해 각각 1-D로 투영시킨다.</p></li>
+<li><p>각각의 p-value를 구한다.</p>
+<ol class="arabic simple">
+<li><p>p-value : 어떠한 사건이 우연히 일어날 확률</p></li>
+<li><p>if p-value &lt; 0.05 ; 우연히 발생할 확률이 거의 없다. 인과관계가 있다.</p></li>
+<li><p>if p-value &gt; 0.05 ; 우연히 발생할 확률이 크다. 인과관계가 없다.</p></li>
+<li><p>gaussian normal distribution은 random을 기반으로하기때문에 인과관계가 작아야한다. 즉, p-value가 커야한다.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>결과</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img8.png"><img alt="A_Study_on_the_Evaluation_of_Generative_Models_09" class="bg-primary mb-1" src="../../_images/img8.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-text">Image 9</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>모든 test dataset에 대해 CLIP의 p-value값은 0.05를 넘어 random성을 유지하지만, Inception은 0.05보다 낮은 값을 보여 random성을 유지하지 못한다.</p></li>
+<li><p>따라서, Inception net을 통한 metric 측정보다 CLIP을 통한 metric 측정을 제안한다.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">학습 자료</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. BackGround</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kl-divergence-kullback-leibler-divergence">2.1. KL-Divergence(Kullback-Leibler divergence)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inception-score-is">2.2. Inception Score(IS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fid-frechet-inception-distance">2.3. FiD(Fréchet Inception Distance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kernel-inception-distance">2.4. Kernel Inception Distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fid-is">2.5. FID∞ &amp; IS∞</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-fid">2.5. Clean FiD</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-dataset-as-a-benchmark">3. Synthetic dataset as a benchmark</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-between-evaluation-metrics">4. Comparison between evaluation metrics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#is-inception-all-we-need">5. Is Inception all we need?</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=365ca57ee442770a23c6"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=365ca57ee442770a23c6"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

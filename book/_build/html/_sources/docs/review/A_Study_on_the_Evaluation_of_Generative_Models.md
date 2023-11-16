@@ -228,4 +228,3 @@ Image 6
     - 모든 test dataset에 대해 CLIP의 p-value값은 0.05를 넘어 random성을 유지하지만, Inception은 0.05보다 낮은 값을 보여 random성을 유지하지 못한다.
     - 따라서, Inception net을 통한 metric 측정보다 CLIP을 통한 metric 측정을 제안한다.
 
----

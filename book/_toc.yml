@@ -1,14 +1,18 @@
 format: jb-book
 root: intro
 parts:
-- caption: Paper/Code Review
+- caption: Preliminary Works
   chapters:
   - file: docs/review/vae
   - file: docs/review/gan
-  - file: docs/review/cycleGAN
-  - file: docs/review/StyleGAN
   - file: docs/review/DDPM
   - file: docs/review/DDIM
+  - file: docs/review/A_Study_on_the_Evaluation_of_Generative_Models
+  
+- caption: Image Generation
+  chapters:
+  - file: docs/review/cycleGAN
+  - file: docs/review/StyleGAN
   - file: docs/review/diffusion_beats_GANs
   - file: docs/review/dalle
   - file: docs/review/dreambooth
@@ -32,7 +36,6 @@ parts:
   - file: docs/review/BBDM
   - file: docs/review/Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier
   - file: docs/review/progressive_distillation
-  - file: docs/review/A Study_on_the_Evaluation_of_Generative_Models
 
 - caption: Experiments
   chapters:

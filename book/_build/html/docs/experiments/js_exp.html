@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -67,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Training DreamBooth on Naver Webtoon Face Dataset" href="swjo_exp.html" />
-    <link rel="prev" title="Progressive Distillation for Fast Sampling of Diffusion Models" href="../review/progressive_distillation.html" />
+    <link rel="prev" title="ConceptLab" href="../review/ConceptLab.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -78,6 +79,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -222,6 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../review/BBDM.html">BBDM</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../review/Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../review/progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/ConceptLab.html">ConceptLab</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="current nav bd-sidenav">
@@ -382,10 +393,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -393,7 +404,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -456,7 +467,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/4classes.png"><img alt="4classes" class="bg-primary mb-1" src="../../_images/4classes.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 389 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 401 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -477,7 +488,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_ex.png"><img alt="multiple_ex" class="bg-primary mb-1" src="../../_images/multiple_ex.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 390 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 402 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -489,7 +500,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_sd.png"><img alt="multiple_sd" class="bg-primary mb-1" src="../../_images/multiple_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 391 </span><span class="caption-text">prompt: “a photo of leaves with multiple diseases</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 403 </span><span class="caption-text">prompt: “a photo of leaves with multiple diseases</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -500,7 +511,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_db.png"><img alt="multiple_db" class="bg-primary mb-1" src="../../_images/multiple_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 392 </span><span class="caption-text">prompt: “a photo of a &lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 404 </span><span class="caption-text">prompt: “a photo of a &lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -511,13 +522,13 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_sd.png"><img alt="leaf_sd" class="bg-primary mb-1" src="../../_images/leaf_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 393 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 405 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_db.png"><img alt="leaf_db" class="bg-primary mb-1" src="../../_images/leaf_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 394 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 406 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -527,13 +538,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_sd.png"><img alt="photo_sd" class="bg-primary mb-1" src="../../_images/photo_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 395 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 407 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_db.png"><img alt="photo_db" class="bg-primary mb-1" src="../../_images/photo_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 396 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 408 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -543,13 +554,13 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_pp.png"><img alt="multiple_pp" class="bg-primary mb-1" src="../../_images/multiple_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 397 </span><span class="caption-text">multiple diseases class 이미지 생성 결과, prompt: “&lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 409 </span><span class="caption-text">multiple diseases class 이미지 생성 결과, prompt: “&lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_pp.png"><img alt="leaf_pp" class="bg-primary mb-1" src="../../_images/leaf_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 398 </span><span class="caption-text">leaf 생성 결과, prompt: “leaf”</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 410 </span><span class="caption-text">leaf 생성 결과, prompt: “leaf”</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -558,7 +569,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_pp.png"><img alt="photo_pp" class="bg-primary mb-1" src="../../_images/photo_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 399 </span><span class="caption-text">photo 생성 결과, prompt: “photo”</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 411 </span><span class="caption-text">photo 생성 결과, prompt: “photo”</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -579,7 +590,7 @@ document.write(`
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_base.png"><img alt="result_base" class="bg-primary mb-1" src="../../_images/result_base.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 400 </span><span class="caption-text">result_base</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 412 </span><span class="caption-text">result_base</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>생성한 이미지를 추가 데이터로 활용한 경우</p>
@@ -589,7 +600,7 @@ document.write(`
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_new.png"><img alt="result_new" class="bg-primary mb-1" src="../../_images/result_new.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 401 </span><span class="caption-text">result_now</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 413 </span><span class="caption-text">result_now</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -615,37 +626,37 @@ document.write(`
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cat.png"><img alt="cat" class="bg-primary mb-1" src="../../_images/cat.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 402 </span><span class="caption-text">cat 생성 결과, prompt: “cat”</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 414 </span><span class="caption-text">cat 생성 결과, prompt: “cat”</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sea.png"><img alt="sea" class="bg-primary mb-1" src="../../_images/sea.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 403 </span><span class="caption-text">sea 생성 결과, prompt: “sea”</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 415 </span><span class="caption-text">sea 생성 결과, prompt: “sea”</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/pirate.png"><img alt="pirate" class="bg-primary mb-1" src="../../_images/pirate.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 404 </span><span class="caption-text">pirate 생성 결과, prompt: “pirate”</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 416 </span><span class="caption-text">pirate 생성 결과, prompt: “pirate”</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/illustration.png"><img alt="illustration" class="bg-primary mb-1" src="../../_images/illustration.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 405 </span><span class="caption-text">illustration 생성 결과, prompt: “illustration”</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 417 </span><span class="caption-text">illustration 생성 결과, prompt: “illustration”</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/animation.png"><img alt="animation" class="bg-primary mb-1" src="../../_images/animation.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 406 </span><span class="caption-text">animation 생성 결과, prompt: “animation”</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 418 </span><span class="caption-text">animation 생성 결과, prompt: “animation”</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/wallpaper.png"><img alt="wallpaper" class="bg-primary mb-1" src="../../_images/wallpaper.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 407 </span><span class="caption-text">wallpaper 생성 결과, prompt: “wallpaper”</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 419 </span><span class="caption-text">wallpaper 생성 결과, prompt: “wallpaper”</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -676,19 +687,18 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../review/progressive_distillation.html"
+       href="../review/ConceptLab.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Progressive Distillation for Fast Sampling of Diffusion Models</p>
+        <p class="prev-next-title">ConceptLab</p>
       </div>
     </a>
     <a class="right-next"
@@ -700,10 +710,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -771,8 +778,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
 
   <footer class="bd-footer">
   </footer>

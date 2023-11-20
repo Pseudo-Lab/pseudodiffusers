@@ -1,5 +1,5 @@
 ``` {admonition} Information
-- **Title:** HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models (ICML 2023)
+- **Title:** HyperDreamBooth: HyperNetworks for Fast Personalization of Text-to-Image Models
 
 - **Reference**
     - Paper: [https://arxiv.org/pdf/2307.06949.pdf](https://arxiv.org/pdf/2307.06949.pdf)

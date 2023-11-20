@@ -36,6 +36,7 @@ parts:
   - file: docs/review/BBDM
   - file: docs/review/Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier
   - file: docs/review/progressive_distillation
+  - file: docs/review/ConceptLab
 
 - caption: Experiments
   chapters:

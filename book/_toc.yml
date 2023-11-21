@@ -37,6 +37,7 @@ parts:
   - file: docs/review/Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier
   - file: docs/review/progressive_distillation
   - file: docs/review/ConceptLab
+  - file: docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space
 
 - caption: Experiments
   chapters:

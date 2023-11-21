@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Diffusion Models already have a Semantic Latent Space &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="ConceptLab" href="ConceptLab.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diffusion Models already have a Semantic Latent Space</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Diffusion_models_already_have_a_Semantic_Latent_Space.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Diffusion Models already have a Semantic Latent Space</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probability-model-ddpm">2.1 Denoising Diffusion Probability Model(DDPM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-implicit-model-ddim">2.2 Denoising Diffusion Implicit Model(DDIM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-manipulation-with-clip">2.3 Image Manipulation with CLIP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-semantic-latent-space-in-diffusion-models">3. Discovering Semantic Latent Space In Diffusion Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">3.1 Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asymmetric-reverse-process-asyrp">3.2 Asymmetric Reverse Process(Asyrp)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-space">3.3 h-space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-neural-directions">3.4 Implicit Neural Directions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-process-design">4. Generative Process Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-process-with-asyrp">4.1 Editing Process With Asyrp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-boosting-with-stochastic-noise-injection">4.2 Quality Boosting With Stochastic Noise Injection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-of-image-editing">4.3 Overall Process of Image Editing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versatility-of-h-space-with-asyrp">5.1 Versatility of h-space with Asyrp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitive-comparison">5.2 Quantitive Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-on-h-space">5.3 Analysis on h-space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Diffusion Models already have a Semantic Latent Space (ICLR 2023)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2210.10960">https://arxiv.org/abs/2210.10960</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Sehwan Park</p></li>
+<li><p><strong>Last updated on Nov. 18, 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="diffusion-models-already-have-a-semantic-latent-space">
+<h1>Diffusion Models already have a Semantic Latent Space<a class="headerlink" href="#diffusion-models-already-have-a-semantic-latent-space" title="Permalink to this heading">#</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<p>Diffusion model은 많은 domain에서 좋은 성능을 보이지만 generative process를 control하는 semantic latent space가 부족하다. 논문에서는 diffusion model속에서 semantic latent space를 발견하기 위한 asymmetric reverse process(asyrp)를 제안하고 h-space라고 명칭한 semantic latent space의 좋은 특성(homogeneity, linearity, robustness, consistency across timesteps)들을 보여준다. 추가적으로 editing strength와 quality deficiency를 기준으로 삼고 더 좋은 image-image translation을 위한 Generative Process Design을 소개한다.</p>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure1.1.png"><img alt="Asyrp_1" class="bg-primary mb-1" src="../../_images/figure1.1.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 401 </span><span class="caption-text">Manipulation approaches for diffusion models</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>(a) Image guidance는 unconditional한 latent variable에 guiding image의 latent variable을 합치는 방식을 사용한다. 그러나 latent variable을 둘 다 이용하면서 명확하게 control하기가 쉽지 않다.</p>
+<p>(b) Classifier guidance는 diffusion model에 classifier를 추가하여 generative process를 거치는 동안 latent variable이 어떤 class인지 분류하고 target class에 가까워지도록 score를 부여하는 방식으로 작동한다. 그러나 latent variable들에 대해 classify를 실행해야 하기에 pretrained model을 사용하기가 힘들어 직접 학습을 시켜야 하기에 시간적으로, 비용적으로 부담이 된다.</p>
+<p>(c) DiffusionCLIP</p>
+<p>(d) Diffusion Models already have a Semantic Latent Space는 original image의 특성을 edit하기 위한 아주 좋은 특성을 가지고 있는 semantic latent space를 frozen diffusion model에서 발견하였고 이를 h-space라고 칭한다. h-space에는 다양한 좋은 특성들이 존재한다. versatile editing과 quality boosting을 위해 새로운 generative process를 design하여 제안한다. h-space는 frozen pretrained diffusion model에서 semantic latent space로써의 첫 발견사례이다.</p>
+</section>
+<section id="background">
+<h2>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<section id="denoising-diffusion-probability-model-ddpm">
+<h3>2.1 Denoising Diffusion Probability Model(DDPM)<a class="headerlink" href="#denoising-diffusion-probability-model-ddpm" title="Permalink to this heading">#</a></h3>
+<p>DDPM에서는 임의의 time step t로 부터 noise가 껴있는 image <span class="math notranslate nohighlight">\(x_t\)</span>의 <span class="math notranslate nohighlight">\(\epsilon_t\)</span>가 얼만큼인지 예측한다. 예측한 <span class="math notranslate nohighlight">\(\epsilon_t\)</span>를 이용하여 noise가 일부 제거된 이전 step의 mean(<span class="math notranslate nohighlight">\(\mu_{\theta}(x_t)\)</span>)을 구할 수 있고 variance(<span class="math notranslate nohighlight">\(\sum_{\theta}(x_t)\)</span>)는 constant한 값으로 고정시킨다. DDPM에서 제시한 forward process와 reverse process는 다음과 같다. DDPM에서의 <span class="math notranslate nohighlight">\(\sigma_t^2 = \beta_t\)</span>이다.</p>
+<div class="math notranslate nohighlight">
+\[
+q(x_t|x_{t-1}) = \mathcal{N}(x_t; \sqrt{\alpha_{t}}x_{t-1}, (1-\alpha_t)I)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \frac{1}{\sqrt{1-\beta_t}}\bigg(x_t - \frac{\beta_t}{\sqrt{1-\alpha_t}}\epsilon_t^\theta(x_t)\bigg) + \sigma_t\mathcal{z_t}
+\]</div>
+</section>
+<section id="denoising-diffusion-implicit-model-ddim">
+<h3>2.2 Denoising Diffusion Implicit Model(DDIM)<a class="headerlink" href="#denoising-diffusion-implicit-model-ddim" title="Permalink to this heading">#</a></h3>
+<p>DDIM에서는  non-Markovian process를 이용해 또 다른 관점의 reverse process를 제시하였고, DDPM과 DDIM 모두 general하게 적용되는 Diffusion process에 대한 식을 보여주었다. <span class="math notranslate nohighlight">\(\sigma_t = \eta\sqrt{(1-\alpha_{t-1}) / (1-\alpha_t)} \sqrt{1-\alpha_t/\alpha_{t-1}}\)</span>이다.</p>
+<p><span class="math notranslate nohighlight">\(\eta\)</span>=1인 경우 DDPM이 되고 stochastic해지며,  <span class="math notranslate nohighlight">\(\eta\)</span>=0인 경우 DDIM이 되고 deterministic해진다.</p>
+<div class="math notranslate nohighlight">
+\[
+q_{\sigma}(x_{t-1}|x_t,x_0) = \mathcal{N}(\sqrt{\alpha_{t-1}}x_0 + \sqrt{1-\alpha_{t-1}-\sigma_t^2} \cdot \cfrac{x_t - \sqrt{\alpha_t}x_0}{\sqrt{1-\alpha_t}}, \sigma_t^2I)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\underbrace{\bigg(\frac{x_t - \sqrt{1-\alpha_t}\epsilon_t^\theta(x_t)}{\sqrt{\alpha_t}}\bigg)}_{\textrm{predicted } x_0} + \underbrace{\sqrt{1-\alpha_{t-1}-\sigma_t^2}\cdot \epsilon_t^\theta(x_t) }_{\textrm{direction pointing to }x_t} + \sigma_t\mathcal{z_t}
+\]</div>
+</section>
+<section id="image-manipulation-with-clip">
+<h3>2.3 Image Manipulation with CLIP<a class="headerlink" href="#image-manipulation-with-clip" title="Permalink to this heading">#</a></h3>
+<p>CLIP은 Image Encoder와 Text Encoder를 이용하여 image와 text간의 embedding을 학습한다. 편집된 이미지와 대상 설명 간의 cosine distance를 직접 최소화하는 대신 cosine distance를 사용한 directional loss를 사용하여 mode collapse없이 균일한 editing을 가능하게 했다고 한다.</p>
+<p><span class="math notranslate nohighlight">\(\Delta T = \mathrm{E}_T(y^{target}) - \mathrm{E}_T(y^{source}) \)</span><br/><span class="math notranslate nohighlight">\(\Delta I = \mathrm{E}_I(x^{edit}) - \mathrm{E}_I(x^{source})\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{direction} (x^{edit}, y^{target};x^{source},y^{source}) := 1 - \cfrac{\Delta I \cdot \Delta T}{\parallel\Delta I\parallel \parallel\Delta T\parallel}
+\]</div>
+</section>
+</section>
+<section id="discovering-semantic-latent-space-in-diffusion-models">
+<h2>3. Discovering Semantic Latent Space In Diffusion Models<a class="headerlink" href="#discovering-semantic-latent-space-in-diffusion-models" title="Permalink to this heading">#</a></h2>
+<p>Editiing을 하는 과정에서 naive approach를 통해서는 editing이 잘 이루어지지 않는다. 이 chapter에서는 왜 잘 이루어지지 않는지에 대한 설명을 하고 이를 해결하는 새로운 controllable한 한 reverse process인  Asymmetric Reverse Process(Asyrp)를 제안한다.</p>
+<p>DDIM에서 <span class="math notranslate nohighlight">\(x_{t-1}\)</span>에 대한 수식을 설명하였는데 이 chapter부터는 “predicted <span class="math notranslate nohighlight">\(x_0\)</span>”부분을 <span class="math notranslate nohighlight">\(\mathrm{P}_t(\epsilon_t^{\theta}(x_t))\)</span> 즉 <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>라고 설정하고, “direction pointing to <span class="math notranslate nohighlight">\(x_t\)</span>”부분을 <span class="math notranslate nohighlight">\(\mathrm{D}_t(\epsilon_t^{\theta}(x_t))\)</span> 즉 <span class="math notranslate nohighlight">\(\mathrm{D}_t\)</span>라고 설정하였다.</p>
+<p><span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>는 latent variable로 부터 <span class="math notranslate nohighlight">\(x_0\)</span>를 예측하는 reverse process와 같은 역할을 담당하고 <span class="math notranslate nohighlight">\(\mathrm{D}_t\)</span>는 다시 noise를 추가해 latent variable로 돌아가기에 forward process와 같은 역할을 담당한다.</p>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\underbrace{\bigg(\frac{x_t - \sqrt{1-\alpha_t}\epsilon_t^\theta(x_t)}{\sqrt{\alpha_t}}\bigg)}_{\mathrm{P}_t(\epsilon_t^{\theta}(x_t))} + \underbrace{\sqrt{1-\alpha_{t-1}-\sigma_t^2}\cdot \epsilon_t^\theta(x_t) }_{\mathrm{D}_t(\epsilon_t^{\theta}(x_t))} + \sigma_t\mathcal{z_t}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t)) + \mathrm{D}_t(\epsilon_t^{\theta}(x_t)) + \sigma_t\mathcal{z_t}
+\]</div>
+<section id="problem">
+<h3>3.1 Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(x_T\)</span>로 부터 생성된 image <span class="math notranslate nohighlight">\(x_0\)</span>를 given text prompts에 맞게 manipulate시키는 가장 간단한 방법은 2.3에서 소개한 <span class="math notranslate nohighlight">\(\mathcal{L}_{direction}\)</span>을 optimize하도록 <span class="math notranslate nohighlight">\(x_T\)</span>를 update하는 것이다. 하지만 이 방법은  distorted images를 생성하거나 부정확한 manipulation을 한다고 한다.</p>
+<p>이에 대한 대안으로, 모든 sampling step에서 원하는 방향으로 manipulate하도록 <span class="math notranslate nohighlight">\(\epsilon_t^{\theta}\)</span>를 shift해주는 방법이 제시되었다. 하지만 이 방법은 <span class="math notranslate nohighlight">\(x_0\)</span>를 완전히 manipulate하지 못한다. 왜냐하면 <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>와 <span class="math notranslate nohighlight">\(\mathrm{D}_t\)</span>에서 둘다 shifted된 <span class="math notranslate nohighlight">\(\tilde{\epsilon}_t^{\theta}\)</span>를 사용하기에 cancel out되어 결국 latent variable에서는 기존과 다름이 없다는 것이다. 자세한 증명은 Proof of Theroem을 보면 된다.</p>
+<details>
+  <summary>Proof of Theroem)</summary>
+<p>Define <span class="math notranslate nohighlight">\(\alpha_t = \prod_{s=1}^t(1 - \beta_s)\)</span>, <span class="math notranslate nohighlight">\(\tilde{x}_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\tilde{\epsilon}_t^{\theta}(x_t)) + \mathrm{D}_t(\tilde{\epsilon}_t^{\theta}(x_t)) + \sigma_t\mathcal{z_t}\)</span></p>
+<p>= <span class="math notranslate nohighlight">\(\sqrt{\alpha_{t-1}}\underbrace{\bigg(\cfrac{x_t - \sqrt{1-\alpha_t}(\epsilon_t^\theta(x_t) + \Delta \epsilon_t)}{\sqrt{\alpha_t}}\bigg)}_{\mathrm{P}_t(\tilde{\epsilon}_t^{\theta})} + \underbrace{\sqrt{1-\alpha_{t-1}-\sigma_t^2}\cdot (\epsilon_t^\theta(x_t) + \Delta \epsilon_t) }_{\mathrm{D}_t(\tilde{\epsilon}_t^{\theta})} + \sigma_t\mathcal{z_t}\)</span></p>
+<p>= <span class="math notranslate nohighlight">\(\sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^\theta(x_t)) + \mathrm{D}_t(\epsilon_t^\theta(x_t)) - \cfrac{\sqrt{\alpha_{t-1}}\sqrt{1-\alpha_t}}{\sqrt{\alpha_t}} \cdot \Delta \epsilon_t + \sqrt{1-\alpha_{t-1}} \cdot \Delta \epsilon_t\)</span></p>
+<p><span class="math notranslate nohighlight">\(\sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^\theta(x_t)) + \mathrm{D}_t(\epsilon_t^\theta(x_t))\)</span>는 기존 DDIM에서의 <span class="math notranslate nohighlight">\(x_{t-1}\)</span>에 대한 식이고 위 식의 <span class="math notranslate nohighlight">\(\Delta \epsilon_t\)</span>항만 따로 묶어서 표현하면 아래와 같다.</p>
+<p>= <span class="math notranslate nohighlight">\(x_{t-1} + \bigg( -\cfrac{\sqrt{1-\alpha_t}}{\sqrt{1-\beta_t}} + \sqrt{1-\alpha_{t-1}} \bigg) \cdot \Delta \epsilon_t \)</span></p>
+<p>= <span class="math notranslate nohighlight">\(x_{t-1} + \bigg( -\cfrac{\sqrt{1-\alpha_t}}{\sqrt{1-\beta_t}} + \cfrac{\sqrt{1-\prod_{s=1}^{t-1}(1-\beta_s)}\sqrt{1-\beta_t}}{\sqrt{1-\beta_t}} \bigg) \cdot \Delta \epsilon_t \)</span></p>
+<p><span class="math notranslate nohighlight">\({\sqrt{1-\prod_{s=1}^{t-1}(1-\beta_s)}\sqrt{1-\beta_t}}\)</span>를 root를 묶어서 내부를 계산하면 <span class="math notranslate nohighlight">\(\sqrt{1-\alpha_t-\beta_t}\)</span>이므로 정리하면 아래와 같다.</p>
+<p>= <span class="math notranslate nohighlight">\(x_{t-1} + \bigg( \cfrac{\sqrt{1-\alpha_t-\beta_t} - \sqrt{1-\alpha_t}}{\sqrt{1-\beta_t}} \bigg) \cdot \Delta \epsilon_t \)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore \Delta x_t = \tilde{x_{t-1}} - x_{t-1} = \cfrac{\sqrt{1-\alpha_t-\beta_t} - \sqrt{1-\alpha_t}}{\sqrt{1-\beta_t}} \bigg) \cdot \Delta \epsilon_t\)</span></p>
+<p>shifted epsilon을 사용한 결과이다. 분자를 보면  <span class="math notranslate nohighlight">\(\beta_t\)</span>는 매우 작기에 거의 0에 수렴하기에 결국 차이가 거의 없음을 보인다. <br/> 즉 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space에서의 manipulation 효과는 매우 좋지 않음을 알 수 있다.</p>
+</details>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.3.png"><img alt="Asyrp_2" class="bg-primary mb-1" src="../../_images/figure3.3.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 402 </span><span class="caption-text">No Manipulation Effect with shifted epsilon</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="asymmetric-reverse-process-asyrp">
+<h3>3.2 Asymmetric Reverse Process(Asyrp)<a class="headerlink" href="#asymmetric-reverse-process-asyrp" title="Permalink to this heading">#</a></h3>
+<p>chapter 3.1에서 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space에서의 문제를 해결하기 위해 저자들은 Asyrp를 제안한다. 이름 그대로 비대칭적인 방법을 사용한다는 것인데 <span class="math notranslate nohighlight">\(x_0\)</span>를 예측하는 <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>에서는 shifted epsilon을 사용하고,  latent variable로 돌아가는 <span class="math notranslate nohighlight">\(\mathrm{D}_t\)</span>에서는 non-shifted epsilon을 사용해서 전체적인 변화를 준다는 것이다. 즉, <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>만modify하고 <span class="math notranslate nohighlight">\(\mathrm{D}_t\)</span>는 유지한다. Asyrp를 식으로 표현하면 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\tilde{\epsilon}_t^{\theta}(x_t)) + \mathrm{D}_t(\epsilon_t^{\theta}(x_t))
+\]</div>
+<p>Loss식 또한 chapter 2.3에서 제시한 <span class="math notranslate nohighlight">\(\mathcal{L}_{direction}\)</span>을 사용하여 재구성하였다. modify를 하지 않은 <span class="math notranslate nohighlight">\(\mathrm{P}_t^{source}\)</span>와 modifiy를 한 <span class="math notranslate nohighlight">\(\mathrm{P}_t^{edit}\)</span>을 사용한다. Loss식은 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}^{(t)} = \lambda_{CLIP}(\mathrm{P}_t^{edit}, y^{ref};\mathrm{P}_t^{source},y^{source}) + \lambda_{recon}|\mathrm{P}_t^{edit} - \mathrm{P}_t^{source}|
+\]</div>
+<p>전체적인 reverse process는 다음과 같이 설계가 되었다. 이제 shifted epsilon인 <span class="math notranslate nohighlight">\(\tilde{\epsilon}_t^{\theta}(x_t)\)</span>를 어떤 방식으로 얻을 것인지에 대한 설계가 필요하다. 저자들은 기존의 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space에서 변화를 주는 것보다 훨씬 더 좋은 result를 보이고, nice properties를 가지는 h-space에서 변화를 주는 것을 제안한다.</p>
+</section>
+<section id="h-space">
+<h3>3.3 h-space<a class="headerlink" href="#h-space" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\epsilon_t^{\theta}\)</span>는 diffusion models의 backbone인  U-Net에서 도출된다. 이 논문에서는 Image manipulation을 위해 <span class="math notranslate nohighlight">\(\epsilon_t^{\theta}\)</span>를 control하는 space를 U-Net의 bottleneck 즉, 가장 깊은 feature map인 <span class="math notranslate nohighlight">\(h_t\)</span>로 정하였다. 이를 h-space라고 부른다. h-space는 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space보다 더 작은 spatial resolutions을 가지고 high-level semantic를 가진다. 또한 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space에서는 발견할 수 없는 매우 nice한 특성들을 가지고 있다.</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.9.png"><img alt="Asyrp_3" class="bg-primary mb-1" src="../../_images/figure3.9.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 403 </span><span class="caption-text">U-Net structure and h-space</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>h-space의 크기는 <span class="math notranslate nohighlight">\(8^2\times512\)</span>이고 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space의 크기는 <span class="math notranslate nohighlight">\(256^2\times3\)</span>으로 h-space에서의 control이 더 지배적이고 robust함을 추측할 수 있다(실제 실험적으로 증명을 함). h-space는 skip-connection의 영향을 받지 않으며 가장 압축된 정보를 가지고 있는 공간이며 image를 control하는데에 있어 매우 좋은 특성들을 가지고 있다. 실제 저자들은 h-space를 지정하기 위해 U-Net의 모든 feature map을 h-space로 설정해두고 실험을 해보았는데 위의 그림을 기준으로 8th layer이전의 feature map을 h-space로 지정한 경우에는 manipulaton이 적게 이루어졌고, 8th layer 이후의 feature map을 h-space로 지정한 경우에는 너무 과한 manipulation이 이루어지거나 아예 distorted image가 생성되었다. h-space만의 특성은 chapter5에서 설명한다.</p>
+</section>
+<section id="implicit-neural-directions">
+<h3>3.4 Implicit Neural Directions<a class="headerlink" href="#implicit-neural-directions" title="Permalink to this heading">#</a></h3>
+<p><span class="math notranslate nohighlight">\(\Delta h_t\)</span>가 image를 manipulating하는데 성공했음에도, 수많은 timestep에서 매번 optimizing하기란 쉽지 않다. 대신에 논문에서는 <span class="math notranslate nohighlight">\(h_t\)</span>를 입력받아 <span class="math notranslate nohighlight">\(\Delta h\)</span>를 출력해주는 작은 neural network인 <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span>를 추가하였다. <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span>는 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 매번 모든 timestep에서 optimizing해줘야 하는 방법에 비해 시간도 빠르고 setting값들에 대해 robust하다. 또한 주어진 timestep과 bottleneck feature인 <span class="math notranslate nohighlight">\(h_t\)</span>에 대해 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 출력하는 방법을 학습하기에 unseen timestep과 bottleneck feature에 대해서도 일반화할 수 있다고 한다. 이는 accelerated한 과정에서도 큰 효과를 본다. training scheme이 어떻든 간에 결국 부여하는 $\sum\Delta\mathrm{h_t}만 보존된다면, 어떠한 length를 설계해도 비슷한 manipulation효과를 볼 수 있다.</p>
+<p>h-space에서 epsilon을 control해서 asyrp 이용하는 식은 다음과 같다. 이해를 위해 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space와  h-space에서의 shifted epsilon <span class="math notranslate nohighlight">\(\tilde{\epsilon}_t^{\theta}(x_t)\)</span>을 비교하였다.</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\epsilon\)</span>-space에서의 shifted epsilon</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\epsilon}_t^{\theta}(x_t) = \epsilon_t^{\theta}(x_t) + \Delta \epsilon_t\)</span></p>
+</li>
+<li><p>h-space에서의 shifted epsilon</p>
+<p><span class="math notranslate nohighlight">\(\tilde{\epsilon}_t^{\theta}(x_t) = \epsilon_t^{\theta}(x_t | \Delta h_t)\)</span></p>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t | \Delta h_t)) + \mathrm{D}_t(\epsilon_t^{\theta}(x_t))
+\]</div>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.8.png"><img alt="Asyrp_5" class="bg-primary mb-1" src="../../_images/figure3.8.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 404 </span><span class="caption-text">Asymmetric Reverse Process</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="generative-process-design">
+<h2>4. Generative Process Design<a class="headerlink" href="#generative-process-design" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.1.png"><img alt="Asyrp_6" class="bg-primary mb-1" src="../../_images/figure4.1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Intuition for choosing the intervals for editing and quality boosting</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Perception prioritized training of diffusion models(Choi et al)에서는 Diffusion model이 early stage에서는 high-level context를 generate하고, later stage에서는 imperceptible fine details를 generate한다고 제안한다. 본 논문에서는 early stage에서 editing을 진행하는 editing process와 later stage에서 imperceptible fine details를 진행하는 quality boosting을 위한 구간을 나눠서 새로운 Generative Process Design을 제시한다.</p>
+<section id="editing-process-with-asyrp">
+<h3>4.1 Editing Process With Asyrp<a class="headerlink" href="#editing-process-with-asyrp" title="Permalink to this heading">#</a></h3>
+<p>Editing Process에서는 high-level context가 generate되어야 하므로 전체 timestep[0,T]에서 Editing Process를 위한 editing interval을 [T, <span class="math notranslate nohighlight">\(t_{edit}\)</span>]으로 설정하였다. <span class="math notranslate nohighlight">\(t_{edit}\)</span>의 시점을 결정하기 위해 LPIPS 측정지표를 이용한다. LPIPS(<span class="math notranslate nohighlight">\(\mathrm{x}, \mathrm{P}_t\)</span>)는 t시점에서 예측한 <span class="math notranslate nohighlight">\(x_0\)</span>와 target이 되는 original image간의 perceptual distance를 계산한다. 따라서 LPIPS를 남은 reverse process을 통해 editing 해야 할 구성요소를 측정하는 지표라고 볼 수도 있다. 첫 step T의 LPIPS로 부터 <span class="math notranslate nohighlight">\(t_{edit}\)</span>시점에서의 LPIPS 차이는 Editing Process에서 얼만큼의 perceptual change를 주었는지를 나타낸다. 이 값을 editing strength(<span class="math notranslate nohighlight">\(\epsilon_t\)</span>)라고 정의한다.</p>
+<div class="math notranslate nohighlight">
+\[
+\xi_t = \mathrm{LPIPS}(x, \mathrm{P}_T) - \mathrm{LPIPS}(x, \mathrm{P}_t)
+\]</div>
+<p>Editing interval이 작으면 <span class="math notranslate nohighlight">\(\xi_t\)</span>가 작아지며 변화가 많이 일어나지 않고 반면, Editing interval이 크면 <span class="math notranslate nohighlight">\(\xi_t\)</span>가 커지고 변화가 많이 일어난다. 따라서 충분한 변화를 줄 수 있는 한에서 가장 최소의 Editing interval을 찾는 것이 <span class="math notranslate nohighlight">\(t_{edit}\)</span>을 결정하는 최고의 방법이다. 저자들은 실험적인 결과를 통해 <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_t)\)</span> = 0.33인 t시점을 <span class="math notranslate nohighlight">\(t_{edit}\)</span>으로 결정하였다.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.6.png"><img alt="Asyrp_7" class="bg-primary mb-1" src="../../_images/figure4.6.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 406 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_{t_{edit}})\)</span></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.7.png"><img alt="Asyrp_8" class="bg-primary mb-1" src="../../_images/figure4.7.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 407 </span><span class="caption-text">Importance of choosing proper <span class="math notranslate nohighlight">\(t_{edit}\)</span></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>몇몇 특성들은 다른 특성들에 비해 visual change를 많이 필요로 하는 경우도 있다. 예를 들어 source image에 대해 smile한 attribute를 추가하는 경우보다 pixar style의 attribute을 추가하는 경우가 더 많은 visual change를 필요로 한다. 이러한 경우에는 Editing interval을 더 길게 설정해야 한다. 이러한 경우에는 <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_t)\)</span> = 0.33 - <span class="math notranslate nohighlight">\(\delta\)</span>를 만족하는 t를 <span class="math notranslate nohighlight">\(t_{edit}\)</span>으로 설정한다. 이 때, <span class="math notranslate nohighlight">\(\delta = 0.33d(\mathrm{E}_T(y_{source}), \mathrm{E}_T(y_{target}))\)</span>이다. <span class="math notranslate nohighlight">\(\mathrm{E}_T\)</span>는 CLIP text embedding을 진행하는 Text Encoder를 의미하며, d는 cosine distance를 의미한다. 아래 그림을 통해 더 많은 visual change를 요구하는 attributes에 대해서는 <span class="math notranslate nohighlight">\(t_{edit}\)</span>이 더 작음(Editing Interval이 김)을 알 수 있다.</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.10.png"><img alt="Asyrp_9" class="bg-primary mb-1" src="../../_images/figure4.10.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 408 </span><span class="caption-text">Flexible <span class="math notranslate nohighlight">\(t_{edit}\)</span> based on the amount of visual changes.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="quality-boosting-with-stochastic-noise-injection">
+<h3>4.2 Quality Boosting With Stochastic Noise Injection<a class="headerlink" href="#quality-boosting-with-stochastic-noise-injection" title="Permalink to this heading">#</a></h3>
+<p>DDIM은 <span class="math notranslate nohighlight">\(\eta\)</span>=0으로 설정하며 stochasticity를 제거하여 거의 완벽한 inversion을 가능케 하였다. Elucidating the design space of diffusionbased generative models(Karras et al.)에서는 stochasticity가 image quality를 증가시킨다고 증명하였다. 이에 따라 본 논문에서는 Generative Process에 stochastic noise를 주입하는 quality boosting 단계를 설정하고 boosting interval은 [<span class="math notranslate nohighlight">\(t_{boost}\)</span>, 0]이다.</p>
+<p>Boosting Interval에 따라 image quality를 control할 수 있는데, Boosting Interval이 길게되면, Quality는 증가하지만 Interval동안 계속해서 stochastic noise를 주입해야 하기에 content가 변하는 문제가 발생할 수도 있다. 따라서 충분한 quality boosting을 달성하면서도 content에 최소한의 변화만을 줄 수 있도록  <span class="math notranslate nohighlight">\(t_{boost}\)</span>를 설정하는 것이 중요하다. 저자들은 image에 껴있는 noise를 quality boosting을 통해 해결해야 할 부분으로 보았으며 target이 되는 original image로 부터 t시점의 image <span class="math notranslate nohighlight">\(x_t\)</span>에 얼만큼의 noise가 껴있는지에 대한 지표로 quality deficiency <span class="math notranslate nohighlight">\(\gamma_t\)</span>를 이용한다.</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma_t = \mathrm{LPIPS}(x, x_t)
+\]</div>
+<p>여기서는 editing strength와는 다르게 time step에 따라 예측한 <span class="math notranslate nohighlight">\(x_0\)</span>인 <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>가 아닌 latent variable <span class="math notranslate nohighlight">\(x_t\)</span>를 이용한다. 저자들은 noise를 판단하는데에 있어서 semantics보다는 actual image를 고려했기에 위와 같이 설정하였다고 한다. 저자들은 실험적인 결과를 통해  <span class="math notranslate nohighlight">\(\gamma_t\)</span> = 1.2인 t시점을 <span class="math notranslate nohighlight">\(t_{boost}\)</span>로 설정하였다.</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.8.png"><img alt="Asyrp_10" class="bg-primary mb-1" src="../../_images/figure4.8.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 409 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\gamma_{t_{boost}}\)</span></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.9.png"><img alt="Asyrp_11" class="bg-primary mb-1" src="../../_images/figure4.9.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 410 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="overall-process-of-image-editing">
+<h3>4.3 Overall Process of Image Editing<a class="headerlink" href="#overall-process-of-image-editing" title="Permalink to this heading">#</a></h3>
+<p>General한 Diffusion model에서의 Generative Process를 표현하면 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\epsilon_t^{\theta}) + \sigma_t\mathcal{z}_t\bigg(where, \sigma_t = \eta\sqrt{(1-\alpha_{t-1}) / (1-\alpha_t)} \sqrt{1-\alpha_t/\alpha_{t-1}}\bigg)
+\]</div>
+<p><span class="math notranslate nohighlight">\(\eta\)</span> = 0인 경우에는 DDIM이 되며, stochastic noise를 더하는 부분이 사라져 deterministic해진다. <span class="math notranslate nohighlight">\(\eta\)</span> = 1인 경우에는 DDPM이 되며, stochastic한 특성이 있다. Asyrp(Assymetric Reverse Process)에서는 기본적으로 DDIM을 사용하며 <span class="math notranslate nohighlight">\(\mathrm{P}_t\)</span>에서 h-space를 통해 control된 <span class="math notranslate nohighlight">\(\epsilon_t^{\theta}(x_t|f_t)\)</span>를 사용한다. Diffusion Models already have a Semantic Latent Space에서 제시한 Generative Process를 전체적으로 정리하면 다음과 같다.</p>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.11.png"><img alt="Asyrp_12" class="bg-primary mb-1" src="../../_images/figure4.11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 411 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>처음부터 <span class="math notranslate nohighlight">\(t_{edit}\)</span>시점까지는 Asyrp를 이용해 Editing Process를 진행한다. 이 후 DDIM 방식을 통해 Denoising을 진행하다가 <span class="math notranslate nohighlight">\(t_{boost}\)</span>시점부터 끝날 때까지 stochastic noise를 주입하는 DDPM 방식을 이용해 Quality boosting을 진행한다.</p>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.12.png"><img alt="Asyrp_13" class="bg-primary mb-1" src="../../_images/figure4.12.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 412 </span><span class="caption-text">Overview of Generative Process</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="experiments">
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<p>CelebA-HQ (Karras et al., 2018) 및 LSUN-bedroom/-church (Yu et al., 2015) 데이터셋에서 DDPM++ (Song et al., 2020b) (Meng et al., 2021); AFHQ-dog (Choi et al., 2020) 데이터셋에서 iDDPM (Nichol &amp; Dhariwal, 2021); 그리고 METFACES (Karras et al., 2020) 데이터셋에서 ADM with P2-weighting (Dhariwal &amp; Nichol, 2021) (Choi et al., 2022)을 사용해 각각 학습시켰다고 한다. 모든 model들은 pretrained checkpoint를 활용했으며 frozen상태를 유지시켰다고 한다.</p>
+<section id="versatility-of-h-space-with-asyrp">
+<h3>5.1 Versatility of h-space with Asyrp<a class="headerlink" href="#versatility-of-h-space-with-asyrp" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.6.png"><img alt="Asyrp_14" class="bg-primary mb-1" src="../../_images/figure5.6.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 413 </span><span class="caption-text">Editing results of Asyrp on various datasets</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위의 그림을 보면, 논문에서는 다양한 attribute들의 특성을 잘 반영해서 image를 manipulate했다는 점을 알 수 있다. 심지어 {department, factory, temple} attribute은 training data에 포함이 되어있지 않았음에도 성능이 잘 나온 점을 확인할 수 있다. model을 fine tuning하지 않고 inference하는 과정에서 h-space를 통해 epsilon을 control하고 Asyrp를 이용해 성능을 냈다는 점이 가장 큰 장점이다.</p>
+</section>
+<section id="quantitive-comparison">
+<h3>5.2 Quantitive Comparison<a class="headerlink" href="#quantitive-comparison" title="Permalink to this heading">#</a></h3>
+<p>Asyrp model의 결과를 다른 model들과 비교하는 실험을 진행하였는데 diffusion model 전체를 fine-tuning하여 image을 editing하는 DiffsionCLIP model과 비교하였다. Asyrp의 성능이 더 좋음을 확인 할 수 있다.</p>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.7.png"><img alt="Asyrp_15" class="bg-primary mb-1" src="../../_images/figure5.7.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 414 </span><span class="caption-text">Asyrp vs DiffusionCLIP on both CelebA-HQ seen-domain attributes and unseen-domain attributes</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="analysis-on-h-space">
+<h3>5.3 Analysis on h-space<a class="headerlink" href="#analysis-on-h-space" title="Permalink to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Homogeneity</strong></p>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.1.png"><img alt="Asyrp_16" class="bg-primary mb-1" src="../../_images/figure5.1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 415 </span><span class="caption-text">Homogeneity of h-space</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위의 그림의 (a)는 Real image에 smiling attribute을 추가하기 위해 최적화된 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>와 <span class="math notranslate nohighlight">\(\Delta \epsilon_t\)</span>를 나타낸다. 같은 값을 다른 Real image에 적용시켰을 때의 결과를 (b)에 나타내었는데,  <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 적용한경우 smiling face로 잘 바뀌는 반면, <span class="math notranslate nohighlight">\(\Delta \epsilon_t\)</span>을 적용한 경우에는 image distortion이 발생함을 알 수 있다.</p>
+</li>
+<li><p><strong>Linearity</strong></p>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.2.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.2.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 416 </span><span class="caption-text">Linearity of h-space - Linear Scaling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(\Delta_h\)</span>를 linearly scaling을 하는 것은 editing을 하는데에 있어 visual attribute change의 양에 반영된다. 즉, <span class="math notranslate nohighlight">\(\Delta_h\)</span>를 <span class="math notranslate nohighlight">\(\times\)</span>1, <span class="math notranslate nohighlight">\(\times\)</span>2, <span class="math notranslate nohighlight">\(\times\)</span>3배 <span class="math notranslate nohighlight">\(/dots\)</span> 함에 따라 result image에서 반영되는 attribute또한 이에 맞게 변화한다는 것이다. 위의 그림에서 표현되어 있듯이 negative scaling에 대해서는 training을 하지 않았음에도 잘 적용 된다는 점을 알 수 있다.</p>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.3.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.3.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 417 </span><span class="caption-text">Linearity of h-space - Linear Combination</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>서로 다른 attributes에 대한 <span class="math notranslate nohighlight">\(\Delta_h\)</span>를 합쳐서 부여를 했을 경우에도 각각의 attribute들이 image에 잘 반영이 된다는 점을 알 수 있다.</p>
+</li>
+<li><p><strong>Robustness</strong></p>
+<figure class="align-default" id="id18">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.4.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.4.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 418 </span><span class="caption-text">Robustness of h-space</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위의 그림은 h-space와 <span class="math notranslate nohighlight">\(\epsilon-space\)</span>에서 random noise를 주입했을 때의 결과를 비교한 것이다. h-space의 경우에는 random noise가 추가되었어도 image에 큰 변화가 없으며 많은 noise가 추가되었을 경우에도 image distortion은 거의 없고 semantic change만 발생한다. 그러나 <span class="math notranslate nohighlight">\(\epsilon-space\)</span>의 경우에는 random noise가 추가된 경우 image distortion이 심하게 발생한다. 이를 통해 h-space가 얼마나 robustness한지 알 수 있다.</p>
+</li>
+<li><p><strong>Consistency across time steps</strong></p>
+<figure class="align-default" id="id19">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.5.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.5.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 419 </span><span class="caption-text">Consistency across times steps of h-space</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>h-space의 homogeneous한 성질을 통해 같은 attribute에 대한 <span class="math notranslate nohighlight">\(\Delta h\)</span>를 다른 image에 적용시켰을 때에도 잘 반영이 됌을 확인하였다. 저자들은 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>들에 대한 평균인 <span class="math notranslate nohighlight">\(\Delta h_t^{mean}\)</span>을 적용시켰을 경우에도 result가 거의 비슷함을 보인다. Chapter4에서 제시한 Generative Process를 비추어 보았을 때, <span class="math notranslate nohighlight">\(\Delta h_t\)</span>는 Editing Process에서만 적용을 시킨다. 이 경우, 적용하는  <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 <span class="math notranslate nohighlight">\(\Delta h_t^{global}\)</span>이라고 칭하며, 적용하는 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>가 interval동안 같은 크기 만큼 적용된다고 가정했을 경우, <span class="math notranslate nohighlight">\(\Delta h^{global} = \cfrac{1}{\mathrm{T_e}}\sum_t\ \Delta h_t^{mean}\)</span>이라고 쓸 수 있다. 이 경우에도 결과는 비슷함을 보여준다. 결국 원하는 attribute에 대해 주입해야 할 <span class="math notranslate nohighlight">\(\Delta h\)</span>양만 같다면, 원하는 editing 효과를 얻을 수 있다. 비록 이 논문에서는 best quality manipulation을 위해 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 사용하였지만, <span class="math notranslate nohighlight">\(\Delta h_t^{mean}\)</span>과 <span class="math notranslate nohighlight">\(\Delta h^{global}\)</span>에 대해 더 연구를 해 볼 여지가 있다고 판단한다.</p>
+</li>
+</ol>
+</section>
+</section>
+<section id="conclusion">
+<h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>본 논문에서는 Pretrained Diffusion models에서 latent semantic space인  h-space를 발견했고 h-space에서의 Asyrp(Asymmetric Reverse Process)와 새롭게 제안한 Reverse Process 방법을 통해 성공적인 image editing을 가능케 하였다. Diffusion model에서의 semantic한 latent space에 대한 첫 제안을 한 논문이다. h-space는 GAN의 latent space와 유사한 특성을 갖추고 있다. 대표적인 h-space의 특성으로는 Homogeneity, Linearity, Robustness, Consistency across timesteps이 있다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ConceptLab.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ConceptLab</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-probability-model-ddpm">2.1 Denoising Diffusion Probability Model(DDPM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#denoising-diffusion-implicit-model-ddim">2.2 Denoising Diffusion Implicit Model(DDIM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-manipulation-with-clip">2.3 Image Manipulation with CLIP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discovering-semantic-latent-space-in-diffusion-models">3. Discovering Semantic Latent Space In Diffusion Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">3.1 Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asymmetric-reverse-process-asyrp">3.2 Asymmetric Reverse Process(Asyrp)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#h-space">3.3 h-space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-neural-directions">3.4 Implicit Neural Directions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-process-design">4. Generative Process Design</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#editing-process-with-asyrp">4.1 Editing Process With Asyrp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-boosting-with-stochastic-noise-injection">4.2 Quality Boosting With Stochastic Noise Injection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-process-of-image-editing">4.3 Overall Process of Image Editing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#versatility-of-h-space-with-asyrp">5.1 Versatility of h-space with Asyrp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitive-comparison">5.2 Quantitive Comparison</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analysis-on-h-space">5.3 Analysis on h-space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,25 +1,36 @@
-# Make-A-Video: Text-to-Video Generation without Text-Video Data
+```{admonition} Information
+- **Title:** Make-A-Video: Text-to-Video Generation without Text-Video Data
 
-[](https://arxiv.org/abs/2209.14792)
+- **Reference**
+    - Paper:  [https://arxiv.org/abs/2209.14792](https://arxiv.org/abs/2209.14792)
+    
+- **Author:** [Jeonghwa Yoo](https://www.linkedin.com/in/jeonghwa-yoo-8403a716b)
 
-[https://github.com/lucidrains/make-a-video-pytorch](https://github.com/lucidrains/make-a-video-pytorch)
+- **Last updated on Nov. 26, 2023**
+```
+
+
+- 참고 코드: [https://github.com/lucidrains/make-a-video-pytorch](https://github.com/lucidrains/make-a-video-pytorch)
+
 
 <aside>
-💡 - Text-to-Image(T2I)를 이용하여 Text-to-Video(T2V)를 수행함
+💡 핵심 요약 
+
+- Text-to-Image(T2I)를 이용하여 Text-to-Video(T2V)를 수행함
 
 - Make-a-Video의 장점
-1. T2V 모델의 학습을 가속화 하였음 
-2. Text-video 데이터가 필요하지 않음
-3. 이미지 생성 모델의 방대하다는 특성을 그대로 유지함 
+  1. T2V 모델의 학습을 가속화 하였음 
+  2. Text-video 데이터가 필요하지 않음
+  3. 이미지 생성 모델의 방대하다는 특성을 그대로 유지함 
 
 - 방법론
-1. Full temporal U-net과 attention tensor를 분해하여 공간(space)과 시간(time)으로 근사화 함
-2. 다양한 어플리케이션에 적용하기 위한 spatial temporal pipeline을 설계함
+  1. Full temporal U-net과 attention tensor를 분해하여 공간(space)과 시간(time)으로 근사화 함
+  2. 다양한 어플리케이션에 적용하기 위한 spatial temporal pipeline을 설계함
 
 - 관련 모듈
-1. Pseudo-3D convolutional layer
-2. Pseudo-3D attention layer
-3. Frame interpolation network 
+  1. Pseudo-3D convolutional layer
+  2. Pseudo-3D attention layer
+  3. Frame interpolation network 
 
 - 결과: text-to-video 생성 태스크에서 SOTA 달성
 
@@ -56,7 +67,11 @@
     
 - Make-A-Video의 최종 inference 수식
     
-    ![스크린샷 2023-10-31 오전 12.38.52.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_12.38.52.png)
+    :::{figure-md} 
+    <img src="../../pics/Make_A_Video/00.png" alt="make_a_video_00" class="bg-primary mb-1">
+
+    최종 inference 수식
+    :::
     
     - $SR_h$: spatial super-resolution network
     - $SR^t_l$: spatiotemporal super-resolution network
@@ -71,19 +86,25 @@
 
 - [“Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding(Imagen)”](https://arxiv.org/abs/2205.11487)와 연구 내용을 공유하였다.
 - Imagen
-    
-    ![Untitled](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/Untitled.png)
+
+    :::{figure-md} 
+    <img src="../../pics/Make_A_Video/Untitled.png" alt="make_a_video_01" class="bg-primary mb-1">
+
+    Imagen 구조
+    :::
+
     
 - 고해상도 이미지를 만들기 위해 사용한 네트워크
     - A prior Network $P$: 텍스트 임베딩 $x_e$와 BPE encoded text tokens $\hat{x}$이 주어졌을 때 이미지 임베딩 $y_e$를 생성하는 네트워크
     - Decoder Network $D$: 이미지 임베딩 $y_e$로부터 저해상도 64X64 RGB 이미지 $\hat{y}_l$를 생성하는 네트워크
     - Super-resolution network $SR_l$, $SR_h$: D에서 생성된 이미지 64X64 저해상도 이미지 $\hat{y}_l$를 256X256, 768X768 픽셀로 증가시켜 최종 이미지 $\hat{y}$를 만드는 네트워크
-        
-        ![text $x$가 prior $P$를 통해 image embedding 변환된다. 
-        fps: desired frame rate ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.14.45.png)
-        
+
+        :::{figure-md} 
+        <img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.14.45.png" alt="make_a_video_02" class="bg-primary mb-1">
+
         text $x$가 prior $P$를 통해 image embedding 변환된다. 
         fps: desired frame rate 
+        :::
         
 
 ## 3.2. Spatiotemporal Layers
@@ -104,20 +125,20 @@
 
 ### 3.2.1 Pseudo-3D convolutional layers
 
-![스크린샷 2023-10-31 오전 1.35.02.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.02.png)
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.02.png" alt="make_a_video_03" class="bg-primary mb-1">
 
-- 2D 컨벌루션 레이어 다음에 1D 컨벌루션을 쌓는다 (Cf:separable convolution)
-    - Depthwise Separable Convolution
-        
-        ![Depthwise Separable Convolution (Depthwise + Pointwise) ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/Untitled%201.png)
-        
-        Depthwise Separable Convolution (Depthwise + Pointwise) 
-        
+Pseudo-3D convolutional layers
+:::
+
+- 2D 컨벌루션 레이어 다음에 1D 컨벌루션을 쌓는다 (Cf:separable convolution)    
     - 3D 컨벌루션의 계산 load를 줄일 수 있다.
     - 사전 학습된 2D 컨볼루션 레이어와 새로 초기화된 1D 컨벌루션 레이어 사이에 명확한 경계를 생성하여, spatial information을 유지한 채 temporal convolution을 처음부터 학습할 수 있게 한다.
 - Pseudo-3D convolutional layer
     
-    ![스크린샷 2023-10-31 오전 1.25.45.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.25.45.png)
+    :::{figure-md} 
+    <img src="../../pics/Make_A_Video/conv3d.png" alt="make_a_video_04" class="bg-primary mb-1">
+    :::
     
     - $h$: 입력 텐서 (dimension: $B$(batch),$C$(channels),$F$(frames),$H$(height),$W$(width))
     - $\text{o}T$: transpose operator (spatial ↔ temporal)
@@ -125,13 +146,16 @@
 
 ### 3.2.2. Psuedo-3D attention layers
 
-![스크린샷 2023-10-31 오전 1.35.23.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.23.png)
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.23.png" alt="make_a_video_05" class="bg-primary mb-1">
+:::
 
 - [“Video Diffusion Models**”**](https://arxiv.org/abs/2204.03458)에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.
 - Pseudo-3D convolutional layer처럼 각각의 spatial attenion layer를 쌓아, 전체 spatiotemporal attention layer를 근사화하는 temporal attention layer를 쌓는다.
 - Pseudo-3D attention layer
-    
-    ![스크린샷 2023-10-31 오전 1.42.20.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.42.20.png)
+    :::{figure-md} 
+    <img src="../../pics/Make_A_Video/attention3d.png" alt="make_a_video_06" class="bg-primary mb-1">
+    :::
     
     - $h$: 입력 텐서 (dimension: $B$(batch),$C$(channels),$F$(frames),$H$(height),$W$(width))
     - flatten: spatial dimension 축에 대해 flatten하는 연산 (결과 dimension: $B$,$C$,$F$,$HW$)
@@ -291,15 +315,23 @@
 
 - MSR-VTT에 대해 성능을 보고하는 GODIVA, NUWA 외에도, 중국어와 영어를 모두 입력으로 받는  CogVideo 모델에 대해서도 추론을 수행하였다.
 
-![스크린샷 2023-10-31 오전 1.15.30.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.30.png)
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.30.png" alt="make_a_video_06" class="bg-primary mb-1">
+Table 1
+:::
+
 
 → 가장 우수한 성능을 보인다. 
 
 ### Automatic Evluation on UCF-101
 
-![스크린샷 2023-10-31 오전 1.15.48.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.48.png)
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.48.png" alt="make_a_video_06" class="bg-primary mb-1">
+Table 2
+:::
 
-  → Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다. 
+→ Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다. 
+
 
 ### Human Evaluation
 
@@ -308,7 +340,10 @@
 - 각 입력에 대해 8개의 동영상을 무작위로 생성하고, 8번 평가하여 평균 결과를 낸다.
 - 사람의 평가를 위해 76x256x256 해상도로 동영상을 생성한다.
 
-![스크린샷 2023-10-31 오전 1.15.57.png](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.57.png)
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.57.png" alt="make_a_video_06" class="bg-primary mb-1">
+Table 3
+:::
 
 → 평가자가 Make-A-Video 모델의 결과가 더 낫다고 투표한 퍼센트 비율. 대부분 평가자가 모든 벤치마크에서 Make-A-Video가 더 낫다고 평가하였다. 
 
@@ -319,31 +354,31 @@
 
 ## 4.3 Qualitative Results
 
-![T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
-→ Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.13.16.png)
-
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.13.16.png" alt="make_a_video_06" class="bg-primary mb-1">
 T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
 → Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.
+:::
 
-![이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
-가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
-사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.16.47.png)
-
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.16.47.png" alt="make_a_video_06" class="bg-primary mb-1">
 이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
 가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
 사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 
+:::
 
-![두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
-FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
-본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦 ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.20.55.png)
-
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.20.55.png" alt="make_a_video_06" class="bg-primary mb-1">
 두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
 FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
-본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦 
+본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦
+:::
 
-![비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오 ](Make-A-Video%20Text-to-Video%20Generation%20without%20Text%20b637408238284813ad6c570451dbe2db/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.24.17.png)
-
+:::{figure-md} 
+<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.24.17.png" alt="make_a_video_06" class="bg-primary mb-1">
 비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오 
+:::
+
 
 - 기타 결과: [https://make-a-video.github.io/](https://make-a-video.github.io/)
 
@@ -351,7 +386,3 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
 
 - 주변 세계로부터 지식을 배우는 human intelligence처럼 generative system도 인간의 학습 방식을 모방할 수 있다면, 더욱 창의적이고 유용할 것이다.
 - 연구자들은 비지도 학습을 통해 훨씬 더 많은 동영상에서 세계의 dynamic을 학습함으로써 기존의 한계를 극복할 수 있다.
-
-# 참고 자료
-
-- [https://sanghyu.tistory.com/24](https://sanghyu.tistory.com/24)

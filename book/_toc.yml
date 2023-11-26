@@ -39,6 +39,10 @@ parts:
   - file: docs/review/ConceptLab
   - file: docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space
 
+- caption: Video Generation
+  chapters:
+  - file: docs/review/Make_A_Video
+  
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

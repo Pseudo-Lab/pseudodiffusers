@@ -100,7 +100,7 @@
     - Super-resolution network $SR_l$, $SR_h$: D에서 생성된 이미지 64X64 저해상도 이미지 $\hat{y}_l$를 256X256, 768X768 픽셀로 증가시켜 최종 이미지 $\hat{y}$를 만드는 네트워크
 
         :::{figure-md} 
-        <img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.14.45.png" alt="make_a_video_02" class="bg-primary mb-1">
+        <img src="../../pics/Make_A_Video/1.png" alt="make_a_video_02" class="bg-primary mb-1">
 
         text $x$가 prior $P$를 통해 image embedding 변환된다. 
         fps: desired frame rate 
@@ -126,7 +126,7 @@
 ### 3.2.1 Pseudo-3D convolutional layers
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.02.png" alt="make_a_video_03" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/2.png" alt="make_a_video_03" class="bg-primary mb-1">
 
 Pseudo-3D convolutional layers
 :::
@@ -147,7 +147,7 @@ Pseudo-3D convolutional layers
 ### 3.2.2. Psuedo-3D attention layers
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.35.23.png" alt="make_a_video_05" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/3.png" alt="make_a_video_05" class="bg-primary mb-1">
 :::
 
 - [“Video Diffusion Models**”**](https://arxiv.org/abs/2204.03458)에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.
@@ -316,7 +316,7 @@ Pseudo-3D convolutional layers
 - MSR-VTT에 대해 성능을 보고하는 GODIVA, NUWA 외에도, 중국어와 영어를 모두 입력으로 받는  CogVideo 모델에 대해서도 추론을 수행하였다.
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.30.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/4.png" alt="make_a_video_06" class="bg-primary mb-1">
 Table 1
 :::
 
@@ -326,7 +326,7 @@ Table 1
 ### Automatic Evluation on UCF-101
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.48.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/5.png" alt="make_a_video_06" class="bg-primary mb-1">
 Table 2
 :::
 
@@ -341,7 +341,7 @@ Table 2
 - 사람의 평가를 위해 76x256x256 해상도로 동영상을 생성한다.
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-10-31_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%258C%25E1%2585%25A5%25E1%2586%25AB_1.15.57.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/6.png" alt="make_a_video_06" class="bg-primary mb-1">
 Table 3
 :::
 
@@ -355,27 +355,27 @@ Table 3
 ## 4.3 Qualitative Results
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.13.16.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/7.png" alt="make_a_video_06" class="bg-primary mb-1">
 T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
 → Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.
 :::
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.16.47.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/8.png" alt="make_a_video_06" class="bg-primary mb-1">
 이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
 가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
 사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 
 :::
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.20.55.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/9.png" alt="make_a_video_06" class="bg-primary mb-1">
 두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
 FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
 본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦
 :::
 
 :::{figure-md} 
-<img src="../../pics/Make_A_Video/%25E1%2584%2589%25E1%2585%25B3%25E1%2584%258F%25E1%2585%25B3%25E1%2584%2585%25E1%2585%25B5%25E1%2586%25AB%25E1%2584%2589%25E1%2585%25A3%25E1%2586%25BA_2023-11-01_%25E1%2584%258B%25E1%2585%25A9%25E1%2584%2592%25E1%2585%25AE_2.24.17.png" alt="make_a_video_06" class="bg-primary mb-1">
+<img src="../../pics/Make_A_Video/10.png" alt="make_a_video_06" class="bg-primary mb-1">
 비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오 
 :::
 

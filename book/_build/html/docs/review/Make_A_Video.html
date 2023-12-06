@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>1. Introduction &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Make_A_Video';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="VideoLDM" href="VideoLDM.html" />
+    <link rel="prev" title="Diffusion Models already have a Semantic Latent Space" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">1. <strong>Introduction</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Make_A_Video.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/Make_A_Video.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>1. Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. <strong>Introduction</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-video">Make-A-video 제안 배경</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Make-A-video 특성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-work">2. Previous Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. <strong>Method</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-model">3.1. Text-To-Image Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-layers">3.2. Spatiotemporal Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-3d-convolutional-layers">3.2.1 Pseudo-3D convolutional layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psuedo-3d-attention-layers">3.2.2. Psuedo-3D attention layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frame-interpolation-network">3.3 Frame Interpolation Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">3.4 Training</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-and-settings">4.1 Dataset and Settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-metrics">Automatic Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation-set-and-metrics">Human Evaluation Set and Metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-results">4.2 Quantitative Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-evaluaton-on-msr-vtt">Automatic Evaluaton on MSR-VTT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-evluation-on-ucf-101">Automatic Evluation on UCF-101</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation">Human Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results">4.3 Qualitative Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5. 결론</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Make-A-Video: Text-to-Video Generation without Text-Video Data</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2209.14792">https://arxiv.org/abs/2209.14792</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> <a class="reference external" href="https://www.linkedin.com/in/jeonghwa-yoo-8403a716b">Jeonghwa Yoo</a></p></li>
+<li><p><strong>Last updated on Nov. 26, 2023</strong></p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p>참고 코드: <a class="github reference external" href="https://github.com/lucidrains/make-a-video-pytorch">lucidrains/make-a-video-pytorch</a></p></li>
+</ul>
+<aside>
+💡 핵심 요약 
+<ul class="simple">
+<li><p>Text-to-Image(T2I)를 이용하여 Text-to-Video(T2V)를 수행함</p></li>
+<li><p>Make-a-Video의 장점</p>
+<ol class="arabic simple">
+<li><p>T2V 모델의 학습을 가속화 하였음</p></li>
+<li><p>Text-video 데이터가 필요하지 않음</p></li>
+<li><p>이미지 생성 모델의 방대하다는 특성을 그대로 유지함</p></li>
+</ol>
+</li>
+<li><p>방법론</p>
+<ol class="arabic simple">
+<li><p>Full temporal U-net과 attention tensor를 분해하여 공간(space)과 시간(time)으로 근사화 함</p></li>
+<li><p>다양한 어플리케이션에 적용하기 위한 spatial temporal pipeline을 설계함</p></li>
+</ol>
+</li>
+<li><p>관련 모듈</p>
+<ol class="arabic simple">
+<li><p>Pseudo-3D convolutional layer</p></li>
+<li><p>Pseudo-3D attention layer</p></li>
+<li><p>Frame interpolation network</p></li>
+</ol>
+</li>
+<li><p>결과: text-to-video 생성 태스크에서 SOTA 달성</p></li>
+</ul>
+</aside>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>1. <strong>Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<section id="make-a-video">
+<h2>Make-A-video 제안 배경<a class="headerlink" href="#make-a-video" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>T2I 모델링을 할 수 있는 데이터는 인터넷을 통해 확보될 수 있으나, 비슷한 규모의 텍스트 비디오 데이터셋을 수집하기는 어렵다.</p></li>
+<li><p>T2I 모델이 존재하는데 T2V 모델을 처음부터 학습 시키는 것은 낭비일 수 있다.</p></li>
+<li><p>비지도 학습을 사용하여 더 많은 데이터를 학습할 수 있다.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Make-A-video 특성<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>T2I 모델을 활용하여, 레이블이 지정되지 않은 비디오 데이터에 대해 비지도 학습을 사용하여 학습한다 → 페어링된 텍스트-비디오 데이터 없이도 텍스트에서 비디오를 생성할 수 있다.</p></li>
+<li><p>텍스트 없이도 비지도 비디오만으로 세상의 다양한 개체가 어떻게 움직이고 상호 작용하는지 학습할 수 있다.</p></li>
+</ul>
+</section>
+<section id="contribution">
+<h2>Contribution<a class="headerlink" href="#contribution" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>디퓨전 기반의 T2I 모델을 T2V로 확장하는 효과적인 방법인 Make-A-Video를 소개한다.</p></li>
+<li><p>Text-to-image 를 prior로 사용하여 text-video 데이터의 필요성을 우회한다.</p></li>
+<li><p>고화질, 고프레임률 비디오를 생성하는 super-resolution 전략을 제안한다.</p></li>
+<li><p>Make-A-Video를 기존 T2V 시스템과 비교하여 평가한다. 또한, 제로샷 T2V human evaluation을 위해 300개의 프롬프트 테스트 세트를 수집하여 공개할 계획이다.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="previous-work">
+<h1>2. Previous Work<a class="headerlink" href="#previous-work" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method">
+<h1>3. <strong>Method</strong><a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<ul>
+<li><p>Make-A-Video의 주요 요소</p>
+<ol class="arabic simple">
+<li><p>텍스트-이미지 쌍으로 학습된 base T2I 모델</p></li>
+<li><p>신경망의 블록을 시간 차원으로 확장하는 시공간 convolution 및 attention layer</p></li>
+<li><p>두 시공간 layer로 구성된 시공간 신경망과 높은 프레임 속도 생성을 위한 frame interpolation network</p></li>
+</ol>
+</li>
+<li><p>Make-A-Video의 최종 inference 수식</p>
+<figure class="align-default" id="id3">
+<img alt="make_a_video_00" class="bg-primary mb-1" src="../../_images/001.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 420 </span><span class="caption-text">최종 inference 수식</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(SR_h\)</span>: spatial super-resolution network</p></li>
+<li><p><span class="math notranslate nohighlight">\(SR^t_l\)</span>: spatiotemporal super-resolution network</p></li>
+<li><p><span class="math notranslate nohighlight">\(\uparrow_{F}\)</span>: frame interpolation network</p></li>
+<li><p><span class="math notranslate nohighlight">\(D^t\)</span>: spatiotemporal decoder</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span>: prior network</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{x}\)</span>: BPE-encoded text</p></li>
+<li><p><span class="math notranslate nohighlight">\(C_x\)</span>: CLIP text encoder</p></li>
+<li><p><span class="math notranslate nohighlight">\(x\)</span>: input text</p></li>
+</ul>
+</li>
+</ul>
+<section id="text-to-image-model">
+<h2>3.1. Text-To-Image Model<a class="headerlink" href="#text-to-image-model" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2205.11487">“Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding(Imagen)”</a>와 연구 내용을 공유하였다.</p></li>
+<li><p>Imagen</p>
+<figure class="align-default" id="id4">
+<img alt="make_a_video_01" class="bg-primary mb-1" src="../../_images/Untitled.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 421 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>고해상도 이미지를 만들기 위해 사용한 네트워크</p>
+<ul>
+<li><p>A prior Network <span class="math notranslate nohighlight">\(P\)</span>: 텍스트 임베딩 <span class="math notranslate nohighlight">\(x_e\)</span>와 BPE encoded text tokens <span class="math notranslate nohighlight">\(\hat{x}\)</span>이 주어졌을 때 이미지 임베딩 <span class="math notranslate nohighlight">\(y_e\)</span>를 생성하는 네트워크</p></li>
+<li><p>Decoder Network <span class="math notranslate nohighlight">\(D\)</span>: 이미지 임베딩 <span class="math notranslate nohighlight">\(y_e\)</span>로부터 저해상도 64X64 RGB 이미지 <span class="math notranslate nohighlight">\(\hat{y}_l\)</span>를 생성하는 네트워크</p></li>
+<li><p>Super-resolution network <span class="math notranslate nohighlight">\(SR_l\)</span>, <span class="math notranslate nohighlight">\(SR_h\)</span>: D에서 생성된 이미지 64X64 저해상도 이미지 <span class="math notranslate nohighlight">\(\hat{y}_l\)</span>를 256X256, 768X768 픽셀로 증가시켜 최종 이미지 <span class="math notranslate nohighlight">\(\hat{y}\)</span>를 만드는 네트워크</p>
+<figure class="align-default" id="id5">
+<img alt="make_a_video_02" class="bg-primary mb-1" src="../../_images/1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 422 </span><span class="caption-text">text <span class="math notranslate nohighlight">\(x\)</span>가 prior <span class="math notranslate nohighlight">\(P\)</span>를 통해 image embedding 변환된다.
+fps: desired frame rate</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="spatiotemporal-layers">
+<h2>3.2. Spatiotemporal Layers<a class="headerlink" href="#spatiotemporal-layers" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>2차원 조건부 네트워크를 시간적 차원으로 확장하기 위해 다음의 구성 요소를 수정한다.</p>
+<ul class="simple">
+<li><p>Convolutional layers</p></li>
+<li><p>Attention layers</p></li>
+</ul>
+</li>
+<li><p>Fully-connected layers는 특별한 수정을 할 필요 없이 시간 정보만 추가해주면 된다.</p></li>
+<li><p>구성 요소 수정 결과 <span class="math notranslate nohighlight">\(D^t\)</span>는 64X64 사이즈의 16 RGB frame을 만들게 된다.</p></li>
+<li><p>Frame interpolation network <span class="math notranslate nohighlight">\(\uparrow_{F}\)</span>가 생성된 16개의 프레임과 super-resolution 네트워크 <span class="math notranslate nohighlight">\(SR^t_l\)</span> 사이를 보간하여 프레임 속도를 증가시킨다.</p></li>
+<li><p>Super-resolution 네트워크에는 hallucinating information(환각 정보)가 포함 된다. 깜박이는 잔상이 생기지 않으려면, 환각이 프레임 전체에 걸쳐 일관성을 유지해야 한다.</p>
+<ul>
+<li><p>Hallucinating information</p>
+<p>실제로 존재하지 않는 정보나 세부 사항을 생성하거나 가상으로 추가하는 것</p>
+</li>
+</ul>
+</li>
+<li><p>프레임당 super resolution을 수행하는 것보다 spatiotemporal 모듈인 <span class="math notranslate nohighlight">\(SR^t_l\)</span>가 더 좋은 성능을 보였다.</p></li>
+<li><p>하지만, <span class="math notranslate nohighlight">\(SR_h\)</span>를 위와 같은 모듈로 만들기엔 메모리 및 컴퓨팅 제약과 고해상도 비디오 데이터의 부족으로 <span class="math notranslate nohighlight">\(SR_h\)</span>를 위와 같이 시간적 차원으로 확장하는 것은 어려웠다 → <span class="math notranslate nohighlight">\(SR_h\)</span>는 공간적 차원에서 작동한다.( 각 프레임에 대해 동일한 노이즈 초기화를 사용하여 프레임 전반에 걸쳐 일관된 환각을 제공함)</p></li>
+</ul>
+<section id="pseudo-3d-convolutional-layers">
+<h3>3.2.1 Pseudo-3D convolutional layers<a class="headerlink" href="#pseudo-3d-convolutional-layers" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id6">
+<img alt="make_a_video_03" class="bg-primary mb-1" src="../../_images/2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 423 </span><span class="caption-text">Pseudo-3D convolutional layers</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>2D 컨벌루션 레이어 다음에 1D 컨벌루션을 쌓는다 (Cf:separable convolution)</p>
+<ul>
+<li><p>3D 컨벌루션의 계산 load를 줄일 수 있다.</p></li>
+<li><p>사전 학습된 2D 컨볼루션 레이어와 새로 초기화된 1D 컨벌루션 레이어 사이에 명확한 경계를 생성하여, spatial information을 유지한 채 temporal convolution을 처음부터 학습할 수 있게 한다.</p></li>
+</ul>
+</li>
+<li><p>Pseudo-3D convolutional layer</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h\)</span>: 입력 텐서 (dimension: <span class="math notranslate nohighlight">\(B\)</span>(batch),<span class="math notranslate nohighlight">\(C\)</span>(channels),<span class="math notranslate nohighlight">\(F\)</span>(frames),<span class="math notranslate nohighlight">\(H\)</span>(height),<span class="math notranslate nohighlight">\(W\)</span>(width))</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{o}T\)</span>: transpose operator (spatial ↔ temporal)</p></li>
+<li><p><span class="math notranslate nohighlight">\(Conv_{2_D}\)</span>는 pretrained T2I 모델에서 초기화 되고, <span class="math notranslate nohighlight">\(Conv_{1_D}\)</span>는 identity 함수로 초기화 된다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="psuedo-3d-attention-layers">
+<h3>3.2.2. Psuedo-3D attention layers<a class="headerlink" href="#psuedo-3d-attention-layers" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2204.03458">“Video Diffusion Models**”**</a>에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.</p></li>
+<li><p>Pseudo-3D convolutional layer처럼 각각의 spatial attenion layer를 쌓아, 전체 spatiotemporal attention layer를 근사화하는 temporal attention layer를 쌓는다.</p></li>
+<li><p>Pseudo-3D attention layer</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(h\)</span>: 입력 텐서 (dimension: <span class="math notranslate nohighlight">\(B\)</span>(batch),<span class="math notranslate nohighlight">\(C\)</span>(channels),<span class="math notranslate nohighlight">\(F\)</span>(frames),<span class="math notranslate nohighlight">\(H\)</span>(height),<span class="math notranslate nohighlight">\(W\)</span>(width))</p></li>
+<li><p>flatten: spatial dimension 축에 대해 flatten하는 연산 (결과 dimension: <span class="math notranslate nohighlight">\(B\)</span>,<span class="math notranslate nohighlight">\(C\)</span>,<span class="math notranslate nohighlight">\(F\)</span>,<span class="math notranslate nohighlight">\(HW\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(ATTN_{2D}\)</span>는 pretrained T2I 모델에서 초기화되고, <span class="math notranslate nohighlight">\(ATTN_{1D}\)</span>는 identity function으로 초기화 된다.</p></li>
+<li><p>Code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpatioTemporalAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">dim</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">dim_head</span> <span class="o">=</span> <span class="mi">64</span><span class="p">,</span>
+        <span class="n">heads</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="n">add_feed_forward</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">ff_mult</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="n">pos_bias</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">flash</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">causal_time_attn</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="ow">not</span> <span class="p">(</span><span class="n">flash</span> <span class="ow">and</span> <span class="n">pos_bias</span><span class="p">),</span> <span class="s1">&#39;learned positional attention bias is not compatible with flash attention&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_attn</span> <span class="o">=</span> <span class="n">Attention</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim_head</span> <span class="o">=</span> <span class="n">dim_head</span><span class="p">,</span> <span class="n">heads</span> <span class="o">=</span> <span class="n">heads</span><span class="p">,</span> <span class="n">flash</span> <span class="o">=</span> <span class="n">flash</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">spatial_rel_pos_bias</span> <span class="o">=</span> <span class="n">ContinuousPositionBias</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heads</span> <span class="o">=</span> <span class="n">heads</span><span class="p">,</span> <span class="n">num_dims</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">pos_bias</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_attn</span> <span class="o">=</span> <span class="n">Attention</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">dim_head</span> <span class="o">=</span> <span class="n">dim_head</span><span class="p">,</span> <span class="n">heads</span> <span class="o">=</span> <span class="n">heads</span><span class="p">,</span> <span class="n">flash</span> <span class="o">=</span> <span class="n">flash</span><span class="p">,</span> <span class="n">causal</span> <span class="o">=</span> <span class="n">causal_time_attn</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temporal_rel_pos_bias</span> <span class="o">=</span> <span class="n">ContinuousPositionBias</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heads</span> <span class="o">=</span> <span class="n">heads</span><span class="p">,</span> <span class="n">num_dims</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">pos_bias</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">has_feed_forward</span> <span class="o">=</span> <span class="n">add_feed_forward</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">add_feed_forward</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">ff</span> <span class="o">=</span> <span class="n">FeedForward</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">ff_mult</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">x</span><span class="p">,</span>
+        <span class="n">enable_time</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">):</span>
+        <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
+        <span class="n">is_video</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">==</span> <span class="mi">5</span>
+        <span class="n">enable_time</span> <span class="o">&amp;=</span> <span class="n">is_video</span>
+
+        <span class="k">if</span> <span class="n">is_video</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b c f h w -&gt; (b f) (h w) c&#39;</span><span class="p">)</span> <span class="c1">#[bXf, hXw, c]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b c h w -&gt; b (h w) c&#39;</span><span class="p">)</span><span class="c1">#[b, hXw, c]</span>
+
+        <span class="n">space_rel_pos_bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_rel_pos_bias</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">spatial_rel_pos_bias</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">spatial_attn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rel_pos_bias</span> <span class="o">=</span> <span class="n">space_rel_pos_bias</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+
+        <span class="k">if</span> <span class="n">is_video</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;(b f) (h w) c -&gt; b c f h w&#39;</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b (h w) c -&gt; b c h w&#39;</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">enable_time</span><span class="p">:</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;b c f h w -&gt; (b h w) f c&#39;</span><span class="p">)</span> <span class="c1">#[bXhXw, f, c] </span>
+
+            <span class="n">time_rel_pos_bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_rel_pos_bias</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="k">if</span> <span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">temporal_rel_pos_bias</span><span class="p">)</span> <span class="k">else</span> <span class="kc">None</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">temporal_attn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">rel_pos_bias</span> <span class="o">=</span> <span class="n">time_rel_pos_bias</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+
+            <span class="n">x</span> <span class="o">=</span> <span class="n">rearrange</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;(b h w) f c -&gt; b c f h w&#39;</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">h</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">has_feed_forward</span><span class="p">:</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">enable_time</span> <span class="o">=</span> <span class="n">enable_time</span><span class="p">)</span> <span class="o">+</span> <span class="n">x</span>
+
+        <span class="k">return</span> <span class="n">x</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p>Frame rate conditioning</p>
+<ul class="simple">
+<li><p>비디오의 초당 프레임 수를 나타내는 추가 컨디셔닝 파라미터 <span class="math notranslate nohighlight">\(fps\)</span>를 추가한다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="frame-interpolation-network">
+<h2>3.3 Frame Interpolation Network<a class="headerlink" href="#frame-interpolation-network" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>↑F (Frame Interpolation Network)란?</p>
+<ul>
+<li><p>생성된 프레임 수를 증가시켜, 생성된 비디오를 더 부드럽게 만들고 비디오 길이를 연장 시킬 수 있는 네트워크</p></li>
+<li><p>프레임을 보간하고 extrapolation을 하는 네트워크</p>
+<ul>
+<li><p>Extrapolation: 주어진 데이터 또는 정보를 사용하여 미래의 값을 예측하거나 확장</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>↑F (Frame Interpolation Network) 동작</p>
+<ul>
+<li><p>Spatialtemporal decoder <span class="math notranslate nohighlight">\(D^t\)</span>에서 마스크 처리된 입력 프레임을 제로 패딩하고 비디오 업샘플링을 적용하여 masked frame interpolation을 파인 튜닝한다.</p></li>
+<li><p>파인 튜닝할 때 U-Net의 입력에 4개의 채널을 추가한다.</p>
+<ul>
+<li><p>RGB 마스킹 비디오 입력을 위한 3개의 채널과 마스킹되는 프레임을 나타내는 추가 바이너리 채널</p></li>
+</ul>
+</li>
+<li><p>다양한 frame-skips과 <span class="math notranslate nohighlight">\(fps\)</span>에 대해 파인튜닝하여 추론시 여러 temporal upsample rate를 제공한다.</p></li>
+</ul>
+</li>
+<li><p>본 논문의 모든 실험에서는 ↑F를 frame skip 5로 적용하여 16프레임 비디오를 76프레임((16-1)X5+1)으로 업샘플링 하였다.</p></li>
+<li><p>비디오 시작 또는 끝 프레임을 마스킹하여 비디오 추정 또는 이미지 애니메이션에도 사용할 수 있다.</p></li>
+</ul>
+</section>
+<section id="training">
+<h2>3.4 Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>위에서 설명한 구성 요소들은 독립적으로 학습 된다.</p></li>
+<li><p>훈련 과정</p>
+<ol class="arabic">
+<li><p>Prior <span class="math notranslate nohighlight">\(P\)</span> 훈련 (text-image 데이터 이용)</p>
+<p>→ 텍스트를 입력으로 받는 prior <span class="math notranslate nohighlight">\(P\)</span>는 text-image 데이터에 대해서만 학습 되고 비디오에 대해서는 파인 튜닝하지 않는다.</p>
+</li>
+<li><p>이미지를 이용한 학습</p>
+<p>→ Decoder, prior, 두개의 super-resolution 요소들은 먼저 텍스트 없이 이미지 만으로 학습 된다.</p>
+<p>→ Decoder는 Clip image embedding을 입력으로 받고, super-resolution 요소들은 학습 중에 입력으로 들어온 downsampled image를 입력으로 받는다.</p>
+</li>
+<li><p>비디오를 이용한 학습</p>
+<ul class="simple">
+<li><p>이미지에 대한 훈련이 끝나면 새로운 시간 레이어를 추가하고 초기화하여 레이블이 지정되지 않은 비디오 데이터에 대해 파인 튜닝한다.</p></li>
+<li><p>원본 비디오에서 16프레임이 샘플링 되며, 1에서 30 사이의 랜덤 <span class="math notranslate nohighlight">\(fps\)</span>를 사용한다.</p></li>
+<li><p>디코더를 학습하는 동안 훈련 초기에는 더 높은 <span class="math notranslate nohighlight">\(fps\)</span> 범위(모션이 적은)에서 시작하고, 이후에는 더 작은 <span class="math notranslate nohighlight">\(fps\)</span> 범위(모션이 많은)로 전환한다.</p></li>
+<li><p>Masked-frame interpolation 네트워크는 temporal 디코더로부터 파인 튜닝된다.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiments">
+<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<section id="dataset-and-settings">
+<h2>4.1 Dataset and Settings<a class="headerlink" href="#dataset-and-settings" title="Permalink to this heading">#</a></h2>
+<section id="datasets">
+<h3>Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Image, Text</p>
+<ul>
+<li><p>LAION-5B 데이터셋의 일부 2.3B의 데이터를 사용하였다.</p></li>
+<li><p>NSFW 이미지, 텍스트의 유해한 단어 또는 워터마크 확률이 0.5보다 큰 이미지가 있는 샘플 쌍을 필터링하였다. ****</p>
+<ul>
+<li><p>NSFW: Not Safe For Work, 선정적이거나 음란하거나 폭력적인 내용을 포함한 콘텐츠</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Video</p>
+<ul>
+<li><p>WebVid-10M과, HD-VILA-100M 데이터셋의 일부 10M 데이터를 사용하였다.</p>
+<ul>
+<li><p>Decoder <span class="math notranslate nohighlight">\(D^t\)</span>, interpolation 모델 → WebVid-10M을 이용하여 학습</p></li>
+<li><p><span class="math notranslate nohighlight">\(SR^t_l\)</span> → WebVid-10M, HD-VILA-100M을 이용하여 학습</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Zero-shot test 데이터</p>
+<ul>
+<li><p>UCF-101, MSR-VTT</p>
+<ul>
+<li><p>UCF-101: 액션 인식 연구를 위해 고안되었으며, 다양한 동작 및 환경에서 촬영된 비디오 클립 데이터셋</p></li>
+<li><p>MSR-VTT: 비디오와 해당 비디오에 대한 텍스트 설명 또는 캡션을 포함하는 데이터셋</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="automatic-metrics">
+<h3>Automatic Metrics<a class="headerlink" href="#automatic-metrics" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>UCF-101</p>
+<ul>
+<li><p>각 클래스에 대해 하나의 템플릿 문장을 작성하고 평가를 위해 수정한다.</p></li>
+<li><p>10K 샘플에 대해 Fretchet Video Distance(FVD)와 Inception Score(IS)를 측정한다.</p></li>
+<li><p>Train셋과 동일한 클래스 분포를 따르는 샘플을 생성한다.</p></li>
+</ul>
+</li>
+<li><p>MSR-VTT</p>
+<ul>
+<li><p>테스트 세트의 모든 59,794 캡션에 대한 FID와 CLIPSIM(비디오 프레임과 텍스트 간의 평균 CLIP 유사도)를 측정한다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="human-evaluation-set-and-metrics">
+<h3>Human Evaluation Set and Metrics<a class="headerlink" href="#human-evaluation-set-and-metrics" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Amazon Mechanical Turk(AMT)에서 300개의 프롬프트로 이루어진 평가 세트를 수집하였다.</p></li>
+<li><p>Annotator들에게 T2V 시스템이 있다면 어떤 것을 생성하고 싶은지 물어봤다.</p></li>
+<li><p>불완전하거나, 너무 추상적이거나, 불쾌감을 주는 프롬프트를 필터링 하였다.</p></li>
+<li><p>5가지 카테고리(동물, 판타지, 사람, 자연 및 풍경, 음식 및 음료)를 식별하고 해당 카테고리에 맞는 프롬프트를 선택하였다.</p></li>
+<li><p>이러한 프롬프트는 동영상을 만드는 데에 사용되지 않고 선택 되었으며, 고정된 상태로 유지했다.</p></li>
+<li><p>Human evaluation을 위해 Imagen의 DrawBench 프롬프트도 사용하였다.</p></li>
+<li><p>비디오 품질과 text-vedio faithfulness를 평가하였다.</p>
+<ul>
+<li><p>비디오 품질 → 두 개의 비디오를 랜덤 순서로 보여주고 어떤 비디오의 품질이 더 좋은지 annotator에게 물어본다.</p></li>
+<li><p>Text-vdeio faithfulness → 텍스트를 추가로 보여주고 어떤 비디오가 텍스트와 더 잘 일치하는지 annotator에게 물어본다.</p></li>
+</ul>
+</li>
+<li><p>보간 모델과 FILM의 비디오 모션 사실감을 비교하기 위한 평가도 진행하였다.</p></li>
+<li><p>5명의 각기 다른 annotator의 다수 득표를 최종 결과로 사용하였다.</p></li>
+</ul>
+</section>
+</section>
+<section id="quantitative-results">
+<h2>4.2 Quantitative Results<a class="headerlink" href="#quantitative-results" title="Permalink to this heading">#</a></h2>
+<section id="automatic-evaluaton-on-msr-vtt">
+<h3>Automatic Evaluaton on MSR-VTT<a class="headerlink" href="#automatic-evaluaton-on-msr-vtt" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>MSR-VTT에 대해 성능을 보고하는 GODIVA, NUWA 외에도, 중국어와 영어를 모두 입력으로 받는  CogVideo 모델에 대해서도 추론을 수행하였다.</p></li>
+</ul>
+<p>→ 가장 우수한 성능을 보인다.</p>
+</section>
+<section id="automatic-evluation-on-ucf-101">
+<h3>Automatic Evluation on UCF-101<a class="headerlink" href="#automatic-evluation-on-ucf-101" title="Permalink to this heading">#</a></h3>
+<p>→ Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다.</p>
+</section>
+<section id="human-evaluation">
+<h3>Human Evaluation<a class="headerlink" href="#human-evaluation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>DrawBench와 테스트셋에 대해서 CogVideo와 성능을 비교한다.</p></li>
+<li><p>또한, VDM의 웹 페이지에 표시된 28개의 동영상에 대해서도 평가한다.</p></li>
+<li><p>각 입력에 대해 8개의 동영상을 무작위로 생성하고, 8번 평가하여 평균 결과를 낸다.</p></li>
+<li><p>사람의 평가를 위해 76x256x256 해상도로 동영상을 생성한다.</p></li>
+</ul>
+<p>→ 평가자가 Make-A-Video 모델의 결과가 더 낫다고 투표한 퍼센트 비율. 대부분 평가자가 모든 벤치마크에서 Make-A-Video가 더 낫다고 평가하였다.</p>
+<ul class="simple">
+<li><p>Frame Interpolation Network와 FILM을 비교 평가하기</p>
+<ul>
+<li><p>DrawBench의 텍스트 프롬프트와 평가 세트에서 저프레임률 비디오(1 FPS)를 생성한 다음, 4FPS까지 업샘플링한다.</p></li>
+<li><p>평가자들은 eval set에 대해서는 62%,  DrawBench에 대해서는 54%로 Make-A-Video가 더 낫다고 평가하였다.</p></li>
+<li><p>프레임 간의 차이가 커서 물체가 어떻게 움직이는지에 대한 real-world 지식이 중요한 경우에는 본 논문에 방법이 더 뛰어난 것으로 관찰 되었다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="qualitative-results">
+<h2>4.3 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>기타 결과: <a class="reference external" href="https://make-a-video.github.io/">https://make-a-video.github.io/</a></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="id2">
+<h1>5. 결론<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>주변 세계로부터 지식을 배우는 human intelligence처럼 generative system도 인간의 학습 방식을 모방할 수 있다면, 더욱 창의적이고 유용할 것이다.</p></li>
+<li><p>연구자들은 비지도 학습을 통해 훨씬 더 많은 동영상에서 세계의 dynamic을 학습함으로써 기존의 한계를 극복할 수 있다.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Diffusion_models_already_have_a_Semantic_Latent_Space.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diffusion Models already have a Semantic Latent Space</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="VideoLDM.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">VideoLDM</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">1. <strong>Introduction</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-a-video">Make-A-video 제안 배경</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Make-A-video 특성</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#previous-work">2. Previous Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. <strong>Method</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-model">3.1. Text-To-Image Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spatiotemporal-layers">3.2. Spatiotemporal Layers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pseudo-3d-convolutional-layers">3.2.1 Pseudo-3D convolutional layers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#psuedo-3d-attention-layers">3.2.2. Psuedo-3D attention layers</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frame-interpolation-network">3.3 Frame Interpolation Network</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training">3.4 Training</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-and-settings">4.1 Dataset and Settings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-metrics">Automatic Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation-set-and-metrics">Human Evaluation Set and Metrics</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-results">4.2 Quantitative Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-evaluaton-on-msr-vtt">Automatic Evaluaton on MSR-VTT</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automatic-evluation-on-ucf-101">Automatic Evluation on UCF-101</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#human-evaluation">Human Evaluation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results">4.3 Qualitative Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">5. 결론</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

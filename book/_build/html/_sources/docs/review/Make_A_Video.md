@@ -128,7 +128,7 @@
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/2.png" alt="make_a_video_03" class="bg-primary mb-1">
 
-Pseudo-3D convolutional layers
+Architecture of Pseudo-3D convolutional layers
 :::
 
 - 2D 컨벌루션 레이어 다음에 1D 컨벌루션을 쌓는다 (Cf:separable convolution)    
@@ -138,6 +138,8 @@ Pseudo-3D convolutional layers
     
     :::{figure-md} 
     <img src="../../pics/Make_A_Video/conv3d.png" alt="make_a_video_04" class="bg-primary mb-1">
+    
+    Pseudo-3D convolutional layer
     :::
     
     - $h$: 입력 텐서 (dimension: $B$(batch),$C$(channels),$F$(frames),$H$(height),$W$(width))
@@ -148,6 +150,8 @@ Pseudo-3D convolutional layers
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/3.png" alt="make_a_video_05" class="bg-primary mb-1">
+
+Architecture of Pseudo-3D attention layers
 :::
 
 - [“Video Diffusion Models**”**](https://arxiv.org/abs/2204.03458)에 영감을 받아 dimension decomposition 전략을 attention layer에 확장하였다.
@@ -155,6 +159,8 @@ Pseudo-3D convolutional layers
 - Pseudo-3D attention layer
     :::{figure-md} 
     <img src="../../pics/Make_A_Video/attention3d.png" alt="make_a_video_06" class="bg-primary mb-1">
+    
+    Pseudo-3D attention layer
     :::
     
     - $h$: 입력 텐서 (dimension: $B$(batch),$C$(channels),$F$(frames),$H$(height),$W$(width))
@@ -317,7 +323,8 @@ Pseudo-3D convolutional layers
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/4.png" alt="make_a_video_06" class="bg-primary mb-1">
-Table 1
+
+Automatic Evaluaton on MSR-VTT
 :::
 
 
@@ -327,7 +334,8 @@ Table 1
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/5.png" alt="make_a_video_06" class="bg-primary mb-1">
-Table 2
+
+Automatic Evluation on UCF-101
 :::
 
 → Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다. 
@@ -342,7 +350,8 @@ Table 2
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/6.png" alt="make_a_video_06" class="bg-primary mb-1">
-Table 3
+
+Human Evaluation
 :::
 
 → 평가자가 Make-A-Video 모델의 결과가 더 낫다고 투표한 퍼센트 비율. 대부분 평가자가 모든 벤치마크에서 Make-A-Video가 더 낫다고 평가하였다. 
@@ -356,26 +365,30 @@ Table 3
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/7.png" alt="make_a_video_06" class="bg-primary mb-1">
+
 T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
 → Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.
 :::
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/8.png" alt="make_a_video_06" class="bg-primary mb-1">
-이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과
-가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함 
-사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음 
+
+이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과.
+가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함. 
+사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음. 
 :::
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/9.png" alt="make_a_video_06" class="bg-primary mb-1">
+
 두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach 
 FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함. 
-본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듦
+본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듬.
 :::
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/10.png" alt="make_a_video_06" class="bg-primary mb-1">
+
 비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오 
 :::
 

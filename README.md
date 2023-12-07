@@ -44,6 +44,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 15 | 2023.10.25 | Sangwoo Jo <br> HyoungSeo Cho | [Progressive Distillation for Fast Sampling of Diffusion Models](https://arxiv.org/abs/2202.00512) (ICLR 2022) <br> [ConceptLab: Creative Generation using Diffusion Prior Constraints](https://arxiv.org/abs/2308.02669) |
 | 16 | 2023.11.01 | SeonHoon Kim <br> Jeonghwa Yoo | [BBDM: Image-to-image Translation with Brownian Bridge Diffusion Models](https://arxiv.org/abs/2205.07680) (CVPR 2023) <br>  [Make-A-Video: Text-to-Video Generation without Text-Video Data](https://arxiv.org/abs/2209.14792) |
 | 17 | 2023.11.15 | Sehwan Park <br> Junhyoung Lee | [Diffusion Models already have a Semantic Latent Space](https://arxiv.org/abs/2210.10960) (ICLR 2023) <br>  [Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2304.08818) (CVPR 2023) |
+| 18 | 2023.11.29 | Donggeun Sean Ko | [Video Diffusion Models] (https://arxiv.org/abs/2204.03458) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

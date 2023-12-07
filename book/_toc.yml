@@ -42,6 +42,7 @@ parts:
 - caption: Video Generation
   chapters:
   - file: docs/review/Make_A_Video
+  - file: docs/review/VideoLDM
   
 - caption: Experiments
   chapters:

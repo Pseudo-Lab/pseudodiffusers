@@ -1,0 +1,873 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>VideoLDM &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/VideoLDM';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="1. Introduction" href="Make_A_Video.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">1. <strong>Introduction</strong></a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">VideoLDM</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/VideoLDM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/VideoLDM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>VideoLDM</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">VideoLDM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-video-diffusion-models">3. Latent Video Diffusion Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-latent-image-into-video-generators"><strong>3.1. Turning Latent Image into Video Generators</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-autoencoder-finetuning"><strong>3.1.1 Temporal Autoencoder Finetuning</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-models-for-long-term-generation"><strong>3.2. Prediction Models for Long-Term Generation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-interpolation-for-high-frame-rates"><strong>3.3. Temporal Interpolation for High Frame Rates</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-fine-tuning-of-sr-models"><strong>3.4. Temporal Fine-tuning of SR Models</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments"><strong>4. Experiments</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-driving-video-synthesis">4.<strong><strong>1. High-Resolution Driving Video Synthesis</strong></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-video-with-stable-diffusion"><strong>4.2. Text-to-Video with Stable Diffusion</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personalized-text-to-video-with-dreambooth"><strong>4.2.1 Personalized Text-to-Video with Dreambooth</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="videoldm">
+<h1>VideoLDM<a class="headerlink" href="#videoldm" title="Permalink to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">Title</span><span class="p">:</span><span class="o">**</span> <span class="o">**</span><span class="n">Align</span> <span class="n">your</span> <span class="n">Latents</span><span class="p">:</span> <span class="n">High</span><span class="o">-</span><span class="n">Resolution</span> <span class="n">Video</span> <span class="n">Synthesis</span> <span class="k">with</span> <span class="n">Latent</span> <span class="n">Diffusion</span> <span class="n">Models</span><span class="o">**</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">Reference</span><span class="o">**</span>
+    <span class="o">-</span> <span class="n">Paper</span><span class="p">:</span>  <span class="p">[</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">arxiv</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="nb">abs</span><span class="o">/</span><span class="mf">2304.08818</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">arxiv</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="nb">abs</span><span class="o">/</span><span class="mf">2304.08818</span><span class="p">)</span>
+  
+<span class="o">-</span> <span class="o">**</span><span class="n">Author</span><span class="p">:</span><span class="o">**</span> <span class="n">Jun</span><span class="o">-</span><span class="n">Hyoung</span> <span class="n">Lee</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">Last</span> <span class="n">updated</span> <span class="n">on</span> <span class="n">Nov</span><span class="o">.</span> <span class="mf">30.</span> <span class="mi">2023</span><span class="o">**</span>
+</pre></div>
+</div>
+<img src="../../pics/VideoLDM/figure1.png" alt="figure1" class="bg-primary mb-1" width="600">
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<ul>
+<li><p>Latent Diffusion Models (LDMs)는 computing resource를 줄이기 위해 낮은 차원의 latent space로 압축하여 high quality의 image synthesis를 가능하게 했다.</p></li>
+<li><p>비디오 생성 모델링의 <strong>퀄리티 부족하며,</strong></p>
+<ul class="simple">
+<li><p>이유가 학습에 필요한 <strong>computing cost가 많이 발생, 데이터 셋 부족하다.</strong></p></li>
+</ul>
+</li>
+<li><p>제안</p>
+  <img src="../../pics/VideoLDM/figure2.png" alt="figure2" class="bg-primary mb-1" width="600">
+<ul class="simple">
+<li><p>기존에는 가우시안 노이즈의 랜덤한 샘플들 끼리의 denoising 결과 다른 이미지를 생성했다.</p></li>
+<li><p>Temporal Video finetuning을 거치게 되면 비디오 시퀀스의 형태(시간축에 정렬된 이미지)로 생성할 수 있다.</p></li>
+</ul>
+</li>
+<li><p>VideoLDM은 기존 LDM 방법에 고해상도의 비디오 생성을 적용했다.</p>
+<ol class="arabic simple">
+<li><p>대규모 이미지 데이터 셋을 활용해 LDM을 pre-train했고, (only image)</p>
+<ul class="simple">
+<li><p>pre-trained image LDMs를 활용 가능하다.</p>
+<ul>
+<li><p>temporal modeling만 학습한다.(기존 이미지 LDM은 freeze)</p></li>
+<li><p>1280x2048 해상도 까지 가능하다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>그 후, 이미지 generator를 <strong>비디오 generator로 전환한다.</strong></p>
+<ul class="simple">
+<li><p>latent space diffusion model에 <strong>temporal(시간적) 차원을 적용한다</strong>.</p></li>
+<li><p>이미지 시퀀스(<strong>비디오)를 인코딩해 파인 튜닝</strong> 진행한다.</p></li>
+</ul>
+</li>
+<li><p>diffusion model upsampler를 시간적으로 정렬하여 일관적인 <strong>비디오 super resolution model로 변환한다.</strong></p></li>
+</ol>
+</li>
+<li><p>apply task</p>
+<ul class="simple">
+<li><p><strong>자율 주행</strong>의 시뮬레이션 엔진 (512x1024 해상도로 실제로 평가 진행해 sota 달성)</p></li>
+<li><p><strong>creative content creation</strong> (using text-to-video)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="latent-video-diffusion-models">
+<h1>3. Latent Video Diffusion Models<a class="headerlink" href="#latent-video-diffusion-models" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>비디오 데이터 셋: <span class="math notranslate nohighlight">\(x ∈ R^{T×3×\tilde H×\tilde W}\)</span> 로 표현</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(T\)</span>: frame 수, <span class="math notranslate nohighlight">\(\tilde H, \tilde W\)</span>: 높이, 너비</p></li>
+</ul>
+</li>
+</ul>
+<section id="turning-latent-image-into-video-generators">
+<h2><strong>3.1. Turning Latent Image into Video Generators</strong><a class="headerlink" href="#turning-latent-image-into-video-generators" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>잘 학습된 image LDM을 활용하는 것이 주요한 key point.</p>
+<ul class="simple">
+<li><p>문제점</p>
+<ul>
+<li><p>image LDM은 개별의 프레임에 대한 high quality 이미지를 생성할 수 있고,
+→ <strong>시간적인 정보는 포함하고 있지 않다.</strong></p></li>
+<li><p>따라서 이를 연속적인 프레임으로 렌더링해 사용할 수 없다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(l_\phi ^i\)</span> <strong>로 표현하는 temporal neural network를 추가했다.</strong></p>
+<ul class="simple">
+<li><p>이는 이미지 LDM의 공간적인 정보에 연관되며, 시간적으로 일관된 방식으로 개별 프레임을 정렬할 수 있도록 한다.</p>
+<ul>
+<li><p>비디오를 인식할 수 있는 backbone을 정의한다.</p></li>
+</ul>
+</li>
+</ul>
+  <img src="../../pics/VideoLDM/figure4.png" alt="figure4" class="bg-primary mb-1" width="600">
+  <img src="../../pics/VideoLDM/einops.png" alt="einops" class="bg-primary mb-1" width="600">
+<ul class="simple">
+<li><p>einops 로 구현했으며, <strong>spatial layer 에서는 비디오(배치x시간) 정보가 함께 인코딩</strong>이 되며,</p>
+<ul>
+<li><p><strong>temporal layer 에서는 이를 rearrange를 통해 배치, 시간 정보를 나눠 시간 차원에서 인코딩</strong>이 진행된다.</p>
+<ul>
+<li><p>(option) 이때 text prompt가 conditioning이 될 수 있다.</p></li>
+<li><p>(i) temporal attention (ii) 3D conv 로 구성된다.</p>
+<ul>
+<li><ul>
+<li><p>Sinusoidal embedding 을 사용해 시간에 대한 위치 인코딩 활용했다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>temporal layer을 거친 후, spatial layer의 output과 가중합을 통해 정보가 결합된다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="temporal-autoencoder-finetuning">
+<h3><strong>3.1.1 Temporal Autoencoder Finetuning</strong><a class="headerlink" href="#temporal-autoencoder-finetuning" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>image LDM을 사용하면 시퀀스로 생성할 때 flickering이 발생하는 문제가 있다.</p>
+<ul>
+<li><p>이를 해결하기 위해, autoencoder의 decoder에서 temporal한 layer를 추가한다.</p></li>
+<li><p>이는 3D conv로 구축된 patch-wise temporal discriminator도 추가해 비디오 데이터를 fine tuning 한다.</p>
+  <img src="../../pics/VideoLDM/figure3.png" alt="figure3" class="bg-primary mb-1" width="600">
+</li>
+</ul>
+</li>
+<li><p>인코딩된 비디오 프레임의 latent space 내에서 image DM을 사용할 수 있도록 인코더는 학습이 되지 않는다.</p></li>
+</ul>
+</section>
+<section id="prediction-models-for-long-term-generation">
+<h3><strong>3.2. Prediction Models for Long-Term Generation</strong><a class="headerlink" href="#prediction-models-for-long-term-generation" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>그럼에도 불구하고, 긴 동영상은 생성하지 못하는 한계가 있다.</p></li>
+<li><p>따라서 전체 <span class="math notranslate nohighlight">\(T\)</span> 프레임에서 마스킹된 <span class="math notranslate nohighlight">\(S\)</span> 프레임으로 구성해 모델이 예측하게끔 학습을 한다.</p>
+<ul>
+<li><p>이러한 프레임들은 LDM의 인코더를 통해 채널 차원에 concat되며, temporal layer에 입력된다.</p></li>
+</ul>
+</li>
+<li><p>inference 에서는 반복적인 샘플링 과정을 통해 긴 영상을 생성할 수 있게 했다.</p>
+<ul>
+<li><p>최신 prediction을 재 사용해 새로운 context를 생성했다.</p></li>
+<li><p>classifier-free guidance를 도입해 마스킹된 프레임 수를 0, 1, 2 개를 사용해 학습.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="temporal-interpolation-for-high-frame-rates">
+<h3><strong>3.3. Temporal Interpolation for High Frame Rates</strong><a class="headerlink" href="#temporal-interpolation-for-high-frame-rates" title="Permalink to this heading">#</a></h3>
+<img src="../../pics/VideoLDM/interpolation.png" alt="interpolation" class="bg-primary mb-1" width="600">
+<ul class="simple">
+<li><p><strong>High resolution video</strong>란 해상도 뿐만 아니라 높은 frame late를 가지고 있어야 한다.</p></li>
+<li><p>이를 위해 두 가지 과정으로 진행한다.</p>
+<ol class="arabic simple">
+<li><p>semantic한 큰 변화가 있는 키 프레임을 생성한다.</p>
+<ul>
+<li><p>메모리 제약으로 인해 low frame late로 생성할 수 있다.</p></li>
+</ul>
+</li>
+<li><p>키 프레임을 활용한 interpolate 진행한다.</p>
+<ul>
+<li><p>interpolate할 프레임을 masking을 씌운다.</p>
+<ul>
+<li><p>두 개의 키 프레임에 대해 세 개의 프레임을 예측하는 것으로 T → 4T interpolation model을 학습해 사용했다.</p></li>
+<li><p>높은 frame late를 위해 16T 까지 interpolation 모델 구축.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="temporal-fine-tuning-of-sr-models">
+<h3><strong>3.4. Temporal Fine-tuning of SR Models</strong><a class="headerlink" href="#temporal-fine-tuning-of-sr-models" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>megapixel의 해상도까지 생성하는 것이 목표이다.</p>
+<ul>
+<li><p>cascaded DMs에 영감받아 4배 해상도를 키웠다.</p>
+  <img src="../../pics/VideoLDM/cascaded_dms.png" alt="cascaded_dms" class="bg-primary mb-1" width="600">
+</li>
+<li><p>noise augmentation(with noise level conditioning) 으로  super resolution 모델 학습했다.</p></li>
+</ul>
+</li>
+<li><p>또한 consistency한 SR 모델을 구축하기 위해 spatial / temporal layer를 추가했다.</p>
+<ul class="simple">
+<li><p>저해상도 시퀀스 길이 <span class="math notranslate nohighlight">\(T\)</span> 를 concat하여 conditioning</p></li>
+<li><p>locally 하게 patch 단위로 연산하고, 후에 convolution을 진행한다.</p></li>
+</ul>
+</li>
+<li><p>computing resource</p>
+<ul class="simple">
+<li><p>VideoLDM에서의 main LDM을 효율적으로 연산을 하기 위해 latent space에서 모든 비디오 모델링이 수행된다.</p>
+<ul>
+<li><p>그로 인해, 높은 배치 사이즈 + 긴 영상 생성 가능하다.</p></li>
+</ul>
+</li>
+<li><p>upsampler는 패치 단위로 진행하기에 computing resource를 줄일 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="experiments">
+<h2><strong>4. Experiments</strong><a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Dataset</p>
+<ul>
+<li><p>RDS(real driving scene): 683,060 개, 8초(30 fps), 512×1024, day/night, “crowdedness”</p></li>
+<li><p>WebVid-10M: 10.7M video-caption pairs, 52K video hours, resized 320×512</p></li>
+</ul>
+</li>
+<li><p>Evaluation metric</p>
+<ul>
+<li><p>FVD + human evaluation</p></li>
+<li><p>CLIP similarity (CLIP- SIM) + IS</p></li>
+</ul>
+</li>
+</ul>
+<section id="high-resolution-driving-video-synthesis">
+<h3>4.<strong><strong>1. High-Resolution Driving Video Synthesis</strong></strong><a class="headerlink" href="#high-resolution-driving-video-synthesis" title="Permalink to this heading">#</a></h3>
+<img src="../../pics/VideoLDM/figure7.png" alt="figure7" class="bg-primary mb-1" width="600">
+</section>
+<section id="text-to-video-with-stable-diffusion">
+<h3><strong>4.2. Text-to-Video with Stable Diffusion</strong><a class="headerlink" href="#text-to-video-with-stable-diffusion" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>WebVid-10M 데이터셋(resized 320×512)으로 Stable Diffusion의 spatial layer에 대해 학습했고,</p>
+<ul>
+<li><p>text-conditioning을 적용한 temporal layer를 추가해 학습 진행했다.</p></li>
+<li><p>그 후 upscaler를 학습해 4배 upscale해 1280×2048 해상도로 비디오 생성 가능해졌다.</p>
+<ul class="simple">
+<li><p>113 frames: 24fps 4.7초 or 30fps 3.8초</p></li>
+</ul>
+  <img src="../../pics/VideoLDM/figure6.png" alt="figure6" class="bg-primary mb-1" width="600">
+</li>
+<li><p>다양성이 적은 Real video로 제한적인 데이터로 학습했지만, 기존 Stable Diffusion의 생성 능력을 가져와 artistic한 생성이 가능하다.</p></li>
+<li><p>performance</p>
+  <img src="../../pics/VideoLDM/table4_5.png" alt="table4_5" class="bg-primary mb-1" width="600">
+<ul class="simple">
+<li><p>Make-A-Video의 경우 VideoLDM 보다 더 많은 데이터 셋과 text-to-video를 entirely하게 학습했다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="personalized-text-to-video-with-dreambooth">
+<h3><strong>4.2.1 Personalized Text-to-Video with Dreambooth</strong><a class="headerlink" href="#personalized-text-to-video-with-dreambooth" title="Permalink to this heading">#</a></h3>
+<img src="../../pics/VideoLDM/figure8.png" alt="figure8" class="bg-primary mb-1" width="600">
+<ul class="simple">
+<li><p>위쪽의 VideoLDM을 활용한 결과가 consistency 한 결과를 가져왔다.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Make_A_Video.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">1. <strong>Introduction</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">VideoLDM</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-video-diffusion-models">3. Latent Video Diffusion Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turning-latent-image-into-video-generators"><strong>3.1. Turning Latent Image into Video Generators</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-autoencoder-finetuning"><strong>3.1.1 Temporal Autoencoder Finetuning</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediction-models-for-long-term-generation"><strong>3.2. Prediction Models for Long-Term Generation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-interpolation-for-high-frame-rates"><strong>3.3. Temporal Interpolation for High Frame Rates</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-fine-tuning-of-sr-models"><strong>3.4. Temporal Fine-tuning of SR Models</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments"><strong>4. Experiments</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-driving-video-synthesis">4.<strong><strong>1. High-Resolution Driving Video Synthesis</strong></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-video-with-stable-diffusion"><strong>4.2. Text-to-Video with Stable Diffusion</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personalized-text-to-video-with-dreambooth"><strong>4.2.1 Personalized Text-to-Video with Dreambooth</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

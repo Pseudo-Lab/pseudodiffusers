@@ -9,7 +9,7 @@
 - **Last updated on Nov. 26, 2023**
 ```
 
-
+# Make A Video
 - 참고 코드: [https://github.com/lucidrains/make-a-video-pytorch](https://github.com/lucidrains/make-a-video-pytorch)
 
 
@@ -36,29 +36,29 @@
 
 </aside>
 
-# 1. **Introduction**
+## 1. Introduction
 
-## Make-A-video 제안 배경
+### Make-A-video 제안 배경
 
 - T2I 모델링을 할 수 있는 데이터는 인터넷을 통해 확보될 수 있으나, 비슷한 규모의 텍스트 비디오 데이터셋을 수집하기는 어렵다.
 - T2I 모델이 존재하는데 T2V 모델을 처음부터 학습 시키는 것은 낭비일 수 있다.
 - 비지도 학습을 사용하여 더 많은 데이터를 학습할 수 있다.
 
-## Make-A-video 특성
+### Make-A-video 특성
 
 - T2I 모델을 활용하여, 레이블이 지정되지 않은 비디오 데이터에 대해 비지도 학습을 사용하여 학습한다 → 페어링된 텍스트-비디오 데이터 없이도 텍스트에서 비디오를 생성할 수 있다.
 - 텍스트 없이도 비지도 비디오만으로 세상의 다양한 개체가 어떻게 움직이고 상호 작용하는지 학습할 수 있다.
 
-## Contribution
+### Contribution
 
 - 디퓨전 기반의 T2I 모델을 T2V로 확장하는 효과적인 방법인 Make-A-Video를 소개한다.
 - Text-to-image 를 prior로 사용하여 text-video 데이터의 필요성을 우회한다.
 - 고화질, 고프레임률 비디오를 생성하는 super-resolution 전략을 제안한다.
 - Make-A-Video를 기존 T2V 시스템과 비교하여 평가한다. 또한, 제로샷 T2V human evaluation을 위해 300개의 프롬프트 테스트 세트를 수집하여 공개할 계획이다.
 
-# 2. Previous Work
+## 2. Previous Work
 
-# 3. **Method**
+## 3. Method
 
 - Make-A-Video의 주요 요소
     1. 텍스트-이미지 쌍으로 학습된 base T2I 모델
@@ -82,7 +82,7 @@
     - $C_x$: CLIP text encoder
     - $x$: input text
 
-## 3.1. Text-To-Image Model
+### 3.1. Text-To-Image Model
 
 - [“Photorealistic Text-to-Image Diffusion Models with Deep Language Understanding(Imagen)”](https://arxiv.org/abs/2205.11487)와 연구 내용을 공유하였다.
 - Imagen
@@ -107,7 +107,7 @@
         :::
         
 
-## 3.2. Spatiotemporal Layers
+### 3.2. Spatiotemporal Layers
 
 - 2차원 조건부 네트워크를 시간적 차원으로 확장하기 위해 다음의 구성 요소를 수정한다.
     - Convolutional layers
@@ -123,7 +123,7 @@
 - 프레임당 super resolution을 수행하는 것보다 spatiotemporal 모듈인 $SR^t_l$가 더 좋은 성능을 보였다.
 - 하지만, $SR_h$를 위와 같은 모듈로 만들기엔 메모리 및 컴퓨팅 제약과 고해상도 비디오 데이터의 부족으로 $SR_h$를 위와 같이 시간적 차원으로 확장하는 것은 어려웠다 → $SR_h$는 공간적 차원에서 작동한다.( 각 프레임에 대해 동일한 노이즈 초기화를 사용하여 프레임 전반에 걸쳐 일관된 환각을 제공함)
 
-### 3.2.1 Pseudo-3D convolutional layers
+#### 3.2.1 Pseudo-3D convolutional layers
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/2.png" alt="make_a_video_03" class="bg-primary mb-1">
@@ -146,7 +146,7 @@ Architecture of Pseudo-3D convolutional layers
     - $\text{o}T$: transpose operator (spatial ↔ temporal)
     - $Conv_{2_D}$는 pretrained T2I 모델에서 초기화 되고, $Conv_{1_D}$는 identity 함수로 초기화 된다.
 
-### 3.2.2. Psuedo-3D attention layers
+#### 3.2.2. Psuedo-3D attention layers
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/3.png" alt="make_a_video_05" class="bg-primary mb-1">
@@ -239,7 +239,7 @@ Architecture of Pseudo-3D attention layers
 - Frame rate conditioning
     - 비디오의 초당 프레임 수를 나타내는 추가 컨디셔닝 파라미터 $fps$를 추가한다.
 
-## 3.3 Frame Interpolation Network
+### 3.3 Frame Interpolation Network
 
 - ↑F (Frame Interpolation Network)란?
     - 생성된 프레임 수를 증가시켜, 생성된 비디오를 더 부드럽게 만들고 비디오 길이를 연장 시킬 수 있는 네트워크
@@ -253,7 +253,7 @@ Architecture of Pseudo-3D attention layers
 - 본 논문의 모든 실험에서는 ↑F를 frame skip 5로 적용하여 16프레임 비디오를 76프레임((16-1)X5+1)으로 업샘플링 하였다.
 - 비디오 시작 또는 끝 프레임을 마스킹하여 비디오 추정 또는 이미지 애니메이션에도 사용할 수 있다.
 
-## 3.4 Training
+### 3.4 Training
 
 - 위에서 설명한 구성 요소들은 독립적으로 학습 된다.
 - 훈련 과정
@@ -273,11 +273,11 @@ Architecture of Pseudo-3D attention layers
         - 디코더를 학습하는 동안 훈련 초기에는 더 높은 $fps$ 범위(모션이 적은)에서 시작하고, 이후에는 더 작은 $fps$ 범위(모션이 많은)로 전환한다.
         - Masked-frame interpolation 네트워크는 temporal 디코더로부터 파인 튜닝된다.
 
-# 4. Experiments
+## 4. Experiments
 
-## 4.1 Dataset and Settings
+### 4.1 Dataset and Settings
 
-### Datasets
+#### Datasets
 
 - Image, Text
     - LAION-5B 데이터셋의 일부 2.3B의 데이터를 사용하였다.
@@ -292,7 +292,7 @@ Architecture of Pseudo-3D attention layers
         - UCF-101: 액션 인식 연구를 위해 고안되었으며, 다양한 동작 및 환경에서 촬영된 비디오 클립 데이터셋
         - MSR-VTT: 비디오와 해당 비디오에 대한 텍스트 설명 또는 캡션을 포함하는 데이터셋
 
-### Automatic Metrics
+#### Automatic Metrics
 
 - UCF-101
     - 각 클래스에 대해 하나의 템플릿 문장을 작성하고 평가를 위해 수정한다.
@@ -301,7 +301,7 @@ Architecture of Pseudo-3D attention layers
 - MSR-VTT
     - 테스트 세트의 모든 59,794 캡션에 대한 FID와 CLIPSIM(비디오 프레임과 텍스트 간의 평균 CLIP 유사도)를 측정한다.
 
-### Human Evaluation Set and Metrics
+#### Human Evaluation Set and Metrics
 
 - Amazon Mechanical Turk(AMT)에서 300개의 프롬프트로 이루어진 평가 세트를 수집하였다.
 - Annotator들에게 T2V 시스템이 있다면 어떤 것을 생성하고 싶은지 물어봤다.
@@ -315,9 +315,9 @@ Architecture of Pseudo-3D attention layers
 - 보간 모델과 FILM의 비디오 모션 사실감을 비교하기 위한 평가도 진행하였다.
 - 5명의 각기 다른 annotator의 다수 득표를 최종 결과로 사용하였다.
 
-## 4.2 Quantitative Results
+### 4.2 Quantitative Results
 
-### Automatic Evaluaton on MSR-VTT
+#### Automatic Evaluaton on MSR-VTT
 
 - MSR-VTT에 대해 성능을 보고하는 GODIVA, NUWA 외에도, 중국어와 영어를 모두 입력으로 받는  CogVideo 모델에 대해서도 추론을 수행하였다.
 
@@ -341,7 +341,7 @@ Automatic Evluation on UCF-101
 → Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다. 
 
 
-### Human Evaluation
+#### Human Evaluation
 
 - DrawBench와 테스트셋에 대해서 CogVideo와 성능을 비교한다.
 - 또한, VDM의 웹 페이지에 표시된 28개의 동영상에 대해서도 평가한다.
@@ -361,7 +361,7 @@ Human Evaluation
     - 평가자들은 eval set에 대해서는 62%,  DrawBench에 대해서는 54%로 Make-A-Video가 더 낫다고 평가하였다.
     - 프레임 간의 차이가 커서 물체가 어떻게 움직이는지에 대한 real-world 지식이 중요한 경우에는 본 논문에 방법이 더 뛰어난 것으로 관찰 되었다.
 
-## 4.3 Qualitative Results
+### 4.3 Qualitative Results
 
 :::{figure-md} 
 <img src="../../pics/Make_A_Video/7.png" alt="make_a_video_06" class="bg-primary mb-1">
@@ -395,7 +395,7 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
 
 - 기타 결과: [https://make-a-video.github.io/](https://make-a-video.github.io/)
 
-# 5. 결론
+## 5. 결론
 
 - 주변 세계로부터 지식을 배우는 human intelligence처럼 generative system도 인간의 학습 방식을 모방할 수 있다면, 더욱 창의적이고 유용할 것이다.
 - 연구자들은 비지도 학습을 통해 훨씬 더 많은 동영상에서 세계의 dynamic을 학습함으로써 기존의 한계를 극복할 수 있다.

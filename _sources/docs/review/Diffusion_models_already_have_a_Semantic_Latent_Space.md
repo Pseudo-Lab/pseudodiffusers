@@ -180,10 +180,10 @@ h-space의 크기는 $8^2\times512$이고 $\epsilon$-space의 크기는 $256^2\t
 
 <img src="../../pics/Diffusion_models_already_have_a_Semantic_Latent_Space/figure3.10.png" alt="Asyrp_4" class="bg-primary mb-1" width="600px">
 
-
+Illustration of $\mathrm{f}(t)$
 :::
 
-$\Delta h_t$가 image를 manipulating하는데 성공했음에도, 수많은 timestep에서 매번 optimizing하기란 쉽지 않다. 대신에 논문에서는 $h_t$를 입력받아 $\Delta h$를 출력해주는 작은 neural network인 $\mathrm{f}(t)$를 추가하였다. $\mathrm{f}(t)$는 $\Delta h_t$를 매번 모든 timestep에서 optimizing해줘야 하는 방법에 비해 시간도 빠르고 setting값들에 대해 robust하다. 또한 주어진 timestep과 bottleneck feature인 $h_t$에 대해 $\Delta h_t$를 출력하는 방법을 학습하기에 unseen timestep과 bottleneck feature에 대해서도 일반화할 수 있다고 한다. 이는 accelerated한 과정에서도 큰 효과를 본다. training scheme이 어떻든 간에 결국 부여하는 $\sum\Delta\mathrm{h_t}만 보존된다면, 어떠한 length를 설계해도 비슷한 manipulation효과를 볼 수 있다.
+$\Delta h_t$가 image를 manipulating하는데 성공했음에도, 수많은 timestep에서 매번 optimizing하기란 쉽지 않다. 대신에 논문에서는 $h_t$를 입력받아 $\Delta h$를 출력해주는 작은 neural network인 $\mathrm{f}(t)$를 추가하였다. $\mathrm{f}(t)$는 $\Delta h_t$를 매번 모든 timestep에서 optimizing해줘야 하는 방법에 비해 시간도 빠르고 setting값들에 대해 robust하다. 또한 주어진 timestep과 bottleneck feature인 $h_t$에 대해 $\Delta h_t$를 출력하는 방법을 학습하기에 unseen timestep과 bottleneck feature에 대해서도 일반화할 수 있다고 한다. 이는 accelerated한 과정에서도 큰 효과를 본다. training scheme이 어떻든 간에 결국 부여하는 $\sum\Delta\mathrm{h_t}$만 보존된다면, 어떠한 length를 설계해도 비슷한 manipulation효과를 볼 수 있다.
 
 
 

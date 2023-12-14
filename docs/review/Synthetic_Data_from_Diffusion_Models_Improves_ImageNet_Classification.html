@@ -227,14 +227,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">1. <strong>Introduction</strong></a></li>
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -540,7 +534,7 @@ document.write(`
 <p>이 부분은 Imagen을 어떻게 fine-tuning 했는지를 설명하는 부분입니다.</p>
 <p>먼저 Imagen 구조는 아래와 같습니다.</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/3.png"><img alt="improved_imagenet_classification_02" class="bg-primary mb-1" src="../../_images/3.png" style="width: 200px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/31.png"><img alt="improved_imagenet_classification_02" class="bg-primary mb-1" src="../../_images/31.png" style="width: 200px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 285 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -577,7 +571,7 @@ document.write(`
 <p>1차 sweep이 끝난 후에는 guidance weight에 대해서만 sweep을 합니다. 이 때에는 1.2M 이미지를 사용하고, 각 guidacne weight에 대해 FID, IS, CAS를 측정했다고 합니다.</p>
 <p>각 샘플링 하이퍼파라미터에 대한 실험 결과는 아래와 같습니다.</p>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/4.png"><img alt="improved_imagenet_classification_03" class="bg-primary mb-1" src="../../_images/4.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/41.png"><img alt="improved_imagenet_classification_03" class="bg-primary mb-1" src="../../_images/41.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 286 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -589,7 +583,7 @@ document.write(`
 - Log-variance mixing coefficients: [0,1, 0.3]
 - Denose steps: [129, 500, 1000]</p>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/5.png"><img alt="improved_imagenet_classification_04" class="bg-primary mb-1" src="../../_images/5.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/51.png"><img alt="improved_imagenet_classification_04" class="bg-primary mb-1" src="../../_images/51.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 287 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -626,7 +620,7 @@ document.write(`
 <h2>5-1. Sample Quality: FID and IS<a class="headerlink" href="#sample-quality-fid-and-is" title="Permalink to this heading">#</a></h2>
 <p>먼저, 합성된 데이터의 품질을 합성 태스크에서 많이 사용되는 지표인 FID와 IS의 관점으로 봅니다.</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/6.png"><img alt="improved_imagenet_classification_05" class="bg-primary mb-1" src="../../_images/6.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/61.png"><img alt="improved_imagenet_classification_05" class="bg-primary mb-1" src="../../_images/61.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 288 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -637,7 +631,7 @@ document.write(`
 <h2>5.2. Classification Accuracy Score<a class="headerlink" href="#classification-accuracy-score" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 CAS 성능 지표를 통해 본 논문에서 제안한 모델의 데이터 합성 능력을 확인하는 부분입니다.</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/7.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/7.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/71.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/71.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 289 </span><span class="caption-text">CAS score</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -649,7 +643,7 @@ document.write(`
 <h2>5.3. Classification Accuracy with Different Models<a class="headerlink" href="#classification-accuracy-with-different-models" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 합성된 데이터를 여러 종류의 모델로 학습 시켰을 때, 각 모델의 분류 성능을 확인하는 부분입니다. CAS와 비슷하지만 CAS에서는 ResNet50 모델로 분류 성능을 확인했지만 여기서는 ResNet50 이외에 모델로도 분류 성능을 본다는 차이점이 있습니다.</p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/8.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/8.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/81.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/81.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 290 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -660,14 +654,14 @@ document.write(`
 <h2>5.4. Merging Real and Synthetic Data at Scale<a class="headerlink" href="#merging-real-and-synthetic-data-at-scale" title="Permalink to this heading">#</a></h2>
 <p>이 부분은 합성 데이터 규모에 따른 ResNet-50의 성능을 분석한 부분입니다.</p>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/9.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/9.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/91.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/91.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 291 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>64x64 이미지의 경우 생성되는 데이터의 양이 증가함에 따라 성능이 지속적으로 향상되는 것을 볼 수 있습니다.</p>
 <figure class="align-default" id="id10">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/10.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/10.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/101.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/101.png" style="width: 500px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 292 </span><span class="caption-text">Table 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>

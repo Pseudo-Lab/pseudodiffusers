@@ -97,13 +97,13 @@ Quantization of VQ-VAE
 
 ## DALL-E Overview
 ### Stage 1: Training VQ-VAE
-- \textbf{Discrete VAE}를 이용하여 $256 \times 256$ RGB image \rightarrow  $32 \times 32$ 이미지 토큰으로 압축 
+- **Discrete VAE**를 이용하여 $256 \times 256$ RGB image \rightarrow  $32 \times 32$ 이미지 토큰으로 압축 
 - 각 이미지 토큰은 8,192개의 code 값 중에 하나 배정
-- 이미지의 \textbf{quality 손실 없이} $8 \times 8 \times 3$ 배 만큼 context size를 적게 만들 수 있음.
+- 이미지의 **quality 손실 없이** $8 \times 8 \times 3$ 배 만큼 context size를 적게 만들 수 있음.
 
 
 ### Stage 2: Training an Autoregressive Transformer
-- \textbf{최대 256 BPE-Encoded text tokens}들과 1024 image tokens ($32 \times 32$) 를 연속적으로 입력함 (concatenate)
+- **최대 256 BPE-Encoded text tokens**들과 1024 image tokens ($32 \times 32$) 를 연속적으로 입력함 (concatenate)
 - Text token과 Image Tokens 들의 joint distribution (결합 분포)를 모델링하여 autoregressive transformer을 학습
 
 
@@ -153,9 +153,9 @@ x: images, y: captions , z: encoded RGB image tokens
   - K = 8,192 codebook (embedding space)로 설정
 
 
-- \textbf{ELB를 optimize} 하기 위해서는 discrete distribution을 continuous를 바꿔야 함 
+- **ELB를 optimize** 하기 위해서는 discrete distribution을 continuous를 바꿔야 함 
   - 학습시에는 결국, argmax를 사용해서 codebook vector 인덱스를 선택하여 계산하면 Reparameterization gradient를 연산 X 
-  - argmax 대신 \textbf{gumbel softmax}를 사용하여 해결
+  - argmax 대신 **gumbel softmax**를 사용하여 해결
 
   - 평가를 진행할 때에는 $z = codebook[\underset{i}{argmax}[g_i+log(q(e_i|x))]]$
 
@@ -179,7 +179,7 @@ Image-to-image attention: row/column/convolutional attention mask 적용
 
 ## Results
 - 추론 시에는 text에 대하여 N개의 이미지를 생성. 
-- Best of N개는 \textbf{N개 생성 후 best}를 골라서 선택 함.
+- Best of N개는 **N개 생성 후 best**를 골라서 선택 함.
 
 - 우수한 이미지를 고르기 위해 CLIP (Contrastive Language-Image Pretraining, 2021) 논문에서 제시한 text 와 k 번째로 similarity 점수가 높은 이미지를 선택함 (k=1)
 

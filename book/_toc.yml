@@ -15,6 +15,7 @@ parts:
   - file: docs/review/StyleGAN
   - file: docs/review/diffusion_beats_GANs
   - file: docs/review/dalle
+  - file: docs/review/DALLE2
   - file: docs/review/dreambooth
   - file: docs/review/ControlNet
   - file: docs/review/Latent_Diffusion_Model
@@ -25,7 +26,6 @@ parts:
   - file: docs/review/StyO
   - file: docs/review/imagen
   - file: docs/review/imagen_editor
-  - file: docs/review/DALLE2
   - file: docs/review/SDEdit
   - file: docs/review/SDXL
   - file: docs/review/t2i_adapter

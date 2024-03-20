@@ -46,8 +46,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 16 | 2023.11.01 | SeonHoon Kim <br> Jeonghwa Yoo | [BBDM: Image-to-image Translation with Brownian Bridge Diffusion Models](https://arxiv.org/abs/2205.07680) (CVPR 2023) <br>  [Make-A-Video: Text-to-Video Generation without Text-Video Data](https://arxiv.org/abs/2209.14792) |
 | 17 | 2023.11.15 | Sehwan Park <br> Junhyoung Lee | [Diffusion Models already have a Semantic Latent Space](https://arxiv.org/abs/2210.10960) (ICLR 2023) <br>  [Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2304.08818) (CVPR 2023) |
 | 18 | 2023.11.29 | Donggeun Sean Ko | [Video Diffusion Models](https://arxiv.org/abs/2204.03458) |
-| 19 | 2024.03.13 | Geonhak Song | [Animate Anyone](https://arxiv.org/abs/2311.17117) |
-| 20 | 2024.03.13 | Geonhak Song | [DreaMoving](https://arxiv.org/abs/2312.05107) |
+| 19 | 2024.03.13 | Geonhak Song | [Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation](https://arxiv.org/abs/2311.17117) <br> [DreaMoving: A Human Video Generation Framework based on Diffusion Models](https://arxiv.org/abs/2312.05107) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

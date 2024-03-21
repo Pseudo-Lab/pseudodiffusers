@@ -178,6 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
@@ -206,7 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
@@ -231,6 +231,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -557,7 +559,7 @@ document.write(`
 <h2>2.4 Improved Autoencoder<a class="headerlink" href="#improved-autoencoder" title="Permalink to this heading">#</a></h2>
 <p>SD는 LDM 중 하나이고, autoencoder의 latent space를 학습한다. semantic composition은 LDM으로부터 표현되지만 저자들은 local, high frequency 디테일한 부분을 향상하고자 autoencoder를 향상했다. 끝으로, 원래의 SD를 사용한 autoencoder 아키텍처에서 더 큰 배치사이즈(256 vs 9)로 학습했고 추가로 exponential moving average를 사용한 가중치를 사용했다. 결과 autoencoder의 성능이 reconstruction 메트릭에 좋은 결과를 가져왔다.</p>
 <figure class="align-default" id="table-3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_3.png"><img alt="table_3" class="bg-primary mb-1" src="../../_images/table_3.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_31.png"><img alt="table_3" class="bg-primary mb-1" src="../../_images/table_31.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 243 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#table-3" title="Permalink to this image">#</a></p>
 </figcaption>

@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DALLE2" href="DALLE2.html" />
+    <link rel="next" title="SDEdit" href="SDEdit.html" />
     <link rel="prev" title="Imagen" href="imagen.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -176,6 +176,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
@@ -204,7 +205,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
 <li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Imagen Editor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALLE2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
@@ -229,6 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
 <li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -449,14 +451,14 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_01.png"><img alt="imagen_editor_01" class="bg-primary mb-1" src="../../_images/imagen_editor_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Effect of Object Masking</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Effect of Object Masking</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Imagen Editor 에서 또 다른 특징은 Imagen 모델 기반의 cascaded diffusion model architecture 를 지니고 있다는 점입니다. 이때, SR3, Palette, GLIDE 와 유사하게 이미지와 mask 가 Encoder 를 거친 후, diffusion latent 와 concatenate 하면서 conditioning input 으로 들어가게 되며, 모두 1024x1024 해상도를 가진다고 합니다. 따라서, base diffusion 64x64 모델 그리고 64x64 → 256x256 super resolution 모델에 입력 시, downsampling 작업 후 모델 input 으로 입력합니다. 또한, conditioning 이미지와 mask 없을 시 Imagen 모델을 사용하는 것과 동일한 효과를 내기 위해, 새로 추가되는 input channel weights 는 0으로 초기화해서 학습을 진행했다고 소개합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_02.png"><img alt="imagen_editor_02" class="bg-primary mb-1" src="../../_images/imagen_editor_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Imagen Editor Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Imagen Editor Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Imagen 에서 소개되었던 Classifier-Free Guidance 를 동일하게 사용하고, 이때 guidance weight 를 1부터 30 까지 범위 내에서 변화시키는 oscillating guidance 기법을 적용함으로써 생성된 이미지 퀄리티 및 text-image alignment 가 상승되는 효과를 볼 수 있었다고 합니다.</p>
@@ -471,28 +473,28 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_03.png"><img alt="imagen_editor_03" class="bg-primary mb-1" src="../../_images/imagen_editor_03.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">EditBench example</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">EditBench example</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>데이터셋 구축시, mask 크기도 다양하게 설정하여 mask 크기에 따른 모델 성능도 확인할 수 있었습니다. 성능을 측정해본 결과, Object masking 으로 학습한 모델이 random masking 으로 학습한 모델보다 small/medium masks 에서 성능적으로 월등히 좋다는 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_04.png"><img alt="imagen_editor_04" class="bg-primary mb-1" src="../../_images/imagen_editor_04.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Human Evaluations on EditBench</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Human Evaluations on EditBench</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, object-rendering 에 비해 text-rendering 성능이 저하되는 부분을 확인할 수 있고, material/color/size 속성보다 count/size 속성에 더 취약한 부분도 확인할 수 있었습니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_05.png"><img alt="imagen_editor_05" class="bg-primary mb-1" src="../../_images/imagen_editor_05.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Imagen Editor failure cases by attribute</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Imagen Editor failure cases by attribute</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로, 동일한 prompt 에 대해 Stable Diffusion, DALL-E2, Imagen Editor 모델로 inpainting 한 결과를 비교한 예시 사진입니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_editor_06.png"><img alt="imagen_editor_06" class="bg-primary mb-1" src="../../_images/imagen_editor_06.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Example model outputs for Mask-Simple vs MaskRich prompts</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 224 </span><span class="caption-text">Example model outputs for Mask-Simple vs MaskRich prompts</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -538,11 +540,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="DALLE2.html"
+       href="SDEdit.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DALLE2</p>
+        <p class="prev-next-title">SDEdit</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

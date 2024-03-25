@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,8 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -80,6 +81,15 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -226,6 +236,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -393,10 +407,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -404,7 +418,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
@@ -489,7 +503,7 @@ document.write(`
 <li><p>noising-denoising 과정을 적용해 시각적 품질을 향상하는 latent를 생성할 수 있는 별개의 diffusion 기반 img-to-img refinement 모델을 포함한다.</p></li>
 </ol>
 <figure class="align-default" id="figure-1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_1.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_11.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_11.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 236 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#figure-1" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -516,7 +530,7 @@ document.write(`
 <p>대신, 저자들은 원래의 이미지 해상도에서 UNet 모델에 condition을 주었다. 특히 어떠한 rescaling 전의 원래의 크기인  <span class="math notranslate nohighlight">\(c_\text{size}=(h_\text{original}, w_\text{original})\)</span>를 제공해 추가의 condition을 줄 수 있게 했다. UNet의 denoising 할 때의 condition으로 추가된다.</p>
 <p>Inference 때, 사용자가 size-conditioning을 통해 해상도를 정할 수 있다. 모델은 conditioning 크기를 해상도에 의존적인 이미지 feature과 연관시키도록 하는 방법을 학습했다.</p>
 <figure class="align-default" id="figure-3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_3.png"><img alt="fig_3" class="bg-primary mb-1" src="../../_images/fig_3.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_31.png"><img alt="fig_3" class="bg-primary mb-1" src="../../_images/fig_31.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 239 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -532,7 +546,7 @@ document.write(`
 <section id="conditioning-the-model-on-cropping-parameters">
 <h3>Conditioning the Model on Cropping Parameters<a class="headerlink" href="#conditioning-the-model-on-cropping-parameters" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="figure-4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_4.png"><img alt="fig_4" class="bg-primary mb-1" src="../../_images/fig_4.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_41.png"><img alt="fig_4" class="bg-primary mb-1" src="../../_images/fig_41.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 241 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#figure-4" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -571,7 +585,7 @@ document.write(`
 <section id="refinement-stage">
 <h3>Refinement Stage<a class="headerlink" href="#refinement-stage" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="figure-6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_6.png"><img alt="fig_6" class="bg-primary mb-1" src="../../_images/fig_6.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_61.png"><img alt="fig_6" class="bg-primary mb-1" src="../../_images/fig_61.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 244 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#figure-6" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -579,7 +593,7 @@ document.write(`
 <p>경험적으로, 그림 6처럼 특정 부분 퀄리티가 낮은 샘플의 결과를 찾았다. 왼쪽 그림이 refinement stage 적용 전, 오른쪽 그림이 refinement stage를 적용한 그림이다.</p>
 <p>이를 해결하기 위해, 고품질, 고해상도 데이터에 특화된 latent space 내에서 별도의 LDM을 학습했다. 기본 모델의 샘플에 대해 SDEdit에서 도입한 노이즈 제거 과정을 사용했다. eDiff-I 방법을 따랐으며, 이를 첫 200 노이즈 스케일에 refinement 모델을 사용했다. inference에서, base SDXL에서 latent를 추출하고 바로 diffuse와 denoise를 refinement 모델에 넣었다. 이 스텝은 선택이지만 배경 및 사람 얼굴과 같은 디테일에서 향상된 결과(그림 6, 13)를 얻을 수 있었다.</p>
 <figure class="align-default" id="figure-13">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_13.png"><img alt="fig_13" class="bg-primary mb-1" src="../../_images/fig_13.png" style="width: 600px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_131.png"><img alt="fig_13" class="bg-primary mb-1" src="../../_images/fig_131.png" style="width: 600px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 245 </span><span class="caption-text">Figure 13</span><a class="headerlink" href="#figure-13" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -601,7 +615,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }
@@ -613,11 +627,10 @@ document.write(`
 
               
               
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="SDEdit.html"
@@ -637,10 +650,7 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -714,8 +724,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
 
   <footer class="bd-footer">
   </footer>

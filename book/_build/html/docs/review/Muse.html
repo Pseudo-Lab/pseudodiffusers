@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Muse &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Muse';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="Diffusion Models already have a Semantic Latent Space" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Muse</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Muse.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/Muse.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Muse</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Muse</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-modeling">Masked modeling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-trained-text-encoders">2.1 Pre-trained Text Encoders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-tokenization-using-vqgan">2.2. Semantic Tokenization using VQGAN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-model">2.3. Base Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-resolution-model">2.4. Super-Resolution Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder-finetuning">2.5. Decoder Finetuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classifier-free-guidance">2.7. Classifier Free Guidance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-parallel-decoding-at-inference">2.8. Iterative Parallel Decoding at Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">3. Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-a">Q&amp;A</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Muse: Text-To-Image Generation via Masked Generative Transformers</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2301.00704.pdf">https://arxiv.org/pdf/2301.00704.pdf</a></p></li>
+<li><p>Code: X</p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Jun-Hyoung Lee</p></li>
+<li><p><strong>Last updated on Mar. 25. 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="muse">
+<h1>Muse<a class="headerlink" href="#muse" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="figure-1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 421 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#figure-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Muse: T2I transformer model + Masked Modeling</strong></p>
+<ul>
+<li><p>diffusion, autoregressive model 보다 효과적인 성능을 냄</p></li>
+<li><p><strong>discrete token space 에서 masked modeling 방식으로 학습</strong></p>
+<ul>
+<li><p>pretrained LLM(<em><strong>T5-XXL</strong></em>) 으로 부터 추출된 text embedding이 주어지고, 랜덤하게 masked image token 을 예측하는 방식으로 학습</p></li>
+</ul>
+</li>
+<li><p>Imagen, DALL-E 2 와 비교할 때, sampling iteration이 적어 <strong>빠른 inference</strong> 수행 가능</p></li>
+<li><p>LLM 을 사용해 <strong>fine-grained 한 정보</strong>를 추출하여 high-fidelity 이미지 생성을 할 수 있고, 시각적 concept(object, spatial 관계, 자세, 등)을 더 잘 이해할 수 있음</p></li>
+<li><p>Muse-900M, CC3M 에서 SOTA 달성, FID 6.06</p></li>
+<li><p>Muse-3B, zero-shot COCO 에서 FID 7.88 달성, CLIP score 0.32</p></li>
+<li><p>따로 <strong>파인튜닝 없이</strong> inpainting, outpainting, mask-free editing 이 가능함</p></li>
+</ul>
+</li>
+</ul>
+<section id="masked-modeling">
+<h2>Masked modeling<a class="headerlink" href="#masked-modeling" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>[22.02] MaskGIT: Masked Generative Image Transformer</p>
+<ul>
+<li><p>CVPR 2022, Google Research</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default" id="maskgit-1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/maskgit_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/maskgit_1.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 422 </span><span class="caption-text">maskgit 1</span><a class="headerlink" href="#maskgit-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="maskgit-2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/maskgit_2.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/maskgit_2.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 423 </span><span class="caption-text">maskgit 2</span><a class="headerlink" href="#maskgit-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>VQGAN</strong> 사용, <strong>non-autoregressive</strong> 디코딩 방식</p></li>
+<li><p>inference 시에 모든 마스킹된 토큰을 예측하지만, 신뢰도가 높은 토큰만 실제 디코딩됨</p>
+<ul>
+<li><p>따라서 autoregressive 모델의 <strong>256 step → 8 step</strong> 으로 줄여 inference 속도가 향상</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="figure-3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_3.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_3.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 424 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#figure-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p><strong>VQGAN tokenizer model 사용</strong></p>
+<ul class="simple">
+<li><p>input image 가 discrete token 으로 인코딩되고, 그 후 디코딩되어 input 이미지와 유사하게 잘 복원되는 모델</p></li>
+<li><p>두 개의 VQGAN 사용 (256x256 저해상도 + 512x512 고해상도)</p>
+<ul>
+<li><p>첫 학습은 <strong>256x256 저해상도</strong>(16x16 latent) 학습</p></li>
+<li><p>이후 <strong>512x512 고해상도</strong>(64x64 latent) 학습 진행</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Masked image model 사용</strong></p>
+<ul class="simple">
+<li><p>Muse 파라미터의 대부분이 masked image model 파라미터로 구성</p></li>
+<li><p>unmaked 토큰과 T5XXL text embedding 을 condition으로 masked 저해상도 토큰에 대해 예측 진행</p></li>
+</ul>
+</li>
+<li><p><strong>“Super-res” transformer model 사용</strong></p>
+<ul class="simple">
+<li><p>T5XXL text embedding 을 condition으로 저해상도 토큰을 고해상도 토큰으로 바꾸는데 사용</p></li>
+</ul>
+</li>
+</ol>
+<section id="pre-trained-text-encoders">
+<h2>2.1 Pre-trained Text Encoders<a class="headerlink" href="#pre-trained-text-encoders" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2205.11487">Imagen</a> 에서 pretrained LLM 사용하면 효과적인 high-quality 의 이미지 생성 가능</p></li>
+<li><p><strong>풍부한 visual, semantic 정보를 추출</strong>할 수 있는 T5-XXL 사용</p>
+<ul>
+<li><p>objects (nouns), actions (verbs), visual properties (adjectives), spatial relationships (prepositions)</p></li>
+<li><p>Muse 가 이러한 정보를 이미지 생성을 위한 LLM embedding 에서 잘 mapping 을 할 수 있을 것이라고 가정</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2209.15162">Linearly mapping from image to text space</a> 에서 선행 연구 진행</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>인코딩 과정</p>
+<ol class="arabic simple">
+<li><p>4096 차원의 embedding vector를 얻음</p></li>
+<li><p>linearly projection 진행되어 base, super-res transformer에 입력되게 차원을 맞춤</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="semantic-tokenization-using-vqgan">
+<h2>2.2. Semantic Tokenization using VQGAN<a class="headerlink" href="#semantic-tokenization-using-vqgan" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>VQGAN</p>
+<ul>
+<li><p>encoder + decoder</p></li>
+<li><p>encoder feature 를 vector quantization 이 진행된 후, codebook 으로 부터 매핑을 통해 디코딩이 진행</p></li>
+</ul>
+</li>
+<li><p>다른 해상도의 이미지를 인코딩할 수 있도록 encoder와 decoder 모두 <strong>convolutional layer</strong> 로 구성</p></li>
+<li><p>256x256 픽셀 이미지에 맞는 VQGAN 모델(base model)과 512x512 픽셀 이미지에 맞는 VQGAN 모델(super-res model) 구성</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2012.09841">Taming transformers for high-resolution image synthesis</a> 에서 <strong>인코딩된 discrete 토큰이 low level noise를 무시하면서 high level semantic 함을 더 잘 capture 한다는 것을 연구 진행</strong></p>
+<ul>
+<li><p>이 때문에, <strong>cross-entropy loss 를 통해 masked 토큰을 예측</strong>하는데 사용할 수 있게됨</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="base-model">
+<h2>2.3. Base Model<a class="headerlink" href="#base-model" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>base model</p>
+<ul>
+<li><p>projected T5 embedding + 이미지 토큰을 입력으로 한 <a class="reference external" href="https://arxiv.org/abs/2202.04200">masked transformer</a> 로 구성</p></li>
+<li><p>text embedding 은 unmasked, 이미지 토큰은 랜덤하게 masking 진행 → [MASK] 토큰으로 교체</p></li>
+</ul>
+</li>
+<li><p>이미지 토큰을 embedding 으로 선형적으로 mapping 진행(transformer 의 input/hidden 사이즈에 맞게) + positional embedding 도 포함</p></li>
+<li><p>transformer layer는 self-attention, cross-attention, MLP 블럭이 포함</p>
+<ul>
+<li><p>MLP 는 masked image embedding 을 logit 값으로 변경하는데 사용되고</p></li>
+<li><p>cross-entropy loss 는 ground truth 토큰과 함께 오차를 계산함</p></li>
+</ul>
+</li>
+<li><p>학습 때, base model은 각 step 마다 모든 masked tokens를 예측하지만,</p>
+<ul>
+<li><p>inference 에서는 퀄리티를 증가하기 위한 iterative 방식으로 mask 예측 진행</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="super-resolution-model">
+<h2>2.4. Super-Resolution Model<a class="headerlink" href="#super-resolution-model" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="figure-4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_4.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_4.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#figure-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>바로 512x512 로 예측하도록 모델을 구성했을 때, <strong>low level detail 에 더 포커싱</strong>되어 학습이 진행됨. → 따라서 위의 그림과 같이 계층적으로 설계했음</p></li>
+<li><p>base model은 16x16 latent map 을 생성하고, super resolution 모델이 base latent map 을 <strong>64x64 latent map 으로 upsampling</strong> 함</p>
+<ul class="simple">
+<li><p>base 모델이 학습이 완료되면, 그 이후에 super resolution 모델 학습 진행</p></li>
+</ul>
+</li>
+<li><p>Architecture</p>
+<figure class="align-default" id="table-6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_6.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/table_6.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 426 </span><span class="caption-text">Table 6</span><a class="headerlink" href="#table-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section id="decoder-finetuning">
+<h2>2.5. Decoder Finetuning<a class="headerlink" href="#decoder-finetuning" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>디테일을 높이기 위해 residual layer를 더 추가하고 channel 늘림</p>
+<ul>
+<li><p>residual layer: <strong>2개 → 4개</strong>, channel: <strong>128 → 256</strong></p></li>
+</ul>
+</li>
+<li><p>encoder weight, codebook, base, super-res transformer 모델은 freezing</p></li>
+</ul>
+<figure class="align-default" id="figure-13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_13.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_13.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 427 </span><span class="caption-text">Figure 13</span><a class="headerlink" href="#figure-13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>해당 그림에서는 표지판이 더 finetuned decoder 가 복원이 잘 됐음</p></li>
+</ul>
+</section>
+<section id="classifier-free-guidance">
+<h2>2.7. Classifier Free Guidance<a class="headerlink" href="#classifier-free-guidance" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>이미지 생성 퀄리티와 text-image alignment 향상을 위해 도입</p></li>
+<li><p>학습 때, 랜덤하게 10% 만 text conditioning 을 제거</p>
+<ul>
+<li><p>inference</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\ell_g=(1+t) \ell_c-t \ell_u\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(l_c\)</span>: conditional logit / <span class="math notranslate nohighlight">\(l_u\)</span>: unconditional logit / <span class="math notranslate nohighlight">\(t\)</span>: guidance scale</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>CFG 는 diversity ↔ fidelity 의 trade-off 관계</strong></p>
+<ul>
+<li><p>Muse 에서는 t 를 선형적으로 증가시키는 샘플링 과정을 거쳐 diversity 의 한계를 극복</p></li>
+<li><p>초반에는 guidance 가 없거나 낮게 해서 logit 값을 설정하고, 후반에는 conditional prompt 가 가능하게 많은 가중치를 주게 된다.</p></li>
+<li><p>unconditional logit → negative prompt 로도 사용 가능</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="iterative-parallel-decoding-at-inference">
+<h2>2.8. Iterative Parallel Decoding at Inference<a class="headerlink" href="#iterative-parallel-decoding-at-inference" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Muse 의 시간 효율성</p>
+<ul>
+<li><p>parallel decoding 으로 인해 <strong>한 번의 foward 연산으로 multiple token 을 예측</strong>하는 방식으로 동작함</p>
+<ul>
+<li><p>Markovian 속성: 많은 토큰이 주어진 다른 토큰에 대해 conditionally independent 함
+→ parallel decoding 가능</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/2202.04200">Maskgit</a> 논문 에서 Decoding 은 cosine schedule 에 의해 수행됨</p>
+<ul>
+<li><p>해당 step 에서 예측되는 가장 높은 신뢰도의 masked 토큰을 선택해 decoding 진행됨</p></li>
+<li><p>그 후 decoding 된 것은 masking 이 해제되는 방식</p></li>
+</ul>
+</li>
+<li><p>이러한 절차를 따라서, Muse 에서는 base 모델의 256 토큰은 24 step 을 사용하고, super-res 모델의 4096 토큰은 8 step 만 사용</p>
+<ul>
+<li><p><a class="reference external" href="https://arxiv.org/pdf/2206.10789.pdf">Scaling Autoregressive Models for Content-Rich Text-to-Image Generation</a> 에서는 256 or 4096 step 이 필요하고,</p></li>
+<li><p>diffusion 모델에서는 수백번의 step 이 필요한 것에 비해 Muse 가 빠른 inference 를 수행 가능</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default" id="figure-5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_5.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_5.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 428 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#figure-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="results">
+<h2>3. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Imagen dataset</p>
+<ul>
+<li><p>460M text-image pairs</p></li>
+</ul>
+</li>
+<li><p>train step: 1M</p></li>
+<li><p>train time: 1 week</p></li>
+<li><p>batch size: 512 on 512-core TPU-v4 chips</p></li>
+<li><p>Adafactor optimizer</p></li>
+</ul>
+<figure class="align-default" id="figure-6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_6.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_6.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 429 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#figure-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>cardinality: 동일한 객체를 여러 번 생성할 때, Muse 는 크기, 색상, 회전된 모습</p></li>
+</ul>
+<figure class="align-default" id="figure-7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_7.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_7.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 430 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#figure-7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>정량적 평가</p></li>
+</ul>
+<p>:::{figure-md} Table 6
+<img title="" src="../../pics/Muse/table_6.png" alt="fig_1" class="bg-primary mb-1" width="600">        Table 6
+        :::</p>
+<ul>
+<li><p>FID(diversity) ↔ CLIP score(image-text alignment)</p>
+<figure class="align-default" id="figure-8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_8.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_8.png" style="width: 317px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#figure-8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>inpainting, outpainting</p>
+<figure class="align-default" id="figure-10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_10.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_10.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Figure 10</span><a class="headerlink" href="#figure-10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="contribution">
+<h1>Contribution<a class="headerlink" href="#contribution" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p><strong>FID, CLIP score</strong> 기반으로 text-to-image 모델에 대한 SOTA 를 달성</p>
+<ul class="simple">
+<li><p>이미지 생성 퀄리티, 다양성, text prompt와의 alignment 측정했음</p></li>
+</ul>
+</li>
+<li><p>quantized 이미지 토큰과 <strong>parallel decoding</strong> 으로 인해 <strong>빠른 inference</strong> 가 가능</p></li>
+<li><p>inpainting, outpainting, mask-free editing 을 포함한 <strong>zero-shot editing</strong> 가능</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="q-a">
+<h1>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this heading">#</a></h1>
+<ol class="arabic simple">
+<li><p>Muse 와 같은 transformer 기반의 generation 모델에서는 어떻게 <strong>diversity</strong> 한 결과를 가져올 수 있나요?</p>
+<ol class="arabic simple">
+<li><p>아무래도 Muse 는 random latent 에서 생성하는 것이 아니라 text-to-image 모델이라, text 에 따라서 다양한 이미지 생성 결과가 나타날 수 있을 것 같습니다.</p></li>
+</ol>
+</li>
+<li><p>Muse 는 결국 GAN 모델인가요?</p>
+<ol class="arabic simple">
+<li><p>기준점이 어떻냐에 따라 GAN 이다, 아니다, 라고 정하기 어려울 것 같습니다. VQGAN을 사용해서 GAN이라고 생각할 수 도 있고, GAN 처럼 random latent 결과에 따라 이미지 생성이 달라질 수 있는 관점에서 생각하면 아니다라고 말할 수 있을 것 같습니다.</p></li>
+</ol>
+</li>
+<li><p>Token 은 어떤 의미를 갖나요?</p>
+<ol class="arabic simple">
+<li><p>VQGAN에서 input 이미지를 인코딩하고, vector-quantization 과정을 거쳐 압축 후, codebook의 값을 가져와 feature를 구성하는데요, 이때 feature에 포함되어 있는 하나의 포인트에 해당하는 것이 token이라고 생각하시면 될 것 같습니다.</p></li>
+</ol>
+</li>
+<li><p>텍스트 프롬프트를 넣었을때 실제 이미지 생성은 어떻게 이뤄지나요? Inference에서는 입력 이미지가 없는데 base transformer에 입력 이미지에 대한 masked token대신 뭐가 들어가게 되나요?</p>
+<ol class="arabic simple">
+<li><p>실제 inference 과정에서는 input 이미지가 없기 때문에 모두 마스크된 형태로 입력되게 됩니다. text prompt 의 condition 에 따라 각 step을 거쳐 decoding 이 수행됩니다.</p></li>
+</ol>
+</li>
+<li><p>text embedding이 어떻게 objective function 수식에 들어가나요?</p>
+<ol class="arabic simple">
+<li><p>base transformer 에 대해 text embedding 값이 key, value로 입력되어 cross-attention 이 수행되게 됩니다. 그렇게 예측된 feature와 GT의 feature 끼리 cross entropy loss를 통해 마스크 예측할 수 있는 base transformer 가 학습이 됩니다.</p></li>
+</ol>
+</li>
+</ol>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Diffusion_models_already_have_a_Semantic_Latent_Space.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Diffusion Models already have a Semantic Latent Space</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Muse</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#masked-modeling">Masked modeling</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-trained-text-encoders">2.1 Pre-trained Text Encoders</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#semantic-tokenization-using-vqgan">2.2. Semantic Tokenization using VQGAN</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#base-model">2.3. Base Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-resolution-model">2.4. Super-Resolution Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decoder-finetuning">2.5. Decoder Finetuning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classifier-free-guidance">2.7. Classifier Free Guidance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-parallel-decoding-at-inference">2.8. Iterative Parallel Decoding at Inference</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">3. Results</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution">Contribution</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#q-a">Q&amp;A</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

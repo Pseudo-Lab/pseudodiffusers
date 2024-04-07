@@ -15,6 +15,12 @@
 
 
 ## Introduction
+생성형 모델은 크게 Explicit density, Implicit density로 나뉩니다. Explicit density는 데이터 분포를 명확하게 사전에 정의하고 모델을 학습하는 방법입니다. 데이터의 분포를 직접적인 계산이 가능한 Tractable 분포로 추정하는 방법과 근사화시켜 추정하는 Approximate density로 나뉩니다. 
+- (Explicit) Tractable : AutoRegressive 등이 있습니다. AutoRegressive는 이전 단계의 데이터를 활용하여 모델을 학습하는 방법입니다. 대표적인 모델로는 PixelCNN, PixelRNN 등이 있습니다.
+- (Explicit) Approximate density : Score-Based model, Boltzmann Machine 등이 있습니다. 
+    - Score-Based model : 파라미터의 Gradient가 아닌 데이터의 Gradient 활용하여 모델을 학습하는 방법으로, Energy-Based Model에서 MLE에 사용하는 확률분포의 정규화하는 term을 따로 계산하지 않아도 되는 장점이 있습니다.
+    - Boltzmann Machine : 완전그래프 구조로 학습하는 생성형 모델. 모델 학습 과정에서 확률 분포의 학습이 어려워(계산량이 많아서 어려움) Markov chain을 활용하여 학습합니다. 완전그래프이기 때문에 노드가 늘어날 수록 간선, 파라미터 등이 급증하는 문제가 있어 Restricted Boltzmann Machine(RBM)이 제안됩니다.
+- (Implicit) Implicit density : 데이터 분포를 명확히 정의하지 않고 샘플링 하면서 모델을 학습하는 방법입니다. GAN 등의 방법이 있습니다.
 
 Ian Goodfellow 가 2014년에 발표한 GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood $p_{\theta}(x)$ 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다. 
 
@@ -211,7 +217,8 @@ $KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data
 
 ## Experiments
 
-논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 $p_g$ 로부터 Parzen density estimation 을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다. 
+논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 $p_g$ 로부터 Parzen density estimation을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다. 아래 표를 보면 실험 방법 중 GAN이 제일 결과가 좋은 것을 볼 수 있습니다.
+<img src="../../pics/gan/gan_05.png" alt="gan_05" class="bg-primary mb-1" width="400px">
 
 ## Summary
 

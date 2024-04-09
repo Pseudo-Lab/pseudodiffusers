@@ -8,15 +8,22 @@
 
 - **Author:** Sangwoo Jo
 
-- **Last updated on Apr. 12, 2023**
+- **Editor:** Changhwan Lee
+
+- **Last updated on Apr. 09, 2024**
 ```
 
 # GAN
 
 
 ## Introduction
+생성형 모델은 크게 생성하고자 하는 데이터의 explicit density 와 implicit density 를 계산하는 방식으로 나뉩니다. Explicit density 를 계산한다는 것은 데이터 분포를 명확하게 사전에 정의하고 모델을 학습하는 것을 의미합니다. 이때, 데이터의 분포를 직접적인 계산이 가능한 tractable density 로 추정하는 방법과 근사화시켜 approximate density 로 추정하는 방법으로 나뉩니다. 
+- Tractable density: AutoRegressive 하게 구하는 방식이 있습니다. AutoRegressive 모델을 사용하여 이전 단계의 데이터를 활용하여 모델을 학습하고, 대표적인 모델로는 PixelCNN, PixelRNN 등이 있습니다.
+- Approximate density: 대표적으로 score-based model, Boltzmann Machine 등이 있습니다. 
+    - Score-based model - 모델 파라미터의 gradient 가 아닌 데이터의 gradient 활용하여 모델을 학습하는 방식으로, energy-based model 에서 MLE 에 사용하는 확률분포를 정규화하는 term 을 따로 계산하지 않아도 되는 장점이 있습니다.
+    - Boltzmann Machine : 완전그래프 구조로 학습하는 생성형 모델입니다. 모델을 학습하는 과정에서 확률 분포의 학습이 어려워(계산량이 많아서 어려움) Markov chain 을 활용하여 학습합니다. 또한, 완전그래프이기 때문에 노드가 늘어날수록 간선, 파라미터 등이 급증하는 문제가 있어 Restricted Boltzmann Machine(RBM) 이 제안되기도 했습니다.
 
-Ian Goodfellow 가 2014년에 발표한 GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood $p_{\theta}(x)$ 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다. 
+반면에 데이터의 분포를 명확히 정의하지 않고 implicit 하게 모델을 학습하는 방식도 존재합니다. 대표적으로는 Ian Goodfellow 가 2014년에 발표한 GAN 모델이 있습니다. GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성 분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood $p_{\theta}(x)$ 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다. 
 
 :::{figure-md} 
 <img src="../../pics/gan/gan_01.png" alt="gan_01" class="bg-primary mb-1" width="700px">
@@ -92,7 +99,7 @@ Generator 와 Discriminator 구현 코드도 같이 살펴보겠습니다.
 GAN 을 학습할 시, **D를 먼저 최적화하는 k 단계**와 **G를 최적화하는 한 단계를 번갈아 수행**합니다. 그리고 이때 쓰이는 손실함수(loss function)은 다음과 같습니다. 
 
 $$
-\min_G \max_D V(D,G) = \mathbb{E}_{x \sim p_{data}(x)}[log\ D(x)] + \mathbb{E}_{z \sim p_z(z)}[log(1-D(G(z))]
+\min_G \max_D V(D,G) = \mathbb{E}_{x \sim p_{data}(x)}[\logD(x)] + \mathbb{E}_{z \sim p_z(z)}[\log(1-D(G(z))]
 $$
 
 논문에서 제시한 학습 알고리즘과 실제 implementation code 를 비교해보겠습니다. 
@@ -163,7 +170,7 @@ Generative Adversarial Network(GAN) Training Procedure
     ```
     
 
-이렇게 Discriminator 와 Generator 는 각각 $V(D,G)$ 가 최대화하고 최소화하는 방향으로 stochastic gradient descent 를 진행하게 됩니다. 하지만 아래 그림처럼 실제로 Generator를 학습할 때, 초반에 $D(G(z)) \approx 0$ 일 경우 학습하지 못하는 상황이 발생합니다. 이 때, $log(1-D(G(z))$ 를 최소화하지 않고 $log(D(G(z))$ 를 최대화하는 방향으로 Generator 를 학습하는 기법도 있습니다.  
+이렇게 Discriminator 와 Generator 는 각각 $V(D,G)$ 가 최대화하고 최소화하는 방향으로 stochastic gradient descent 를 진행하게 됩니다. 하지만 아래 그림처럼 실제로 Generator를 학습할 때, 초반에 $D(G(z)) \approx 0$ 일 경우 학습하지 못하는 상황이 발생합니다. 이 때, $\log(1-D(G(z))$ 를 최소화하지 않고 $\log(D(G(z))$ 를 최대화하는 방향으로 Generator 를 학습하는 기법도 있습니다.  
 
 :::{figure-md} 
 <img src="../../pics/gan/gan_04.png" alt="gan_04" class="bg-primary mb-1" width="700px">
@@ -184,11 +191,11 @@ $$
 이를 증명하자면, Discriminator 에 대한 손실함수를 다음과 같이 쓸 수 있고 $D = D_{G}^*(x)$ 가 이를 최대화하는 solution 입니다. 
 
 $$
-V(D,G) = \int_x p_{data}(x)\ log(D(x))\ dx+ \int_z p_{z}(z)\ log(1-D(g(z))\ dz 
+V(D,G) = \int_x p_{data}(x) \log(D(x)) dx+ \int_z p_{z}(z) \log(1-D(g(z)) dz 
 $$
 
 $$
-= \int_x p_{data}(x)\ log(D(x)) + p_{g}(x)\ log(1-D(x))\ dx 
+= \int_x p_{data}(x) \log(D(x)) + p_{g}(x) \log(1-D(x)) dx 
 $$
 
 **Proposition 2. 최적화된 Discriminator 에 대해 $\max_D V(D,G)$ 를 최소화하는 Generator 는 $p_g = p_{data}$ 일때 성립하고 이때 $D = D_{G}^*(x) = 1/2$ 입니다.** 
@@ -196,22 +203,28 @@ $$
 이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고 
 
 $$
-V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}_{x \sim p_g(x)} [ log(1-D^{\ast}(x) ]
+V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ \log D^{\ast}(x) ] + \mathbb{E}_{x \sim p_g(x)} [ \log(1-D^{\ast}(x) ]
 $$
 
 $$
-= \int_x p_{data}(x)\ log(\frac{p_{data}(x)}{p_{data}(x) + p_g(x)}) + \int_x p_{g}(x)\ log(\frac{p_{g}(x)}{p_{data}(x) + p_g(x)})\ dx 
+= \int_x p_{data}(x) \log(\frac{p_{data}(x)}{p_{data}(x) + p_g(x)}) + \int_x p_{g}(x) \log(\frac{p_{g}(x)}{p_{data}(x) + p_g(x)})\ dx 
 $$
 
 $$
-= -log(4)\ + KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) 
+= -\log(4)\ + KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) 
 $$
 
 $KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) = 2\ \cdot\ JSD(p_{data}\ ||\ p_{g})$ 의 최솟값은 0 이고 이는 $p_g = p_{data}$ 일때 성립합니다.   
 
 ## Experiments
 
-논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 $p_g$ 로부터 Parzen density estimation 을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다. 
+논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 $p_g$ 로부터 Parzen density estimation을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다. 아래 표를 보면 실험 방법 중 GAN이 제일 결과가 좋은 것을 볼 수 있습니다.
+
+:::{figure-md} 
+<img src="../../pics/gan/gan_05.png" alt="gan_05" class="bg-primary mb-1" width="400px">
+
+Experimental Results
+:::
 
 ## Summary
 

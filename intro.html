@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>[PseudoLab] Text-to-Image Generation (feat. Diffusion) &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>Text-to-Image Generation (feat. Diffusion) &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -78,15 +77,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -163,7 +153,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                    Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
@@ -234,7 +224,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="docs/review/ConceptLab.html">ConceptLab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docs/review/Muse.html">Muse</a></li>
-
 
 
 </ul>
@@ -404,10 +393,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -415,11 +404,13 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,11 +421,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)</h1>
+    <h1>Text-to-Image Generation (feat. Diffusion)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -444,13 +444,40 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="pseudolab-text-to-image-generation-feat-diffusion">
-<h1>[PseudoLab] Text-to-Image Generation (feat. Diffusion)<a class="headerlink" href="#pseudolab-text-to-image-generation-feat-diffusion" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="text-to-image-generation-feat-diffusion">
+<h1>Text-to-Image Generation (feat. Diffusion)<a class="headerlink" href="#text-to-image-generation-feat-diffusion" title="Permalink to this heading">#</a></h1>
 <p>This is the repository of Pseudo Lab’s Text-to-Image Generation (feat. Diffusion) team.</p>
-<p>:bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.</p>
+<p>Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.</p>
 <p><a class="reference external" href="https://www.linkedin.com/company/pseudolab/">About Us - Pseudo Lab</a></p>
-<p><a class="reference external" href="https://pseudo-lab.com/Text-to-Image-Generation-feat-Diffusion-cc12047d1bfc4bdfa70122c11ff90aee">About Us - Text-to-Image Generation (feat. Diffusion) Team</a></p>
+<p><a class="reference external" href="https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44">About Us - Text-to-Image Generation (feat. Diffusion) Team</a></p>
 <p>참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!</p>
+<section id="contents">
+<h2>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Preliminary Works</p></li>
+<li><p>Image Generation</p></li>
+<li><p>Video Generation</p></li>
+<li><p>Experiments</p></li>
+</ul>
+</section>
+<section id="contributors">
+<h2>Contributors<a class="headerlink" href="#contributors" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>조상우 [Sangwoo Jo] | <a class="reference external" href="https://github.com/jasonjo97">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/sangwoojo/">Linkedin</a> |</p></li>
+<li><p>문광수 [Kwangsu Mun] | <a class="reference external" href="https://github.com/mksoo">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/%EA%B4%91%EC%88%98-%EB%AC%B8-95681b229/">Linkedin</a> |</p></li>
+<li><p>김지수 [Jisu Kim] | Github |  <a class="reference external" href="https://www.linkedin.com/in/%EC%A7%80%EC%88%98-%EA%B9%80-5a0b2320a/">Linkedin</a> |</p></li>
+<li><p>박범수 [Beomsoo Park] | <a class="reference external" href="https://github.com/hanlyang0522">Github</a> | Linkedin |</p></li>
+<li><p>지승환 [Seunghwan Ji] | <a class="reference external" href="https://github.com/hwansnaa">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/%EC%8A%B9%ED%99%98-%EC%A7%80-0169b425a/">Linkedin</a> |</p></li>
+<li><p>고동근 [Donggeun Sean Ko] | <a class="reference external" href="https://github.com/seanko29">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/sangwoojo/">Linkedin</a> |</p></li>
+<li><p>조남경 [Namkyeong Cho] | Github | Linkedin |</p></li>
+<li><p>김선훈 [SeonHoon Kim] | <a class="reference external" href="https://github.com/egshkim">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/seonhoonkim/">Linkedin</a> |</p></li>
+<li><p>이준형 [Junhyoung Lee] | <a class="reference external" href="https://github.com/jjuun0">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/jjuun0">Linkedin</a> |</p></li>
+<li><p>조형서 [Hyoungseo Cho] | <a class="reference external" href="https://github.com/ChoHyoungSeo">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/hyoungseo-cho/">Linkedin</a> |</p></li>
+<li><p>유정화 [Jeonghwa Yoo] | <a class="reference external" href="https://github.com/jeongHwarr">Github</a> | <a class="reference external" href="https://www.linkedin.com/in/jeonghwa-yoo-8403a716b/">Linkedin</a> |</p></li>
+<li><p>박세환 [Sehwan Park] | <a class="reference external" href="https://github.com/shp216">Github</a> | Linkedin |</p></li>
+<li><p>송건학 [Geonhak Song] | <a class="reference external" href="https://github.com/geonhak904">Github</a> | Linkedin |</p></li>
+</ul>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -486,10 +513,11 @@ document.write(`
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
        href="docs/review/vae.html"
@@ -500,12 +528,30 @@ document.write(`
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">Contributors</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
@@ -549,8 +595,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

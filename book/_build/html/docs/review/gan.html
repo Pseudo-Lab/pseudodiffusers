@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,8 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -81,15 +80,6 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
-
   
   <input type="checkbox"
           class="sidebar-toggle"
@@ -166,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../intro.html">
-                    [PseudoLab] Text-to-Image Generation (feat. Diffusion)
+                    Text-to-Image Generation (feat. Diffusion)
                 </a>
             </li>
         </ul>
@@ -407,10 +397,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
   </button>
 `);
 </script>
@@ -418,7 +408,7 @@ document.write(`
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+    <i class="fa-solid fa-magnifying-glass"></i>
   </button>
 `);
 </script>
@@ -475,14 +465,25 @@ document.write(`
 </ul>
 </li>
 <li><p><strong>Author:</strong> Sangwoo Jo</p></li>
-<li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
+<li><p><strong>Editor:</strong> Changhwan Lee</p></li>
+<li><p><strong>Last updated on Apr. 09, 2024</strong></p></li>
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="gan">
 <h1>GAN<a class="headerlink" href="#gan" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>Ian Goodfellow 가 2014년에 발표한 GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다.</p>
+<p>생성형 모델은 크게 생성하고자 하는 데이터의 explicit density 와 implicit density 를 계산하는 방식으로 나뉩니다. Explicit density 를 계산한다는 것은 데이터 분포를 명확하게 사전에 정의하고 모델을 학습하는 것을 의미합니다. 이때, 데이터의 분포를 직접적인 계산이 가능한 tractable density 로 추정하는 방법과 근사화시켜 approximate density 로 추정하는 방법으로 나뉩니다.</p>
+<ul class="simple">
+<li><p>Tractable density: AutoRegressive 하게 구하는 방식이 있습니다. AutoRegressive 모델을 사용하여 이전 단계의 데이터를 활용하여 모델을 학습하고, 대표적인 모델로는 PixelCNN, PixelRNN 등이 있습니다.</p></li>
+<li><p>Approximate density: 대표적으로 score-based model, Boltzmann Machine 등이 있습니다.</p>
+<ul>
+<li><p>Score-based model - 모델 파라미터의 gradient 가 아닌 데이터의 gradient 활용하여 모델을 학습하는 방식으로, energy-based model 에서 MLE 에 사용하는 확률분포를 정규화하는 term 을 따로 계산하지 않아도 되는 장점이 있습니다.</p></li>
+<li><p>Boltzmann Machine : 완전그래프 구조로 학습하는 생성형 모델입니다. 모델을 학습하는 과정에서 확률 분포의 학습이 어려워(계산량이 많아서 어려움) Markov chain 을 활용하여 학습합니다. 또한, 완전그래프이기 때문에 노드가 늘어날수록 간선, 파라미터 등이 급증하는 문제가 있어 Restricted Boltzmann Machine(RBM) 이 제안되기도 했습니다.</p></li>
+</ul>
+</li>
+</ul>
+<p>반면에 데이터의 분포를 명확히 정의하지 않고 implicit 하게 모델을 학습하는 방식도 존재합니다. 대표적으로는 Ian Goodfellow 가 2014년에 발표한 GAN 모델이 있습니다. GAN 은 최근에 Diffusion Model 이 소개되기 전까지 몇 년 동안 이미지 생성 분야에서 대표적인 모델로 자리잡았었습니다. GAN 은 VAE 와 달리 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 직접 구하지 않고, Adversarial Process 를 통해 implicit 하게 샘플링을 해서 분포를 구하게 됩니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_01.png"><img alt="gan_01" class="bg-primary mb-1" src="../../_images/gan_01.png" style="width: 700px;" /></a>
 <figcaption>
@@ -555,7 +556,7 @@ document.write(`
 <p>GAN 을 학습할 시, <strong>D를 먼저 최적화하는 k 단계</strong>와 <strong>G를 최적화하는 한 단계를 번갈아 수행</strong>합니다. 그리고 이때 쓰이는 손실함수(loss function)은 다음과 같습니다.</p>
 <div class="math notranslate nohighlight">
 \[
-\min_G \max_D V(D,G) = \mathbb{E}_{x \sim p_{data}(x)}[log\ D(x)] + \mathbb{E}_{z \sim p_z(z)}[log(1-D(G(z))]
+\min_G \max_D V(D,G) = \mathbb{E}_{x \sim p_{data}(x)}[\logD(x)] + \mathbb{E}_{z \sim p_z(z)}[\log(1-D(G(z))]
 \]</div>
 <p>논문에서 제시한 학습 알고리즘과 실제 implementation code 를 비교해보겠습니다.</p>
 <figure class="align-default" id="id3">
@@ -624,7 +625,7 @@ document.write(`
 </div>
 </li>
 </ul>
-<p>이렇게 Discriminator 와 Generator 는 각각 <span class="math notranslate nohighlight">\(V(D,G)\)</span> 가 최대화하고 최소화하는 방향으로 stochastic gradient descent 를 진행하게 됩니다. 하지만 아래 그림처럼 실제로 Generator를 학습할 때, 초반에 <span class="math notranslate nohighlight">\(D(G(z)) \approx 0\)</span> 일 경우 학습하지 못하는 상황이 발생합니다. 이 때, <span class="math notranslate nohighlight">\(log(1-D(G(z))\)</span> 를 최소화하지 않고 <span class="math notranslate nohighlight">\(log(D(G(z))\)</span> 를 최대화하는 방향으로 Generator 를 학습하는 기법도 있습니다.</p>
+<p>이렇게 Discriminator 와 Generator 는 각각 <span class="math notranslate nohighlight">\(V(D,G)\)</span> 가 최대화하고 최소화하는 방향으로 stochastic gradient descent 를 진행하게 됩니다. 하지만 아래 그림처럼 실제로 Generator를 학습할 때, 초반에 <span class="math notranslate nohighlight">\(D(G(z)) \approx 0\)</span> 일 경우 학습하지 못하는 상황이 발생합니다. 이 때, <span class="math notranslate nohighlight">\(\log(1-D(G(z))\)</span> 를 최소화하지 않고 <span class="math notranslate nohighlight">\(\log(D(G(z))\)</span> 를 최대화하는 방향으로 Generator 를 학습하는 기법도 있습니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_04.png"><img alt="gan_04" class="bg-primary mb-1" src="../../_images/gan_04.png" style="width: 700px;" /></a>
 <figcaption>
@@ -642,32 +643,38 @@ D_{G}^*(x) = \frac{p_{data}(x)}{p_{data}(x) + p_g(x)}
 <p>이를 증명하자면, Discriminator 에 대한 손실함수를 다음과 같이 쓸 수 있고 <span class="math notranslate nohighlight">\(D = D_{G}^*(x)\)</span> 가 이를 최대화하는 solution 입니다.</p>
 <div class="math notranslate nohighlight">
 \[
-V(D,G) = \int_x p_{data}(x)\ log(D(x))\ dx+ \int_z p_{z}(z)\ log(1-D(g(z))\ dz 
+V(D,G) = \int_x p_{data}(x) \log(D(x)) dx+ \int_z p_{z}(z) \log(1-D(g(z)) dz 
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-= \int_x p_{data}(x)\ log(D(x)) + p_{g}(x)\ log(1-D(x))\ dx 
+= \int_x p_{data}(x) \log(D(x)) + p_{g}(x) \log(1-D(x)) dx 
 \]</div>
 <p><strong>Proposition 2. 최적화된 Discriminator 에 대해 <span class="math notranslate nohighlight">\(\max_D V(D,G)\)</span> 를 최소화하는 Generator 는 <span class="math notranslate nohighlight">\(p_g = p_{data}\)</span> 일때 성립하고 이때 <span class="math notranslate nohighlight">\(D = D_{G}^*(x) = 1/2\)</span> 입니다.</strong></p>
 <p>이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고</p>
 <div class="math notranslate nohighlight">
 \[
-V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}_{x \sim p_g(x)} [ log(1-D^{\ast}(x) ]
+V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ \log D^{\ast}(x) ] + \mathbb{E}_{x \sim p_g(x)} [ \log(1-D^{\ast}(x) ]
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-= \int_x p_{data}(x)\ log(\frac{p_{data}(x)}{p_{data}(x) + p_g(x)}) + \int_x p_{g}(x)\ log(\frac{p_{g}(x)}{p_{data}(x) + p_g(x)})\ dx 
+= \int_x p_{data}(x) \log(\frac{p_{data}(x)}{p_{data}(x) + p_g(x)}) + \int_x p_{g}(x) \log(\frac{p_{g}(x)}{p_{data}(x) + p_g(x)})\ dx 
 \]</div>
 <div class="math notranslate nohighlight">
 \[
-= -log(4)\ + KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) 
+= -\log(4)\ + KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) 
 \]</div>
 <p><span class="math notranslate nohighlight">\(KL(p_{data}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) +  KL(p_{g}(x)\ ||\ \frac{p_{data}+p_{g}}{2}) = 2\ \cdot\ JSD(p_{data}\ ||\ p_{g})\)</span> 의 최솟값은 0 이고 이는 <span class="math notranslate nohighlight">\(p_g = p_{data}\)</span> 일때 성립합니다.</p>
 </section>
 </section>
 <section id="experiments">
 <h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
-<p>논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 <span class="math notranslate nohighlight">\(p_g\)</span> 로부터 Parzen density estimation 을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다.</p>
+<p>논문에서 MNIST, the Toronto Face Database(TFD), 그리고 CIFAR-10 dataset 로 모델 실험 및 성능 평가했습니다. 평가시에는 <span class="math notranslate nohighlight">\(p_g\)</span> 로부터 Parzen density estimation을 거쳐 계산한 log likelihood estimate 로 모델 성능 평가를 진행했습니다. 아래 표를 보면 실험 방법 중 GAN이 제일 결과가 좋은 것을 볼 수 있습니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/gan_05.png"><img alt="gan_05" class="bg-primary mb-1" src="../../_images/gan_05.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Experimental Results</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
@@ -688,7 +695,7 @@ V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -700,10 +707,11 @@ V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}
 
               
               
-              
-              
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="vae.html"
@@ -723,7 +731,10 @@ V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ log D^{\ast}(x) ] + \mathbb{E}
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
+</div></div>
+  
 </div>
+
                 </footer>
               
             </div>
@@ -792,8 +803,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
 
   <footer class="bd-footer">
   </footer>

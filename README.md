@@ -6,7 +6,7 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 
 [About Us - Pseudo Lab](https://www.linkedin.com/company/pseudolab/)
 
-[About Us - Text-to-Image Generation (feat. Diffusion) Team](https://pseudo-lab.com/Text-to-Image-Generation-feat-Diffusion-cc12047d1bfc4bdfa70122c11ff90aee)
+[About Us - Text-to-Image Generation (feat. Diffusion) Team](https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44)
 
 참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!
 
@@ -47,6 +47,9 @@ This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion
 | 17 | 2023.11.15 | Sehwan Park <br> Junhyoung Lee | [Diffusion Models already have a Semantic Latent Space](https://arxiv.org/abs/2210.10960) (ICLR 2023) <br>  [Align your Latents: High-Resolution Video Synthesis with Latent Diffusion Models](https://arxiv.org/abs/2304.08818) (CVPR 2023) |
 | 18 | 2023.11.29 | Donggeun Sean Ko | [Video Diffusion Models](https://arxiv.org/abs/2204.03458) |
 | 19 | 2024.03.13 | Geonhak Song | [Animate Anyone: Consistent and Controllable Image-to-Video Synthesis for Character Animation](https://arxiv.org/abs/2311.17117) <br> [DreaMoving: A Human Video Generation Framework based on Diffusion Models](https://arxiv.org/abs/2312.05107) |
+| 20 | 2024.03.20 | Junhyoung Lee | [Muse: Text-To-Image Generation via Masked Generative Transformers](https://arxiv.org/abs/2301.00704) (ICML 2023) |
+| 21 | 2024.03.27 | Seunghwan Ji | [Scaling up GANs for Text-to-Image Synthesis](https://arxiv.org/abs/2303.05511) (CVPR 2023) |
+| 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

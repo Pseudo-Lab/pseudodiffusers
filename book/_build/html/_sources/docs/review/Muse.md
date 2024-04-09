@@ -12,8 +12,7 @@
 
 # Muse
 
-:::{figure-md} Figure 1
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_1.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 1
@@ -29,20 +28,19 @@ Figure 1
   - Muse-3B, zero-shot COCO 에서 FID 7.88 달성, CLIP score 0.32
   - 따로 **파인튜닝 없이** inpainting, outpainting, mask-free editing 이 가능함
 
-## Masked modeling
+## 1. Masked modeling
 
 - [22.02] MaskGIT: Masked Generative Image Transformer
   
   - CVPR 2022, Google Research
 
-:::{figure-md} maskgit 1
+:::{figure-md} 
 <img title="" src="../../pics/Muse/maskgit_1.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 maskgit 1
 :::
 
-:::{figure-md} maskgit 2
-
+:::{figure-md}
 <img title="" src="../../pics/Muse/maskgit_2.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 maskgit 2
@@ -52,10 +50,9 @@ maskgit 2
 - inference 시에 모든 마스킹된 토큰을 예측하지만, 신뢰도가 높은 토큰만 실제 디코딩됨
   - 따라서 autoregressive 모델의 **256 step → 8 step** 으로 줄여 inference 속도가 향상
 
-# Architecture
+## 2. Model Architecture
 
-:::{figure-md} Figure 3
-
+:::{figure-md}
 <img title="" src="../../pics/Muse/fig_3.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 3
@@ -72,7 +69,7 @@ Figure 3
 3. **“Super-res” transformer model 사용**
    - T5XXL text embedding 을 condition으로 저해상도 토큰을 고해상도 토큰으로 바꾸는데 사용
 
-### 2.1 Pre-trained Text Encoders
+### 2.1. Pre-trained Text Encoders
 
 - [Imagen](https://arxiv.org/abs/2205.11487) 에서 pretrained LLM 사용하면 효과적인 high-quality 의 이미지 생성 가능
 - **풍부한 visual, semantic 정보를 추출**할 수 있는 T5-XXL 사용
@@ -107,8 +104,7 @@ Figure 3
 
 ### 2.4. Super-Resolution Model
 
-:::{figure-md} Figure 4
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_4.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 4
@@ -122,8 +118,7 @@ Figure 4
 
 - Architecture
   
-  :::{figure-md} Table 6
-  
+  :::{figure-md} 
   <img title="" src="../../pics/Muse/table_6.png" alt="fig_1" class="bg-primary mb-1" width="600">
   
   Table 6
@@ -135,8 +130,7 @@ Figure 4
   - residual layer: **2개 → 4개**, channel: **128 → 256**
 - encoder weight, codebook, base, super-res transformer 모델은 freezing
 
-:::{figure-md} Figure 13
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_13.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 13
@@ -169,8 +163,7 @@ Figure 13
   - [Scaling Autoregressive Models for Content-Rich Text-to-Image Generation](https://arxiv.org/pdf/2206.10789.pdf) 에서는 256 or 4096 step 이 필요하고,
   - diffusion 모델에서는 수백번의 step 이 필요한 것에 비해 Muse 가 빠른 inference 를 수행 가능
 
-:::{figure-md} Figure 5
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_5.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 5
@@ -185,8 +178,7 @@ Figure 5
 - batch size: 512 on 512-core TPU-v4 chips
 - Adafactor optimizer
 
-:::{figure-md} Figure 6
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_6.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 6
@@ -194,8 +186,7 @@ Figure 6
 
 - cardinality: 동일한 객체를 여러 번 생성할 때, Muse 는 크기, 색상, 회전된 모습
 
-:::{figure-md} Figure 7
-
+:::{figure-md} 
 <img title="" src="../../pics/Muse/fig_7.png" alt="fig_1" class="bg-primary mb-1" width="600">
 
 Figure 7
@@ -203,14 +194,13 @@ Figure 7
 
 - 정량적 평가
 
-        :::{figure-md} Table 6
+        :::{figure-md} 
 <img title="" src="../../pics/Muse/table_6.png" alt="fig_1" class="bg-primary mb-1" width="600">        Table 6
         :::
 
 - FID(diversity) ↔ CLIP score(image-text alignment)
   
-  :::{figure-md} Figure 8
-  
+  :::{figure-md}
   <img title="" src="../../pics/Muse/fig_8.png" alt="fig_1" class="bg-primary mb-1" width="317">
   
   Figure 8
@@ -218,8 +208,7 @@ Figure 7
 
 - inpainting, outpainting
   
-  :::{figure-md} Figure 10
-  
+  :::{figure-md} 
   <img title="" src="../../pics/Muse/fig_10.png" alt="fig_1" class="bg-primary mb-1" width="600">
   
   Figure 10

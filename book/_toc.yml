@@ -39,6 +39,7 @@ parts:
   - file: docs/review/ConceptLab
   - file: docs/review/Diffusion_models_already_have_a_Semantic_Latent_Space
   - file: docs/review/Muse
+  - file: docs/review/GIGAGAN
 
 - caption: Video Generation
   chapters:

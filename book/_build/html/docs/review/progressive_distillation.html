@@ -1,469 +1,579 @@
 
-
 <!DOCTYPE html>
 
-
-<html lang="en" >
-
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Progressive Distillation for Fast Sampling of Diffusion Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
-  
-  
-  
-  <script data-cfasync="false">
-    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
-  </script>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
-  
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/progressive_distillation';</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="ConceptLab" href="ConceptLab.html" />
     <link rel="prev" title="Your Diffusion Model is Secretly a Zero-Shot Classifier" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-  
-  
-  <a class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="../../search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
-  
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
-  
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../index.html">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-  
-
-<a class="navbar-brand logo" href="../../intro.html">
-  
-  
-  
-  
-    
-    
       
-    
-    
-    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
-  
-  
-</a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="../../intro.html">
-                    Text-to-Image Generation (feat. Diffusion)
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+      
+      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Text-to-Image Generation-feat-Diffusion</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   Text-to-Image Generation (feat. Diffusion)
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Preliminary Works
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vae.html">
+   VAE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="gan.html">
+   GAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDPM.html">
+   DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DDIM.html">
+   DDIM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">
+   A Study on the Evaluation of Generative Models
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Image Generation
+ </span>
+</p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
-
-
-
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
-<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
-<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
-
-
-
+ <li class="toctree-l1">
+  <a class="reference internal" href="cycleGAN.html">
+   CycleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyleGAN.html">
+   StyleGAN
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="diffusion_beats_GANs.html">
+   Diffusion Models Beat GANs on Image Synthesis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dalle.html">
+   DALL-E
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DALLE2.html">
+   DALL-E 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dreambooth.html">
+   DreamBooth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ControlNet.html">
+   ControlNet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Latent_Diffusion_Model.html">
+   Latent Diffusion Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Textual_Inversion.html">
+   Textual Inversion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CustomDiffusion.html">
+   Custom Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="LoRA.html">
+   LoRA
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="I-DDPM.html">
+   I-DDPM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="StyO.html">
+   StyO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imagen.html">
+   Imagen
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="imagen_editor.html">
+   Imagen Editor
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SDEdit.html">
+   SDEdit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="SDXL.html">
+   SDXL
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="t2i_adapter.html">
+   T2I-Adapter
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="HyperDreamBooth.html">
+   HyperDreamBooth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="CM3leon.html">
+   CM3leon
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">
+   Synthetic Data from Diffusion Models Improves ImageNet Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="GLIDE.html">
+   GLIDE
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="BBDM.html">
+   BBDM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">
+   Your Diffusion Model is Secretly a Zero-Shot Classifier
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Progressive Distillation for Fast Sampling of Diffusion Models
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="ConceptLab.html">
+   ConceptLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">
+   Diffusion Models already have a Semantic Latent Space
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Muse.html">
+   Muse
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Video Generation
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
-<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Make_A_Video.html">
+   Make A Video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="VideoLDM.html">
+   VideoLDM
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Animate_Anyone.html">
+   Animate Anyone
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="DreaMoving.html">
+   DreaMoving
+  </a>
+ </li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Experiments
+ </span>
+</p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../experiments/js_exp.html">
+   Synthetic Data with Stable Diffusion for Foliar Disease Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../experiments/swjo_exp.html">
+   Training DreamBooth on Naver Webtoon Face Dataset
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
+</nav> <!-- To handle the deprecated key -->
 
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
 
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
-<div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
-<div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
-</label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
-<div class="article-header-buttons">
-
-
-
-
-
-<div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="btn__text-container">Repository</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/progressive_distillation.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="btn__text-container">Open issue</span>
-</a>
-</li>
-      
-  </ul>
 </div>
 
 
+          
 
 
-
-
-<div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="../../_sources/docs/review/progressive_distillation.md" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="btn__text-container">.md</span>
-</a>
-</li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="btn__text-container">.pdf</span>
-</button>
-</li>
-      
-  </ul>
-</div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
-<span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-
-<script>
-document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
-  </button>
-`);
-</script>
-
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
-</div></div>
-      
-    </div>
-  
-</div>
-</div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Progressive Distillation for Fast Sampling of Diffusion Models</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div>
-                <h2> Contents </h2>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
+                title="탐색 전환" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/docs/review/progressive_distillation.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
+                    class="fab fa-github"></i>저장소</button></a>
+        <a class="issues-button"
+            href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/progressive_distillation.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
+        title="전체 화면으로보기"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> 내용
             </div>
-            <nav aria-label="Page">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-diffusion-model-in-continuous-time">2. Background - Diffusion model in continuous time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">2.1. Definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">2.2. Objective</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">2.3. Sampling</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ancestral-sampling-ddpm">2.3.1. Ancestral Sampling - DDPM</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-flow-ode">2.3.2. Probability Flow ODE</a></li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background-diffusion-model-in-continuous-time">
+   2. Background - Diffusion model in continuous time
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     2.1. Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     2.2. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling">
+     2.3. Sampling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ancestral-sampling-ddpm">
+       2.3.1. Ancestral Sampling - DDPM
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-flow-ode">
+       2.3.2. Probability Flow ODE
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#progressive-distillation">
+   3. Progressive Distillation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diffusion-model-parameterization-and-training-loss">
+   4. Diffusion Model Parameterization and Training Loss
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   5. Experiments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-parametrization-and-training-loss">
+     5.1. Model Parametrization and Training Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2. Progressive Distillation
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progressive-distillation">3. Progressive Distillation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-model-parameterization-and-training-loss">4. Diffusion Model Parameterization and Training Loss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parametrization-and-training-loss">5.1. Model Parametrization and Training Loss</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2. Progressive Distillation</a></li>
-</ul>
-</li>
-</ul>
+
             </nav>
         </div>
     </div>
 </div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Progressive Distillation for Fast Sampling of Diffusion Models</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> 내용 </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#background-diffusion-model-in-continuous-time">
+   2. Background - Diffusion model in continuous time
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#definition">
+     2.1. Definition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#objective">
+     2.2. Objective
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sampling">
+     2.3. Sampling
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#ancestral-sampling-ddpm">
+       2.3.1. Ancestral Sampling - DDPM
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#probability-flow-ode">
+       2.3.2. Probability Flow ODE
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#progressive-distillation">
+   3. Progressive Distillation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#diffusion-model-parameterization-and-training-loss">
+   4. Diffusion Model Parameterization and Training Loss
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments">
+   5. Experiments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-parametrization-and-training-loss">
+     5.1. Model Parametrization and Training Loss
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     5.2. Progressive Distillation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
 
-              
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
                 
-<div id="searchbox"></div>
-                <article class="bd-article" role="main">
-                  
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
@@ -471,7 +581,7 @@ document.write(`
 <li><p><strong>Reference</strong></p>
 <ul>
 <li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2202.00512">https://arxiv.org/abs/2202.00512</a></p></li>
-<li><p>Code: <a class="github reference external" href="https://github.com/google-research/google-research/tree/master/diffusion_distillation/diffusion_distillation">google-research/google-research</a></p></li>
+<li><p>Code: <a class="reference external" href="https://github.com/google-research/google-research/tree/master/diffusion_distillation/diffusion_distillation">https://github.com/google-research/google-research/tree/master/diffusion_distillation/diffusion_distillation</a></p></li>
 </ul>
 </li>
 <li><p><strong>Author:</strong> Sangwoo Jo</p></li>
@@ -479,16 +589,16 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="progressive-distillation-for-fast-sampling-of-diffusion-models">
-<h1>Progressive Distillation for Fast Sampling of Diffusion Models<a class="headerlink" href="#progressive-distillation-for-fast-sampling-of-diffusion-models" title="Permalink to this heading">#</a></h1>
+<h1>Progressive Distillation for Fast Sampling of Diffusion Models<a class="headerlink" href="#progressive-distillation-for-fast-sampling-of-diffusion-models" title="Permalink to this headline">¶</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Diffusion model 이 ImageNet generation task 에서 기존 BigGAN-deep 그리고 VQ-VAE-2 모델보다 FID/CAS score 기준으로 더 좋은 성능을 보여주며 많은 각광을 받고 있습니다. 그러나 sampling 속도가 느리다는 치명적인 단점을 가지고 있습니다.</p>
 <p>이를 해결하기 위해, 논문에서는 Progressive Distillation 기법을 소개하게 됩니다. 간략히 설명하자면 사전학습된 <span class="math notranslate nohighlight">\(N\)</span>-step DDIM 모델을 <span class="math notranslate nohighlight">\(N/2\)</span>-step student 모델에 distillation 하는 과정을 반복하여 최종적으로 4 steps 만으로도 state-of-the-art 모델을 수천번의 sampling steps 를 거쳐 생성한 이미지들과 유사한 모델 성능을 보여준다고 합니다.</p>
 </section>
 <section id="background-diffusion-model-in-continuous-time">
-<h2>2. Background - Diffusion model in continuous time<a class="headerlink" href="#background-diffusion-model-in-continuous-time" title="Permalink to this heading">#</a></h2>
+<h2>2. Background - Diffusion model in continuous time<a class="headerlink" href="#background-diffusion-model-in-continuous-time" title="Permalink to this headline">¶</a></h2>
 <section id="definition">
-<h3>2.1. Definition<a class="headerlink" href="#definition" title="Permalink to this heading">#</a></h3>
+<h3>2.1. Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h3>
 <p>Continuous 한 time domain 에서의 diffusion model 을 다음과 같은 요소들로 정의합니다.</p>
 <ul class="simple">
 <li><p>Training data <span class="math notranslate nohighlight">\(x \sim p(x)\)</span></p></li>
@@ -498,27 +608,27 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_01.png"><img alt="progressive_distillation_01" class="bg-primary mb-1" src="../../_images/progressive_distillation_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Markovian Forward Process</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 371 </span><span class="caption-text">Markovian Forward Process</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>where <span class="math notranslate nohighlight">\(0 \leq s &lt; t \leq 1\)</span>  and <span class="math notranslate nohighlight">\(\sigma_{t|s}^2 = (1-e^{\lambda_t - \lambda_s}) \sigma_t^2\)</span></p>
 </section>
 <section id="objective">
-<h3>2.2. Objective<a class="headerlink" href="#objective" title="Permalink to this heading">#</a></h3>
+<h3>2.2. Objective<a class="headerlink" href="#objective" title="Permalink to this headline">¶</a></h3>
 <p>Diffusion model 의 objective 는 <span class="math notranslate nohighlight">\(\hat{x}_{\theta}(z_t)\)</span> 모델에서 <span class="math notranslate nohighlight">\(z_t \sim q(z_t | x)\)</span> 와 <span class="math notranslate nohighlight">\(\lambda_t\)</span> 를 입력받아 다음과 같이 Mean Squared Error Loss 를 최소화하는 방향으로 원본 이미지 <span class="math notranslate nohighlight">\(x\)</span> 를 예측하는 것입니다. 이때, <span class="math notranslate nohighlight">\(w(\lambda_t)\)</span> 를 <em>weighting function</em> 이라 부릅니다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_02.png"><img alt="progressive_distillation_02" class="bg-primary mb-1" src="../../_images/progressive_distillation_02.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Objective</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 372 </span><span class="caption-text">Objective</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>where <span class="math notranslate nohighlight">\(t \sim U[0,1]\)</span></p>
 </section>
 <section id="sampling">
-<h3>2.3. Sampling<a class="headerlink" href="#sampling" title="Permalink to this heading">#</a></h3>
+<h3>2.3. Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">¶</a></h3>
 <p>Diffusion model 에서 sampling 하는 방식은 다양하게 존재합니다.</p>
 <section id="ancestral-sampling-ddpm">
-<h4>2.3.1. Ancestral Sampling - DDPM<a class="headerlink" href="#ancestral-sampling-ddpm" title="Permalink to this heading">#</a></h4>
+<h4>2.3.1. Ancestral Sampling - DDPM<a class="headerlink" href="#ancestral-sampling-ddpm" title="Permalink to this headline">¶</a></h4>
 <p>첫번째로는 DDPM 논문에서 소개하는 discrete time ancestral sampling 방식입니다. 위에 소개했던 notation 기준으로 reverse process 를 다음과 같이 수식적으로 표현 가능합니다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -527,24 +637,24 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_03.png"><img alt="progressive_distillation_03" class="bg-primary mb-1" src="../../_images/progressive_distillation_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Reverse Process</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 373 </span><span class="caption-text">Reverse Process</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>이를 기반으로 <span class="math notranslate nohighlight">\(z_1 \sim N(0,I)\)</span> 로부터 다음과 같은 ancestral sampler 를 정의하게 됩니다. 이때, <span class="math notranslate nohighlight">\(\gamma\)</span> 는 sampling 시 얼마나 많은 noise 를 추가할지 설정하는 hyperparameter 입니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_04.png"><img alt="progressive_distillation_04" class="bg-primary mb-1" src="../../_images/progressive_distillation_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Ancestral Sampler</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 374 </span><span class="caption-text">Ancestral Sampler</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="probability-flow-ode">
-<h4>2.3.2. Probability Flow ODE<a class="headerlink" href="#probability-flow-ode" title="Permalink to this heading">#</a></h4>
+<h4>2.3.2. Probability Flow ODE<a class="headerlink" href="#probability-flow-ode" title="Permalink to this headline">¶</a></h4>
 <p>반면에, Song et al. (2021c) 에서 forward diffusion process 를 SDE 로 표현할 수 있고, 이를 통한 sampling process 를 <em>probabiility flow</em> ODE 로 표현해서 구할 수 있다고 제시합니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_05.png"><img alt="progressive_distillation_05" class="bg-primary mb-1" src="../../_images/progressive_distillation_05.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Probability flow ODE</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 375 </span><span class="caption-text">Probability flow ODE</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(f(z_t,t) = \frac{d \log \alpha_t}{dt}z_t, g^2(t) = \frac{dσ_t^2}{dt} − 2 \frac{d\log \alpha_t}{dt}\sigma_t^2, \text{and}\)</span>  <span class="math notranslate nohighlight">\(\nabla_z \log \hat{p}_{\theta}(z_t) = \frac{\alpha_t\hat{x}_{\theta}(z_t) -z_t}{\sigma_t^2}\)</span> 로 정의합니다.</p>
@@ -552,33 +662,33 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_06.png"><img alt="progressive_distillation_06" class="bg-primary mb-1" src="../../_images/progressive_distillation_06.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 376 </span><span class="caption-text">FID scores on 128 × 128 ImageNet for various probability flow ODE integrators</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 376 </span><span class="caption-text">FID scores on 128 × 128 ImageNet for various probability flow ODE integrators</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>참고로 DDIM sampler 를 ODE solver 문제로 해석하면 다음과 같이 표현할 수 있고, 이 수식은 앞으로 자주 보게 될 예정입니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_07.png"><img alt="progressive_distillation_07" class="bg-primary mb-1" src="../../_images/progressive_distillation_07.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 377 </span><span class="caption-text">DDIM sampler</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 377 </span><span class="caption-text">DDIM sampler</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 </section>
 <section id="progressive-distillation">
-<h2>3. Progressive Distillation<a class="headerlink" href="#progressive-distillation" title="Permalink to this heading">#</a></h2>
+<h2>3. Progressive Distillation<a class="headerlink" href="#progressive-distillation" title="Permalink to this headline">¶</a></h2>
 <p>Diffusion model 을 더 효율적으로 sampling 하기 위해 소개한 <em>progressive distillation</em> 기법은 다음과 같은 절차로 진행됩니다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_08.png"><img alt="progressive_distillation_08" class="bg-primary mb-1" src="../../_images/progressive_distillation_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Progressive Distillation</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 378 </span><span class="caption-text">Progressive Distillation</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>Standard diffusion training 기법으로 Teacher Diffusion Model 학습</p></li>
 <li><p>Student Model 정의 - Teacher Model 로부터 모델 구조 및 parameter 복사</p></li>
 <li><p>Student Model 학습</p>
-<ol class="arabic simple">
+<ol class="simple">
 <li><p>이때, original data <span class="math notranslate nohighlight">\(x\)</span> 대신에 <span class="math notranslate nohighlight">\(\tilde{x}\)</span>  를 target 로 student model 을 학습합니다. <span class="math notranslate nohighlight">\(\tilde{x}\)</span> 에 대한 공식은 아래 pseudocode 에 소개되는데, 이는 one-step student sample <span class="math notranslate nohighlight">\(\tilde{z}_{t''}\)</span> 과 two-step teacher sample <span class="math notranslate nohighlight">\(z_{t''}\)</span> 를 일치시키기 위해 나온 공식입니다.</p></li>
 <li><p>2 DDIM steps of teacher model 결과와 1 DDIM step of student model 결과를 일치시키는 것이 핵심입니다. 여기서 <span class="math notranslate nohighlight">\(z_t\)</span>  에서 <span class="math notranslate nohighlight">\(z_{t-1/N}\)</span> 로 넘어가는 과정을 1 DDIM step 라 정의하고, <span class="math notranslate nohighlight">\(N\)</span> 은 총 진행되는 student sampling steps 입니다.</p></li>
 <li><p>기존 denoising model 학습 시, <span class="math notranslate nohighlight">\(x\)</span> 가 <span class="math notranslate nohighlight">\(z_t\)</span> 에 대해 deterministic 하지 않기 때문에 (다른 <span class="math notranslate nohighlight">\(x\)</span> 값들에 대해 동일한 <span class="math notranslate nohighlight">\(z_t\)</span> 생성 가능) 모델은 사실상 <span class="math notranslate nohighlight">\(x\)</span> 가 아닌 weighted average of possible <span class="math notranslate nohighlight">\(x\)</span> values 를 예측하는 모델이라고 합니다. 따라서, <span class="math notranslate nohighlight">\(z_t\)</span>에 대해 deterministic 한 <span class="math notranslate nohighlight">\(\tilde{x}(z_t)\)</span> 를 예측하도록 학습한 student model 은 teacher model 보다 더 sharp 한 prediction 을 할 수 있다고 주장합니다.</p></li>
@@ -592,20 +702,20 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_09.png"><img alt="progressive_distillation_09" class="bg-primary mb-1" src="../../_images/progressive_distillation_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 379 </span><span class="caption-text">Pseudocode for Progresssive Distillation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 379 </span><span class="caption-text">Pseudocode for Progresssive Distillation</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section id="diffusion-model-parameterization-and-training-loss">
-<h2>4. Diffusion Model Parameterization and Training Loss<a class="headerlink" href="#diffusion-model-parameterization-and-training-loss" title="Permalink to this heading">#</a></h2>
+<h2>4. Diffusion Model Parameterization and Training Loss<a class="headerlink" href="#diffusion-model-parameterization-and-training-loss" title="Permalink to this headline">¶</a></h2>
 <p>이제 denoising model <span class="math notranslate nohighlight">\(\hat{x}_{\theta}\)</span> 와 reconstruction loss weight <span class="math notranslate nohighlight">\(w(\lambda_t)\)</span> 에 대한 설정값에 대해 자세히 알아보겠습니다. 우선, 논문에서는 일반성을 잃지 않고 (without loss of generalization) <em>variance-preserving</em> diffusion process (i.e., <span class="math notranslate nohighlight">\(\alpha_t^2 + \sigma_t^2 = 1\)</span> ) 라는 가정을 하게 됩니다. 더 자세하게는 cosine schedule <span class="math notranslate nohighlight">\(\alpha_t = cos(0.5\pi t)\)</span> 를 사용합니다.</p>
 <p>DDPM 을 비롯한 대다수의 논문에서 이미지 <span class="math notranslate nohighlight">\(x\)</span> 가 아닌 noise <span class="math notranslate nohighlight">\(\epsilon\)</span> 를 예측하는 denoising model <span class="math notranslate nohighlight">\(\hat{\epsilon}_{\theta}(z_t)\)</span> 를 정의합니다. <span class="math notranslate nohighlight">\(\epsilon\)</span>-space 에 정의된 손실함수에 <span class="math notranslate nohighlight">\(\hat{x_{\theta}}(z_t) = \frac{1}{\alpha_t}(z_t - \sigma_t \hat{\epsilon}_{\theta}(z_t))\)</span> 식을 대입해보겠습니다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_10.png"><img alt="progressive_distillation_10" class="bg-primary mb-1" src="../../_images/progressive_distillation_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 380 </span><span class="caption-text">Training loss on <span class="math notranslate nohighlight">\(\epsilon\)</span>-space and <span class="math notranslate nohighlight">\(x\)</span>-space</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 380 </span><span class="caption-text">Training loss on <span class="math notranslate nohighlight">\(\epsilon\)</span>-space and <span class="math notranslate nohighlight">\(x\)</span>-space</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>따라서, 이는 이미지 <span class="math notranslate nohighlight">\(x\)</span> domain 에서 weighted reconstruction loss 를 적용하는 것과 동일하며 이때 weighting function <span class="math notranslate nohighlight">\(w(\lambda_t) = exp(\lambda_t), \lambda_t = \log[\alpha_t^2/\sigma_t^2]\)</span> 로 정의할 수 있습니다. 그러나 이러한 standard training procedure 는 progressive distillation 에 적합하지 않다고 주장합니다.</p>
@@ -614,74 +724,74 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_11.png"><img alt="progressive_distillation_11" class="bg-primary mb-1" src="../../_images/progressive_distillation_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 381 </span><span class="caption-text">Different parameterizations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 381 </span><span class="caption-text">Different parameterizations</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Weighting function <span class="math notranslate nohighlight">\(w(\lambda_t)\)</span> 도 두 가지 방안으로 실험했습니다. 이는 signal-to-noise ratio 가 0 으로 수렴하는 현상을 방지하도록 설정되었다고 합니다.</p>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_12.png"><img alt="progressive_distillation_12" class="bg-primary mb-1" src="../../_images/progressive_distillation_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 382 </span><span class="caption-text">Different loss weighting functions</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 382 </span><span class="caption-text">Different loss weighting functions</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_13.png"><img alt="progressive_distillation_13" class="bg-primary mb-1" src="../../_images/progressive_distillation_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 383 </span><span class="caption-text">Visualization of different loss weighting functions</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 383 </span><span class="caption-text">Visualization of different loss weighting functions</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="experiments">
-<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
 <p>논문에서 32x32 부터 128x128 까지 다양한 resolution 에서 모델 성능을 확인했습니다. 또한, cosine schedule <span class="math notranslate nohighlight">\(\alpha_t = cos(0.5 \pi t)\)</span> 그리고 DDPM 에서 소개한 U-Net 아키텍쳐를 사용했으며 부가적으로 Nichol &amp; Dhariwal (2021), Song et al. (2021c) 에서 사용된 BigGAN-style up/downsampling 기법을 활용했습니다.</p>
 <section id="model-parametrization-and-training-loss">
-<h3>5.1. Model Parametrization and Training Loss<a class="headerlink" href="#model-parametrization-and-training-loss" title="Permalink to this heading">#</a></h3>
+<h3>5.1. Model Parametrization and Training Loss<a class="headerlink" href="#model-parametrization-and-training-loss" title="Permalink to this headline">¶</a></h3>
 <p>아래 지표는 unconditional CIFAR-10 데이터셋에 앞써 소개드린 <span class="math notranslate nohighlight">\(\epsilon\)</span>-prediction 외에 다른 세 가지 parametrization 기법들로 original diffusion model 의 FID 와 Inception Score 성능을 확인해본 결과입니다.</p>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_14.png"><img alt="progressive_distillation_14" class="bg-primary mb-1" src="../../_images/progressive_distillation_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 384 </span><span class="caption-text">Ablation Study on Parameterizations and Loss Weightings</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 384 </span><span class="caption-text">Ablation Study on Parameterizations and Loss Weightings</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>성능을 비교해본 결과 <span class="math notranslate nohighlight">\(v\)</span>-prediction/<span class="math notranslate nohighlight">\(x\)</span>-prediction 과 Truncated SNR loss function 을 사용했을때 성능이 가장 좋은 부분을 확인할 수 있습니다. 또한, <span class="math notranslate nohighlight">\(\epsilon\)</span>-prediction 과 Truncated SNR loss function 의 조합을 사용하여 학습 시, unstable 한 convergence 를 보이는 현상도 볼 수 있습니다.</p>
 <p>위 실험결과를 바탕으로 progressive distillation 진행시 CIFAR-10 데이터셋에는 <span class="math notranslate nohighlight">\(x\)</span>-prediction, 그 외 데이터셋에서는 <span class="math notranslate nohighlight">\((x,\epsilon)\)</span>-prediction 을 사용했다고 합니다. 더 자세한 hyperparameter setting 은 Appendix E 참조하시면 됩니다.</p>
 </section>
 <section id="id1">
-<h3>5.2. Progressive Distillation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>5.2. Progressive Distillation<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>논문에서 CIFAR-10, 64x64 downsampled ImageNet, 128 × 128 LSUN bedrooms, 그리고 128 × 128 LSUN Church-Outdoor 데이터셋에 progressive distillation 을 적용하여 모델 성능을 측정합니다. CIFAR-10 데이터셋 기준으로 teacher model 로부터 progressive distillation 진행 시 8192 steps 부터 시작하였고 batch size=128 로 설정하였습니다. 그 외 resolution 이 큰 데이터셋에 대해서는 1024 steps 부터 시작하고 batch size=2048 로 실험을 진행했습니다. 또한, 매 iteration 마다 <span class="math notranslate nohighlight">\(10^{-4}\)</span> 에서 <span class="math notranslate nohighlight">\(0\)</span> 으로 learning rate 를 linearly anneal 했다고 합니다.</p>
 <p>FID 성능을 확인해본 결과, 실험을 진행한 모든 4개의 데이터셋에 대해 progressive distillation 을 통해 4-8 sampling steps 만 진행해도 undistilled DDIM 그리고 stochastic sampler 에 준하는 성능을 보여주는 것을 확인할 수 있습니다. 4 sampling steps 까지 progressive distillation 진행하면서 발생하는 computational cost 가 baseline 모델 학습하는 것과 비슷한 부분을 생각했을때 엄청난 장점이라고 생각합니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_15.png"><img alt="progressive_distillation_15" class="bg-primary mb-1" src="../../_images/progressive_distillation_15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 385 </span><span class="caption-text">Comparison between Distilled, DDIM, and Stochastic Sampler</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 385 </span><span class="caption-text">Comparison between Distilled, DDIM, and Stochastic Sampler</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>추가적으로 CIFAR-10 데이터셋에서 타 fast sampling method 들과 FID 성능을 비교해본 결과입니다.</p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_16.png"><img alt="progressive_distillation_16" class="bg-primary mb-1" src="../../_images/progressive_distillation_16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 386 </span><span class="caption-text">Comparison of fast sampling results</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 386 </span><span class="caption-text">Comparison of fast sampling results</span><a class="headerlink" href="#id17" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>그리고 64x64 ImageNet 데이터셋에 distilled 모델로 생성한 예시 이미지들입니다. 동일한 seed 에 대해서 input noise 로부터 output image 까지 mapping 이 잘되는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_17.png"><img alt="progressive_distillation_17" class="bg-primary mb-1" src="../../_images/progressive_distillation_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 387 </span><span class="caption-text">Random samples from distilled 64 × 64 ImageNet models</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 387 </span><span class="caption-text">Random samples from distilled 64 × 64 ImageNet models</span><a class="headerlink" href="#id18" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>마지막으로 distillation scheduling 에 대한 ablation study 도 논문에서 진행했습니다. 첫번째 ablation study 로는 매 distillation iteration 마다 parameter update 횟수를 <span class="math notranslate nohighlight">\(50k\)</span> 에서 <span class="math notranslate nohighlight">\(25k, 10k, 5k\)</span>  로 점차 줄이면서 FID 성능을 비교해보고, 두번째 ablation study 로는 매 distillation iteration 마다 sampling step 을 2배 대신에 4배씩 줄여가면서 student model 을 학습하여 성능을 비교합니다. 그 결과 parameter update 횟수를 현저히 줄임에도 불구하고 FID 성능이 크게 줄지 않는 반면, 각 iteration 마다 sampling step 을 4배씩 줄이는 학습방식으로는 모델 성능이 좋지 못한 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_18.png"><img alt="progressive_distillation_18" class="bg-primary mb-1" src="../../_images/progressive_distillation_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 388 </span><span class="caption-text">Ablation study on fast sampling schedule</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 388 </span><span class="caption-text">Ablation study on fast sampling schedule</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>동일하게 CIFAR-10 외 ImageNet 그리고 LSUN 데이터셋에서 fast sampling schedule 을 적용한 성능 결과도 공유합니다.</p>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/progressive_distillation_19.png"><img alt="progressive_distillation_18" class="bg-primary mb-1" src="../../_images/progressive_distillation_19.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 389 </span><span class="caption-text">50k updates vs 10k updates on ImageNet/LSUN datasets</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 389 </span><span class="caption-text">50k updates vs 10k updates on ImageNet/LSUN datasets</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
 </section>
@@ -700,7 +810,7 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./docs/review"
         },
         predefinedOutput: true
@@ -708,122 +818,44 @@ q(z_s | z_t,x) = N(z_s | \hat{\mu}_{s|t}(z_t,x), \tilde{\sigma}_{s|t}^2I)
     </script>
     <script>kernelName = 'python3'</script>
 
-                </article>
+              </div>
               
-
-              
-              
-                <footer class="bd-footer-article">
-                  
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
-<div class="prev-next-area">
-    <a class="left-prev"
-       href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Your Diffusion Model is Secretly a Zero-Shot Classifier</p>
-      </div>
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Your Diffusion Model is Secretly a Zero-Shot Classifier</p>
+        </div>
     </a>
-    <a class="right-next"
-       href="ConceptLab.html"
-       title="next page">
-      <div class="prev-next-info">
+    <a class='right-next' id="next-link" href="ConceptLab.html" title="next page">
+    <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">ConceptLab</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
-</div></div>
-  
-</div>
-
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-diffusion-model-in-continuous-time">2. Background - Diffusion model in continuous time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">2.1. Definition</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#objective">2.2. Objective</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling">2.3. Sampling</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ancestral-sampling-ddpm">2.3.1. Ancestral Sampling - DDPM</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-flow-ode">2.3.2. Probability Flow ODE</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#progressive-distillation">3. Progressive Distillation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-model-parameterization-and-training-loss">4. Diffusion Model Parameterization and Training Loss</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-parametrization-and-training-loss">5.1. Model Parametrization and Training Loss</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">5.2. Progressive Distillation</a></li>
-</ul>
-</li>
-</ul>
-  </nav></div>
-
-</div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
-<div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
-<p class="component-author">
-By PseudoLab
-</p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  <p class="copyright">
-    
-      © Copyright 2022.
-      <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-</div>
-          </footer>
-        
-
-      </main>
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      으로 PseudoLab<br/>
+    
+        &copy; 저작권 2021.<br/>
+  </p>
+</footer>
+</main>
 
-  <footer class="bd-footer">
-  </footer>
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
   </body>
 </html>

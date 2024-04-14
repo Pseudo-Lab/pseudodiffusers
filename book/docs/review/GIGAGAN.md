@@ -1,17 +1,16 @@
+```{admonition} Information
+- **Title:** Scaling up GANs for Text-to-Image Synthesis (CVPR 2023)
+
+- **Reference**
+    - Paper:  [https://arxiv.org/abs/2303.05511](https://arxiv.org/abs/2303.05511)
+    - Code: [NON Official:](https://github.com/lucidrains/gigagan-pytorch)
+    
+- **Author:** Seunghwan Ji
+
+- **Last updated on April. 14, 2024**
+```
+
 # gigaGAN
-
----
-
-## 학습 자료
-
-[https://arxiv.org/abs/2303.05511](https://arxiv.org/abs/2303.05511)
-
-[https://mingukkang.github.io/GigaGAN/](https://mingukkang.github.io/GigaGAN/)
-
----
-
-**CVPR 2023(Highlight)**
-
 ## Abstract
 
 - 최근 이미지 생성 task의 모델 성능이 꾸준히 발전중
@@ -41,7 +40,7 @@
 ## Methods
 
 :::{figure-md} 
-<img src="../../pics/GIGAGAN/image0.png" alt="image0" class="bg-primary mb-1" width="700px">
+<img src="../../pics/GIGAGAN/img0.png" alt="img0" class="bg-primary mb-1" width="700px">
 
 Overall Architecture
 :::
@@ -59,7 +58,7 @@ Overall Architecture
 **Sample-adaptive kernel selection**
 
 :::{figure-md} 
-<img src="../../pics/GIGAGAN/image1.png" alt="image1" class="bg-primary mb-1" width="700px">
+<img src="../../pics/GIGAGAN/img1.png" alt="img1" class="bg-primary mb-1" width="700px">
 
 Sample Adaptive Kernel Selection
 :::
@@ -72,7 +71,7 @@ Sample Adaptive Kernel Selection
 - 레이어마다 $\{k_{i}\in R^{C_{in}\times C_{out}\times K\times K}\}$차원의 N개의 kernel set을 두고 style vector w의 affine layer를 거친 weight를 **각 kernel값에 weighted summation한 값을 최종 filter로 사용**
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image2.png" alt="image2" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img2.png" alt="img2" class="bg-primary mb-1" width="700px">
 
     Equation of kernel selection method affine layer
     :::
@@ -86,7 +85,7 @@ Sample Adaptive Kernel Selection
     - convolution filter는 receptive field 내부의 local feature 캡처에는 탁월하지만 field 외부의 부분은 학습할 수 없다.
         
         :::{figure-md} 
-        <img src="../../pics/GIGAGAN/image3.png" alt="image3" class="bg-primary mb-1" width="700px">
+        <img src="../../pics/GIGAGAN/img3.png" alt="img3" class="bg-primary mb-1" width="700px">
 
         Receptive Field in Convolution Networks
         :::
@@ -98,7 +97,7 @@ Sample Adaptive Kernel Selection
                 - lipschitz 함수란, **두 점 사이의 거리를 일정 비 이상으로 증가시키지 않는 함수**
                     
                     :::{figure-md} 
-                    <img src="../../pics/GIGAGAN/image4.png" alt="image4" class="bg-primary mb-1" width="700px">
+                    <img src="../../pics/GIGAGAN/img4.png" alt="img4" class="bg-primary mb-1" width="700px">
 
                     lipschitz Function
                     :::
@@ -116,7 +115,7 @@ Sample Adaptive Kernel Selection
 **Generator design**
 
 :::{figure-md} 
-<img src="../../pics/GIGAGAN/image5.png" alt="image5" class="bg-primary mb-1" width="700px">
+<img src="../../pics/GIGAGAN/img5.png" alt="img5" class="bg-primary mb-1" width="700px">
 
 GIGAGAN Architecture
 :::
@@ -137,7 +136,7 @@ GIGAGAN Architecture
 **Discriminator Design**
 
 :::{figure-md} 
-<img src="../../pics/GIGAGAN/image6.png" alt="image6" class="bg-primary mb-1" width="700px">
+<img src="../../pics/GIGAGAN/img6.png" alt="img6" class="bg-primary mb-1" width="700px">
 
 Discriminator of GIGAGAN
 :::
@@ -163,7 +162,7 @@ Discriminator of GIGAGAN
         - 그래서 discriminator 학습 과정에서 conditioning을 강제로 따르도록 하기위해 $c$를 랜덤으로 샘플링($\hat{c}$)해 image의 fake pair로 지정
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image7.png" alt="image7" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img7.png" alt="img7" class="bg-primary mb-1" width="700px">
 
     Matching aware loss
     :::
@@ -173,7 +172,7 @@ Discriminator of GIGAGAN
         - contrastive learning
             
             :::{figure-md} 
-            <img src="../../pics/GIGAGAN/image8.png" alt="image8" class="bg-primary mb-1" width="700px">
+            <img src="../../pics/GIGAGAN/img8.png" alt="img8" class="bg-primary mb-1" width="700px">
 
             constrastive learning
             :::
@@ -182,7 +181,7 @@ Discriminator of GIGAGAN
     - condition $c_{0}$에 대해 생성된 이미지의 feature vector는 condition $c_{0}$의 feature 벡터와는 가깝게 (positive), 나머지 condition의 feature vector와는 멀게(negative) 학습되어야한다.
         
         :::{figure-md} 
-        <img src="../../pics/GIGAGAN/image9.png" alt="image9" class="bg-primary mb-1" width="700px">
+        <img src="../../pics/GIGAGAN/img9.png" alt="img9" class="bg-primary mb-1" width="700px">
 
         CLIP Loss
         :::
@@ -212,7 +211,7 @@ Training and evaluation details
 1. **각각의 method가 정말 효과가 있는가?**
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image10.png" alt="image10" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img10.png" alt="img10" class="bg-primary mb-1" width="700px">
 
     Table1
     :::
@@ -221,7 +220,7 @@ Training and evaluation details
 2. **Text2Image 모델과 성능 비교**
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image11.png" alt="image11" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img11.png" alt="img11" class="bg-primary mb-1" width="700px">
 
     Table2
     :::
@@ -230,7 +229,7 @@ Training and evaluation details
 3. Distilled diffusion과 비교
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image12.png" alt="image12" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img12.png" alt="img12" class="bg-primary mb-1" width="700px">
 
     Table3
     :::
@@ -240,13 +239,13 @@ Training and evaluation details
 4. Upscaler
     
     !:::{figure-md} 
-    <img src="../../pics/GIGAGAN/image13.png" alt="image13" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img13.png" alt="img13" class="bg-primary mb-1" width="700px">
 
     Table4
     :::
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image14.png" alt="image14" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img14.png" alt="img14" class="bg-primary mb-1" width="700px">
 
     Super Resolution
     :::
@@ -256,7 +255,7 @@ Training and evaluation details
 - truncation trick
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image15.png" alt="image15" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img15.png" alt="img15" class="bg-primary mb-1" width="700px">
 
     Truncation Trick
     :::
@@ -264,7 +263,7 @@ Training and evaluation details
 - style mixing
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image16.png" alt="image16" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img16.png" alt="img16" class="bg-primary mb-1" width="700px">
 
     Style Mixing
     :::
@@ -272,7 +271,7 @@ Training and evaluation details
 - latent interpolation
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image17.png" alt="image17" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img17.png" alt="img17" class="bg-primary mb-1" width="700px">
 
     Latent Interpolation
     :::
@@ -283,7 +282,7 @@ Limitation
 - score 상으로는 어느정도 좋은 성능을 보이지만 **실제로 DALLE2 ,Imagen과 같은 SOTA diffusion 모델과 비교하면 develop이 필요함**
     
     :::{figure-md} 
-    <img src="../../pics/GIGAGAN/image18.png" alt="image18" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/GIGAGAN/img18.png" alt="img18" class="bg-primary mb-1" width="700px">
 
     Failure Cases
     :::

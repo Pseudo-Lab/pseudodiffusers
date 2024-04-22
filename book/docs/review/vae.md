@@ -124,13 +124,47 @@ $$
 
 ## Reparameterization Trick
 
-마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
+backpropagation을 사용하여 모델 학습을 원활히 할 수 있도록 Reparameterization Trick을 사용합니다. 잠재변수 $z$ 를 Encoder 에서 나온 $\mu$ 와 $\sigma$ 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 $\mu$ 와 $\sigma$ 를 각각 더하고 곱하게 됩니다. 이는 $q_{\phi}(z|x)$ 이 Gaussian distribution 을 따른다고 설정했을 때이고, $q_{\phi}(z|x)$ 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다. 
+
+아래 그림은 Gaussian 분포에 대한 Reparameterization Trick입니다. 그림에서 왼쪽은 Trick이 적용되지 않은 경우로 $\mu$나 $\sigma$ 값이 고정되어 있어도 $\mathcal{N}(\mu,\sigma)$에서 샘플링하므로 $z$는 랜덤한 값이며, 식에서 $\mu$나 $\sigma$를 미분할 수 없어 backpropagation이 어렵습니다. 반면 오른쪽은 $z=...$과 같은 deterministic한 형태로 되어 있고 $\mu$나 $\sigma$로 식을 미분할 수 있어 backpropagation을 통해 쉽게 학습 시킬 수 있습니다.
 
 :::{figure-md} 
 <img src="../../pics/vae/vae_05.png" alt="vae_05" class="bg-primary mb-1" width="700px">
 
 Overview of Reparameterization Trick
 :::
+
+
+## SGVB(Stochastic Gradient Variational Bayes)
+
+위에서 구한 Reparameterization Trick를 활용하고 Loss 함수를 변형하여 Stochastic Gradient를 적용하여 최적화를 효율적으로 수행할 수 있는 형태로 변환합니다. 논문에서는 2가지를 제시하고 있는데 1번째는 lower bound 전체에 대해 Monte Carlo를 적용한 방법입니다.
+$$ \tilde{\mathcal{L}}^{A}(\theta,\phi;\bold{x}^{(i)})=\frac{1}{L}\sum^{L}_{l=1}\log p_{\theta}(\bold{x}^{(i)},\bold{z}^{(i,l)})-\log q_{\phi}(\bold{z}^{(i,l)}|\bold{x}^{(i)}) $$
+
+2번째 식은 위에서 본 Reconstruction Error에 Monte Carlo 기법을 적용한 방법입니다. Lower bound를 다르게 표현하면 KL divergence와 기댓값으로 나뉠 수 있는데 기댓값에 대해서만 Monte Carlo를 적용한 것으로 식은 아래와 같이 변환됩니다. 논문에서는 위의 1번째 방법 대비 분산이 낮다고 이야기합니다. (2번째 방법이 $$\mathbb{E}_{q_{\phi}(\bold{z}|\bold{x}^{(i)})}[\log p_{\theta}(\bold{x}^{(i)}|\bold{z})]$$ 식에만 샘플링을 적용하여 분산이 더 낮은 것으로 생각됩니다.)
+$$ \tilde{\mathcal{L}}^{B}(\theta, \phi; \bold{x}^{(i)})=-D_{KL}(q_{\phi}(\bold{z}|\bold{x}^{(i)})||p_{\theta}(\bold{z}))+\frac{1}{L}\sum^{L}_{l=1}(\log p_{\theta}(\bold{x}^{(i)}|\bold{z}^{(i,l)})) $$ 
+
+
+
+## Train Algorithm
+
+위에서 만든 식을 바탕으로 모델 학습을 수행하며 학습 과정은 아래와 같습니다. 
+
+:::{figure-md}
+<img src="../../pics/vae/vae_06.png" alt="vae_06" class="bg-primary mb-1" width="700px">
+
+Overview of Train Algorithm
+
+
+- $\theta, \phi$ 파라미터 초기화
+- repeat
+    - $\bold{X}^{M}$ : mini batch dataset
+    - $\epsilon$ : noise distribution $p(\epsilon)$ 으로부터의 랜덤 샘플
+    - g : $\nabla_{\theta,\phi}\tilde{L}(\theta, \phi;\bold{X}^{M}, \epsilon)$
+    - 위의 g(gradient)를 사용하여 $\theta, \phi$ update
+- until : parameter $\theta, \phi$ 가 수렴할 때까지 진행
+- return $\theta, \phi$
+
+
 
 ## Summary
 

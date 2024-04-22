@@ -113,13 +113,13 @@ Overview of Gaussian Encoder and Decoder
 이로써 우리는 marginal likelihood $p_{\theta}(x)$ 를 최대화시키는 파라미터 $(\theta, \phi)$ 를 찾으면 되고, 수식적으로 표현하면 손실함수(loss function) 를 다음과 같이 Reconstruction Error 와 Regularization term 로 분할할 수 있습니다. 
 
 $$
-L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] + KL(q_{\phi}(z|x_i)||p(z))
+L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}\_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] + KL(q_{\phi}(z|x_i)||p(z))
 $$
 
 Reconstruction Error 는 Decoder 에서 생성하는 데이터가 최대한 원본 데이터와 유사하도록 하는 term 이고, Regularization 은 Encoder 에서 만드는 잠재변수의 분포가 저희가 부여한 prior distribution 이랑 가깝도록 설정하는 term 입니다. 이때, Reconstruction Error 는 Monte Carlo 기법으로 근사값을 구할 수 있고, 하나의 sample 을 계산하는 것도 연산량이 많으므로 논문에서는 sample size $L$ 을 1 로 설정합니다. 
 
 $$
-\mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] = \int log(p_{\theta}(x_i|z))q_{\phi}(z|x_i)dz \approx \frac{1}{L}\sum_{z^{i,l}} log(p_{\theta}(x_i|z^{i,l}))
+\mathbb{E}\_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] = \int log(p_{\theta}(x_i|z))q_{\phi}(z|x_i)dz \approx \frac{1}{L}\sum_{z^{i,l}} log(p_{\theta}(x_i|z^{i,l}))
 $$
 
 ## Reparameterization Trick
@@ -138,31 +138,48 @@ Overview of Reparameterization Trick
 ## SGVB(Stochastic Gradient Variational Bayes)
 
 위에서 구한 Reparameterization Trick를 활용하고 Loss 함수를 변형하여 Stochastic Gradient를 적용하여 최적화를 효율적으로 수행할 수 있는 형태로 변환합니다. 논문에서는 2가지를 제시하고 있는데 1번째는 lower bound 전체에 대해 Monte Carlo를 적용한 방법입니다.
-$$ \tilde{\mathcal{L}}^{A}(\theta,\phi;\bold{x}^{(i)})=\frac{1}{L}\sum^{L}_{l=1}\log p_{\theta}(\bold{x}^{(i)},\bold{z}^{(i,l)})-\log q_{\phi}(\bold{z}^{(i,l)}|\bold{x}^{(i)}) $$
 
-2번째 식은 위에서 본 Reconstruction Error에 Monte Carlo 기법을 적용한 방법입니다. Lower bound를 다르게 표현하면 KL divergence와 기댓값으로 나뉠 수 있는데 기댓값에 대해서만 Monte Carlo를 적용한 것으로 식은 아래와 같이 변환됩니다. 논문에서는 위의 1번째 방법 대비 분산이 낮다고 이야기합니다. (2번째 방법이 $$\mathbb{E}_{q_{\phi}(\bold{z}|\bold{x}^{(i)})}[\log p_{\theta}(\bold{x}^{(i)}|\bold{z})]$$ 식에만 샘플링을 적용하여 분산이 더 낮은 것으로 생각됩니다.)
-$$ \tilde{\mathcal{L}}^{B}(\theta, \phi; \bold{x}^{(i)})=-D_{KL}(q_{\phi}(\bold{z}|\bold{x}^{(i)})||p_{\theta}(\bold{z}))+\frac{1}{L}\sum^{L}_{l=1}(\log p_{\theta}(\bold{x}^{(i)}|\bold{z}^{(i,l)})) $$ 
+$$ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}\_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) $$
 
+2번째 식은 위에서 본 Reconstruction Error에 Monte Carlo 기법을 적용한 방법입니다. Lower bound를 다르게 표현하면 KL divergence와 기댓값으로 나뉠 수 있는데 기댓값에 대해서만 Monte Carlo를 적용한 것으로 식은 아래와 같이 변환됩니다. 논문에서는 위의 1번째 방법 대비 분산이 낮다고 이야기합니다. (2번째 방법이 식에서 기댓값에만 샘플링을 적용하여 분산이 더 낮은 것으로 생각됩니다.)
 
+$$ \tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)})=-D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z))+\frac{1}{L}\sum^{L}_{l=1} \log p\_\theta  (x^{(i)}|z^{(i,l)})) $$ 
 
 ## Train Algorithm
 
 위에서 만든 식을 바탕으로 모델 학습을 수행하며 학습 과정은 아래와 같습니다. 
 
 :::{figure-md}
-<img src="../../pics/vae/vae_06.png" alt="vae_06" class="bg-primary mb-1" width="700px">
+<img src="../../pics/vae/vae_09.png" alt="vae_09" class="bg-primary mb-1" width="700px">
+:::
 
 Overview of Train Algorithm
 
 
 - $\theta, \phi$ 파라미터 초기화
 - repeat
-    - $\bold{X}^{M}$ : mini batch dataset
+    - $X^{M}$ : mini batch dataset
     - $\epsilon$ : noise distribution $p(\epsilon)$ 으로부터의 랜덤 샘플
-    - g : $\nabla_{\theta,\phi}\tilde{L}(\theta, \phi;\bold{X}^{M}, \epsilon)$
+    - g : $\nabla_{\theta,\phi}\tilde{L}(\theta, \phi;X^{M}, \epsilon)$
     - 위의 g(gradient)를 사용하여 $\theta, \phi$ update
 - until : parameter $\theta, \phi$ 가 수렴할 때까지 진행
 - return $\theta, \phi$
+
+
+## Experiments
+논문에서는 기존 방법과 제안한 알고리즘의 학습의 최적화 효율성을 비교하기 위해 MNIST와 Frey Face dataset에 대해 AEVB(Auto-Encoder variational Bayesian, AEVB에 Stochastic Gradient를 적용하면 SGVB가 됩니다)와 wake-sleep 알고리즘(비교대상으로 적절하다고 논문에서 언급됩니다)를 비교합니다. 여기서 Frey Face는 continuous하여 gaussian 분포로 식을 구성합니다. 결과는 아래 그림과 같습니다. 
+
+:::{figure-md}
+<img src="../../pics/vae/vae_10.png" alt="vae_10" class="bg-primary mb-1" width="700px">
+:::
+
+위의 그림은 lower bound의 최적화를 비교한 것으로 제안하는 방법이 더 빠르게 수렴하며 모든 실험에서 더 나은 솔루션임을 볼 수 있습니다.
+
+:::{figure-md}
+<img src="../../pics/vae/vae_11.png" alt="vae_11" class="bg-primary mb-1" width="700px">
+:::
+
+위의 그림은 estimated marginal likelihood를 Monte Carlo EM을 활용할 경우 최적화가 되는지 수행한 실험입니다. Monte Carlo EM의 경우 train 데이터가 많으면 수렴이 안되는 것을 볼 수 있습니다. 
 
 
 

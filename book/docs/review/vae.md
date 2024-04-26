@@ -125,7 +125,7 @@ $$ \tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)})=-D_{KL}(q_{\phi}(z|x^{(i)})||p
 
 Lower bound 에 대한 수식을 변환하여 수식 전체에 대한 Monte Carlo Estimator $\tilde{\mathcal{L}}^{A}$ 로도 근사값을 구할 수 있는데 이는 평균적으로 $\tilde{\mathcal{L}}^{B}$ 에 비해 variance 가 높다고 합니다.   
 
-$$ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}\_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) $$
+$$ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) $$
 
 
 ## Reparameterization Trick

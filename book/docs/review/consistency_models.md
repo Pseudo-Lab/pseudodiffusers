@@ -39,7 +39,7 @@ CIFAR-10, ImageNet 64x64, LSUN 256x256 데이터셋에 실험한 결과, 기존 
 Continuous time 에서의 diffusion model 을 다음과 같이 SDE 수식으로 표현할 수 있습니다. ([Song et al., 2021](https://arxiv.org/abs/2011.13456))
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_02.png" alt="consistency_models_02" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_02.png" alt="consistency_models_02" class="bg-primary mb-1" width="500px">
 
 Diffusion Models in Continuous Time
 :::
@@ -59,7 +59,7 @@ Probability Flow (PF) ODE
 일반적으로 위의 SDE 수식에서 $p_T(x)$ 가 Gaussian distribution $\pi(x)$ 를 따르도록 정의하고, 해당 논문에서 [Karras et al., 2022](https://arxiv.org/abs/2206.00364) 와 동일하게 $\mu(x,t) = 0, \sigma(t) = \sqrt{2}t$ 로 설정하였습니다. 그리고 sampling 시, score matching 을 통해 score model $s_{\phi}(x,t) \approx \nabla \log p_t(x)$ 우선적으로 학습한 후, 위의 식에 대입하면 다음과 같은 empirical PF ODE 로 표현할 수 있습니다
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_04.png" alt="consistency_models_04" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_04.png" alt="consistency_models_04" class="bg-primary mb-1" width="400px">
 
 Empirical PF ODE
 :::
@@ -89,7 +89,7 @@ Self-Consistency
 앞서 정의한 부분에 의해, 모든 consistency function $f$ 에 대해서 $f(x_{\epsilon}, t) = x_{\epsilon}$ 를 만족해야 하는 *boundary condition* 이 존재하고, 이를 만족하기 위해 다음과 같이 두 가지 방식으로 parameterization 방식을 정의하였습니다. 
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_06.png" alt="consistency_models_06" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_06.png" alt="consistency_models_06" class="bg-primary mb-1" width="500px">
 
 Parameterization Method 1
 :::
@@ -97,7 +97,7 @@ Parameterization Method 1
 여기서 $F_{\theta}(x,t)$ 는 output 차원이 $x$ 와 동일한 free-form deep neural network 입니다. 두번째 방식으로는, 다음과 같이 skip-connection 을 활용합니다.
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_07.png" alt="consistency_models_07" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_07.png" alt="consistency_models_07" class="bg-primary mb-1" width="500px">
 
 Parameterization Method 2
 :::
@@ -117,7 +117,7 @@ Parameterization Method 2 - $c_{skip}(t), c_{out}(t)$
 학습된 consistency model $f_{\theta}(\cdot,\cdot)$ 와 initial distribution $\hat{x}_T \sim N(0, T^2I)$ 를 활용하여 단일 sampling step 만으로 $\hat{x}_{\epsilon} = f_{\theta}(\hat{x}_{T}, T)$ 를 생성할 수 있습니다. 더불어 하단 pseudo code 에 보이듯이, denoising 과 noise injection 작업을 여러 번 거치는 *multistep* consistency sampling 을 통해 computing cost 와 sample quality 를 trade-off 할 수 있는 유연성도 제공합니다.
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_09.png" alt="consistency_models_09" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_09.png" alt="consistency_models_09" class="bg-primary mb-1" width="500px">
 
 Multistep Consistency Sampling 
 :::
@@ -180,7 +180,7 @@ One Discretization Step of a Euler ODE Solver
 위 수식을 활용하여 주어진 $x \sim p_{data}$ 에 대해서 PF ODE trajectory 에 있는 인접한 두 지점 $(\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})$ 을 샘플링할 수 있게 됩니다. 더 자세하게는, $x_{t_{n+1}} \sim N(x,t^2_{n+1}I)$ 를 우선적으로 샘플링한 후, 위 수식을 기반으로 numerical ode solver 의 discretization step 을 한번 거쳐 $\hat{x}^{\phi}_{t_n}$ 을 계산합니다. 최종적으로 $(\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})$ 로부터의 모델 출력값 차이를 최소화하도록 consistency model 을 학습하게 되고, 학습 시 사용되는 *consistency distillation loss* 는 다음과 같이 정의합니다.
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_15.png" alt="consistency_models_15" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_15.png" alt="consistency_models_15" class="bg-primary mb-1" width="500px">
 
 Consistency Distillation Loss 
 :::
@@ -188,7 +188,7 @@ Consistency Distillation Loss
 여기서 metric function $d(\cdot,\cdot)$ 로는 L1 distance, L2 distance, 그리고 LPIPS distance 를 사용하였고, 실험적으로 확인해본 결과 $\lambda(t_n) \equiv 1$ 를 적용했을 때 모델 성능이 가장 좋은 부분을 확인할 수 있었다고 합니다. 파라미터 $\theta$ 는 stochastic gradient descent 그리고 $\theta^-$ 는 exponential moving average (EMA) 로 학습하였다고 합니다. 
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_16.png" alt="consistency_models_16" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_16.png" alt="consistency_models_16" class="bg-primary mb-1" width="500px">
 
 Exponential Moving Average (EMA) 
 :::
@@ -196,7 +196,7 @@ Exponential Moving Average (EMA)
 이처럼 EMA update 와 stopgrad operator 로 학습할 시, $\theta = \theta^{-}$ 로 설정할때보다 모델을 더 안정적으로 학습할 수 있고 성능에도 개선이 있었다고 합니다. 전체적인 학습 절차는 하단의 Algorithm 2 처럼 정리할 수 있습니다. 
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_17.png" alt="consistency_models_17" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_17.png" alt="consistency_models_17" class="bg-primary mb-1" width="500px">
 
 Overview of Consistency Distillation (CD)
 :::
@@ -208,7 +208,7 @@ $\theta^{-}$  는 과거 $\theta$ 에 대한 running average 이므로 Algorithm
 Consistency Distillation 방식에서는 ground truth score function $\nabla \log p_t(x_t)$ 을 근사하는 사전학습된 score model $s_{\phi}(x,t)$ 에 의존했다면, 이에 의존하지 않고 다음과 같은  $\nabla \log p_t(x_t)$ 에 대한 unbiased estimator 를 활용할 수도 있습니다. 다시 말해, $-(x_t - x)/t^2$ 로 $\nabla \log p_t(x_t)$ 를 근사할 수 있습니다.
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_18.png" alt="consistency_models_18" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_18.png" alt="consistency_models_18" class="bg-primary mb-1" width="500px">
 
 Unbiased Estimator of Score Function 
 :::
@@ -225,7 +225,7 @@ $$
 - Consistency Training Loss 를 위와 같이 정의하게 된 배경은 다음과 같습니다.
     
     :::{figure-md} 
-    <img src="../../pics/consistency_models/consistency_models_19.png" alt="consistency_models_19" class="bg-primary mb-1" width="700px">
+    <img src="../../pics/consistency_models/consistency_models_19.png" alt="consistency_models_19" class="bg-primary mb-1" width="500px">
 
     Consistency Training Loss
     :::
@@ -240,7 +240,7 @@ Schedule Functions for Consistency Training
 논문에서 추가적인 성능 개선을 위해 $N$ 을 점진적으로 증가시키는 방식을 제안합니다. $N$  이 작을수록 ($i.e., \Delta t$ 가 클수록) consistency training loss 가 consistency distillation loss 와 비교했을때 variance 는 감소하지만 bias 는 증가하게 되어, 초기에 더 빠른 convergence 에 이르는데 용이합니다. 반면에, $N$ 이 클수록 ($i.e., \Delta t$ 가 작을수록) variance 는 증가하고 bias 는 감소하게 되어, 학습의 마지막 단계에 적용하는 것이 바람직하다고 제안합니다. EMA decay rate schedule function $\mu(\cdot)$ 도 $N$  에 따라 바뀌는 함수로 최종적으로 정의합니다. 전체적인 학습 절차는 하단의 Algorithm 3 처럼 정리할 수 있습니다.
 
 :::{figure-md} 
-<img src="../../pics/consistency_models/consistency_models_21.png" alt="consistency_models_21" class="bg-primary mb-1" width="700px">
+<img src="../../pics/consistency_models/consistency_models_21.png" alt="consistency_models_21" class="bg-primary mb-1" width="500px">
 
 Overview of Consistency Training (CT)
 :::

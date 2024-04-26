@@ -10,7 +10,8 @@
 - **Last updated on April. 14, 2024**
 ```
 
-# gigaGAN
+# Scaling up GANs for Text-to-Image Synthesis
+
 ## Abstract
 
 - 최근 이미지 생성 task의 모델 성능이 꾸준히 발전중

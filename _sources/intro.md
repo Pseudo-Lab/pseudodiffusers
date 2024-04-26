@@ -1,6 +1,7 @@
 # Text-to-Image Generation (feat. Diffusion)
 
 
+## About Us
 This is the repository of PseudoDiffusers team.
 
 Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.

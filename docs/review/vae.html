@@ -229,7 +229,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
@@ -573,7 +573,7 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}\_{q_{\phi}(z
 \[ \tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)})=-D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z))+\frac{1}{L}\sum^{L}_{l=1} \log p\_\theta  (x^{(i)}|z^{(i,l)})) \]</div>
 <p>Lower bound 에 대한 수식을 변환하여 수식 전체에 대한 Monte Carlo Estimator <span class="math notranslate nohighlight">\(\tilde{\mathcal{L}}^{A}\)</span> 로도 근사값을 구할 수 있는데 이는 평균적으로 <span class="math notranslate nohighlight">\(\tilde{\mathcal{L}}^{B}\)</span> 에 비해 variance 가 높다고 합니다.</p>
 <div class="math notranslate nohighlight">
-\[ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}\_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) \]</div>
+\[ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) \]</div>
 </section>
 <section id="reparameterization-trick">
 <h2>Reparameterization Trick<a class="headerlink" href="#reparameterization-trick" title="Permalink to this heading">#</a></h2>

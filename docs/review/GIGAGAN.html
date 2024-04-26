@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>gigaGAN &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/GIGAGAN';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Consistency Models" href="consistency_models.html" />
+    <link rel="prev" title="Muse" href="Muse.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/GIGAGAN.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/GIGAGAN.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>gigaGAN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">주요 질의응답</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Scaling up GANs for Text-to-Image Synthesis (CVPR 2023)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2303.05511">https://arxiv.org/abs/2303.05511</a></p></li>
+<li><p>Code: <a class="reference external" href="https://github.com/lucidrains/gigagan-pytorch">NON Official:</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Seunghwan Ji</p></li>
+<li><p><strong>Last updated on April. 14, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="gigagan">
+<h1>gigaGAN<a class="headerlink" href="#gigagan" title="Permalink to this heading">#</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>최근 이미지 생성 task의 모델 성능이 꾸준히 발전중</p></li>
+<li><p>기존에는 stylegan과 같은 GAN 모델이 주를 이뤘지만 최근 DALLE, Stable Diffusion등 <strong>Diffusion 기반</strong>의 모델 베이스로 추세가 급격하게 바뀌어버림</p></li>
+<li><p><em>“GAN 모델로 Diffusion의 성능을 잡는것은 정말 무리일까?”</em></p></li>
+<li><p>GigaGAN은</p>
+<ul class="simple">
+<li><p><strong>gan 기반의 모델</strong>로 1. <strong>속도점 이점</strong>과 <strong>2. 다양한 extra editing</strong>이 가능하다. (contribution)</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>속도적 이점</p>
+<ol class="arabic simple">
+<li><p>512px의 이미지를 0.13초만에 생성할 수 있다.</p></li>
+<li><p>16-megapixel(1600만 픽셀, 4k)의 이미지를 3.66초만에 생성할 수 있다.</p></li>
+</ol>
+</li>
+<li><p>다양한 활용성</p>
+<ol class="arabic simple">
+<li><p>latent space 상 에서의 image editing이 가능하다. (latent interpolation, style mixing …)</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>최근 Diffusion 기반의 모델들이 이미지 생성 분야에서 좋은 성능을 보여주고 있다.</p></li>
+<li><p>Diffusion은</p>
+<ul>
+<li><p>기본적으로 학습과 생성 시 iteration이 들어가는데 iteration은 <strong>학습의 안정성을 키워주는 장점</strong>이 있지만, <strong>computation cost가 매우 증가</strong>한다는 단점이 있다.</p></li>
+</ul>
+</li>
+<li><p>반면에 GAN은</p>
+<ul>
+<li><p>이미지 생성 시 single forward pass만 필요하므로 <strong>cost가 크지 않다는 장점</strong>이 있지만 single 혹은 multiple object의 생성에는 성능이 뛰어나지만 <strong>class가 명확히 정의되지않은 이미지 즉, open world image의 생성에는 어려움</strong>이 있다.</p></li>
+</ul>
+</li>
+<li><p><em><strong>“GAN을 더 develop한다면 Diffusion 모델을 넘어설 수 있을까?”</strong></em></p></li>
+<li><p>gigaGAN은?</p>
+<ol class="arabic simple">
+<li><p>속도적 장점</p>
+<ul>
+<li><p>0.13 s/img (512 size), 3.66s / img (4k)</p></li>
+</ul>
+</li>
+<li><p>latent space상에서의 editing 가능(<strong>style mixing, interpolation, prompt mixing</strong> like stylegan2)</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img02.png"><img alt="img0" class="bg-primary mb-1" src="../../_images/img02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Base Architecture</strong></p>
+<ul class="simple">
+<li><p>Base Model은 stylegan2로 선정</p></li>
+<li><p><span class="math notranslate nohighlight">\(G = M\times \tilde{G}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span>(mapping network) : gaussian distribution에서의 noise를 좀더 disentangle된 w space로 mapping 시키는 network</p>
+<ul>
+<li><p>gigagan에서는 mapping network의 input으로 z와 함께 text condition(c)도 함께 사용</p></li>
+<li><p>output : <span class="math notranslate nohighlight">\(w\)</span> (vector)</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{G}\)</span> : 피라미드 구조의 convolution block들로 random constant 값으로부터 output image <span class="math notranslate nohighlight">\(X\)</span>를 생성하는 generator.</p>
+<ul>
+<li><p>이때 <span class="math notranslate nohighlight">\(w\)</span> vector는 각 layer마다 입력으로 들어가서 feature map의 분포를 scaling함으로써 style을 반영(modulation, demodulation in stylegan2)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Sample-adaptive kernel selection</strong></p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="img1" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Sample Adaptive Kernel Selection</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>도입 배경</p>
+<ul class="simple">
+<li><p>단순히 convolution layer의 kernel size만 scaling up을 하면 학습이 안되는 현상</p></li>
+<li><p>GAN 기반 모델이 (1)<strong>text-condition</strong>의 (2)<strong>오픈 이미지</strong> 생성에 한계를 보이는 이유는 convolution network의 구조 때문이다.</p>
+<ul>
+<li><p>convolution 연산은 구조상 같은 레이어상에 있는 하나의 filter가 <strong>text condition 주입부터 이미지의 생성까지 모든 부분에 참여</strong>하는데 이 부분이 모델의 표현력을 떨어트릴 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>kernel selection method 적용</p></li>
+<li><p>레이어마다 <span class="math notranslate nohighlight">\(\{k_{i}\in R^{C_{in}\times C_{out}\times K\times K}\}\)</span>차원의 N개의 kernel set을 두고 style vector w의 affine layer를 거친 weight를 <strong>각 kernel값에 weighted summation한 값을 최종 filter로 사용</strong></p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img23.png"><img alt="img2" class="bg-primary mb-1" src="../../_images/img23.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Equation of kernel selection method affine layer</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>이 때 kernel weight 계산에 softmax를 사용하는데 얘는 differentiable하므로 gradient update 가능</p></li>
+<li><p>또, 실제로 N개의 kernel을 모두 filter로 사용할 때보다 computation cost가 굉장히 절약된다는 장점</p></li>
+</ul>
+<p><strong>Interleaving attention with convolution</strong></p>
+<ul>
+<li><p>도입 배경</p>
+<ul>
+<li><p>convolution filter는 receptive field 내부의 local feature 캡처에는 탁월하지만 field 외부의 부분은 학습할 수 없다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img33.png"><img alt="img3" class="bg-primary mb-1" src="../../_images/img33.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Receptive Field in Convolution Networks</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>이러한 한계점을 극복하기위해 <strong>attention layer</strong>(<span class="math notranslate nohighlight">\(g_{attn}\)</span>)를 추가</p></li>
+<li><p>단순히 stylegan2에 attention layer를 추가하면 학습에 이상이 생김</p>
+<ul>
+<li><p>원인은 attention layer에서 사용하는 <strong>dot product가 Lipschitz함수가 아니기 때문</strong></p>
+<ul>
+<li><p>lipschitz 함수란</p>
+<ul>
+<li><p>lipschitz 함수란, <strong>두 점 사이의 거리를 일정 비 이상으로 증가시키지 않는 함수</strong></p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img42.png"><img alt="img4" class="bg-primary mb-1" src="../../_images/img42.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">lipschitz Function</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Lipschitz 함수를 만족하지 못함으로써 discriminator의 학습이 unstable</strong>하게 되고 때문에 학습에 실패한다.</p></li>
+</ul>
+</li>
+<li><p>Lipschitz 연속성을 만족시키기 위해 attention의 <strong>dot product를 L2-distance로 대체</strong></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Advanced setting</strong></p>
+<ul class="simple">
+<li><p>모델의 성능 향상을 위해 stylegan2과 같은 hyper parameter를 사용하고, L2 distance logit의 초기값을 unit normal distribution, scale down, …</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{G}\)</span>의 각 convolution block 마다 attentnion layer(self + cross)를 적용</p>
+<ul>
+<li><p>self attention: 이미지 자신의 global feature 학습용</p></li>
+<li><p>cross attention: 이미지에 text condition 주입용</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Generator design</strong></p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img52.png"><img alt="img5" class="bg-primary mb-1" src="../../_images/img52.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">GIGAGAN Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>text embedding</p>
+<ul>
+<li><p>pretrained model : <strong>clip</strong>(frozen; <span class="math notranslate nohighlight">\(R^{C\times 768}\)</span>, c is # of tokens)</p></li>
+<li><p>후에 text encoding에 추가적인 유연성을 위해 mapping network(<span class="math notranslate nohighlight">\(T\)</span>)를 추가</p></li>
+<li><p>text mapping network(<span class="math notranslate nohighlight">\(T\)</span>)의 output은 input size와 동일하게 <span class="math notranslate nohighlight">\(R^{C\times 768}\)</span></p></li>
+<li><p>이때 output <span class="math notranslate nohighlight">\(t\)</span>를 두 파트로 나눠 사용하는데</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(R^{C-1\times 768}\)</span> : word i index의 local feature를 catch</p></li>
+<li><p><span class="math notranslate nohighlight">\(R^{768}\)</span> : word를 global하게 embedding하는 vector</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(t_{global}\)</span>은 latent mapping network(<span class="math notranslate nohighlight">\(M\)</span>)의 input으로 사용</p></li>
+<li><p><span class="math notranslate nohighlight">\(t_{local}\)</span>은 Generator의 input으로 각 block에 cross attention에 적용</p></li>
+</ul>
+</li>
+<li><p>Generator의 layer는 총 5개의 피라미드 구조</p></li>
+<li><p><span class="math notranslate nohighlight">\(\{x_{i}\}_{i=0}^{L-1} = \{x_{0},x_{1}, ..., x_{4}\}\)</span> ,  <span class="math notranslate nohighlight">\(\{S_{i}\}_{i=0}^{L-1} = \{64, 32, 16, 8, 4\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_{0} = X\)</span>(output image)</p></li>
+</ul>
+<p><strong>Discriminator Design</strong></p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img62.png"><img alt="img6" class="bg-primary mb-1" src="../../_images/img62.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Discriminator of GIGAGAN</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>2 branch의 구조</p>
+<ol class="arabic simple">
+<li><p>text conditioning을 학습</p></li>
+<li><p>image generating을 학습</p></li>
+</ol>
+</li>
+<li><p><span class="math notranslate nohighlight">\(t_{D}\)</span>: text c로부터 pretrained text encoder(CLIP)를 통과시켜 추출한 embedding 값</p></li>
+<li><p>stylegan에서는 low res의 이미지들은 loss에 반영하지 않았지만, gigagan에서는 <strong>이미지의 low feature 표현의 개선</strong>을 위해 모든 scale의 이미지를 모두 loss에 반영</p></li>
+<li><p>이때 feature extractor <span class="math notranslate nohighlight">\(\Phi\)</span></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Phi_{i\rightarrow j}:R^{X_{i}\times X_{i}\times3}\rightarrow R^{X_{j}^{D}\times X_{j}^{D}\times C_{j}}\)</span></p></li>
+<li><p>self attention + conv(with stride=2)</p></li>
+<li><p>각 level에서는 <strong>이전 level에서의 feature map을 공유</strong>해서 사용하고 <strong>low resolution에서 계산이 일어나기때문에</strong> computation resource가 크지 않다.</p></li>
+</ul>
+</li>
+<li><p>multi scale의 loss 계산을 위해 <strong>ms-i/o loss</strong>(multi scale input, output adversarial loss)를 사용</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(V_{MS-I/O}(G, D) = \sum_{i=0}^{L-1}\sum_{j=i+1}^{L}V_{GAN}(G_{i}, D_{ij}) + V_{match}({G_{i}, D_{ij}})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(V_{GAN}\)</span>: standard gan loss</p></li>
+<li><p><span class="math notranslate nohighlight">\(D_{ij}(x, c) = \psi _{j}(\phi_{i\rightarrow j}(x_{i}), t_{D}) + Conv_{1\times 1}(\phi_{i\rightarrow j}(x_{i}))\)</span>:</p>
+<ul>
+<li><p>image의 feature map <span class="math notranslate nohighlight">\(\phi(x)\)</span>에 <span class="math notranslate nohighlight">\(t_{D}\)</span>를 심은 값과 원본 <span class="math notranslate nohighlight">\(\phi(x)\)</span>의 합</p></li>
+<li><p>앞부분은 text conditioning model을 학습, 뒷부분은 unconditional image generator를 학습</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(V_{match}\)</span>(Matching aware loss)</p>
+<ul>
+<li><p>앞의 gan loss는 생성된 이미지가 얼마나 리얼한지, 그리고 condition <span class="math notranslate nohighlight">\(c\)</span>에 얼마나 가까운지에 대한 loss</p></li>
+<li><p>하지만 학습 초반에는 condition <span class="math notranslate nohighlight">\(c\)</span>에 상관없이 이미지의 퀄리티로만 분류를 해버림</p></li>
+<li><p>그래서 discriminator 학습 과정에서 conditioning을 강제로 따르도록 하기위해 <span class="math notranslate nohighlight">\(c\)</span>를 랜덤으로 샘플링(<span class="math notranslate nohighlight">\(\hat{c}\)</span>)해 image의 fake pair로 지정</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img72.png"><img alt="img7" class="bg-primary mb-1" src="../../_images/img72.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Matching aware loss</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>CLIP contrastive loss</p>
+<ul>
+<li><p>pretrained CLIP을 사용해 contrastive learning</p>
+<ul>
+<li><p>contrastive learning</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img83.png"><img alt="img8" class="bg-primary mb-1" src="../../_images/img83.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">constrastive learning</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>가까운 class는 가깝게(positive), 그 외 class는 멀게(negative)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>condition <span class="math notranslate nohighlight">\(c_{0}\)</span>에 대해 생성된 이미지의 feature vector는 condition <span class="math notranslate nohighlight">\(c_{0}\)</span>의 feature 벡터와는 가깝게 (positive), 나머지 condition의 feature vector와는 멀게(negative) 학습되어야한다.</p>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="img9" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 446 </span><span class="caption-text">CLIP Loss</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p>Vision-aided adversarial loss</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2112.09130">https://arxiv.org/abs/2112.09130</a></p></li>
+<li><p>stylegan에서 discriminator는 training data에 overfitting되는 경향이 있음</p></li>
+<li><p>이부분을 해결하기위해 생성된  image를 SOTA의 vision 모델을 사용해 뽑아낸 feature map을 Discriminator에 같이 추가해 real / fake를 분류</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>GAN based upsampler</strong></p>
+<ul class="simple">
+<li><p>gigagan은 upsampling 모델에 적용이 가능하다</p></li>
+<li><p>64x64의 이미지를 3번 downsampling + 6번 upsampling 모델을 통과시켜 1024x1024의 이미지를 생성할 수 있다.</p></li>
+<li><p>이때 upsampling 부분에 gigagan의 Generator 부분을 적용</p></li>
+<li><p>upsampling model에 적용할때에는 LPIPS loss를 추가하고, 이미지 생성과정중에 stylegan과 동일하게 gaussian noise를 추가해 real함을 추가</p></li>
+</ul>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<p>Training and evaluation details</p>
+<ol class="arabic">
+<li><p>Dataset : LAION2D-en, COYO-700m</p></li>
+<li><p>upsampler(128 → 1024) : Adobe’s internal Stock images</p></li>
+<li><p>Pretrained text  encoder : CLIP ViT-L/14</p></li>
+<li><p>CLIP score : OpenCLIP ViT-G/14</p></li>
+<li><p>machine : A100 gpu, etc.</p></li>
+<li><p><strong>각각의 method가 정말 효과가 있는가?</strong></p>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="img10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>단순 scaling up보다 위 method들을 추가하면 <strong>비교적 낮은 FiD와 CLIP score 수치를 보여준다</strong>.</p></li>
+</ul>
+</li>
+<li><p><strong>Text2Image 모델과 성능 비교</strong></p>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="img11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Table2</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>FiD와 inference time을 보면 어느정도 균형을 이루며 경쟁력을 보이고 있다.</p></li>
+</ul>
+</li>
+<li><p>Distilled diffusion과 비교</p>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img122.png"><img alt="img12" class="bg-primary mb-1" src="../../_images/img122.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Table3</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>diffutsion의 속도 개선을 위해  distilation한 모델</p></li>
+<li><p>수치적으로도 우위에 있고, inference time도 여전히 더 빠르다.</p></li>
+</ul>
+</li>
+<li><p>Upscaler</p>
+<p>!:::{figure-md}
+<img src="../../pics/GIGAGAN/img13.png" alt="img13" class="bg-primary mb-1" width="700px"></p>
+<p>Table4</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="p">:::{</span><span class="n">figure</span><span class="o">-</span><span class="n">md</span><span class="p">}</span> 
+<span class="o">&lt;</span><span class="n">img</span> <span class="n">src</span><span class="o">=</span><span class="s2">&quot;../../pics/GIGAGAN/img14.png&quot;</span> <span class="n">alt</span><span class="o">=</span><span class="s2">&quot;img14&quot;</span> <span class="n">class</span><span class="o">=</span><span class="s2">&quot;bg-primary mb-1&quot;</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;700px&quot;</span><span class="o">&gt;</span>
+
+<span class="n">Super</span> <span class="n">Resolution</span>
+</pre></div>
+</div>
+</li>
+<li><p>그 외</p>
+<ul class="simple">
+<li><p>stylegan에 연구된 technique(t<strong>runcation trick, style mixing, latent interpolation</strong> 등) 적용 가능</p></li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><p>truncation trick</p>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="img15" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Truncation Trick</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>style mixing</p>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="img16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 451 </span><span class="caption-text">Style Mixing</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>latent interpolation</p>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="img17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 452 </span><span class="caption-text">Latent Interpolation</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p>Limitation</p>
+<ul>
+<li><p>score 상으로는 어느정도 좋은 성능을 보이지만 <strong>실제로 DALLE2 ,Imagen과 같은 SOTA diffusion 모델과 비교하면 develop이 필요함</strong></p>
+<figure class="align-default" id="id18">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img18.png"><img alt="img18" class="bg-primary mb-1" src="../../_images/img18.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 453 </span><span class="caption-text">Failure Cases</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="id1">
+<h2>주요 질의응답<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Muse.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Muse</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="consistency_models.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Consistency Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">주요 질의응답</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

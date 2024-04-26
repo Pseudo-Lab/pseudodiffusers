@@ -229,7 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
 
 
-
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -525,9 +526,9 @@ document.write(`
 <section id="score-based-generated-model">
 <h3>2.1. Score Based Generated Model<a class="headerlink" href="#score-based-generated-model" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img03.png"><img alt="SDEdit_00" class="bg-primary mb-1" src="../../_images/img03.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img04.png"><img alt="SDEdit_00" class="bg-primary mb-1" src="../../_images/img04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 226 </span><span class="caption-text">Image 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Image 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -542,9 +543,9 @@ document.write(`
 <section id="score-based-generated-diffusion-model-sde-smld">
 <h3>2.2. Score Based Generated Diffusion Model (SDE, SMLD)<a class="headerlink" href="#score-based-generated-diffusion-model-sde-smld" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img18.png"><img alt="SDEdit_01" class="bg-primary mb-1" src="../../_images/img18.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img110.png"><img alt="SDEdit_01" class="bg-primary mb-1" src="../../_images/img110.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 227 </span><span class="caption-text">Image 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Image 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -562,9 +563,9 @@ document.write(`
 <ul>
 <li><p>Guide image의 Level을 정의한다.</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img24.png"><img alt="SDEdit_02" class="bg-primary mb-1" src="../../_images/img24.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img25.png"><img alt="SDEdit_02" class="bg-primary mb-1" src="../../_images/img25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 228 </span><span class="caption-text">Image 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Image 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -580,9 +581,9 @@ document.write(`
 <li><p>DDPM과 달리 SDE의 경우, 완전히 noise화된 이미지 즉, random noise로부터 denoising을 진행할 필요가 없다.</p></li>
 <li><p>즉, 적절한 <span class="math notranslate nohighlight">\(t_{0} \in [0,1]\)</span>를 지정한 후 denoising process가 가능하다.</p>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img34.png"><img alt="SDEdit_03" class="bg-primary mb-1" src="../../_images/img34.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img35.png"><img alt="SDEdit_03" class="bg-primary mb-1" src="../../_images/img35.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Image 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Image 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -593,17 +594,17 @@ document.write(`
 </ol>
 <p>를 얻게된다.</p>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img43.png"><img alt="SDEdit_04" class="bg-primary mb-1" src="../../_images/img43.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img44.png"><img alt="SDEdit_04" class="bg-primary mb-1" src="../../_images/img44.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Image 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Image 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>아래는 SDEdit의 적용 과정이다.</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img53.png"><img alt="SDEdit_05" class="bg-primary mb-1" src="../../_images/img53.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img54.png"><img alt="SDEdit_05" class="bg-primary mb-1" src="../../_images/img54.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Image 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Image 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -622,9 +623,9 @@ document.write(`
 <li><p>faithful : <span class="math notranslate nohighlight">\(L_{2}\)</span> score (lower is better)</p></li>
 <li><p>그 외 종합적인 평가 지표로 survey를 통한 수치를 제시하였다.</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img63.png"><img alt="SDEdit_06" class="bg-primary mb-1" src="../../_images/img63.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img64.png"><img alt="SDEdit_06" class="bg-primary mb-1" src="../../_images/img64.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Image 7</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Image 7</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -635,9 +636,9 @@ document.write(`
 </li>
 <li><p>Comparison with GAN (styleGAN-ADA + Inversion)</p>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img73.png"><img alt="SDEdit_07" class="bg-primary mb-1" src="../../_images/img73.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img74.png"><img alt="SDEdit_07" class="bg-primary mb-1" src="../../_images/img74.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Image 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Image 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -646,15 +647,15 @@ document.write(`
 </li>
 <li><p>Comparison with original blending technique</p>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img84.png"><img alt="SDEdit_08" class="bg-primary mb-1" src="../../_images/img84.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img85.png"><img alt="SDEdit_08" class="bg-primary mb-1" src="../../_images/img85.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Image 9</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Image 9</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img93.png"><img alt="SDEdit_09" class="bg-primary mb-1" src="../../_images/img93.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img94.png"><img alt="SDEdit_09" class="bg-primary mb-1" src="../../_images/img94.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Image 10</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Image 10</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">

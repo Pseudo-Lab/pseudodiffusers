@@ -229,7 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
 
 
-
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -508,13 +509,13 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(0).png"><img alt="LoRA_00" class="bg-primary mb-1" src="../../_images/image(0).png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 173 </span><span class="caption-text">LoRA structure</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">LoRA structure</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(1).png"><img alt="LoRA_01" class="bg-primary mb-1" src="../../_images/image(1).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 174 </span><span class="caption-text">LoRA structure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">LoRA structure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 그림처럼 <strong>기존 pre-trained weight <span class="math notranslate nohighlight">\(W\)</span>는 고정하고 low rank decomposition된 weight <span class="math notranslate nohighlight">\(A, B\)</span>만 학습시켜 <span class="math notranslate nohighlight">\(W\)</span>에 더해줌</strong>. <span class="math notranslate nohighlight">\(A, B\)</span>의 크기는 <span class="math notranslate nohighlight">\(W\)</span>보다 작아 time, computational cost를 최대 3배까지 줄일 수 있음. 또한 task에 따라 LoRA module(<span class="math notranslate nohighlight">\(A, B\)</span>)만 바꿔주면 되기 때문에 storage requirement, task-switching overhead를 줄일 수 있음. 이 외에도 추가적인 inference latency가 없다, 다른 기법들과 함께 적용이 가능하다는 장점이 있음.</p>
@@ -562,7 +563,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(2).png"><img alt="LoRA_02" class="bg-primary mb-1" src="../../_images/image(2).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 175 </span><span class="caption-text">Performance Comparison</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Performance Comparison</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 adapter layer를 추가하는 방식은 hardware parellelism이 없다면 작은 bottleneck layer만 추가해도 latency가 상당히 증가해 사용하기 어려웠음.</p>
@@ -652,32 +653,32 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(3).png"><img alt="LoRA_03" class="bg-primary mb-1" src="../../_images/image(3).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">Performance on BERT</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Performance on BERT</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(4).png"><img alt="LoRA_04" class="bg-primary mb-1" src="../../_images/image(4).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">Performance on GPT-2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Performance on GPT-2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(5).png"><img alt="LoRA_05" class="bg-primary mb-1" src="../../_images/image(5).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Performance on GPT-3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 181 </span><span class="caption-text">Performance on GPT-3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>대부분의 경우에서 성능이 좋음</p>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(6).png"><img alt="LoRA_06" class="bg-primary mb-1" src="../../_images/image(6).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(7).png"><img alt="LoRA_07" class="bg-primary mb-1" src="../../_images/image(7).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Transformer에서 한 projection matrix에 큰 r을 적용하는 것보다 모든 matrices에 작은 r을 적용하는 것이 더 성능이 좋았음.</p>
@@ -688,7 +689,7 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(8).png"><img alt="LoRA_08" class="bg-primary mb-1" src="../../_images/image(8).png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">IA3 structure</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">IA3 structure</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>뉴럴네트워크의 Inner Activation을 줄이기도하고 늘리기도하는 어댑터를 중간에 삽입하는 방법론. 기존에 공개된 LoRA보다 적은 파라미터를 사용하면서 높은 성능을 내는 것으로 알려져있으며, GPT-3를 in-context learning 했을때 보다도 성능이 좋다 라고 주장하고 있음. 학습시간도 매우 짧아 A100 GPU 하나로 30분만에 튜닝할 수 있었다고 함.</p>

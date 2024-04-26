@@ -229,7 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
 
 
-
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -484,14 +485,14 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_01.png"><img alt="t2i_adapter_01" class="bg-primary mb-1" src="../../_images/t2i_adapter_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 247 </span><span class="caption-text">Effect of External Guidance</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Effect of External Guidance</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서는 이를 해결하기 위해 T2I-Adapter 모델을 소개하고 다음과 같이 5가지 장점이 있다고 합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_02.png"><img alt="t2i_adapter_02" class="bg-primary mb-1" src="../../_images/t2i_adapter_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 248 </span><span class="caption-text">Various Guidance of T2I-Adapter</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Various Guidance of T2I-Adapter</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -500,7 +501,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_03.png"><img alt="t2i_adapter_03" class="bg-primary mb-1" src="../../_images/t2i_adapter_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 249 </span><span class="caption-text">ControlNet vs T2I-Adapter</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">ControlNet vs T2I-Adapter</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -530,7 +531,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_04.png"><img alt="t2i_adapter_04" class="bg-primary mb-1" src="../../_images/t2i_adapter_04.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Cross Attention</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Cross Attention</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -544,7 +545,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_05.png"><img alt="t2i_adapter_05" class="bg-primary mb-1" src="../../_images/t2i_adapter_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Overview of T2I-Adapter</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Overview of T2I-Adapter</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -553,7 +554,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_06.png"><img alt="t2i_adapter_06" class="bg-primary mb-1" src="../../_images/t2i_adapter_06.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">Adapter Design</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Adapter Design</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Conditional input 은 512x512 의 크기를 가지며, 이는 <em>pixel unshuffle downsampling</em> 을 통해 64x64 이미지로 변환이 되어 1개의 convolution layer 와 2개의 residual block 으로 구성된 <em>scale</em> 을 4번 통과하게 됩니다. 이때, 각 <em>scale</em> 을 거치고 나온 condition feature 를 <span class="math notranslate nohighlight">\(F_c^k\)</span> 라 정의합니다.</p>
@@ -561,7 +562,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_07.png"><img alt="t2i_adapter_07" class="bg-primary mb-1" src="../../_images/t2i_adapter_07.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Multi-Scale Condition Feature</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Multi-Scale Condition Feature</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>해당 implementation code 도 살펴보겠습니다.</p>
@@ -695,7 +696,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_08.png"><img alt="t2i_adapter_08" class="bg-primary mb-1" src="../../_images/t2i_adapter_08.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Multi-Adapter Conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Multi-Adapter Conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -713,7 +714,7 @@ L_{AD} = \mathbb{E}_{Z_{0}, t, F_c, \epsilon \sim N(0,I)}[||\epsilon-\epsilon_{\
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_09.png"><img alt="t2i_adapter_09" class="bg-primary mb-1" src="../../_images/t2i_adapter_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">DDIM Inference Sampling Stages</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">DDIM Inference Sampling Stages</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서, 최대한 time step <span class="math notranslate nohighlight">\(t\)</span> 가 early sampling stage 에 포함되도록 다음 수식처럼 non-uniformly 하게 sampling 작업을 진행했고, 이에 대한 결과도 공유합니다.</p>
@@ -724,7 +725,7 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_10.png"><img alt="t2i_adapter_10" class="bg-primary mb-1" src="../../_images/t2i_adapter_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Effect of Cubic Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Effect of Cubic Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -773,13 +774,13 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_11.png"><img alt="t2i_adapter_11" class="bg-primary mb-1" src="../../_images/t2i_adapter_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_12.png"><img alt="t2i_adapter_12" class="bg-primary mb-1" src="../../_images/t2i_adapter_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">Quantitative Comparisoin</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Quantitative Comparisoin</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -789,28 +790,28 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_13.png"><img alt="t2i_adapter_13" class="bg-primary mb-1" src="../../_images/t2i_adapter_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Visualization of Single-Adapter Controlling</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Visualization of Single-Adapter Controlling</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, image editing 도 가능합니다. SD inpainting mode 로 특정 지역을 masking 한 후, T2I-Adapter 를 통해 image editing 을 한 예시 사진입니다. Adapter 없이, SD inpainting 만으로는 성능이 좋지 못하다고 합니다.</p>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_14.png"><img alt="t2i_adapter_14" class="bg-primary mb-1" src="../../_images/t2i_adapter_14.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Image Editing with T2I-Adapter</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Image Editing with T2I-Adapter</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 예시는 multiple adapter 를 적용한 것로 위에서부터 아래로 각각 depth + keypose 그리고 sketch + color map 을 conditioning 한 결과입니다.</p>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_15.png"><img alt="t2i_adapter_15" class="bg-primary mb-1" src="../../_images/t2i_adapter_15.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Composable Controlling</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Composable Controlling</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로, 장점들 중 하나로 명시되었던 generalization ability 를 보여준 사례입니다. 학습 완료한 Adapter 를 동일한 구조를 가진 T2I 모델에 적용 가능한 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_16.png"><img alt="t2i_adapter_16" class="bg-primary mb-1" src="../../_images/t2i_adapter_16.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Generalizable Controlling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Generalizable Controlling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -821,14 +822,14 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_17.png"><img alt="t2i_adapter_17" class="bg-primary mb-1" src="../../_images/t2i_adapter_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Guidance Mode</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Guidance Mode</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, condition map 는 비교적 sparse 하기 때문에 더 경량화된 adapter 를 사용해도 성능이 좋은 부분을 하단 예시처럼 확인할 수 있었다고 합니다. 더 자세하게는, adapter block 의 intermediate channel 숫자를 바꿔가며 adapter-small, adapter-tiny 모델을 각각 x4, x8 compression 작업을 진행했습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_18.png"><img alt="t2i_adapter_18" class="bg-primary mb-1" src="../../_images/t2i_adapter_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Complexity Ablation</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Complexity Ablation</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

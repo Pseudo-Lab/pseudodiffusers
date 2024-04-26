@@ -229,7 +229,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
 
 
-
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -437,7 +438,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intractability">Intractability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgvb-stochastic-gradient-variational-bayes">SGVB(Stochastic Gradient Variational Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparameterization-trick">Reparameterization Trick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-algorithm">Training Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
@@ -462,7 +466,8 @@ document.write(`
 </ul>
 </li>
 <li><p><strong>Author:</strong> Sangwoo Jo</p></li>
-<li><p><strong>Last updated on Apr. 12, 2023</strong></p></li>
+<li><p><strong>Editor:</strong> Changhwan Lee</p></li>
+<li><p><strong>Last updated on Apr. 26, 2024</strong></p></li>
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="vae">
@@ -555,26 +560,59 @@ p_{\theta}(x) = p_{\theta}(x|z)p_{\theta}(z)/p_{\theta}(z|x)
 </div>
 </li>
 </ul>
-<p>이로써 우리는 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 최대화시키는 파라미터 <span class="math notranslate nohighlight">\((\theta, \phi)\)</span> 를 찾으면 되고, 수식적으로 표현하면 손실함수(loss function) 를 다음과 같이 Reconstruction Error 와 Regularization term 로 분할할 수 있습니다.</p>
+</section>
+<section id="sgvb-stochastic-gradient-variational-bayes">
+<h2>SGVB(Stochastic Gradient Variational Bayes)<a class="headerlink" href="#sgvb-stochastic-gradient-variational-bayes" title="Permalink to this heading">#</a></h2>
+<p>이로써 우리는 marginal likelihood <span class="math notranslate nohighlight">\(p_{\theta}(x)\)</span> 를 최대화시키는 파라미터 <span class="math notranslate nohighlight">\((\theta, \phi)\)</span> 를 찾으면 되고, 이에 대한 lower bound 를 수식적으로 표현하면 손실함수(loss function) 를 다음과 같이 Reconstruction Error 와 Regularization term 로 분할할 수 있습니다.</p>
 <div class="math notranslate nohighlight">
 \[
-L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] + KL(q_{\phi}(z|x_i)||p(z))
+L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}\_{q_{\phi}(z|x_i)}[\log(p(x_i|g_{\theta}(z))] + KL(q_{\phi}(z|x_i)||p(z))
 \]</div>
-<p>Reconstruction Error 는 Decoder 에서 생성하는 데이터가 최대한 원본 데이터와 유사하도록 하는 term 이고, Regularization 은 Encoder 에서 만드는 잠재변수의 분포가 저희가 부여한 prior distribution 이랑 가깝도록 설정하는 term 입니다. 이때, Reconstruction Error 는 Monte Carlo 기법으로 근사값을 구할 수 있고, 하나의 sample 을 계산하는 것도 연산량이 많으므로 논문에서는 sample size <span class="math notranslate nohighlight">\(L\)</span> 을 1 로 설정합니다.</p>
+<p>Reconstruction Error 는 Decoder 에서 생성하는 데이터가 최대한 원본 데이터와 유사하도록 하는 term 이고, Regularization 은 Encoder 에서 만드는 잠재변수의 분포가 저희가 부여한 prior distribution 이랑 가깝도록 설정하는 term 입니다. 이때, Reconstruction Error 는 다음과 같은 Monte Carlo Estimator <span class="math notranslate nohighlight">\(\tilde{\mathcal{L}}^{B}\)</span> 로 근사값을 구할 수 있고, 하나의 sample 을 계산하는 것도 연산량이 많으므로 논문에서는 sample size <span class="math notranslate nohighlight">\(L\)</span> 을 1 로 설정합니다.</p>
 <div class="math notranslate nohighlight">
-\[
-\mathbb{E}_{q_{\phi}(z|x_i)}[log(p(x_i|g_{\theta}(z))] = \int log(p_{\theta}(x_i|z))q_{\phi}(z|x_i)dz \approx \frac{1}{L}\sum_{z^{i,l}} log(p_{\theta}(x_i|z^{i,l}))
-\]</div>
+\[ \tilde{\mathcal{L}}^{B}(\theta, \phi; x^{(i)})=-D_{KL}(q_{\phi}(z|x^{(i)})||p_{\theta}(z))+\frac{1}{L}\sum^{L}_{l=1} \log p\_\theta  (x^{(i)}|z^{(i,l)})) \]</div>
+<p>Lower bound 에 대한 수식을 변환하여 수식 전체에 대한 Monte Carlo Estimator <span class="math notranslate nohighlight">\(\tilde{\mathcal{L}}^{A}\)</span> 로도 근사값을 구할 수 있는데 이는 평균적으로 <span class="math notranslate nohighlight">\(\tilde{\mathcal{L}}^{B}\)</span> 에 비해 variance 가 높다고 합니다.</p>
+<div class="math notranslate nohighlight">
+\[ \tilde{\mathcal{L}}^{A}(\theta,\phi;x^{(i)})=\frac{1}{L}\sum^{L}\_{l=1}\log p_{\theta}(x^{(i)},z^{(i,l)})-\log q_{\phi}(z^{(i,l)}|x^{(i)}) \]</div>
 </section>
 <section id="reparameterization-trick">
 <h2>Reparameterization Trick<a class="headerlink" href="#reparameterization-trick" title="Permalink to this heading">#</a></h2>
-<p>마지막으로 소개하는 기법은 reparameterization trick 입니다. 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 를 Encoder 에서 나온 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 를 각각 더하고 곱하게 됩니다. 이는 <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 이 Gaussian distribution 을 따른다고 설정했을 때이고, <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 에 대해 다른 분포를 가정할 때 그리고 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다.</p>
+<p>논문에서는 모델 학습 시 backpropagation 을 원활히 사용할 수 있도록 reparameterization trick 을 소개합니다. 잠재변수 <span class="math notranslate nohighlight">\(z\)</span> 를 Encoder 에서 나온 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 로 직접 샘플링하지 않고, backpropagation 이 가능하도록 Gaussian noise 를 우선적으로 샘플링하고 해당 <span class="math notranslate nohighlight">\(\mu\)</span> 와 <span class="math notranslate nohighlight">\(\sigma\)</span> 를 각각 더하고 곱하게 됩니다. 이는 <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 이 Gaussian distribution 을 따른다고 설정했을 때이고, <span class="math notranslate nohighlight">\(q_{\phi}(z|x)\)</span> 에 대해 다른 분포를 가정하여 그에 따른 다른 reparameterization trick 을 시도할 수 있다고 논문에 명시되어 있습니다.</p>
+<p>하단에는 Gaussian 분포에 대한 reparameterization trick 를 도식화한 그림입니다. 왼쪽에는 reparameterization trick이 적용되지 않은 경우로 <span class="math notranslate nohighlight">\(\mu\)</span> 나 <span class="math notranslate nohighlight">\(\sigma\)</span> 값이 고정되어 있어도 <span class="math notranslate nohighlight">\(\mathcal{N}(\mu,\sigma^2)\)</span> 에서 샘플링하므로 <span class="math notranslate nohighlight">\(z\)</span> 는 랜덤한 값이 되고 loss function 을 <span class="math notranslate nohighlight">\(\mu\)</span> 나 <span class="math notranslate nohighlight">\(\sigma\)</span> 에 대해 미분할 수 없어 backpropagation 을 적용하기가 어렵습니다. 반면에, 오른쪽처럼 reparameterization trick 을 적용하면, <span class="math notranslate nohighlight">\(z\)</span> 가 deterministic 한 형태로 정의되고 <span class="math notranslate nohighlight">\(\mu\)</span> 나 <span class="math notranslate nohighlight">\(\sigma\)</span> 에 대한 변수로도 미분이 가능해지기 때문에 backpropagation 을 활용하여 모델을 학습시킬 수 있습니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_05.png"><img alt="vae_05" class="bg-primary mb-1" src="../../_images/vae_05.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 4 </span><span class="caption-text">Overview of Reparameterization Trick</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+</section>
+<section id="training-algorithm">
+<h2>Training Algorithm<a class="headerlink" href="#training-algorithm" title="Permalink to this heading">#</a></h2>
+<p>모델을 학습하는 전체적인 과정은 아래와 같습니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_09.png"><img alt="vae_09" class="bg-primary mb-1" src="../../_images/vae_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Overview of Training Algorithm</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<p>논문에서는 MNIST 와 Frey Face 데이터셋에 대해 AEVB(Auto-Encoder variational Bayesian)와 wake-sleep 알고리즘를 적용해서 비교합니다. 여기서 Frey Face 데이터셋은 continuous 하므로 Gaussian Decoder 를 사용합니다. 실험결과는 아래 그림과 같습니다.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_10.png"><img alt="vae_10" class="bg-primary mb-1" src="../../_images/vae_10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Experimental Results - Likelihood lower bound</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>해당 그림처럼 lower bound 를 최적화하는데 AEVB 알고리즘이 더 빠르게 수렴하며 모든 실험에서 성능적으로도 더 나은 부분을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/vae_11.png"><img alt="vae_11" class="bg-primary mb-1" src="../../_images/vae_11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Experimental Results - Marginal likelihood</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>또한, latent variable <span class="math notranslate nohighlight">\(z\)</span> 의 차원이 작으면 marginal likelihood 를 직접 Monte Carlo EM 을 할용하여 구할 수 있는데, 이에 대한 결과도 논문에서 보여줍니다. Monte Carlo EM 의 경우 학습 데이터가 많으면 수렴이 되지 않는 부분을 확인할 수 있습니다.</p>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
@@ -651,7 +689,10 @@ L(\theta, \phi;x_i) = \arg \min_{\theta, \phi} \sum_{i} -\mathbb{E}_{q_{\phi}(z|
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#intractability">Intractability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sgvb-stochastic-gradient-variational-bayes">SGVB(Stochastic Gradient Variational Bayes)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reparameterization-trick">Reparameterization Trick</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-algorithm">Training Algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>

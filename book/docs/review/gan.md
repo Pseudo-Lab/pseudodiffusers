@@ -99,7 +99,7 @@ Generator 와 Discriminator 구현 코드도 같이 살펴보겠습니다.
 GAN 을 학습할 시, **D를 먼저 최적화하는 k 단계**와 **G를 최적화하는 한 단계를 번갈아 수행**합니다. 그리고 이때 쓰이는 손실함수(loss function)은 다음과 같습니다. 
 
 $$
-\min_G \max_D V(D,G) = \mathbb{E}_{x \sim p_{data}(x)}[\logD(x)] + \mathbb{E}_{z \sim p_z(z)}[\log(1-D(G(z))]
+\min_G \max_D V(D,G) = \mathbb{E}\_{x \sim p_{data}(x)}[logD(x)] + \mathbb{E}\_{z \sim p_z(z)}[\log(1-D(G(z))]
 $$
 
 논문에서 제시한 학습 알고리즘과 실제 implementation code 를 비교해보겠습니다. 
@@ -203,7 +203,7 @@ $$
 이를 증명하자면, 최적화된 Discriminator 에 대한 손실함수는 다음과 같고 
 
 $$
-V(D^{\ast},G) = \mathbb{E}_{x \sim p_{data}(x)} [ \log D^{\ast}(x) ] + \mathbb{E}_{x \sim p_g(x)} [ \log(1-D^{\ast}(x) ]
+V(D^{\ast},G) = \mathbb{E}\_{x \sim p_{data}(x)} [ \log D^{\ast}(x) ] + \mathbb{E}\_{x \sim p_g(x)} [ \log(1-D^{\ast}(x) ]
 $$
 
 $$

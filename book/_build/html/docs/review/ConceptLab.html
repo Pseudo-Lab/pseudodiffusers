@@ -1,649 +1,477 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>ConceptLab &#8212; Text-to-Image Generation-feat-Diffusion</title>
-    
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/ConceptLab';</script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Diffusion Models already have a Semantic Latent Space" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html" />
     <link rel="prev" title="Progressive Distillation for Fast Sampling of Diffusion Models" href="progressive_distillation.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../../_static/PseudoLab_logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">Text-to-Image Generation-feat-Diffusion</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="이 책 검색 ..." aria-label="이 책 검색 ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   Text-to-Image Generation (feat. Diffusion)
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Preliminary Works
- </span>
-</p>
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Text-to-Image Generation (feat. Diffusion)
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="vae.html">
-   VAE
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="gan.html">
-   GAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DDPM.html">
-   DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DDIM.html">
-   DDIM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">
-   A Study on the Evaluation of Generative Models
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Image Generation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cycleGAN.html">
-   CycleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="StyleGAN.html">
-   StyleGAN
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="diffusion_beats_GANs.html">
-   Diffusion Models Beat GANs on Image Synthesis
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dalle.html">
-   DALL-E
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DALLE2.html">
-   DALL-E 2
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="dreambooth.html">
-   DreamBooth
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="ControlNet.html">
-   ControlNet
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Latent_Diffusion_Model.html">
-   Latent Diffusion Model
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Textual_Inversion.html">
-   Textual Inversion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CustomDiffusion.html">
-   Custom Diffusion
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="LoRA.html">
-   LoRA
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="I-DDPM.html">
-   I-DDPM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="StyO.html">
-   StyO
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagen.html">
-   Imagen
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="imagen_editor.html">
-   Imagen Editor
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="SDEdit.html">
-   SDEdit
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="SDXL.html">
-   SDXL
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="t2i_adapter.html">
-   T2I-Adapter
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="HyperDreamBooth.html">
-   HyperDreamBooth
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="CM3leon.html">
-   CM3leon
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">
-   Synthetic Data from Diffusion Models Improves ImageNet Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="GLIDE.html">
-   GLIDE
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="BBDM.html">
-   BBDM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">
-   Your Diffusion Model is Secretly a Zero-Shot Classifier
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="progressive_distillation.html">
-   Progressive Distillation for Fast Sampling of Diffusion Models
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   ConceptLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">
-   Diffusion Models already have a Semantic Latent Space
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Muse.html">
-   Muse
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">gigaGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Video Generation
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="Make_A_Video.html">
-   Make A Video
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="VideoLDM.html">
-   VideoLDM
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Animate_Anyone.html">
-   Animate Anyone
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="DreaMoving.html">
-   DreaMoving
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Experiments
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../experiments/js_exp.html">
-   Synthetic Data with Stable Diffusion for Foliar Disease Classification
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../experiments/swjo_exp.html">
-   Training DreamBooth on Naver Webtoon Face Dataset
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="탐색 전환" aria-controls="site-navigation"
-                title="탐색 전환" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="이 페이지 다운로드"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/review/ConceptLab.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="소스 파일 다운로드" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="PDF로 인쇄"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="소스 저장소"><i
-                    class="fab fa-github"></i>저장소</button></a>
-        <a class="issues-button"
-            href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/ConceptLab.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="이슈 열기"><i class="fas fa-lightbulb"></i>열린 문제</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/ConceptLab.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="전체 화면으로보기"
-        title="전체 화면으로보기"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/ConceptLab.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ConceptLab</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> 내용
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#related-work">
-   Related Work
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prelimiaries">
-   Prelimiaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-constraints">
-     The Constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-objective">
-     The Objective
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularization">
-   Regularization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adaptive-negatives">
-     Adaptive Negatives
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evolutionary-generation">
-     Evolutionary Generation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#experiments">
-   Experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#result">
-     Result
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creative-generation">
-     Creative Generation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#concept-mixing">
-     Concept Mixing
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparisons">
-     Comparisons
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-setup">
-     Evaluation Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualitative-comparisons">
-     Qualitative Comparisons
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantitative-comparisons">
-     Quantitative Comparisons
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelimiaries">Prelimiaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-constraints">The Constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-objective">The Objective</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-negatives">Adaptive Negatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-generation">Evolutionary Generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-generation">Creative Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-mixing">Concept Mixing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-setup">Evaluation Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-comparisons">Qualitative Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-comparisons">Quantitative Comparisons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>ConceptLab</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> 내용 </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#introduction">
-   Introduction
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#related-work">
-   Related Work
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prelimiaries">
-   Prelimiaries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#method">
-   Method
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-constraints">
-     The Constraints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-objective">
-     The Objective
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularization">
-   Regularization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adaptive-negatives">
-     Adaptive Negatives
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evolutionary-generation">
-     Evolutionary Generation
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#experiments">
-   Experiments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#result">
-     Result
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creative-generation">
-     Creative Generation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#concept-mixing">
-     Concept Mixing
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#comparisons">
-     Comparisons
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation-setup">
-     Evaluation Setup
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#qualitative-comparisons">
-     Qualitative Comparisons
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#quantitative-comparisons">
-     Quantitative Comparisons
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#limitations">
-   Limitations
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conclusion">
-   Conclusion
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
@@ -660,19 +488,19 @@
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="conceptlab">
-<h1>ConceptLab<a class="headerlink" href="#conceptlab" title="Permalink to this headline">¶</a></h1>
+<h1>ConceptLab<a class="headerlink" href="#conceptlab" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>본 논문에서는 Creative Generation의 일환으로, 새롭고 창의적인 개념을 생성하는 내용을 다룹니다. 최근 text-to-image 생성 기술과 Personalization 기술이 크게 발전함에 따라 이미지 생성 뿐만 아니라 개인화된 개념을 생설할 수 있게 되었습니다. 이러한 강력한 모델을 사용하여 모델에 명시적으로 설명되지 않은 새로운 창의적 개념을 생성할 수 있을까요?</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab01.png"><img alt="ConceptLab01" class="bg-primary mb-1" src="../../_images/ConceptLab01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 390 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 393 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="related-work">
-<h2>Related Work<a class="headerlink" href="#related-work" title="Permalink to this headline">¶</a></h2>
+<h2>Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
 <p><strong>Text-Guided Sysnthesis</strong> <br/>
 대부분의 text-guided 생성 기술은 pretrain 된 텍스트 인코더에서 추출한 임베딩을 diffusion 모델에 직접 conditioning합니다. 즉, 텍스트 데이터를 처리하여 이미지 생성 과정에 통합하는 방식입니다. 본 논문에서는 Latent Diffusion Model과 Diffusion prior model을 활용해서 creative generation에서의 이점을 보입니다.</p>
 <p><strong>Diffusion Prior</strong> <br/>
@@ -684,12 +512,12 @@ Personalization은 text-guided synthesis 맥락에서 사용자가 입력한 텍
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab02.png"><img alt="ConceptLab02" class="bg-primary mb-1" src="../../_images/ConceptLab02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 391 </span><span class="caption-text">Text-guided generation (top left), personalization methods (bottom left), creative generation method (right)</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 394 </span><span class="caption-text">Text-guided generation (top left), personalization methods (bottom left), creative generation method (right)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="prelimiaries">
-<h2>Prelimiaries<a class="headerlink" href="#prelimiaries" title="Permalink to this headline">¶</a></h2>
+<h2>Prelimiaries<a class="headerlink" href="#prelimiaries" title="Permalink to this heading">#</a></h2>
 <p><strong>Latent Diffusion Models</strong> <br/>
 Latent Diffusion Model에서는 오토인코더의 latent space 내에서 diffusion 과정이 진행됩니다. 먼저, 인고더 <span class="math notranslate nohighlight">\(E\)</span>는 주어진 이미지 <span class="math notranslate nohighlight">\(x\)</span>를 latent code <span class="math notranslate nohighlight">\(z\)</span>로 매핑하는 것을 목표로 합니다. 이때, z=E(x)가 됩니다. 동시에 디코더 D는 원본 입력 이미지를 재구성하도록 합니다. DDPM의 경우 아래 주어진 손실을 최소화하도록 학습합니다.</p>
 <div class="math notranslate nohighlight">
@@ -707,19 +535,19 @@ L_{prior} = E_{e,y,t} [||e - P_{\theta]}(e_{t},t,y)||_{2}^{2}]
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab03.png"><img alt="ConceptLab03" class="bg-primary mb-1" src="../../_images/ConceptLab03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 392 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 395 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="method">
-<h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
+<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
 <p>ConceptLab은 생성하고자 하는 새로운 개념을 대표하는 단일 임베딩 <span class="math notranslate nohighlight">\(v_{*}\)</span>를 최적화합니다. 이후 주어진 카테고리에 유사하면서도 기존 멤버들과 다른 특성을 가지도록 손실 집합을 계산합니다. 훈련하는 동안, 현재 생성된 새로운 개념을 바탕으로 negative contraints를 더하기 위해 pretrained BLIP-2 VQA 모델을 활용합니다.</p>
 <section id="the-constraints">
-<h3>The Constraints<a class="headerlink" href="#the-constraints" title="Permalink to this headline">¶</a></h3>
+<h3>The Constraints<a class="headerlink" href="#the-constraints" title="Permalink to this heading">#</a></h3>
 <p>본 연구에서는 긍정적 제약 <span class="math notranslate nohighlight">\(C_{pos}\)</span>와 부정적 제약 <span class="math notranslate nohighlight">\(C_{neg}\)</span> 두 가지를 활용합니다. 각 제약 조건은 텍스트 토큰을 활용하여 정의됩니다.</p>
 </section>
 <section id="the-objective">
-<h3>The Objective<a class="headerlink" href="#the-objective" title="Permalink to this headline">¶</a></h3>
+<h3>The Objective<a class="headerlink" href="#the-objective" title="Permalink to this heading">#</a></h3>
 <p>본 연구에서는 두가지 제약 조건을 바탕으로 하여 새로운 개념을 대표하는 임베딩 <span class="math notranslate nohighlight">\(v_{*}\)</span>와 각 제약 조건 간의 유사도를 측정합니다.
 우선, <span class="math notranslate nohighlight">\(v_{*}\)</span>와 각 제약 단어 <span class="math notranslate nohighlight">\(c\)</span>를 동일한 무작위 샘플링된 프롬프트 y에 통합합니다. 각 문장은 CLIP 텍스트 임베딩으로 인코딩되며, 이것이 텍스트 제약 조건을 정의합니다. 텍스트 프롬프트를 diffusion prior 모델에 통과시키면, 프롬프트의 특정 인스턴스가 생성됩니다. 이러한 방식으로 <span class="math notranslate nohighlight">\(E_{y}(v_{*}\)</span>가 diffusion prior를 통과하면 모든 <span class="math notranslate nohighlight">\(v_{*}\)</span>가 텍스트 제약 조건과 일치하도록 일관된 생성을 얻을 수 있습니다. 반면, 긍정 및 부정 제약 조건은 가능한 광범위하게 유지하고자 diffusion prior를 통과하지 않습니다. 이에 따라 본 연구에서의 손실 함수는 다음과 같이 정의됩니다:</p>
 <div class="math notranslate nohighlight">
@@ -734,7 +562,7 @@ L = S(C_{neg}, v_{*}) + \lambda(1-S(C_{pos}, v_{*}))
 </section>
 </section>
 <section id="regularization">
-<h2>Regularization<a class="headerlink" href="#regularization" title="Permalink to this headline">¶</a></h2>
+<h2>Regularization<a class="headerlink" href="#regularization" title="Permalink to this heading">#</a></h2>
 <p>정규화는 제약 조건 집합이 클 때 특정 멤버로의 collapsing을 방지하는 데 사용됩니다. 부정적 제약에 대한 최대 유사도를 측정하는 추가 손실 함수를 사용하는데 아래와 같이 정의됩니다:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -744,21 +572,21 @@ S_{max}(C,v_{*}) = max_{c \sim C}(\langle E_{y}, P(E_{y}(v_{*}))\rangle)
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab04.png"><img alt="ConceptLab04" class="bg-primary mb-1" src="../../_images/ConceptLab04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 393 </span><span class="caption-text">훈련 과정 중 BLIP-2 모델을 사용하여 현재 개념에 가장 가까운 단어를 추론하고, 이를 제약 조건에 추가하는 과정을 거칩니다.</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 396 </span><span class="caption-text">훈련 과정 중 BLIP-2 모델을 사용하여 현재 개념에 가장 가까운 단어를 추론하고, 이를 제약 조건에 추가하는 과정을 거칩니다.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="adaptive-negatives">
-<h3>Adaptive Negatives<a class="headerlink" href="#adaptive-negatives" title="Permalink to this headline">¶</a></h3>
+<h3>Adaptive Negatives<a class="headerlink" href="#adaptive-negatives" title="Permalink to this heading">#</a></h3>
 <p>많은 부정적 제약 조건을 수동으로 적용하는 것은 힘들고, 광범위한 카테고리의 가장 관련성 높은 멤버들을 정확하게 대표하지 못할 수도 있습니다. 이를 해결하기 위해, 훈련 중 부정적 제약 조건 집합을 점진적으로 확장하는 adaptive scheme을 제안합니다. 생성된 이미지를 사전 훈련된 BLIP-2 VQA 모델에 질의하여 이미지에 현재 존재하는 카테고리의 멤버가 무엇인지 식별하도록 합니다. 이후 결과로 나온 인스턴스를 훈련의 나머지 부분에 대한 부정적 제약 조건에 추가합니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab05.png"><img alt="ConceptLab05" class="bg-primary mb-1" src="../../_images/ConceptLab05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 394 </span><span class="caption-text">여러 단계에 걸쳐 생성된 이미지 결과를 보여줍니다. 훈련 과정에서 부정적 제약 조건이 지속적으로 조정되고 확장되었음을 보여줍니다.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 397 </span><span class="caption-text">여러 단계에 걸쳐 생성된 이미지 결과를 보여줍니다. 훈련 과정에서 부정적 제약 조건이 지속적으로 조정되고 확장되었음을 보여줍니다.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="evolutionary-generation">
-<h3>Evolutionary Generation<a class="headerlink" href="#evolutionary-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Evolutionary Generation<a class="headerlink" href="#evolutionary-generation" title="Permalink to this heading">#</a></h3>
 <p>주어진 개념 셋에 대해 <em>개념을 혼합</em>하기 위해 먼저 각 개념에서 이미지를 생성하여 이미지 제약 조건 <span class="math notranslate nohighlight">\(C_{im}\)</span> 을 만듭니다. 각 이미지는 CLIP 이미지 인코더 <span class="math notranslate nohighlight">\(E_{im}(c)\)</span>를 통과하여 임베딩 세트를 생성합니다. 학습 가능한 개념 <span class="math notranslate nohighlight">\(v_{mix}\)</span>를 주어진 임베딩에 더 가깝게 만드는 수정된 손실 함수를 적용합니다.:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -768,83 +596,83 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab06.png"><img alt="ConceptLab06" class="bg-primary mb-1" src="../../_images/ConceptLab06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 395 </span><span class="caption-text">그림에는 훈련에 사용된 긍정적 개념이 왼쪽에 표시되어 있습니다. 이는 모델이 어떤 개념을 기반으로 창의적 이미지를 생성했는지를 알 수 있습니다. 모든 결과는 Adaptive Negative 기법을 활용했습니다.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 398 </span><span class="caption-text">그림에는 훈련에 사용된 긍정적 개념이 왼쪽에 표시되어 있습니다. 이는 모델이 어떤 개념을 기반으로 창의적 이미지를 생성했는지를 알 수 있습니다. 모든 결과는 Adaptive Negative 기법을 활용했습니다.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab07.png"><img alt="ConceptLab07" class="bg-primary mb-1" src="../../_images/ConceptLab07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 396 </span><span class="caption-text">ConceptLab이 제안한 다양한 이미지로 프롬프트와 Adaptive Negative 기법을 적용했습니다.</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 399 </span><span class="caption-text">ConceptLab이 제안한 다양한 이미지로 프롬프트와 Adaptive Negative 기법을 적용했습니다.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab08.png"><img alt="ConceptLab08" class="bg-primary mb-1" src="../../_images/ConceptLab08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 397 </span><span class="caption-text">ConceptLab은 생성된 개념들을 혼합하여 새롭고 독특한 창조물을 반복적으로 학습할 수 있습니다. 그림의 가장 윗줄에서는 Adaptive Negative 기법을 적용하여 학습된 개념들을 보여줍니다. 이어지는 줄에서는 Evolutionary Generation 과정을 통해 얻어진 개념들을 보여줍니다.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 400 </span><span class="caption-text">ConceptLab은 생성된 개념들을 혼합하여 새롭고 독특한 창조물을 반복적으로 학습할 수 있습니다. 그림의 가장 윗줄에서는 Adaptive Negative 기법을 적용하여 학습된 개념들을 보여줍니다. 이어지는 줄에서는 Evolutionary Generation 과정을 통해 얻어진 개념들을 보여줍니다.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="experiments">
-<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this headline">¶</a></h2>
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
 <p>ConceptLab의 효과를 입증하기 위해 정성적 및 정량적 평가를 진행했습니다.</p>
 <section id="result">
-<h3>Result<a class="headerlink" href="#result" title="Permalink to this headline">¶</a></h3>
+<h3>Result<a class="headerlink" href="#result" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="creative-generation">
-<h3>Creative Generation<a class="headerlink" href="#creative-generation" title="Permalink to this headline">¶</a></h3>
+<h3>Creative Generation<a class="headerlink" href="#creative-generation" title="Permalink to this heading">#</a></h3>
 <p>위 그림들에서 볼 수 있듯이 모든 결과는 Adaptive Negative를 적용하였고 훈련 시드를 달리하며 다양한 개념을 생성할 수 있는 능력이 있음을 볼 수 있습니다. 또, ConceptLab은 학습된 창의적 개념을 새로운 장면에 배치할 수 있습니다. 이 생성물들은 배경 변경, 스타일 변경, 새로운 창조등 다양하게 활용 가능합니다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab09.png"><img alt="ConceptLab09" class="bg-primary mb-1" src="../../_images/ConceptLab09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 398 </span><span class="caption-text">ConceptLab을 활용한 Concept Mixing의 결과를 보여줍니다.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 401 </span><span class="caption-text">ConceptLab을 활용한 Concept Mixing의 결과를 보여줍니다.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="concept-mixing">
-<h3>Concept Mixing<a class="headerlink" href="#concept-mixing" title="Permalink to this headline">¶</a></h3>
+<h3>Concept Mixing<a class="headerlink" href="#concept-mixing" title="Permalink to this heading">#</a></h3>
 <p>Concept Mixing은 다양한 실제 개념들의 독특한 특성을 합쳐 하이브리드 개념을 형성하는 방법을 보여줍니다. 이 방법은 오직 긍정적 제약 조건만을 활용합니다. 예를 들어, 첫 번째 줄에는 랍스터의 주요 특징(생상과 집게발)을 거북이의 특징(등껍질)과 융합하는 것을 볼 수 있습니다.</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab10.png"><img alt="ConceptLab10" class="bg-primary mb-1" src="../../_images/ConceptLab10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 399 </span><span class="caption-text">위 그림은 ConceptLab에 의해 학습된 개념들이 여러 <em>세대</em>에 걸쳐 어떻게 발전하는지 보여줍니다.</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 402 </span><span class="caption-text">위 그림은 ConceptLab에 의해 학습된 개념들이 여러 <em>세대</em>에 걸쳐 어떻게 발전하는지 보여줍니다.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="comparisons">
-<h3>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this headline">¶</a></h3>
+<h3>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="evaluation-setup">
-<h3>Evaluation Setup<a class="headerlink" href="#evaluation-setup" title="Permalink to this headline">¶</a></h3>
+<h3>Evaluation Setup<a class="headerlink" href="#evaluation-setup" title="Permalink to this heading">#</a></h3>
 <p>ConceptLab은 Stable Diffusion2와 Kandinsky 2.1 두 모델과 함께 평가했습니다. Kandinsky의 경우, 더 유리한 결과를 위해 부정적 프롬프트는 Latent Diffusion Model이 아닌 Diffusion Prior Model에 적용했습니다.</p>
 </section>
 <section id="qualitative-comparisons">
-<h3>Qualitative Comparisons<a class="headerlink" href="#qualitative-comparisons" title="Permalink to this headline">¶</a></h3>
+<h3>Qualitative Comparisons<a class="headerlink" href="#qualitative-comparisons" title="Permalink to this heading">#</a></h3>
 <p>ConceptLab은 긍정적 토근과 부정적 제약 조건 모두에 일관되게 맞춰질 수 있습니다. 즉, ConceptLab은 다중 제약 조건을 효과적으로 처리하고, 특정 개념에 대한 일관된 표현을 학습할 수 있는 능력을 갖추고 있습니다.</p>
 </section>
 <section id="quantitative-comparisons">
-<h3>Quantitative Comparisons<a class="headerlink" href="#quantitative-comparisons" title="Permalink to this headline">¶</a></h3>
+<h3>Quantitative Comparisons<a class="headerlink" href="#quantitative-comparisons" title="Permalink to this heading">#</a></h3>
 <p>정량적 평가를 위해 각 방법이 긍정적 개념을 포함하며, 주어진 부정적 개념과 닮지 않은 이미지를 생성하는 능력을 측정했습니다. 평가에는 애완동물, 식물, 과일, 가구, 악기의 5가지 카테고리를 활용했습니다. 각 도메인에 세 가지 다른 부정적 개념 쌍을 고려하고, 각 조합에 대해 ConceptLab을 5개의 랜덤 시드로 훈련하여 총 75개의 학습된 개념을 얻었습니다. 각 학습된 개념에 대해 “A photo of a <span class="math notranslate nohighlight">\(S_{*}\)</span> 프롬프트를 활용하여 32개의 이미지를 생성했습니다. Stable Diffusionr과 kandinsky 모델에서는 부정적 프롬프트를 사용하고, 같은 긍정적 및 부정적 개념 쌍에 대해 160개의 이미지를 생성합니다. 측정 기준으로는 먼저 각 개념의 긍정적 유사성을 타겟 카테고리와의 CLIP 공간 유사성 계산을 통해 특정됩니다. 다음으로는 긍정적 제약과 부정적 제약 사이의 거리를 측정합니다. 이는 생성된 이미지와 모든 부정적 개념 사이의 최대 유사성 계산을 통해 이루어집니다. 결과적으로 ConceptLab은 5가지 모든 도메인에서 긍정적 CLIP 유사성에서 일관되게 우월한 성능을 보였고 타겟 카테고리에 속하는 이미지를 신뢰성 있게 생성했습니다. 또한, 부정적 거리 측정에서 ConceptLab은 모든 카테고리에서 Stable Diffusion을, 4가지 카테고리에서 Kandinsky를 능가했습니다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab11.png"><img alt="ConceptLab11" class="bg-primary mb-1" src="../../_images/ConceptLab11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 400 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 403 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <p>Personalization과 유사하게, 학습된 개념을 포함하는 프롬프트를 사용하여 새로운 이미지를 생성하는 것이 항상 개념의 특성을 다양한 프롬프트에 걸쳐 유지하지는 못합니다. 또, 최적화 과정 자체가 항상 원하는 결과를 가져오지는 않습니다. “비행기”나 “물고기”와 같은 일부 클래스의 경우 ConceptLab은 창의적 개념을 생성하는데 여전히 어려움이 있습니다. 이는 BLIP-2에 의해 생성되는 부정적 제약과 관련이 있습니다.</p>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab12.png"><img alt="ConceptLab12" class="bg-primary mb-1" src="../../_images/ConceptLab12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 401 </span><span class="caption-text">Limitations</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 404 </span><span class="caption-text">Limitations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline">¶</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>본 논문에서는 text-to-image diffusion model을 활용하여 창의적 생성을 위한 새로운 접근 방법을 소개했습니다. 주어진 광범위한 카테고리에 속하는 새로운 개념을 학습하기 위해 Diffusion Prior 모델 사용을 제안했습니다. 또, Prior Constraints라는 긍정적 및 부정적 제약 조건들을 diffusion prior 출력에 적용했습니다. 최적화 과정에서는 VQA 모델을 활용하여 독특하면서도 기존 멤버들과의 명확한 구별을 보장했습니다. 이후 실험을 통해 본 방법의 효과성을 입증했으며 시각적으로 다양하고 매력적인 개념을 생성할 수 있었습니다.</p>
 </section>
 </section>
@@ -861,7 +689,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./docs/review"
         },
         predefinedOutput: true
@@ -869,44 +697,129 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="progressive_distillation.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Progressive Distillation for Fast Sampling of Diffusion Models</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="progressive_distillation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Progressive Distillation for Fast Sampling of Diffusion Models</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="Diffusion_models_already_have_a_Semantic_Latent_Space.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Diffusion Models already have a Semantic Latent Space</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      으로 PseudoLab<br/>
-    
-        &copy; 저작권 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prelimiaries">Prelimiaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-constraints">The Constraints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-objective">The Objective</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-negatives">Adaptive Negatives</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evolutionary-generation">Evolutionary Generation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#result">Result</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creative-generation">Creative Generation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#concept-mixing">Concept Mixing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-setup">Evaluation Setup</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-comparisons">Qualitative Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-comparisons">Quantitative Comparisons</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

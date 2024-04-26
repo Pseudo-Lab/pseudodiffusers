@@ -1,12 +1,12 @@
 # text-to-image-generation-feat-diffusion
 
-This is the repository of Pseudo Lab's Text-to-Image Generation (feat. Diffusion) team.
+This is the repository of PseudoDiffusers team.
 
 :bulb: Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.
 
-[About Us - Pseudo Lab](https://www.linkedin.com/company/pseudolab/)
+[About Us - PseudoLab](https://www.linkedin.com/company/pseudolab/)
 
-[About Us - Text-to-Image Generation (feat. Diffusion) Team](https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44)
+[About Us - PseudoDiffusers](https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44)
 
 참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!
 

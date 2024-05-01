@@ -34,3 +34,4 @@ Our aim is to review papers and code related to image generation and text-to-ima
 - 유정화 [Jeonghwa Yoo] | [Github](https://github.com/jeongHwarr) | [Linkedin](https://www.linkedin.com/in/jeonghwa-yoo-8403a716b/) |
 - 박세환 [Sehwan Park] | [Github](https://github.com/shp216) | Linkedin |
 - 송건학 [Geonhak Song] | [Github](https://github.com/geonhak904) | Linkedin |
+- 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |

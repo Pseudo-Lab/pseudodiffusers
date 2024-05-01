@@ -517,14 +517,14 @@ document.write(`
 <ol class="arabic simple">
 <li><p>ODE solver의 성능개선을 통해 10~20 step만으로도 좋은 성능을 가지는 방법.</p>
 <ul class="simple">
-<li><p>DPM-Solver</p></li>
+<li><p>DPM-Solver (<a class="reference external" href="https://arxiv.org/pdf/2206.00927">lu et al.</a>)</p></li>
 </ul>
 </li>
 <li><p>사전 학습된 Diffusion model을 몇 step만으로도 추론할수 있도록 <strong>distillation</strong>하는 방법.</p>
 <ul class="simple">
-<li><p>PD (Progressive Distillation). → 2 stage</p></li>
-<li><p>On Distillation of Guided Diffusion Models.</p></li>
-<li><p>Consistency Models</p></li>
+<li><p>PD (Progressive Distillation). → 2 stage (<a class="reference external" href="https://arxiv.org/pdf/2202.00512">Salimans et al.</a>)</p></li>
+<li><p>On Distillation of Guided Diffusion Models. (<a class="reference external" href="https://arxiv.org/pdf/2210.03142">Meng et al.</a>)</p></li>
+<li><p>Consistency Models (<a class="reference external" href="https://arxiv.org/pdf/2303.01469">Song et al.</a>)</p></li>
 </ul>
 </li>
 </ol>
@@ -538,9 +538,9 @@ document.write(`
 <p>본 논문의 제안점은 다음 3가지다:</p>
 <p> </p>
 <ul class="simple">
-<li><p>빠르고 high-resolution 이미지를 생성하기 위한 Latent Consistency Models(LCMs)를 제안한다. LCMs은 영상의 latent space에 Consistency Models 개념을 적용해 매우 적은 step 만으로도 고품질의 이미지를 생성할 수 있다.</p></li>
-<li><p>guided consistency distillation을 통해 Stable Diffusion을 매우 적은 step(1~4)으로 sampling 할 수 있는 방법을 제공한다.  Skipping-Step이라는 테크닉을 통해 학습을 가속화 한다. 2, 4 step Model의 경우 학습에 A100 GPU 32시간 밖에 걸리지 않으며 LAION-5B-Aesthetics dataset에서 SOTA의 성능을 달성했다.</p></li>
-<li><p>LCMs에 대한 새로운 fine-tuning 방식인 Latent Consistency Fine-tuning을 통해 빠른 추론 속도를 유지하면서도 Custom Dataset에 효율적으로 적용할 수 있다.</p></li>
+<li><p>빠르고 high-resolution 이미지를 생성하기 위한 Latent Consistency Models(LCMs)를 제안한다. LCMs은 영상의 latent space에 Consistency Models 개념을 적용해 매우 적은 step 만으로도 <strong>고품질의 이미지</strong>를 생성할 수 있다.</p></li>
+<li><p>guided consistency distillation을 통해 Stable Diffusion을 매우 적은 step(1~4)으로 sampling 할 수 있는 방법을 제공한다. <strong>Skipping-Step</strong>이라는 테크닉을 통해 학습을 가속화 한다. 2, 4 step Model의 경우 학습에 A100 GPU 32시간 밖에 걸리지 않으며 LAION-5B-Aesthetics dataset에서 SOTA의 성능을 달성했다.</p></li>
+<li><p>LCMs에 대한 새로운 fine-tuning 방식인 Latent Consistency Fine-tuning을 통해 <strong>빠른 추론 속도를 유지하면서도 Custom Dataset에 효율적으로 적용</strong>할 수 있다.</p></li>
 </ul>
 <p> </p>
 <figure class="align-default" id="id2">
@@ -564,7 +564,7 @@ q_{0t}(x_{t}|x_{0})=\mathcal{N}(x_t|\alpha(t)x_0,\sigma^2(t)I)
 \[
 f(t)=\frac{d\log{\alpha(t)}}{dt}, g^2(t)=\frac{d\sigma^2(t)}{dt}-2\frac{d\log{\alpha(t)}}{dt}\sigma^2(t). \tag{1}
 \]</div>
-<p>또한 주변 확률분포 <span class="math notranslate nohighlight">\(q_t(x)\)</span>는 Ptobability Flow ODE(PF-ODE)라는 상미분방정식(Ordinary Differential Equation, ODE)을 만족하는데  다음과 같다:</p>
+<p>또한 주변 확률분포 <span class="math notranslate nohighlight">\(q_t(x)\)</span>는 **Ptobability Flow ODE(PF-ODE)**라는 상미분방정식(Ordinary Differential Equation, ODE)을 만족하는데  다음과 같다:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dx_t}{dt}=f(x)x_t-\frac{1}{2}g^2(t)\nabla_x\log{q_t(x_t)}, \ x_T \sim q_T(x_T). \tag{2}
@@ -583,14 +583,14 @@ f(t)=\frac{d\log{\alpha(t)}}{dt}, g^2(t)=\frac{d\sigma^2(t)}{dt}-2\frac{d\log{\a
 </section>
 <section id="consistency-models">
 <h3>Consistency Models<a class="headerlink" href="#consistency-models" title="Permalink to this heading">#</a></h3>
-<p>Consistenct Model(CM)은 몇 step 혹은 한번의 step 만으로 데이터를 생성할 수 있는 모델이다. CM의 핵심은 PF-ODE의 궤적에 어떤 point와 PF-ODE의 solution에 대해 mapping되는 function (<span class="math notranslate nohighlight">\(f:(x_t, t) \mapsto x_\epsilon\)</span>)을 추정하는 것이다.</p>
+<p>Consistenct Model(CM)은 몇 step 혹은 한번의 step 만으로 데이터를 생성할 수 있는 모델이다. CM의 핵심은 <strong>PF-ODE의 궤적에 어떤 point와 PF-ODE의 solution에 대해 mapping되는 function (<span class="math notranslate nohighlight">\(f:(x_t, t) \mapsto x_\epsilon\)</span>)을 추정</strong>하는 것이다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_02.png"><img alt="ldm_02" class="bg-primary mb-1" src="../../_images/ldm_02.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 481 </span><span class="caption-text">Consistency Models (CM).</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><span class="math notranslate nohighlight">\(\epsilon\)</span>은 고정된 매우 작은 양수값을 가지며 CM의 function은 자기 자신에 대한 self-consistency를 만족해야한다. 즉 어떠한 time step에 대해서도 <span class="math notranslate nohighlight">\(x_\epsilon\)</span>을 sampling 할 수 있어야 한다.</p>
+<p><span class="math notranslate nohighlight">\(\epsilon\)</span>은 고정된 매우 작은 양수값을 가지며 CM의 function은 자기 자신에 대한 <strong>self-consistency</strong>를 만족해야한다. 즉 어떠한 time step에 대해서도 <span class="math notranslate nohighlight">\(x_\epsilon\)</span>을 sampling 할 수 있어야 한다.</p>
 <div class="math notranslate nohighlight">
 \[
 f(x_t,t)=f(x_{t'},t'), \forall t,t' \in [\epsilon, T]. \tag{4}
@@ -602,7 +602,7 @@ f_\theta(x,t)=c_{skip}(t)x+c_{out}(t)F_\theta(x,t). \tag{5}
 \]</div>
 <p><span class="math notranslate nohighlight">\(c_{skip}(t)\)</span>와 <span class="math notranslate nohighlight">\(c_{out}(t)\)</span>는 미분 가능한 함수이며 <span class="math notranslate nohighlight">\(c_{skip}=1, c_{out}=0\)</span>이기 때문에 <span class="math notranslate nohighlight">\(f_\theta(x, \epsilon)=x\)</span>를 만족한다.  <span class="math notranslate nohighlight">\(\theta\)</span>는 학습 가능한 파라미터로 <span class="math notranslate nohighlight">\(F_\theta\)</span>는 심층 신경망을 의미한다.</p>
 <p> </p>
-<p>CM은 pre-trained 모델에 대한 Distillation 방식과 scratch부터 학습하는 방식이 있는데 주로 Distillation 방식을 사용한다. Distillation 방식은 parameter <span class="math notranslate nohighlight">\(\theta^-\)</span>가 <span class="math notranslate nohighlight">\(\theta\)</span>를 통해 학습하며 모델에 대한 self-consistency를 위해 다음과 같이 손실함수를 구성한다:</p>
+<p>CM은 pre-trained 모델에 대한 Distillation 방식과 scratch부터 학습하는 방식이 있는데 주로 <strong>Distillation 방식</strong>을 사용한다. Distillation 방식은 parameter <span class="math notranslate nohighlight">\(\theta^-\)</span>가 <span class="math notranslate nohighlight">\(\theta\)</span>를 통해 학습하며 모델에 대한 self-consistency를 위해 다음과 같이 손실함수를 구성한다:</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}(\theta,\theta^-;\Phi)=\mathbb{E}_{x,t}\bigg[d\bigg(f_\theta(x_{t_{n+1}, t_{n+1}}), f_{\theta^-}(\hat{x}^\phi_{t_n}, t_n)\bigg)\bigg]. \tag{6}
@@ -612,7 +612,7 @@ f_\theta(x,t)=c_{skip}(t)x+c_{out}(t)F_\theta(x,t). \tag{5}
 \[
 \hat{x}^\phi_{t_n} \leftarrow x_{t_{n+1}}+(t_{n}-t_{n+1})\Phi(x_{t_{n+1}}, t_{n+1};\phi). \tag{7}
 \]</div>
-<p><span class="math notranslate nohighlight">\(\Phi\)</span>는 PF-ODE에 사용되는 ODE Solver로 Euler나 Heun Solver등의 수치적인 ODE solver를 사용할 수 있다. 즉 Consistency Distillation은 ODE Solver로 예측한 <span class="math notranslate nohighlight">\(\hat{x}^{\phi}_{t_n}\)</span>과 <span class="math notranslate nohighlight">\(x_{t_{n+1}}\)</span>을 입력으로 <span class="math notranslate nohighlight">\(f_{\theta^-}\)</span>와 <span class="math notranslate nohighlight">\(f_\theta\)</span>로 예측한 값의 Consistency를 비교하는 방식으로 Distillation을 수행한다.</p>
+<p><span class="math notranslate nohighlight">\(\Phi\)</span>는 PF-ODE에 사용되는 ODE Solver로 <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method">Euler</a>나 <a class="reference external" href="https://en.wikipedia.org/wiki/Heun%27s_method">Heun</a> Method등의 수치적인 ODE solver를 사용할 수 있다. 즉 Consistency Distillation은 ODE Solver로 예측한 <span class="math notranslate nohighlight">\(\hat{x}^{\phi}_{t_n}\)</span>과 <span class="math notranslate nohighlight">\(x_{t_{n+1}}\)</span>을 입력으로 <span class="math notranslate nohighlight">\(f_{\theta^-}\)</span>와 <span class="math notranslate nohighlight">\(f_\theta\)</span>로 <strong>예측한 값의 Consistency를 비교하는 방식으로 Distillation을 수행</strong>한다.</p>
 </section>
 </section>
 <section id="id1">
@@ -621,15 +621,15 @@ f_\theta(x,t)=c_{skip}(t)x+c_{out}(t)F_\theta(x,t). \tag{5}
 <ul class="simple">
 <li><p>ImageNet 64x64, LSUN 256x256 영상에 대한 Generation만 수행</p>
 <ul>
-<li><p>High Resolution의 잠재성이 아직 탐구되지 않았음.</p></li>
-<li><p>Classifier-free Guidance(CFG) 등을 사용하지 않음.</p></li>
+<li><p><strong>High Resolution</strong>의 잠재성이 아직 탐구되지 않았음.</p></li>
+<li><p><strong>Classifier-free Guidance(CFG)</strong> 등을 사용하지 않음.</p></li>
 </ul>
 </li>
 </ul>
 <p>Latent Consistency Models(LCMs)는 CM의 잠재력을 충분히 발휘하여 좀더 도전적인 task를 수행한다.</p>
 <section id="consistency-distillation-in-the-latent-space">
 <h3>3.1 Consistency Distillation in the Latent Space<a class="headerlink" href="#consistency-distillation-in-the-latent-space" title="Permalink to this heading">#</a></h3>
-<p>본 논문에서는 pre-trained 된 Stable Diffusion에 Consistency Distillation을 적용한 Latent Consistency Distillation (LCD)을 제안한다. LCMs는 LDM(SD)을 기반으로 설계되었기 때문에 <span class="math notranslate nohighlight">\(z=\varepsilon(x)\)</span>를 통해 <span class="math notranslate nohighlight">\(x\)</span>를 latent vector로 임베딩하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>를 통해 원본 영상으로 복원한다. latent space 상에서 연산이 이뤄지기 때문에 Computation Cost를 크게 줄일 수 있어 high-resolution 영상을 laptop GPU에서 생성할 수도 있다.</p>
+<p>본 논문에서는 pre-trained 된 Stable Diffusion에 Consistency Distillation을 적용한 Latent Consistency Distillation (LCD)을 제안한다. LCMs는 LDM(SD)을 기반으로 설계되었기 때문에 <span class="math notranslate nohighlight">\(z=\varepsilon(x)\)</span>를 통해 <span class="math notranslate nohighlight">\(x\)</span>를 latent vector로 임베딩하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>를 통해 원본 영상으로 복원한다. latent space 상에서 연산이 이뤄지기 때문에 <strong>Computation Cost를 크게 줄일 수 있어</strong> high-resolution 영상을 laptop GPU에서 생성할 수도 있다.</p>
 <p>condition을 추가한 PF-ODE의 reverse process는 다음과 같이 정의된다:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -645,14 +645,12 @@ f_\theta(z,c,t)=c_{skip}(t)z+c_{out}(t)\bigg( \frac{z-\sigma_t\hat{\epsilon}_\th
 \[
 x_0 = \frac{x_t-\sqrt{1-\bar{\alpha}_t}\epsilon}{\sqrt{\bar{\alpha}_t}}, \ \hat{z}_0 = \frac{z_t-\sigma(t)\hat{\epsilon}_{\theta}(z,c,t)}{\alpha(t)}.
 \]</div>
-<p>CM과 마찬가지로 <span class="math notranslate nohighlight">\(c_{skip}(0)=1, c_{out}(0)=0\)</span>이고 <span class="math notranslate nohighlight">\(\hat{\epsilon}_{\theta}(z,c,t)\)</span>는 teacher diffusion model과 유사한 noise 예측 모델 parameter이다. <span class="math notranslate nohighlight">\(f_\theta\)</span>는 <span class="math notranslate nohighlight">\(\epsilon-Prediction\)</span> 외에도 <span class="math notranslate nohighlight">\(x-Prediction\)</span>이나 <span class="math notranslate nohighlight">\(v-Prediction\)</span>을 사용할 수도 있다.</p>
-<p>(<span class="math notranslate nohighlight">\(x-Prediction\)</span>은 DDPM, <span class="math notranslate nohighlight">\(v-prediction\)</span>은 PD에서 나온 개념)</p>
+<p>CM과 마찬가지로 <span class="math notranslate nohighlight">\(c_{skip}(0)=1, c_{out}(0)=0\)</span>이고 <span class="math notranslate nohighlight">\(\hat{\epsilon}_{\theta}(z,c,t)\)</span>는 teacher diffusion model과 유사한 noise 예측 모델 parameter이다. <span class="math notranslate nohighlight">\(f_\theta\)</span>는 <span class="math notranslate nohighlight">\(\epsilon-Prediction\)</span> 외에도 <span class="math notranslate nohighlight">\(x-Prediction\)</span>이나 <span class="math notranslate nohighlight">\(v-Prediction\)</span>을 사용할 수도 있다. (<span class="math notranslate nohighlight">\(x-Prediction\)</span>은 DDPM, <span class="math notranslate nohighlight">\(v-prediction\)</span>은 PD에서 나온 개념)</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L_{CD}}(\theta,\theta^-;\psi)=\mathbb{E}_{z,c,n}\bigg[ d(f_\theta(z_{t_{n+1}},c,t_{n+1}), f_{\theta^-}(\hat{z}^\psi_{t_n},c,t_n)) \bigg]. \tag{10}
 \]</div>
-<p><span class="math notranslate nohighlight">\(\psi(z_t,t,x,c)\)</span>는 ODE solver이며 특정한 time step <span class="math notranslate nohighlight">\(t \sim s\)</span> 사이에 대한 Eq. 8의 우항을 근사한 값이다. ODE Solver이기 때문에 DDIM, DPM-Solver, DPM-Solver++ 등을 사용할 수 있다. 또한 <span class="math notranslate nohighlight">\(\psi\)</span>는 학습 및 Distillation시에만 사용한다.</p>
-<p>이때 <span class="math notranslate nohighlight">\(t_n\)</span>은 EDM을 토대로 CM에서 나오는 값이다. 기존 timestep <span class="math notranslate nohighlight">\([t, T]\)</span>에 대한 하위 간격으로 <span class="math notranslate nohighlight">\(t_1=\epsilon&lt;t_2&lt;\cdots&lt;t_N=T\)</span>인 어떠한간격을 의미한다. 이때 <span class="math notranslate nohighlight">\(t_i\)</span>는 다음과 같다:</p>
+<p><span class="math notranslate nohighlight">\(\psi(z_t,t,x,c)\)</span>는 ODE solver이며 특정한 time step <span class="math notranslate nohighlight">\(t \sim s\)</span> 사이에 대한 Eq. 8의 우항을 근사한 값이다. ODE Solver이기 때문에 <strong>DDIM, DPM-Solver, DPM-Solver++ 등을 사용할 수 있다.</strong> 또한 <span class="math notranslate nohighlight">\(\psi\)</span>는 학습 및 Distillation시에만 사용한다. 이때 <span class="math notranslate nohighlight">\(t_n\)</span>은 EDM을 토대로 CM에서 나오는 값이다. 기존 timestep <span class="math notranslate nohighlight">\([t, T]\)</span>에 대한 하위 간격으로 <span class="math notranslate nohighlight">\(t_1=\epsilon&lt;t_2&lt;\cdots&lt;t_N=T\)</span>인 어떠한간격을 의미한다. <span class="math notranslate nohighlight">\(t_i\)</span>는 다음과 같이 나타낼 수 있다:</p>
 <div class="math notranslate nohighlight">
 \[
 t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rho, \rho=7
@@ -665,8 +663,8 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 </section>
 <section id="one-stage-guided-distillation-by-solving-augmented-pf-ode">
 <h3>3.2 One-Stage Guided Distillation by solving augmented PF-ODE<a class="headerlink" href="#one-stage-guided-distillation-by-solving-augmented-pf-ode" title="Permalink to this heading">#</a></h3>
-<p>Clasifier-free Guidance(CFG)는 high-quality의 conditional 이미지 생성을 가능하게 했다. 다만 CFG는 2개의 Diffusion Model을 훈련해야하기 때문에 효율적이지 못하며, LCMs와 같은 few-step sampling method에 사용하기 힘들다. 따라서 이를 해결하기 위해 본 논문에서는 CFG를 Distillation 과정에서 통합하였다.</p>
-<p>Guided-Distill의 경우 two-stage Distillation을 통해  few-step sampling에 CFG를 통합하였으나 학습시간이 길고 2단계를 거치며 손실이 누적되기 때문에 최적의 성능을 내기 힘들다.</p>
+<p>Clasifier-free Guidance(CFG)는 high-quality의 conditional 이미지 생성을 가능하게 했다. 다만 CFG는 2개의 Diffusion Model을 훈련해야하기 때문에 효율적이지 못하며, <strong>LCMs와 같은 few-step sampling method에 사용하기 힘들다.</strong> 따라서 이를 해결하기 위해 본 논문에서는 CFG를 Distillation 과정에서 통합하였다.</p>
+<p>Guided-Distill의 경우 two-stage Distillation을 통해  few-step sampling에 CFG를 통합하였으나 학습시간이 길고 <strong>2단계를 거치며</strong> 손실이 누적되기 때문에 최적의 성능을 내기 힘들다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_03.png"><img alt="ldm_03" class="bg-primary mb-1" src="../../_images/ldm_03.png" style="width: 700px;" /></a>
 <figcaption>
@@ -678,7 +676,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 \[
 \tilde{\epsilon}_{\theta}(z_t,\omega,c,t):=(1+\omega)\epsilon_\theta(z_t,c,t)-\omega\epsilon_\theta(z_t,\varnothing,t). \tag{12}
 \]</div>
-<p>CFG는 conditional noise 예측값과 unconditional noise 예측값을 선형 결합하여 사용한다. 즉 noise 값이 <span class="math notranslate nohighlight">\(\omega\)</span>에 따라 변형되므로 augmented PF-ODE라고 한다. augmented PF-ODE는 다음과 같이 나타낼 수 있다:</p>
+<p>CFG는 conditional noise 예측값과 unconditional noise 예측값을 선형 결합하여 사용한다. 즉 noise 값이 <span class="math notranslate nohighlight">\(\omega\)</span>에 따라 변형되므로 <strong>augmented PF-ODE</strong>라고 한다. augmented PF-ODE는 다음과 같이 나타낼 수 있다:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{dz_t}{dt}=f(t)z_t+\frac{g^2(t)}{2\sigma_t}\tilde{\epsilon}_\theta(z_t,\omega,c,t), \ z_T\sim\mathcal{N}(0,\tilde{\sigma}^2I). \tag{13}
@@ -690,24 +688,28 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 \]</div>
 <p><span class="math notranslate nohighlight">\(\omega\)</span>와 <span class="math notranslate nohighlight">\(n\)</span>는 각각 <span class="math notranslate nohighlight">\([\omega_{min}, \omega_{max}]\)</span>, <span class="math notranslate nohighlight">\(\{1,…,N-1\}\)</span>에서 sampling된다. <span class="math notranslate nohighlight">\(\hat{z}^{\psi, \omega}_{t_n}\)</span>는 이전과 마찬가지로 CFG가 추가된 ODE-Solver를 사용하여 근사한 값을 의미한다. 이때 사용되는 새로운 noise 예측모델 <span class="math notranslate nohighlight">\(\tilde{\epsilon}_\theta(z_t,\omega,c,t)\)</span>는  Eq. 11처럼  <span class="math notranslate nohighlight">\(t_{n+1} \sim t_n\)</span>까지 t에 대해 적분 했을 때 다음과 같이 나타낼 수 있다:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 \hat{z}^{\psi, \omega}_{t_n}-z_{t_n+1}=\int^{t_n}_{t_{n+1}}\bigg(f(t)z_t+\frac{g^2(t)}{2\sigma_t}\tilde{\epsilon}_\theta(z_t,\omega,c,t)\bigg)dt
-\\
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 =(1+\omega)\int^{t_n}_{t_{n+1}}\bigg(f(t)z_t+\frac{g^2(t)}{2\sigma_t}\epsilon_\theta(z_t,c,t)\bigg)dt
-\\
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 -\omega\int^{t_n}_{t_{n+1}}\bigg(f(t)z_t+\frac{g^2(t)}{2\sigma_t}\epsilon_\theta(z_t,\varnothing,t)\bigg)dt
-\\
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 \approx(1+\omega)\psi(z_{t_{n+1}}, t_{n+1},t_n,c)-\omega\psi(z_{t_{n+1}}, t_{n+1},t_n,\varnothing). \tag{15}
-\end{split}\]</div>
+\]</div>
 <p>마찬가지로 PF-ODE Solver <span class="math notranslate nohighlight">\(\psi(\cdot,\cdot,\cdot,\cdot)\)</span>에는 DDIM, DPM-Solver, DPM-Solver++ 등을 사용할 수 있다.</p>
 </section>
 <section id="accelerating-distillation-with-skipping-time-steps">
 <h3>3.3 Accelerating Distillation with Skipping Time Steps<a class="headerlink" href="#accelerating-distillation-with-skipping-time-steps" title="Permalink to this heading">#</a></h3>
-<p>Stable Diffusion 등 보통의 Diffusion Model들은 매우 큰 step을 전체 time step으로 잡고 학습한다. 그러나 이같이 촘촘한 time step은 각 <span class="math notranslate nohighlight">\(t_n\)</span>과 <span class="math notranslate nohighlight">\(t_{n+1}\)</span>의 변화량을 감소시키기 때문에 자연스럽게 Consistency Distillation Loss도 작아지게 된다. Loss가 작아지면 학습의 수렴속도도 느려지게 된다. 따라서 LCMs는 학습 수렴의 속도를 높이기 위해 time step을 수천에서 수십으로 크기 단축시키는 SKIPPING-STEP 방법을 제안하였다.</p>
-<p> </p>
-<p>기존 CMs 모델의 경우 time scheduler로 EDM을 사용하고 ODE-Solver로 Euler 방법이나 Heun 방법을 사용한다.  그러나 LCMs는 Eq. 8을 통해 DDIM, DPM-Solver, DPM-Solver++와 같은 효율적인 solver도 효과적으로 데이터를 생성할 수 있다는 것을 증명했다. 따라서 SKIPPING-STEP 방법은 <span class="math notranslate nohighlight">\(t_{n+1} → t_n\)</span> 사이의 Consistency를 비교하는것이 아니라 특정 k-step만큼 거리가 있는 time step에 대한 Consistency를 비교한다. (<span class="math notranslate nohighlight">\(t_{n+k}→t_n\)</span>)</p>
-<p> </p>
-<p><span class="math notranslate nohighlight">\(k\)</span>값의 크기는 trade-off 관계를 가진다. 너무작으면 (<span class="math notranslate nohighlight">\(k=1\)</span>) 기존과 같이 느린 수렴속도를 갖게되며, 너무 큰 값일 때는 ODE solver 를 통해 근사할 때 오차가 매우 커질수 있다. 논문의 저자는 <span class="math notranslate nohighlight">\(k=20\)</span>을 사용해 time step을 수천에서 수십으로 대폭 줄여 학습을 Accelerating 할 수 있었다. Eq. 14에 k값을 추가해 SKIPPING-STEP을 표현할 수 있다.</p>
+<p>Stable Diffusion 등 보통의 Diffusion Model들은 매우 큰 step을 전체 time step으로 잡고 학습한다. 그러나 이같이 촘촘한 time step은 각 <span class="math notranslate nohighlight">\(t_n\)</span>과 <span class="math notranslate nohighlight">\(t_{n+1}\)</span>의 변화량을 감소시키기 때문에 자연스럽게 Consistency Distillation Loss도 작아지게 된다. <strong>Loss가 작아지면 학습의 수렴속도도 느려지게 된다.</strong> 따라서 LCMs는 학습 수렴의 속도를 높이기 위해 time step을 수천에서 수십으로 크기 단축시키는 SKIPPING-STEP 방법을 제안하였다.</p>
+<p>기존 CMs 모델의 경우 time scheduler로 EDM을 사용하고 ODE-Solver로 Euler 방법이나 Heun 방법을 사용한다.  그러나 LCMs는 Eq. 8을 통해 DDIM, DPM-Solver, DPM-Solver++와 같은 효율적인 solver도 효과적으로 데이터를 생성할 수 있다는 것을 증명했다. 따라서 <strong>SKIPPING-STEP 방법은 <span class="math notranslate nohighlight">\(t_{n+1} → t_n\)</span> 사이의 Consistency를 비교하는것이 아니라 특정 k-step만큼 거리가 있는 time step에 대한 Consistency를 비교한다.</strong> (<span class="math notranslate nohighlight">\(t_{n+k}→t_n\)</span>)</p>
+<p>이때 <span class="math notranslate nohighlight">\(k\)</span>값의 크기는 trade-off 관계를 가진다. 너무작으면 (<span class="math notranslate nohighlight">\(k=1\)</span>) 기존과 같이 느린 수렴속도를 갖게되며, 너무 큰 값일 때는 ODE solver 를 통해 근사할 때 오차가 매우 커질수 있다. 논문의 저자는 <span class="math notranslate nohighlight">\(k=20\)</span>을 사용해 <strong>time step을 수천에서 수십으로 대폭 줄여</strong> 학습을 Accelerating 할 수 있었다. Eq. 14에 k값을 추가해 SKIPPING-STEP을 표현할 수 있다.</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L_{CD}}(\theta,\theta^-;\psi)=\mathbb{E}_{z,c,\omega,n}\bigg[ d\bigg( f_\theta(z_{t_{n+k}},\omega,c,t_{n+k}), f_{\theta^-}(\hat{z}_{t_n}^{\psi,\omega},\omega,c,t_n) \bigg) \bigg]. \tag{16}
@@ -721,8 +723,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 </section>
 <section id="latent-consistency-fine-tuning-for-customized-dataset">
 <h2>3.4 Latent Consistency Fine-tuning for customized dataset<a class="headerlink" href="#latent-consistency-fine-tuning-for-customized-dataset" title="Permalink to this heading">#</a></h2>
-<p>Stable Diffusion과 같은 Foundation 생성 모델은 거의 대부분의 text-to-image Generation task에서 잘 되지만 가끔 downstream task를 위해 Cunstom dataset에 대한 fine-tuning이 필요할 때가 있다. Latent Consistency Fine-tuning(LCF)는 Custom Dataset도 teacher model에 대한 종속없이 few-step inference를 성공적으로 할수 있도록 한다. 따라서 LCM은 기존의 Diffusion model에 대한 추가적인 fine tuning 방법론 없이도 Custom Dataset을 바로바로 학습하여 사용할수 있다.</p>
-<p> </p>
+<p>Stable Diffusion과 같은 Foundation 생성 모델은 거의 대부분의 text-to-image Generation task에서 잘 되지만 가끔 downstream task를 위해 Cunstom dataset에 대한 fine-tuning이 필요할 때가 있다. Latent Consistency Fine-tuning(LCF)는 Custom Dataset도 teacher model에 대한 종속없이 few-step inference를 성공적으로 할수 있도록 한다. 따라서 LCM은 <strong>기존의 Diffusion model에 대한 추가적인 fine tuning 방법론 없이도 Custom Dataset을 바로바로 학습하여 사용</strong>할수 있다.</p>
 <p>따로 추가적인 fine-tuning 방법이 있는것은 아니고 Consisteny Distillation 시 pre-trained 된 LDM을 사용하여 EMA를 통해 Distillation을 하기 때문에 Dataset을 Custom Dataset으로 사용하기만하면 된다. 즉 pre-trained Diffuson model → Custom Dataset fine-tuning → few step inference를 위한 Consistency Distillation을 할 필요 없이 바로학습이 가능하다는 의미이다.</p>
 </section>
 <section id="experiments">
@@ -742,7 +743,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <p><span class="caption-number">Fig. 484 </span><span class="caption-text">Qualitative results on LAION-Aesthetic-6.5+ Dataset. (2,4 steps)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>DDIM, DPM-Solver, DPM-Solver++, Guided-Distill 4가지 모델에 대해 LCM과 성능비교를 했는데 이때 Guided-Distill은 오픈소스 코드가 없기 때문에 논문의 내용과 동일하게 Implementation 해서 성능을 비교하였다. LCM은 같은 메모리 Cost 대비 더 빠르게 수렴하고 더 좋은 품질의 영상을 생성하였다. 특히 Guided-Distill은 2 stage Distillation이지만 LCM은 1 Stage만 사용해도 이같은 성능을 보여줬다.</p>
+<p>DDIM, DPM-Solver, DPM-Solver++, Guided-Distill 4가지 모델에 대해 LCM과 성능비교를 했는데 이때 Guided-Distill은 오픈소스 코드가 없기 때문에 논문의 내용과 동일하게 Implementation 해서 성능을 비교하였다. LCM은 같은 메모리 Cost 대비 더 빠르게 수렴하고 더 좋은 품질의 영상을 생성하였다. 특히 Guided-Distill은 2 stage Distillation이지만 LCM은 <strong>1 Stage</strong>만 사용해도 이같은 성능을 보여줬다.</p>
 </section>
 <section id="abulation-study">
 <h3>4.2 Abulation Study<a class="headerlink" href="#abulation-study" title="Permalink to this heading">#</a></h3>
@@ -755,19 +756,19 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <p><span class="caption-number">Fig. 485 </span><span class="caption-text">Different ODE solvers and skipping step k.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Skipping step의 경우 <span class="math notranslate nohighlight">\(k\)</span> 값을 올렸을 때 훨씬더 빠르게 수렴하며 때때로 더 좋은 FID 값을 보여주었다. 또한 DPM과 DPM++은 <span class="math notranslate nohighlight">\(k\)</span>가 50일 때 DDIM보다 더 좋은 성능을 보였다. 이는 <span class="math notranslate nohighlight">\(k\)</span> 값이 클수록 더 큰 ODE approximation error를 가지는 DDIM에 비해 오차가 적기 때문이다.</p>
+<p>Skipping step의 경우 <span class="math notranslate nohighlight">\(k\)</span> 값을 올렸을 때 훨씬더 빠르게 수렴하며 때때로 더 좋은 FID 값을 보여주었다. 또한 DPM과 DPM++은 <span class="math notranslate nohighlight">\(k\)</span>가 50일 때 DDIM보다 더 좋은 성능을 보였다. 이는 <strong><span class="math notranslate nohighlight">\(k\)</span> 값이 클수록 더 큰 ODE approximation error를 가지는 DDIM에 비해 오차가 적기 때문</strong>이다.</p>
 <p><span class="math notranslate nohighlight">\(k=20\)</span>일 때, 3가지 모델 모두 좋은 성능이 보였다.</p>
 </section>
 <section id="the-effect-of-guidance-scale-omega">
 <h4>The Effect of Guidance Scale <span class="math notranslate nohighlight">\(\omega\)</span><a class="headerlink" href="#the-effect-of-guidance-scale-omega" title="Permalink to this heading">#</a></h4>
-<p>일반적으로 <span class="math notranslate nohighlight">\(\omega\)</span>값이 클수록 CLIP score 같은 품질의 지표는 좋아지지만 작을수록 다양성이 떨어져 FID Score가 떨어진다. 즉 <span class="math notranslate nohighlight">\(\omega\)</span>의 크기는 Quality와 Diversity에 대한 trade-off가 있다.</p>
+<p>일반적으로 <span class="math notranslate nohighlight">\(\omega\)</span>값이 클수록 CLIP score 같은 품질의 지표는 좋아지지만 작을수록 다양성이 떨어져 FID Score가 떨어진다. 즉 <span class="math notranslate nohighlight">\(\omega\)</span>의 크기는 <strong>Quality와 Diversity에 대한 trade-off가 있다.</strong></p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_07.png"><img alt="ldm_07" class="bg-primary mb-1" src="../../_images/ldm_07.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 486 </span><span class="caption-text">Different classifier-free guidance scales <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>그래프를 보면 2~8 step inference는 성능에 큰 차이를 가지지는 않는것으로 확인된다. 그러나 1 step inference는 아직 개선의 여지가 있는것을 확인할 수 있다.</p>
+<p>그래프를 보면 2~8 step inference는 성능에 큰 차이를 가지지는 않는것으로 확인된다. 그러나 <strong>1 step inference는 아직 개선의 여지가 있는것</strong>을 확인할 수 있다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_08.png"><img alt="ldm_08" class="bg-primary mb-1" src="../../_images/ldm_08.png" style="width: 700px;" /></a>
 <figcaption>
@@ -791,7 +792,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
 <h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
-<p>LCM은 Consistency Distillation을 Latent 상에 적용하여 고화질의 영상을 매우 적은 time step으로 inference 할 수 있도록 한 논문이다. 즉 성능 좋고 고해상도의 영상을 few-step으로 가능하게 만들었다. 특히 Custom Dataset에도 Distillation을 적용했을 때 적은 time step으로도 어느정도의 style을 간단하게 학습하는 결과를 보여주었다.</p>
+<p>LCM은 Consistency Distillation을 Latent 상에 적용하여 <strong>고화질의 영상을 매우 적은 time step으로 inference 할 수 있도록 한 모델</strong>이다. 즉 성능 좋고 고해상도의 영상을 few-step으로 가능하게 만들었다. 특히 Custom Dataset에도 Distillation을 적용했을 때 적은 time step으로도 어느정도의 style을 간단하게 학습하는 결과를 보여주었다.</p>
 </section>
 
     <script type="text/x-thebe-config">

@@ -24,6 +24,7 @@ This is the repository of PseudoDiffusers team.
 - 유정화 [Jeonghwa Yoo] | [Github](https://github.com/jeongHwarr) | [Linkedin](https://www.linkedin.com/in/jeonghwa-yoo-8403a716b/) |
 - 박세환 [Sehwan Park] | [Github](https://github.com/shp216) | Linkedin |
 - 송건학 [Geonhak Song] | [Github](https://github.com/geonhak904) | Linkedin |
+- 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
 
 ## Reviewed Papers 
 | idx | Date | Presenter | Paper / Code | 
@@ -50,6 +51,7 @@ This is the repository of PseudoDiffusers team.
 | 20 | 2024.03.20 | Junhyoung Lee | [Muse: Text-To-Image Generation via Masked Generative Transformers](https://arxiv.org/abs/2301.00704) (ICML 2023) |
 | 21 | 2024.03.27 | Seunghwan Ji | [Scaling up GANs for Text-to-Image Synthesis](https://arxiv.org/abs/2303.05511) (CVPR 2023) |
 | 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
+| 23 | 2024.04.24 | Donghyun Han | [Latent Consistency Models: Synthesizing High-Resolution Images with Few-Step Inference](https://arxiv.org/pdf/2310.04378) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

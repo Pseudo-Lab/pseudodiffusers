@@ -52,6 +52,7 @@ This is the repository of PseudoDiffusers team.
 | 21 | 2024.03.27 | Seunghwan Ji | [Scaling up GANs for Text-to-Image Synthesis](https://arxiv.org/abs/2303.05511) (CVPR 2023) |
 | 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
 | 23 | 2024.04.24 | Donghyun Han | [Latent Consistency Models: Synthesizing High-Resolution Images with Few-Step Inference](https://arxiv.org/pdf/2310.04378) |
+| 24 | 2024.05.01 | Jeonghwa Yoo | [DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion](https://arxiv.org/abs/2304.06025) |
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

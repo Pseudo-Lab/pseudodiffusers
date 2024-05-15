@@ -21,9 +21,18 @@
 -   결과적으로 collection style transfer, object transfiguration, season transfer, photo enhancement 등의 task에서 이미지 pair가 존재하지 않는 상태에서 우수한 결과를 보여줬다고 합니다.
 
 
-## Introduction
+## Related work(관련 연구)
 
-### 참고) Image-to-Image translation이란?
+-   GAN : adversarial loss를 사용하여 이미지를 생성하는 방법입니다.
+-   Image-to-Image Translation : 특정 image를 input으로 넣으면 그에 맞는 image가 output으로 나오는 방법입니다. pix2pix 같은 방법이 있으며 상세한 설명은 아래의 "Background" 참조하면 됩니다.
+-   Unpaired Image-to-Image Translation : 위의 Image-to-Image Translation에서 pair가 아닌 데이터로 학습해서 Image-to-Image Translation과 같은 input, output 결과가 나오도록 만드는 방법입니다.
+-   Cycle Consistency : 한 이미지를 다른 도메인으로 변환하고 다시 원래 도메인으로 변환할 때 처음의 원본으로 되도록 하여 일종의 순환(사이클)을 만드는 방법으로 학습 프로세스가 더 안정적이 되고, 이미지 간의 일관성을 보다 잘 유지할 수 있도록 만듭니다. (예 : X -> (A) -> Y로 X를 A에 거쳐 Y로 만든 뒤 다시 Y -> (B) -> X와 같이 X로 복구)
+-   Neural Style Transfer : pre-trained deep features의 Gram matrix statistics 일치를 기반으로 이미지 content를 다른 image의 스타일과 결합하여 새로운 이미지를 합성하는 방법입니다.
+
+
+## Background
+
+### Image-to-Image translation
 
 :::{figure-md} 
 <img src="https://phillipi.github.io/pix2pix/images/teaser_v3.png" class="bg-primary mb-1" width="800px"/>
@@ -40,10 +49,10 @@ Image-to-image translation은 input image를 다른 스타일, 속성, 구조 �
 paired and unpaired data
 :::
 
- 이 논문에서는 input image와 output image가 일대일로 짝지어지지 않은 상태에서 하나의 image 모음의 특성을 캡쳐하고, 이러한 특성을 다른 image 모음으로 변환할 수 있는 방법을 제시합니다.  
+ 이 논문에서는 input image와 output image가 일대일로 짝지어지지 않은 상태에서 하나의 image 모음의 특성을 캡쳐하고, 이러한 특성을 다른 image 모음으로 변환할 수 있는 방법을 제시합니다.
 GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제공되고, model의 output과, Y가 discriminator에 의해 구별할 수 없도록 G:X->Y를 학습합니다. 하지만, 이게 개별 입력 x와 출력 y가 무조건 유의미하게 쌍을 이룬다는 것을 뜻하지는 않습니다. G가 생성할 수 있는 image에는 무한한 경우의 수가 있기 때문. 종종 mode collapse가 일어나기도 합니다.
 
-### mode collapse란?
+### mode collapse
 
 :::{figure-md} 
 <img src="https://1.bp.blogspot.com/-oDCR5UnEIl4/WZkIId-rYCI/AAAAAAAAAJk/PoLvou4JLNIxn5U-OmPFZ_heyxVQGbMNQCEwYBhgL/s1600/14.png" class="bg-primary mb-1" width="800px">
@@ -51,7 +60,7 @@ GAN은 domain X에 이미지 한 세트, domain Y에 이미지 한 세트가 제
 mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 :::
 
--   어떤 input image든 모두 같은 output image로 매핑하면서 최적화에 실패하는 현상. 이 현상은 generator 입장에서, Discriminator가 이 사진이 진짜 Y인지 가짜인 Y^인지 구별하는 것을 '**속이기만**' 하면 되기 때문에 우리의 목적과 전혀 상관이 없는 데이터를 generator가 만들더라도 문제가 생기지 않아서 발생함
+-   어떤 input image든 모두 같은 output image로 매핑하면서 최적화에 실패하는 현상입니다. 이 현상은 generator 입장에서, Discriminator가 이 사진이 진짜 $Y$인지 가짜인 $\hat{Y}$인지 구별하는 것을 '**속이기만**' 하면 되기 때문에 우리의 목적과 전혀 상관이 없는 데이터를 generator가 만들더라도 문제가 생기지 않아서 발생합니다.
 -   참고: [http://dl-ai.blogspot.com/2017/08/gan-problems.html](http://dl-ai.blogspot.com/2017/08/gan-problems.html)
 
 이러한 이슈로 인해 추가 objective function이 필요해 졌습니다. 따라서 translation task는 영어 -> 프랑스어 -> 영어로 번역했을 때 원래 문장에 다시 도달하는 것처럼, X --> Y --> X'로 돌아가는 과정에서 X와 X'가 최대한 같아야 한다는 의미의 cyclic consistency이라는 속성을 이용합니다. 필요한 목적식을 간단하게 정리하면 다음과 같습니다.
@@ -59,19 +68,11 @@ mode collapsing 출처: http://dl-ai.blogspot.com/2017/08/gan-problems.html
 -   정방향, 역방향 adversarial Loss(X -> Y & Y -> X)
 -   Cycle consistency loss: X ~= F(G(x))
 
+## Method
 
-## Related work(관련 연구)
+- Overview에서 전체적인 구성과 학습과정을 설명하며, 아래 "Adversarial Loss", "Cycle consistency Loss"는 모델의 핵심 요소임. 이를 기반으로 "full objective"가 나옴
 
--   GAN
--   Image-to-Image Translation
--   Unpaired Image-to-Image Translation
--   Cycle Consistency
--   Neural Style Transfer
-
-논문과 관련된 기존 연구에 대한 내용이었음. 관련 중요한 개념들은 위 introduction에서 설명했고, 나머지는 cycleGAN 스터디와는 딱히 관련이 없어 보여서 스킵했음.
-
-
-## Formulation
+### Overview
 
 :::{figure-md} 
 <img src="../../pics/cyclegan/fig2.png" class="bg-primary mb-1" width="800px">
@@ -89,14 +90,14 @@ cycleGAN 도식화 자료
     -   adversarial loss: 생성된 이미지의 분포를 대상 domain의 data distribution과 일치시키기 위한 것.
     -   cycle consistency loss: 학습된 mapping G와 F가 서로 모순되는 것을 방지하기 위한 것.
 
-### Adversarial loss
+### Adversarial Loss
 
 G: X --> Y와 Dy에 대한 목적식은 다음과 같음.
 
-:::{figure-md} L_GAN Loss function
+:::{figure-md} $\mathcal{L}_{GAN}$ Loss function
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FnvzuE%2Fbtr725OfuJy%2FI1IgwK5PIzXpzINWnJxysK%2Fimg.png" alt="L_GAN Loss function" style="width:800px">
 
-L_GAN Loss function (source: https://arxiv.org/abs/1703.10593)
+$\mathcal{L}_{GAN}$ Loss function (source: https://arxiv.org/abs/1703.10593)
 :::
 
 -   GAN에서 쓰이는 loss function과 동일. 대신에 X -> Y로 갈 때와 Y -> X로 갈 때 총 두개의 수식이 나오며, F:Y->X와 Dx에 대해서도 F, Dx를 넣은, 같은 수식을 사용함.
@@ -104,9 +105,9 @@ L_GAN Loss function (source: https://arxiv.org/abs/1703.10593)
 ### Cycle consistency Loss
 
 :::{figure-md} 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" width="600px">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" width="600px">
 
-cycle consistency loss result
+cycle consistency loss function
 :::
 
 -   앞서 말했듯, mapping distribution에 제한을 두어 최대한 우리가 원하는 이미지를 생성하기 위해 사용하는 수식으로서, 위와 같음.
@@ -114,9 +115,9 @@ cycle consistency loss result
 -   cycle consistency loss를 통해 유도된 결과는 아래 그림에서 볼 수 있었음.
 
 :::{figure-md} 
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fmq8pC%2Fbtr724Pl3Q2%2FUSK4TDRaUK860iIdvG0vV0%2Fimg.png" class="bg-primary mb-1" width="600px">
+<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FzsgD6%2Fbtr8ay8PEBE%2F3mAKd1YSAiCK4ZXeIg84s1%2Fimg.png" class="bg-primary mb-1" width="600px">
 
-cycle consistency loss function
+cycle consistency loss result
 :::
 
 ### full objective - 전체 목적식
@@ -131,8 +132,8 @@ full objective function
 
 
 ## Implementation
-
-baseline architecture로서 neural style transfer와 super-resolution에 인상적인 결과를 보여준 논문에서 사용된 구조를 채택함.
+### Network 구조
+baseline architecture로서 neural style transfer와 super-resolution에 인상적인 결과를 보여준 논문에서 사용된 구조를 채택합니다.
 
 -   3개의 convolutions and several residual blocks,
 -   fractionally-strided convolution with stride 1/2,
@@ -147,16 +148,14 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 -   GAN의 Loss function에서 nll loss를 least-squared loss로 변경
 -   생성된 이미지 중 가장 최근의 50개를 따로 저장해 discriminator가 이를 한꺼번에 분류(모델 진동을 최소화하기 위함)
 
-### least-square loss 추가 설명
+### (참고) least-square loss 추가 설명
 
 참고)
 
 -   [https://velog.io/@sjinu/CycleGAN](https://velog.io/@sjinu/CycleGAN)
 -   [https://ysbsb.github.io/gan/2022/02/23/LSGAN.html](https://ysbsb.github.io/gan/2022/02/23/LSGAN.html)
 
-사용 이유: Generator의 업데이트를 위해서(LSGAN을 참고)
-
--   이해는 못했고, 이런게 있구나 정도로만 알 수 있었음.
+사용 이유: Generator의 업데이트를 위해서(LSGAN을 참고) 사용했으며 논문에서는 더 안정적인 학습과 quality 높은 결과를 생성한다고 함
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F6JIT8%2Fbtr73nVyIqs%2FKfcPK33U3OY0AjKhjFlUh1%2Fimg.png" class="bg-primary mb-1" width="800px">
@@ -174,26 +173,24 @@ baseline architecture로서 neural style transfer와 super-resolution에 인상�
 
 -   Generator는 Discriminator를 속이는 것을 넘어서, 실제 데이터 분포와 유사한 분포를 가지게끔 해야합니다.
 
-### 기타
+### 기타 설정
 
 -   모든 실험에서 람다를 10으로 설정했다.
 -   batch size == 1, 아담을 사용했다.
 -   모든 네트워크는 learning rate를 0.0002로 사용했다. 첫 100 에포크 동안에는 같은 ln을 사용했고, 다음 100 에포크마다 0으로 조금식 수렴하게 했다.
 
 
-## Result
+## 평가
 
-모델 성능 평가를 위해 아래와 같은 세 개의 지표를 사용.
+모델 성능 평가를 위해 아래와 같은 세 개의 지표를 기반으로 기존 방법인 Baseline과 비교했으며 그 외 Ablation Study(Loss의 실용성에 대해 평가)을 수행했습니다. 그리고 CycleGan을 활용한 image reconstruction과, 기존의 paired dataset 기반의 pix2pix와 결과 비교를 수행했습니다. 
+-   Baseline : coGAN, SimGAN, pix2pix
 
 1.  AMT perceptual studies: 참가자들은 실제 사진이미지 vs 가짜 이미지, 또는 지도 이미지 vs 가짜이미지에 노출된 후 진짜라고 생각되는 이미지를 선택하게 함.
 2.  FCN Score: 1번 study가 테스트에 있어 매우 좋은 기준임에도 불구하고, 사람을 대상으로 한 실험이 아닌, 양적인 기준을 찾았는데, FCN score임. FCN은 생성된 사진에 대한 레이블 맵을 예측합니다. 이 레이블 맵은 아래에서 설명하는 표준 시맨틱 분할 메트릭을 사용하여 input ground truth label과 비교할 수 있다. "도로 상의 자동차"라는 label에서 사진 이미지를 생성하면, 생성된 이미지에 적용된 FCN이 "도로 상의 자동차"를 감지하면 성공한 것입니다.
 3.  사진 --> 라벨링 성능을 평가: pixel당 정확도, class 당 정확도, IoU(Intersection-Over-Union)을 포함하는 cityscapes benchmark의 표준 metric
 
-### Baseline
 
--   coGAN, SimGAN, pix2pix
-
-### Comparison against baselines
+### 평가 1 : Comparison against baselines
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcZUe4E%2Fbtr8eXUQ6ou%2FikWglP8dEglGUny4dRkMjK%2Fimg.png" class="bg-primary mb-1" width="800px">
@@ -203,7 +200,7 @@ Comparison aginst baselines
 
 figure 5, figure 6에서 볼 수 있듯이 어떤 baseline에서도 강력한 결과를 얻을 수 없었음. 반면에 cycleGAN은 fully supervise인 pix2pix와 비슷한 품질의 translation을 생성할 수 있음.
 
-### Human study
+### 평가 2 : Human study
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb1Zhnx%2Fbtr8eWhk9ID%2FtauuT1N0W2qxRekj3IAnc1%2Fimg.png" class="bg-primary mb-1" width="600px">
@@ -213,7 +210,7 @@ AMT score
 
 표 1은 AMT perceptual realism task에 대한 성능을 나타냄. 여기서 지도에서 항공 사진, 항공 사진에서 지도 모두에서 약 1/4의 참가자를 속일 수 있었음. 그 외 모든 baseline은 참가자를 거의 속일 수 없었다.
 
-### FCN 등
+### 평가 3 : FCN 등
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqzYO1%2Fbtr728xs5iD%2FN5NDNYwUYLnEZfnOVYONM0%2Fimg.png" class="bg-primary mb-1" width="600px">
@@ -223,7 +220,7 @@ FCN scores
 
 표 2는 도시 풍경에 대한 label --> photo task의 성능을 평가하고 표 3은 반대 매핑을 평가함. 두 경우 모두 cycleGAN이 baseline들의 성능을 능가한다.
 
-### Analysis of the loss function
+### 평가 4 : Ablation Study (Analysis of the loss function)
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcjQ9QQ%2Fbtr79farEX8%2FkQ6SWARw9QK9jqRqHlZoi1%2Fimg.png" class="bg-primary mb-1" width="600px">
@@ -231,10 +228,10 @@ FCN scores
 Analysis of loss function
 :::
 
-GAN, cycle consistency의 중요성을 보여주는 자료.  
+GAN, cycle consistency의 중요성을 보여주는 자료.
 table 4, table 5에서 볼 수 있음. GAN을 없애면 cycle을 제거하는 것처럼 결과가 크게 저하됨. 따라서 두 term 모두 결과에 중요하다고 결론을 내릴 수 있음. 또한 한 방향에서만 cycle loss를 통해 각 메소드를 평가함. GAN + forward cycle만 돌렸을 때와, GAN + backward cycle만 돌렸을 때 이따금씩 학습에 불안정성을 보이고, mode collapse를 유발하는 것을 발견함(특히 제거된 매핑의 방향에 대해서 그런 경향을 보임). 그림 7을 보면 그런 경향을 볼 수 잇었음.
 
-### Image reconstruction quality
+### 평가 5 : Image reconstruction quality
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fyy7lt%2Fbtr73PdbuJp%2F5bmDtKSlQJJnd5yKvPgfB1%2Fimg.png" class="bg-primary mb-1" width="600px">
@@ -244,7 +241,7 @@ cycle consistency result
 
 그림 4에서 재구성된 이미지의 몇가지 무작위 샘플을 보여줌. 지도 --> 항공 사진과 같이 하나의 도메인이 훨씬 더 다양한 정보를 나타내는 경우에도 재구성된 이미지가 훈련 및 테스트 시간 모두 원래 입력 x에 가까운 경우가 많았음.
 
-### paired dataset에 대한 추가 결과
+### 평가 6 : paired dataset에 대한 추가 결과
 
 :::{figure-md} 
 <img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbqNrhb%2Fbtr72YaInQa%2Fk8b4K99KrAsD9C0SHINtt1%2Fimg.png" class="bg-primary mb-1" width="600px">

@@ -14,13 +14,13 @@ Our aim is to review papers and code related to computer vision generation model
 
 
 ## Publications
-**DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection**
-Donggeun Ko^{*}, Sangwoo Jo^{*}, Dongjun Lee, Namjun Park, Jaekwang KIM
-CVPR 2024 Workshop
+**DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection**  
+Donggeun Ko*, Sangwoo Jo*, Dongjun Lee, Namjun Park, Jaekwang KIM  
+CVPR 2024 Workshop  
 [PDF](https://openreview.net/pdf?id=jSB5wlUU3p)
 
 
-## Contents
+## Tech Blog Contents
 - Preliminary Works
 - Image Generation
 - Video Generation 

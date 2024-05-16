@@ -49,6 +49,7 @@ parts:
   - file: docs/review/VideoLDM
   - file: docs/review/Animate_Anyone
   - file: docs/review/DreaMoving
+  - file: docs/review/DreamPose
   
 - caption: Experiments
   chapters:

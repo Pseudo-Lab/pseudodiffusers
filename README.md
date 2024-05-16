@@ -11,9 +11,9 @@ This is the repository of PseudoDiffusers team.
 참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!
 
 ## Publications
-**DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection**
-Donggeun Ko^{*}, Sangwoo Jo^{*}, Dongjun Lee, Namjun Park, Jaekwang KIM
-CVPR 2024 Workshop
+**DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection**  
+Donggeun Ko*, Sangwoo Jo*, Dongjun Lee, Namjun Park, Jaekwang KIM  
+CVPR 2024 Workshop  
 [PDF](https://openreview.net/pdf?id=jSB5wlUU3p)
 
 ## Contributors 

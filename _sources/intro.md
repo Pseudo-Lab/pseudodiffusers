@@ -1,16 +1,23 @@
-# Text-to-Image Generation (feat. Diffusion)
+# Welcome to PseudoDiffusers!!
 
 
 ## About Us
 This is the repository of PseudoDiffusers team.
 
-Our aim is to review papers and code related to image generation and text-to-image generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.
+Our aim is to review papers and code related to computer vision generation models, approach them theoretically, and conduct various experiments by fine-tuning diffusion based models.
 
 [About Us - PseudoLab](https://www.linkedin.com/company/pseudolab/)
 
-[About Us - PseudoDiffusers Team](https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44)
+[About Us - PseudoDiffusers](https://chanrankim.notion.site/PseudoDiffusers-b666d39ea1924b4692796e442bebcd44)
 
 참여 방법: 매주 수요일 오후 9시, 가짜연구소 Discord Room-DH 로 입장!
+
+
+## Publications
+**DiffInject: Revisiting Debias via Synthetic Data Generation using Diffusion-based Style Injection**
+Donggeun Ko^{*}, Sangwoo Jo^{*}, Dongjun Lee, Namjun Park, Jaekwang KIM
+CVPR 2024 Workshop
+[PDF](https://openreview.net/pdf?id=jSB5wlUU3p)
 
 
 ## Contents
@@ -35,3 +42,4 @@ Our aim is to review papers and code related to image generation and text-to-ima
 - 박세환 [Sehwan Park] | [Github](https://github.com/shp216) | Linkedin |
 - 송건학 [Geonhak Song] | [Github](https://github.com/geonhak904) | Linkedin |
 - 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
+- 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin 

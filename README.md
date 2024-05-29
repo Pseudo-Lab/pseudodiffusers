@@ -31,7 +31,8 @@ CVPR 2024 Workshop
 - 박세환 [Sehwan Park] | [Github](https://github.com/shp216) | Linkedin |
 - 송건학 [Geonhak Song] | [Github](https://github.com/geonhak904) | Linkedin |
 - 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
-- 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin 
+- 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin |
+- 이정인 [Jeongin Lee] | [Github] | Linkedin |
 
 ## Reviewed Papers 
 | idx | Date | Presenter | Paper / Code | 
@@ -60,7 +61,7 @@ CVPR 2024 Workshop
 | 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
 | 23 | 2024.04.24 | Donghyun Han | [Latent Consistency Models: Synthesizing High-Resolution Images with Few-Step Inference](https://arxiv.org/pdf/2310.04378) |
 | 24 | 2024.05.01 | Jeonghwa Yoo | [DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion](https://arxiv.org/abs/2304.06025) |
-| 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) |
+| 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) (CVPR 2022) |
 
 
 ## Jupyter Book Update Procedure  

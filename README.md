@@ -32,7 +32,7 @@ CVPR 2024 Workshop
 - 송건학 [Geonhak Song] | [Github](https://github.com/geonhak904) | Linkedin |
 - 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
 - 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin |
-- 이정인 [Jeongin Lee] | [Github] | Linkedin |
+- 이정인 [Jeongin Lee] | Github | Linkedin |
 
 ## Reviewed Papers 
 | idx | Date | Presenter | Paper / Code | 

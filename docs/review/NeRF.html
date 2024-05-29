@@ -1,0 +1,1161 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/NeRF';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion" href="DreamPose.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/NeRF.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/NeRF.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-radiance-field-scene-representation">3. Neural Radiance Field Scene Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-rendering-with-radiance-fields">4. Volume Rendering with Radiance Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-a-neural-radiance-field">5. Optimizing a Neural Radiance Field</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-encoding">5.1 Positional encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-volume-sampling">5.2 Hierarchical volume sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.3 Implementation details</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-detail">5.4 Experiments detail</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">6.1 Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.2 Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">6.3 Discussion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.4 Ablation studies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-additional-implementation-details">(Appendix) A. Additional Implementation Details</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2003.08934">https://arxiv.org/abs/2003.08934</a></p></li>
+<li><p>Project: <a class="github reference external" href="https://github.com/bmild/nerf">bmild/nerf</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Jeongin Lee</p></li>
+<li><p><strong>Last updated on May. 22, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis">
+<h1>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis<a class="headerlink" href="#nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis" title="Permalink to this heading">#</a></h1>
+<p><a class="reference external" href="https://youtu.be/JuH79E8rdKc?feature=shared">https://youtu.be/JuH79E8rdKc?feature=shared</a></p>
+<ul class="simple">
+<li><p>기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요</p></li>
+<li><p>NeRF 는 3D object 자체를 구성하지 않는, <strong>synthesizing novel views</strong>
+좌표를 mlp에 넣어 픽셀 별 색상 및 밀도 값을 얻는 implicit method</p></li>
+<li><p><strong>synthesizing novel views</strong><br />
+특정한 장면(Scene)에서 여러 각도로 찍은 일부의 사진들을 가지고 완전 새로운 각도의 모습을 유추하는 task</p></li>
+</ul>
+<section id="abstract">
+<h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>NeRF</strong></p>
+<ul>
+<li><p>한정된 수의 입력 뷰 이미지들을 사용</p></li>
+<li><p>continous volumetric scene 함수 최적화를 통해  <strong>synthesizing novel views</strong> 에서 SOTA 달성</p></li>
+</ul>
+</li>
+<li><p><strong>Algorithm</strong></p>
+<ul>
+<li><p><strong>FC layer 사용 (non-convolutional)</strong></p>
+<ul>
+<li><p><strong>input</strong>  : 5 차원 좌표 (공간적 위치<span class="math notranslate nohighlight">\((x, y, z)\)</span> &amp; 바라보는 방향<span class="math notranslate nohighlight">\((\theta, \phi))\)</span></p></li>
+<li><p><strong>output</strong> : volume density와 해당 방향에 대한 색상 값</p></li>
+</ul>
+</li>
+<li><p>5 차원 좌표 입력 → 카메라 광선을 따라 RGB 값, Volume density 예측
+→ 고전적 Volume rendering 기술을 사용하여 image 로 합성</p></li>
+</ul>
+</li>
+<li><p>복잡한 구조 및 외형을 갖는 scene 에 대한 <strong>Novel views rendering</strong> 을 위해 <strong>NeRF</strong> 를 최적화하는 방법을 제시 (+ Positional Encoding, Hierarchical volume sampling)</p></li>
+<li><p>실험을 통해 기존 작업을 능가하는 결과를 입증</p></li>
+<li><p><strong>Keywords :</strong> scene representation, view synthesis, image-based rendering,
+volume rendering, 3D deep learning</p></li>
+</ul>
+<p>field representation} \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})
+:::</p>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>캡처된 이미지들의 렌더링 오차를 최소화하기 위해 연속적인 <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> scene 함수의 파라미터를 직접 최적화하여 View synthesis 분야의 오랜 문제를 새로운 방식으로 해결함</p>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>정적 장면 → 연속적인 <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> 함수로 표현</strong></p>
+<ul>
+<li><p>FC layer = Regression Function  :
+a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coord <span class="math notranslate nohighlight">\((x, y, z, \theta, \phi)\)</span> → density, view-dependent RGB color</p></li>
+</ul>
+</li>
+<li><p><strong>Output</strong></p>
+<ul>
+<li><p>공간 상의 각 지점 <span class="math notranslate nohighlight">\((x, y, z)\)</span>에서 각 방향 <span class="math notranslate nohighlight">\((\theta, \phi)\)</span> 으로 방출된 색상</p></li>
+<li><p>각 지점 <span class="math notranslate nohighlight">\((x, y, z)\)</span> 의 밀도(density) = <span class="math notranslate nohighlight">\(\sigma\)</span></p>
+<ul>
+<li><p>밀도의 누적값을 통해 얼마나 많은 빛이 <span class="math notranslate nohighlight">\((𝑥,𝑦,𝑧)\)</span> 를 통과하는 광선에 의해 누적되는지를 표현</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>특정 시점으로부터의 NeRF 렌더링</strong></p>
+<ol class="arabic simple">
+<li><p>광선을 따라 이동하여 샘플링된 <span class="math notranslate nohighlight">\(3 \mathrm{D}\)</span> 포인트 집합을 생성</p></li>
+<li><p>해당 포인트들과 이에 해당하는 <span class="math notranslate nohighlight">\(2 \mathrm{D}\)</span> 시점 방향을 신경망에 대한 입력으로 사용하여 색상과 밀도의 집합을 생성</p></li>
+<li><p>고전적 Volume rendering 기술을 사용하여 <span class="math notranslate nohighlight">\(2 \mathrm{D}\)</span> image 로 합성</p></li>
+</ol>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Optimization</strong></p>
+<ul>
+<li><p>미분 가능, gradient descent 를 통한 최적화</p></li>
+<li><p>각 관찰된 이미지와 렌더링된 해당 <strong>views</strong>사이의 오차를 최소화</p></li>
+<li><p>다양한 views 에서 오차 최소화를 통해 실제 장면의 cotents 가 포함된 위치에 <strong>높은 밀도</strong>와 <strong>정확한 색상</strong>을 할당하여 장면의 일관된 모델을 예측</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>NeRF 최적화의 Basic implementation의 한계 및 대안</strong></p>
+<ol class="arabic simple">
+<li><p><strong>복잡한 장면에 대해서 충분히 고해상도 표현으로 수렴되지 않음</strong></p>
+<ul>
+<li><p>positional encoding 으로 입력 5D 좌표를 변환</p></li>
+<li><p>MLP가 더 높은 주파수의 함수를 나타낼 수 있음.</p></li>
+</ul>
+</li>
+<li><p><strong>카메라 광선당 요구되는 샘플링 수가 비효율적</strong></p>
+<ul>
+<li><p>계층적 샘플링 절차를 제안</p></li>
+<li><p>고주파수의 장면 표현을 적절하게 샘플링하기 위해 필요한 쿼리 수를 감소시킴</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><strong>본 논문의 접근 방식은 volumetric 표현의 이점을 상속</strong></p>
+<ul class="simple">
+<li><p>복잡한 실세계의 기하학적 형태와 외형을 표현 가능</p></li>
+<li><p>투영된 이미지를 사용한 Gradient-based 최적화에 적합</p></li>
+<li><p>고해상도에서 복잡한 장면을 모델링할 때 이산화된 복셀 그리드의 엄청난 저장 비용을 극복</p></li>
+</ul>
+  <aside>
+  💡 <b>Voxel (Volume + Pixel)</b>
+  3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
+  위치 정보와 함께 밀도, 색상, 투과성 등의 속성을 가질 수 있음
+<p><b>Volumne Rendering</b>
+3차원 공간에서 정의된 데이터(체적 데이터)를 2차원 이미지로 변환하는 과정
+예시) CT, MRI</p>
+<p><b>Volumetric Data (체적 데이터)</b>
+3차원 공간에서 샘플링된 데이터</p>
+  </aside>
+</li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>Technical contributions</strong></p>
+<ul>
+<li><p>복잡한 기하학과 소재를 가진 연속적인 장면을 5차원 NeRF 로 나타내는 접근 방법, 기본 MLP 네트워크로 매개변수화</p></li>
+<li><p>고전적인 볼륨 렌더링 기법을 기반으로 한 미분 가능한 렌더링 절차를 사용하여 이러한 표현을 표준 RGB 이미지로부터 최적화하는 방법을 제안</p></li>
+<li><p>hierarchical sampling strategy : MLP’s capacity 를 시각적인 장면 내용이 있는 공간으로 할당 (물체가 있을 확률이 높은 부분을 모델이 집중적으로 학습)</p></li>
+<li><p>Positional encoding : 입력 5차원 좌표를 고차원 공간으로 매핑하기 위해 NeRF를 성공적으로 최적화하여 고주파의 장면 콘텐츠를 표현가능</p></li>
+</ul>
+</li>
+<li><p>최초의 <strong>continuous neural scene representation</strong> 제안</p></li>
+</ul>
+</section>
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Neural 3D shape representations</strong></p></li>
+<li><p><strong>View synthesis and image-based rendering</strong></p></li>
+</ul>
+</section>
+<section id="neural-radiance-field-scene-representation">
+<h2>3. Neural Radiance Field Scene Representation<a class="headerlink" href="#neural-radiance-field-scene-representation" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>5차원 벡터 함수 (MLP) <span class="math notranslate nohighlight">\(F_{\Theta}:(\mathbf{x}, \mathbf{d}) \rightarrow(\mathbf{c}, \sigma)\)</span></p>
+<ul class="simple">
+<li><p><strong>input</strong> : <span class="math notranslate nohighlight">\(3 \mathrm{D}\)</span> location <span class="math notranslate nohighlight">\(\mathbf{x}=(x, y, z)\)</span> , <span class="math notranslate nohighlight">\(2 \mathrm{D}\)</span> viewing direction <span class="math notranslate nohighlight">\(\mathbf{d}=(\theta, \phi)\)</span></p>
+<ul>
+<li><p><strong>(practically) direction</strong> as a <span class="math notranslate nohighlight">\(3 \mathrm{D}\)</span> Cartesian unit vector <span class="math notranslate nohighlight">\(\mathbf{d}\)</span></p></li>
+<li><p>벡터 <span class="math notranslate nohighlight">\(\mathbf{d} =(𝑑_𝑥,𝑑_𝑦,𝑑_𝑧)\)</span> 는 방향을 나타내며, 이는 단위 벡터(길이가 1)로 정규화</p></li>
+</ul>
+</li>
+<li><p><strong>output</strong> : emitted color <span class="math notranslate nohighlight">\(\mathbf{c}=(r, g, b)\)</span>, volume density <span class="math notranslate nohighlight">\(\sigma\)</span></p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}\)</span> → <span class="math notranslate nohighlight">\(\sigma\)</span> , <span class="math notranslate nohighlight">\((\mathbf{x, d})\)</span> → RGB 색상 <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> 를 예측하도록 권장 (색상은 view dependent 이므로)</p>
+<ol class="arabic">
+<li><p>MLP <span class="math notranslate nohighlight">\(F_{\Theta}\)</span> 는 먼저 8개의 fully-connected layer (ReLU, 256개 채널 사용) 로
+입력 3D 좌표 <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> →  <span class="math notranslate nohighlight">\(\sigma\)</span> , 256차원 feature 벡터를 출력</p></li>
+<li><p><strong>a</strong> 의 feature 벡터는 카메라 광선의 시점 방향과 concat</p></li>
+<li><p>뷰에 따른 RGB 색상을 출력하는 하나의 추가 fully-connected layer (ReLU,128개 채널 사용)로 전달됨</p>
+<p><img alt="Untitled" src="docs/review/%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png" /></p>
+</li>
+</ol>
+</li>
+<li><p><strong>View 를 고려하여 색상을 예측해야 하는 이유 : non-Lambertian effects</strong></p>
+<ul class="simple">
+<li><p><strong>Lambertian 효과</strong></p>
+<ul>
+<li><p>물체의 표면에서 나오는 광선이 균일하게 반사되는 현상</p></li>
+<li><p>표면의 방향과 상관없이 광선이 표면에서 나오는 각도에 따라 반사되는 광량이 일정하다는 원리를 기반</p></li>
+</ul>
+</li>
+<li><p>Fig. 3 : 입력 시선 방향을 사용하여 non-Lambertian effects 를 표현한 예시</p></li>
+</ul>
+<ul class="simple">
+<li><p>Fig. 4 : view dependence 를 고려하지 않고 (only <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> input) 학습된 모델은 반사성(specularity)을 표현하는데 어려움이 있음</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="volume-rendering-with-radiance-fields">
+<h2>4. Volume Rendering with Radiance Fields<a class="headerlink" href="#volume-rendering-with-radiance-fields" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>5D NeRF 는 장면을 volume density 와 특정 포인트에서 방출된 빛(색상)으로 표현</strong></p></li>
+<li><p><strong>볼륨 렌더링 : scene 을 통과하는 모든 광선의 색상을 렌더링</strong></p>
+<ul>
+<li><p>NeRF 로부터 View 를 렌더링하려면 원하는 가상 카메라의 각 픽셀을 거쳐 추적된 카메라 광선에 대해 적분값  <span class="math notranslate nohighlight">\(C(\mathbf{r})\)</span> 을 추정을 요구</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{r}(t)=\mathbf{o}+t \mathbf{d}\)</span> : 카메라 광선</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(\mathbf{r})\)</span> : near bound <span class="math notranslate nohighlight">\(t_n\)</span> , far bound <span class="math notranslate nohighlight">\(t_f\)</span> 에서 카메라 광선 <span class="math notranslate nohighlight">\(\mathbf{r}(t)\)</span> 의 예측된 색상</p></li>
+<li><p><span class="math notranslate nohighlight">\(T(t)\)</span> : ray 를 따라 <span class="math notranslate nohighlight">\(t_n\)</span> 부터 <span class="math notranslate nohighlight">\(t\)</span> 까지 누적된 투과율(transmittance)</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+C(\mathbf{r})=\int_{t_n}^{t_f} T(t) \sigma(\mathbf{r}(t)) \mathbf{c}(\mathbf{r}(t), \mathbf{d}) d t, \text { where } T(t)=\exp \left(-\int_{t_n}^t \sigma(\mathbf{r}(s)) d s\right)
+\]</div>
+<ul class="simple">
+<li><p><strong>Quadrature (구적법) 을 통해 연속적 적분값을 수치적으로 추정</strong></p>
+<ul>
+<li><p>이산화된 ****voxel grids 렌더링에 사용되는 <strong>결정론적 구적법</strong>의 한계</p></li>
+<li><p>일반적으로 이산화된 복셀 그리드를 렌더링하는 데 사용되는 결정론적 구적법은 MLP가 <strong>고정된 이산 위치 집합</strong>에서만 쿼리되기 때문에 표현의 해상도를 제한</p></li>
+</ul>
+</li>
+</ul>
+<aside>
+➡️ <b>대안으로 Stratified sampling (계층적 표집) 접근법을 사용.</b>
+- \ \left[t_n, t_f\right]\ 를 \N\ 개의 균일한 간격의 bin으로 분할한 Partition 생성
+- 각 bin 내에서 하나의 샘플을 무작위로 추출
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\\t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].\\
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>여전히 적분값 추정을 위해 이산화된 표본들을 사용하더라도,
+계층적 표집 방법을 통해 continuous scene 표현이 가능</p></li>
+<li><p>다양한 position sample에 대해 최적화가 가능하므로, 최적화 과정에서 MLP가 연속적인 위치들에서 평가되도록 하는 효과</p></li>
+</ul>
+</aside>
+<ul>
+<li><p>위의 샘플링 방법을 통해 뽑은 샘플들로  <a class="reference external" href="https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf">[26]에서 리뷰</a>된 볼륨 렌더링에서 논의된 구적법으로 <span class="math notranslate nohighlight">\(C(\mathbf{r})\)</span> 을 추정 (적분을 sample sum 으로)</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \hat{C}(\mathbf{r})=\sum_{i=1}^N T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) \mathbf{c}_i, \\ \text { where } T_i=\exp \left(-\sum_{j=1}^{i-1} \sigma_j \delta_j\right),
+    \end{split}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\delta_i=t_{i+1}-t_i\)</span> is the distance between adjacent samples (<span class="math notranslate nohighlight">\(dt\)</span> 를 대체)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\left(\mathbf{c}_i, \sigma_i\right)\)</span> 의 집합으로부터 <span class="math notranslate nohighlight">\(\hat{C}(\mathbf{r})\)</span> 을 계산하는 함수는 쉽게 미분 가능하며
+<span class="math notranslate nohighlight">\(\alpha_i=1-\exp \left(-\sigma_i \delta_i\right)\)</span> 를 사용한 전통적인 <strong>alpha compositing</strong></p></li>
+<li><p>**alpha compositing (**알파 합성)</p>
+<ul>
+<li><p>여러 이미지 또는 픽셀을 결합하여 하나의 이미지로 만드는 기술</p></li>
+<li><p>ex) 투명한 이미지(유리, 그림자)를 배경 이미지 위에 겹칠 때 알파 컴포지팅을 사용하여 자연스러운 합성 수행</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="optimizing-a-neural-radiance-field">
+<h2>5. Optimizing a Neural Radiance Field<a class="headerlink" href="#optimizing-a-neural-radiance-field" title="Permalink to this heading">#</a></h2>
+<p><strong>[REMIND]</strong></p>
+<ul class="simple">
+<li><p>지금까지 <strong>NeRF 로 scene 을 모델링하는 것, 이 표현으로 새로운 views 를 렌더링 하는 것</strong> 에 필요한 핵심적인 구성요소를 다룸</p>
+<ul>
+<li><p>하지만 해당 요소들로 SOTA 성능을 달성하기에는 한계 존재</p></li>
+<li><p>고해상도 + 복잡한 scene 을 표현 가능하게 하는 두개의 개선점을 도입</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple">
+<li><p>Positional encoding of the input coordinates
+that assists the MLP in representing high-frequency functions</p></li>
+<li><p>hierarchical sampling procedure
+that allows us to efficiently sample this high-frequency representation.</p></li>
+</ol>
+<section id="positional-encoding">
+<h3>5.1 Positional encoding<a class="headerlink" href="#positional-encoding" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>Neural network <span class="math notranslate nohighlight">\(F_{\Theta}\)</span> 가 직접 <strong><span class="math notranslate nohighlight">\((x, y, z, \theta, \phi)\)</span> input coordinates</strong> 에서 직접 연산하는 경우, 색상과 형태에서 고주파 변동을 표현하는데 성능이 좋지 않았음</p></li>
+<li><p><a class="reference external" href="https://arxiv.org/abs/1806.08734">[35] On the spectral bias of neural networks</a> 논문 결과와 동일,</p>
+<ul class="simple">
+<li><p>깊은 신경망이 저주파 함수를 학습하는 쪽으로 편향되었음을 보여줌</p></li>
+<li><p>신경망을 통과하기 전 고주파 함수를 사용하여 <strong>입력을 고차원 공간으로 맵핑</strong>하는 것은 고주파 변동이 포함된 데이터를 더 잘 적합 가능하게 함을 제시</p></li>
+<li><p>저자들은 Neural scene representations 에서 위의 결과를 이용</p></li>
+</ul>
+</li>
+<li><p><strong>→ <span class="math notranslate nohighlight">\(F_{\Theta}\)</span> 를 두개의 함수로  구성 <span class="math notranslate nohighlight">\(F_{\Theta}=F_{\Theta}^{\prime} \circ \gamma\)</span>  성능을 상당히 개선 (<span class="math notranslate nohighlight">\(\gamma\)</span> : 학습 X)</strong></p>
+<div class="math notranslate nohighlight">
+\[
+    \gamma(p)=\left(\sin \left(2^0 \pi p\right), \cos \left(2^0 \pi p\right), \cdots, \sin \left(2^{L-1} \pi p\right), \cos \left(2^{L-1} \pi p\right)\right) .
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> : mapping <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> → <span class="math notranslate nohighlight">\(\mathbb{R}^{2 L}\)</span>, <span class="math notranslate nohighlight">\(F_{\Theta}^{\prime}\)</span> : Regular MLP</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma(\cdot)\)</span> : <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> 의 각 세개의 좌표값과  Cartesian 시점 방향 벡터 <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> 의 세 성분에 <span class="math notranslate nohighlight">\([-1,1]\)</span>사이로 정규화 후 개별적으로 적용에 분리되어 적용됨</p></li>
+<li><p>Experiments : <span class="math notranslate nohighlight">\(L=10\)</span> for <span class="math notranslate nohighlight">\(\gamma(\mathbf{x})\)</span> and <span class="math notranslate nohighlight">\(L=4\)</span> for <span class="math notranslate nohighlight">\(\gamma(\mathbf{d})\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="hierarchical-volume-sampling">
+<h3>5.2 Hierarchical volume sampling<a class="headerlink" href="#hierarchical-volume-sampling" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>Stratified Sampling</strong></p>
+<ul class="simple">
+<li><p>비효율적</p></li>
+<li><p>렌더링된 이미지에 기여하지 않는 여유 공간(비어있는 부분) 막혀있는(가려진) 영역이 여전히 반복적으로 샘플링됨.</p></li>
+</ul>
+</li>
+<li><p><strong>Hierarchical volume sampling</strong></p>
+<ul class="simple">
+<li><p>최종 렌더링에 대한 예상 효과에 비례하여 샘플을 할당</p></li>
+<li><p>렌더링 효율성을 증가시킴</p></li>
+</ul>
+<p><strong>➡️ Content가 더 있을 것 같은 곳을 더 뽑자 !</strong></p>
+</li>
+<li><p>scene 표현을 위해 단순히 단일 네트워크를 사용하는 것 대신에 우리는 동시에 2개의 네트워크를 최적화</p>
+<p><strong>Step 1. Coarse</strong></p>
+<p><strong>Step 2.  Fine</strong></p>
+</li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic">
+<li><p><strong>Coarse</strong></p>
+<p><strong>Stratified sampling</strong> → <span class="math notranslate nohighlight">\(N_c\)</span> 개의 위치 집합을 샘플링, 이 위치에서 <span class="math notranslate nohighlight">\(\hat{C(r)}\)</span> 을 예측하여 <strong>Coarse network</strong> 를  평가</p>
+</li>
+<li><p><strong>Fine</strong></p>
+<ol class="arabic">
+<li><p>1에서 주어진 Coarse 네트워크의 출력을 바탕으로 더 많은 정보에 기반한 포인트 샘플링을 생성 (더 많은 정보에 기반한 포인트 샘플링을 생성)</p></li>
+<li><p>Coarse 네트워크에서의 알파 합성 색상 <span class="math notranslate nohighlight">\(\hat{C}_c(\mathbf{r})\)</span>을 광선을 따라 샘플링된 모든 컬러 <span class="math notranslate nohighlight">\(c_i\)</span>들의 가중합 형태로 다시 씀</p>
+<div class="math notranslate nohighlight">
+\[
+        \hat{C}_c(\mathbf{r})=\sum_{i=1}^{N_c} w_i c_i, \quad w_i=T_i\left(1-\exp \left(-\sigma_i \delta_i\right)\right) .
+        \]</div>
+</li>
+</ol>
+</li>
+<li><p><strong>piecewise-constant PDF</strong></p>
+<p>Normalizing weight 를 통해 생성</p>
+</li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\hat{w}i= \dfrac{w_i}{\sum_{j=1}^{N_c} w_j}
+\]</div>
+<ul class="simple">
+<li><p>역변환 샘플링을 통해 확률 밀도함수 값에 기반한 2번째 샘플집합의 샘플 <span class="math notranslate nohighlight">\(N_f\)</span> 개를 샘플링</p></li>
+<li><p>첫 번째와 두 번째 샘플 집합의 합집합에서 fine 네트워크를 평가</p></li>
+<li><p>모든 <span class="math notranslate nohighlight">\(N_c+N_f\)</span> 샘플을 사용하여 광선의 최종 렌더링된 색상 <span class="math notranslate nohighlight">\(\hat{C}_f(\mathbf{r})\)</span> 를 계산</p></li>
+<li><p>이 절차에서는 관측 가능한 content가 포함될 것으로 예상되는 영역에 더 많은 샘플을 할당</p></li>
+</ul>
+</section>
+<section id="implementation-details">
+<h3>5.3 Implementation details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p><strong>각 Scene 에 대해 네트워크 를 별도로 최적화</strong></p>
+<p>scene이 캡처된 RGB 이미지, extrinsic parameter(해당 카메라 포즈), intrinsic parameter, 장면 경계로 구성된 데이터셋이 필요</p>
+<ul>
+<li><p><strong>extrinsic parameter, intrinsic parameter</strong></p>
+<p><strong>Extrinsic Paramete</strong>r</p>
+<p>3D 공간 내에서 카메라가 어디에 위치(3D Translation)하고 있고, 어디를 바라보고 있는지(3D Rotation)에 대한 Parameter</p>
+<p><strong>Intrinsic Parameter</strong></p>
+<p>카메라 렌즈와 센서 위치에 의해서 결정되어지는 항목으로,</p>
+<p>이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 
+얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter</p>
+<ul class="simple">
+<li><p>카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Training</strong></p>
+<ol class="arabic simple">
+<li><p>각 최적화 iteration에서 데이터셋의 모든 픽셀 집합에서 카메라 광선 batch를 무작위로 샘플링</p></li>
+<li><p>계층적 샘플링을 따라 coarse 네트워크의 <span class="math notranslate nohighlight">\(N_c\)</span> 개의 샘플과 fine 네트워크의<span class="math notranslate nohighlight">\(N_c + N_f\)</span>개의 샘플을 쿼리</p></li>
+<li><p>volume rendering 절차를 사용하여 두샘플 집합 모두에서 광선의 색상을 렌더링</p></li>
+</ol>
+</li>
+<li><p><strong>Loss</strong>
+coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 제곱 오차</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{L}=\sum_{\mathbf{r} \in \mathcal{R}}\left[\left\|\hat{C}_c(\mathbf{r})-C(\mathbf{r})\right\|_2^2+\left\|\hat{C}_f(\mathbf{r})-C(\mathbf{r})\right\|_2^2\right]
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{R}\)</span> : 각 batch 의 광선의 집합</p></li>
+<li><p><span class="math notranslate nohighlight">\(C(\mathbf{r})\)</span>  : Ray <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 에 대한 Ground Truth RGB colors</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{C}_c(\mathbf{r})\)</span> : Ray <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 에 대한 Coarse volume predicted RGB colors</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{C}_f(\mathbf{r})\)</span> : Ray <span class="math notranslate nohighlight">\(\mathbf{r}\)</span> 에 대한 Fine volume predicted RGB colors</p></li>
+<li><p>최종 렌더링은  <span class="math notranslate nohighlight">\(\hat{C}_f(\mathbf{r})\)</span> 이지만, <span class="math notranslate nohighlight">\(\hat{C}_c(\mathbf{r})\)</span> 의 Loss 역시 최소화</p>
+<ul>
+<li><p>Coarse 네트워크의 weight 분포가 fine network 의 샘플링의 기반이 되기 때문</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="experiments-detail">
+<h2>5.4 Experiments detail<a class="headerlink" href="#experiments-detail" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a batch size of 4096 rays</p></li>
+<li><p>sampling coordinates :</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(N_c=64\)</span> in the coarse volume</p></li>
+<li><p><span class="math notranslate nohighlight">\(N_f=128\)</span> in the fine volume</p></li>
+</ul>
+</li>
+<li><p>Optimizer : Adam, lr : <span class="math notranslate nohighlight">\(5 \times 10^{-4}\)</span> →  <span class="math notranslate nohighlight">\(5 \times 10^{-5}\)</span> (exponentially decay learning rate)</p>
+<ul>
+<li><p>Default : <span class="math notranslate nohighlight">\(\beta_1=0.9, \beta_2=0.999\)</span>,</p></li>
+</ul>
+</li>
+<li><p>iteration: 한 장면 당 10~30만 iter (NVIDIA V100 GPU 1개로 1~2일 소요)</p></li>
+</ul>
+</section>
+<section id="results">
+<h2>6. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<section id="datasets">
+<h3>6.1 Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Synthetic renderings of object</strong>
+:::{figure-md}
+<img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
+{Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+:::</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>Diffuse / Synthetic</strong> <span class="math notranslate nohighlight">\(360\degree\)</span></p>
+<ol class="arabic simple">
+<li><p>총 4개의 Lambertian 물체가 간단한 geometry로 구성</p></li>
+<li><p>object : <strong>512×512</strong></p></li>
+<li><p>상반구에 대한 viewpoint 를 렌더링</p></li>
+<li><p>Train : 479, Test : 1000</p></li>
+</ol>
+</li>
+<li><p><strong>Real / Synthetic <span class="math notranslate nohighlight">\(360\degree\)</span>, Forward-Facing</strong></p>
+<ol class="arabic simple">
+<li><p>총 8개의 non-Lambertian 물체 8개,</p></li>
+<li><p>각각의 pathtraced image 를 포함한 형태의 데이터 셋을 구성</p></li>
+<li><p>object : <strong>800×800</strong></p></li>
+<li><p>6 Scenes : 상반구에 대한 viewpoint 를 렌더링, 2 Scenes :  구 전체에 대한 viewpoint 를 렌더링</p></li>
+<li><p>Train : 100, Test : 200</p></li>
+</ol>
+</li>
+<li><p><strong>Real / Forward-Facing</strong></p>
+<ol class="arabic simple">
+<li><p>복잡한 형태의 현실 scene을 앞쪽에서 본 모습을 사용</p></li>
+<li><p>총 8개의 scene, (5 scenes : LLFF paper 3 scenes : 직접 캡처)</p></li>
+<li><p>object : <strong><span class="math notranslate nohighlight">\(1008\times 756\)</span></strong></p></li>
+<li><p>Train : Test = 7 : 1</p></li>
+</ol>
+</li>
+</ol>
+</section>
+<section id="comparisons">
+<h3>6.2 Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Models</strong></p>
+<ul>
+<li><p><strong>Neural Volumes (NV)</strong></p></li>
+<li><p><strong>Scene Representation Networks (SRN)</strong></p></li>
+<li><p><strong>Local Light Field Fusion (LLFF)</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="discussion">
+<h3>6.3 Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>comparison : Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</p></li>
+</ol>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{Nerf}\)</span> : 미세 디테일, 기하학적 구조, 외양, nonLambertian 반사 반영</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{LLFF}\)</span> :  ghosting artifact (ship, lego)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{SRN}\)</span> : blurry and distorted rendering</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{NV}\)</span> : detail 및 기하적 구조 반영 실패</p></li>
+<li><p><strong>Ghosting :</strong> 렌더링에서의 객체 겹침 혹은 번짐</p></li>
+<li><p><strong>Lambertian :</strong> 모든 각도에서 동일한 밝기</p></li>
+<li><p><strong>Non-Lambertian :</strong> 각도에 따라 밝기와 색상 변화 / 광택, 반사, 투명도 등을 가짐</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>comparison : reconstruction partially occluded regions</p></li>
+</ol>
+</section>
+<section id="ablation-studies">
+<h3>6.4 Ablation studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Realistic Synthetic 360도 scene</p></li>
+<li><p>위치 인코딩(PE), 시점 의존성(VD), 계층적 샘플링(H)</p></li>
+<li><p>최대 주파수 <span class="math notranslate nohighlight">\(L\)</span> 의 선택</p>
+<ul>
+<li><p>5→10 (성능 향상), 10→15 (성능 감소)</p></li>
+<li><p><span class="math notranslate nohighlight">\(2^L\)</span> 이 샘플링 된 입력 이미지에서 존재하는 최대 주파수(본 데이터는 1024)를 초과할 때  추가적인 성능 향상에 제한</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="appendix-a-additional-implementation-details">
+<h2>(Appendix) A. Additional Implementation Details<a class="headerlink" href="#appendix-a-additional-implementation-details" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Volume Bounds</strong>
+For experiments with synthetic images, we scale the scene so that it lies within a <strong>cube of
+side length 2 centered at the origin</strong>, and only query the representation within this bounding volume. we use normalized device coordinates <strong>to map the depth range of these points into [−1, 1]</strong>.</p></li>
+<li><p><strong>Training Details</strong>
+adding random Gaussian noise with zero mean and unit variance to the <strong>output σ values</strong> during optimization</p></li>
+<li><p><strong>Rendering Details</strong>
+:::{figure-md}
+<img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">&gt;</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+ :::
+</pre></div>
+</div>
+</li>
+</ol>
+<ul class="simple">
+<li><p>Coarse network  64 + fine network 128 = 192</p></li>
+<li><p>fully-connected network 구조</p></li>
+<li><p>positional encoding이 더해진 형태의 위치 정보**<span class="math notranslate nohighlight">\((\gamma(x))\)</span>** 를 input으로 투입</p></li>
+<li><p>256 채널과 ReLU로 엮인 총 8개의 네트워크를 통과하게 된다. 해당 논문에서는 DeepSDF 구조를 따르고, skip connection을 5번째 layer의 activation에  투입</p></li>
+<li><p>추가 레이어는 volume density 를 output으로 산출</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DreamPose.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-radiance-field-scene-representation">3. Neural Radiance Field Scene Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-rendering-with-radiance-fields">4. Volume Rendering with Radiance Fields</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimizing-a-neural-radiance-field">5. Optimizing a Neural Radiance Field</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#positional-encoding">5.1 Positional encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hierarchical-volume-sampling">5.2 Hierarchical volume sampling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.3 Implementation details</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments-detail">5.4 Experiments detail</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#datasets">6.1 Datasets</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.2 Comparisons</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">6.3 Discussion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.4 Ablation studies</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-additional-implementation-details">(Appendix) A. Additional Implementation Details</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

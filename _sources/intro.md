@@ -23,7 +23,8 @@ CVPR 2024 Workshop
 ## Tech Blog Contents
 - Preliminary Works
 - Image Generation
-- Video Generation 
+- Video Generation
+- 3D Generation
 - Experiments
 
 

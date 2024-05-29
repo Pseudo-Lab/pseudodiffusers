@@ -10,11 +10,13 @@
 - **Last updated on May. 22, 2024**
 ```
 
+```
 :::{figure-md} 
 <img src="../../pics/DreamPose/Untitled.png" alt="latent diffusion" class="bg-primary mb-1">
 
 Latent Diffusion Model
 :::
+```
 
 # NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis
 

@@ -515,7 +515,7 @@ document.write(`
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis">
 <h1>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis<a class="headerlink" href="#nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis" title="Permalink to this heading">#</a></h1>
-<p><a class="reference external" href="https://youtu.be/JuH79E8rdKc?feature=shared">https://youtu.be/JuH79E8rdKc?feature=shared</a></p>
+<p><a class="reference external" href="https://youtu.be/uLR1RNqJ1Mw?t=0s"><img alt="NeRF" src="http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg" /></a></p>
 <ul class="simple">
 <li><p>기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요</p></li>
 <li><p>NeRF 는 3D object 자체를 구성하지 않는, <strong>synthesizing novel views</strong>
@@ -525,15 +525,15 @@ document.write(`
 </ul>
 <section id="abstract">
 <h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p><strong>NeRF</strong></p>
 <ul>
+<li><p><strong>NeRF</strong></p>
+<ul class="simple">
 <li><p>한정된 수의 입력 뷰 이미지들을 사용</p></li>
 <li><p>continous volumetric scene 함수 최적화를 통해  <strong>synthesizing novel views</strong> 에서 SOTA 달성</p></li>
 </ul>
 </li>
 <li><p><strong>Algorithm</strong></p>
-<ul>
+<ul class="simple">
 <li><p><strong>FC layer 사용 (non-convolutional)</strong></p>
 <ul>
 <li><p><strong>input</strong>  : 5 차원 좌표 (공간적 위치<span class="math notranslate nohighlight">\((x, y, z)\)</span> &amp; 바라보는 방향<span class="math notranslate nohighlight">\((\theta, \phi))\)</span></p></li>
@@ -547,10 +547,15 @@ document.write(`
 <li><p>복잡한 구조 및 외형을 갖는 scene 에 대한 <strong>Novel views rendering</strong> 을 위해 <strong>NeRF</strong> 를 최적화하는 방법을 제시 (+ Positional Encoding, Hierarchical volume sampling)</p></li>
 <li><p>실험을 통해 기존 작업을 능가하는 결과를 입증</p></li>
 <li><p><strong>Keywords :</strong> scene representation, view synthesis, image-based rendering,
-volume rendering, 3D deep learning</p></li>
+volume rendering, 3D deep learning</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled2.png"><img alt="NeRF" class="bg-primary mb-1" src="../../_images/Untitled2.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 545 </span><span class="caption-text">{method that optimizes a continuous 5D neural radiance field representation} \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ul>
-<p>field representation} \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})
-:::</p>
 </section>
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -614,23 +619,21 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 </li>
 </ul>
 <hr class="docutils" />
-<ul>
-<li><p><strong>본 논문의 접근 방식은 volumetric 표현의 이점을 상속</strong></p>
 <ul class="simple">
+<li><p><strong>본 논문의 접근 방식은 volumetric 표현의 이점을 상속</strong></p>
+<ul>
 <li><p>복잡한 실세계의 기하학적 형태와 외형을 표현 가능</p></li>
 <li><p>투영된 이미지를 사용한 Gradient-based 최적화에 적합</p></li>
 <li><p>고해상도에서 복잡한 장면을 모델링할 때 이산화된 복셀 그리드의 엄청난 저장 비용을 극복</p></li>
-</ul>
-  <aside>
-  💡 <b>Voxel (Volume + Pixel)</b>
-  3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
-  위치 정보와 함께 밀도, 색상, 투과성 등의 속성을 가질 수 있음
-<p><b>Volumne Rendering</b>
+<li><p><strong>Voxel (Volume + Pixel)</strong>
+3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
+위치 정보와 함께 밀도, 색상, 투과성 등의 속성을 가질 수 있음</p></li>
+<li><p><strong>Volumne Rendering</strong>
 3차원 공간에서 정의된 데이터(체적 데이터)를 2차원 이미지로 변환하는 과정
-예시) CT, MRI</p>
-<p><b>Volumetric Data (체적 데이터)</b>
-3차원 공간에서 샘플링된 데이터</p>
-  </aside>
+예시) CT, MRI</p></li>
+<li><p><strong>Volumetric Data (체적 데이터)</strong>
+3차원 공간에서 샘플링된 데이터</p></li>
+</ul>
 </li>
 </ul>
 <hr class="docutils" />
@@ -645,6 +648,12 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 </li>
 <li><p>최초의 <strong>continuous neural scene representation</strong> 제안</p></li>
 </ul>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled11.png"><img alt="NeRF overview" class="bg-primary mb-1" src="../../_images/Untitled11.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 546 </span><span class="caption-text">{An overview of our neural radiance field scene representation and differentiable rendering procedure} \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="related-work">
 <h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
@@ -674,6 +683,12 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 <li><p><strong>a</strong> 의 feature 벡터는 카메라 광선의 시점 방향과 concat</p></li>
 <li><p>뷰에 따른 RGB 색상을 출력하는 하나의 추가 fully-connected layer (ReLU,128개 채널 사용)로 전달됨</p>
 <p><img alt="Untitled" src="docs/review/%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png" /></p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled3.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled3.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 547 </span><span class="caption-text">{fully-connected network architecture} \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ol>
 </li>
@@ -687,9 +702,21 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 </li>
 <li><p>Fig. 3 : 입력 시선 방향을 사용하여 non-Lambertian effects 를 표현한 예시</p></li>
 </ul>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled4.png"><img alt="NeRF fig3" class="bg-primary mb-1" src="../../_images/Untitled4.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 548 </span><span class="caption-text">(source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>Fig. 4 : view dependence 를 고려하지 않고 (only <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> input) 학습된 모델은 반사성(specularity)을 표현하는데 어려움이 있음</p></li>
 </ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled5.png"><img alt="NeRF fig4" class="bg-primary mb-1" src="../../_images/Untitled5.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 549 </span><span class="caption-text">(source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </section>
@@ -710,28 +737,24 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 \[
 C(\mathbf{r})=\int_{t_n}^{t_f} T(t) \sigma(\mathbf{r}(t)) \mathbf{c}(\mathbf{r}(t), \mathbf{d}) d t, \text { where } T(t)=\exp \left(-\int_{t_n}^t \sigma(\mathbf{r}(s)) d s\right)
 \]</div>
-<ul class="simple">
-<li><p><strong>Quadrature (구적법) 을 통해 연속적 적분값을 수치적으로 추정</strong></p>
 <ul>
+<li><p><strong>Quadrature (구적법) 을 통해 연속적 적분값을 수치적으로 추정</strong></p>
+<ul class="simple">
 <li><p>이산화된 ****voxel grids 렌더링에 사용되는 <strong>결정론적 구적법</strong>의 한계</p></li>
 <li><p>일반적으로 이산화된 복셀 그리드를 렌더링하는 데 사용되는 결정론적 구적법은 MLP가 <strong>고정된 이산 위치 집합</strong>에서만 쿼리되기 때문에 표현의 해상도를 제한</p></li>
 </ul>
 </li>
-</ul>
-<aside>
-➡️ <b>대안으로 Stratified sampling (계층적 표집) 접근법을 사용.</b>
-- \ \left[t_n, t_f\right]\ 를 \N\ 개의 균일한 간격의 bin으로 분할한 Partition 생성
-- 각 bin 내에서 하나의 샘플을 무작위로 추출
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>\\t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].\\
-</pre></div>
-</div>
-<ul class="simple">
+<li><p>➡️ <strong>대안으로 Stratified sampling (계층적 표집) 접근법을 사용.</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\(\left[t_n, t_f\right]\)</span> 를 <span class="math notranslate nohighlight">\(N\)</span> 개의 균일한 간격의 bin으로 분할한 Partition 생성</p></li>
+<li><p>각 bin 내에서 하나의 샘플을 무작위로 추출</p>
+<div class="math notranslate nohighlight">
+\[
+    t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].
+    \]</div>
+</li>
 <li><p>여전히 적분값 추정을 위해 이산화된 표본들을 사용하더라도,
 계층적 표집 방법을 통해 continuous scene 표현이 가능</p></li>
 <li><p>다양한 position sample에 대해 최적화가 가능하므로, 최적화 과정에서 MLP가 연속적인 위치들에서 평가되도록 하는 효과</p></li>
-</ul>
-</aside>
-<ul>
 <li><p>위의 샘플링 방법을 통해 뽑은 샘플들로  <a class="reference external" href="https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf">[26]에서 리뷰</a>된 볼륨 렌더링에서 논의된 구적법으로 <span class="math notranslate nohighlight">\(C(\mathbf{r})\)</span> 을 추정 (적분을 sample sum 으로)</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -851,15 +874,27 @@ that allows us to efficiently sample this high-frequency representation.</p></li
 <p>scene이 캡처된 RGB 이미지, extrinsic parameter(해당 카메라 포즈), intrinsic parameter, 장면 경계로 구성된 데이터셋이 필요</p>
 <ul>
 <li><p><strong>extrinsic parameter, intrinsic parameter</strong></p>
-<p><strong>Extrinsic Paramete</strong>r</p>
-<p>3D 공간 내에서 카메라가 어디에 위치(3D Translation)하고 있고, 어디를 바라보고 있는지(3D Rotation)에 대한 Parameter</p>
-<p><strong>Intrinsic Parameter</strong></p>
-<p>카메라 렌즈와 센서 위치에 의해서 결정되어지는 항목으로,</p>
-<p>이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 
-얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter</p>
+<ul class="simple">
+<li><p><strong>Extrinsic Parameter</strong><br />
+3D 공간 내에서 카메라가 어디에 위치(3D Translation)하고 있고, 어디를 바라보고 있는지(3D Rotation)에 대한 Parameter</p></li>
+<li><p><strong>Intrinsic Parameter</strong>
+카메라 렌즈와 센서 위치에 의해서 결정되어지는 항목으로, 이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter</p></li>
+</ul>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled6.png"><img alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" src="../../_images/Untitled6.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 550 </span><span class="caption-text">{intrinsic prameter and extrinsic parameter}</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ul class="simple">
 <li><p>카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)</p></li>
 </ul>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled7.png"><img alt="NeRF perspective projection" class="bg-primary mb-1" src="../../_images/Untitled7.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 551 </span><span class="caption-text">{perspective projection}</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -913,12 +948,15 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <h2>6. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <section id="datasets">
 <h3>6.1 Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p><strong>Synthetic renderings of object</strong>
 :::{figure-md}
-<img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
-{Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
-:::</p></li>
+<img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px"></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+  :::
+</pre></div>
+</div>
+</li>
 </ul>
 <ol class="arabic simple">
 <li><p><strong>Diffuse / Synthetic</strong> <span class="math notranslate nohighlight">\(360\degree\)</span></p>
@@ -965,29 +1003,49 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <ol class="arabic simple">
 <li><p>comparison : Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</p></li>
 </ol>
-<ul class="simple">
+<ul>
 <li><p><span class="math notranslate nohighlight">\(\text{Nerf}\)</span> : 미세 디테일, 기하학적 구조, 외양, nonLambertian 반사 반영</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{LLFF}\)</span> :  ghosting artifact (ship, lego)</p></li>
 <li><p><span class="math notranslate nohighlight">\(\text{SRN}\)</span> : blurry and distorted rendering</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{NV}\)</span> : detail 및 기하적 구조 반영 실패</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{NV}\)</span> : detail 및 기하적 구조 반영 실패</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled9.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled9.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 552 </span><span class="caption-text">{Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 <li><p><strong>Ghosting :</strong> 렌더링에서의 객체 겹침 혹은 번짐</p></li>
 <li><p><strong>Lambertian :</strong> 모든 각도에서 동일한 밝기</p></li>
 <li><p><strong>Non-Lambertian :</strong> 각도에 따라 밝기와 색상 변화 / 광택, 반사, 투명도 등을 가짐</p></li>
 </ul>
-<ol class="arabic simple" start="2">
-<li><p>comparison : reconstruction partially occluded regions</p></li>
+<ol class="arabic" start="2">
+<li><p>comparison : reconstruction partially occluded regions</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled10.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled10.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 553 </span><span class="caption-text">{NeRF also correctly reconstructs partially occluded regions}</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
 </ol>
 </section>
 <section id="ablation-studies">
 <h3>6.4 Ablation studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
-<ul class="simple">
+<ul>
 <li><p>Realistic Synthetic 360도 scene</p></li>
 <li><p>위치 인코딩(PE), 시점 의존성(VD), 계층적 샘플링(H)</p></li>
 <li><p>최대 주파수 <span class="math notranslate nohighlight">\(L\)</span> 의 선택</p>
-<ul>
+<ul class="simple">
 <li><p>5→10 (성능 향상), 10→15 (성능 감소)</p></li>
 <li><p><span class="math notranslate nohighlight">\(2^L\)</span> 이 샘플링 된 입력 이미지에서 존재하는 최대 주파수(본 데이터는 1024)를 초과할 때  추가적인 성능 향상에 제한</p></li>
 </ul>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled111.png"><img alt="ablation study" class="bg-primary mb-1" src="../../_images/Untitled111.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 554 </span><span class="caption-text">{ablation study}</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </section>
@@ -1003,7 +1061,7 @@ side length 2 centered at the origin</strong>, and only query the representation
 adding random Gaussian noise with zero mean and unit variance to the <strong>output σ values</strong> during optimization</p></li>
 <li><p><strong>Rendering Details</strong>
 :::{figure-md}
-<img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">&gt;</p>
+<img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">&gt;</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span> {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
  :::
 </pre></div>

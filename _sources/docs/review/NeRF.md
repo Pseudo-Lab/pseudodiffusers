@@ -12,13 +12,15 @@
 
 # NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis
 
-[https://youtu.be/JuH79E8rdKc?feature=shared](https://youtu.be/JuH79E8rdKc?feature=shared)
+[![NeRF](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/uLR1RNqJ1Mw?t=0s)
 
 - 기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요
 - NeRF 는 3D object 자체를 구성하지 않는, **synthesizing novel views**
 좌표를 mlp에 넣어 픽셀 별 색상 및 밀도 값을 얻는 implicit method
 - **synthesizing novel views**    
     특정한 장면(Scene)에서 여러 각도로 찍은 일부의 사진들을 가지고 완전 새로운 각도의 모습을 유추하는 task
+    
+
     
 ## 0. Abstract
 
@@ -37,12 +39,13 @@
                    volume rendering, 3D deep learning
     
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled.png" alt="NeRF" class="bg-primary mb-1" width="{800px}">>
+    <img src="../../pics/NeRF/Untitled.png" alt="NeRF" class="bg-primary mb-1" width="800px">
 
-    {method that optimizes a continuous 5D neural radiance
-field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+    {method that optimizes a continuous 5D neural radiance field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
     :::
+    
 
+    
 ## 1. Introduction
 
 캡처된 이미지들의 렌더링 오차를 최소화하기 위해 연속적인 $5 \mathrm{D}$ scene 함수의 파라미터를 직접 최적화하여 View synthesis 분야의 오랜 문제를 새로운 방식으로 해결함
@@ -93,18 +96,18 @@ field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
     - 투영된 이미지를 사용한 Gradient-based 최적화에 적합
     - 고해상도에서 복잡한 장면을 모델링할 때 이산화된 복셀 그리드의 엄청난 저장 비용을 극복
     
-    <aside>
-    💡 <b>Voxel (Volume + Pixel)</b>
+
+    - **Voxel (Volume + Pixel)**
     3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
     위치 정보와 함께 밀도, 색상, 투과성 등의 속성을 가질 수 있음
     
-    <b>Volumne Rendering</b>
+    - **Volumne Rendering**
     3차원 공간에서 정의된 데이터(체적 데이터)를 2차원 이미지로 변환하는 과정 
     예시) CT, MRI 
     
-    <b>Volumetric Data (체적 데이터)</b>
+    - **Volumetric Data (체적 데이터)**
     3차원 공간에서 샘플링된 데이터
-    </aside>
+
 
 ---
 
@@ -116,16 +119,20 @@ field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
 - 최초의 **continuous neural scene representation** 제안
 
 :::{figure-md} 
-    <img src="../../pics/NeRF/Untitled1.png" alt="NeRF overview" class="bg-primary mb-1" width="{800px}">
+<img src="../../pics/NeRF/Untitled1.png" alt="NeRF overview" class="bg-primary mb-1" width="800px">
 
 {An overview of our neural radiance field scene representation and differentiable rendering procedure} \  (source: {https://arxiv.org/pdf/2003.08934v2})
 :::
+    
 
+   
 ## 2. Related Work
 
 - **Neural 3D shape representations**
 - **View synthesis and image-based rendering**
+    
 
+   
 ## 3. Neural Radiance Field Scene Representation
 
 - 5차원 벡터 함수 (MLP) $F_{\Theta}:(\mathbf{x}, \mathbf{d}) \rightarrow(\mathbf{c}, \sigma)$
@@ -145,7 +152,7 @@ field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
         
         ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png)
         :::{figure-md} 
-            <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">>
+        <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">
 
         {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
         :::
@@ -156,18 +163,20 @@ field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
         - 표면의 방향과 상관없이 광선이 표면에서 나오는 각도에 따라 반사되는 광량이 일정하다는 원리를 기반
     - Fig. 3 : 입력 시선 방향을 사용하여 non-Lambertian effects 를 표현한 예시
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled4.png" alt="NeRF fig3" class="bg-primary mb-1" width="{800px}">
-        
-        (source: {https://arxiv.org/pdf/2003.08934v2})
+    <img src="../../pics/NeRF/Untitled4.png" alt="NeRF fig3" class="bg-primary mb-1" width="800px">
+    
+    (source: {https://arxiv.org/pdf/2003.08934v2})
     :::
 
     - Fig. 4 : view dependence 를 고려하지 않고 (only $\mathbf{x}$ input) 학습된 모델은 반사성(specularity)을 표현하는데 어려움이 있음
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled5.png" alt="NeRF fig4" class="bg-primary mb-1" width="{800px}">
-        (source: {https://arxiv.org/pdf/2003.08934v2})
-    :::
-        
+    <img src="../../pics/NeRF/Untitled5.png" alt="NeRF fig4" class="bg-primary mb-1" width="800px">
 
+    (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
+    
+
+   
 ## 4. Volume Rendering with Radiance Fields
 
 - **5D NeRF 는 장면을 volume density 와 특정 포인트에서 방출된 빛(색상)으로 표현**
@@ -185,17 +194,19 @@ $$
     - 이산화된 ****voxel grids 렌더링에 사용되는 **결정론적 구적법**의 한계
     - 일반적으로 이산화된 복셀 그리드를 렌더링하는 데 사용되는 결정론적 구적법은 MLP가 **고정된 이산 위치 집합**에서만 쿼리되기 때문에 표현의 해상도를 제한
 
-<aside>
-➡️ <b>대안으로 Stratified sampling (계층적 표집) 접근법을 사용.</b>
-- \ \left[t_n, t_f\right]\ 를 \N\ 개의 균일한 간격의 bin으로 분할한 Partition 생성
+
+- ➡️ **대안으로 Stratified sampling (계층적 표집) 접근법을 사용.**
+- $\left[t_n, t_f\right]$ 를 $N$ 개의 균일한 간격의 bin으로 분할한 Partition 생성
 - 각 bin 내에서 하나의 샘플을 무작위로 추출
     
-    \\t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].\\
-    
+    $$
+    t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].
+    $$
+
 - 여전히 적분값 추정을 위해 이산화된 표본들을 사용하더라도, 
 계층적 표집 방법을 통해 continuous scene 표현이 가능
 - 다양한 position sample에 대해 최적화가 가능하므로, 최적화 과정에서 MLP가 연속적인 위치들에서 평가되도록 하는 효과
-</aside>
+
 
 - 위의 샘플링 방법을 통해 뽑은 샘플들로  [[26]에서 리뷰](https://courses.cs.duke.edu/spring03/cps296.8/papers/max95opticalModelsForDirectVolumeRendering.pdf)된 볼륨 렌더링에서 논의된 구적법으로 $C(\mathbf{r})$ 을 추정 (적분을 sample sum 으로)
     
@@ -209,7 +220,9 @@ $$
     - **alpha compositing (**알파 합성)
         - 여러 이미지 또는 픽셀을 결합하여 하나의 이미지로 만드는 기술
         - ex) 투명한 이미지(유리, 그림자)를 배경 이미지 위에 겹칠 때 알파 컴포지팅을 사용하여 자연스러운 합성 수행
+    
 
+   
 ## 5. Optimizing a Neural Radiance Field
 
 **[REMIND]**
@@ -294,27 +307,24 @@ $$
     
     - **extrinsic parameter, intrinsic parameter**
         
-        **Extrinsic Paramete**r
+        - **Extrinsic Parameter**        
+         3D 공간 내에서 카메라가 어디에 위치(3D Translation)하고 있고, 어디를 바라보고 있는지(3D Rotation)에 대한 Parameter
         
-        3D 공간 내에서 카메라가 어디에 위치(3D Translation)하고 있고, 어디를 바라보고 있는지(3D Rotation)에 대한 Parameter
-        
-        **Intrinsic Parameter**
-        
-        카메라 렌즈와 센서 위치에 의해서 결정되어지는 항목으로,
-        
-        이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 
-        얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter
+        - **Intrinsic Parameter**
+        카메라 렌즈와 센서 위치에 의해서 결정되어지는 항목으로, 이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter
         
         :::{figure-md} 
-            <img src="../../pics/NeRF/Untitled6.png" alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" width="{800px}">
-            {intrinsic prameter and extrinsic parameter}
+        <img src="../../pics/NeRF/Untitled6.png" alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" width="800px">
+
+        {intrinsic prameter and extrinsic parameter}
         :::
 
         - 카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)
-            :::{figure-md} 
-                <img src="../../pics/NeRF/Untitled7.png" alt="NeRF perspective projection" class="bg-primary mb-1" width="{800px}">
-                {perspective projection}
-            :::
+        :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled7.png" alt="NeRF perspective projection" class="bg-primary mb-1" width="800px">
+            
+        {perspective projection}
+        :::
             
 - **Training**
 
@@ -345,15 +355,18 @@ $$
 - Optimizer : Adam, lr : $5 \times 10^{-4}$ →  $5 \times 10^{-5}$ (exponentially decay learning rate)
     - Default : $\beta_1=0.9, \beta_2=0.999$,
 - iteration: 한 장면 당 10~30만 iter (NVIDIA V100 GPU 1개로 1~2일 소요)
+    
 
+   
 ## 6. Results
 
 ### 6.1 Datasets
 
 - **Synthetic renderings of object**
         :::{figure-md} 
-            <img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
-            {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+        <img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
+        
+        {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
         :::
 
 1. **Diffuse / Synthetic** $360\degree$
@@ -394,9 +407,9 @@ $$
 - $\text{NV}$ : detail 및 기하적 구조 반영 실패
 
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled9.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
+    <img src="../../pics/NeRF/Untitled9.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
 
-        {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+    {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
     :::
 
 - **Ghosting :** 렌더링에서의 객체 겹침 혹은 번짐
@@ -405,9 +418,9 @@ $$
 
 2. comparison : reconstruction partially occluded regions
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled10.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
+    <img src="../../pics/NeRF/Untitled10.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
 
-        {NeRF also correctly reconstructs partially occluded regions}
+    {NeRF also correctly reconstructs partially occluded regions}
     :::
 
 ### 6.4 Ablation studies
@@ -419,11 +432,13 @@ $$
     - $2^L$ 이 샘플링 된 입력 이미지에서 존재하는 최대 주파수(본 데이터는 1024)를 초과할 때  추가적인 성능 향상에 제한
 
     :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled11.png" alt="ablation study" class="bg-primary mb-1" width="{800px}">
+    <img src="../../pics/NeRF/Untitled11.png" alt="ablation study" class="bg-primary mb-1" width="800px">
 
-        {ablation study}
+    {ablation study}
     :::
+    
 
+   
 ---
 
 ## (Appendix) A. Additional Implementation Details
@@ -437,7 +452,7 @@ adding random Gaussian noise with zero mean and unit variance to the **output σ
 
 3. **Rendering Details**
         :::{figure-md} 
-            <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">>
+        <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">>
 
         {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
         :::

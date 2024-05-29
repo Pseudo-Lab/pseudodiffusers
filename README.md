@@ -60,6 +60,8 @@ CVPR 2024 Workshop
 | 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
 | 23 | 2024.04.24 | Donghyun Han | [Latent Consistency Models: Synthesizing High-Resolution Images with Few-Step Inference](https://arxiv.org/pdf/2310.04378) |
 | 24 | 2024.05.01 | Jeonghwa Yoo | [DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion](https://arxiv.org/abs/2304.06025) |
+| 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) |
+
 
 ## Jupyter Book Update Procedure  
 1. Clone the repo on your local computer  

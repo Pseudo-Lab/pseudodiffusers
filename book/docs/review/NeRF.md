@@ -10,14 +10,6 @@
 - **Last updated on May. 22, 2024**
 ```
 
-```
-:::{figure-md} 
-<img src="../../pics/DreamPose/Untitled.png" alt="latent diffusion" class="bg-primary mb-1">
-
-Latent Diffusion Model
-:::
-```
-
 # NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis
 
 [https://youtu.be/JuH79E8rdKc?feature=shared](https://youtu.be/JuH79E8rdKc?feature=shared)
@@ -25,11 +17,9 @@ Latent Diffusion Model
 - 기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요
 - NeRF 는 3D object 자체를 구성하지 않는, **synthesizing novel views**
 좌표를 mlp에 넣어 픽셀 별 색상 및 밀도 값을 얻는 implicit method
-- **synthesizing novel views**
-    
+- **synthesizing novel views**    
     특정한 장면(Scene)에서 여러 각도로 찍은 일부의 사진들을 가지고 완전 새로운 각도의 모습을 유추하는 task
     
-
 ## 0. Abstract
 
 - **NeRF**
@@ -46,8 +36,12 @@ Latent Diffusion Model
 - **Keywords :** scene representation, view synthesis, image-based rendering, 
                    volume rendering, 3D deep learning
     
-    ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled.png)
-    
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled.png" alt="NeRF" class="bg-primary mb-1" width="{800px}">>
+
+    {method that optimizes a continuous 5D neural radiance
+field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
 
 ## 1. Introduction
 
@@ -56,42 +50,35 @@ Latent Diffusion Model
 ---
 
 - **정적 장면 → 연속적인 $5 \mathrm{D}$ 함수로 표현**
+
     - FC layer = Regression Function  : 
     a single $5 \mathrm{D}$ coord $(x, y, z, \theta, \phi)$ → density, view-dependent RGB color
+    
 - **Output**
+
     - 공간 상의 각 지점 $(x, y, z)$에서 각 방향 $(\theta, \phi)$ 으로 방출된 색상
     - 각 지점 $(x, y, z)$ 의 밀도(density) = $\sigma$
         - 밀도의 누적값을 통해 얼마나 많은 빛이 $(𝑥,𝑦,𝑧)$ 를 통과하는 광선에 의해 누적되는지를 표현
 
----
+--- 
 
 - **특정 시점으로부터의 NeRF 렌더링**
+
     1. 광선을 따라 이동하여 샘플링된 $3 \mathrm{D}$ 포인트 집합을 생성
     2. 해당 포인트들과 이에 해당하는 $2 \mathrm{D}$ 시점 방향을 신경망에 대한 입력으로 사용하여 색상과 밀도의 집합을 생성
     3. 고전적 Volume rendering 기술을 사용하여 $2 \mathrm{D}$ image 로 합성 
     
-    ---
+---
     
 - **Optimization**
     - 미분 가능, gradient descent 를 통한 최적화
     - 각 관찰된 이미지와 렌더링된 해당 **views**사이의 오차를 최소화
     - 다양한 views 에서 오차 최소화를 통해 실제 장면의 cotents 가 포함된 위치에 **높은 밀도**와 **정확한 색상**을 할당하여 장면의 일관된 모델을 예측
-- **Figure 2 visualizes this overall pipeline.**
-    
-    ![Fig. 2: An overview of our neural radiance field scene representation and differentiable rendering procedure. We synthesize images by sampling 5D coordinates
-    (location and viewing direction) along camera rays (a), feeding those locations
-    into an MLP to produce a color and volume density (b), and using volume rendering techniques to composite these values into an image (c). This rendering
-    function is differentiable, so we can optimize our scene representation by minimizing the residual between synthesized and ground truth observed images (d).](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%201.png)
-    
-    Fig. 2: An overview of our neural radiance field scene representation and differentiable rendering procedure. We synthesize images by sampling 5D coordinates
-    (location and viewing direction) along camera rays (a), feeding those locations
-    into an MLP to produce a color and volume density (b), and using volume rendering techniques to composite these values into an image (c). This rendering
-    function is differentiable, so we can optimize our scene representation by minimizing the residual between synthesized and ground truth observed images (d).
-    
 
 ---
 
 - **NeRF 최적화의 Basic implementation의 한계 및 대안**
+
     1. **복잡한 장면에 대해서 충분히 고해상도 표현으로 수렴되지 않음**
         - positional encoding 으로 입력 5D 좌표를 변환
         - MLP가 더 높은 주파수의 함수를 나타낼 수 있음.
@@ -107,19 +94,17 @@ Latent Diffusion Model
     - 고해상도에서 복잡한 장면을 모델링할 때 이산화된 복셀 그리드의 엄청난 저장 비용을 극복
     
     <aside>
-    💡 **Voxel (Volume + Pixel)**
+    💡 <b>Voxel (Volume + Pixel)</b>
     3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
     위치 정보와 함께 밀도, 색상, 투과성 등의 속성을 가질 수 있음
     
-    **Volumne Rendering** 
-    3차원 공간에서 정의된 데이터(체적 데이터)를 2차원 이미지로 변환하는 과정
-    ex) CT, MRI 
+    <b>Volumne Rendering</b>
+    3차원 공간에서 정의된 데이터(체적 데이터)를 2차원 이미지로 변환하는 과정 
+    예시) CT, MRI 
     
-    **Volumetric Data (체적 데이터)**
+    <b>Volumetric Data (체적 데이터)</b>
     3차원 공간에서 샘플링된 데이터
-    
     </aside>
-    
 
 ---
 
@@ -130,9 +115,13 @@ Latent Diffusion Model
     - Positional encoding : 입력 5차원 좌표를 고차원 공간으로 매핑하기 위해 NeRF를 성공적으로 최적화하여 고주파의 장면 콘텐츠를 표현가능
 - 최초의 **continuous neural scene representation** 제안
 
-![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%202.png)
+:::{figure-md} 
+    <img src="../../pics/NeRF/Untitled1.png" alt="NeRF overview" class="bg-primary mb-1" width="{800px}">
 
-## 2. Related W**ork**
+{An overview of our neural radiance field scene representation and differentiable rendering procedure} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+:::
+
+## 2. Related Work
 
 - **Neural 3D shape representations**
 - **View synthesis and image-based rendering**
@@ -140,34 +129,44 @@ Latent Diffusion Model
 ## 3. Neural Radiance Field Scene Representation
 
 - 5차원 벡터 함수 (MLP) $F_{\Theta}:(\mathbf{x}, \mathbf{d}) \rightarrow(\mathbf{c}, \sigma)$
+
     - **input** : $3 \mathrm{D}$ location $\mathbf{x}=(x, y, z)$ , $2 \mathrm{D}$ viewing direction $\mathbf{d}=(\theta, \phi)$
         - **(practically) direction** as a $3 \mathrm{D}$ Cartesian unit vector $\mathbf{d}$
         - 벡터 $\mathbf{d} =(𝑑_𝑥,𝑑_𝑦,𝑑_𝑧)$ 는 방향을 나타내며, 이는 단위 벡터(길이가 1)로 정규화
     - **output** : emitted color $\mathbf{c}=(r, g, b)$, volume density $\sigma$
+
 - $\mathbf{x}$ → $\sigma$ , $(\mathbf{x, d})$ → RGB 색상 $\mathbf{c}$ 를 예측하도록 권장 (색상은 view dependent 이므로)
+
     1.  MLP $F_{\Theta}$ 는 먼저 8개의 fully-connected layer (ReLU, 256개 채널 사용) 로 
     입력 3D 좌표 $\mathbf{x}$ →  $\sigma$ , 256차원 feature 벡터를 출력
     2. **a** 의 feature 벡터는 카메라 광선의 시점 방향과 concat 
     3. 뷰에 따른 RGB 색상을 출력하는 하나의 추가 fully-connected layer (ReLU,128개 채널 사용)로 전달됨
         
-        ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png)
         
+        ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png)
+        :::{figure-md} 
+            <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">>
+
+        {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+        :::
+
 - **View 를 고려하여 색상을 예측해야 하는 이유 : non-Lambertian effects**
     - **Lambertian 효과**
-        - **물체의 표면에서 나오는 광선이 균일하게 반사되는 현상**
-        - **표면의 방향과 상관없이 광선이 표면에서 나오는 각도에 따라 반사되는 광량이 일정하다는 원리를 기반**
+        - 물체의 표면에서 나오는 광선이 균일하게 반사되는 현상
+        - 표면의 방향과 상관없이 광선이 표면에서 나오는 각도에 따라 반사되는 광량이 일정하다는 원리를 기반
     - Fig. 3 : 입력 시선 방향을 사용하여 non-Lambertian effects 를 표현한 예시
-    
-    ![Fig. 3](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%204.png)
-    
-    Fig. 3
-    
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled4.png" alt="NeRF fig3" class="bg-primary mb-1" width="{800px}">
+        
+        (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
+
     - Fig. 4 : view dependence 를 고려하지 않고 (only $\mathbf{x}$ input) 학습된 모델은 반사성(specularity)을 표현하는데 어려움이 있음
-    
-    ![Fig. 4](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%205.png)
-    
-    Fig. 4
-    
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled5.png" alt="NeRF fig4" class="bg-primary mb-1" width="{800px}">
+        (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
+        
 
 ## 4. Volume Rendering with Radiance Fields
 
@@ -187,14 +186,11 @@ $$
     - 일반적으로 이산화된 복셀 그리드를 렌더링하는 데 사용되는 결정론적 구적법은 MLP가 **고정된 이산 위치 집합**에서만 쿼리되기 때문에 표현의 해상도를 제한
 
 <aside>
-➡️ **대안으로 Stratified sampling (계층적 표집) 접근법을 사용**
-
-- $\left[t_n, t_f\right]$ 를 $N$ 개의 균일한 간격의 bin으로 분할한 Partition 생성
+➡️ <b>대안으로 Stratified sampling (계층적 표집) 접근법을 사용.</b>
+- \ \left[t_n, t_f\right]\ 를 \N\ 개의 균일한 간격의 bin으로 분할한 Partition 생성
 - 각 bin 내에서 하나의 샘플을 무작위로 추출
     
-    $$
-    t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right] .
-    $$
+    \\t_i \sim \mathcal{U}\left[t_n+\frac{i-1}{N}\left(t_f-t_n\right), t_n+\frac{i}{N}\left(t_f-t_n\right)\right].\\
     
 - 여전히 적분값 추정을 위해 이산화된 표본들을 사용하더라도, 
 계층적 표집 방법을 통해 continuous scene 표현이 가능
@@ -221,6 +217,7 @@ $$
 - 지금까지 **NeRF 로 scene 을 모델링하는 것, 이 표현으로 새로운 views 를 렌더링 하는 것** 에 필요한 핵심적인 구성요소를 다룸
     - 하지만 해당 요소들로 SOTA 성능을 달성하기에는 한계 존재
     - 고해상도 + 복잡한 scene 을 표현 가능하게 하는 두개의 개선점을 도입
+
 1. Positional encoding of the input coordinates 
 that assists the MLP in representing high-frequency functions 
 2. hierarchical sampling procedure 
@@ -261,7 +258,6 @@ that allows us to efficiently sample this high-frequency representation.
     
     **Step 2.  Fine** 
     
-
 ---
 
 1. **Coarse**
@@ -309,18 +305,24 @@ $$
         이미지 패널이 얼마나 이동(2D Translation)하고, 얼마나 확대하고(2D Scaling), 
         얼마나 기울어졌는지(2D Shear) 대한 intrinsic parameter
         
-        ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%206.png)
-        
+        :::{figure-md} 
+            <img src="../../pics/NeRF/Untitled6.png" alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" width="{800px}">
+            {intrinsic prameter and extrinsic parameter}
+        :::
+
         - 카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)
-            
-            ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%207.png)
+            :::{figure-md} 
+                <img src="../../pics/NeRF/Untitled7.png" alt="NeRF perspective projection" class="bg-primary mb-1" width="{800px}">
+                {perspective projection}
+            :::
             
 - **Training**
+
     1. 각 최적화 iteration에서 데이터셋의 모든 픽셀 집합에서 카메라 광선 batch를 무작위로 샘플링
     2. 계층적 샘플링을 따라 coarse 네트워크의 $N_c$ 개의 샘플과 fine 네트워크의$N_c + N_f$개의 샘플을 쿼리
     3. volume rendering 절차를 사용하여 두샘플 집합 모두에서 광선의 색상을 렌더링
+
 - **Loss**
-    
     coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 제곱 오차 
     
     $$
@@ -349,24 +351,28 @@ $$
 ### 6.1 Datasets
 
 - **Synthetic renderings of object**
-    
-    ![Table 1: **Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian**](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%208.png)
-    
-    Table 1: **Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian**
-    
+        :::{figure-md} 
+            <img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
+            {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+        :::
+
 1. **Diffuse / Synthetic** $360\degree$
+
     1. 총 4개의 Lambertian 물체가 간단한 geometry로 구성
     2. object : **512×512** 
     3. 상반구에 대한 viewpoint 를 렌더링
     4. Train : 479, Test : 1000
+
 2. **Real / Synthetic $360\degree$, Forward-Facing** 
+
     1. 총 8개의 non-Lambertian 물체 8개, 
     2. 각각의 pathtraced image 를 포함한 형태의 데이터 셋을 구성
     3. object : **800×800**
-    4. 6 Scenes : 상반구에 대한 viewpoint 를 렌더링
-    2 Scenes :  구 전체에 대한 viewpoint 를 렌더링
+    4. 6 Scenes : 상반구에 대한 viewpoint 를 렌더링, 2 Scenes :  구 전체에 대한 viewpoint 를 렌더링
     5. Train : 100, Test : 200
+
 3. **Real / Forward-Facing** 
+
     1. 복잡한 형태의 현실 scene을 앞쪽에서 본 모습을 사용
     2. 총 8개의 scene, (5 scenes : LLFF paper 3 scenes : 직접 캡처)
     3. object : **$1008\times 756$** 
@@ -381,25 +387,28 @@ $$
 
 ### 6.3 Discussion
 
-![Fig. 5: 
-$\text{Nerf}$ : 미세 디테일, 기하학적 구조, 외양, nonLambertian 반사 반영
-$\text{LLFF}$ :  ghosting artifact (ship, lego)
-$\text{SRN}$ : blurry and distorted rendering
-$\text{NV}$ : detail 및 기하적 구조 반영 실패](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%209.png)
+1. comparison : Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
+- $\text{Nerf}$ : 미세 디테일, 기하학적 구조, 외양, nonLambertian 반사 반영
+- $\text{LLFF}$ :  ghosting artifact (ship, lego)
+- $\text{SRN}$ : blurry and distorted rendering
+- $\text{NV}$ : detail 및 기하적 구조 반영 실패
 
-Fig. 5: 
-$\text{Nerf}$ : 미세 디테일, 기하학적 구조, 외양, nonLambertian 반사 반영
-$\text{LLFF}$ :  ghosting artifact (ship, lego)
-$\text{SRN}$ : blurry and distorted rendering
-$\text{NV}$ : detail 및 기하적 구조 반영 실패
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled9.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
+
+        {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+    :::
 
 - **Ghosting :** 렌더링에서의 객체 겹침 혹은 번짐
 - **Lambertian :** 모든 각도에서 동일한 밝기
-- **Non**-**Lambertian :** 각도에 따라 밝기와 색상 변화 / 광택, 반사, 투명도 등을 가짐
+- **Non-Lambertian :** 각도에 따라 밝기와 색상 변화 / 광택, 반사, 투명도 등을 가짐
 
-![Fig. 6: Our method also correctly reconstructs partially occluded regions](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%2010.png)
+2. comparison : reconstruction partially occluded regions
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled10.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="{800px}">
 
-Fig. 6: Our method also correctly reconstructs partially occluded regions
+        {NeRF also correctly reconstructs partially occluded regions}
+    :::
 
 ### 6.4 Ablation studies
 
@@ -409,30 +418,32 @@ Fig. 6: Our method also correctly reconstructs partially occluded regions
     - 5→10 (성능 향상), 10→15 (성능 감소)
     - $2^L$ 이 샘플링 된 입력 이미지에서 존재하는 최대 주파수(본 데이터는 1024)를 초과할 때  추가적인 성능 향상에 제한
 
-![Table 2: An ablation study of our model. Metrics are averaged over the 8 scenes
-from our realistic synthetic dataset. See Sec. 6.4 for detailed descriptions.](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%2011.png)
+    :::{figure-md} 
+        <img src="../../pics/NeRF/Untitled11.png" alt="ablation study" class="bg-primary mb-1" width="{800px}">
 
-Table 2: An ablation study of our model. Metrics are averaged over the 8 scenes
-from our realistic synthetic dataset. See Sec. 6.4 for detailed descriptions.
+        {ablation study}
+    :::
+
+---
 
 ## (Appendix) A. Additional Implementation Details
 
-- **Volume Bounds**
-
+1. **Volume Bounds**
 For experiments with synthetic images, we scale the scene so that it lies within a **cube of
 side length 2 centered at the origin**, and only query the representation within this bounding volume. we use normalized device coordinates **to map the depth range of these points into [−1, 1]**.
 
-- **Training Details**
-
+2. **Training Details**
 adding random Gaussian noise with zero mean and unit variance to the **output σ values** during optimization
 
-- **Rendering Details**
+3. **Rendering Details**
+        :::{figure-md} 
+            <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="{800px}">>
 
-![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png)
+        {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+        :::
 
 - Coarse network  64 + fine network 128 = 192
 - fully-connected network 구조
 - positional encoding이 더해진 형태의 위치 정보**$(\gamma(x))$** 를 input으로 투입
 - 256 채널과 ReLU로 엮인 총 8개의 네트워크를 통과하게 된다. 해당 논문에서는 DeepSDF 구조를 따르고, skip connection을 5번째 layer의 activation에  투입
 - 추가 레이어는 volume density 를 output으로 산출
-

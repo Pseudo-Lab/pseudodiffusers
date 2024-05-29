@@ -50,7 +50,6 @@ parts:
   - file: docs/review/Animate_Anyone
   - file: docs/review/DreaMoving
   - file: docs/review/DreamPose
-  - file: docs/review/NeRF
   
 - caption: 3D Generation
   chapters:

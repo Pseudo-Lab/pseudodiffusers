@@ -51,6 +51,10 @@ parts:
   - file: docs/review/DreaMoving
   - file: docs/review/DreamPose
   
+- caption: 3D Generation
+  chapters:
+  - file: docs/review/NeRF
+  
 - caption: Experiments
   chapters:
   - file: docs/experiments/js_exp

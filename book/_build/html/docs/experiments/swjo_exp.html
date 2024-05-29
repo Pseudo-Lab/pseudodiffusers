@@ -501,7 +501,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_01.png"><img alt="swjo_exp_01" class="bg-primary mb-1" src="../../_images/swjo_exp_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Training Data</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Training Data</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DreamBooth 를 실험하면서 대표적으로 instance prompt, guidance scale, negative prompt, 그리고 마지막으로 prior preservation loss 를 반영하는 정도를 조절하는 prior_loss_weight 를 바꿔가면서 학습해보았습니다. 사전학습된 text-to-image 모델로 처음에는 <em>hakurei/waifu-diffusion</em> 모델을 시도해봤지만 결과가 만족스럽지 못해 <em>runwayml/stable-diffusion-v1-5</em> 모델로 fine-tuning 작업을 진행했습니다.</p>
@@ -576,7 +576,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_02.png"><img alt="swjo_exp_02" class="bg-primary mb-1" src="../../_images/swjo_exp_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 575 </span><span class="caption-text">With Prior Preservation Loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 573 </span><span class="caption-text">With Prior Preservation Loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -585,7 +585,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_03.png"><img alt="swjo_exp_03" class="bg-primary mb-1" src="../../_images/swjo_exp_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 576 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -598,7 +598,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_03.png"><img alt="swjo_exp_03" class="bg-primary mb-1" src="../../_images/swjo_exp_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 577 </span><span class="caption-text">Without Negative Prompt</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 575 </span><span class="caption-text">Without Negative Prompt</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -609,7 +609,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_04.png"><img alt="swjo_exp_04" class="bg-primary mb-1" src="../../_images/swjo_exp_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 578 </span><span class="caption-text">With Negative Prompt</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 576 </span><span class="caption-text">With Negative Prompt</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -683,7 +683,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_05.png"><img alt="swjo_exp_05" class="bg-primary mb-1" src="../../_images/swjo_exp_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Instance Prompt</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 577 </span><span class="caption-text">Instance Prompt</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Inference step 을 늘려가면서 추론된 인물 이미지의 퀄리티가 상승하는 부분도 확인할 수 있었습니다. 또한, guidance scale 에 대한 실험도 진행했는데 guidance scale 이 작을수록 prompt 와 무관한 random 한 이미지들을 생성하게 됩니다. 최종적으로 num_inference steps 와 guidance scale 의 값은 각각 100 과 7.5 로 설정하였습니다.</p>
@@ -693,7 +693,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_06.png"><img alt="swjo_exp_06" class="bg-primary mb-1" src="../../_images/swjo_exp_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Increasing Number of Inference Steps</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 578 </span><span class="caption-text">Increasing Number of Inference Steps</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -704,7 +704,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_07.png"><img alt="swjo_exp_07" class="bg-primary mb-1" src="../../_images/swjo_exp_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Increasing Number of Inference Steps / Negative Prompt</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Increasing Number of Inference Steps / Negative Prompt</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -716,7 +716,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_08.png"><img alt="swjo_exp_08" class="bg-primary mb-1" src="../../_images/swjo_exp_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Guidance Scale</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Guidance Scale</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 inference prompt 로 prior-preservation loss 를 제외해본 결과, 생성된 남자의 머리카락이 더 길어지고 더 여성스러운 생김새를 가지는 놀라운 사실도 발견했습니다.</p>
@@ -728,7 +728,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_09.png"><img alt="swjo_exp_09" class="bg-primary mb-1" src="../../_images/swjo_exp_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 583 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -744,7 +744,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_10.png"><img alt="swjo_exp_10" class="bg-primary mb-1" src="../../_images/swjo_exp_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 584 </span><span class="caption-text">Appendix 1</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Appendix 1</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -755,7 +755,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_11.png"><img alt="swjo_exp_11" class="bg-primary mb-1" src="../../_images/swjo_exp_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 585 </span><span class="caption-text">Appendix 2</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 583 </span><span class="caption-text">Appendix 2</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -766,7 +766,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_12.png"><img alt="swjo_exp_12" class="bg-primary mb-1" src="../../_images/swjo_exp_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 586 </span><span class="caption-text">Appendix 3</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 584 </span><span class="caption-text">Appendix 3</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로 하단의 좌측과 우측 사진은 각각 “A photo of <em>sks</em> girl” 그리고 “A photo of a girl in the style of <em>sks</em>” 이라는 prompt 로 DreamBooth 모델을 각각 학습한 후, 나비를 생성하라는 동일한 prompt 로 추론해본 결과입니다. <em>sks</em> 가 수식하는 명사가 girl 이 아닌 style 이도록 prompt 를 수정함으로써, butterfly 사진을 생성할때 조금이나마 더 프리드로우 웹툰의 그림체를 반영할 수 있었던 부분도 확인할 수 있었습니다.</p>
@@ -776,7 +776,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_13.png"><img alt="swjo_exp_13" class="bg-primary mb-1" src="../../_images/swjo_exp_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 587 </span><span class="caption-text">Appendix 4</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 585 </span><span class="caption-text">Appendix 4</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

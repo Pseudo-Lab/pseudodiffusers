@@ -12,7 +12,7 @@
 
 # NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis
 
-[![NeRF](http://img.youtube.com/vi/uLR1RNqJ1Mw/0.jpg)](https://youtu.be/uLR1RNqJ1Mw?t=0s)
+[![NeRF](http://img.youtube.com/vi/JuH79E8rdKc/0.jpg)](https://www.youtube.com/watch?v=JuH79E8rdKc)
 
 - 기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요
 - NeRF 는 3D object 자체를 구성하지 않는, **synthesizing novel views**
@@ -27,21 +27,25 @@
 - **NeRF**
     - 한정된 수의 입력 뷰 이미지들을 사용
     - continous volumetric scene 함수 최적화를 통해  **synthesizing novel views** 에서 SOTA 달성
+
 - **Algorithm**
     - **FC layer 사용 (non-convolutional)**
         - **input**  : 5 차원 좌표 (공간적 위치$(x, y, z)$ & 바라보는 방향$(\theta, \phi))$
         - **output** : volume density와 해당 방향에 대한 색상 값
     - 5 차원 좌표 입력 → 카메라 광선을 따라 RGB 값, Volume density 예측 
     → 고전적 Volume rendering 기술을 사용하여 image 로 합성
+
 - 복잡한 구조 및 외형을 갖는 scene 에 대한 **Novel views rendering** 을 위해 **NeRF** 를 최적화하는 방법을 제시 (+ Positional Encoding, Hierarchical volume sampling)
+
 - 실험을 통해 기존 작업을 능가하는 결과를 입증
+
 - **Keywords :** scene representation, view synthesis, image-based rendering, 
                    volume rendering, 3D deep learning
     
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled.png" alt="NeRF" class="bg-primary mb-1" width="800px">
 
-    {method that optimizes a continuous 5D neural radiance field representation} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+    method that optimizes a continuous 5D neural radiance field representation \  (source: {https://arxiv.org/pdf/2003.08934v2})
     :::
     
 
@@ -53,12 +57,10 @@
 ---
 
 - **정적 장면 → 연속적인 $5 \mathrm{D}$ 함수로 표현**
-
     - FC layer = Regression Function  : 
     a single $5 \mathrm{D}$ coord $(x, y, z, \theta, \phi)$ → density, view-dependent RGB color
     
 - **Output**
-
     - 공간 상의 각 지점 $(x, y, z)$에서 각 방향 $(\theta, \phi)$ 으로 방출된 색상
     - 각 지점 $(x, y, z)$ 의 밀도(density) = $\sigma$
         - 밀도의 누적값을 통해 얼마나 많은 빛이 $(𝑥,𝑦,𝑧)$ 를 통과하는 광선에 의해 누적되는지를 표현
@@ -81,7 +83,6 @@
 ---
 
 - **NeRF 최적화의 Basic implementation의 한계 및 대안**
-
     1. **복잡한 장면에 대해서 충분히 고해상도 표현으로 수렴되지 않음**
         - positional encoding 으로 입력 5D 좌표를 변환
         - MLP가 더 높은 주파수의 함수를 나타낼 수 있음.
@@ -95,7 +96,6 @@
     - 복잡한 실세계의 기하학적 형태와 외형을 표현 가능
     - 투영된 이미지를 사용한 Gradient-based 최적화에 적합
     - 고해상도에서 복잡한 장면을 모델링할 때 이산화된 복셀 그리드의 엄청난 저장 비용을 극복
-    
 
     - **Voxel (Volume + Pixel)**
     3차원 공간에서 체적의 기본 단위 (2차원의 경우에선 pixe)
@@ -111,6 +111,7 @@
 
 ---
 
+
 - **Technical contributions**
     - 복잡한 기하학과 소재를 가진 연속적인 장면을 5차원 NeRF 로 나타내는 접근 방법, 기본 MLP 네트워크로 매개변수화
     - 고전적인 볼륨 렌더링 기법을 기반으로 한 미분 가능한 렌더링 절차를 사용하여 이러한 표현을 표준 RGB 이미지로부터 최적화하는 방법을 제안
@@ -121,7 +122,7 @@
 :::{figure-md} 
 <img src="../../pics/NeRF/Untitled1.png" alt="NeRF overview" class="bg-primary mb-1" width="800px">
 
-{An overview of our neural radiance field scene representation and differentiable rendering procedure} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+An overview of our neural radiance field scene representation and differentiable rendering procedure \  (source: {https://arxiv.org/pdf/2003.08934v2})
 :::
     
 
@@ -149,13 +150,12 @@
     2. **a** 의 feature 벡터는 카메라 광선의 시점 방향과 concat 
     3. 뷰에 따른 RGB 색상을 출력하는 하나의 추가 fully-connected layer (ReLU,128개 채널 사용)로 전달됨
         
-        
-        ![Untitled](%5Bpaper%5D%20NeRF%20418c2318659542b58f338b6b20bafb40/Untitled%203.png)
-        :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">
+    :::{figure-md} 
+    <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">
 
-        {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
-        :::
+    fully-connected network architecture\  (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
+
 
 - **View 를 고려하여 색상을 예측해야 하는 이유 : non-Lambertian effects**
     - **Lambertian 효과**
@@ -165,14 +165,12 @@
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled4.png" alt="NeRF fig3" class="bg-primary mb-1" width="800px">
     
-    (source: {https://arxiv.org/pdf/2003.08934v2})
     :::
 
     - Fig. 4 : view dependence 를 고려하지 않고 (only $\mathbf{x}$ input) 학습된 모델은 반사성(specularity)을 표현하는데 어려움이 있음
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled5.png" alt="NeRF fig4" class="bg-primary mb-1" width="800px">
 
-    (source: {https://arxiv.org/pdf/2003.08934v2})
     :::
     
 
@@ -316,14 +314,14 @@ $$
         :::{figure-md} 
         <img src="../../pics/NeRF/Untitled6.png" alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" width="800px">
 
-        {intrinsic prameter and extrinsic parameter}
+        intrinsic prameter and extrinsic parameter
         :::
 
         - 카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)
         :::{figure-md} 
         <img src="../../pics/NeRF/Untitled7.png" alt="NeRF perspective projection" class="bg-primary mb-1" width="800px">
             
-        {perspective projection}
+        perspective projection
         :::
             
 - **Training**
@@ -366,7 +364,7 @@ $$
         :::{figure-md} 
         <img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
         
-        {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+        Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
         :::
 
 1. **Diffuse / Synthetic** $360\degree$
@@ -409,7 +407,7 @@ $$
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled9.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
 
-    {Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian}
+    Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
     :::
 
 - **Ghosting :** 렌더링에서의 객체 겹침 혹은 번짐
@@ -420,7 +418,7 @@ $$
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled10.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
 
-    {NeRF also correctly reconstructs partially occluded regions}
+    NeRF also correctly reconstructs partially occluded regions
     :::
 
 ### 6.4 Ablation studies
@@ -434,7 +432,7 @@ $$
     :::{figure-md} 
     <img src="../../pics/NeRF/Untitled11.png" alt="ablation study" class="bg-primary mb-1" width="800px">
 
-    {ablation study}
+    ablation study
     :::
     
 
@@ -454,7 +452,7 @@ adding random Gaussian noise with zero mean and unit variance to the **output σ
         :::{figure-md} 
         <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">>
 
-        {fully-connected network architecture} \  (source: {https://arxiv.org/pdf/2003.08934v2})
+        fully-connected network architecture \  (source: {https://arxiv.org/pdf/2003.08934v2})
         :::
 
 - Coarse network  64 + fine network 128 = 192

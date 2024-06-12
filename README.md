@@ -1,4 +1,4 @@
-# text-to-image-generation-feat-diffusion
+# Welcome to PseudoDiffusers!!
 
 This is the repository of PseudoDiffusers team.
 

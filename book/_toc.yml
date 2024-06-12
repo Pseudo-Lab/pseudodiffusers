@@ -54,6 +54,7 @@ parts:
 - caption: 3D Generation
   chapters:
   - file: docs/review/NeRF
+  - file: docs/review/3DGS
   
 - caption: Experiments
   chapters:

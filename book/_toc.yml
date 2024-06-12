@@ -47,6 +47,7 @@ parts:
   chapters:
   - file: docs/review/Make_A_Video
   - file: docs/review/VideoLDM
+  - file: docs/review/AnimateDiff
   - file: docs/review/Animate_Anyone
   - file: docs/review/DreaMoving
   - file: docs/review/DreamPose

@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>3D Gaussian Splatting for Real-Time Radiance Field Rendering &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -145,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -429,10 +431,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -440,7 +442,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -469,13 +471,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiable-3d-gaussian-splatting">Differentiable 3D Gaussian Splatting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-with-adaptive-density-control-of-3d-gaussians">Optimization with Adaptive Density Control of 3D Gaussians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-control-of-gaussians">Adaptive Control of Gaussians</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-diffenrentiable-rasterization-for-gaussians">Fast Diffenrentiable Rasterization for Gaussians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-evaluation">Results and Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
 </ul>
             </nav>
         </div>
@@ -513,32 +509,48 @@ document.write(`
 <p>이 방법은 이전의 implicit radiance field 접근법들과 동등하거나 더 나은 품질을 제공하며, 이전의 가장 빠른 방식과 유사한 학습 속도와 품질을 보여주어 고수준의 새로운 뷰 합성에 대해 처음으로 실시간 렌더링을 제공한다.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="differentiable-3d-gaussian-splatting">
-<h2>Differentiable 3D Gaussian Splatting<a class="headerlink" href="#differentiable-3d-gaussian-splatting" title="Permalink to this heading">#</a></h2>
+<br>
+  :::{figure-md} 
+      <img src="../../pics/3DGS/image0.png" alt="main process" class="bg-primary mb-1" width="800px">
+      Main process of 3D Gaussian Splatting
+  :::
+<br>
+  :::{figure-md} 
+      <img src="../../pics/3DGS/image1.png" alt="main process" class="bg-primary mb-1" width="800px">
+      Peusdo Algorithm of 3D Gaussian Splatting 
+  :::
+<br>
+  ## Differentiable 3D Gaussian Splatting
 <p>이 논문은 normal(표면 법선)이 없는 Structure-from-Motion(SfM) 포인트들의 sparse한 셋을 initial point로 하여, 고품질의 novel view synthesis를 가능하게 하는 scene representation을 최적화하는 것을 목표로 한다.</p>
 <p>빠른 렌더링을 위해 unstructured하고 explicit한 primitive를 필요로 하며, 이를 위해 미분 가능하고 2D splats로 쉽게 project되는 3D Gaussian을 선택했다.</p>
-<p>3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ’로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.</p>
+<br>
+  :::{figure-md} 
+      <img src="../../pics/3DGS/image2.png" alt="Eq. 4" class="bg-primary mb-1" width="800px">
+  :::
+<p>3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ’로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.
+<br>
+:::{figure-md}
+<img src="../../pics/3DGS/image3.png" alt="Eq. 5" class="bg-primary mb-1" width="800px">
+:::</p>
 <p>따라서 논문에서는 더 직관적이고 최적화에 적합한 representation을 선택한다. 3D Gaussian의 공분산 행렬 Σ는 타원체의 구성을 설명하는 것과 유사하며, 이를 위해 scaling matrix S와 rotation matrix R을 사용한다.</p>
-<p>scaling은 3D vector s로, rotation은 quaternion q로 표현하며, 이들은 각각의 행렬로 변환될 수 있다. 학습 동안 Auto grad(자동 미분)의 오버헤드를 피하기 위해 모든 파라미터에 대한 gradient를 명시적으로 유도한다.</p>
+<p>scaling은 3D vector s로, rotation은 quaternion q로 표현하며, 이들은 각각의 행렬로 변환될 수 있다. 학습 동안 Auto grad(자동 미분)의 오버헤드를 피하기 위해 모든 파라미터에 대한 gradient를 명시적으로 유도한다.
+<br>
+:::{figure-md}
+<img src="../../pics/3DGS/image4.png" alt="Eq. 6" class="bg-primary mb-1" width="800px">
+:::</p>
 <p>최적화에 적합한 anisotropic covariance representation은 장면의 다양한 geometry에 적응하도록 3D Gaussian을 최적화한다.</p>
-</section>
-<section id="optimization-with-adaptive-density-control-of-3d-gaussians">
-<h2>Optimization with Adaptive Density Control of 3D Gaussians<a class="headerlink" href="#optimization-with-adaptive-density-control-of-3d-gaussians" title="Permalink to this heading">#</a></h2>
+<br>
+  ## Optimization with Adaptive Density Control of 3D Gaussians
 <ul class="simple">
 <li><p><strong>Optimization</strong></p></li>
 <li><p><strong>Adaptive Control of Gaussians</strong></p></li>
 </ul>
 <p>이 논문의 핵심 접근법은 free-view synthesis를 위해 장면을 정확하게 표현하는 3D Gaussian의 밀집된 세트를 만드는 최적화 단계다. 여기에는 position 𝑝, 투명도 𝛼, 공분산 Σ뿐만 아니라, scene의 view-dependent appearance를 정확하게 위한 각 Gaussian의 색상 c를 표현하는 SH coefficients까지 포함된다.</p>
-</section>
-<section id="optimization">
-<h2>Optimization<a class="headerlink" href="#optimization" title="Permalink to this heading">#</a></h2>
+<br>
+  ## Optimization
+  - 3D를 2D로 project할 때 발생할 수 있는 모호함을 피하기 위해, optimization 과정에서 geometry가 더 생성되거나, 삭제되거나 혹은 이동할 수 있어야 함
+    - 공분산 파라미터의 퀄리티는 큰 homogeneous area들을 적은 수의 큰 anisotropic Gaussian들로 캡처될 수 있기 때문에 representation의 compactness에 중요
 <ul class="simple">
-<li><p>3D를 2D로 project할 때 발생할 수 있는 모호함을 피하기 위해, optimization 과정에서 geometry가 더 생성되거나, 삭제되거나 혹은 이동할 수 있어야 함</p>
-<ul>
-<li><p>공분산 파라미터의 퀄리티는 큰 homogeneous area들을 적은 수의 큰 anisotropic Gaussian들로 캡처될 수 있기 때문에 representation의 compactness에 중요</p></li>
-</ul>
-</li>
 <li><p>논문은 SGD를 사용하고 일부 연산은 CUDA 커널을 사용합니다. 특히 빠른 rasterization은 최적화의 효율성에 중요합니다.</p>
 <ul>
 <li><p>이는 최적화의 주요 computation bottleneck이기 때문</p></li>
@@ -553,20 +565,29 @@ document.write(`
 </ul>
 <p>Loss function은 D-SSIM과 L1 loss를 사용하며, D-SSIM loss는 이미지의 왜곡(distortion)을 잘 반영하고 미분 가능하여 evaluation metric뿐만 아니라 loss로도 사용 가능.</p>
 <p>참고로 SSIM은 이미지의 밝기, 대조, 구조를 고려하여 두 이미지 간의 유사성을 측정하는 메트릭이다.</p>
-</section>
-<section id="adaptive-control-of-gaussians">
-<h2>Adaptive Control of Gaussians<a class="headerlink" href="#adaptive-control-of-gaussians" title="Permalink to this heading">#</a></h2>
-<p>또한 Structure-from-Motion(SfM)으로 얻은 초기 희소 점들을 시작으로, scene을 더 잘 표현하기 위해 unit volume  내 Gaussian들의 수와 밀도를 점진적으로 최적화하는 방식을 제안한다.</p>
-<ul class="simple">
-<li><p>매 100번의 반복(iter)마다 Gaussian을 추가하고, 투명도 𝛼가 일정 값보다 작은 Gaussian을 제거</p></li>
-</ul>
+  <br>
+    :::{figure-md} 
+        <img src="../../pics/3DGS/image6.png" alt="Loss(Eq. 6)" class="bg-primary mb-1" width="800px">
+    :::
+  <br>
+    :::{figure-md} 
+        <img src="../../pics/3DGS/image7.png" alt="Loss(Eq. 6)" class="bg-primary mb-1" width="800px">
+    :::
+<br>
+  ## Adaptive Control of Gaussians
+  또한 Structure-from-Motion(SfM)으로 얻은 초기 희소 점들을 시작으로, scene을 더 잘 표현하기 위해 unit volume  내 Gaussian들의 수와 밀도를 점진적으로 최적화하는 방식을 제안한다.
+  - 매 100번의 반복(iter)마다 Gaussian을 추가하고, 투명도 𝛼가 일정 값보다 작은 Gaussian을 제거
 <p>Adaptive Control of Gaussians는 빈 공간을 채우고, missing geometric feature이 있는 region과 하나의 Gaussian이 너무 넓은 region을 커버하는 region에 집중합니다.</p>
 <p>이러한 지역은 모두 큰 view-space positional gradient를 가지며, 최적화를 통해 Gaussian을 이동시킵니다.</p>
 <ul class="simple">
 <li><p>Under-reconstruction: 동일한 크기의 Gaussian을 복제하고 위치 기울기 방향으로 이동.</p></li>
 <li><p>Over-reconstruction: Gaussian을 두 개로 나누고, 위치는 기존 Gaussian의 PDF를 샘플링해서 초기화.</p></li>
 </ul>
-<p>최적화 과정에서 입력 카메라에 가까운 Gaussian density의 부적절한 증가를 방지하기 위해, 3000번의 반복마다 투명도 α를 0에 가깝게 설정한다.</p>
+<p>최적화 과정에서 입력 카메라에 가까운 Gaussian density의 부적절한 증가를 방지하기 위해, 3000번의 반복마다 투명도 α를 0에 가깝게 설정한다.
+<br>
+:::{figure-md}
+<img src="../../pics/3DGS/image8.png" alt="figure of Adaptive Control of Gaussians" class="bg-primary mb-1" width="800px">
+:::</p>
 </section>
 <section id="fast-diffenrentiable-rasterization-for-gaussians">
 <h2>Fast Diffenrentiable Rasterization for Gaussians<a class="headerlink" href="#fast-diffenrentiable-rasterization-for-gaussians" title="Permalink to this heading">#</a></h2>
@@ -589,27 +610,37 @@ document.write(`
 <li><p>이를 GPU Radix sort를 이용해 정렬</p></li>
 <li><p>각 타일마다 front-to-back으로 color와 α값을 accumulate해서 픽셀 값을 구함</p></li>
 </ul>
-</section>
-<section id="results-and-evaluation">
-<h2>Results and Evaluation<a class="headerlink" href="#results-and-evaluation" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Results and Evaluation</p></li>
-</ul>
-<p>데이터셋에 따라 결과는 다르지만 SOTA이상의 퀄리티를 내면서 좋은 Training time과 FPS를 보인다.</p>
-<ul class="simple">
-<li><p>Ablations</p></li>
-</ul>
-</section>
-<section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
-<ul class="simple">
-<li><p>이전의 방식들과 유사하게 잘 관측되지 않은 장면은 artifact들이 존재</p></li>
-<li><p>이전의 방식들과 유사하게 늘어지고 얼룩진 artifact를 생성할 수 있음</p></li>
-<li><p>최적화에서 거대한 Gaussian이 만들어지면 popping artifacts 가끔 발생</p></li>
-<li><p>최적화에서 regularization을 적용하지 않음</p></li>
-<li><p>NeRF-based 기법들보다 memory consumption이 상당히 높음</p></li>
-</ul>
-</section>
+<br>   
+  ## Results and Evaluation
+  <br>
+    - Results and Evaluation
+      데이터셋에 따라 결과는 다르지만 SOTA이상의 퀄리티를 내면서 좋은 Training time과 FPS를 보인다.
+    <br>
+      :::{figure-md} 
+          <img src="../../pics/3DGS/image12.png" alt="figure of Results" class="bg-primary mb-1" width="800px">
+      :::
+<br>
+  <br>
+    :::{figure-md} 
+        <img src="../../pics/3DGS/image13.png" alt="figure of Results" class="bg-primary mb-1" width="800px">
+    :::
+  <br>
+  - Ablations
+    <br>
+      :::{figure-md}
+          <img src="../../pics/3DGS/image19.png" alt="figure of Ablations" class="bg-primary mb-1" width="800px">
+      :::
+    <br>
+      :::{figure-md}
+          <img src="../../pics/3DGS/image18.png" alt="figure of Ablations" class="bg-primary mb-1" width="800px">
+      :::
+<br>
+  ## Limitations
+  - 이전의 방식들과 유사하게 잘 관측되지 않은 장면은 artifact들이 존재
+  - 이전의 방식들과 유사하게 늘어지고 얼룩진 artifact를 생성할 수 있음
+  - 최적화에서 거대한 Gaussian이 만들어지면 popping artifacts 가끔 발생
+  - 최적화에서 regularization을 적용하지 않음
+  - NeRF-based 기법들보다 memory consumption이 상당히 높음</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -677,13 +708,7 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#differentiable-3d-gaussian-splatting">Differentiable 3D Gaussian Splatting</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization-with-adaptive-density-control-of-3d-gaussians">Optimization with Adaptive Density Control of 3D Gaussians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimization">Optimization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adaptive-control-of-gaussians">Adaptive Control of Gaussians</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fast-diffenrentiable-rasterization-for-gaussians">Fast Diffenrentiable Rasterization for Gaussians</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results-and-evaluation">Results and Evaluation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
 </ul>
   </nav></div>
 
@@ -732,8 +757,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

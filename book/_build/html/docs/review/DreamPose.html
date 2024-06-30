@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -147,6 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -431,10 +433,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -442,7 +444,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -540,7 +542,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <img alt="DreamPose_input_output" class="bg-primary mb-1" src="pics/DreamPose/00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 547 </span><span class="caption-text">DreamPose 입출력</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 548 </span><span class="caption-text">DreamPose 입출력</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <aside>
@@ -691,7 +693,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <img alt="latent diffusion" class="bg-primary mb-1" src="../../_images/Untitled.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 548 </span><span class="caption-text">Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 549 </span><span class="caption-text">Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -777,7 +779,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <img alt="DreamPose Architecture" class="bg-primary mb-1" src="../../_images/021.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 549 </span><span class="caption-text">DreamPose Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 550 </span><span class="caption-text">DreamPose Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -787,7 +789,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <img alt="DreamPose Encoder" class="bg-primary mb-1" src="../../_images/031.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 550 </span><span class="caption-text">DreamPose Encoder</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 551 </span><span class="caption-text">DreamPose Encoder</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -834,7 +836,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <img alt="Modified UNet" class="bg-primary mb-1" src="../../_images/041.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 551 </span><span class="caption-text">Modified UNet</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 552 </span><span class="caption-text">Modified UNet</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -854,7 +856,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <img alt="Two-phase finetuning" class="bg-primary mb-1" src="../../_images/051.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 552 </span><span class="caption-text">Two-phase Finetuning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 553 </span><span class="caption-text">Two-phase Finetuning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -877,7 +879,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <img alt="Importance of VAE finetuning" class="bg-primary mb-1" src="../../_images/061.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 553 </span><span class="caption-text">VAE 파인튜닝의 중요성</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 554 </span><span class="caption-text">VAE 파인튜닝의 중요성</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -975,7 +977,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <img alt="result 1" class="bg-primary mb-1" src="../../_images/071.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 554 </span><span class="caption-text">정량적 성능 비교</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 555 </span><span class="caption-text">정량적 성능 비교</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -990,7 +992,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <img alt="result 2" class="bg-primary mb-1" src="../../_images/081.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 555 </span><span class="caption-text">정성적 성능 비교</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 556 </span><span class="caption-text">정성적 성능 비교</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -1000,7 +1002,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <img alt="result 3" class="bg-primary mb-1" src="../../_images/091.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 556 </span><span class="caption-text">PIDM과의 비교</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 557 </span><span class="caption-text">PIDM과의 비교</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1027,14 +1029,14 @@ document.write(`
 <figure class="align-default" id="id11">
 <img alt="result 4" class="bg-primary mb-1" src="../../_images/10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 557 </span><span class="caption-text">Ablation Studies - 정량적 비교</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 558 </span><span class="caption-text">Ablation Studies - 정량적 비교</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Qualitative Comparison</strong></p>
 <figure class="align-default" id="id12">
 <img alt="result 5" class="bg-primary mb-1" src="../../_images/11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 558 </span><span class="caption-text">Ablation Studies - 정성적 비교</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 559 </span><span class="caption-text">Ablation Studies - 정성적 비교</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1052,7 +1054,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <img alt="result 6" class="bg-primary mb-1" src="../../_images/12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 559 </span><span class="caption-text">Multiple Input Images 결과</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 560 </span><span class="caption-text">Multiple Input Images 결과</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1066,7 +1068,7 @@ document.write(`
 <figure class="align-default" id="id14">
 <img alt="result 7" class="bg-primary mb-1" src="../../_images/13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 560 </span><span class="caption-text">실패 사례 예시</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 561 </span><span class="caption-text">실패 사례 예시</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1241,8 +1243,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

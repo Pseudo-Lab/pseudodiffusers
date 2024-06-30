@@ -498,12 +498,22 @@ Train score of DDPM \ (source: https://arxiv.org/abs/2006.11239)
 
 FID, IS로 metric 계산. Unconditional model인데도 conditional model보다 우월. Codelength에서 차이가 없기 때문에 overfitting의 가능성도 적음.
 
-> - **FID score**: Inception V3으로 이미지의 분포를 계산한 metric
+> - **FID score**: 사전 학습된 Inception V3으로 생성된 이미지 집합과 실제 생성하고자 하는 집합 간 클래스 이미지의 분포의 거리를 계산한 metric. 낮을 수록 실제와 유사한 이미지를 생성.
+> - **IS(Inception Score)**: 사전 학습된 Inception V3으로 생성한 이미지에 대해 정확하게 클래스가 나누어지는지, 다양한 클래스를 생성하는지 평가함. 높을 수록 다양한 클래스를 생성.
 > - **Unconditional model**: 한번 dataset에 학습되면 추가적인 context 없이 image를 생성
 > - **Conditional model**: Class, label 등의 추가 정보를 받아 image를 생성 
 
 $\mu$보다 $\epsilon$을 계산하는 것이 성적이 좋고, fixed variance를 사용했을 때에도 성능이 감소하지 않음.
 
+## 4-2. Reverse process parameterization and training objective ablation
 
+:::{figure-md} 
+<img src="../../pics/DDPM/img14.png" alt="DDPM_14" class="bg-primary mb-1" width="700px">
 
+Comparison between $\mu$ and $\epsilon$ \ (source: https://arxiv.org/abs/2006.11239)
+:::
+
+$\mu$의 실험 결과를 보면 분산을 고정했을 때 FID에서 성능 차이가 나는 것을 볼 수 있음. 또한 $\epsilon$을 사용하면서 Simplified objective를 사용하면 FID, IS가 더 개선됨
+
+## 4-3. Reverse process parameterization and training objective ablation
 

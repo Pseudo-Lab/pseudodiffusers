@@ -42,6 +42,8 @@ parts:
   - file: docs/review/GIGAGAN
   - file: docs/review/consistency_models
   - file: docs/review/latent_consistency_models
+  - file: docs/review/LLM_grounded_Diffusion
+
 
 - caption: Video Generation
   chapters:

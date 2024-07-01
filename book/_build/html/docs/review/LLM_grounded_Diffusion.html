@@ -1,0 +1,788 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>LLM Grounded Diffusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/LLM_grounded_Diffusion';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="Latent Consistency Models" href="latent_consistency_models.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LLM Grounded Diffusion</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/LLM_grounded_Diffusion.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/LLM_grounded_Diffusion.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LLM Grounded Diffusion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LLM-grounded Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion Models with Large Language Models</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: [<a class="reference external" href="https://arxiv.org/pdf/2305.13655">https://arxiv.org/pdf/2305.13655</a>]</p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/TonyLianLong/LLM-groundedDiffusion">TonyLianLong/LLM-groundedDiffusion</a></p></li>
+<li><p>Project Page: <a class="reference external" href="https://llm-grounded-diffusion.github.io/">https://llm-grounded-diffusion.github.io/</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Sehwan Park</p></li>
+<li><p><strong>Last updated on May. 24, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="llm-grounded-diffusion">
+<h1>LLM Grounded Diffusion<a class="headerlink" href="#llm-grounded-diffusion" title="Permalink to this heading">#</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<p>최근의 text-to-image generation 모델을 큰 발전을 이루었다. 하지만 이러한 모델들은 여전히 numeracy와 spatial reasoning을 요구하는 복잡한 프롬프트를 잘 반영하지 못하고 이미지를 생성하는 문제들이 있다. 그래서 본 논문에서는 LLM과 레이아웃 기반 이미지 생성모델을 활용하여 Diffusion model에서 프롬프트 이해 능력을 향상시키는 방법을 제안한다.</p>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD1.png"><img alt="LMD_1" class="bg-primary mb-1" src="../../_images/LMD1.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Limitation in Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Diffusion model의 등장과 발전에 따라 T2I(Text to Image) generation 모델은 크게 발전되어왔다. 최근의 SDXL 모델을 보면 상당한 quality의 이미지를 생성하는 것을 볼 수 있다. 그럼에도 불구하고, diffusion model은 복잡한 프롬프트를 잘 반영해서 이미지를 생성하는 것에 취약한 점을 보인다. 위의 figure를 보면 크게 Negation, Generative Numeracy, Attribute Binding, Spatial Relationships에서 큰 문제점을 보임을 알 수 있다.</p>
+<p>가장 단순히 위의 문제를 해결하는 방법은 복잡한 프롬프트가 포함된 대규모의 multi-modal dataset을 가지고 모델을 훈련하는 방법이다. 하지만 이러한 방법은 시간과 리소스 측면에서 좋지못한 면이 있으며, 좋은 quality의 multi-modal dataset을 대규모로 확보하는 것 조차 쉽지 않은 일이다.</p>
+<p>이러한 문제를 피하면서 위의 figure의 대표적인 문제점을 해결하기 위해 본 논문에서는 LLM 및 Layout to Image Generation 모델을 활용하여 training-free 방법으로 접근한다.</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD2.png"><img alt="LMD_2" class="bg-primary mb-1" src="../../_images/LMD2.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Overview of LLM-Grounded Diffusion</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>Stage1</p>
+<p>주어진 prompt에 대해서 LLM을 활용하여 표현되어야 할 foreground object에 대한 layout을 생성한다. prompt로 부터 foreground object들을 해당 attribute과 함께 parsing을 하고 reasoning을 통해 올바른 bounding box coordinate을 얻는 것이 목표인 단계이다. LLM의 In-Context Learning(7-shot)을 활용하여 LLM을 Layout Generator로써 활용한다.</p>
+</li>
+<li><p>Stage2</p>
+<p>Stage1으로 부터 각각의 foreground object에 대한 caption과 bounding box coordinate을 기반으로 실제 해당 bounding box에 해당 caption이 생성되도록 하는 단계이다. 이 과정에서 training-free 방법을 적용하기 위해 Stable Diffusion의 inference과정에서 attention map을 manipulate 하는 방법을 통해 Layout to image generation을 가능케한다.</p>
+</li>
+</ul>
+<p>본 논문의 main contribution은 다음과 같다.</p>
+<ol class="arabic simple">
+<li><p>We propose a training-free two-stage generation pipeline that introduces LLMs to improve the prompt understanding ability of text-to-image diffusion models.</p></li>
+<li><p>We introduce layout-grounded Stable Diffusion, a novel controller that steers an off-the-shelf diffusion model to generate images grounded on instance-level box layouts from the LLM.</p></li>
+<li><p>LMD enables instruction-based scene specification and allows broader language support in the prompts.</p></li>
+<li><p>We propose a benchmark to assess the prompt understanding ability of a text-to-image model and demonstrate the superior performance of LMD over recent baselines.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2>LLM-grounded Diffusion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>LLM-based Layout Generation</p>
+<p>이 단계는 위의 stage1과 같은 단계로써 LLM을 통해 prompt로 부터 각 foreground object의 caption과 bounding box의 coordinate을 얻는 단계이다.</p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD4.png"><img alt="LMD_4" class="bg-primary mb-1" src="../../_images/LMD4.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 492 </span><span class="caption-text">Overview Prompt</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>우선 이 단계에서의 prompt는 다음과 같이 구성되어 있다. prompt의 가장 윗단인 Instruction을 보면 LLM에게 정보를 주는 말들로 이루어져 있으며 Task specification과 supporting details로 이루어져 있음을 알 수 있다. LLM에게 직접적으로 해야할 일들과 정보를 주는 prompt라고 볼 수 있다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD3.png"><img alt="LMD_3" class="bg-primary mb-1" src="../../_images/LMD3.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 493 </span><span class="caption-text">In-context Examples</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Overview Prompt의 In-context Examples에 관련된 부분이다. 이 부분을 통해 input prompt로 부터 원하는 형태로 output값을 얻을 수 있다. LLM을 직접 학습시키지 않고 few shot example을 통해 LLM으로 부터 원하는 결과를 이끌어내는 방법을 취한 부분이다. Gpt 3.5같은 경우에는 7-shot을 사용했고, Gpt4 같은 경우는 1-shot만으로도 충분히 원하는 형태로 결과를 얻을 수 있었다고 한다. 결과는 Objects 부분에 나와있다. Foreground Object에 대한 caption값과 해당 bounding box의 coordinate값으로 이루어져 있음을 알 수 있다.</p>
+</li>
+<li><p>Layout-grounded Stable Diffusion</p>
+<p>이 단계에서는 LLM이 생성한 레이아웃을 기반으로 이미지 생성을 하기 위해 컨트롤러를 도입한다. 이전의 training-free 방법을 택했던 work들의 경우, regional denoising 혹은 inference과정에서의 단순한 attention manipulation을 통해 semantic guidance를 적용하지만, 이러한 방법들은 의미 있는 영역 내 객체의 수(generative numeracy)를 제어하는 능력이 부족하다. 이는 다른 인스턴스들간의 구별이 latent space나 attention map에서 어렵기 때문에 발생하며, 이는 인스턴스 수준의 control을 힘들게 하는 요인이다. 반면, LMD(LLM-grounded Diffusion)는 각 개별 경계 상자에 대해 마스킹된 잠재 변수를 먼저 생성하고, 이러한 마스킹된 잠재 변수를 prior로 사용하여 전체 이미지 생성을 안내함으로써 인스턴스 수준의 control이 가능토록 한다. 이를통해 각 객체 인스턴스의 정확한 배치와 속성 결합을 허용한다.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD7.png"><img alt="LMD_7" class="bg-primary mb-1" src="../../_images/LMD7.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Overall image generation with masked latents as priors</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Stage2는 크게 step1,2로 나눠진다. step1의 경우에는 stage1에서 구한 각각의 box들에 대해서 box내의 object들에 대한 latent map을 구하는 과정이다. stage2는 stage1에서 구한 각 box에 대한 latent map을 compose하여 전체적인 image를 생성하는 과정이다.</p>
+<ul>
+<li><p>step1</p>
+<p>예를 들어, 위의 그림처럼 gray cat에 관한 bounding box가 stage1을 통해 구해졌다면, box안에 gray cat이 그려지도록 유도를 할 수 있을 것이다. 그러는 과정에서 저 box에 gray cat이 생성되도록 하는 마치 Ground Truth latent map을 얻을 수 있게 된다. 모든 object들에 대해 이러한 방법으로 denoising 과정에서 모든 step의 latent map을 구하는 것이다.  모든 단일 box에 대해 그 box에 해당 caption object가 생성되도록 하는 GT latent map을 구하는 게 step1의 과정이라고 생각하면 된다. 사실 상 LMD의 핵심은 step1에서 진행된다고 볼 수 있다.</p>
+<p>크게 보자면, 각 foreground object에 대해서 <span class="math notranslate nohighlight">\(Z_T\)</span> 부터 <span class="math notranslate nohighlight">\(Z_0\)</span>까지 denoising을 거치면서 모든 step t에 대한 latent map을 구하면 된다. 이 때, 가장 중요한 것은 foreground object가 실제 box안에서 잘 생성되도록 하는것이 선행이 되어야 한다. 이를 유도하기 위해 저자들은 각 denoising step마다 box내부에 해당 foreground object가 생성되도록 attention manipulation을 진행한다.</p>
+<div class="math notranslate nohighlight">
+\[
+     A_{uv}^{(i)} = Softmax(q_u^TK_v)
+     \]</div>
+<p>식(1)과 같이 pixel값들과 prompt내에서의 text token 간의 cross-attention map을 나타낼 수 있다. u는 이미지 내의 모든 각 pixel들을 의미하고 v는 각 text token을 의미한다.</p>
+<p>구성되는 프롬프트에 대해 예시를 들어 정리하자면, 전체 프롬프트가 “A realistic photo of a gray cat and an orange dog on the grass” 였다고 하자. 그러면 각 foreground object에 대해서 프롬프트를 따로 생성한다. “[background prompt] with [box caption]” (e.g., “a realistic image of an indoor scene with a gray cat”) 형태로 각 foreground object에 대한 프롬프트를 구성한다.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD6.png"><img alt="LMD_6" class="bg-primary mb-1" src="../../_images/LMD6.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Overview of attention manipulation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Object와 Bounding box를 align하기 위해서는 위의 그림에서 보이듯이 box 내부 pixel의 object에 관한 token과의 attention은 증가되고 다른 token과의 attention은 감소되면 된다. 위의 그림을 예시로 보면 “a gray cat”이라는 token과는 box내부 pixel들이 attention이 증가하고, 다른 token과는 attention이 감소하도록 유도되면 된다. 이 방법을 유도 하기 위해 본 논문의 저자들은 energy function을 사용한다.</p>
+<div class="math notranslate nohighlight">
+\[
+     E(A_i, i, v) = -\text{Topk}_u (A_{uv} \cdot b^{(i)}) + \omega \text{Topk}_u (A_{uv} \cdot (1 - b^{(i)}))
+     \]</div>
+<p>식(2)의 Energy function을 보면 foreground object i에 대한 token v가 정해져 있을 때, box 내부 pixel이 token v와의 attention값이 크고 box 외부 pixel이 token v와의 attention값이 작으면 Energy function값이 최소가 됨을 알 수 있다. 정리하자면 위의 Energy function값이 최대한 작아지면 box 내부의 pixel들의 object token에 대한 attention이 증가되고, box와 foreground object간의 align이 잘 이루어지게 되는 것이다.</p>
+<div class="math notranslate nohighlight">
+\[
+     z^{(i)}_t \leftarrow z^{(i)}_t - \eta \nabla z^{(i)}_t \sum_{v \in V_i} E(A^{(i)}, i, v)
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     z^{(i)}_{t-1} \leftarrow \text{Denoise}(z^{(i)}_t)
+     \]</div>
+<p>Energy function이 최소가 되도록 하기 위해  본 논문은 식(3)과 같은 optimize과정을 거친다. 방법은 단순하다. Gradient Descent를 생각해보면 parameter로 loss function을 표현하고 loss function이 최소가 되도록 parameter들을 optimize하면서 유도한다. 이 방법 역시 같다. Energy function을 최소로 만드는 것이 목표이기에 이는 loss function과 같은 역할을 하게 된다. 그리고 Energy function의 식들은 <span class="math notranslate nohighlight">\(z_t\)</span>에 대해 표현이 가능하기에, Energy function을 통해 z_t를 optimize하여 Energy function이 최소화가 되도록 유도한다. Energy function 최소화는 각 denoising timestep마다 5회 반복되며, denoising 단계가 다섯 번 진행될 때마다 선형적으로 감소하여 반복 횟수가 1회로 줄어든다. 또한, 30step 후에는 guidance를 수행하지 않는다.</p>
+<p>guidance가 진행되면서 denoising이 다 끝나고 나면 모든 step에 대한 latent map을 얻을 수 있게 되고, attention map을 얻을 수 있게 된다. 이 때 attention map을 SAM을 통해 segment를 진행하거나 threshold값을 설정하여 Foreground mask를 구하게 된다. 이후에 구한 모든 time step에 대한  latent map에 Foreground Mask와 pixel wise곱을 해주어서 masked latent를 구하게 된다.</p>
+</li>
+<li><p>step2</p>
+<p>step2에서는 step1에서 구한 각 foreground object들을 compose하여 처음에 주어진 prompt에 대한 이미지를 잘 생성하는 것이 목표인 단계이다. 기존 work에 의하면 diffusion model은 denoising의 초기 단계에서 semantic한 정보들을 생성하며, 이후 단계에서부터 fine-detail한 부분을 생성한다. 이 점을 이용해서 compose를 하는 step2에서는 단순히 latent map을 compose한다음 denoising을 진행하는 것이 아니라, step의 절반 지점까지는 latent map을 compose하면서 step1과 마찬가지로 optimize를 진행하며 foreground object들이 실제로 원하는 위치에 생성되도록 유도를 하게 된다. 이후부터는 fine-detail한 부분을 생성하여 자연스러운 이미지를 만들기 위해 compose나 optimize를 하지 않고 이미지를 생성하게 된다. Compose관련 식과 optimize를 위한 step2에서의 Energy function은 아래와 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+     z^{(\text{comp})}_t \leftarrow \text{LatentCompose}(z^{(\text{comp})}_t, \hat{z}^{(i)}_t, m^{(i)}) \quad \forall i
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     E^{(\text{comp})}(A^{(\text{comp})}, A^{(i)}, i, v) = E(A^{(\text{comp})}, i, v) + \lambda \sum_{u \in V'_i} \left| A^{(\text{comp})}_{uv} - A^{(i)}_{uv} \right|
+     \]</div>
+<p>최종적으로 denoising이 다 진행된 이후, decoder를 통해 latent space에서 pixel space로 변환되어 최종 이미지가 생성된다.</p>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<p>Evaluation 같은 경우는 Qualitive한 결과와 Quantitive한 결과로 나누어서 보여준다. Introduction에서 소개한 기존 T2I model의 문제점 4가지를 잘 해결하고자 하는 것이 이 work의 목표이었기에 4가지 항목에 대해 평가를 진행한다. 데이터 같은 경우는 Negation, Attribute Binding, Generative Numeracy, Spatial Relationships를 각각 평가하기 위한 100개씩의 데이터를 수집해서 진행을 하였다고 한다. Evaluation metric이 존재하진 않고 Quantitive한 결과를 위해서 OWL-VIT detector를 활용하여 object들에 대한 bounding box값을 얻은 후에, 생성된 이미지가 prompt에 잘 맞게 생성되어있는지를 확인하였다고 한다. 추가적으로 Ablation study에 대한 다양한 결과들도 포함되어 있다.</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD8.png"><img alt="LMD_8" class="bg-primary mb-1" src="../../_images/LMD8.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Qualititive Results1 of LMD</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD13.png"><img alt="LMD_13" class="bg-primary mb-1" src="../../_images/LMD13.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Qualititive Results2 of LMD</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>기존 Stable Diffusion XL 모델과 비교하여 LMD가 얼마나 prompt에 잘 대응하는 이미지를 생성하는지를 보여주는 결과이다. Introduction에서 언급했듯이 기존 SDXL모델은 이미지의 전반적인 부분은 잘 생성하지만 numarcy, spatial relationship, attribute matching등을 잘 만족시키지 못하는 경우가 발생한다. 하지만 LMD는 이러한 문제점들을 잘 해결하고 있는 것으로 보인다.</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD9.png"><img alt="LMD_9" class="bg-primary mb-1" src="../../_images/LMD9.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Quantitive Results of LMD &amp; LMD+</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위의 result는 기존 Stable Diffusion과 이 논문에서 제시하는 LMD 방법 그리고 기존 layout to image generation model인 GLIGEN의 adapter를 가져와서 통합한 방법인 LMD+ 세가지를 비교한다. LMD &amp; LMD+ 모두 기존 SD에 비해 월등한 결과를 보임을 알 수 있다.</p>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD11.png"><img alt="LMD11" class="bg-primary mb-1" src="../../_images/LMD11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Ablation of LMD &amp; LMD+</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Ablation study의 결과를 보면, 앞선 결과와 마찬가지로 LMD가 훨씬 더 좋은 성능임을 알 수 있다. LMD의 Baseline model로 SDv1.5, SDv2.1을 각각 써본 결과 둘의 차이는 거의 없었다고 한다. 또한 Foreground mask를 구하기 위해 SAM을 사용했을 경우와 SAM을 사용하지 않고 Threshold를 사용해서 구한 결과도 보여주었는데 이는 LMD일때와 LMD+일때가 서로 다른 결과를 보인다. LMD에서는 attention기반의 guidance가 layout box와 관련하여 공간적으로 정확하지 않기 때문에, SAM은 객체를 커버하는 올바른 마스크를 얻는 데 도움을 준다. 따라서 SAM을 제거하면 LMD에서 약간의 성능 저하가 발생하게 된다. 반면에 LMD+에서는 기존 잘 훈련된  GLIGEN 모델을 가져와 이용하기 때문에 대부분의 경우 SAM이 필요하지 않게된다. 오히려, SAM은 때때로 배경을 포함하는 영역을 선택하여 혼란을 일으키고 성능을 저하시키게 되어 SAM을 제거하면 LMD+에서는 결과가 오히려 개선되는 효과가 있었다고 한다.</p>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD10.png"><img alt="LMD10" class="bg-primary mb-1" src="../../_images/LMD10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Ablations on layout-to-image methods as stage 2 with LMD’s LLM layout generator as stage 1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위의 결과는 Stage1과 Stage2에 어떤 방법을 가져왔느냐에 따른 전체적인 Quantative한 결과를 보여준다. 우선 Stage1 즉, object에 대한 개별 bounding box를 생성하는 부분에 대해서는 이 논문의 LMD기법을 다 사용을 하였다. 생성된 box를 기반으로 이미지를 생성하는 Stage 2에 대해서 training-free 방법 즉, guidance를 주는 방법을 사용한 경우와 기존 pretrain된 layout to image generation model, 여기에 LMD기법을 추가적으로 더한 방법인 training-based 방법을 나누어서 비교한다. 우선 training-free 방법의 경우, 다른 guidance 기법에 비해 이 논문에서 제시한 stage2의 방법이 훨씬 더 뛰어난 성능을 보임을 알 수 있다. training-based 방법의 경우, 기존 layout to image generation model인 GLIGEN을 그대로 가져온 경우, GLIGEN에 이 논문의 stage2 기법을 적용한 LMD+, LMD+ 에서 GPT3.5대신 GPT4를 사용한 경우로 나누어서 비교를 한다. 사실상 LMD+가 가장 좋은 성능을 보임을 알 수 있다. GPT 버전을 GPT4로 바꾼 경우는 Numeracy에서는 성능이 살짝 감소하지만, 다른 부분에 대해서는 성능이 좀 더 많이 증가한 모습을 확인할 수 있다.</p>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD12.png"><img alt="LMD10" class="bg-primary mb-1" src="../../_images/LMD12.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Ablations on GPT version + Compare with SD</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>GPT같은 경우 GPT3.5-turbo를 사용한 경우와 GPT4를 사용한 경우를 나누어서 실험을 진행하였다. GPT4의 경우 1-shot으로 진행을 해도 layout을 잘 만드는 모습을 보였고, GPT3.5의 경우 7shots으로 진행을 해야 완벽하게 layout을 생성하는 결과를 보임을 알 수 있다.</p>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD14.png"><img alt="LMD14" class="bg-primary mb-1" src="../../_images/LMD14.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 502 </span><span class="caption-text">Ablations on different LLM and same LLM with different size</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>서로 다른 LLM을 사용해서 진행을 해본 결과, 다른 open-source model에 비해 gpt4가 확실히 좋은 성능을 보였음을 알 수 있다. 또한 똑같은 open-source model을 다른 크기로 적용해본결과 더 큰 규모의 model이 더 좋은 성능을 보임을 알 수 있다.</p>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>LMD는 text-to-image generation diffusion model이 prompt를 더 잘 반영해서 이미지를 생성할 수 있도록 한 방법이다. 추가적인 Training을 하지 않고 prompt를 더 잘이해할 수 있도록 기존 Text to Image에서 intermediate representation인 layout을 활용한 방법이 특징이라고 할 수 있다. 두 가지 stage로 나눠 LLM-based text-grounded layout generation과 layout-grounded image generation을 통해 문제를 해결하고자 한 논문이다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="latent_consistency_models.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Latent Consistency Models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LLM-grounded Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

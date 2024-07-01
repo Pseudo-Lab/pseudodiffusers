@@ -62,6 +62,7 @@ CVPR 2024 Workshop
 | 22 | 2024.04.03 | Sangwoo Jo | [Consistency Models](https://arxiv.org/abs/2303.01469) (ICML 2023) |
 | 23 | 2024.04.24 | Donghyun Han | [Latent Consistency Models: Synthesizing High-Resolution Images with Few-Step Inference](https://arxiv.org/pdf/2310.04378) |
 | 24 | 2024.05.01 | Jeonghwa Yoo | [DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion](https://arxiv.org/abs/2304.06025) |
+| 25 | 2024.05.08 | Sehwan Park | [LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion Models with Large Language Models](https://arxiv.org/pdf/2305.13655) (CVPR2024)|
 | 26 | 2024.05.15 | Kyeongmin Yu | [AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725) (ICLR 2024) |
 | 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) (CVPR 2020) |
 

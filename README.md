@@ -127,7 +127,7 @@ jupyter-book build ./book
 
 5. Sync your local and remote repositories
 ```bash
-cd text-to-image-generation
+cd pseudodiffusers
 git add .
 git commit -m "adding my first book!"
 git push

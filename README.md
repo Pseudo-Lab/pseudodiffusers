@@ -65,6 +65,12 @@ CVPR 2024 Workshop
 | 25 | 2024.05.08 | Sehwan Park | [LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion Models with Large Language Models](https://arxiv.org/pdf/2305.13655) (CVPR2024)|
 | 26 | 2024.05.15 | Kyeongmin Yu | [AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725) (ICLR 2024) |
 | 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) (CVPR 2020) |
+| 28 | 2024.05.29 | - | Gaussian Splatting |
+| 29 | 2024.06.12 | - | DiffInject |
+| 30 | 2024.06.26 | - | Point-E |
+| 31 | 2024.06.26 | - | Shape-E |
+| 32 | 2024.07.03 | Geonhak Song | [DreamFusion: Text-to-3D using 2D Diffusion](https://arxiv.org/abs/2209.14988) (ICLR 2023) |
+
 
 
 ## Jupyter Book Update Procedure  

@@ -34,6 +34,7 @@ CVPR 2024 Workshop
 - 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin |
 - 유경민 [Kyeongmin Yu] | [Github](https://github.com/yukyeongmin) | Linkdedin |
 - 이정인 [Jeongin Lee] | Github | Linkedin |
+- 김현수 [Hyunsoo Kim] | [Github](https://github.com/gustn9609) | [Linkedin](https://www.linkedin.com/in/%ED%98%84%EC%88%98-%EA%B9%80-b28a67202/) |
 
 ## Reviewed Papers 
 | idx | Date | Presenter | Paper / Code | 
@@ -65,7 +66,7 @@ CVPR 2024 Workshop
 | 25 | 2024.05.08 | Sehwan Park | [LLM-grounded Diffusion: Enhancing Prompt Understanding of Text-to-Image Diffusion Models with Large Language Models](https://arxiv.org/pdf/2305.13655) (CVPR2024)|
 | 26 | 2024.05.15 | Kyeongmin Yu | [AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725) (ICLR 2024) |
 | 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) (CVPR 2020) |
-| 28 | 2024.05.29 | - | Gaussian Splatting |
+| 28 | 2024.05.29 | Hyunsoo Kim | [Gaussian Splatting](https://arxiv.org/abs/2308.04079) (SIGGRAPH 2023) |
 | 29 | 2024.06.12 | - | DiffInject |
 | 30 | 2024.06.26 | - | Point-E |
 | 31 | 2024.06.26 | - | Shape-E |

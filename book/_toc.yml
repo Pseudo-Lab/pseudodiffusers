@@ -58,6 +58,7 @@ parts:
   chapters:
   - file: docs/review/NeRF
   - file: docs/review/3DGS
+  - file: docs/review/DreamFusion
   
 - caption: Experiments
   chapters:

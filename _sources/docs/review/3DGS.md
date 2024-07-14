@@ -25,45 +25,47 @@ NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하�
 
     
 ## Overview
-<br>
-  :::{figure-md} 
-      <img src="../../pics/3DGS/image0.png" alt="main process" class="bg-primary mb-1" width="800px">
-      Main process of 3D Gaussian Splatting
-  :::
+:::{figure-md} 
+<img src="../../pics/3DGS/image0.png" alt="image0" class="bg-primary mb-1" width="800px">
 
-<br>
-  :::{figure-md} 
-      <img src="../../pics/3DGS/image1.png" alt="main process" class="bg-primary mb-1" width="800px">
-      Peusdo Algorithm of 3D Gaussian Splatting 
-  :::
+Main process of 3D Gaussian Splatting
+:::
+
+:::{figure-md} 
+<img src="../../pics/3DGS/image1.png" alt="image1" class="bg-primary mb-1" width="800px">
+
+Peusdo Algorithm of 3D Gaussian Splatting
+:::
 
 
     
 
-<br>
-  ## Differentiable 3D Gaussian Splatting
+## Differentiable 3D Gaussian Splatting
 
-  이 논문은 normal(표면 법선)이 없는 Structure-from-Motion(SfM) 포인트들의 sparse한 셋을 initial point로 하여, 고품질의 novel view synthesis를 가능하게 하는 scene representation을 최적화하는 것을 목표로 한다. 
+이 논문은 normal(표면 법선)이 없는 Structure-from-Motion(SfM) 포인트들의 sparse한 셋을 initial point로 하여, 고품질의 novel view synthesis를 가능하게 하는 scene representation을 최적화하는 것을 목표로 한다. 
 
-  빠른 렌더링을 위해 unstructured하고 explicit한 primitive를 필요로 하며, 이를 위해 미분 가능하고 2D splats로 쉽게 project되는 3D Gaussian을 선택했다.
+빠른 렌더링을 위해 unstructured하고 explicit한 primitive를 필요로 하며, 이를 위해 미분 가능하고 2D splats로 쉽게 project되는 3D Gaussian을 선택했다.
 
-<br>
-  :::{figure-md} 
-      <img src="../../pics/3DGS/image2.png" alt="Eq. 4" class="bg-primary mb-1" width="800px">
-  :::
+:::{figure-md} 
+<img src="../../pics/3DGS/image2.png" alt="image2" class="bg-primary mb-1" width="800px">
 
-  3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ'로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.
-  <br>
-    :::{figure-md} 
-        <img src="../../pics/3DGS/image3.png" alt="Eq. 5" class="bg-primary mb-1" width="800px">
-    :::
+3D Gaussian Splatting image2
+:::
+
+3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ'로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.
+
+:::{figure-md} 
+<img src="../../pics/3DGS/image3.png" alt="image3" class="bg-primary mb-1" width="800px">
+
+3D Gaussian Splatting image3
+:::
 
   따라서 논문에서는 더 직관적이고 최적화에 적합한 representation을 선택한다. 3D Gaussian의 공분산 행렬 Σ는 타원체의 구성을 설명하는 것과 유사하며, 이를 위해 scaling matrix S와 rotation matrix R을 사용한다. 
 
   scaling은 3D vector s로, rotation은 quaternion q로 표현하며, 이들은 각각의 행렬로 변환될 수 있다. 학습 동안 Auto grad(자동 미분)의 오버헤드를 피하기 위해 모든 파라미터에 대한 gradient를 명시적으로 유도한다.
   <br>
     :::{figure-md} 
-        <img src="../../pics/3DGS/image4.png" alt="Eq. 6" class="bg-primary mb-1" width="800px">
+    <img src="../../pics/3DGS/image4.png" alt="image4" class="bg-primary mb-1" width="800px">
     :::
 
   최적화에 적합한 anisotropic covariance representation은 장면의 다양한 geometry에 적응하도록 3D Gaussian을 최적화한다.
@@ -96,12 +98,12 @@ NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하�
 
   <br>
     :::{figure-md} 
-        <img src="../../pics/3DGS/image6.png" alt="Loss(Eq. 6)" class="bg-primary mb-1" width="800px">
+    <img src="../../pics/3DGS/image6.png" alt="image6" class="bg-primary mb-1" width="800px">
     :::
 
   <br>
     :::{figure-md} 
-        <img src="../../pics/3DGS/image7.png" alt="Loss(Eq. 6)" class="bg-primary mb-1" width="800px">
+    <img src="../../pics/3DGS/image7.png" alt="image7" class="bg-primary mb-1" width="800px">
     :::
 
 <br>
@@ -118,7 +120,7 @@ NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하�
   최적화 과정에서 입력 카메라에 가까운 Gaussian density의 부적절한 증가를 방지하기 위해, 3000번의 반복마다 투명도 α를 0에 가깝게 설정한다.
   <br>
     :::{figure-md} 
-        <img src="../../pics/3DGS/image8.png" alt="figure of Adaptive Control of Gaussians" class="bg-primary mb-1" width="800px">
+    <img src="../../pics/3DGS/image8.png" alt="image8" class="bg-primary mb-1" width="800px">
     :::
     
    
@@ -145,23 +147,23 @@ tile-based rasterization은 아래와 같은 흐름으로 진행된다.
       데이터셋에 따라 결과는 다르지만 SOTA이상의 퀄리티를 내면서 좋은 Training time과 FPS를 보인다.
     <br>
       :::{figure-md} 
-          <img src="../../pics/3DGS/image12.png" alt="figure of Results" class="bg-primary mb-1" width="800px">
+      <img src="../../pics/3DGS/image12.png" alt="image12" class="bg-primary mb-1" width="800px">
       :::
 
 <br>
   <br>
     :::{figure-md} 
-        <img src="../../pics/3DGS/image13.png" alt="figure of Results" class="bg-primary mb-1" width="800px">
+    <img src="../../pics/3DGS/image13.png" alt="image13" class="bg-primary mb-1" width="800px">
     :::
   <br>
   - Ablations
     <br>
       :::{figure-md}
-          <img src="../../pics/3DGS/image19.png" alt="figure of Ablations" class="bg-primary mb-1" width="800px">
+      <img src="../../pics/3DGS/image19.png" alt="image19" class="bg-primary mb-1" width="800px">
       :::
     <br>
       :::{figure-md}
-          <img src="../../pics/3DGS/image18.png" alt="figure of Ablations" class="bg-primary mb-1" width="800px">
+      <img src="../../pics/3DGS/image18.png" alt="image18" class="bg-primary mb-1" width="800px">
       :::
 
 <br>

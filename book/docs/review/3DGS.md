@@ -25,17 +25,16 @@ NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하�
 
     
 ## Overview
-<br>
-  :::{figure-md} 
-  <img src="../../pics/3DGS/image0.png" alt="main_process" class="bg-primary mb-1" width="800px">
-  Main process of 3D Gaussian Splatting
-  :::
+:::{figure-md} 
+<img src="../../pics/3DGS/image0.png" alt="title_fig" class="bg-primary mb-1" width="800px">
 
-<br>
-  :::{figure-md} 
-  <img src="../../pics/3DGS/image1.png" alt="main_process" class="bg-primary mb-1" width="800px">
-  Peusdo Algorithm of 3D Gaussian Splatting 
-  :::
+Main process of 3D Gaussian Splatting
+:::
+
+:::{figure-md} 
+<img src="../../pics/3DGS/image1.png" alt="main_process" class="bg-primary mb-1" width="800px">
+Peusdo Algorithm of 3D Gaussian Splatting 
+:::
 
 
     

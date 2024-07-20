@@ -43,6 +43,7 @@ parts:
   - file: docs/review/consistency_models
   - file: docs/review/latent_consistency_models
   - file: docs/review/LLM_grounded_Diffusion
+  - file: docs/review/DiT
 
 
 - caption: Video Generation

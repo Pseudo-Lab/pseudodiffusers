@@ -8,7 +8,7 @@
 
 - **Author:** Junhyoung Lee
 
-- **Last updated on July. 18, 2024**
+- **Last updated on July. 20, 2024**
 ```
 
 # DiT

@@ -1,4 +1,4 @@
-﻿```{admonition}
+﻿```{admonition} Information
 - **Title:** Scalable Diffusion Models with Transformers (ICCV 2023)
 
 - **Reference**

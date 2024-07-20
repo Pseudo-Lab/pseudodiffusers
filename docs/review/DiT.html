@@ -1,0 +1,990 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Abstract &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=927b94d3fcb96560df09" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=927b94d3fcb96560df09"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DiT';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="LLM Grounded Diffusion" href="LLM_grounded_Diffusion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Abstract</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DiT.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/DiT.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Abstract</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-complexity">Architecture complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-diffusion-models">Latent diffusion models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-transformers">3. Diffusion Transformers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-transformer-design-space">3.2. Diffusion Transformer Design Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patchify">Patchify</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dit-block-design">DiT block design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-decoder">Transformer decoder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">4. Experimental Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-setting">Training setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-conditional-image-genertation-model">Class-conditional image genertation model 비교</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">DiT block design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-model-size-and-patch-size">Scaling model size and patch size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dit-gflops-are-critical-to-improving-performance"><strong>DiT Gflops are critical to improving performance</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-dit-models-are-more-compute-efficient"><strong>Larger DiT models are more compute-efficient</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-scaling"><strong>Visualizing scaling</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Scalable Diffusion Models with Transformers (ICCV 2023)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2212.09748">https://arxiv.org/abs/2212.09748</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/facebookresearch/DiT">facebookresearch/DiT</a></p></li>
+<li><p>Project Page : <a class="reference external" href="https://www.wpeebles.com/DiT">https://www.wpeebles.com/DiT</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Junhyoung Lee</p></li>
+<li><p><strong>Last updated on July. 18, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>LDM 의 U-Net 백본을 transformer 로 바꾸어 학습을 진행한 diffusion model</p></li>
+<li><p>Gflops 측정: depth/width 증가 or 입력 토큰 수 증가로 Gflops 가 높게 나타났음 (FID 낮게 유지한 상태)</p></li>
+<li><p>우수한 scalability 특성을 보유하며, <span class="math notranslate nohighlight">\(\text{DiT-XL/2}\)</span> 모델은 class conditional ImageNet 벤치마크에서 이전의 생성 모델에 비해 성능이 뛰어났음 (FID 2.27)</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Diffusion 모델이 이미지 생성 모델의 트렌드를 유지하고 있지만, convolution 네트워크인 U-Net 모델 사용</p>
+<ul>
+<li><p>transformers 는 autoregressive 모델에서 사용되고 있었음</p></li>
+</ul>
+</li>
+<li><p>초기에는 픽셀 레벨의 autoregressive model과 conditional GAN에서 U-Net 이 성공을 이끌었음</p></li>
+<li><p>DDPM 에서는 ResNet 블럭이 주요하게 구성됨</p>
+<ul>
+<li><p>반면, transformer 에서는 spatial self-attention 블럭이 구성되어 있고, 저해상도에 포함됨</p></li>
+</ul>
+</li>
+<li><p>ADM</p>
+<ul>
+<li><p>classifier-guidance diffusion model</p></li>
+<li><p>adaptive normalization layer 와 같은 U-Net 에서 선택적으로 제거</p></li>
+</ul>
+</li>
+<li><p>저자들은 diffusion 모델의 아키텍처 구성의 중요성을 밝혔음</p>
+<ul>
+<li><p>U-Net 의 inductive bias 가 diffusion 모델의 성능의 영향을 끼치지 않고, transformer 로 쉽게 대체 가능함</p></li>
+<li><p>transformer 를 기반으로 새로운 종류의 diffusion model 을 제안 → Diffusion Transformer (DiT)</p></li>
+</ul>
+</li>
+<li><p>DiT는 ViT를 준수하며, 기존 convolution 네트워크보다 시각적 인식(visual recognition)을 위해 더 효과적으로 확장되는 것으로 나타남</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="related-works">
+<h1>2. Related Works<a class="headerlink" href="#related-works" title="Permalink to this heading">#</a></h1>
+<section id="architecture-complexity">
+<h2>Architecture complexity<a class="headerlink" href="#architecture-complexity" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>아키텍처의 복잡성(complexity)를 측정할 때, 보통 파라미터 수를 측정함</p>
+<ul>
+<li><p>하지만, 이미지 해상도 등을 고려하지 않아 모델의 복잡성을 제대로 측정할 수 없다고 주장</p></li>
+<li><p>저자들은 Gflops 를 통해 모델의 복잡성을 분석함</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="latent-diffusion-models">
+<h2>Latent diffusion models<a class="headerlink" href="#latent-diffusion-models" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>픽셀 공간에서 diffusion 모델을 학습하는 것은 연산적으로 어려움</p></li>
+<li><p>LDM</p>
+<ol class="arabic simple">
+<li><p>learned encoder <span class="math notranslate nohighlight">\(E\)</span> 로 이미지를 작은 해상도로 압축하는 autoencoder 를 학습</p></li>
+<li><p>픽셀 공간의 이미지 <span class="math notranslate nohighlight">\(x\)</span>의 diffusion 모델 대신, 압축된  <span class="math notranslate nohighlight">\(z = E(x)\)</span> 의 diffusion 모델 학습 (<span class="math notranslate nohighlight">\(E\)</span>는 고정)</p></li>
+</ol>
+<ul class="simple">
+<li><p>→ 이후 diffusion 모델에서 <span class="math notranslate nohighlight">\(z\)</span> 를 샘플링하고 학습된 디코더 <span class="math notranslate nohighlight">\(x = D(z)\)</span> 를 사용하여 이미지로 디코딩하여 새로운 이미지를 생성함</p></li>
+<li><p>LDM은 ADM과 같은 픽셀 공간 diffusion 모델보다 훨씬 적은 Gflops를 사용하면서도 우수한 성능을 달성</p></li>
+</ul>
+</li>
+<li><p>DiT</p>
+<ul class="simple">
+<li><p>저자들은 latent 공간에서 DiT를 적용했고, 픽셀 공간에서도 수정 없이 적용할 수 있음</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="diffusion-transformers">
+<h1>3. Diffusion Transformers<a class="headerlink" href="#diffusion-transformers" title="Permalink to this heading">#</a></h1>
+<section id="diffusion-transformer-design-space">
+<h2>3.2. Diffusion Transformer Design Space<a class="headerlink" href="#diffusion-transformer-design-space" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>scaling 속성을 유지하기 위해 standard transformer 구조를 따르도록 설계</p></li>
+<li><p>이미지(spatial representations)의 DDPM을 학습하기 때문에,  패치를 연산하는 ViT 구조로 설계됨</p></li>
+</ul>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architecture.png"><img alt="architecture" class="bg-primary mb-1" src="../../_images/architecture.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 503 </span><span class="caption-text">architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="patchify">
+<h3>Patchify<a class="headerlink" href="#patchify" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig4.png"><img alt="fig4" class="bg-primary mb-1" src="../../_images/fig4.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 504 </span><span class="caption-text">fig4</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>DiT 에 spatial representation <span class="math notranslate nohighlight">\(z\)</span> (256x256x3 이미지에서는 <span class="math notranslate nohighlight">\(z\)</span> 는 32x32x4 로 표현) 가 입력됨</p></li>
+<li><p>“patchify” : <span class="math notranslate nohighlight">\(z\)</span> → <span class="math notranslate nohighlight">\(d\)</span> 차원의 <span class="math notranslate nohighlight">\(T\)</span> tokens 로 변환 + positional embedding</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> 에 따라 토큰 수가 달라짐 (<span class="math notranslate nohighlight">\(p\)</span> = 2, 4, 8)</p></li>
+<li><p><span class="math notranslate nohighlight">\(p\)</span> 를 반으로 줄이면 <span class="math notranslate nohighlight">\(T\)</span> 가 4배가 되므로 총 transformer Gflops 는 최소 4배가 되어 상당한 영향을 끼침</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dit-block-design">
+<h3>DiT block design<a class="headerlink" href="#dit-block-design" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Diffusion 모델은 보통 noised image 입력과 noise timestep <span class="math notranslate nohighlight">\(t\)</span>, class label <span class="math notranslate nohighlight">\(c\)</span> 의 벡터 임베딩 값을 conditional 정보로 입력 시퀀스에 더해줌</p></li>
+<li><p>다른 conditional inputs 으로 처리하는 4개의 transformer block을 진행함</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><em><strong>In-context conditioning</strong></em></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(c\)</span> 를 추가의 토큰으로 더하는 방식 → 이미지 토큰과 동일하게 처리함</p>
+<ul>
+<li><p>ViT 의 <span class="math notranslate nohighlight">\(\text {cls}\)</span> 토큰과 유사한 방식</p></li>
+</ul>
+</li>
+<li><p>마지막 블럭에서는 conditioning 토큰을 제거함</p></li>
+</ul>
+</li>
+<li><p><em><strong>Cross-attention block</strong></em></p>
+<ul class="simple">
+<li><p>이미지 토큰과 별도로 <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(c\)</span> 를 concat 함</p></li>
+<li><p>self-attention 다음에 cross attention 을 포함하도록 구조를 수정함</p></li>
+<li><p>cross-attention 연산이 15% 오버헤드로 모델에 가장 많은 Gflops를 추가함</p></li>
+</ul>
+</li>
+<li><p><em><strong>Adaptive layer norm (adaLN) block</strong></em></p>
+<ul class="simple">
+<li><p>Transformer 블럭의 standard layer norm layer 를 adaptive layer norm (adaLN) 으로 교체함</p></li>
+<li><p>직접 scale <span class="math notranslate nohighlight">\(\gamma\)</span>, shift <span class="math notranslate nohighlight">\(\beta\)</span> 파라미터를 학습하는 것보다, <span class="math notranslate nohighlight">\(t\)</span> 와 <span class="math notranslate nohighlight">\(c\)</span> 벡터 임베딩 값의 합으로부터 회귀하도록 설계함</p></li>
+<li><p>최소한의 Gflops 를 추가하므로 연산에 효율적임</p></li>
+<li><p>모든 토큰에 대해 같은 function을 적용함으로써 conditioning 하는 방법</p></li>
+</ul>
+</li>
+<li><p><em><strong>adaLN-Zero block</strong></em></p>
+<ul class="simple">
+<li><p>ResNet: 각 residual block 의 initializing 이 identity function 이 효과적이라는 것을 증명함</p>
+<ul>
+<li><p>각 블럭의 마지막 batch norm scale factor <span class="math notranslate nohighlight">\(r\)</span> 를 0으로 초기화 하는 것이 large-scale 학습에 좋다는 것을 발견함</p></li>
+</ul>
+</li>
+<li><p>Diffusion U-Net 모델은 비슷한 초기화 전략을 사용하는데, residual connection 전에 각 블럭의 최종 convolutional layer 를 0으로 초기화함</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma, \beta\)</span> 를 회귀하는 것 외에도 DiT 블럭 내의 residual connection 전에 적용되는 dimension 별 scaling <span class="math notranslate nohighlight">\(\alpha\)</span> 를 회귀함</p></li>
+<li><p>모든 <span class="math notranslate nohighlight">\(\alpha\)</span> 에 대해 영벡터를 출력하도록 MLP를 초기화함 → 전체 DiT 블록을 identity function 으로 초기화하게됨</p></li>
+<li><p>adaLN 블록과 비슷하게 adaLN-Zero 는 Gflops 에 영향을 끼치지 않음</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="transformer-decoder">
+<h3>Transformer decoder<a class="headerlink" href="#transformer-decoder" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/architecture2.png"><img alt="architecture2" class="bg-primary mb-1" src="../../_images/architecture2.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 505 </span><span class="caption-text">architecture2</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>최종 DiT 블록을 통과한 후, 이미지 토큰 시퀀스를 예측된 noise 값과 covariance 값 디코딩해야함</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\text{LayerNorm}\)</span> (adaLN을 사용하는 경우 adaLN)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Linear, Reshape}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{VAE}\)</span> decoder → “output shape = input image shape”</p></li>
+</ol>
+</li>
+<li><p>Q) covariance 값은 왜 예측하는지?</p>
+<ul>
+<li><p><a class="reference external" href="https://kyujinpy.tistory.com/132#:~:text=%EA%B7%B8%20%EC%9D%B4%ED%9B%84%2C%20VAE%20decoder%EC%97%90%20noise%20%EA%B0%92%EC%9D%84%20%EB%84%A3%EC%96%B4%EC%84%9C%20%EC%8B%A4%EC%A0%9C%20%EC%9D%B4%EB%AF%B8%EC%A7%80%EB%A5%BC%20%EC%83%9D%EC%84%B1%ED%95%9C%EB%8B%A4.">참고 링크</a></p></li>
+<li><p>ADM 학습과 연관됨</p>
+<ul>
+<li><p>Noise 차이 loss 이외의 분산도 학습을 진행했음 → vlb_loss 활용</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experimental-setup">
+<h1>4. Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>DiT models</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table11.png"><img alt="table1" class="bg-primary mb-1" src="../../_images/table11.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 506 </span><span class="caption-text">table1</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="training-setting">
+<h2>Training setting<a class="headerlink" href="#training-setting" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text {DiT-XL/2}\)</span>:  <span class="math notranslate nohighlight">\(\text{XLarge}\)</span> config and  <span class="math notranslate nohighlight">\(p = 2\)</span>.</p></li>
+<li><p>class-conditional latent DiT models</p></li>
+<li><p>해상도: 256x256, 512x512</p></li>
+<li><p>데이터 셋: ImageNet</p></li>
+<li><p>마지막 linear layer 는 0으로 초기화, 나머지는 standard weight 초기화</p></li>
+<li><p>Optimizer: AdamW</p></li>
+<li><p>Learning rate: <span class="math notranslate nohighlight">\(1 × 10^{−4}\)</span></p></li>
+<li><p>Batch size: 256</p></li>
+<li><p>Augmentation: horizontal flip</p></li>
+<li><p>exponential moving average (EMA): 0.999</p></li>
+<li><p>Diffusion: Stable Diffusion 의 VAE 사용</p></li>
+</ul>
+</section>
+<section id="evaluation">
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<section id="class-conditional-image-genertation-model">
+<h3>Class-conditional image genertation model 비교<a class="headerlink" href="#class-conditional-image-genertation-model" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table11.png"><img alt="table2" class="bg-primary mb-1" src="../../_images/table11.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 507 </span><span class="caption-text">table2</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table3.png"><img alt="table3" class="bg-primary mb-1" src="../../_images/table3.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 508 </span><span class="caption-text">table3</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>ADM, LDM 보다 DiT-XL 모델이 FID, IS 점수가 좋음</p></li>
+</ul>
+</section>
+<section id="id1">
+<h3>DiT block design<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig5.png"><img alt="fig5" class="bg-primary mb-1" src="../../_images/fig5.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 509 </span><span class="caption-text">fig5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>adaLN-Zero 구조가 적은 학습에도 FID 점수가 좋음</p></li>
+</ul>
+</section>
+<section id="scaling-model-size-and-patch-size">
+<h3>Scaling model size and patch size<a class="headerlink" href="#scaling-model-size-and-patch-size" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig6.png"><img alt="fig6" class="bg-primary mb-1" src="../../_images/fig6.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 510 </span><span class="caption-text">fig6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>모델이 클수록 FID 점수가 좋음</p></li>
+</ul>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig7.png"><img alt="fig7" class="bg-primary mb-1" src="../../_images/fig7.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 511 </span><span class="caption-text">fig7</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dit-gflops-are-critical-to-improving-performance">
+<h3><strong>DiT Gflops are critical to improving performance</strong><a class="headerlink" href="#dit-gflops-are-critical-to-improving-performance" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig8.png"><img alt="fig8" class="bg-primary mb-1" src="../../_images/fig8.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 512 </span><span class="caption-text">fig8</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Transformer Gflops 가 클수록 FID 점수가 좋음</p></li>
+</ul>
+</section>
+<section id="larger-dit-models-are-more-compute-efficient">
+<h3><strong>Larger DiT models are more compute-efficient</strong><a class="headerlink" href="#larger-dit-models-are-more-compute-efficient" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig9.png"><img alt="fig9" class="bg-primary mb-1" src="../../_images/fig9.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 513 </span><span class="caption-text">fig9</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>학습할 때의 Gflops 가 높을 수록 FID 점수가 좋음</p></li>
+</ul>
+</section>
+<section id="visualizing-scaling">
+<h3><strong>Visualizing scaling</strong><a class="headerlink" href="#visualizing-scaling" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/visual_result.png"><img alt="visual_result" class="bg-primary mb-1" src="../../_images/visual_result.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 514 </span><span class="caption-text">visual_result</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>패치 사이즈와 transformer 크기에 따른 생성 결과 확인</p>
+<ul>
+<li><p>패치가 작을수록, 모델 크기가 클수록 생성 결과가 좋음</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Diffusion Transformers 는 간단한 transformer 기반 diffusion 모델</p>
+<ul>
+<li><p>이전 U-Net 모델보다 성능이 뛰어나고, transformer 모델의 scaling 특성을 우수하게 적용함</p></li>
+</ul>
+</li>
+<li><p>adaLN 을 통해 연산의 효율성도 가져옴</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LLM_grounded_Diffusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LLM Grounded Diffusion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture-complexity">Architecture complexity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-diffusion-models">Latent diffusion models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-transformers">3. Diffusion Transformers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-transformer-design-space">3.2. Diffusion Transformer Design Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#patchify">Patchify</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dit-block-design">DiT block design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-decoder">Transformer decoder</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">4. Experimental Setup</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-setting">Training setting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation">Evaluation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-conditional-image-genertation-model">Class-conditional image genertation model 비교</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">DiT block design</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scaling-model-size-and-patch-size">Scaling model size and patch size</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dit-gflops-are-critical-to-improving-performance"><strong>DiT Gflops are critical to improving performance</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#larger-dit-models-are-more-compute-efficient"><strong>Larger DiT models are more compute-efficient</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-scaling"><strong>Visualizing scaling</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=927b94d3fcb96560df09"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=927b94d3fcb96560df09"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

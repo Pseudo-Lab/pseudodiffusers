@@ -9,6 +9,7 @@
 - **Author:** Jeongin Lee
 
 - **Last updated on {Sep. 3, 2024}**
+
 ```   
 
 ## 0. Abstract
@@ -85,19 +86,15 @@
     희귀 토큰, 모델 finetuning, 규제를 위한 prior preservation loss를 사용하여 모델의 언어 비전 사전을 확장하여 이를 달성
 - **Textual Inversion**
     입력 개념을 나타내는 사전 학습된 text-to-image 모델의 임베딩 공간에서 새로운 word 를 최적화함으로써 이를 달성
-:::{figure-md} 
-<img src="../../pics/DreamBooth3D/54544834-db8a-49f3-9ac7-d4a530724fd8.png" alt="d4a530724fd8" class="bg-primary mb-1" width="800px">
 
-Textual Inversion \  (source: {https://arxiv.org/abs/2208.01618})
-:::
+    :::{figure-md} 
+    <img src="../../pics/DreamBooth3D/54544834-db8a-49f3-9ac7-d4a530724fd8.png" alt="d4a530724fd8" class="bg-primary mb-1" width="800px">
 
-:::{figure-md} 
-<img src="../../pics/DreamBooth3D/TEXTUALINVERSION.png" alt="TEXTUALINVERSION" class="bg-primary mb-1" width="800px">
+    Textual Inversion \  (source: {https://arxiv.org/abs/2208.01618})
+    :::
 
-Textual Inversion Architecture \  (source: {https://arxiv.org/abs/2208.01618})
-:::
+**→** 이러한 방법론들은 3D asset 을 제공하지 않고 일관성 있는 3D 이미지를 생성할 수 없음.
 
-**→** 이러한 방법론은 3D asset 을 제공하지 않고 일관성 있는 3D 이미지를 생성할 수 없음.
 
 # **3. Approach**
 
@@ -112,11 +109,10 @@ Input and Output
     - $\left\{I_i \in \mathbb{R}^{n \times 3}\right\}(i \in\{1, \ldots, k\})$ : 각 n개의 픽셀, k 장의 subject 이미지들의 집합
     - context(맥락) 부여, 의미 변화를 위한 텍스트 프롬프트 T (ex) sleeping, standing…etc.
 
-<aside>
+---
 🌟 **Goal** 
 텍스트 프롬프트에 충실하면서 주어진 subject 의 identity (기하 형태 및 외관)을 반영하는 3D assets 생성
-
-</aside>
+---
 
 - 3D volume 에서 radiance 필드를 인코딩하는 MLP 네트워크 $M$ 으로 구성된 Neural Radiance Fields (NeRF) 를 기반으로 3D assets 를 최적화
 - 본 문제는 **subject 이미지에 대한 반영이 필요**하기 때문에, 일반적인 multi-view 이미지 캡처가 필요한 3D reconstruction 설정에 비해 상당히 제한적이고 어려운 문제
@@ -125,10 +121,10 @@ Input and Output
     ⇒ DreamBooth personalization + DreamFusion text-to-3D로 최적화를 사용
     
 
-### 3.1. Preliminaries
+## 3.1. Preliminaries
 ---
 
- **T2I diffusion models** 
+### 3.1.1 **T2I diffusion models** 
 
 - T2I diffusion models : Imagen, StableDiffusion and DALL-E 2 …etc..
 - T2I diffusion model $\mathcal{D}_\theta(\epsilon, \mathbf{c})$
@@ -140,15 +136,14 @@ Input and Output
 
 ---
 
- **Dream Booth T2I Personalization.**
+### 3.1.2 **Dream Booth T2I Personalization.**
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_4.png" alt="Untitled_4" class="bg-primary mb-1">
 
 특정 피사체에 대한 소수의 이미지 집합 (3-5장) 을 통해 텍스트로 주어지는 Context 에 맞는 맞춤화 이미지 생성 
 :::
 
-- $\left\{I_i\right\}$ 에서 네트워크를 파인튜닝하여 T2I diffusion 모델을 맞춤화
-    - $\left\{I_i\right\}$ : a small set of casual captures
+- $\left\{I_i\right\}$ 에서 네트워크를 파인튜닝하여 T2I diffusion 모델을 맞춤화, $\left\{I_i\right\}$ : a small set of casual captures
 - DreamBooth diffusion loss : T2I model 파인튜닝을 위해 사용
     
     $$
@@ -184,38 +179,43 @@ language-drift
 
 ---
 
- **DreamFusion** 
-
-- T2I diffusion model을 사용하여 볼륨의 랜덤뷰가 프롬프트  $T$ 에 상응하도록 NeRF $\mathcal{M}_\phi$ ($\phi$ : parameters) 를 통해 표현된 볼륨을 최적화
+### 3.1.3 **DreamFusion** 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_6.png" alt="Untitled_6" class="bg-primary mb-1" >
+<img src="../../pics/DreamBooth3D/Untitled_6.png" alt="Untitled_6" class="bg-primary mb-1" >
 
 DreamFusion process / (source : [DreamFusion](https://pseudo-lab.github.io/pseudodiffusers/docs/review/DreamFusion.html))
 ::: 
 
-- normals : 밀도의 그래디언트로부터 계산된 nomals은 **Lambertian shading** 으로 기하학적 사실성을 개선시키기 위해 모델을 랜덤으로 relight 하는데 사용됨.
-- $\mathcal{M}_\phi$  : mapping **(camera, light (location) → albedo &density)**
+- T2I diffusion model을 사용하여 볼륨의 랜덤뷰가 프롬프트  $T$ 에 상응하도록 NeRF $\mathcal{M}_\phi$ ($\phi$ : parameters) 를 통해 표현된 볼륨을 최적화
+
+- normals : 밀도의 그래디언트로부터 계산된 nomals은 Lambertian shading 으로 기하학적 사실성을 개선시키기 위해 모델을 랜덤으로 relight 하는데 사용됨.
+
+- $\mathcal{M}_\phi$  : mapping (camera, light (location) → albedo &density)
     - 랜덤 뷰 $v$, 랜덤 조명(light) 방향이 주어지면 shaded(음영 처리된) 이미지 $\hat{I}v$ 로 볼륨 렌더링을 수행
-- 이 때 볼륨 렌더링한 이미지가 텍스트 프롬프트 $T$ 처럼 보이도록 NeRF $\phi$ 의 매개변수를 최적화하기 위해 **DreamFusion** 은 **score distillation sampling (SDS)** 를 도입
-    - **[cf] dream fusion sds loss**
-            
-- score distillation sampling (SDS)
-    
+- 이 때 볼륨 렌더링한 이미지가 텍스트 프롬프트 $T$ 처럼 보이도록 NeRF $\phi$ 의 매개변수를 최적화하기 위해 DreamFusion 은 score distillation sampling ***(SDS)** 를 도입
+        
+- **score distillation sampling (SDS)**
+
     $$
     \nabla_\phi \mathcal{L}_{SDS}=\mathbb{E}{\epsilon, t}\left[w_t\left(\mathcal{D}_\theta\left(\alpha_t \hat{I}_v+\sigma_t \epsilon, \mathbf{c}\right)-\hat{I}_v\right) \frac{\partial \hat{I}_v}{\partial \phi}\right] .
     $$
     
-    - 렌더링된 이미지의 노이즈가 처리된 버전들을 T2I diffusion model의 낮은 에너지 상태로 push
+- 렌더링된 이미지의 노이즈가 처리된 버전들을 T2I diffusion model의 낮은 에너지 상태로 push
+
 - 다양한 views를 랜덤으로 선택하고, NeRF 를 통해 역전파 함으로써, 
-**rendering 결과들**이 **T2I model $\mathcal{D}_\theta$ 로 주어진 프롬프트에 맞게 생성된 이미지**처럼 보이도록 함.
+rendering 결과들이 T2I model $\mathcal{D}_\theta$ 로 주어진 프롬프트에 맞게 생성된 이미지처럼 보이도록 함.
+
 - **DreamFusion** 에서 사용된 실험 환경을 정확하게 동일하게 사용함.
 
-### 3.2 Failure of Naive Dreambooth+Fusion
+## 3.2 Failure of Naive Dreambooth+Fusion
 ---
 - **피사체(subject) 중심 text-to-3D 생성을 위한 직관적인 접근 방식**
+
     1. subject에 대해 **T2I model 을 pesonalized(맞춤화)**  
     2. 맞춤화된  T2I model 을 **text-to-3D optimization** 을 위해 사용 
+
 - **즉, DreamBooth 최적화(personalized) ⇒ DreamFusion 최적화**
+
 - **BUT**, **Naive Dreambooth+Fusion 의 결합은 불만족스러운 결과를 초래**
     
 :::{figure-md} 
@@ -223,23 +223,24 @@ DreamFusion process / (source : [DreamFusion](https://pseudo-lab.github.io/pseud
 훈련된 이미지 내의 subject 의 뷰에 과적합된 예시 
 ::: 
 
-    
-**핵심 문제 (KEY Issue)**
+--- 
+> 핵심 문제 (KEY Issue)
 
 - **Dream Booth**가 **훈련된 뷰에 존재하는 subject 의 뷰에 과적합** 되어 
 **이미지 생성에서 viewpoint 에 대한 다양성이 감소**하는 경향을 보임.
+
 - 미세 조정 단계가 증가할수록, Subject 유사성 증가 (👍) 
 **BUT**  input exemplar views에 유사하도록 viewpoints 생성 (👎)
-    
-⇒ 즉, 다양한 시점에서 이미지를 생성하는 능력이 저하됨. 
-    
+    ⇒ 즉, 다양한 시점에서 이미지를 생성하는 능력이 저하됨. 
+---     
 
 - 이런 DreamBooth 모델 기반의 NeRF SDS 손실은 일관된 3D NeRF 결과물을 얻기에 불충분
+
 - **DreamBooth+Fusion NeRF** 모델이 **서로 다른 view** 에 걸쳐 학습된 **동일한 대상에 대한 뷰**(예: face of a dog :  다양한 각도에서 본 동일한 dog face)를 가지고 있음.
     - **"Janus problem"** : 두 가지 상반되거나 연관된 측면을 동시에 다루어야 하는 문제
         
 
-### 3.3. Dreambooth3D Optimization
+## 3.3. Dreambooth3D Optimization
 ---
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_8.png" alt="Untitled_8" class="bg-primary mb-1" width="800px">
@@ -259,10 +260,10 @@ DreamBooth3D Overview
 
 ---
 
- **1️⃣Stage-1: 3D with Partial DreamBooth**
+### **3.3.1 Stage-1️⃣: 3D with Partial DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1">
 
 Stage-1 :  3D with Partial DreamBooth
 :::                           
@@ -284,15 +285,15 @@ Stage-1 :  3D with Partial DreamBooth
 
 ---
 
-🌟 즉,  **1️⃣ Stage-1 에서의 초기 NeRF** 는 **주어진 subject 와  부분적으로ㅁ 유사**하면서, 
+🌟 즉,  **Stage-1️⃣ 에서의 초기 NeRF** 는 **주어진 subject 와  부분적으로ㅁ 유사**하면서, 
 **주어진 텍스트 프롬프트에 충실한**  **subject class 3D 모델**
 
 ---
 
- **2️⃣Stage-2: Multi-view Data Generation**
+### **3.3.2 Stage-2️⃣: Multi-view Data Generation**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1">
 
 Stage-2: Multi-view Data Generation
 :::                           
@@ -326,20 +327,22 @@ Stage-2: Multi-view Data Generation
 
 ---
 
-:::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1" width="800px">
-
-:::                  
-
+        
 - 위 그림을 통해 체크할 부분
+
+    :::{figure-md} 
+    <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1">
+
+    :::         
+
     - **fully-trained DreamBooth** 를 사용한 Img2Img 변환의 샘플 출력
     - 입력 NeRF 렌더링의 시점을 유지하면서도 subject 이미지와 더 유사한 모습
     - 기존 연구들과 달리 Img2Img 변환을 DreamBooth, NeRF 3D assets 과 결합하여 사용 (기존 연구의 경우 Img2Img 변환을 이미지 editing 응용으로만 사용)
 
- **3️⃣Stage-3: Final NeRF with Multi-view DreamBooth**
+### **3.3.3 Stage-3️⃣: Final NeRF with Multi-view DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1">
 
 Stage-3 : Final NeRF with Multi-view DreamBooth
 SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화
@@ -399,6 +402,7 @@ $$
 ---
 
 # 4. Experiments
+---
 
  **Implementation Details.**
 
@@ -415,14 +419,14 @@ $$
 - **Stage-3 Multi-view DreamBooth** $\hat{\mathcal{D}}_\theta^{\mathrm{multi}}$: 
 3단계에서 추가로 150번 반복하여 부분적으로 훈련된 $\hat{D}_{θ}^∗$ 모델을 Finetuning
 - **Hyperparams :** supplementary material 참고
-
+---
  **Datasets.**
 
 - **훈련 데이터**: 공개된 이미지 컬렉션을 사용하여 personalized text-to-3D 모델을 훈련
     - 다양한 subject(개, 장난감, 배낭, 선글라스, 만화 캐릭터 등) 의  4-6개의 casual 이미지를 포함한 30개의 다른 이미지 컬렉션으로 구성
 - **희귀 객체 성능 분석**: "올빼미 장식품"과 같은 희귀한 대상의 성능을 분석하기 위해 추가 이미지 수집
 - 3-6개의 프롬프트에 대해 각 3D 모델을 최적화하여 3D contextualizations 문맥화 시연
-
+---
  **Baselines.**
 
 - **Latent-NeRF**
@@ -430,7 +434,7 @@ $$
     - baseline 으로써 fully dreamboothed T2I model 를 사용하여 Latent-NeRF 실행
 - **DreamFusion+DreamBooth**: DreamBooth 확산 모델을 먼저 훈련한 후 DreamFusion을 사용하여 3D NeRF를 최적화하는 단일 단계 접근 방식
 - **본 연구의 3단계 최적화 기반 방법론** :  "DreamBooth3D"
-
+---
  **Evaluation Metrics.**
 
 - **CLIP R-Precision**
@@ -443,7 +447,7 @@ $$
 **Visual Results**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_13.png" alt="Untitled_13" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_13.png" alt="Untitled_13" class="bg-primary mb-1">
 
 :::  
 
@@ -451,18 +455,12 @@ $$
     - Latent-NeRF : 일부 경우(오리)에서 적절히 작동하지만, 대부분의 경우 일관된 3D 모델을 생성하는 데 실패
     - DreamBooth+Fusion : 여러 시점에서 동일한 외형 및 구조를 보임
     - DreamBooth3D : 360도 일관된 3D Asset을 생성하며, 주어진 subject 의 기하학적 구조 및 외관의 세부 사항을 잘 반영함
-
- **Quantitative Comparisons**
-
-:::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_14.png" alt="Untitled_14" class="bg-primary mb-1" width="800px">
-
-:::  
+---
 
  **Initial vs. Final NeRF**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_15.png" alt="Untitled_15" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_15.png" alt="Untitled_15" class="bg-primary mb-1">
 
 :::  
 
@@ -471,13 +469,15 @@ $$
 - 최종 NeRF : 주어진 subject 와 더 유사하, 일관된 3D 구조를 유지
 - 이러한 예시는 DreamBooth3D의 3단계 최적화가 필요함을 입증 (?)
 
+---
  **User Study.**
+
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_16.png" alt="Untitled_16" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_16.png" alt="Untitled_16" class="bg-primary mb-1">
 
 :::  
 
-**→ DreamBooth3D와 비교 모델들을 세가지측면에 대해 아래의 질문에 대한 답변으로 평가** 
+    → DreamBooth3D와 비교 모델들을 세가지측면에 대해 아래의 질문에 대한 답변으로 평가** 
 
 1. **subject 충실도**: "어떤 3D 항목이 subject 와 더 유사하게 보입니까?"
 2. **3D 일관성과 타당성**: "어떤 3D 항목이 더 타당하고 일관된 기하학적 구조를 가지고 있습니까?"
@@ -489,9 +489,10 @@ $$
     - 최종 결과는 다수결 투표를 통해 산출
     - DreamBooth3D는 3D 일관성, 주제 충실도, 프롬프트 충실도에서 기준 모델들보다 유의미하게 더 선호됨.
 
+
 ## 4.2. Sample Applications
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_17.png" alt="Untitled_17" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_17.png" alt="Untitled_17" class="bg-primary mb-1" >
 
 :::  
 
@@ -501,7 +502,7 @@ $$
     - 출력된 3D 모델의 자세와 로컬 변형은 입력 이미지에 없는 포즈임에도 불구하고 매우 사실적
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/19.png" alt="19" class="bg-primary mb-1" width="600px">
+ <img src="../../pics/DreamBooth3D/19.png" alt="19" class="bg-primary mb-1">
 
 ::: 
 
@@ -511,7 +512,7 @@ $$
     - subject 에 액세서리 추가
  
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/20.png" alt="20" class="bg-primary mb-1" width="600px">
+ <img src="../../pics/DreamBooth3D/20.png" alt="20" class="bg-primary mb-1">
 
 ::: 
 
@@ -525,7 +526,7 @@ $$
 ## 4.3. Limitations
 ---
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/limitation.png" alt="limitation" class="bg-primary mb-1" width="600px">
+ <img src="../../pics/DreamBooth3D/limitation.png" alt="limitation" class="bg-primary mb-1" width="800px">
 
 limitations 
 :::

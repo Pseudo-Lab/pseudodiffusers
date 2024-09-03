@@ -512,12 +512,9 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-of-naive-dreambooth-fusion">3.2 Failure of Naive Dreambooth+Fusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dreambooth3d-optimization">3.3. Dreambooth3D Optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-3d-with-partial-dreambooth"><strong>3.3.1 Stage-1️⃣: 3D with Partial DreamBooth</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-dreambooth-dreambooth"><strong>⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-multi-view-data-generation"><strong>3.3.2 Stage-2️⃣: Multi-view Data Generation</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-3-final-nerf-with-multi-view-dreambooth"><strong>3.3.3 Stage-3️⃣: Final NeRF with Multi-view DreamBooth</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-3d-with-partial-dreambooth"><strong>3.3.1 Stage 1️⃣: 3D with Partial DreamBooth</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-multi-view-data-generation"><strong>3.3.2 Stage 2️⃣: Multi-view Data Generation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage3-final-nerf-with-multi-view-dreambooth"><strong>3.3.3 Stage3️⃣: Final NeRF with Multi-view DreamBooth</strong></a></li>
 </ul>
 </li>
 </ul>
@@ -859,7 +856,7 @@ rendering 결과들이 T2I model <span class="math notranslate nohighlight">\(\m
 </ul>
 <hr class="docutils" />
 <section id="stage-1-3d-with-partial-dreambooth">
-<h3><strong>3.3.1 Stage-1️⃣: 3D with Partial DreamBooth</strong><a class="headerlink" href="#stage-1-3d-with-partial-dreambooth" title="Permalink to this heading">#</a></h3>
+<h3><strong>3.3.1 Stage 1️⃣: 3D with Partial DreamBooth</strong><a class="headerlink" href="#stage-1-3d-with-partial-dreambooth" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id8">
 <img alt="Untitled_9" class="bg-primary mb-1" src="../../_images/Untitled_9.png" />
 <figcaption>
@@ -871,10 +868,10 @@ rendering 결과들이 T2I model <span class="math notranslate nohighlight">\(\m
 </ul>
 <hr class="docutils" />
 <p>🌟 <strong>DreamBoothT2I 모델의 초기 체크포인트가 (=부분적으로 파인튜닝한 결과) 주어진 subject view에 과적합되지 않음을 확인</strong></p>
-</section>
-</section>
-<section id="partial-dreambooth-dreambooth">
-<h2><strong>⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)</strong><a class="headerlink" href="#partial-dreambooth-dreambooth" title="Permalink to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)
+</pre></div>
+</div>
+<hr class="docutils" />
 <ul class="simple">
 <li><p><strong>partial DreamBooth</strong> 모델 하에 DreamFusion은 더 일관된 3D NeRF를 생성가능</p></li>
 <li><p>NeRF 최적화시 SDS 손실 사용 :</p>
@@ -892,15 +889,10 @@ rendering 결과들이 T2I model <span class="math notranslate nohighlight">\(\m
 <hr class="docutils" />
 <p>🌟 즉,  <strong>Stage-1️⃣ 에서의 초기 NeRF</strong> 는 <strong>주어진 subject 와  부분적으로ㅁ 유사</strong>하면서,
 <strong>주어진 텍스트 프롬프트에 충실한</strong>  <strong>subject class 3D 모델</strong></p>
+</section>
 <hr class="docutils" />
 <section id="stage-2-multi-view-data-generation">
-<h3><strong>3.3.2 Stage-2️⃣: Multi-view Data Generation</strong><a class="headerlink" href="#stage-2-multi-view-data-generation" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id9">
-<img alt="Untitled_10" class="bg-primary mb-1" src="../../_images/Untitled_10.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 650 </span><span class="caption-text">Stage-2: Multi-view Data Generation</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<h3><strong>3.3.2 Stage 2️⃣: Multi-view Data Generation</strong><a class="headerlink" href="#stage-2-multi-view-data-generation" title="Permalink to this heading">#</a></h3>
 <hr class="docutils" />
 <p>🌟 <strong>Stage-2 Multi-view Data Generation : 본 접근법의 가장 중요한 부분</strong></p>
 <p>일관성을 갖춘 <strong>3D initial NeRF</strong> 와 <strong>fully-trained DreamBooth</strong> 를 사용하여 <strong>pseudo multi-view subject</strong> 이미지들을 생성</p>
@@ -937,13 +929,13 @@ DreamBooth가 Subject 의 unseen views를 효과적으로 생성 가능</p></li>
 </li>
 </ul>
 </section>
-<section id="stage-3-final-nerf-with-multi-view-dreambooth">
-<h3><strong>3.3.3 Stage-3️⃣: Final NeRF with Multi-view DreamBooth</strong><a class="headerlink" href="#stage-3-final-nerf-with-multi-view-dreambooth" title="Permalink to this heading">#</a></h3>
-<figure class="align-default" id="id10">
+<section id="stage3-final-nerf-with-multi-view-dreambooth">
+<h3><strong>3.3.3 Stage3️⃣: Final NeRF with Multi-view DreamBooth</strong><a class="headerlink" href="#stage3-final-nerf-with-multi-view-dreambooth" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id9">
 <img alt="Untitled_12" class="bg-primary mb-1" src="../../_images/Untitled_12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 651 </span><span class="caption-text">Stage-3 : Final NeRF with Multi-view DreamBooth
-SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 650 </span><span class="caption-text">Stage-3 : Final NeRF with Multi-view DreamBooth
+SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -1161,10 +1153,10 @@ I^{\text {aug }}=\left\{I_v^{\text {pseudo }}\right\} \cup\left\{I_i\right\}
 <section id="limitations">
 <h2>4.3. Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
 <hr class="docutils" />
-<figure class="align-default" id="id11">
+<figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/limitation.png"><img alt="limitation" class="bg-primary mb-1" src="../../_images/limitation.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 652 </span><span class="caption-text">limitations</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 651 </span><span class="caption-text">limitations</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -1272,12 +1264,9 @@ I^{\text {aug }}=\left\{I_v^{\text {pseudo }}\right\} \cup\left\{I_i\right\}
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-of-naive-dreambooth-fusion">3.2 Failure of Naive Dreambooth+Fusion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dreambooth3d-optimization">3.3. Dreambooth3D Optimization</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-3d-with-partial-dreambooth"><strong>3.3.1 Stage-1️⃣: 3D with Partial DreamBooth</strong></a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-dreambooth-dreambooth"><strong>⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-multi-view-data-generation"><strong>3.3.2 Stage-2️⃣: Multi-view Data Generation</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-3-final-nerf-with-multi-view-dreambooth"><strong>3.3.3 Stage-3️⃣: Final NeRF with Multi-view DreamBooth</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-1-3d-with-partial-dreambooth"><strong>3.3.1 Stage 1️⃣: 3D with Partial DreamBooth</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage-2-multi-view-data-generation"><strong>3.3.2 Stage 2️⃣: Multi-view Data Generation</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stage3-final-nerf-with-multi-view-dreambooth"><strong>3.3.3 Stage3️⃣: Final NeRF with Multi-view DreamBooth</strong></a></li>
 </ul>
 </li>
 </ul>

@@ -318,11 +318,6 @@ $$
         :::
 
         - 카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)
-        :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled7.png" alt="NeRF perspective projection" class="bg-primary mb-1" width="800px">
-            
-        perspective projection
-        :::
             
 - **Training**
 
@@ -361,20 +356,20 @@ $$
 ### 6.1 Datasets
 
 - **Synthetic renderings of object**
-        :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
-        
-        Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
-        :::
+:::{figure-md} 
+<img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px">
 
-1. **Diffuse / Synthetic** $360\degree$
+Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
+:::
+
+1. **Diffuse Synthetic** $360 \degree$
 
     1. 총 4개의 Lambertian 물체가 간단한 geometry로 구성
     2. object : **512×512** 
     3. 상반구에 대한 viewpoint 를 렌더링
     4. Train : 479, Test : 1000
 
-2. **Real / Synthetic $360\degree$, Forward-Facing** 
+2. **Real Synthetic** $360 \degree$, **Forward-Facing** 
 
     1. 총 8개의 non-Lambertian 물체 8개, 
     2. 각각의 pathtraced image 를 포함한 형태의 데이터 셋을 구성
@@ -382,11 +377,11 @@ $$
     4. 6 Scenes : 상반구에 대한 viewpoint 를 렌더링, 2 Scenes :  구 전체에 대한 viewpoint 를 렌더링
     5. Train : 100, Test : 200
 
-3. **Real / Forward-Facing** 
+3. **Real Forward-Facing** 
 
     1. 복잡한 형태의 현실 scene을 앞쪽에서 본 모습을 사용
     2. 총 8개의 scene, (5 scenes : LLFF paper 3 scenes : 직접 캡처)
-    3. object : **$1008\times 756$** 
+    3. object : **$1008 \times 756$** 
     4. Train : Test = 7 : 1
 
 ### 6.2 Comparisons
@@ -449,11 +444,12 @@ side length 2 centered at the origin**, and only query the representation within
 adding random Gaussian noise with zero mean and unit variance to the **output σ values** during optimization
 
 3. **Rendering Details**
-        :::{figure-md} 
-        <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">>
 
-        fully-connected network architecture \  (source: {https://arxiv.org/pdf/2003.08934v2})
-        :::
+    :::{figure-md} 
+    <img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">>
+
+    fully-connected network architecture \  (source: {https://arxiv.org/pdf/2003.08934v2})
+    :::
 
 - Coarse network  64 + fine network 128 = 192
 - fully-connected network 구조

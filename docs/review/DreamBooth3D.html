@@ -1,0 +1,1264 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Dream Booth 3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DreamBooth3D';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="Shap-E" href="Shap-E.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DreamBooth3D.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/DreamBooth3D.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Dream Booth 3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dream Booth 3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approach"><strong>3. Approach</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">3.1. Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-of-naive-dreambooth-fusion">3.2 Failure of Naive Dreambooth+Fusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dreambooth3d-optimization">3.3. Dreambooth3D Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">4.1. Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-applications">4.2. Sample Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">4.3. Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dream-booth-3d">
+<h1>Dream Booth 3D<a class="headerlink" href="#dream-booth-3d" title="Permalink to this heading">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="o">**</span><span class="n">Title</span><span class="p">:</span><span class="o">**</span> <span class="n">DreamBooth3D</span><span class="p">:</span> <span class="n">Subject</span><span class="o">-</span><span class="n">Driven</span> <span class="n">Text</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="mi">3</span><span class="n">D</span> <span class="n">Generation</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">Reference</span><span class="o">**</span>
+    <span class="o">-</span> <span class="n">Paper</span><span class="p">:</span> <span class="p">[</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">arxiv</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="nb">abs</span><span class="o">/</span><span class="mf">2303.13508</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">arxiv</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="nb">abs</span><span class="o">/</span><span class="mf">2303.13508</span><span class="p">)</span>
+    <span class="o">-</span> <span class="n">Project</span> <span class="n">Page</span> <span class="p">:</span> <span class="p">[</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dreambooth3d</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="p">](</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dreambooth3d</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">io</span><span class="o">/</span><span class="p">)</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">Author</span><span class="p">:</span><span class="o">**</span> <span class="n">Jeongin</span> <span class="n">Lee</span>
+
+<span class="o">-</span> <span class="o">**</span><span class="n">Last</span> <span class="n">updated</span> <span class="n">on</span> <span class="p">{</span><span class="n">Sep</span><span class="o">.</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2024</span><span class="p">}</span><span class="o">**</span>
+</pre></div>
+</div>
+<section id="abstract">
+<h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>DreamBooth3D : 피사체의 3-6개의 캐주얼한 촬영 이미지로부터 text-to-3D 생성 모델을 personalization (맞춤화)</p></li>
+<li><p>DreamBooth + DreamFusion 의 결합</p>
+<ul>
+<li><p>DreamBooth : personalizing text-to-image models</p></li>
+<li><p>DreamFusion : text-to-3D generation</p></li>
+</ul>
+</li>
+<li><p>두 방법론을 나이브하게 결합시 subject의  input viewpoints 에 대해 오버피팅하는 개인화된 t2i 모델로 인해  Subject 에 대해 만족스럽지 못한 3D 결과물 생성</p></li>
+<li><p>t2i 모델의 개인화 기능과 함께 NERF의 3D 일관성을 공동으로 활용하는 3단계 최적화 전략 (3-stage optimization strategy)을 통해 이를 극복</p></li>
+<li><p>Subject 의 입력 이미지에서 볼 수 없는 새로운 포즈, 색상 등 에 대해 텍스트 중심 수정을 통해 고품질의 subject 중심의 3D 결과물 생성 가능</p></li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p><strong>도입</strong></p>
+<ul class="simple">
+<li><p>3D asset생성은  VR, 영화, 게임 등 다양한 분야에 응용 가능하나, 텍스트 프롬프트만으로 생성된 3D asset 의 정체성, 기하학적 구조, 외관을 정확하게 제어하기 어려움.</p></li>
+<li><p>특히, 특정 subject 의 특성을 반영하는 3D assets 를 생성하는 능력에 대한 개발 필요</p></li>
+<li><p>T2I 모델 subject personalization (맞춤화, 개인화) 태스크에서 성공적인 결과를 보인 연구들은 많지만, 3D asset 생성이나 3D control 을  제공하지는 않음.</p></li>
+<li><p><strong>DreamBooth3D</strong>는 소수의 (3-6개) 캐주얼하게 촬영된 이미지로부터 subject 중심의 텍스트-3D 생성을 제안</p></li>
+</ul>
+<p>⇒ NeRF 와 T2I 모델을 함께 최적화하여 subject 중심의 3D 자산을 생성하자 !</p>
+</li>
+<li><p><strong>문제점</strong></p>
+<ul class="simple">
+<li><p>subject에 맞게 개인화된 T2I 모델 &amp; <strong>NeRF</strong> 를 최적화 하는 것은 여러 실패 사례가 발생</p></li>
+<li><p>주요 문제 : 개인화된 T2I 모델이 제한된 주제 이미지의 카메라 뷰포인트에 과적합</p></li>
+<li><p>연속적인 임의의 뷰포인트에서 일관된 3D <strong>NeRF</strong> 결과물을 최적화하는 데 충분하지 않음.</p></li>
+</ul>
+</li>
+<li><p><strong>해결책</strong></p>
+<ul class="simple">
+<li><p><strong>DreamBooth3D</strong>는 효과적인 3단계 최적화 방식을 제안</p></li>
+<li><p><strong>Dream Booth</strong> , <strong>Dream Fusion</strong> 사용</p></li>
+</ul>
+<p><strong>[setp 1️⃣]</strong></p>
+<ul class="simple">
+<li><p><strong>DreamBooth</strong> 모델을 부분적으로 미세 조정</p></li>
+<li><p><strong>DreamFusion</strong>을 사용하여 <strong>NeRF</strong> 최적화</p></li>
+<li><p>부분적으로 미세 조정된 DreamBooth 모델은 주어진 대상 뷰에 과적합 되지 않으며 모든 subject별 세부 정보를 캡처하지 않음</p></li>
+<li><p>결과적으로 생성된 <strong>NeRF</strong> 자산은 3D 일관성이 있지만 subject 에 대한 특성을 완전히 반영하지못함.</p></li>
+</ul>
+<p><strong>[setp 2️⃣]</strong></p>
+<ul class="simple">
+<li><p><strong>DreamBooth</strong> 모델을 완전히 미세 조정하여 세부 사항을 캡처</p></li>
+<li><p>1단계에서 학습된 NeRF의 다중 뷰 렌더링을 완전히 학습된 <strong>DreamBooth</strong> 모델에 투입</p></li>
+<li><p>이를 통해 subject 별로 다중 뷰 가상 이미지 집합을 생성</p></li>
+</ul>
+<p><strong>[setp 3️⃣]</strong></p>
+<ul class="simple">
+<li><p>1단계의 주어진 subject 이미지와 가상(pseudo) 다중 뷰 이미지를 사용하여 <strong>DreamBooth</strong> 모델을 추가로 최적화</p></li>
+<li><p>추가 최적화한 <strong>DreamBooth</strong> 로 NeRF 3D 볼륨을  최종 최적화</p></li>
+<li><p>최종 NeRF 최적화시 추가 규제항으로 pseudo 다중 뷰 데이터 세트에 대한 weak reconstruction loss를 사용</p></li>
+<li><p>3단계에 걸친 NeRF 및 T2I 모델의 합동 최적화는 <strong>DreamBooth</strong> 모델이 subject 의 특정 view point 에 과적합되는 것을 방지하는 동시에 동시에 결과 NeRF 모델이 대상의 정체성에 충실하도록 보장</p></li>
+</ul>
+</li>
+<li><p><strong>결과</strong></p>
+<ul class="simple">
+<li><p>실험 샘플 결과들을 통해 본 접근 방식이 입력 텍스트 프롬프트에 존재하는 컨텍스트를 존중하면서 주어진 대상과 유사성이 높은 현실적인 3D 자산을 생성할 수 있음을 입증</p></li>
+<li><p>여러 베이스라인과 비교할 때, 정량적 및 정성적 결과는 DreamBooth 3D 생성이 보다 3D 일관성이 있고 대상 세부 사항을 더 잘 포착한다는 것을 입증</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Text-to-Image Generation.</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>텍스트 조건 반영 : 사용자가 제공한 자연어 텍스트 프롬프트에 정렬된 이미지를 생성하기 위해 사전 학습된 large language model (LLM) 을 활용</p></li>
+<li><p>T2I diffusion 모델의 성공에 힘입어, 많은 작품들이 텍스트 기반 이미지 조작과 같은 다양한 작업에 사전 학습된 T2I 모델을 활용합니다</p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p><strong>3D Generation.</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>최근 사전 학습된 대규모 T2I diffusion 모델을 활용하여 텍스트 프롬프트에서 3D 자산을 생성할 수 있는 text-to-3D 방법이 제안</p></li>
+<li><p>기존 방법론</p>
+<ul>
+<li><p>텍스트를 통해 t2i 모델로 이미지를 직접 reconstruction</p></li>
+</ul>
+</li>
+<li><p>본 방법론</p>
+<ul>
+<li><p>입력 이미지를 직접 reconstruction 하지 않고  suject 개념을 제공하기 위한 입력 이미지 사용 →  Recontextualization 수행 가능 (sleeping, jumping, color…etc)</p></li>
+<li><p>입력 이미지를 동일한 배경, 조명, 카메라 등으로 촬영할 필요가 없음.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p><strong>Subject-driven Generation.</strong></p></li>
+</ol>
+<ul class="simple">
+<li><p>Subject 중심 이미지 생성의 최근 발전을 통해 사용자는 특정 대상과 개념에 대해 이미지 생성을 개인화(맞춤화)</p></li>
+<li><p><strong>DreamBooth</strong><br />
+희귀 토큰, 모델 finetuning, 규제를 위한 prior preservation loss를 사용하여 모델의 언어 비전 사전을 확장하여 이를 달성</p></li>
+<li><p><strong>Textual Inversion</strong>
+입력 개념을 나타내는 사전 학습된 text-to-image 모델의 임베딩 공간에서 새로운 word 를 최적화함으로써 이를 달성</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/54544834-db8a-49f3-9ac7-d4a530724fd8.png"><img alt="d4a530724fd8" class="bg-primary mb-1" src="../../_images/54544834-db8a-49f3-9ac7-d4a530724fd8.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 642 </span><span class="caption-text">Textual Inversion \  (source: {<a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>})</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled.png"><img alt="Untitled" class="bg-primary mb-1" src="../../_images/Untitled.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 643 </span><span class="caption-text">Textual Inversion Architecture \  (source: {<a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>})</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>이러한 방법은 3D 자산이나 3D 일관성 있는 이미지를 생성 기능을 제공하지 않음.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="approach">
+<h1><strong>3. Approach</strong><a class="headerlink" href="#approach" title="Permalink to this heading">#</a></h1>
+<p><strong>Problem setup.</strong></p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled_1.png"><img alt="Untitled_1" class="bg-primary mb-1" src="../../_images/Untitled_1.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 644 </span><span class="caption-text">Input and Output</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Input : subject 이미지 집합, 텍스트 프롬프트</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\left\{I_i \in \mathbb{R}^{n \times 3}\right\}(i \in\{1, \ldots, k\})\)</span> : 각 n개의 픽셀, k 장의 subject 이미지들의 집합</p></li>
+<li><p>context(맥락) 부여, 의미 변화를 위한 텍스트 프롬프트 T (ex) sleeping, standing…etc.</p></li>
+</ul>
+</li>
+</ul>
+<aside>
+🌟 **Goal** 
+텍스트 프롬프트에 충실하면서 주어진 subject 의 identity (기하 형태 및 외관)을 반영하는 3D assets 생성
+</aside>
+<ul>
+<li><p>3D volume 에서 radiance 필드를 인코딩하는 MLP 네트워크 <span class="math notranslate nohighlight">\(M\)</span> 으로 구성된 Neural Radiance Fields (NeRF) 를 기반으로 3D assets 를 최적화</p></li>
+<li><p>본 문제는 <strong>subject 이미지에 대한 반영이 필요</strong>하기 때문에, 일반적인 multi-view 이미지 캡처가 필요한 3D reconstruction 설정에 비해 상당히 제한적이고 어려운 문제</p></li>
+<li><p>T2I personalization 및 Text-to-3D 최적화의 최근 발전을 기반으로 기술을 구축</p>
+<p>⇒ DreamBooth personalization + DreamFusion text-to-3D로 최적화를 사용</p>
+</li>
+</ul>
+<section id="preliminaries">
+<h2>3.1. Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<p><strong>T2I diffusion models</strong></p>
+<ul class="simple">
+<li><p>T2I diffusion models : Imagen, StableDiffusion and DALL-E 2 …etc..</p></li>
+<li><p>T2I diffusion model <span class="math notranslate nohighlight">\(\mathcal{D}_\theta(\epsilon, \mathbf{c})\)</span></p>
+<ul>
+<li><p>input  :초기 노이즈 <span class="math notranslate nohighlight">\(\epsilon\)</span> , 프롬프트 텍스트 임베딩 <span class="math notranslate nohighlight">\(\mathbf{c}\)</span></p>
+<ul>
+<li><p>an initial noise <span class="math notranslate nohighlight">\(\epsilon \sim \mathcal{N}(0,1)\)</span></p></li>
+<li><p>text embedding <span class="math notranslate nohighlight">\(\mathbf{c}=\Theta(T)\)</span>  (a given prompt <span class="math notranslate nohighlight">\(T\)</span> with a text encoder <span class="math notranslate nohighlight">\(\Theta\)</span>)</p></li>
+</ul>
+</li>
+<li><p>output : 프롬프트를 반영하여 생성한 이미지</p></li>
+</ul>
+</li>
+<li><p>T2I diffusion model 을 통해 생성된 이미지는 일반적으로 프롬프트와 일치하지만 생성된 이미지내에서 세부적인 제어가 어려움. → <strong>DreamBooth</strong> 를 통해 이를 해결</p></li>
+</ul>
+<hr class="docutils" />
+<p><strong>Dream Booth T2I Personalization.</strong></p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled_4.png"><img alt="Untitled_4" class="bg-primary mb-1" src="../../_images/Untitled_4.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 645 </span><span class="caption-text">특정 피사체에 대한 소수의 이미지 집합 (3-5장) 을 통해 텍스트로 주어지는 Context 에 맞는 맞춤화 이미지 생성</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\left\{I_i\right\}\)</span> 에서 네트워크를 파인튜닝하여 T2I diffusion 모델을 맞춤화</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\left\{I_i\right\}\)</span> : a small set of casual captures</p></li>
+</ul>
+</li>
+<li><p>DreamBooth diffusion loss : T2I model 파인튜닝을 위해 사용</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{L}_d=\mathbb{E}{\epsilon, t}\left[w_t\left\|\mathcal{D}_\theta\left(\alpha_t I_i+\sigma_t \epsilon, \mathbf{c}\right)-I_i\right\|^2\right],
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(t \sim \mathcal{U}[0,1]\)</span> : the time-step in the diffusion proces</p></li>
+<li><p><span class="math notranslate nohighlight">\(w_t, \alpha_t, \sigma_t\)</span> : the corresponding scheduling parameters</p></li>
+</ul>
+</li>
+<li><p><strong>DreamBooth Class prior preserving loss</strong></p>
+<p>DreamBooth 는 <span class="math notranslate nohighlight">\(\left\{I_i\right\}\)</span>  에 대한 <strong>over fitting</strong> 을 방지하여 다양성을 개선하고, <strong>language drift</strong> 현상을 피하기 위해 선택적으로 <strong>class prior preserving loss 를 사용</strong></p>
+</li>
+<li><p><strong>최종 loss : reconstruction loss + class prior preservation loss</strong></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}_{x, c, \epsilon, \epsilon^{\prime}, t}\left[w_t\left\|\hat{x_\theta} \left(\alpha_t x+\sigma_t \epsilon, c\right)-x\right\|_2^2+\lambda w_{t^{\prime}}\left\|\hat{x}_\theta\left(\alpha_{t^{\prime}} x_{p r}+\sigma_{t^{\prime}}\epsilon^{\prime}, c_{pr}\right)-x_{pr}\right\|_2^2\right]
+\]</div>
+<ul class="simple">
+<li><p><strong>(example) over fitting</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>(example) language-drift</strong></p></li>
+</ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled_3.png"><img alt="Untitled_3" class="bg-primary mb-1" src="../../_images/Untitled_3.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 646 </span><span class="caption-text">language-drift</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<p><strong>DreamFusion</strong></p>
+<ul class="simple">
+<li><p>T2I diffusion model을 사용하여 볼륨의 랜덤뷰가 프롬프트  <span class="math notranslate nohighlight">\(T\)</span> 에 상응하도록 NeRF <span class="math notranslate nohighlight">\(\mathcal{M}_\phi\)</span> (<span class="math notranslate nohighlight">\(\phi\)</span> : parameters) 를 통해 표현된 볼륨을 최적화</p></li>
+</ul>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled_6.png"><img alt="Untitled_6" class="bg-primary mb-1" src="../../_images/Untitled_6.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 647 </span><span class="caption-text">DreamFusion process / (source : <a class="reference external" href="https://pseudo-lab.github.io/pseudodiffusers/docs/review/DreamFusion.html">DreamFusion</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>normals : 밀도의 그래디언트로부터 계산된 nomals은 <strong>Lambertian shading</strong> 으로 기하학적 사실성을 개선시키기 위해 모델을 랜덤으로 relight 하는데 사용됨.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{M}_\phi\)</span>  : mapping <strong>(camera, light (location) → albedo &amp;density)</strong></p>
+<ul class="simple">
+<li><p>랜덤 뷰 <span class="math notranslate nohighlight">\(v\)</span>, 랜덤 조명(light) 방향이 주어지면 shaded(음영 처리된) 이미지 <span class="math notranslate nohighlight">\(\hat{I}v\)</span> 로 볼륨 렌더링을 수행</p></li>
+</ul>
+</li>
+<li><p>이 때 볼륨 렌더링한 이미지가 텍스트 프롬프트 <span class="math notranslate nohighlight">\(T\)</span> 처럼 보이도록 NeRF <span class="math notranslate nohighlight">\(\phi\)</span> 의 매개변수를 최적화하기 위해 <strong>DreamFusion</strong> 은 <strong>score distillation sampling (SDS)</strong> 를 도입</p>
+<ul class="simple">
+<li><p><strong>[cf] dream fusion sds loss</strong></p></li>
+</ul>
+</li>
+<li><p>score distillation sampling (SDS)</p>
+<div class="math notranslate nohighlight">
+\[
+    \nabla_\phi \mathcal{L}_{SDS}=\mathbb{E}{\epsilon, t}\left[w_t\left(\mathcal{D}_\theta\left(\alpha_t \hat{I}_v+\sigma_t \epsilon, \mathbf{c}\right)-\hat{I}_v\right) \frac{\partial \hat{I}_v}{\partial \phi}\right] .
+    \]</div>
+<ul class="simple">
+<li><p>렌더링된 이미지의 노이즈가 처리된 버전들을 T2I diffusion model의 낮은 에너지 상태로 push</p></li>
+</ul>
+</li>
+<li><p>다양한 views를 랜덤으로 선택하고, NeRF 를 통해 역전파 함으로써,
+<strong>rendering 결과들</strong>이 <strong>T2I model <span class="math notranslate nohighlight">\(\mathcal{D}_\theta\)</span> 로 주어진 프롬프트에 맞게 생성된 이미지</strong>처럼 보이도록 함.</p></li>
+<li><p><strong>DreamFusion</strong> 에서 사용된 실험 환경을 정확하게 동일하게 사용함.</p></li>
+</ul>
+</section>
+<section id="failure-of-naive-dreambooth-fusion">
+<h2>3.2 Failure of Naive Dreambooth+Fusion<a class="headerlink" href="#failure-of-naive-dreambooth-fusion" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p><strong>피사체(subject) 중심 text-to-3D 생성을 위한 직관적인 접근 방식</strong></p>
+<ol class="arabic simple">
+<li><p>subject에 대해 <strong>T2I model 을 pesonalized(맞춤화)</strong></p></li>
+<li><p>맞춤화된  T2I model 을 <strong>text-to-3D optimization</strong> 을 위해 사용</p></li>
+</ol>
+</li>
+<li><p><strong>즉, DreamBooth 최적화(personalized) ⇒ DreamFusion 최적화</strong></p></li>
+<li><p>그러나, <strong>Naive Dreambooth+Fusion 의 결합은 불만족스러운 결과를 초래</strong></p></li>
+</ul>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>**핵심 문제 (KEY Issue)**
+
+- **Dream Booth**가 **훈련된 뷰에 존재하는 subject 의 뷰에 과적합** 되어 
+**이미지 생성에서 viewpoint 에 대한 다양성이 감소**하는 경향을 보임.
+- 미세 조정 단계가 증가할수록, Subject 유사성 증가 (👍) 
+**BUT**  input exemplar views에 유사하도록 viewpoints 생성 (👎)
+    
+    ⇒ 즉, 다양한 시점에서 이미지를 생성하는 능력이 저하됨. 
+    
+- 이런 DreamBooth 모델 기반의 NeRF SDS 손실은 일관된 3D NeRF 결과물을 얻기에 불충분
+- **DreamBooth+Fusion NeRF** 모델이 **서로 다른 view** 에 걸쳐 학습된 **동일한 대상에 대한 뷰**(예: face of a dog :  다양한 각도에서 본 동일한 dog face )를 가지고 있음.
+    - **&quot;Janus problem&quot;**으로 인한 실패 사례 : 두 가지 상반되거나 연관된 측면을 동시에 다루어야 하는 문제
+</pre></div>
+</div>
+</section>
+<section id="dreambooth3d-optimization">
+<h2>3.3. Dreambooth3D Optimization<a class="headerlink" href="#dreambooth3d-optimization" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>DreamBooth3D Overview
+<strong>stage-1 (왼쪽)</strong>: 먼저 DreamBooth를 부분적으로 훈련시키고, 결과 모델을 사용하여 초기 NeRF를 최적화
+<strong>stage-2 (가운데)</strong>: 초기 NeRF에서 랜덤 시점에 따라 다중 시점 이미지를 렌더링한 후, 완전히 훈련된 DreamBooth 모델을 사용하여 이를 가상 다중 시점 subject 이미지로 변환
+<strong>stage-3 (오른쪽)</strong>: 다중 시점 이미지를 사용하여 부분적인 DreamBooth를 추가로 미세 조정한 다음, 결과적으로 얻어진 다중 시점 DreamBooth를 사용하여 최종 NeRF 3D 자산을 SDS 손실과 다중 시점 재구성 손실을 통해 최적화</p></li>
+<li><p>위의 문제를 해결하고 성공적인 subject 맞춤 text-to-3D 생성을 위해 효율적인 3단계 최적화 방식을 기반으로 한 Dream-Booth3D 제안</p></li>
+</ul>
+<p><strong>1️⃣Stage-1: 3D with Partial DreamBooth</strong></p>
+<ul class="simple">
+<li><p>입력된 Subject 이미지를 사용하여 DreamBooth 모델 <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta\)</span> 를 훈련</p></li>
+</ul>
+<aside>
+🌟 **DreamBoothT2I 모델의 초기 체크포인트가 (=부분적으로 파인튜닝한 결과) 주어진 subject view에 과적합되지 않음을 확인**
+<p><strong>⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)</strong></p>
+</aside>
+<ul class="simple">
+<li><p><strong>partial DreamBooth</strong> 모델 하에 DreamFusion은 더 일관된 3D NeRF를 생성가능</p></li>
+<li><p>NeRF 최적화시 SDS 손실 사용 :</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\nabla_\phi \mathcal{L}_{SDS}=\mathbb{E}{\epsilon, t}\left[w_t\left(\hat{\mathcal{D}}_\theta^{\text {partial }}\left(\alpha_t \hat{I}_v+\sigma_t \epsilon, \mathbf{c}\right)-\hat{I}_v\right) \frac{\partial \hat{I}_v}{\partial \phi}\right]\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta^{\text {partial }}\)</span>: <strong>partial DreamBooth</strong></p></li>
+<li><p>SDS 손실을 사용하여 주어진 텍스트 프롬프트에 대한 초기 NeRF 자산을 최적화</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>partial DreamBooth</strong> 모델과 NeRF 결과물은 입력된 subject 와 완전히 유사하지 않음</p></li>
+</ul>
+<aside>
+🌟 즉,  **1️⃣ Stage-1 에서의 초기 NeRF** 는 **주어진 subject 와  부분적으로ㅁ 유사**하면서, 
+**주어진 텍스트 프롬프트에 충실한**  **subject class 3D 모델**
+</aside>
+<p><strong>2️⃣Stage-2: Multi-view Data Generation</strong></p>
+<aside>
+🌟 **Stage-2 Multi-view Data Generation : 본 접근법의 가장 중요한 부분**
+<p>일관성을 갖춘 <strong>3D initial NeRF</strong> 와 <strong>fully-trained DreamBooth</strong> 를 사용하여 <strong>pseudo multi-view subject</strong> 이미지들을 생성</p>
+</aside>
+<ol class="arabic">
+<li><p><strong>Initial NeRF</strong> 로부터 다양한 랜덤 viewpoints  <span class="math notranslate nohighlight">\(\{v\}\)</span>을 따라 여러 이미지<span class="math notranslate nohighlight">\(\left\{\hat{I}v \in \mathbb{R}^{n \times 3}\right\}\)</span> 를 렌더링하여 다중 시점 렌더링을 생성</p></li>
+<li><p>각 <strong>렌더링에 고정된 양의 노이즈를 추가하는 forward diffusion</strong> 과정을 통해 <span class="math notranslate nohighlight">\(t_{pseudo}\)</span>로 전환</p></li>
+<li><p>reverse diffusion 과정을 실행하여 <strong>fully-trained DreamBooth</strong> 모델 <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta\)</span> 를 사용하여 샘플을 생성</p>
+<ul>
+<li><p>샘플링 과정은 각 뷰에 대해 독립적으로 수행</p></li>
+<li><p><strong>Initial NeRF 결과물</strong> 에 노이즈를 추가한 noisy render 를 조건으로 지정함으로써, 넓은 범위의 시점을 커버하면서 subject 를 잘 나타내는 이미지 생성 가능
+⇒ 다양한 노이즈가 있는 이미지를 조건으로 학습시, 다양한 변형에 대한 학습 가능하기 때문</p></li>
+<li><p><strong>BUT</strong> reverse diffusion 과정은 다른 뷰에 다른 세부 사항을 추가할 수 있기 때문에 결과 이미지는  multi-view 에 대한 일관성이 없음.</p>
+<p>⇒ 가상(pseudo) 다중 시점 이미지 집합 <strong>(collection of pseudo multi-view images)</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+<aside>
+🔑 **Key insight**
+1. 초기 NeRF 이미지가 unseen views 에 가까울 경우, 
+    DreamBooth가 Subject 의 unseen views를 효과적으로 생성 가능 
+<ol class="arabic simple" start="2">
+<li><p>입력 이미지에 비해 Subject 와 더 유사한 출력 이미지를 효과적으로 생성가능**</p></li>
+</ol>
+</aside>
+<ul class="simple">
+<li><p>위 그림을 통해 체크할 부분</p>
+<ul>
+<li><p><strong>fully-trained DreamBooth</strong> 를 사용한 Img2Img 변환의 샘플 출력</p></li>
+<li><p>입력 NeRF 렌더링의 시점을 유지하면서도 subject 이미지와 더 유사한 모습</p></li>
+<li><p>기존 연구들과 달리 Img2Img 변환을 DreamBooth, NeRF 3D assets 과 결합하여 사용 (기존 연구의 경우 Img2Img 변환을 이미지 editing 응용으로만 사용)</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>3️⃣Stage-3: Final NeRF with Multi-view DreamBooth</strong></p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled_12.png"><img alt="Untitled_12" class="bg-primary mb-1" src="../../_images/Untitled_12.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 648 </span><span class="caption-text">Stage-3 : Final NeRF with Multi-view DreamBooth
+SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>새로운 데이터 <span class="math notranslate nohighlight">\(I^{\text{aug}}\)</span> 생성</strong></p>
+<ul class="simple">
+<li><p>가상 다중 시점 이미지 <span class="math notranslate nohighlight">\(\left\{I_v^{\text {pseudo }}\right\}\)</span>, 입력 Subject 이미지 <span class="math notranslate nohighlight">\(\left\{I_i\right\}\)</span> 의 결합을 통해 생성</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+I^{\text {aug }}=\left\{I_v^{\text {pseudo }}\right\} \cup\left\{I_i\right\}
+\]</div>
+<p><strong><span class="math notranslate nohighlight">\(I^{\text {aug}}\)</span> 를 사용하여 최종 Multi-view DreamBooth 모델을 최적화</strong></p>
+<ol class="arabic simple">
+<li><p>1단계에서 <strong>partial DreamBooth</strong> <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_{\theta^*}\)</span> 준비</p></li>
+<li><p>위의 증강 데이터 <span class="math notranslate nohighlight">\(I^{\text {aug}}\)</span>  를 사용하여 <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_{\theta^*}\)</span> 에 대한 <strong>파인튜닝</strong>을 추가 진행</p></li>
+<li><p><strong>Multi-view DreamBooth</strong> <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta^{\mathrm{multi}}\)</span> 를  생성</p></li>
+</ol>
+<p><span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta^{\text {multi }}\)</span> <strong>모델을 사용하여 DreamFusion SDS Loss 와 함께 NeRF 3D assets 를 최적화</strong></p>
+<ul class="simple">
+<li><p>1단계의 <strong>partial DreamBooth</strong>에 비해 <strong>multi-view DreamBooth</strong> 의 뷰 일반화와 subject 보존 능력이 더 우수하기 때문에 <strong>subject idendtity가 상당히 향상된 NeRF 모델 생성 가능</strong></p></li>
+<li><p><strong>BUT</strong> SDS 손실만 사용시 최적화된 NeRF assets 이</p>
+<ul>
+<li><p>주어진 subject 에 대해 우수한 기하학적 유사성 보유</p></li>
+<li><p><strong>Color saturation artifacts 현상 다수 발생</strong></p></li>
+<li><p>이를 해결하기 위해 <span class="math notranslate nohighlight">\(\left\{I_v^{\mathrm{pseudo}}\right\}\)</span> 를 사용한 새로운 <strong>weak reconstruction loss</strong> 도입</p></li>
+<li><p>**** Color saturation artifacts :**</p>
+<ul>
+<li><p>색상의 과도한 포화(saturation)로 인해 비현실적이거나 왜곡된 색상 표현이 나타나는 결함 현상</p></li>
+<li><p>모델이 특정 색상을 과도하게 강조하는 경우 발생</p></li>
+<li><p>색상 값을 잘못 예측하여 비현실적인 색상 표현이 나타난 경우 발생</p></li>
+<li><p>다양한 시점에서 일관된 색상 표현을 유지하지 못한 경우 발생</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Reconstruction loss</strong></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\left\{I_v^{\mathrm{pseudo}}\right\}\)</span> 가 생성된 카메라 매개변수 <span class="math notranslate nohighlight">\(\left\{P_v\right\}\)</span> 정보를 알고 있으므로,
+두 번째 NeRF MLP <span class="math notranslate nohighlight">\(\mathcal{F}\gamma\)</span> 의 훈련을 <strong>reconstruction loss</strong> 를 통해 추가로 규제</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{L}_{recon }=\left\|\Gamma\left(\mathcal{F}_\gamma, P_v\right)-I_v^{\text {pseudo }}\right\|_p,
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Gamma\left(\mathcal{F}\gamma, P_v\right)\)</span> : 카메라 시점 <span class="math notranslate nohighlight">\(P_v\)</span> 를 따라 NeRF <span class="math notranslate nohighlight">\(\mathcal{F}\gamma\)</span> 에서 이미지를 렌더링하는 함수</p></li>
+</ul>
+</li>
+<li><p><strong>Reconstruction loss 의 목적</strong></p>
+<ul class="simple">
+<li><p>생성된 볼륨의 색상 분포를 image exemplars 과 더 가깝게 조정</p></li>
+<li><p>unseen views에서 subject 유사성을 향상</p></li>
+</ul>
+<p><strong>Final NeRF Loss function</strong></p>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}=\lambda_{\text {recon }} \mathcal{L}_{\text {recon }}+\lambda_{\text {SDS }} \mathcal{L}_{\text {SDS }}+\lambda_{\text {nerf }} \mathcal{L}_{\text {nerf }}
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{L}_{\text {nerf }}\)</span> 는 Mip-NeRF360 [2]에서 사용된 추가적인 NeRF 정규화</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="experiments">
+<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<p><strong>Implementation Details.</strong></p>
+<ul class="simple">
+<li><p><strong>사용 모델</strong>:</p>
+<ul>
+<li><p>T2I : Imagen T2I 모델</p></li>
+<li><p>Text-encoding:  T5-XXL</p></li>
+<li><p>NeRF : DreamFusion</p></li>
+</ul>
+</li>
+<li><p><strong>훈련 시간</strong>: 4core TPUv4, 각 프롬프트당 3단계 최적화를 완료하는 데 약 3시간 소요</p></li>
+<li><p><strong>훈련 단계</strong>:</p>
+<ul>
+<li><p><strong>부분 DreamBooth 모델 (<span class="math notranslate nohighlight">\(D_θ^{partial}\)</span>)</strong> : 150번의 반복훈련</p></li>
+<li><p><strong>전체 DreamBooth 모델 (<span class="math notranslate nohighlight">\(D_θ\)</span>)</strong> : 800번 반복 훈련시 최적의 성능</p></li>
+</ul>
+</li>
+<li><p><strong>pseudo multi-view data generation :</strong>
+원점에서 고정된 반경으로 균일하게 샘플링한 20개의 이미지를 렌더링</p></li>
+<li><p><strong>Stage-3 Multi-view DreamBooth</strong> <span class="math notranslate nohighlight">\(\hat{\mathcal{D}}_\theta^{\mathrm{multi}}\)</span>:
+3단계에서 추가로 150번 반복하여 부분적으로 훈련된 <span class="math notranslate nohighlight">\(\hat{D}_{θ}^∗\)</span> 모델을 Finetuning</p></li>
+<li><p><strong>Hyperparams :</strong> supplementary material 참고</p></li>
+</ul>
+<p><strong>Datasets.</strong></p>
+<ul class="simple">
+<li><p><strong>훈련 데이터</strong>: 공개된 이미지 컬렉션을 사용하여 personalized text-to-3D 모델을 훈련</p>
+<ul>
+<li><p>다양한 subject(개, 장난감, 배낭, 선글라스, 만화 캐릭터 등) 의  4-6개의 casual 이미지를 포함한 30개의 다른 이미지 컬렉션으로 구성</p></li>
+</ul>
+</li>
+<li><p><strong>희귀 객체 성능 분석</strong>: “올빼미 장식품”과 같은 희귀한 대상의 성능을 분석하기 위해 추가 이미지 수집</p></li>
+<li><p>3-6개의 프롬프트에 대해 각 3D 모델을 최적화하여 3D contextualizations 문맥화 시연</p></li>
+</ul>
+<p><strong>Baselines.</strong></p>
+<ul class="simple">
+<li><p><strong>Latent-NeRF</strong></p>
+<ul>
+<li><p>RGB 픽셀 공간이 아닌 Stable Diffusion 의  latent feature 공간에서 SDS 손실을 통해 3D NeRF 모델을 학습</p></li>
+<li><p>baseline 으로써 fully dreamboothed T2I model 를 사용하여 Latent-NeRF 실행</p></li>
+</ul>
+</li>
+<li><p><strong>DreamFusion+DreamBooth</strong>: DreamBooth 확산 모델을 먼저 훈련한 후 DreamFusion을 사용하여 3D NeRF를 최적화하는 단일 단계 접근 방식</p></li>
+<li><p><strong>본 연구의 3단계 최적화 기반 방법론</strong> :  “DreamBooth3D”</p></li>
+</ul>
+<p><strong>Evaluation Metrics.</strong></p>
+<ul class="simple">
+<li><p><strong>CLIP R-Precision</strong></p>
+<ul>
+<li><p>rendering된 장면들이 주어졌을 때 프롬프트와 얼마나 정확하게 일치하는지 비율을 나타냄.</p></li>
+<li><p>CLIP ViT-B/16, ViT-B/32, ViT-L-14 모델을 평가에 사용</p></li>
+</ul>
+</li>
+<li><p>추가적으로 user study 수행 (뒤에 언급)</p></li>
+</ul>
+<section id="results">
+<h2>4.1. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<p><strong>Visual Results</strong></p>
+<ul class="simple">
+<li><p><strong>비교 결과</strong>: DreamBooth3D, Latent-NeRF, DreamBooth+Fusion 기준 모델의 비교</p>
+<ul>
+<li><p>Latent-NeRF : 일부 경우(오리)에서 적절히 작동하지만, 대부분의 경우 일관된 3D 모델을 생성하는 데 실패</p></li>
+<li><p>DreamBooth+Fusion : 여러 시점에서 동일한 외형 및 구조를 보임</p></li>
+<li><p>DreamBooth3D : 360도 일관된 3D Asset을 생성하며, 주어진 subject 의 기하학적 구조 및 외관의 세부 사항을 잘 반영함</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Quantitative Comparisons</strong></p>
+<p><strong>Initial vs. Final NeRF</strong></p>
+<ul class="simple">
+<li><p>1단계와 3단계에서 생성된 초기 NeRF와 최종 NeRF 결과</p></li>
+<li><p>초기 NeRF : 주어진 subject 와 부분적으로만 유사, 3D 일관성을 유지</p></li>
+<li><p>최종 NeRF : 주어진 subject 와 더 유사하, 일관된 3D 구조를 유지</p></li>
+<li><p>이러한 예시는 DreamBooth3D의 3단계 최적화가 필요함을 입증 (?)</p></li>
+</ul>
+<p><strong>User Study.</strong></p>
+<p><strong>→ DreamBooth3D와 비교 모델들을 세가지측면에 대해 아래의 질문에 대한 답변으로 평가</strong></p>
+<ol class="arabic simple">
+<li><p><strong>subject 충실도</strong>: “어떤 3D 항목이 subject 와 더 유사하게 보입니까?”</p></li>
+<li><p><strong>3D 일관성과 타당성</strong>: “어떤 3D 항목이 더 타당하고 일관된 기하학적 구조를 가지고 있습니까?”</p></li>
+<li><p><strong>프롬프트 충실도</strong>: “어떤 비디오가 제공된 프롬프트를 더 잘 반영합니까?”</p></li>
+</ol>
+<ul class="simple">
+<li><p><strong>연구 방법</strong></p>
+<ul>
+<li><p>3D 일관성과 주제 충실도 연구에서는 데이터셋의 30개 subject 각각에 대해 회전 비디오 결과를 제시하고 11명의 사용자가 각 쌍에 대해 응답</p></li>
+<li><p>프롬프트 충실도 연구에서는 54개의 고유한 프롬프트와 주제 쌍에 대해 비디오를 생성하고, 21명의 사용자가 응답</p></li>
+</ul>
+</li>
+<li><p><strong>최종 결과</strong></p>
+<ul>
+<li><p>최종 결과는 다수결 투표를 통해 산출</p></li>
+<li><p>DreamBooth3D는 3D 일관성, 주제 충실도, 프롬프트 충실도에서 기준 모델들보다 유의미하게 더 선호됨.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="sample-applications">
+<h2>4.2. Sample Applications<a class="headerlink" href="#sample-applications" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Recontextualization. (재문맥화)</strong></p>
+<ul>
+<li><p>단순한 프롬프트를 사용하여 다양한 개 주제의 3D 모델로 재문맥화한 샘플 결과</p></li>
+<li><p>모든 subject 에서 텍스트 프롬프트에 주어진 문맥을 일관되게 반영</p></li>
+<li><p>출력된 3D 모델의 자세와 로컬 변형은 입력 이미지에 없는 포즈임에도 불구하고 매우 사실적</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><strong>Color/Material Editing.</strong></p>
+<ul>
+<li><p>색상 편집 및 재질 편집</p></li>
+</ul>
+</li>
+<li><p><strong>Accessorization</strong></p>
+<ul>
+<li><p>subject 에 액세서리 추가</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p><strong>Stylization</strong></p>
+<ul>
+<li><p>크림색 신발을 색상과 프릴 추가를 기반으로 스타일화</p></li>
+</ul>
+</li>
+<li><p><strong>Cartoon-to-3D</strong></p>
+<ul>
+<li><p>비사실적 피상체 이미지(예: 2D 평면 캐릭터)를 그럴듯한 3D 형태로 변환</p></li>
+<li><p>모든 subject 이미지가 정면임에도 불구하고, 그럴듯한 3D 결과물 생성</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="limitations">
+<h2>4.3. Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>최적화된 3D 표현이 때때로 과도하게 포화되고 매끄럽게 처리되는 경우가 존재</p>
+<ol class="arabic simple">
+<li><p>높은 가중치 가이던스를 가진 SDS 기반 최적화에 의해 발생</p></li>
+<li><p>64×64 픽셀이라는 상대적으로 낮은 이미지 해상도로 제한되어 발생</p></li>
+<li><p>diffusion 과 NeRF 의 효율성 향상은 더 높은 해상도로 확장할 수 있는 가능성을 제공</p></li>
+</ol>
+</li>
+<li><p>Janus problem : 최적화된 3D 표현은 입력 이미지에 시점 변화가 없으면 여러 불일치한 시점에서 정면으로 보이는 viewpoints 불일치 문제가 발생</p></li>
+<li><p>선글라스와 같은 얇은 객체 구조를 재구성하는 데 어려움이 존재</p></li>
+</ol>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>5. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Subject 중심의 텍스트-3D 생성을 위한 방법인 DreamBooth3D를 제안</p></li>
+<li><p>Subject 에 대한 소규모 casual 이미지 셋트가 주어지면, (카메라 포즈와 같은 추가 정보 없이)
+입력 텍스트 프롬프트에서 제공된 컨텍스트(자고 있는, 점프하는, 빨간 등)를 준수하는 subject 별 3D assets 를 생성</p></li>
+<li><p>DreamBooth 데이터셋 에 대한 광범위한 실험을 통해 해당 방법이 주어진 subject 와 높은 유사성을 가지면서도 입력 텍스트 프롬프트에 나타난 컨텍스트를 잘 반영하는 현실적인 3D assets 을 생성할 수 있음을 입증</p></li>
+<li><p>정량적 및 정성적 평가에서 여러 기준 모델보다 우수한 성능을 보임을 확인</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Shap-E.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Shap-E</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dream Booth 3D</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">0. Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#approach"><strong>3. Approach</strong></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">3.1. Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#failure-of-naive-dreambooth-fusion">3.2 Failure of Naive Dreambooth+Fusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dreambooth3d-optimization">3.3. Dreambooth3D Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">4.1. Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-applications">4.2. Sample Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">4.3. Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

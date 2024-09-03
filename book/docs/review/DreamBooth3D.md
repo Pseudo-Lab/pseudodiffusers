@@ -260,10 +260,10 @@ DreamBooth3D Overview
 
 ---
 
-### **3.3.1 Stage-1️⃣: 3D with Partial DreamBooth**
+### **3.3.1 Stage 1️⃣: 3D with Partial DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1">
+ <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1" style="width:400px; display:block; margin: 0 auto;" />
 
 Stage-1 :  3D with Partial DreamBooth
 :::                           
@@ -271,9 +271,9 @@ Stage-1 :  3D with Partial DreamBooth
 - 입력된 Subject 이미지를 사용하여 DreamBooth 모델 $\hat{\mathcal{D}}_\theta$ 를 훈련
 
 ---
-🌟 **DreamBoothT2I 모델의 초기 체크포인트가 (=부분적으로 파인튜닝한 결과) 주어진 subject view에 과적합되지 않음을 확인**
+🌟 **DreamBoothT2I 모델의 초기 체크포인트가 (=부분적으로 파인튜닝한 결과) 주어진 subject view에 과적합되지 않음을 확인** 
 
-**⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)**
+    ⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)
 ---
 
 - **partial DreamBooth** 모델 하에 DreamFusion은 더 일관된 3D NeRF를 생성가능
@@ -290,10 +290,10 @@ Stage-1 :  3D with Partial DreamBooth
 
 ---
 
-### **3.3.2 Stage-2️⃣: Multi-view Data Generation**
+### **3.3.2 Stage 2️⃣: Multi-view Data Generation**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1">
+ <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1 "style="width:400px; display:block; margin: 0 auto;" />
 
 Stage-2: Multi-view Data Generation
 :::                           
@@ -331,7 +331,7 @@ Stage-2: Multi-view Data Generation
 - 위 그림을 통해 체크할 부분
 
     :::{figure-md} 
-    <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1">
+    <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1" style="width:400px; display:block; margin: 0 auto;" />
 
     :::         
 
@@ -339,10 +339,10 @@ Stage-2: Multi-view Data Generation
     - 입력 NeRF 렌더링의 시점을 유지하면서도 subject 이미지와 더 유사한 모습
     - 기존 연구들과 달리 Img2Img 변환을 DreamBooth, NeRF 3D assets 과 결합하여 사용 (기존 연구의 경우 Img2Img 변환을 이미지 editing 응용으로만 사용)
 
-### **3.3.3 Stage-3️⃣: Final NeRF with Multi-view DreamBooth**
+### **3.3.3 Stage3️⃣: Final NeRF with Multi-view DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1">
+ <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1" style="width:400px; display:block; margin: 0 auto;" />
 
 Stage-3 : Final NeRF with Multi-view DreamBooth
 SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화

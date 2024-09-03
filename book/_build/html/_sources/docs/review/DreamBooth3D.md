@@ -1,5 +1,5 @@
 # Dream Booth 3D
-```
+``` {admonition} Information
 - **Title:** DreamBooth3D: Subject-Driven Text-to-3D Generation
 
 - **Reference**
@@ -9,11 +9,13 @@
 - **Author:** Jeongin Lee
 
 - **Last updated on {Sep. 3, 2024}**
-```
+```   
 
 ## 0. Abstract
 
-- DreamBooth3D : 피사체의 3-6개의 캐주얼한 촬영 이미지로부터 text-to-3D 생성 모델을 personalization (맞춤화)
+- **DreamBooth3D : 피사체의 3-6개의 캐주얼한 촬영 이미지로부터 text-to-3D 생성 모델을 personalization (맞춤화)**
+
+
 - DreamBooth + DreamFusion 의 결합
     - DreamBooth : personalizing text-to-image models
     - DreamFusion : text-to-3D generation
@@ -40,26 +42,24 @@
 - **해결책**
     - **DreamBooth3D**는 효과적인 3단계 최적화 방식을 제안
     - **Dream Booth** , **Dream Fusion** 사용
-    
-    **[setp 1️⃣]**
-    
+    ---
+    **[STEP 1️⃣]**    
     - **DreamBooth** 모델을 부분적으로 미세 조정
     - **DreamFusion**을 사용하여 **NeRF** 최적화
     - 부분적으로 미세 조정된 DreamBooth 모델은 주어진 대상 뷰에 과적합 되지 않으며 모든 subject별 세부 정보를 캡처하지 않음
     - 결과적으로 생성된 **NeRF** 자산은 3D 일관성이 있지만 subject 에 대한 특성을 완전히 반영하지못함.
     
-    **[setp 2️⃣]**
-    
+    **[STEP 2️⃣]**    
     - **DreamBooth** 모델을 완전히 미세 조정하여 세부 사항을 캡처
     - 1단계에서 학습된 NeRF의 다중 뷰 렌더링을 완전히 학습된 **DreamBooth** 모델에 투입
     - 이를 통해 subject 별로 다중 뷰 가상 이미지 집합을 생성
     
-    **[setp 3️⃣]**
-    
+    **[STEP 3️⃣]**
     - 1단계의 주어진 subject 이미지와 가상(pseudo) 다중 뷰 이미지를 사용하여 **DreamBooth** 모델을 추가로 최적화
     - 추가 최적화한 **DreamBooth** 로 NeRF 3D 볼륨을  최종 최적화
     - 최종 NeRF 최적화시 추가 규제항으로 pseudo 다중 뷰 데이터 세트에 대한 weak reconstruction loss를 사용
     - 3단계에 걸친 NeRF 및 T2I 모델의 합동 최적화는 **DreamBooth** 모델이 subject 의 특정 view point 에 과적합되는 것을 방지하는 동시에 동시에 결과 NeRF 모델이 대상의 정체성에 충실하도록 보장
+    ---
 
 - **결과**
     - 실험 샘플 결과들을 통해 본 접근 방식이 입력 텍스트 프롬프트에 존재하는 컨텍스트를 존중하면서 주어진 대상과 유사성이 높은 현실적인 3D 자산을 생성할 수 있음을 입증
@@ -86,24 +86,24 @@
 - **Textual Inversion**
     입력 개념을 나타내는 사전 학습된 text-to-image 모델의 임베딩 공간에서 새로운 word 를 최적화함으로써 이를 달성
 :::{figure-md} 
-<img src="../../pics/DreamBooth3D/54544834-db8a-49f3-9ac7-d4a530724fd8.png" alt="d4a530724fd8" class="bg-primary mb-1" width="500px">
+<img src="../../pics/DreamBooth3D/54544834-db8a-49f3-9ac7-d4a530724fd8.png" alt="d4a530724fd8" class="bg-primary mb-1" width="800px">
 
 Textual Inversion \  (source: {https://arxiv.org/abs/2208.01618})
 :::
 
 :::{figure-md} 
-<img src="../../pics/DreamBooth3D/Untitled.png" alt="Untitled" class="bg-primary mb-1" width="500px">
+<img src="../../pics/DreamBooth3D/TEXTUALINVERSION.png" alt="TEXTUALINVERSION" class="bg-primary mb-1" width="800px">
 
 Textual Inversion Architecture \  (source: {https://arxiv.org/abs/2208.01618})
 :::
 
-- 이러한 방법은 3D 자산이나 3D 일관성 있는 이미지를 생성 기능을 제공하지 않음.
+**→** 이러한 방법론은 3D asset 을 제공하지 않고 일관성 있는 3D 이미지를 생성할 수 없음.
 
 # **3. Approach**
 
  **Problem setup.**
 :::{figure-md} 
-<img src="../../pics/DreamBooth3D/Untitled_1.png" alt="Untitled_1" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamBooth3D/Untitled_1.png" alt="Untitled_1" class="bg-primary mb-1">
 
 Input and Output
 :::
@@ -142,7 +142,7 @@ Input and Output
 
  **Dream Booth T2I Personalization.**
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_4.png" alt="Untitled_4" class="bg-primary mb-1" width="600px">
+ <img src="../../pics/DreamBooth3D/Untitled_4.png" alt="Untitled_4" class="bg-primary mb-1">
 
 특정 피사체에 대한 소수의 이미지 집합 (3-5장) 을 통해 텍스트로 주어지는 Context 에 맞는 맞춤화 이미지 생성 
 :::
@@ -169,17 +169,17 @@ $$
 
 - **(example) over fitting**
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_2.png" alt="Untitled_2" class="bg-primary mb-1" width="500px">
+ <img src="../../pics/DreamBooth3D/Untitled_2.png" alt="Untitled_2" class="bg-primary mb-1" width="800px">
+
 over fitting 
 :::
 
 - **(example) language-drift**
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_3.png" alt="Untitled_3" class="bg-primary mb-1" width="500px">
+ <img src="../../pics/DreamBooth3D/Untitled_3.png" alt="Untitled_3" class="bg-primary mb-1" width="800px">
 
 language-drift
 ::: 
-
 
 
 ---
@@ -188,7 +188,7 @@ language-drift
 
 - T2I diffusion model을 사용하여 볼륨의 랜덤뷰가 프롬프트  $T$ 에 상응하도록 NeRF $\mathcal{M}_\phi$ ($\phi$ : parameters) 를 통해 표현된 볼륨을 최적화
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_6.png" alt="Untitled_6" class="bg-primary mb-1" width="800px">
+ <img src="../../pics/DreamBooth3D/Untitled_6.png" alt="Untitled_6" class="bg-primary mb-1" >
 
 DreamFusion process / (source : [DreamFusion](https://pseudo-lab.github.io/pseudodiffusers/docs/review/DreamFusion.html))
 ::: 
@@ -216,7 +216,7 @@ DreamFusion process / (source : [DreamFusion](https://pseudo-lab.github.io/pseud
     1. subject에 대해 **T2I model 을 pesonalized(맞춤화)**  
     2. 맞춤화된  T2I model 을 **text-to-3D optimization** 을 위해 사용 
 - **즉, DreamBooth 최적화(personalized) ⇒ DreamFusion 최적화**
-- 그러나, **Naive Dreambooth+Fusion 의 결합은 불만족스러운 결과를 초래**
+- **BUT**, **Naive Dreambooth+Fusion 의 결합은 불만족스러운 결과를 초래**
     
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/videdocap.png" alt="videdocap" class="bg-primary mb-1" width="600px">
@@ -224,49 +224,56 @@ DreamFusion process / (source : [DreamFusion](https://pseudo-lab.github.io/pseud
 ::: 
 
     
-    **핵심 문제 (KEY Issue)**
+**핵심 문제 (KEY Issue)**
+
+- **Dream Booth**가 **훈련된 뷰에 존재하는 subject 의 뷰에 과적합** 되어 
+**이미지 생성에서 viewpoint 에 대한 다양성이 감소**하는 경향을 보임.
+- 미세 조정 단계가 증가할수록, Subject 유사성 증가 (👍) 
+**BUT**  input exemplar views에 유사하도록 viewpoints 생성 (👎)
     
-    - **Dream Booth**가 **훈련된 뷰에 존재하는 subject 의 뷰에 과적합** 되어 
-    **이미지 생성에서 viewpoint 에 대한 다양성이 감소**하는 경향을 보임.
-    - 미세 조정 단계가 증가할수록, Subject 유사성 증가 (👍) 
-    **BUT**  input exemplar views에 유사하도록 viewpoints 생성 (👎)
+⇒ 즉, 다양한 시점에서 이미지를 생성하는 능력이 저하됨. 
+    
+
+- 이런 DreamBooth 모델 기반의 NeRF SDS 손실은 일관된 3D NeRF 결과물을 얻기에 불충분
+- **DreamBooth+Fusion NeRF** 모델이 **서로 다른 view** 에 걸쳐 학습된 **동일한 대상에 대한 뷰**(예: face of a dog :  다양한 각도에서 본 동일한 dog face)를 가지고 있음.
+    - **"Janus problem"** : 두 가지 상반되거나 연관된 측면을 동시에 다루어야 하는 문제
         
-        ⇒ 즉, 다양한 시점에서 이미지를 생성하는 능력이 저하됨. 
-        
-    - 이런 DreamBooth 모델 기반의 NeRF SDS 손실은 일관된 3D NeRF 결과물을 얻기에 불충분
-    - **DreamBooth+Fusion NeRF** 모델이 **서로 다른 view** 에 걸쳐 학습된 **동일한 대상에 대한 뷰**(예: face of a dog :  다양한 각도에서 본 동일한 dog face )를 가지고 있음.
-        - **"Janus problem"**으로 인한 실패 사례 : 두 가지 상반되거나 연관된 측면을 동시에 다루어야 하는 문제
-            
 
 ### 3.3. Dreambooth3D Optimization
 ---
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_8.png" alt="Untitled_8" class="bg-primary mb-1" width="800px">
+
 DreamBooth3D Overview
 ::: 
 
 - DreamBooth3D Overview 
+
 **stage-1 (왼쪽)**: 먼저 DreamBooth를 부분적으로 훈련시키고, 결과 모델을 사용하여 초기 NeRF를 최적화
+
 **stage-2 (가운데)**: 초기 NeRF에서 랜덤 시점에 따라 다중 시점 이미지를 렌더링한 후, 완전히 훈련된 DreamBooth 모델을 사용하여 이를 가상 다중 시점 subject 이미지로 변환
+
 **stage-3 (오른쪽)**: 다중 시점 이미지를 사용하여 부분적인 DreamBooth를 추가로 미세 조정한 다음, 결과적으로 얻어진 다중 시점 DreamBooth를 사용하여 최종 NeRF 3D 자산을 SDS 손실과 다중 시점 재구성 손실을 통해 최적화
 
 - 위의 문제를 해결하고 성공적인 subject 맞춤 text-to-3D 생성을 위해 효율적인 3단계 최적화 방식을 기반으로 한 Dream-Booth3D 제안
 
+---
+
  **1️⃣Stage-1: 3D with Partial DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1" width="500px">
+ <img src="../../pics/DreamBooth3D/Untitled_9.png" alt="Untitled_9" class="bg-primary mb-1" width="800px">
+
 Stage-1 :  3D with Partial DreamBooth
 :::                           
 
 - 입력된 Subject 이미지를 사용하여 DreamBooth 모델 $\hat{\mathcal{D}}_\theta$ 를 훈련
 
-<aside>
+---
 🌟 **DreamBoothT2I 모델의 초기 체크포인트가 (=부분적으로 파인튜닝한 결과) 주어진 subject view에 과적합되지 않음을 확인**
 
 **⇒ partial DreamBooth (부분적으로 파인튜닝한 Dreambooth)**
-
-</aside>
+---
 
 - **partial DreamBooth** 모델 하에 DreamFusion은 더 일관된 3D NeRF를 생성가능
 - NeRF 최적화시 SDS 손실 사용 :
@@ -275,25 +282,28 @@ Stage-1 :  3D with Partial DreamBooth
         - SDS 손실을 사용하여 주어진 텍스트 프롬프트에 대한 초기 NeRF 자산을 최적화
 - **partial DreamBooth** 모델과 NeRF 결과물은 입력된 subject 와 완전히 유사하지 않음
 
-<aside>
+---
+
 🌟 즉,  **1️⃣ Stage-1 에서의 초기 NeRF** 는 **주어진 subject 와  부분적으로ㅁ 유사**하면서, 
 **주어진 텍스트 프롬프트에 충실한**  **subject class 3D 모델**
 
-</aside>
+---
 
  **2️⃣Stage-2: Multi-view Data Generation**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1" width="500px">
+ <img src="../../pics/DreamBooth3D/Untitled_10.png" alt="Untitled_10" class="bg-primary mb-1" width="800px">
+
 Stage-2: Multi-view Data Generation
 :::                           
 
-<aside>
+---
+
 🌟 **Stage-2 Multi-view Data Generation : 본 접근법의 가장 중요한 부분**
 
 일관성을 갖춘 **3D initial NeRF** 와 **fully-trained DreamBooth** 를 사용하여 **pseudo multi-view subject** 이미지들을 생성
 
-</aside>
+---
 
 1. **Initial NeRF** 로부터 다양한 랜덤 viewpoints  $\{v\}$을 따라 여러 이미지$\left\{\hat{I}v \in \mathbb{R}^{n \times 3}\right\}$ 를 렌더링하여 다중 시점 렌더링을 생성
 2. 각 **렌더링에 고정된 양의 노이즈를 추가하는 forward diffusion** 과정을 통해 $t_{pseudo}$로 전환
@@ -306,17 +316,19 @@ Stage-2: Multi-view Data Generation
         ⇒ 가상(pseudo) 다중 시점 이미지 집합 **(collection of pseudo multi-view images)**
         
 
-<aside>
+---
+
 🔑 **Key insight**
 1. 초기 NeRF 이미지가 unseen views 에 가까울 경우, 
     DreamBooth가 Subject 의 unseen views를 효과적으로 생성 가능 
 
 2. 입력 이미지에 비해 Subject 와 더 유사한 출력 이미지를 효과적으로 생성가능**
 
-</aside>
+---
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1" width="500px">
+ <img src="../../pics/DreamBooth3D/Untitled_11.png" alt="Untitled_11" class="bg-primary mb-1" width="800px">
+
 :::                  
 
 - 위 그림을 통해 체크할 부분
@@ -327,13 +339,13 @@ Stage-2: Multi-view Data Generation
  **3️⃣Stage-3: Final NeRF with Multi-view DreamBooth**
 
 :::{figure-md} 
- <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1" width="600px">
+ <img src="../../pics/DreamBooth3D/Untitled_12.png" alt="Untitled_12" class="bg-primary mb-1" width="800px">
 
 Stage-3 : Final NeRF with Multi-view DreamBooth
 SDS와 multi-view reconstruction 손실을 사용한 최종 NeRF 최적화
 :::  
 
-**새로운 데이터 $I^{\text{aug}}$ 생성**
+> **새로운 데이터 $I^{\text{aug}}$ 생성**
 
 - 가상 다중 시점 이미지 $\left\{I_v^{\text {pseudo }}\right\}$, 입력 Subject 이미지 $\left\{I_i\right\}$ 의 결합을 통해 생성
 
@@ -341,13 +353,13 @@ $$
 I^{\text {aug }}=\left\{I_v^{\text {pseudo }}\right\} \cup\left\{I_i\right\}
 $$
 
-  **$I^{\text {aug}}$ 를 사용하여 최종 Multi-view DreamBooth 모델을 최적화** 
+> **$I^{\text {aug}}$ 를 사용하여 최종 Multi-view DreamBooth 모델을 최적화** 
 
 1. 1단계에서 **partial DreamBooth** $\hat{\mathcal{D}}_{\theta^*}$ 준비 
 2. 위의 증강 데이터 $I^{\text {aug}}$  를 사용하여 $\hat{\mathcal{D}}_{\theta^*}$ 에 대한 **파인튜닝**을 추가 진행
 3. **Multi-view DreamBooth** $\hat{\mathcal{D}}_\theta^{\mathrm{multi}}$ 를  생성
 
-  $\hat{\mathcal{D}}_\theta^{\text {multi }}$ **모델을 사용하여 DreamFusion SDS Loss 와 함께 NeRF 3D assets 를 최적화** 
+> $\hat{\mathcal{D}}_\theta^{\text {multi }}$ **모델을 사용하여 DreamFusion SDS Loss 와 함께 NeRF 3D assets 를 최적화** 
 
 - 1단계의 **partial DreamBooth**에 비해 **multi-view DreamBooth** 의 뷰 일반화와 subject 보존 능력이 더 우수하기 때문에 **subject idendtity가 상당히 향상된 NeRF 모델 생성 가능**
 - **BUT** SDS 손실만 사용시 최적화된 NeRF assets 이
@@ -359,6 +371,8 @@ $$
         - 모델이 특정 색상을 과도하게 강조하는 경우 발생
         - 색상 값을 잘못 예측하여 비현실적인 색상 표현이 나타난 경우 발생
         - 다양한 시점에서 일관된 색상 표현을 유지하지 못한 경우 발생
+
+---
 
 **Reconstruction loss** 
 
@@ -430,6 +444,7 @@ $$
 
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_13.png" alt="Untitled_13" class="bg-primary mb-1" width="800px">
+
 :::  
 
 - **비교 결과**: DreamBooth3D, Latent-NeRF, DreamBooth+Fusion 기준 모델의 비교
@@ -441,12 +456,14 @@ $$
 
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_14.png" alt="Untitled_14" class="bg-primary mb-1" width="800px">
+
 :::  
 
  **Initial vs. Final NeRF**
 
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_15.png" alt="Untitled_15" class="bg-primary mb-1" width="800px">
+
 :::  
 
 - 1단계와 3단계에서 생성된 초기 NeRF와 최종 NeRF 결과
@@ -457,6 +474,7 @@ $$
  **User Study.**
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_16.png" alt="Untitled_16" class="bg-primary mb-1" width="800px">
+
 :::  
 
 **→ DreamBooth3D와 비교 모델들을 세가지측면에 대해 아래의 질문에 대한 답변으로 평가** 
@@ -474,6 +492,7 @@ $$
 ## 4.2. Sample Applications
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/Untitled_17.png" alt="Untitled_17" class="bg-primary mb-1" width="800px">
+
 :::  
 
 - **Recontextualization. (재문맥화)**
@@ -483,6 +502,7 @@ $$
 
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/19.png" alt="19" class="bg-primary mb-1" width="600px">
+
 ::: 
 
 - **Color/Material Editing.**
@@ -492,6 +512,7 @@ $$
  
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/20.png" alt="20" class="bg-primary mb-1" width="600px">
+
 ::: 
 
 - **Stylization**
@@ -505,6 +526,7 @@ $$
 ---
 :::{figure-md} 
  <img src="../../pics/DreamBooth3D/limitation.png" alt="limitation" class="bg-primary mb-1" width="600px">
+
 limitations 
 :::
 

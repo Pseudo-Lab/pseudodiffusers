@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -571,7 +587,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img04.png"><img alt="SDEdit_00" class="bg-primary mb-1" src="../../_images/img04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Image 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 229 </span><span class="caption-text">Image 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -588,7 +604,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img110.png"><img alt="SDEdit_01" class="bg-primary mb-1" src="../../_images/img110.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Image 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 230 </span><span class="caption-text">Image 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -608,7 +624,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img25.png"><img alt="SDEdit_02" class="bg-primary mb-1" src="../../_images/img25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Image 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 231 </span><span class="caption-text">Image 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -626,7 +642,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img35.png"><img alt="SDEdit_03" class="bg-primary mb-1" src="../../_images/img35.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Image 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 232 </span><span class="caption-text">Image 4</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -639,7 +655,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img44.png"><img alt="SDEdit_04" class="bg-primary mb-1" src="../../_images/img44.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Image 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 233 </span><span class="caption-text">Image 5</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -647,7 +663,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img54.png"><img alt="SDEdit_05" class="bg-primary mb-1" src="../../_images/img54.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Image 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 234 </span><span class="caption-text">Image 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -668,7 +684,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img64.png"><img alt="SDEdit_06" class="bg-primary mb-1" src="../../_images/img64.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Image 7</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 235 </span><span class="caption-text">Image 7</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -681,7 +697,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img74.png"><img alt="SDEdit_07" class="bg-primary mb-1" src="../../_images/img74.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Image 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 236 </span><span class="caption-text">Image 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -692,13 +708,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img85.png"><img alt="SDEdit_08" class="bg-primary mb-1" src="../../_images/img85.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Image 9</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 237 </span><span class="caption-text">Image 9</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img94.png"><img alt="SDEdit_09" class="bg-primary mb-1" src="../../_images/img94.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 239 </span><span class="caption-text">Image 10</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 238 </span><span class="caption-text">Image 10</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -722,7 +738,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

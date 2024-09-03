@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -542,7 +558,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure1.1.png"><img alt="Asyrp_1" class="bg-primary mb-1" src="../../_images/figure1.1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 406 </span><span class="caption-text">Manipulation approaches for diffusion models</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Manipulation approaches for diffusion models</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>(a) Image guidance는 unconditional한 latent variable에 guiding image의 latent variable을 합치는 방식을 사용한다. 그러나 latent variable을 둘 다 이용하면서 명확하게 control하기가 쉽지 않다.</p>
@@ -624,7 +640,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t)) + \mathrm{D}
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.3.png"><img alt="Asyrp_2" class="bg-primary mb-1" src="../../_images/figure3.3.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 407 </span><span class="caption-text">No Manipulation Effect with shifted epsilon</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 406 </span><span class="caption-text">No Manipulation Effect with shifted epsilon</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -648,7 +664,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\tilde{\epsilon}_t^{\theta}(x_t)) + \m
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.9.png"><img alt="Asyrp_3" class="bg-primary mb-1" src="../../_images/figure3.9.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 408 </span><span class="caption-text">U-Net structure and h-space</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 407 </span><span class="caption-text">U-Net structure and h-space</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>h-space의 크기는 <span class="math notranslate nohighlight">\(8^2\times512\)</span>이고 <span class="math notranslate nohighlight">\(\epsilon\)</span>-space의 크기는 <span class="math notranslate nohighlight">\(256^2\times3\)</span>으로 h-space에서의 control이 더 지배적이고 robust함을 추측할 수 있다(실제 실험적으로 증명을 함). h-space는 skip-connection의 영향을 받지 않으며 가장 압축된 정보를 가지고 있는 공간이며 image를 control하는데에 있어 매우 좋은 특성들을 가지고 있다. 실제 저자들은 h-space를 지정하기 위해 U-Net의 모든 feature map을 h-space로 설정해두고 실험을 해보았는데 위의 그림을 기준으로 8th layer이전의 feature map을 h-space로 지정한 경우에는 manipulaton이 적게 이루어졌고, 8th layer 이후의 feature map을 h-space로 지정한 경우에는 너무 과한 manipulation이 이루어지거나 아예 distorted image가 생성되었다. h-space만의 특성은 chapter5에서 설명한다.</p>
@@ -658,7 +674,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\tilde{\epsilon}_t^{\theta}(x_t)) + \m
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.10.png"><img alt="Asyrp_4" class="bg-primary mb-1" src="../../_images/figure3.10.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 409 </span><span class="caption-text">Illustration of <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 408 </span><span class="caption-text">Illustration of <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\Delta h_t\)</span>가 image를 manipulating하는데 성공했음에도, 수많은 timestep에서 매번 optimizing하기란 쉽지 않다. 대신에 논문에서는 <span class="math notranslate nohighlight">\(h_t\)</span>를 입력받아 <span class="math notranslate nohighlight">\(\Delta h\)</span>를 출력해주는 작은 neural network인 <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span>를 추가하였다. <span class="math notranslate nohighlight">\(\mathrm{f}(t)\)</span>는 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 매번 모든 timestep에서 optimizing해줘야 하는 방법에 비해 시간도 빠르고 setting값들에 대해 robust하다. 또한 주어진 timestep과 bottleneck feature인 <span class="math notranslate nohighlight">\(h_t\)</span>에 대해 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 출력하는 방법을 학습하기에 unseen timestep과 bottleneck feature에 대해서도 일반화할 수 있다고 한다. 이는 accelerated한 과정에서도 큰 효과를 본다. training scheme이 어떻든 간에 결국 부여하는 <span class="math notranslate nohighlight">\(\sum\Delta\mathrm{h_t}\)</span>만 보존된다면, 어떠한 length를 설계해도 비슷한 manipulation효과를 볼 수 있다.</p>
@@ -678,7 +694,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t | \Delta h_t))
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.8.png"><img alt="Asyrp_5" class="bg-primary mb-1" src="../../_images/figure3.8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 410 </span><span class="caption-text">Asymmetric Reverse Process</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 409 </span><span class="caption-text">Asymmetric Reverse Process</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -688,7 +704,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t | \Delta h_t))
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.1.png"><img alt="Asyrp_6" class="bg-primary mb-1" src="../../_images/figure4.1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 411 </span><span class="caption-text">Intuition for choosing the intervals for editing and quality boosting</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 410 </span><span class="caption-text">Intuition for choosing the intervals for editing and quality boosting</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Perception prioritized training of diffusion models(Choi et al)에서는 Diffusion model이 early stage에서는 high-level context를 generate하고, later stage에서는 imperceptible fine details를 generate한다고 제안한다. 본 논문에서는 early stage에서 editing을 진행하는 editing process와 later stage에서 imperceptible fine details를 진행하는 quality boosting을 위한 구간을 나눠서 새로운 Generative Process Design을 제시한다.</p>
@@ -703,20 +719,20 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t | \Delta h_t))
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.6.png"><img alt="Asyrp_7" class="bg-primary mb-1" src="../../_images/figure4.6.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 412 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_{t_{edit}})\)</span></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 411 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_{t_{edit}})\)</span></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.7.png"><img alt="Asyrp_8" class="bg-primary mb-1" src="../../_images/figure4.7.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 413 </span><span class="caption-text">Importance of choosing proper <span class="math notranslate nohighlight">\(t_{edit}\)</span></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 412 </span><span class="caption-text">Importance of choosing proper <span class="math notranslate nohighlight">\(t_{edit}\)</span></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>몇몇 특성들은 다른 특성들에 비해 visual change를 많이 필요로 하는 경우도 있다. 예를 들어 source image에 대해 smile한 attribute를 추가하는 경우보다 pixar style의 attribute을 추가하는 경우가 더 많은 visual change를 필요로 한다. 이러한 경우에는 Editing interval을 더 길게 설정해야 한다. 이러한 경우에는 <span class="math notranslate nohighlight">\(\mathrm{LPIPS}(x, \mathrm{P}_t)\)</span> = 0.33 - <span class="math notranslate nohighlight">\(\delta\)</span>를 만족하는 t를 <span class="math notranslate nohighlight">\(t_{edit}\)</span>으로 설정한다. 이 때, <span class="math notranslate nohighlight">\(\delta = 0.33d(\mathrm{E}_T(y_{source}), \mathrm{E}_T(y_{target}))\)</span>이다. <span class="math notranslate nohighlight">\(\mathrm{E}_T\)</span>는 CLIP text embedding을 진행하는 Text Encoder를 의미하며, d는 cosine distance를 의미한다. 아래 그림을 통해 더 많은 visual change를 요구하는 attributes에 대해서는 <span class="math notranslate nohighlight">\(t_{edit}\)</span>이 더 작음(Editing Interval이 김)을 알 수 있다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.10.png"><img alt="Asyrp_9" class="bg-primary mb-1" src="../../_images/figure4.10.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 414 </span><span class="caption-text">Flexible <span class="math notranslate nohighlight">\(t_{edit}\)</span> based on the amount of visual changes.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 413 </span><span class="caption-text">Flexible <span class="math notranslate nohighlight">\(t_{edit}\)</span> based on the amount of visual changes.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -732,13 +748,13 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}(x_t | \Delta h_t))
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.8.png"><img alt="Asyrp_10" class="bg-primary mb-1" src="../../_images/figure4.8.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 415 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\gamma_{t_{boost}}\)</span></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 414 </span><span class="caption-text">Results based on various <span class="math notranslate nohighlight">\(\gamma_{t_{boost}}\)</span></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.9.png"><img alt="Asyrp_11" class="bg-primary mb-1" src="../../_images/figure4.9.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 416 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 415 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -753,14 +769,14 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.11.png"><img alt="Asyrp_12" class="bg-primary mb-1" src="../../_images/figure4.11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 417 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 416 </span><span class="caption-text">Quality comparison based on the presence of quality boosting</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>처음부터 <span class="math notranslate nohighlight">\(t_{edit}\)</span>시점까지는 Asyrp를 이용해 Editing Process를 진행한다. 이 후 DDIM 방식을 통해 Denoising을 진행하다가 <span class="math notranslate nohighlight">\(t_{boost}\)</span>시점부터 끝날 때까지 stochastic noise를 주입하는 DDPM 방식을 이용해 Quality boosting을 진행한다.</p>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure4.12.png"><img alt="Asyrp_13" class="bg-primary mb-1" src="../../_images/figure4.12.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 418 </span><span class="caption-text">Overview of Generative Process</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 417 </span><span class="caption-text">Overview of Generative Process</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -773,7 +789,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.6.png"><img alt="Asyrp_14" class="bg-primary mb-1" src="../../_images/figure5.6.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 419 </span><span class="caption-text">Editing results of Asyrp on various datasets</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 418 </span><span class="caption-text">Editing results of Asyrp on various datasets</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 그림을 보면, 논문에서는 다양한 attribute들의 특성을 잘 반영해서 image를 manipulate했다는 점을 알 수 있다. 심지어 {department, factory, temple} attribute은 training data에 포함이 되어있지 않았음에도 성능이 잘 나온 점을 확인할 수 있다. model을 fine tuning하지 않고 inference하는 과정에서 h-space를 통해 epsilon을 control하고 Asyrp를 이용해 성능을 냈다는 점이 가장 큰 장점이다.</p>
@@ -784,7 +800,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.7.png"><img alt="Asyrp_15" class="bg-primary mb-1" src="../../_images/figure5.7.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 420 </span><span class="caption-text">Asyrp vs DiffusionCLIP on both CelebA-HQ seen-domain attributes and unseen-domain attributes</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 419 </span><span class="caption-text">Asyrp vs DiffusionCLIP on both CelebA-HQ seen-domain attributes and unseen-domain attributes</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -795,7 +811,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.1.png"><img alt="Asyrp_16" class="bg-primary mb-1" src="../../_images/figure5.1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 421 </span><span class="caption-text">Homogeneity of h-space</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 420 </span><span class="caption-text">Homogeneity of h-space</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 그림의 (a)는 Real image에 smiling attribute을 추가하기 위해 최적화된 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>와 <span class="math notranslate nohighlight">\(\Delta \epsilon_t\)</span>를 나타낸다. 같은 값을 다른 Real image에 적용시켰을 때의 결과를 (b)에 나타내었는데,  <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 적용한경우 smiling face로 잘 바뀌는 반면, <span class="math notranslate nohighlight">\(\Delta \epsilon_t\)</span>을 적용한 경우에는 image distortion이 발생함을 알 수 있다.</p>
@@ -804,14 +820,14 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.2.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.2.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 422 </span><span class="caption-text">Linearity of h-space - Linear Scaling</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 421 </span><span class="caption-text">Linearity of h-space - Linear Scaling</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\Delta_h\)</span>를 linearly scaling을 하는 것은 editing을 하는데에 있어 visual attribute change의 양에 반영된다. 즉, <span class="math notranslate nohighlight">\(\Delta_h\)</span>를 <span class="math notranslate nohighlight">\(\times\)</span>1, <span class="math notranslate nohighlight">\(\times\)</span>2, <span class="math notranslate nohighlight">\(\times\)</span>3배 <span class="math notranslate nohighlight">\(/dots\)</span> 함에 따라 result image에서 반영되는 attribute또한 이에 맞게 변화한다는 것이다. 위의 그림에서 표현되어 있듯이 negative scaling에 대해서는 training을 하지 않았음에도 잘 적용 된다는 점을 알 수 있다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.3.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.3.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 423 </span><span class="caption-text">Linearity of h-space - Linear Combination</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 422 </span><span class="caption-text">Linearity of h-space - Linear Combination</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>서로 다른 attributes에 대한 <span class="math notranslate nohighlight">\(\Delta_h\)</span>를 합쳐서 부여를 했을 경우에도 각각의 attribute들이 image에 잘 반영이 된다는 점을 알 수 있다.</p>
@@ -820,7 +836,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.4.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.4.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 424 </span><span class="caption-text">Robustness of h-space</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 423 </span><span class="caption-text">Robustness of h-space</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 그림은 h-space와 <span class="math notranslate nohighlight">\(\epsilon-space\)</span>에서 random noise를 주입했을 때의 결과를 비교한 것이다. h-space의 경우에는 random noise가 추가되었어도 image에 큰 변화가 없으며 많은 noise가 추가되었을 경우에도 image distortion은 거의 없고 semantic change만 발생한다. 그러나 <span class="math notranslate nohighlight">\(\epsilon-space\)</span>의 경우에는 random noise가 추가된 경우 image distortion이 심하게 발생한다. 이를 통해 h-space가 얼마나 robustness한지 알 수 있다.</p>
@@ -829,7 +845,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure5.5.png"><img alt="Asyrp_17" class="bg-primary mb-1" src="../../_images/figure5.5.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Consistency across times steps of h-space</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 424 </span><span class="caption-text">Consistency across times steps of h-space</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>h-space의 homogeneous한 성질을 통해 같은 attribute에 대한 <span class="math notranslate nohighlight">\(\Delta h\)</span>를 다른 image에 적용시켰을 때에도 잘 반영이 됌을 확인하였다. 저자들은 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>들에 대한 평균인 <span class="math notranslate nohighlight">\(\Delta h_t^{mean}\)</span>을 적용시켰을 경우에도 result가 거의 비슷함을 보인다. Chapter4에서 제시한 Generative Process를 비추어 보았을 때, <span class="math notranslate nohighlight">\(\Delta h_t\)</span>는 Editing Process에서만 적용을 시킨다. 이 경우, 적용하는  <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 <span class="math notranslate nohighlight">\(\Delta h_t^{global}\)</span>이라고 칭하며, 적용하는 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>가 interval동안 같은 크기 만큼 적용된다고 가정했을 경우, <span class="math notranslate nohighlight">\(\Delta h^{global} = \cfrac{1}{\mathrm{T_e}}\sum_t\ \Delta h_t^{mean}\)</span>이라고 쓸 수 있다. 이 경우에도 결과는 비슷함을 보여준다. 결국 원하는 attribute에 대해 주입해야 할 <span class="math notranslate nohighlight">\(\Delta h\)</span>양만 같다면, 원하는 editing 효과를 얻을 수 있다. 비록 이 논문에서는 best quality manipulation을 위해 <span class="math notranslate nohighlight">\(\Delta h_t\)</span>를 사용하였지만, <span class="math notranslate nohighlight">\(\Delta h_t^{mean}\)</span>과 <span class="math notranslate nohighlight">\(\Delta h^{global}\)</span>에 대해 더 연구를 해 볼 여지가 있다고 판단한다.</p>
@@ -856,7 +872,7 @@ x_{t-1} = \sqrt{\alpha_{t-1}}\mathrm{P}_t(\epsilon_t^{\theta}) + \mathrm{D}_t(\e
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

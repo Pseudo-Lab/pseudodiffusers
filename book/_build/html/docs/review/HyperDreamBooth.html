@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -525,7 +541,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_01.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 269 </span><span class="caption-text">HyperDreamBooth</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">HyperDreamBooth</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -545,7 +561,7 @@ Generative Adversarial Network 기반의 기술들은 fidelity가 떨어지거�
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_02.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 270 </span><span class="caption-text">HyperDreamBooth Training and Fast Fine-Tuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">HyperDreamBooth Training and Fast Fine-Tuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -567,7 +583,7 @@ LoRA는 모델의 가중치를 낮은 랭크의 행렬로 근사화하여 모델
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_03.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 271 </span><span class="caption-text">Lightweight DreamBooth</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">Lightweight DreamBooth</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이 접근 방식은 LoRA의 A와 B 행렬을 각각 두 개의 행렬로 분해하는 것으로도 이해할 수 있습니다. 더 구체적으로 살펴보면, A 행렬은 <span class="math notranslate nohighlight">\(A_{aux}\)</span> 와 <span class="math notranslate nohighlight">\(A_{train}\)</span> 으로 분해되며, B 행렬은 <span class="math notranslate nohighlight">\(B_{aux}\)</span> 와 <span class="math notranslate nohighlight">\(B_{train}\)</span> 으로 분해할 수 있습니다. 여기서 <span class="math notranslate nohighlight">\(aux\)</span> 레이어는 행별로 직교하는 벡터로 무작위 초기화되고 freeze 되어 있으며, <span class="math notranslate nohighlight">\(train\)</span> 레이어는 학습되는 가중치입니다. 따라서 LiDB 선형 레이어의 weight-residual은 다음과 같이 표현할 수 있습니다.</p>
@@ -582,7 +598,7 @@ LoRA는 모델의 가중치를 낮은 랭크의 행렬로 근사화하여 모델
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_04.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 272 </span><span class="caption-text">HyperNetwork Architecture</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">HyperNetwork Architecture</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>다음은 Hypernetwork 입니다. 본 논문에서는 사전에 훈련된 T2I 모델을 빠르게 personalization 하기 위해 HyperNetwork를 제안합니다. 여기서 <span class="math notranslate nohighlight">\(\tilde{\theta}\)</span> 는 모든 LiDB residual 행렬을 나타내며, 각 T2I 모델의 cross-attention 및 self-attention 레이어에 대한 <span class="math notranslate nohighlight">\(A_{train}\)</span> 및 <span class="math notranslate nohighlight">\(B_{train}\)</span> 입니다. 이 핵심 아이디어는 주어진 이미지 x를 입력으로 받고, 이 이미지를 사용하여 LiDB의 low-rank residual인 <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> 을 예측하는 HyperNetwork <span class="math notranslate nohighlight">\(H_{\eta}\)</span> 를 돌입하는 것입니다.HyperNetwork는 도메인 특화 이미지 데이터셋에서 훈련되며, 일반적인 확산 노이즈 제거 손실과 가중치 공간 손실을 가지고 있습니다.</p>
@@ -600,7 +616,7 @@ HyperDreamBooth에서 사용되는 HyperNetwork는 반복적 예측을 수행합
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_05.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 273 </span><span class="caption-text">HyperNetwork + Fast Finetuning</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">HyperNetwork + Fast Finetuning</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -616,20 +632,20 @@ HyperDreamBooth에서 사용되는 HyperNetwork는 반복적 예측을 수행합
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_06.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Result Gallery</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">Result Gallery</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 위에서 오른쪽 아래로 “인스타그램 셀카 [V] 얼굴”, “Pixar 캐릭터 [V] 얼굴”, “bark skin의 [V] 얼굴”, “록 스타 [V] 얼굴”, 가장 오른쪽: ” 전문적인 [V] 얼굴 촬영” 프롬프트를 활용했습니다.</p>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_07.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_08.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Comparisons Table</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Comparisons Table</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -639,21 +655,21 @@ HyperDreamBooth에서 사용되는 HyperNetwork는 반복적 예측을 수행합
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_09.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 277 </span><span class="caption-text">Comparisons with DreamBooth</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">Comparisons with DreamBooth</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 표는 DreamBooth와 비교하는 부분입니다. DreamBooth의 hyperparameter를 다르게 조정하여 비교했습니다. 그 결과 학습률을 증가시키고 반복 횟수(iterations)를 감소시키면 결과의 저하가 있었습니다. DreamBooth-Agg-1은 400번의 반복을 시행하고, DreamBooth-Agg-2는 일반적인 Dreambooth의 1200번 대신 40번의 반복을 사용했습니다.</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_10.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 278 </span><span class="caption-text">HyperNetwork Ablation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">HyperNetwork Ablation</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 부분은 여러 가지 구성 요소로 나누어 실험한 표입니다. 실험 중에는 하이퍼네트워크를 사용하지 않는 경우, 하이퍼네트워크 예측만 사용하고 fast-finetuning을 사용하지 않은 경우, 반복 예측 없이 전체 방법을 1번만 사용한 경우를 비교합니다. 결과적으로 전체 방법이 모든 신뢰성 지표에서 가장 우수한 결과를 달성한다는 것을 보여주고 있습니다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/hyperdreambooth_11.png"><img alt="hyperdreambooth_01" class="bg-primary mb-1" src="../../_images/hyperdreambooth_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 279 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>얼굴 인식 메트릭 이 특정 시나리오에서 상대적으로 약하다고 합니다. 얼굴 인식 네트워크가 실제 이미지에만 훈련되어 있고 다양한 스타일에서 동일한 사람을 인식하도록 훈련되어 있지 않기 때문이라고 주장하며 이를 보완하기 위해 user study를 진행했습니다. 여기서도 HyperDreamBooth, DreamBooth, Textual Inversion을 비교하고 사용자들의 평가를 받았습니다.</p>
@@ -681,7 +697,7 @@ HyperDreamBooth에서 사용되는 HyperNetwork는 반복적 예측을 수행합
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

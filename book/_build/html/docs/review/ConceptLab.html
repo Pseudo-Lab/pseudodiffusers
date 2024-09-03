@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -538,7 +554,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab01.png"><img alt="ConceptLab01" class="bg-primary mb-1" src="../../_images/ConceptLab01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 394 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 393 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -555,7 +571,7 @@ Personalization은 text-guided synthesis 맥락에서 사용자가 입력한 텍
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab02.png"><img alt="ConceptLab02" class="bg-primary mb-1" src="../../_images/ConceptLab02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 395 </span><span class="caption-text">Text-guided generation (top left), personalization methods (bottom left), creative generation method (right)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 394 </span><span class="caption-text">Text-guided generation (top left), personalization methods (bottom left), creative generation method (right)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -578,7 +594,7 @@ L_{prior} = E_{e,y,t} [||e - P_{\theta]}(e_{t},t,y)||_{2}^{2}]
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab03.png"><img alt="ConceptLab03" class="bg-primary mb-1" src="../../_images/ConceptLab03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 396 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 395 </span><span class="caption-text">ConceptLab</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -615,7 +631,7 @@ S_{max}(C,v_{*}) = max_{c \sim C}(\langle E_{y}, P(E_{y}(v_{*}))\rangle)
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab04.png"><img alt="ConceptLab04" class="bg-primary mb-1" src="../../_images/ConceptLab04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 397 </span><span class="caption-text">훈련 과정 중 BLIP-2 모델을 사용하여 현재 개념에 가장 가까운 단어를 추론하고, 이를 제약 조건에 추가하는 과정을 거칩니다.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 396 </span><span class="caption-text">훈련 과정 중 BLIP-2 모델을 사용하여 현재 개념에 가장 가까운 단어를 추론하고, 이를 제약 조건에 추가하는 과정을 거칩니다.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="adaptive-negatives">
@@ -624,7 +640,7 @@ S_{max}(C,v_{*}) = max_{c \sim C}(\langle E_{y}, P(E_{y}(v_{*}))\rangle)
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab05.png"><img alt="ConceptLab05" class="bg-primary mb-1" src="../../_images/ConceptLab05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 398 </span><span class="caption-text">여러 단계에 걸쳐 생성된 이미지 결과를 보여줍니다. 훈련 과정에서 부정적 제약 조건이 지속적으로 조정되고 확장되었음을 보여줍니다.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 397 </span><span class="caption-text">여러 단계에 걸쳐 생성된 이미지 결과를 보여줍니다. 훈련 과정에서 부정적 제약 조건이 지속적으로 조정되고 확장되었음을 보여줍니다.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -639,19 +655,19 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab06.png"><img alt="ConceptLab06" class="bg-primary mb-1" src="../../_images/ConceptLab06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 399 </span><span class="caption-text">그림에는 훈련에 사용된 긍정적 개념이 왼쪽에 표시되어 있습니다. 이는 모델이 어떤 개념을 기반으로 창의적 이미지를 생성했는지를 알 수 있습니다. 모든 결과는 Adaptive Negative 기법을 활용했습니다.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 398 </span><span class="caption-text">그림에는 훈련에 사용된 긍정적 개념이 왼쪽에 표시되어 있습니다. 이는 모델이 어떤 개념을 기반으로 창의적 이미지를 생성했는지를 알 수 있습니다. 모든 결과는 Adaptive Negative 기법을 활용했습니다.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab07.png"><img alt="ConceptLab07" class="bg-primary mb-1" src="../../_images/ConceptLab07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 400 </span><span class="caption-text">ConceptLab이 제안한 다양한 이미지로 프롬프트와 Adaptive Negative 기법을 적용했습니다.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 399 </span><span class="caption-text">ConceptLab이 제안한 다양한 이미지로 프롬프트와 Adaptive Negative 기법을 적용했습니다.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab08.png"><img alt="ConceptLab08" class="bg-primary mb-1" src="../../_images/ConceptLab08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 401 </span><span class="caption-text">ConceptLab은 생성된 개념들을 혼합하여 새롭고 독특한 창조물을 반복적으로 학습할 수 있습니다. 그림의 가장 윗줄에서는 Adaptive Negative 기법을 적용하여 학습된 개념들을 보여줍니다. 이어지는 줄에서는 Evolutionary Generation 과정을 통해 얻어진 개념들을 보여줍니다.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 400 </span><span class="caption-text">ConceptLab은 생성된 개념들을 혼합하여 새롭고 독특한 창조물을 반복적으로 학습할 수 있습니다. 그림의 가장 윗줄에서는 Adaptive Negative 기법을 적용하여 학습된 개념들을 보여줍니다. 이어지는 줄에서는 Evolutionary Generation 과정을 통해 얻어진 개념들을 보여줍니다.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -668,7 +684,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab09.png"><img alt="ConceptLab09" class="bg-primary mb-1" src="../../_images/ConceptLab09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 402 </span><span class="caption-text">ConceptLab을 활용한 Concept Mixing의 결과를 보여줍니다.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 401 </span><span class="caption-text">ConceptLab을 활용한 Concept Mixing의 결과를 보여줍니다.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -678,7 +694,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab10.png"><img alt="ConceptLab10" class="bg-primary mb-1" src="../../_images/ConceptLab10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 403 </span><span class="caption-text">위 그림은 ConceptLab에 의해 학습된 개념들이 여러 <em>세대</em>에 걸쳐 어떻게 발전하는지 보여줍니다.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 402 </span><span class="caption-text">위 그림은 ConceptLab에 의해 학습된 개념들이 여러 <em>세대</em>에 걸쳐 어떻게 발전하는지 보여줍니다.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -699,7 +715,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab11.png"><img alt="ConceptLab11" class="bg-primary mb-1" src="../../_images/ConceptLab11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 404 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 403 </span><span class="caption-text">User Study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -710,7 +726,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ConceptLab12.png"><img alt="ConceptLab12" class="bg-primary mb-1" src="../../_images/ConceptLab12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 405 </span><span class="caption-text">Limitations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 404 </span><span class="caption-text">Limitations</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -733,7 +749,7 @@ L_{mix} = 1 - E_{c \sim C}[\langle E_{im}(c), P(E_{y}(v_{mix}))\rangle]
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

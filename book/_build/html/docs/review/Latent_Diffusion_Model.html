@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Latent Diffusion Model &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>Introduction &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Latent Diffusion Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -469,7 +485,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Latent Diffusion Model</h1>
+    <h1>Introduction</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -479,8 +495,21 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Latent Diffusion Model</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-diffusion-model">Latent Diffusion Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-perceptual-compression-tradeoffs">4.1. On Perceptual Compression Tradeoffs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation-with-latent-diffusion">4.2. Image Generation with Latent Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-latent-diffusion">4.3. Conditional Latent Diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-encoders-for-ldms">4.3.1 Transformer Encoders for LDMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-sampling-beyond-256x256">4.3.2 Convolutional Sampling Beyond 256x256</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-resolution-with-latent-diffusion">4.4. Super-Resolution with Latent Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inpainting-with-latent-diffusion">4.5. Inpainting with Latent Diffusion</a></li>
+</ul>
+</li>
 </ul>
 
             </nav>
@@ -507,15 +536,82 @@ document.write(`
 <li><p><strong>Last updated on May. 31, 2023</strong></p></li>
 </ul>
 </div>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p>latent diffusion model이 어떻게 학습하는지 rate-distortion trade-off로 분석할 수 있다.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Latent_Space.png"><img alt="../../_images/Latent_Space.png" class="bg-primary mb-1" src="../../_images/Latent_Space.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Analysis of Latent Diffusion Model with rate-distortion trade-off</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>학습 단계는 크게 2단계로 나눌 수 있다.</p>
+<ul class="simple">
+<li><p>Perceptual Compression</p>
+<ul>
+<li><p>Autoencoder를 학습하는 단계</p></li>
+<li><p>perceptual : 인간의 인지와 관련된 것. 예를 들면 고양이 하면 고양이 귀, 꼬리 등 우리가 인지한 객체.</p>
+<ul>
+<li><p>압축 과정에서 일정 부분을 넘어가면 비트를 많이 써도 사람이 인지할 수 없는 것에 대해 사용됨. (Rate가 0.5 이후 넘어가는 것을 보면 다른 것이 인지 안됨)</p>
+<ul>
+<li><p>비트를 많이 씀 : 1비트(흑,백)로 표현하는 것을 8비트 등으로 표현 ⇒ 다양한 색상을 사용하여 색, 텍스쳐 등을 다양하게 표현할 수 있음. 이는 파라미터 수의 증가 등 모델 사이즈의 증가로 볼 수 있음.</p></li>
+</ul>
+</li>
+<li><p>Autoencoder를 통해 이미지 차원을 압축하여 사용할 비트를 줄임으로써 불필요한(사람이 인지할 수 없는) 것을 학습하지 않도록 함.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Semantic Compression</p>
+<ul>
+<li><p>Diffusion model을 학습하는 단계로 이미지의 의미와 문맥을 이해하고 이를 바탕으로 압축하는 것을 말함. 예를 들어, 이미지 속의 개가 어디에 위치하는지, 배경이 무엇인지, 어떤 상황인지 등을 학습함.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="related-work">
+<h1>Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<p>생성 모델의 기존 모델은 다음과 같다.</p>
+<ul class="simple">
+<li><p>GAN : 좋은 perceptual quality를 가진 고해상도 image의 sampling을 효율적으로 수행하나 최적화나 full data distribution을 찾기 어렵다.</p>
+<ul>
+<li><p>학습 불안정성(생성자, 판별자 기반의 손실함수), Mode Collapse(제한된 유형의 샘플만 생성하는 현상) 등 발생.</p></li>
+</ul>
+</li>
+<li><p>VAE, flow-based model : 고해상도 image의 효율적인 합성을 수행할 수 있으나 GAN보다 sample quality가 떨어진다.</p>
+<ul>
+<li><p>flow-based model : Flow는 복잡한 분포를 모델링하기 위해 일련의 가역적인 비선형 변환을 사용하는 방법론.</p>
+<ul>
+<li><p>기본 아이디어 : 간단한 분포(예: 가우시안 분포)에서 복잡한 데이터 분포로 변환하는 일련의 함수들을 학습하는 것.</p></li>
+<li><p>data를 잠재변수로 변환하는, 반대로 잠재변수를 data로 변환하는(역변환) 양방향 변환기를 학습시켜 잠재변수로부터 data를 generative 할 수 있도록 함.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Autoregressive : density 추정에서 강력한 performance를 달성하나 계산 비용과 sequential sampling process로 인해 저해상도 image로 제약된다.</p></li>
+<li><p>pixel 기반의 image representation은 거의 인지하기 어려운 이미지의 detail한 부분을 포함하여 maximum-likelihood 학습은 이를 학습하는데 많은 용량과 시간을 소비한다.</p></li>
+<li><p>Diffusion Probabilistic Models : sample quality 등에서 좋은 성능을 보이나 pixel 단위에서의 평가와 최적화는 낮은 inference speed와 높은 train cost를 유발한다.</p></li>
+<li><p>VQ-VAEs : 기존 VAE 방법에 벡터 양자화(Vector Quantisation)를 도입한 방법이다. latent space의 연속형 벡터를 사전에 정한 codebook 벡터와의 거리를 계산하여 제일 유사한 값으로 변환한다.</p>
+<ul>
+<li><p>데이터 압축, 샘플링이 유용하면서 생성 모델의 품질을 높일 수도 있음.</p></li>
+</ul>
+</li>
+<li><p>VQ-GAN : VQ-VAE의 원리를 GAN에 적용한 방법이다. latent space의 연속형 벡터를 양자화하여 변환하면서 학습은 GAN의 adversarial loss를 추가로 활용한다.</p>
+<ul>
+<li><p>데이터 압축, 샘플링이 유용하면서 생성 모델의 품질을 높일 수도 있음.</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="latent-diffusion-model">
 <h1>Latent Diffusion Model<a class="headerlink" href="#latent-diffusion-model" title="Permalink to this heading">#</a></h1>
-<p>오늘 알아볼 모델은 Latent Diffusion Model입니다.
-기존에 다뤘던 Diffusion Model과 유사하게 동작하는 생성 모델입니다. 이 논문에서는 컴퓨터 자원의 소모를 줄이면서 Diffusion Model과 유사한 성능을 얻는것이 그 목표입니다.</p>
-<p>Latent Diffusion Model은 전반적으로 아래와 같은 구조를 가집니다.</p>
-<figure class="align-default" id="id1">
+<p>오늘 알아볼 모델은 Latent Diffusion Model이다.
+기존에 다뤘던 Diffusion Model과 유사하게 동작하는 생성 모델이다. 이 논문에서는 컴퓨터 자원의 소모를 줄이면서 Diffusion Model과 유사한 성능을 얻는것이 그 목표이다.</p>
+<p>Latent Diffusion Model은 전반적으로 아래와 같은 구조를 가진다.</p>
+<figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Unet.png"><img alt="../../_images/Unet.png" class="bg-primary mb-1" src="../../_images/Unet.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H\times W \times 3}\)</span>이 input으로 주어졌을때 이를 encoder <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>를 통해서 <span class="math notranslate nohighlight">\(z=\mathcal{E}(x) \in \mathbb{R}^{h\times w\times c }\)</span>로 인코딩 하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>
@@ -529,7 +625,7 @@ document.write(`
 \[
 Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 \]</div>
-<p>로 연산이 진행된다. 학습을 위한 loss 함수는 다음과 같이표현된다.</p>
+<p>로 연산이 진행된다. 학습을 위한 loss 함수는 다음과 같이 표현된다.</p>
 <div class="math notranslate nohighlight">
 \[
 \mathcal{L}_{LDM} = \mathbb{E}_{\mathcal{E}(x), 
@@ -542,37 +638,136 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 \epsilon \sim \mathcal{N}(0,1),t} \left[ \|\epsilon-\epsilon_{\theta}(x_t,t) \|_{2}^{2}\right].
 \]</div>
 <p>와 같은 loss function으로 학습을 진행시키는데 <span class="math notranslate nohighlight">\(x_t\)</span>를 <span class="math notranslate nohighlight">\(z_t\)</span>로 바꾸면서 연산의 양을 줄였다는 점이다.</p>
+<p>위의 “Introduction”과 연관지으면 다음과 같이 생각 해볼 수 있다.</p>
+<ul class="simple">
+<li><p>encoder <span class="math notranslate nohighlight">\(\varepsilon\)</span>, decoder <span class="math notranslate nohighlight">\(D\)</span> 로 구성된 perceptual compression model(학습된)를 바탕으로 효율적인, 낮은 차원의 latent space(high-frequency, imperceptible detail이 제거된)를 가지게 됨</p></li>
+<li><p>고차원 공간과 비교했을 때 이 latent space는 likelihood-based generative model에 더 적합함</p>
+<ul>
+<li><p>데이터에 중요한 semantic bit에 집중할 수 있고 더 낮은 차원에서 효율적으로 학습 가능</p></li>
+</ul>
+</li>
+</ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="experiments">
 <h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
-<p>해당 논문에서는 다양한 task에 대해서 실험을 진행하였는데, 그중 일부만 소개하도록 하겠다.
-아래의 그림은 다양한 dataset에서 뽑은 샘플과 text to image sample들입니다.</p>
-<figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/experiment1.png"><img alt="../../_images/experiment1.png" class="bg-primary mb-1" src="../../_images/experiment1.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Sample images</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
+<section id="on-perceptual-compression-tradeoffs">
+<h2>4.1. On Perceptual Compression Tradeoffs<a class="headerlink" href="#on-perceptual-compression-tradeoffs" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>different downsampling factor <span class="math notranslate nohighlight">\(f \in \{1,2,4,8,16,32\}\)</span> 에 대한 분석</p>
+<ul>
+<li><p>latent space 차원 개수에 따른 차이 분석</p></li>
+<li><p>LDM-1 : pixel-based DMs</p></li>
+</ul>
+</li>
+<li><p>computational resource : single NVIDIA A100 1대로 함</p></li>
+<li><p>전체 같은 parameter 개수와 step을 기준으로 함</p></li>
+</ul>
+<ul class="simple">
+<li><p>위의 표는 autoencoder 차원에 따른 hyperparameter, loss에 따른 실험 결과를 보임</p></li>
+<li><p>위의 그래프는 모델이 수렴하는데 소요되는 step을 분석함</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span> 값이 너무 크면 약간의 학습 후 fidelty(학습 데이터와 실제 데이터의 유사도)가 정체된 것을 볼 수 있음</p>
+<ul>
+<li><p>이는 아래 사진의 결과와 perceptual과 bit ratio 부분을 생각해보면 대부분의 perceptual compression은 diffusion에 있으며 encoder와 decoder 부분에서 압축이 지나치게 되어 정보 손실이 발생하여 달성할 수 있는 품질이 제한됨</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>위의 그래프는 CelebA-HQ와 ImageNet에서 학습된 모델을 DDIM sampler를 사용하여 다양한 step의 denoising에 대한 샘플링 속도 측면에서 FID 점수와 비교함</p>
+<ul>
+<li><p>ImageNet이 CelebA-HQ 대비 더 복잡한 dataset임</p></li>
+</ul>
+</li>
+<li><p>point가 총 5개인데 오른쪽부터 왼쪽으로 step 수가 {10,20,50,100,200}을 의미함</p></li>
+<li><p>LDM-{4-8}이 outperform을 발휘함</p></li>
+<li><p>LDM-1은 낮은 FID를 가지고 sampling 속도도 느림</p></li>
+</ul>
+</section>
+<section id="image-generation-with-latent-diffusion">
+<h2>4.2. Image Generation with Latent Diffusion<a class="headerlink" href="#image-generation-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>256x256 image의 unconditional model을 CelebA-HQ, FFHQ, LSUN-Churches, Bedrooms로 학습하고 sample quality, data manifold의 coverage(FID, Precision-and-Recall) 평가</p></li>
+</ul>
+<ul class="simple">
+<li><p>CelebA-HQ</p>
+<ul>
+<li><p>제안한 모델이 최고 성능</p>
+<ul>
+<li><p>LSGM : encoder, decoder를 UNet과 동시에 학습시킨 결과</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>LSUN-Bedrooms : ADM보다 절반의 parameter와 짧은 train 시간으로 유사한 score(?)를 얻음</p></li>
+<li><p>제안한 방법인 LDM은 GAN-based methods을 지속적으로 개선해 adversarial 방식에 비해 mode-covering likelihood-based training의 이점을 Precision과 Recall을 통해 볼 수 있음. (아래 그림은 정성적 결과)</p></li>
+</ul>
+</section>
+<section id="conditional-latent-diffusion">
+<h2>4.3. Conditional Latent Diffusion<a class="headerlink" href="#conditional-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<section id="transformer-encoders-for-ldms">
+<h3>4.3.1 Transformer Encoders for LDMs<a class="headerlink" href="#transformer-encoders-for-ldms" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>text-to-image modeling : 1.45B parameter KL-regularized LDM</p>
+<ul>
+<li><p>LAION-400M으로 language prompt 수행</p></li>
+<li><p>BERT-tokenizer</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau_{\theta}\)</span> : transformer</p></li>
+</ul>
+</li>
+</ul>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/text_to_image.png"><img alt="../../_images/text_to_image.png" class="bg-primary mb-1" src="../../_images/text_to_image.png" style="width: 700px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 150 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>실험을 통해서 나온 결과 <span class="math notranslate nohighlight">\(m=2,3,4\)</span> 혹은 <span class="math notranslate nohighlight">\(f=4, 8, 16\)</span>인 경우 적절한 FID 점수와 효율성을 보여주었습니다.</p>
+<ul class="simple">
+<li><p>아래 사진은 Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과임</p></li>
+</ul>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/trade_off.png"><img alt="../../_images/trade_off.png" class="bg-primary mb-1" src="../../_images/trade_off.png" style="width: 700px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Layout이 주어졌을 때, 이를 기반으로 image를 생성하는 layout-to-image의 샘플 결과입니다.</p>
-<figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/layout_to_image.png"><img alt="../../_images/layout_to_image.png" class="bg-primary mb-1" src="../../_images/layout_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
+<ul class="simple">
+<li><p>class-conditional ImageNet model 결과</p></li>
+</ul>
+</section>
+<section id="convolutional-sampling-beyond-256x256">
+<h3>4.3.2 Convolutional Sampling Beyond 256x256<a class="headerlink" href="#convolutional-sampling-beyond-256x256" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>spatially aligned conditioning information(semantic map 등)을 input에 연결했을 때 image-to-image translation model 목적 수행 가능</p>
+<ul>
+<li><p>semantic synthesis, super-resolution, inpainting에 실험</p></li>
+</ul>
+</li>
+<li><p>semantic synthesis</p>
+<ul>
+<li><p>dataset : semantic map을 가진 landscape image</p></li>
+<li><p>semantic map의 downsampled version을 <span class="math notranslate nohighlight">\(f=4\)</span> 인 model의 input으로 사용(VQ-reg)</p>
+<ul>
+<li><p>input resolution : 256x256(crop from 384x384)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>아래 실험은 input 크기 대비 더 큰 image 생성 가능한 것을 보여줌</p></li>
+</ul>
+</section>
+</section>
+<section id="super-resolution-with-latent-diffusion">
+<h2>4.4. Super-Resolution with Latent Diffusion<a class="headerlink" href="#super-resolution-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>OpenImages로 사전학습된 <span class="math notranslate nohighlight">\(f=4\)</span> autoencoding model(VQ-reg) 사용</p></li>
+<li><p>low-resolution data가 input으로 들어감</p></li>
+</ul>
+</section>
+<section id="inpainting-with-latent-diffusion">
+<h2>4.5. Inpainting with Latent Diffusion<a class="headerlink" href="#inpainting-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>원본 이미지에서 원하는 물체를 제거한 뒤 이미지가 잘 복구된 것을 볼 수 있음</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -588,7 +783,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }
@@ -639,8 +834,21 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Latent Diffusion Model</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#latent-diffusion-model">Latent Diffusion Model</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-perceptual-compression-tradeoffs">4.1. On Perceptual Compression Tradeoffs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-generation-with-latent-diffusion">4.2. Image Generation with Latent Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-latent-diffusion">4.3. Conditional Latent Diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transformer-encoders-for-ldms">4.3.1 Transformer Encoders for LDMs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-sampling-beyond-256x256">4.3.2 Convolutional Sampling Beyond 256x256</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#super-resolution-with-latent-diffusion">4.4. Super-Resolution with Latent Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inpainting-with-latent-diffusion">4.5. Inpainting with Latent Diffusion</a></li>
+</ul>
+</li>
 </ul>
 
   </nav></div>

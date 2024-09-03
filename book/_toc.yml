@@ -45,7 +45,6 @@ parts:
   - file: docs/review/LLM_grounded_Diffusion
   - file: docs/review/DiT
 
-
 - caption: Video Generation
   chapters:
   - file: docs/review/Make_A_Video
@@ -61,6 +60,7 @@ parts:
   - file: docs/review/3DGS
   - file: docs/review/DreamFusion
   - file: docs/review/Shap-E
+  - file: docs/review/DreamBooth3D
   
 - caption: Experiments
   chapters:

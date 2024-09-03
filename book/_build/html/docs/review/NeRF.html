@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -560,9 +576,9 @@ document.write(`
 <li><p><strong>Keywords :</strong> scene representation, view synthesis, image-based rendering,
 volume rendering, 3D deep learning</p>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled2.png"><img alt="NeRF" class="bg-primary mb-1" src="../../_images/Untitled2.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled3.png"><img alt="NeRF" class="bg-primary mb-1" src="../../_images/Untitled3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 587 </span><span class="caption-text">method that optimizes a continuous 5D neural radiance field representation \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 586 </span><span class="caption-text">method that optimizes a continuous 5D neural radiance field representation \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -662,7 +678,7 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled11.png"><img alt="NeRF overview" class="bg-primary mb-1" src="../../_images/Untitled11.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 588 </span><span class="caption-text">An overview of our neural radiance field scene representation and differentiable rendering procedure \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 587 </span><span class="caption-text">An overview of our neural radiance field scene representation and differentiable rendering procedure \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -695,9 +711,9 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 <li><p>뷰에 따른 RGB 색상을 출력하는 하나의 추가 fully-connected layer (ReLU,128개 채널 사용)로 전달됨</p></li>
 </ol>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled3.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled3.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled31.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled31.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 589 </span><span class="caption-text">fully-connected network architecture\  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 588 </span><span class="caption-text">fully-connected network architecture\  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -880,18 +896,12 @@ that allows us to efficiently sample this high-frequency representation.</p></li
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled6.png"><img alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" src="../../_images/Untitled6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 590 </span><span class="caption-text">intrinsic prameter and extrinsic parameter</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 589 </span><span class="caption-text">intrinsic prameter and extrinsic parameter</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>카메라 영상 : 3차원 공간상의 점들을 2차원 이미지 평면에 투사(perspective projection)</p></li>
 </ul>
-<figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled7.png"><img alt="NeRF perspective projection" class="bg-primary mb-1" src="../../_images/Untitled7.png" style="width: 800px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 591 </span><span class="caption-text">perspective projection</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
 </li>
 </ul>
 </li>
@@ -945,18 +955,17 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <h2>6. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
 <section id="datasets">
 <h3>6.1 Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
-<ul>
-<li><p><strong>Synthetic renderings of object</strong>
-:::{figure-md}
-<img src="../../pics/NeRF/Untitled8.png" alt="Diffuse Synthetic" class="bg-primary mb-1" width="800px"></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>  Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian
-  :::
-</pre></div>
-</div>
-</li>
+<ul class="simple">
+<li><p><strong>Synthetic renderings of object</strong></p></li>
 </ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled8.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled8.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 590 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 <ol class="arabic simple">
-<li><p><strong>Diffuse / Synthetic</strong> <span class="math notranslate nohighlight">\(360\degree\)</span></p>
+<li><p><strong>Diffuse Synthetic</strong> <span class="math notranslate nohighlight">\(360 \degree\)</span></p>
 <ol class="arabic simple">
 <li><p>총 4개의 Lambertian 물체가 간단한 geometry로 구성</p></li>
 <li><p>object : <strong>512×512</strong></p></li>
@@ -964,7 +973,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <li><p>Train : 479, Test : 1000</p></li>
 </ol>
 </li>
-<li><p><strong>Real / Synthetic <span class="math notranslate nohighlight">\(360\degree\)</span>, Forward-Facing</strong></p>
+<li><p><strong>Real Synthetic</strong> <span class="math notranslate nohighlight">\(360 \degree\)</span>, <strong>Forward-Facing</strong></p>
 <ol class="arabic simple">
 <li><p>총 8개의 non-Lambertian 물체 8개,</p></li>
 <li><p>각각의 pathtraced image 를 포함한 형태의 데이터 셋을 구성</p></li>
@@ -973,11 +982,11 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <li><p>Train : 100, Test : 200</p></li>
 </ol>
 </li>
-<li><p><strong>Real / Forward-Facing</strong></p>
+<li><p><strong>Real Forward-Facing</strong></p>
 <ol class="arabic simple">
 <li><p>복잡한 형태의 현실 scene을 앞쪽에서 본 모습을 사용</p></li>
 <li><p>총 8개의 scene, (5 scenes : LLFF paper 3 scenes : 직접 캡처)</p></li>
-<li><p>object : <strong><span class="math notranslate nohighlight">\(1008\times 756\)</span></strong></p></li>
+<li><p>object : <strong><span class="math notranslate nohighlight">\(1008 \times 756\)</span></strong></p></li>
 <li><p>Train : Test = 7 : 1</p></li>
 </ol>
 </li>
@@ -1008,7 +1017,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled9.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled9.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 592 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 591 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1021,7 +1030,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled10.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled10.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 593 </span><span class="caption-text">NeRF also correctly reconstructs partially occluded regions</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 592 </span><span class="caption-text">NeRF also correctly reconstructs partially occluded regions</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1040,7 +1049,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled111.png"><img alt="ablation study" class="bg-primary mb-1" src="../../_images/Untitled111.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 594 </span><span class="caption-text">ablation study</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 593 </span><span class="caption-text">ablation study</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1056,13 +1065,13 @@ For experiments with synthetic images, we scale the scene so that it lies within
 side length 2 centered at the origin</strong>, and only query the representation within this bounding volume. we use normalized device coordinates <strong>to map the depth range of these points into [−1, 1]</strong>.</p></li>
 <li><p><strong>Training Details</strong>
 adding random Gaussian noise with zero mean and unit variance to the <strong>output σ values</strong> during optimization</p></li>
-<li><p><strong>Rendering Details</strong>
-:::{figure-md}
-<img src="../../pics/NeRF/Untitled3.png" alt="NeRF architecture" class="bg-primary mb-1" width="800px">&gt;</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> fully-connected network architecture \  (source: {https://arxiv.org/pdf/2003.08934v2})
- :::
-</pre></div>
-</div>
+<li><p><strong>Rendering Details</strong></p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled31.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled31.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 594 </span><span class="caption-text">fully-connected network architecture \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ol>
 <ul class="simple">
@@ -1088,7 +1097,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

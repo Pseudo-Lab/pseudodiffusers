@@ -196,7 +196,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -279,6 +281,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -569,7 +585,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img02.png"><img alt="img0" class="bg-primary mb-1" src="../../_images/img02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 437 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Base Architecture</strong></p>
@@ -592,7 +608,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img15.png"><img alt="img1" class="bg-primary mb-1" src="../../_images/img15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Sample Adaptive Kernel Selection</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 438 </span><span class="caption-text">Sample Adaptive Kernel Selection</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -611,7 +627,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img23.png"><img alt="img2" class="bg-primary mb-1" src="../../_images/img23.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Equation of kernel selection method affine layer</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 439 </span><span class="caption-text">Equation of kernel selection method affine layer</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -626,7 +642,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img33.png"><img alt="img3" class="bg-primary mb-1" src="../../_images/img33.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 441 </span><span class="caption-text">Receptive Field in Convolution Networks</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 440 </span><span class="caption-text">Receptive Field in Convolution Networks</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -641,7 +657,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img42.png"><img alt="img4" class="bg-primary mb-1" src="../../_images/img42.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 442 </span><span class="caption-text">lipschitz Function</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 441 </span><span class="caption-text">lipschitz Function</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -670,7 +686,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img52.png"><img alt="img5" class="bg-primary mb-1" src="../../_images/img52.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 443 </span><span class="caption-text">GIGAGAN Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 442 </span><span class="caption-text">GIGAGAN Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -697,7 +713,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img62.png"><img alt="img6" class="bg-primary mb-1" src="../../_images/img62.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Discriminator of GIGAGAN</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 443 </span><span class="caption-text">Discriminator of GIGAGAN</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -737,7 +753,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img72.png"><img alt="img7" class="bg-primary mb-1" src="../../_images/img72.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 445 </span><span class="caption-text">Matching aware loss</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 444 </span><span class="caption-text">Matching aware loss</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -749,7 +765,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img83.png"><img alt="img8" class="bg-primary mb-1" src="../../_images/img83.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 446 </span><span class="caption-text">constrastive learning</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 445 </span><span class="caption-text">constrastive learning</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -762,7 +778,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img92.png"><img alt="img9" class="bg-primary mb-1" src="../../_images/img92.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 447 </span><span class="caption-text">CLIP Loss</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 446 </span><span class="caption-text">CLIP Loss</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -797,7 +813,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img102.png"><img alt="img10" class="bg-primary mb-1" src="../../_images/img102.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 447 </span><span class="caption-text">Table1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -808,7 +824,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img112.png"><img alt="img11" class="bg-primary mb-1" src="../../_images/img112.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Table2</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 448 </span><span class="caption-text">Table2</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -819,7 +835,7 @@ document.write(`
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img122.png"><img alt="img12" class="bg-primary mb-1" src="../../_images/img122.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Table3</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 449 </span><span class="caption-text">Table3</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -850,7 +866,7 @@ document.write(`
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img151.png"><img alt="img15" class="bg-primary mb-1" src="../../_images/img151.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 451 </span><span class="caption-text">Truncation Trick</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 450 </span><span class="caption-text">Truncation Trick</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -858,7 +874,7 @@ document.write(`
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img16.png"><img alt="img16" class="bg-primary mb-1" src="../../_images/img16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 452 </span><span class="caption-text">Style Mixing</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 451 </span><span class="caption-text">Style Mixing</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -866,7 +882,7 @@ document.write(`
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img17.png"><img alt="img17" class="bg-primary mb-1" src="../../_images/img17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 453 </span><span class="caption-text">Latent Interpolation</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 452 </span><span class="caption-text">Latent Interpolation</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -877,7 +893,7 @@ document.write(`
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img18.png"><img alt="img18" class="bg-primary mb-1" src="../../_images/img18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Failure Cases</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 453 </span><span class="caption-text">Failure Cases</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -902,7 +918,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

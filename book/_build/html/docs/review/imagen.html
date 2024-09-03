@@ -194,7 +194,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Latent Diffusion Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
 
 <li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
 
@@ -277,6 +279,20 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -532,7 +548,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_1.png"><img alt="imagen_1" class="bg-primary mb-1" src="../../_images/imagen_1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Concept of Contrastive Learning</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 211 </span><span class="caption-text">Concept of Contrastive Learning</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -560,7 +576,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_2.png"><img alt="imagen_2" class="bg-primary mb-1" src="../../_images/imagen_2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Imagen overall pipeline</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 212 </span><span class="caption-text">Imagen overall pipeline</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -574,7 +590,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_3.png"><img alt="imagen_3" class="bg-primary mb-1" src="../../_images/imagen_3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Comparison between when guidance is not used (left) vs when guidance is used with parameter, w=3 (right)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 213 </span><span class="caption-text">Comparison between when guidance is not used (left) vs when guidance is used with parameter, w=3 (right)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -594,7 +610,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_5.png"><img alt="imagen_5" class="bg-primary mb-1" src="../../_images/imagen_5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 215 </span><span class="caption-text">Graphical visualization of static thresholding</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 214 </span><span class="caption-text">Graphical visualization of static thresholding</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -608,13 +624,13 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_6.png"><img alt="imagen_6" class="bg-primary mb-1" src="../../_images/imagen_6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Graphical visualization of dynamic thresholding</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 215 </span><span class="caption-text">Graphical visualization of dynamic thresholding</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_7.png"><img alt="imagen_7" class="bg-primary mb-1" src="../../_images/imagen_7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Comparison among no thresholding, static thresholding and dynamic thresholding, respectively</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 216 </span><span class="caption-text">Comparison among no thresholding, static thresholding and dynamic thresholding, respectively</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -630,7 +646,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_8.png"><img alt="imagen_8" class="bg-primary mb-1" src="../../_images/imagen_8.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 218 </span><span class="caption-text">Architecture of Super Resolution Diffusion Model used in Imagen</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 217 </span><span class="caption-text">Architecture of Super Resolution Diffusion Model used in Imagen</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -660,7 +676,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_9.png"><img alt="imagen_9" class="bg-primary mb-1" src="../../_images/imagen_9.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Screenshot of DrawBench dataset</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 218 </span><span class="caption-text">Screenshot of DrawBench dataset</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -674,7 +690,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_10.png"><img alt="imagen_10" class="bg-primary mb-1" src="../../_images/imagen_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Result of Imagen in DrawBench dataset</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 219 </span><span class="caption-text">Result of Imagen in DrawBench dataset</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -685,7 +701,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_11.png"><img alt="imagen_11" class="bg-primary mb-1" src="../../_images/imagen_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Result Table of Imagen</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 220 </span><span class="caption-text">Result Table of Imagen</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="qualitative-result-table-of-imagen-from-human-evaluators">
@@ -697,7 +713,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_12.png"><img alt="imagen_12" class="bg-primary mb-1" src="../../_images/imagen_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Qualitative Result Table of Imagen from Human evaulators</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 221 </span><span class="caption-text">Qualitative Result Table of Imagen from Human evaulators</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -713,7 +729,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/imagen_13.png"><img alt="imagen_13" class="bg-primary mb-1" src="../../_images/imagen_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 223 </span><span class="caption-text">Qualitative Result Table of Imagen from Human evaulators</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 222 </span><span class="caption-text">Qualitative Result Table of Imagen from Human evaulators</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -740,7 +756,7 @@ Model A에서 생성한 이미지 set vs Model B에서 생성한 이미지 set</
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

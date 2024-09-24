@@ -1,0 +1,832 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Magic3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/magic-3d';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Dream Booth 3D" href="DreamBooth3D.html" />
+    <link rel="prev" title="DreamFusion" href="DreamFusion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/magic-3d.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/magic-3d.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Magic3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-dreamfusion">3. Background: DreamFusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-3d-generation">4. High-Resolution 3D Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coarse-to-fine-diffusion-priors">4.1. Coarse-to-fine Diffusion Priors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-models">4.2. Scene Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coarse-to-fine-optimization">4.3. Coarse-to-fine Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllable-3d-generation">6. Controllable 3D Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Magic3D: High-Resolution Text-to-3D Content Creation (CVPR 2023)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2211.10440">https://arxiv.org/pdf/2211.10440</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Sangwoo Jo</p></li>
+<li><p><strong>Last updated on Sep. 24, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="magic3d">
+<h1>Magic3D<a class="headerlink" href="#magic3d" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>Pre-trained 된 text-to-image diffusion model 을 활용하여 NeRF 를 optimize 하는 DreamFusion 모델의 두 가지 단점을 명시합니다.</p>
+<ul class="simple">
+<li><p>Extremely slow optimization of NeRF</p></li>
+<li><p>Low-resolution image (64x64) space supervision on NeRF, leading to low-quality 3D models with a long processing time (1.5 hours per prompt on average using TPUv4)</p></li>
+</ul>
+<p>따라서, 논문에서는 이러한 단점을 해결하기 위해 two-stage optimization framework 제시합니다. 첫번째 단계로 DreamFusion 과 동일하게 coarse 한 NeRF representation 을 optimize 하는데, hash grid 를 활용하여 memory 그리고 computationally efficient 하게 최적화합니다. 두번째 단계로 high resolution diffusion prior 를 기반으로 mesh representation 를 최적화합니다. 3D mesh 로 rasterizing 함으로써 graphics software 에 유동적으로 전환하여 사용할 수 있다는 장점이 있습니다.</p>
+<p>정리하자면, Magic3D 는 다음과 같은 contribution 을 제공합니다.</p>
+<ul class="simple">
+<li><p>Synthesizes 3D content with an 8× higher resolution supervision, is also
+2× faster than DreamFusion</p></li>
+<li><p>3D object editing</p></li>
+</ul>
+</section>
+<section id="background-dreamfusion">
+<h2>3. Background: DreamFusion<a class="headerlink" href="#background-dreamfusion" title="Link to this heading">#</a></h2>
+<p>DreamFusion 을 크게 두 가지 component 로 구성되어있다고 할 수 있습니다.</p>
+<ul>
+<li><p>Neural scene representation</p>
+<p>Volumetric renderer <span class="math notranslate nohighlight">\(g\)</span> 와 3D volume 을 나타내는 parameter <span class="math notranslate nohighlight">\(\theta\)</span> 를 입력받아 rendered image 를 생성하는 scene model <span class="math notranslate nohighlight">\(x=g(\theta)\)</span>  를 정의합니다. DreamFusion 에서는 scene model 로 Mip-NeRF 360 에서 shading model 를 추가하여 사용합니다.</p>
+</li>
+<li><p>Pre-trained text-to-image diffusion-based generative model <span class="math notranslate nohighlight">\(\phi\)</span></p>
+<p>DreamFusion 에서 diffusion model 로 Imagen 모델을 사용합니다.</p>
+</li>
+</ul>
+<p>이를 기반으로, 다음과 같은 Score Distillation Sampling (SDS) 을 통해 parameter <span class="math notranslate nohighlight">\(\theta\)</span> 를 update 합니다.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_01.png"><img alt="magic_3d_01" class="bg-primary mb-1" src="../../_images/magic_3d_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Score Distillation Sampling</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="high-resolution-3d-generation">
+<h2>4. High-Resolution 3D Generation<a class="headerlink" href="#high-resolution-3d-generation" title="Link to this heading">#</a></h2>
+<p>Magic3D 에서 high-resolution text-to-3D synthesis 를 위한 two-stage coarse-to-fine framework 를 다음과 같이 소개합니다.</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_02.png"><img alt="magic_3d_02" class="bg-primary mb-1" src="../../_images/magic_3d_02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 671 </span><span class="caption-text">Magic3D Framework</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="coarse-to-fine-diffusion-priors">
+<h3>4.1. Coarse-to-fine Diffusion Priors<a class="headerlink" href="#coarse-to-fine-diffusion-priors" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>64x64 rendered image 에 대한 rendered loss 를 계산하기 위해 Imagen 과 유사한 eDiff-I 를 base diffusion 모델로 사용합니다.</p></li>
+<li><p>512x512 high resolution rendered image 를 기반으로 backpropagation 할 수 있도록 Stable Diffusion model 을 LDM 으로 사용합니다. 다음과 같이 SDS 를 계산하는 과정에서 <span class="math notranslate nohighlight">\(\partial{x}/\partial{\theta}\)</span> 와 <span class="math notranslate nohighlight">\(\partial{z}/\partial{x}\)</span> 를 계산하는데 시간이 다소 소요된다고 합니다.</p></li>
+</ol>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_03.png"><img alt="magic_3d_03" class="bg-primary mb-1" src="../../_images/magic_3d_03.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 672 </span><span class="caption-text">SDS in high resolution 512x512</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="scene-models">
+<h3>4.2. Scene Models<a class="headerlink" href="#scene-models" title="Link to this heading">#</a></h3>
+<p><strong>Neural fields as coarse scene models</strong></p>
+<p>기존에 DreamFusion 에서 scene model 로 사용하였던 Mip-NeRF 360 모델이 3D geometry 에 대한 정보를 scratch 로부터 담아내는데 유용하다는 것을 보였지만, MLP 네트워크를 통해 dense 하게 sampling 하여 rendering 하는 과정이 computation cost 가 높다고 말합니다.</p>
+<p>이를 해결하기 위한 방법으로 InstantNGP 에서 소개하는 hash grid encoding 을 사용한다고 합니다. Hash grid 를 활용하여 두 개의 single layer neural network 를 학습하는데, 하나는 albedo 와 density 그리고 나머지 하나는 normal 을 예측합니다. 또한, density-based voxel pruning (empty space 에 대한 처리) 과 octree-based ray sampling/rendering 기법을 활용하여 computation cost 를 줄였다고 합니다.</p>
+<p><strong>Textured meshes as fine scene models</strong></p>
+<p>Fine stage 에서도 high resolution image 를 기반으로 동일한 scene model (neural field) 을 학습하는 방식도 있지만, 아래 예시처럼 메모리와 연산적인 제한이 있어 좋은 성능을 내기가 어렵다고 합니다.</p>
+<p>따라서, Magic3D 에서는 textured 3D mesh 를 scene representation 으로 사용합니다. 더 자세하게는, 다음과 같은 tetrahedral grid <span class="math notranslate nohighlight">\((V_T,T)\)</span> 형태로 3D mesh 를 표현합니다. 이때, <span class="math notranslate nohighlight">\(V_T\)</span> 는 grid <span class="math notranslate nohighlight">\(T\)</span> 에 존재하는 vertices 를 의미하고, 각 vertex <span class="math notranslate nohighlight">\(v_i \in V_T \subset \mathbb{R}^3\)</span> 는 signed distance field (SDF) <span class="math notranslate nohighlight">\(s_i \in \mathbb{R}^3\)</span> 그리고 deformation <span class="math notranslate nohighlight">\(\Delta v_i \in \mathbb{R}^3\)</span> 값을 가집니다.</p>
+<p>이로부터 differentiable 한 marching tetrahedra 알고리즘을 통해 SDF 로부터 surface mesh 를 생성할 수 있으며, texture 에 대한 정보는 neural color field 로 정의할 수 있다고 합니다.</p>
+</section>
+<section id="coarse-to-fine-optimization">
+<h3>4.3. Coarse-to-fine Optimization<a class="headerlink" href="#coarse-to-fine-optimization" title="Link to this heading">#</a></h3>
+<p><strong>Neural field optimization</strong></p>
+<p>Instant NGP 와 동일하게 <span class="math notranslate nohighlight">\(256^3\)</span> resolution 의 occupancy grid 로 initialize 하고, 10 iterations 마다 grid 를 업데이트하며 empty space skipping 을 위한 octree 를 생성합니다. 매 업데이트마다 Instant NGP 와 동일한 파라미터 값을 설정하였다고 합니다.</p>
+<p>또한, DreamFusion 과 동일하게 background 를 표현하는 environment map MLP 를 사용하는데, 이때 Mip-NeRF 360 에서 사용하는 scene representation 을 사용할 수 없어, 모델이 background 로부터 object 에 대한 정보를 학습할 수 있어 이를 방지하기 위해 MLP 사이즈를 작게 하고 learning rate 를 10배 증가시켰다고 합니다.</p>
+<p><strong>Mesh optimization</strong></p>
+<p>Mesh 에 대한 optimization 을 진행하기 위해, 앞서 최적화한 coarse neural field 를 non-zero constant 를 차감함으로써 SDF 로 전환하고, texture field 는 coarse stage 에서 최적화된 color field 로 초기값을 설정합니다.</p>
+<p>최적화 단계를 진행할때, differentiable rasterizer 를 사용하여 surface mesh 를 rendering 하는 작업을 진행합니다. 각 vertex <span class="math notranslate nohighlight">\(v_i\)</span> 에 대해 앞서 정의한 high resolution 에서의 SDS gradient 를 통해 <span class="math notranslate nohighlight">\(s_i\)</span> 와 <span class="math notranslate nohighlight">\(\Delta v_i\)</span> 를 최적화하게 됩니다. 이때, rendering 하는 과정에서 각 pixel 에 해당하는 3D coordinate 를 추적하여 texture field 도 동시에 최적화합니다.</p>
+</section>
+</section>
+<section id="experiments">
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<p>DreamFusion 과 397 개의 text prompt 에 대한 성능을 비교합니다.</p>
+<p><strong>Speed evaluation</strong></p>
+<ul class="simple">
+<li><p>Coarse stage : 5000 iterations / 1024 samples / batch size 32 와 같은 설정으로 학습하였고, 하나의 객체를 생성하는데 8 NVIDIA A100 GPU 기준 15 분 소요된다고 합니다.</p></li>
+<li><p>Fine stage : 3000 iterations / batch size 32 와 같은 설정으로 학습하였고, 하나의 객체를 생성하는데 8 NVIDIA A100 GPU 기준 25 분 소요된다고 합니다.</p></li>
+</ul>
+<p><strong>Qualitative comparisons</strong></p>
+<p>3D 객체에서의 geometry 와 texture 에 대한 생성을 잘하는 부분을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_04.png"><img alt="magic_3d_04" class="bg-primary mb-1" src="../../_images/magic_3d_04.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 673 </span><span class="caption-text">Qualitative comparisons</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>User studies</strong></p>
+<p>397 개의 text prompt 을 입력받아 생성한 Magic3D 와 DreamFusion 로 생성한 3D 객체들에 대해 설문조사해본 결과, 61.7% 의 유저들이 Magic3D 모델을 더 우세하게 평가하였습니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_05.png"><img alt="magic_3d_05" class="bg-primary mb-1" src="../../_images/magic_3d_05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 674 </span><span class="caption-text">User studies</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Can single-stage optimization work with LDM prior?</strong></p>
+<p>LDM prior 를 활용한 single-stage optimization setup 으로 scene model 을 최적화할 시에 대한 ablation study 를 진행해본 결과, 성능이 좋지 않은 부분을 확인할 수 있었다고 합니다.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="pics/magic-3d/magic_3d_06.png"><img alt="magic_3d_06" class="bg-primary mb-1" src="pics/magic-3d/magic_3d_06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 675 </span><span class="caption-text">Single-stage vs Coarse-to-fine</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Can we use NeRF for the fine model?</strong></p>
+<p>NeRF 를 scratch 로부터 single-step 으로 최적화하는 것은 어렵지만, fine stage 에서 scene model 을 NeRF 로 변경하는 것은 가능합니다. 위 그림의 하단 4개 그림 중 좌측, 우측 사진이 각각 coarse stage 그리고 fine stage 에서 NeRF 를 학습한 결과입니다.</p>
+<p><strong>Coarse models vs. fine models</strong></p>
+<p>동일한 coarse model 에 대해서 NeRF 와 Mesh 모델을 모두 fine-tuning 한 결과, 모두 좋은 성능을 보이고 fine-tuned 된 mesh 모델이 특히 3D 객체 퀄리티를 실사적으로 잘 표현하는 것을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_07.png"><img alt="magic_3d_07" class="bg-primary mb-1" src="../../_images/magic_3d_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Coarse models vs. fine models</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="controllable-3d-generation">
+<h2>6. Controllable 3D Generation<a class="headerlink" href="#controllable-3d-generation" title="Link to this heading">#</a></h2>
+<p><strong>Personalized text-to-3D</strong></p>
+<p>사전에 diffusion model (eDiff-I, LDM) 을 DreamBooth 을 통해 학습하고, unique identifier <span class="math notranslate nohighlight">\([V]\)</span> 와 함께 3D scene model 을 학습합니다. 아래 사진과 같이, subject 에 대한 정보를 유지한 채 3D model 을 잘 생성하는 부분을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_08.png"><img alt="magic_3d_08" class="bg-primary mb-1" src="../../_images/magic_3d_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 677 </span><span class="caption-text">Controllable 3D Generation</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Prompt-based editing through fine-tuning</strong></p>
+<p>다음과 같은 3단계로 prompt-based editing 으로 fine-tuning 을 진행합니다.</p>
+<ol class="arabic simple">
+<li><p>우선, coarse model 을 base prompt 로 학습합니다.</p></li>
+<li><p>Base prompt 를 수정한 후, coarse NeRF 모델을 학습하고 이와 LDM 을 기반으로 high resolution NeRF 모델을 만듭니다.</p></li>
+<li><p>마지막으로, NeRF 모델을 기반으로 high-resolution fine-tuning 을 진행합니다.</p></li>
+</ol>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_09.png"><img alt="magic_3d_09" class="bg-primary mb-1" src="../../_images/magic_3d_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 678 </span><span class="caption-text">Prompt-based editing through fine-tuning</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="conclusion">
+<h2>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>정리하자면, 논문에서 Magic3D 의 coarse-to-fine optimization 방식을 소개하고, mesh 형태의 scene model 과 고해상도 이미지에 대한 diffusion prior 를 활용함으로써 high resolution 에 대해서도 좋은 성능을 보여줄 수 있었습니다. 추가적으로, 주어진 text prompt 에 대해 3D mesh model 을 40분 만에 생성이 가능하고, 그래픽 소프트웨어와 호환이 바로 가능하다는 장점이 있습니다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DreamFusion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>DreamFusion</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="DreamBooth3D.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Dream Booth 3D</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-dreamfusion">3. Background: DreamFusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-3d-generation">4. High-Resolution 3D Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coarse-to-fine-diffusion-priors">4.1. Coarse-to-fine Diffusion Priors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scene-models">4.2. Scene Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coarse-to-fine-optimization">4.3. Coarse-to-fine Optimization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controllable-3d-generation">6. Controllable 3D Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

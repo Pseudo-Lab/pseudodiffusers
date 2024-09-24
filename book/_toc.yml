@@ -44,6 +44,7 @@ parts:
   - file: docs/review/latent_consistency_models
   - file: docs/review/LLM_grounded_Diffusion
   - file: docs/review/DiT
+  - file: docs/review/one-step-image-translation
 
 - caption: Video Generation
   chapters:
@@ -58,8 +59,10 @@ parts:
   chapters:
   - file: docs/review/NeRF
   - file: docs/review/3DGS
-  - file: docs/review/DreamFusion
+  - file: docs/review/Point_E
   - file: docs/review/Shap-E
+  - file: docs/review/DreamFusion
+  - file: docs/review/magic-3d
   - file: docs/review/DreamBooth3D
   
 - caption: Experiments

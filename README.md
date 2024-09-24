@@ -67,11 +67,11 @@ CVPR 2024 Workshop
 | 26 | 2024.05.15 | Kyeongmin Yu | [AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725) (ICLR 2024) |
 | 27 | 2024.05.22 | Jeongin Lee | [NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis](https://arxiv.org/abs/2003.08934) (CVPR 2020) |
 | 28 | 2024.05.29 | Hyunsoo Kim | [3D Gaussian Splatting for Real-Time Radiance Field Rendering](https://arxiv.org/abs/2308.04079) (SIGGRAPH 2023) |
-| 29 | 2024.06.12 | - | DiffInject |
-| 30 | 2024.06.26 | Jeonghwa Yoo | [Point-E: A System for Generating 3D Point Clouds from Complex Prompts](https://arxiv.org/abs/2212.08751) (Arxiv 2022) |
-| 31 | 2024.06.26 | Kyeongmin Yu| [Shap-E: Generating Conditional 3D Implicit Function](https:arxiv.org/abs/2305.02463) |
-| 32 | 2024.07.03 | Geonhak Song | [DreamFusion: Text-to-3D using 2D Diffusion](https://arxiv.org/abs/2209.14988) (ICLR 2023) |
-
+| 29 | 2024.06.12 | Donggeun Sean Ko | [DiffInject](https://arxiv.org/abs/2406.06134) (CVPR Workshop 2024) |
+| 30 | 2024.06.26 | Jeonghwa Yoo  <br> Kyeongmin Yu | [Point-E: A System for Generating 3D Point Clouds from Complex Prompts](https://arxiv.org/abs/2212.08751) <br> [Shap-E: Generating Conditional 3D Implicit Function](https:arxiv.org/abs/2305.02463) |
+| 31 | 2024.07.03 | Geonhak Song | [DreamFusion: Text-to-3D using 2D Diffusion](https://arxiv.org/abs/2209.14988) (ICLR 2023) |
+| 32 | 2024.07.17 | Sangwoo Jo <br> Junhyoung Lee | [Magic3D: High-Resolution Text-to-3D Content Creation](https://arxiv.org/abs/2211.10440) (CVPR 2023) <br> [Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) (ICCV 2023) |
+| 33 | 2024.07.24 | Jeongin Lee <br> Hyunsoo Kim | [DreamBooth3D: Subject-Driven Text-to-3D Generation](https://arxiv.org/abs/2303.13508) (ICCV 2023) <br> [Style Aligned Image Generation via Shared Attention](https://arxiv.org/abs/2312.02133) (CVPR 2024) |
 
 
 ## Jupyter Book Update Procedure  

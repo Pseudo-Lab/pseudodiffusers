@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3D Gaussian Splatting for Real-Time Radiance Field Rendering &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,55 +18,51 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/3DGS';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DreamFusion" href="DreamFusion.html" />
+    <link rel="next" title="Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)" href="Point_E.html" />
     <link rel="prev" title="NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis" href="NeRF.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -146,6 +141,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -163,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -256,6 +264,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -278,7 +287,15 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
 
 
@@ -289,6 +306,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
@@ -327,9 +346,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -454,10 +473,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -465,14 +484,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -527,7 +546,7 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="d-gaussian-splatting-for-real-time-radiance-field-rendering">
-<h1>3D Gaussian Splatting for Real-Time Radiance Field Rendering<a class="headerlink" href="#d-gaussian-splatting-for-real-time-radiance-field-rendering" title="Permalink to this heading">#</a></h1>
+<h1>3D Gaussian Splatting for Real-Time Radiance Field Rendering<a class="headerlink" href="#d-gaussian-splatting-for-real-time-radiance-field-rendering" title="Link to this heading">#</a></h1>
 <p>NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하지만, 시간이 많이 걸려 실시간 렌더링에는 한계가 있다. 다른 방식들은 시간은 빠르지만 품질이 떨어진다. 이를 해결하기 위해, 논문은 3D Gaussian Splatting을 제안합니다. 이 방법은 Mip-NeRF360과 유사한 성능을 제공하면서도 InstantNGP만큼 빠르게 학습할 수 있다.</p>
 <p>3D Gaussian Splatting은 다음 세 가지로 구성된다다:</p>
 <ul class="simple">
@@ -537,35 +556,35 @@ document.write(`
 </ul>
 <p>이 방법은 이전의 implicit radiance field 접근법들과 동등하거나 더 나은 품질을 제공하며, 이전의 가장 빠른 방식과 유사한 학습 속도와 품질을 보여주어 고수준의 새로운 뷰 합성에 대해 처음으로 실시간 렌더링을 제공한다.</p>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image0.png"><img alt="image0" class="bg-primary mb-1" src="../../_images/image0.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 595 </span><span class="caption-text">Main process of 3D Gaussian Splatting</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 616 </span><span class="caption-text">Main process of 3D Gaussian Splatting</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image1.png"><img alt="image1" class="bg-primary mb-1" src="../../_images/image1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 596 </span><span class="caption-text">Peusdo Algorithm of 3D Gaussian Splatting</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 617 </span><span class="caption-text">Peusdo Algorithm of 3D Gaussian Splatting</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="differentiable-3d-gaussian-splatting">
-<h2>Differentiable 3D Gaussian Splatting<a class="headerlink" href="#differentiable-3d-gaussian-splatting" title="Permalink to this heading">#</a></h2>
+<h2>Differentiable 3D Gaussian Splatting<a class="headerlink" href="#differentiable-3d-gaussian-splatting" title="Link to this heading">#</a></h2>
 <p>이 논문은 normal(표면 법선)이 없는 Structure-from-Motion(SfM) 포인트들의 sparse한 셋을 initial point로 하여, 고품질의 novel view synthesis를 가능하게 하는 scene representation을 최적화하는 것을 목표로 한다.</p>
 <p>빠른 렌더링을 위해 unstructured하고 explicit한 primitive를 필요로 하며, 이를 위해 미분 가능하고 2D splats로 쉽게 project되는 3D Gaussian을 선택했다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image2.png"><img alt="image2" class="bg-primary mb-1" src="../../_images/image2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 597 </span><span class="caption-text">3D Gaussian Splatting Equation 4</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 618 </span><span class="caption-text">3D Gaussian Splatting Equation 4</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ’로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image3.png"><img alt="image3" class="bg-primary mb-1" src="../../_images/image3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 598 </span><span class="caption-text">3D Gaussian Splatting Equation 5</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 619 </span><span class="caption-text">3D Gaussian Splatting Equation 5</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서 논문에서는 더 직관적이고 최적화에 적합한 representation을 선택한다. 3D Gaussian의 공분산 행렬 Σ는 타원체의 구성을 설명하는 것과 유사하며, 이를 위해 scaling matrix S와 rotation matrix R을 사용한다.</p>
@@ -573,13 +592,13 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image4.png"><img alt="image4" class="bg-primary mb-1" src="../../_images/image4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 599 </span><span class="caption-text">3D Gaussian Splatting Equation 6</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 620 </span><span class="caption-text">3D Gaussian Splatting Equation 6</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최적화에 적합한 anisotropic covariance representation은 장면의 다양한 geometry에 적응하도록 3D Gaussian을 최적화한다.</p>
 </section>
 <section id="optimization-with-adaptive-density-control-of-3d-gaussians">
-<h2>Optimization with Adaptive Density Control of 3D Gaussians<a class="headerlink" href="#optimization-with-adaptive-density-control-of-3d-gaussians" title="Permalink to this heading">#</a></h2>
+<h2>Optimization with Adaptive Density Control of 3D Gaussians<a class="headerlink" href="#optimization-with-adaptive-density-control-of-3d-gaussians" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Optimization</strong></p></li>
 <li><p><strong>Adaptive Control of Gaussians</strong></p></li>
@@ -587,7 +606,7 @@ document.write(`
 <p>이 논문의 핵심 접근법은 free-view synthesis를 위해 장면을 정확하게 표현하는 3D Gaussian의 밀집된 세트를 만드는 최적화 단계다. 여기에는 position 𝑝, 투명도 𝛼, 공분산 Σ뿐만 아니라, scene의 view-dependent appearance를 정확하게 위한 각 Gaussian의 색상 c를 표현하는 SH coefficients까지 포함된다.</p>
 </section>
 <section id="optimization">
-<h2>Optimization<a class="headerlink" href="#optimization" title="Permalink to this heading">#</a></h2>
+<h2>Optimization<a class="headerlink" href="#optimization" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>3D를 2D로 project할 때 발생할 수 있는 모호함을 피하기 위해, optimization 과정에서 geometry가 더 생성되거나, 삭제되거나 혹은 이동할 수 있어야 함</p>
 <ul>
@@ -611,18 +630,18 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image6.png"><img alt="image6" class="bg-primary mb-1" src="../../_images/image6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 600 </span><span class="caption-text">D-SSIM equation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 621 </span><span class="caption-text">D-SSIM equation</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image7.png"><img alt="image7" class="bg-primary mb-1" src="../../_images/image7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 601 </span><span class="caption-text">SSIM equation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 622 </span><span class="caption-text">SSIM equation</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="adaptive-control-of-gaussians">
-<h2>Adaptive Control of Gaussians<a class="headerlink" href="#adaptive-control-of-gaussians" title="Permalink to this heading">#</a></h2>
+<h2>Adaptive Control of Gaussians<a class="headerlink" href="#adaptive-control-of-gaussians" title="Link to this heading">#</a></h2>
 <p>또한 Structure-from-Motion(SfM)으로 얻은 초기 희소 점들을 시작으로, scene을 더 잘 표현하기 위해 unit volume  내 Gaussian들의 수와 밀도를 점진적으로 최적화하는 방식을 제안한다.</p>
 <ul class="simple">
 <li><p>매 100번의 반복(iter)마다 Gaussian을 추가하고, 투명도 𝛼가 일정 값보다 작은 Gaussian을 제거</p></li>
@@ -637,12 +656,12 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image8.png"><img alt="image8" class="bg-primary mb-1" src="../../_images/image8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 602 </span><span class="caption-text">Adaptive Control of Gaussians</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 623 </span><span class="caption-text">Adaptive Control of Gaussians</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="fast-diffenrentiable-rasterization-for-gaussians">
-<h2>Fast Diffenrentiable Rasterization for Gaussians<a class="headerlink" href="#fast-diffenrentiable-rasterization-for-gaussians" title="Permalink to this heading">#</a></h2>
+<h2>Fast Diffenrentiable Rasterization for Gaussians<a class="headerlink" href="#fast-diffenrentiable-rasterization-for-gaussians" title="Link to this heading">#</a></h2>
 <p>본 논문의 목표는 대략적인 α-blending을 가능하게 하고 이전 연구에 존재하던 gradient를 얻을 수 있는 splat들의 수에 대한 강한 제약을 피하는 빠른 전체적인 렌더링과 빠른 sorting을 가지는 것이다.</p>
 <p>이러한 목표를 달성하기 위해 본 논문은 tile-based rasterization for Gaussian splats를 제안한다.</p>
 <p>tile-based rasterization은 아래와 같은 흐름으로 진행된다.</p>
@@ -664,7 +683,7 @@ document.write(`
 </ul>
 </section>
 <section id="results-and-evaluation">
-<h2>Results and Evaluation<a class="headerlink" href="#results-and-evaluation" title="Permalink to this heading">#</a></h2>
+<h2>Results and Evaluation<a class="headerlink" href="#results-and-evaluation" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Results and Evaluation
 데이터셋에 따라 결과는 다르지만 SOTA이상의 퀄리티를 내면서 좋은 Training time과 FPS를 보인다.</p></li>
@@ -672,13 +691,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image12.png"><img alt="image12" class="bg-primary mb-1" src="../../_images/image12.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 603 </span><span class="caption-text">3D Gaussian Splatting experiments table</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 624 </span><span class="caption-text">3D Gaussian Splatting experiments table</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image13.png"><img alt="image13" class="bg-primary mb-1" src="../../_images/image13.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 604 </span><span class="caption-text">3D Gaussian Splatting experiments result</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 625 </span><span class="caption-text">3D Gaussian Splatting experiments result</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -687,18 +706,18 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image19.png"><img alt="image19" class="bg-primary mb-1" src="../../_images/image19.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 605 </span><span class="caption-text">3D Gaussian Splatting ablation test image</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 626 </span><span class="caption-text">3D Gaussian Splatting ablation test image</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image18.png"><img alt="image18" class="bg-primary mb-1" src="../../_images/image18.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 606 </span><span class="caption-text">3D Gaussian Splatting result image</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 627 </span><span class="caption-text">3D Gaussian Splatting result image</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>이전의 방식들과 유사하게 잘 관측되지 않은 장면은 artifact들이 존재</p></li>
 <li><p>이전의 방식들과 유사하게 늘어지고 얼룩진 artifact를 생성할 수 있음</p></li>
@@ -722,7 +741,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -749,11 +768,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="DreamFusion.html"
+       href="Point_E.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><strong>DreamFusion</strong></p>
+        <p class="prev-next-title">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -805,7 +824,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -829,8 +848,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

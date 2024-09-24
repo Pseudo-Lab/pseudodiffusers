@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Muse &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Muse';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Scaling up GANs for Text-to-Image Synthesis" href="GIGAGAN.html" />
@@ -148,6 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -165,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -258,6 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -280,7 +289,15 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
 
 
@@ -291,6 +308,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
@@ -329,9 +348,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -456,10 +475,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -467,14 +486,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -539,11 +558,11 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="muse">
-<h1>Muse<a class="headerlink" href="#muse" title="Permalink to this heading">#</a></h1>
+<h1>Muse<a class="headerlink" href="#muse" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 425 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -564,7 +583,7 @@ document.write(`
 </li>
 </ul>
 <section id="masked-modeling">
-<h2>1. Masked modeling<a class="headerlink" href="#masked-modeling" title="Permalink to this heading">#</a></h2>
+<h2>1. Masked modeling<a class="headerlink" href="#masked-modeling" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>[22.02] MaskGIT: Masked Generative Image Transformer</p>
 <ul>
@@ -575,13 +594,13 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/maskgit_1.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/maskgit_1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 426 </span><span class="caption-text">maskgit 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 426 </span><span class="caption-text">maskgit 1</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/maskgit_2.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/maskgit_2.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 427 </span><span class="caption-text">maskgit 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 427 </span><span class="caption-text">maskgit 2</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -594,11 +613,11 @@ document.write(`
 </ul>
 </section>
 <section id="model-architecture">
-<h2>2. Model Architecture<a class="headerlink" href="#model-architecture" title="Permalink to this heading">#</a></h2>
+<h2>2. Model Architecture<a class="headerlink" href="#model-architecture" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_3.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_3.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 428 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 428 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -626,7 +645,7 @@ document.write(`
 </li>
 </ol>
 <section id="pre-trained-text-encoders">
-<h3>2.1. Pre-trained Text Encoders<a class="headerlink" href="#pre-trained-text-encoders" title="Permalink to this heading">#</a></h3>
+<h3>2.1. Pre-trained Text Encoders<a class="headerlink" href="#pre-trained-text-encoders" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://arxiv.org/abs/2205.11487">Imagen</a> 에서 pretrained LLM 사용하면 효과적인 high-quality 의 이미지 생성 가능</p></li>
 <li><p><strong>풍부한 visual, semantic 정보를 추출</strong>할 수 있는 T5-XXL 사용</p>
@@ -648,7 +667,7 @@ document.write(`
 </ul>
 </section>
 <section id="semantic-tokenization-using-vqgan">
-<h3>2.2. Semantic Tokenization using VQGAN<a class="headerlink" href="#semantic-tokenization-using-vqgan" title="Permalink to this heading">#</a></h3>
+<h3>2.2. Semantic Tokenization using VQGAN<a class="headerlink" href="#semantic-tokenization-using-vqgan" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>VQGAN</p>
 <ul>
@@ -666,7 +685,7 @@ document.write(`
 </ul>
 </section>
 <section id="base-model">
-<h3>2.3. Base Model<a class="headerlink" href="#base-model" title="Permalink to this heading">#</a></h3>
+<h3>2.3. Base Model<a class="headerlink" href="#base-model" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>base model</p>
 <ul>
@@ -689,11 +708,11 @@ document.write(`
 </ul>
 </section>
 <section id="super-resolution-model">
-<h3>2.4. Super-Resolution Model<a class="headerlink" href="#super-resolution-model" title="Permalink to this heading">#</a></h3>
+<h3>2.4. Super-Resolution Model<a class="headerlink" href="#super-resolution-model" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_4.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_4.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 429 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 429 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -707,14 +726,14 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table_6.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/table_6.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 430 </span><span class="caption-text">Table 6</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 430 </span><span class="caption-text">Table 6</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section id="decoder-finetuning">
-<h3>2.5. Decoder Finetuning<a class="headerlink" href="#decoder-finetuning" title="Permalink to this heading">#</a></h3>
+<h3>2.5. Decoder Finetuning<a class="headerlink" href="#decoder-finetuning" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>디테일을 높이기 위해 residual layer를 더 추가하고 channel 늘림</p>
 <ul>
@@ -726,7 +745,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_13.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_13.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Figure 13</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 431 </span><span class="caption-text">Figure 13</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -734,7 +753,7 @@ document.write(`
 </ul>
 </section>
 <section id="classifier-free-guidance">
-<h3>2.7. Classifier Free Guidance<a class="headerlink" href="#classifier-free-guidance" title="Permalink to this heading">#</a></h3>
+<h3>2.7. Classifier Free Guidance<a class="headerlink" href="#classifier-free-guidance" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>이미지 생성 퀄리티와 text-image alignment 향상을 위해 도입</p></li>
 <li><p>학습 때, 랜덤하게 10% 만 text conditioning 을 제거</p>
@@ -757,7 +776,7 @@ document.write(`
 </ul>
 </section>
 <section id="iterative-parallel-decoding-at-inference">
-<h3>2.8. Iterative Parallel Decoding at Inference<a class="headerlink" href="#iterative-parallel-decoding-at-inference" title="Permalink to this heading">#</a></h3>
+<h3>2.8. Iterative Parallel Decoding at Inference<a class="headerlink" href="#iterative-parallel-decoding-at-inference" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Muse 의 시간 효율성</p>
 <ul>
@@ -785,13 +804,13 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_5.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_5.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 432 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="results">
-<h2>3. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<h2>3. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Imagen dataset</p>
 <ul>
@@ -806,7 +825,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_6.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_6.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 433 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -815,7 +834,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_7.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_7.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 434 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 434 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -829,7 +848,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_8.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_8.png" style="width: 317px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 435 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -837,7 +856,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fig_10.png"><img alt="fig_1" class="bg-primary mb-1" src="../../_images/fig_10.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Figure 10</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 436 </span><span class="caption-text">Figure 10</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -845,7 +864,7 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="contribution">
-<h1>Contribution<a class="headerlink" href="#contribution" title="Permalink to this heading">#</a></h1>
+<h1>Contribution<a class="headerlink" href="#contribution" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p><strong>FID, CLIP score</strong> 기반으로 text-to-image 모델에 대한 SOTA 를 달성</p>
 <ul class="simple">
@@ -857,7 +876,7 @@ document.write(`
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="q-a">
-<h1>Q&amp;A<a class="headerlink" href="#q-a" title="Permalink to this heading">#</a></h1>
+<h1>Q&amp;A<a class="headerlink" href="#q-a" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>Muse 와 같은 transformer 기반의 generation 모델에서는 어떻게 <strong>diversity</strong> 한 결과를 가져올 수 있나요?</p>
 <ol class="arabic simple">
@@ -900,7 +919,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -993,7 +1012,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1017,8 +1036,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

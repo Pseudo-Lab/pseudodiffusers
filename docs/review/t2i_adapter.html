@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>T2I-Adapter &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,54 +18,50 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/t2i_adapter';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="HyperDreamBooth" href="HyperDreamBooth.html" />
@@ -148,6 +143,8 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="sidebar-primary-item">
 
   
+    
+  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -165,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -258,6 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -280,7 +289,15 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
 
 
@@ -291,6 +308,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
@@ -329,9 +348,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -456,10 +475,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -467,14 +486,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -536,22 +555,22 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="t2i-adapter">
-<h1>T2I-Adapter<a class="headerlink" href="#t2i-adapter" title="Permalink to this heading">#</a></h1>
+<h1>T2I-Adapter<a class="headerlink" href="#t2i-adapter" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>이번 시간에는 Tencent ARC Lab 에서 소개하는 T2I-Adapter 모델에 대해 알아볼 예정입니다.</p>
 <p>Stable Diffusion 을 비롯한 기존의 T2I 모델들이 난해한 prompt (e.g., “A car with flying wings” &amp; “Iron Man with bunny ears”) 을 입력받을 시, 생성되는 이미지 퀄리티가 저하되는 부분을 확인할 수 있는데요. 논문에서는 T2I 모델이 low level (e.g., textures), middle level (e.g., edges), 그리고 high level (e.g., semantics) 에 대한 정보들을 implicit 하게 가지고 있지만, 이를 표현하기 위해서는 text prompt 만으로는 한계가 있고 보다 세밀한 controlling (e.g., color, structure) 이 필요하다고 서술합니다. 즉, T2I 모델의 internal knowledge 와 external guidance 의 alignment 에 대한 추가적인 학습이 필요하다고 주장합니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_01.png"><img alt="t2i_adapter_01" class="bg-primary mb-1" src="../../_images/t2i_adapter_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Effect of External Guidance</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 250 </span><span class="caption-text">Effect of External Guidance</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서는 이를 해결하기 위해 T2I-Adapter 모델을 소개하고 다음과 같이 5가지 장점이 있다고 합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_02.png"><img alt="t2i_adapter_02" class="bg-primary mb-1" src="../../_images/t2i_adapter_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Various Guidance of T2I-Adapter</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 251 </span><span class="caption-text">Various Guidance of T2I-Adapter</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -560,7 +579,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_03.png"><img alt="t2i_adapter_03" class="bg-primary mb-1" src="../../_images/t2i_adapter_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 252 </span><span class="caption-text">ControlNet vs T2I-Adapter</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 252 </span><span class="caption-text">ControlNet vs T2I-Adapter</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -573,9 +592,9 @@ document.write(`
 </ul>
 </section>
 <section id="method">
-<h2>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<h2>Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
 <section id="preliminary-stable-diffusion">
-<h3>3.1. Preliminary: Stable Diffusion<a class="headerlink" href="#preliminary-stable-diffusion" title="Permalink to this heading">#</a></h3>
+<h3>3.1. Preliminary: Stable Diffusion<a class="headerlink" href="#preliminary-stable-diffusion" title="Link to this heading">#</a></h3>
 <p>T2I-Adapter 의 기반이 되는 T2I 모델 Stable Diffusion 모델은 기본적으로 two-stage model 이고, autoencoder 와 Unet denoiser 로 구성되어 있습니다. Autoencoder 를 통해 이미지를 latent space 로 바꾸고 다시 복원하는 역할을 하고, Unet denoiser 는 diffusion process 를 통해 다음과 같은 손실함수를 최소화하는 방향으로 학습하게 됩니다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -590,7 +609,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_04.png"><img alt="t2i_adapter_04" class="bg-primary mb-1" src="../../_images/t2i_adapter_04.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Cross Attention</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 253 </span><span class="caption-text">Cross Attention</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -599,21 +618,21 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 </ul>
 </section>
 <section id="overview-of-t2i-adapter">
-<h3>3.2. Overview of T2I-Adapter<a class="headerlink" href="#overview-of-t2i-adapter" title="Permalink to this heading">#</a></h3>
+<h3>3.2. Overview of T2I-Adapter<a class="headerlink" href="#overview-of-t2i-adapter" title="Link to this heading">#</a></h3>
 <p>논문에서는 다음과 같은 형태로 pre-trained 된 Stable Diffusion 을 비롯한 T2I 모델에 Adapter 를 추가하는 방식을 소개합니다. Adapter 의 자세한 구조는 다음과 같습니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_05.png"><img alt="t2i_adapter_05" class="bg-primary mb-1" src="../../_images/t2i_adapter_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Overview of T2I-Adapter</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 254 </span><span class="caption-text">Overview of T2I-Adapter</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="adapter-design">
-<h3>3.3. Adapter Design<a class="headerlink" href="#adapter-design" title="Permalink to this heading">#</a></h3>
+<h3>3.3. Adapter Design<a class="headerlink" href="#adapter-design" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_06.png"><img alt="t2i_adapter_06" class="bg-primary mb-1" src="../../_images/t2i_adapter_06.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Adapter Design</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 255 </span><span class="caption-text">Adapter Design</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Conditional input 은 512x512 의 크기를 가지며, 이는 <em>pixel unshuffle downsampling</em> 을 통해 64x64 이미지로 변환이 되어 1개의 convolution layer 와 2개의 residual block 으로 구성된 <em>scale</em> 을 4번 통과하게 됩니다. 이때, 각 <em>scale</em> 을 거치고 나온 condition feature 를 <span class="math notranslate nohighlight">\(F_c^k\)</span> 라 정의합니다.</p>
@@ -621,7 +640,7 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_07.png"><img alt="t2i_adapter_07" class="bg-primary mb-1" src="../../_images/t2i_adapter_07.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Multi-Scale Condition Feature</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 256 </span><span class="caption-text">Multi-Scale Condition Feature</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>해당 implementation code 도 살펴보겠습니다.</p>
@@ -755,12 +774,12 @@ L = \mathbb{E}_{Z_{t}, C, \epsilon, t}(||\epsilon-\epsilon_{\theta}(Z_t, C)||_2^
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_08.png"><img alt="t2i_adapter_08" class="bg-primary mb-1" src="../../_images/t2i_adapter_08.png" style="width: 350px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Multi-Adapter Conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 257 </span><span class="caption-text">Multi-Adapter Conditioning</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="model-optimization">
-<h3>3.4. Model Optimization<a class="headerlink" href="#model-optimization" title="Permalink to this heading">#</a></h3>
+<h3>3.4. Model Optimization<a class="headerlink" href="#model-optimization" title="Link to this heading">#</a></h3>
 <p>모델 학습 시, SD 파라미터는 고정시킨 상태로 T2I-Adapter 파라미터만 학습합니다. 이때, T2-Adapter 손실함수는 SD 학습 시와 유사하게 다음과 같이 정의합니다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -773,7 +792,7 @@ L_{AD} = \mathbb{E}_{Z_{0}, t, F_c, \epsilon \sim N(0,I)}[||\epsilon-\epsilon_{\
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_09.png"><img alt="t2i_adapter_09" class="bg-primary mb-1" src="../../_images/t2i_adapter_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 258 </span><span class="caption-text">DDIM Inference Sampling Stages</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 258 </span><span class="caption-text">DDIM Inference Sampling Stages</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서, 최대한 time step <span class="math notranslate nohighlight">\(t\)</span> 가 early sampling stage 에 포함되도록 다음 수식처럼 non-uniformly 하게 sampling 작업을 진행했고, 이에 대한 결과도 공유합니다.</p>
@@ -784,15 +803,15 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_10.png"><img alt="t2i_adapter_10" class="bg-primary mb-1" src="../../_images/t2i_adapter_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Effect of Cubic Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 259 </span><span class="caption-text">Effect of Cubic Sampling</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="experiment">
-<h2>Experiment<a class="headerlink" href="#experiment" title="Permalink to this heading">#</a></h2>
+<h2>Experiment<a class="headerlink" href="#experiment" title="Link to this heading">#</a></h2>
 <section id="implementation-details">
-<h3>4.1. Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h3>
+<h3>4.1. Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
 <p>T2I-Adapter 학습 시, hyperparameter 및 데이터셋 구축 상세사항은 다음과 같습니다.</p>
 <ul class="simple">
 <li><p>Hyperparameters</p>
@@ -828,67 +847,67 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
 </ul>
 </section>
 <section id="comparison">
-<h3>4.2. Comparison<a class="headerlink" href="#comparison" title="Permalink to this heading">#</a></h3>
+<h3>4.2. Comparison<a class="headerlink" href="#comparison" title="Link to this heading">#</a></h3>
 <p>기존 SOTA 모델들과 정량적인 수치로 비교하는데 FID 와 CLIP Score 를 사용하였고, 하단 사진처럼 기존 GAN-based 그리고 diffusion-based method 모델들보다 성능이 좋습니다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_11.png"><img alt="t2i_adapter_11" class="bg-primary mb-1" src="../../_images/t2i_adapter_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 260 </span><span class="caption-text">Qualitative Comparison</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_12.png"><img alt="t2i_adapter_12" class="bg-primary mb-1" src="../../_images/t2i_adapter_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Quantitative Comparisoin</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 261 </span><span class="caption-text">Quantitative Comparisoin</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="applications">
-<h3>4.3. Applications<a class="headerlink" href="#applications" title="Permalink to this heading">#</a></h3>
+<h3>4.3. Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h3>
 <p>해당 예시들은 다양한 single adapter controlling 에 대한 결과들을 보여줍니다. 특히 인상적인 부분은 sketch 로 controlling 시, sketch 가 정확하지 않아도 이미지 생성에 robust 한 성능을 보여주는 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_13.png"><img alt="t2i_adapter_13" class="bg-primary mb-1" src="../../_images/t2i_adapter_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Visualization of Single-Adapter Controlling</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 262 </span><span class="caption-text">Visualization of Single-Adapter Controlling</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, image editing 도 가능합니다. SD inpainting mode 로 특정 지역을 masking 한 후, T2I-Adapter 를 통해 image editing 을 한 예시 사진입니다. Adapter 없이, SD inpainting 만으로는 성능이 좋지 못하다고 합니다.</p>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_14.png"><img alt="t2i_adapter_14" class="bg-primary mb-1" src="../../_images/t2i_adapter_14.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Image Editing with T2I-Adapter</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 263 </span><span class="caption-text">Image Editing with T2I-Adapter</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 예시는 multiple adapter 를 적용한 것로 위에서부터 아래로 각각 depth + keypose 그리고 sketch + color map 을 conditioning 한 결과입니다.</p>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_15.png"><img alt="t2i_adapter_15" class="bg-primary mb-1" src="../../_images/t2i_adapter_15.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Composable Controlling</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 264 </span><span class="caption-text">Composable Controlling</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로, 장점들 중 하나로 명시되었던 generalization ability 를 보여준 사례입니다. 학습 완료한 Adapter 를 동일한 구조를 가진 T2I 모델에 적용 가능한 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_16.png"><img alt="t2i_adapter_16" class="bg-primary mb-1" src="../../_images/t2i_adapter_16.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Generalizable Controlling</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 265 </span><span class="caption-text">Generalizable Controlling</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="ablation-study">
-<h3>4.4. Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h3>
+<h3>4.4. Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h3>
 <p>논문에서는 guidance mode, 그리고 complexity 에 대한 ablation study 를 진행했습니다.</p>
 <p>SD 모델은 encoder 그리고 decoder 에 각각 4개의 scale (i.e., 64×64, 32×32, 16×16, 8×8) 을 가지고 있는데, 하단 table 처럼 각각 다른 scale 에 adapter guidance 를 적용하면서 FID 성능을 비교했습니다. Scale Number 가 4보다 작을 경우, large scale 에 순차적으로 guidance 를 적용했습니다. 그 결과, Unet encoder 에만 4 scales 모두 guidance 를 적용하는 것이 성능이 제일 좋다고 합니다.</p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_17.png"><img alt="t2i_adapter_17" class="bg-primary mb-1" src="../../_images/t2i_adapter_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Guidance Mode</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 266 </span><span class="caption-text">Guidance Mode</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, condition map 는 비교적 sparse 하기 때문에 더 경량화된 adapter 를 사용해도 성능이 좋은 부분을 하단 예시처럼 확인할 수 있었다고 합니다. 더 자세하게는, adapter block 의 intermediate channel 숫자를 바꿔가며 adapter-small, adapter-tiny 모델을 각각 x4, x8 compression 작업을 진행했습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/t2i_adapter_18.png"><img alt="t2i_adapter_18" class="bg-primary mb-1" src="../../_images/t2i_adapter_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Complexity Ablation</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 267 </span><span class="caption-text">Complexity Ablation</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -908,7 +927,7 @@ t = (1-(t/T)^3) \times T, t \in U(0,T)
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs\review"
+            path: "./docs/review"
         },
         predefinedOutput: true
     }
@@ -998,7 +1017,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1022,8 +1041,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

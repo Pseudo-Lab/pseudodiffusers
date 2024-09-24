@@ -1,0 +1,1204 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022) &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Point_E';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Shap-E" href="Shap-E.html" />
+    <link rel="prev" title="3D Gaussian Splatting for Real-Time Radiance Field Rendering" href="3DGS.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Point_E.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/Point_E.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">3. Related Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">4-1. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-synthesis-glide-model">4.2 View Synthesis GLIDE Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud-diffusion">4.3  <strong>Point Cloud Diffusion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud-upsampler">4.4 <strong>Point Cloud Upsampler</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-meshes">4.5 Producing Meshes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-scaling-and-ablations">5.1 <strong>Model Scaling and Ablations</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results">5.2 Qualitative Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-other-methods"><strong>5.3 Comparison to Other Methods</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-work"><strong>6. Limitations and Future Work</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper:  <a class="reference external" href="https://arxiv.org/abs/2212.08751">https://arxiv.org/abs/2212.08751</a></p></li>
+<li><p>Project: <a class="reference external" href="https://openai.com/index/point-e/">https://openai.com/index/point-e/</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> <a class="reference external" href="https://www.linkedin.com/in/jeonghwa-yoo-8403a716b">Jeonghwa Yoo</a></p></li>
+<li><p><strong>Last updated on Sep. 11, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts-arxiv-2022">
+<h1>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)<a class="headerlink" href="#point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts-arxiv-2022" title="Link to this heading">#</a></h1>
+<aside>
+💡 핵심 요약
+<ul class="simple">
+<li><p>관련 태스크: text-to-3D, point cloud generation</p></li>
+<li><p>본 논문의 접근 방식</p>
+<ul>
+<li><p>Text-to-image 모델과 image-to-3D 모델을 결합하여 두 방법의 장점을 합쳤다.</p>
+<ul>
+<li><p>Text-to-image: 대규모 데이터가 존재하여 복잡하고 다양한 텍스트 프롬프트에 대해 적용 가능하다.</p></li>
+<li><p>Image-to-3D: 소규모의 이미지 데이터와 3D 데이터 쌍에 대해 학습하여 3D 포인트 클라우드를 생성한다.</p></li>
+</ul>
+</li>
+<li><p>세 단계의 프로세스로 구성됨</p>
+<ul>
+<li><p>Text → 합성 뷰: GLIDE 모델</p></li>
+<li><p>합성 뷰 → 저해상도 포인트 클라우드: 트랜스포머 기반의 디퓨전 모델</p></li>
+<li><p>저해상도 포인트 클라우드 → 고해상도 포인트 클라우드: 트랜스포머 기반의 디퓨전 모델</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>결과</p>
+<ul>
+<li><p>샘플 품질 측면에서 SOTA 성능이 아니지만, 샘플링 속도가 1~2배 더 빠르다.</p></li>
+<li><p>텍스트 프롬프트에 의해 조건화된 다양하고 복잡한 3D 형상을 효율적으로 생성할 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+</aside>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>제안 배경</p>
+<ul>
+<li><p>최근 텍스트 조건부 3D 객체 생성 기술(text-conditional 3D object generation)이 놀라운 발전을 보이고 있다.</p></li>
+<li><p>하지만, SOTA 모델들은 여전히 하나의 샘플을 만들기 위해 여러 GPU 시간을 요구하고 있다.</p></li>
+<li><p>본 논문에서는 단일 GPU에서 1~2분만에 3D 모델을 생성하는 3D 객체 생성을 위한 방법을 탐색한다.</p></li>
+</ul>
+</li>
+<li><p>접근법</p>
+<ul>
+<li><p>텍스트-이미지 디퓨전 모델을 사용하여 단일 합성 뷰를 생성한 다음 두 번째 디퓨전 모델을 사용하여 3D 포인트 클라우드를 생성한다.</p></li>
+</ul>
+</li>
+<li><p>결과</p>
+<ul>
+<li><p>샘플 품질 측면에서 SOTA 성능이 아니지만, 샘플링 속도가 1~2배 더 빠르다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<ul>
+<li><p>Text-to-image 생성 모델에서 text-to-vide/3D로의 발전</p>
+<ul class="simple">
+<li><p>최근 text-to-image 생성 모델이 폭발적으로 증가함에 따라 몇 초만에 자연어에서 고품질 이미지를 생성하고 수정할 수 있게 되었다.</p></li>
+<li><p>이러한 결과에 영감을 받아 최근 연구에서는 비디오나 3D 객체와 같은 다른 도메인에서의 텍스트 조건부 생성을 탐색하고 있다.</p></li>
+<li><p>본 논문도 text-to-3D 생성 문제에 중점을 둔다.</p></li>
+</ul>
+</li>
+<li><p>최근 text-to-3D 합성의 분류</p>
+<ul class="simple">
+<li><p>최근 text-to-3D 합성은 일반적으로 다음의 두 카테고리 중 하나에 속한다.</p>
+<ol class="arabic simple">
+<li><p>쌍을 이룬(paired)(ex: text, 3D) 데이터 또는 레이블이 없는(unlabeld) 3D 데이터에서 생성 모델을 직접(directly) 학습 시키는 방법</p>
+<ol class="arabic simple">
+<li><p>장점: 기존 생성 모델링 접근 방식을 활용하여 샘플을 효율적으로 생성할 수 있다.</p></li>
+<li><p>단점: 대규모 3D 데이터셋이 없기 때문에 다양하고 복잡한 텍스트 프롬프트로 확장하기 어렵다. → 데이터셋의 한계, 확장성의 어려움</p></li>
+</ol>
+</li>
+<li><p>사전 학습된 text-to-image 모델을 활용하여 미분가능한(differentiable) 3D 표현법들(representations)을 최적화하는 방법</p>
+<ol class="arabic simple">
+<li><p>장점: 복잡하고 다양한 텍스트 프롬프트를 처리할 수 있다.</p></li>
+<li><p>단점:</p>
+<ol class="arabic simple">
+<li><p>각 샘플에 대해 최적화 과정을 거쳐야 하기 때문에 계산 비용이 많이 들고 시간이 오래 걸릴 수 있다.  샘플을 생성하는 데 비용이 많이 드는 최적화 프로세스가 필요하다.</p></li>
+<li><p>강력한 3D prior가 없기 때문에 의미 있거나 일관된 3D 개체에 해당하지 않는 local minima에 빠질 수 있다.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>본 논문의 접근법</p>
+<figure class="align-default" id="id1">
+<img alt="Point_E_01" class="bg-primary mb-1" src="pics/Point_E/01.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 628 </span><span class="caption-text">Point-E 파이프라인 개요</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Text-to-image 모델과 image-to-3D 모델을 결합하여  두카테고리의 장점을 합치는 것을 목표로 한다.</p>
+<ul>
+<li><p>본 논문의 text-to-image 모델</p>
+<ul>
+<li><p>대규모(텍스트, 이미지)쌍 데이터를 활용하여 다양하고 복잡한 프롬프트를 따를 수 있게 한다.</p></li>
+<li><p>3D 렌더링에 대해 파인튜닝된 GLIDE 버전을 사용한다.</p></li>
+</ul>
+</li>
+<li><p>본 논문의 image-to-3D 모델</p>
+<ul>
+<li><p>소규모의(이미지,3D)쌍 데이터로 학습된다.</p></li>
+<li><p>RGB 포인트 클라우드를 생성하는 디퓨전 모델의 스택을 사용한다. (새로운 transformer 기반 아키텍처 사용)</p></li>
+<li><p>생성된 포인트 클라우드에서 메쉬를 생성하기 위해 회귀 기반(regression-based) 접근 방식을 사용한다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>먼저 text-to-image 모델을 사용하여 이미지를 샘플링하고, 샘플링된 이미지를 조건으로 넣어 3D 객체를 샘플링한다.</p></li>
+<li><p>이 두 단계 모두 몇 초 내에 수행될 수 있으며, 비용이 많이 드는 최적화 과정을 필요로 하지 않는다.</p></li>
+</ul>
+</li>
+<li><p>본 논문의 결과</p>
+<ul class="simple">
+<li><p>간단한 텍스트 프롬프트뿐만 아니라 복잡한 텍스트 프롬프트와도 일치하는 컬러 3D 포인트 클라우드를 생성할 수 있었다.</p></li>
+</ul>
+<p>→ 포인트 클라우드를 효율적으로 생성한다는 의미에서 본 논문의 시스템을 Point E라고 명칭하였다.</p>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="background">
+<h1>2. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>디퓨전 모델 개요:</p>
+<ul>
+<li><p>점진적으로 Gaussian 노이즈를 추가하는 과정을 통해 데이터를 변형한다.</p></li>
+<li><p>본 논문에서는 Ho et al. (2020)의 Gaussian 확산 설정을 따른다.</p></li>
+</ul>
+</li>
+<li><p>노이즈 프로세스</p>
+<ul>
+<li><p>노이즈 프로세스는 시간 단계 t마다 신호에 Gaussian 노이즈를 추가한다.</p></li>
+<li><p>최종 단계에서는 샘플이 거의 정보를 포함하지 않게 된다.</p></li>
+</ul>
+</li>
+<li><p>역 노이즈 프로세스</p>
+<ul>
+<li><p>랜던 가우시안 노이즈 <span class="math notranslate nohighlight">\(x_T\)</span>에서 시작하여 점진적으로 노이즈 프로세스를 역으로 진행하여 잡음이 없는 샘플 <span class="math notranslate nohighlight">\(x_0\)</span>에 도달할 수 있다.</p></li>
+</ul>
+</li>
+<li><p>모델 학습</p>
+<ul>
+<li><p>q(xt−1|xt)를 신경망 pθ(xt−1|xt)로 근사하여 학습한다.</p></li>
+<li><p>Nichol &amp; Dhariwal (2021)은 평균뿐만 아니라 분산도 예측하여 더 나은 성능을 얻었다.</p></li>
+</ul>
+</li>
+<li><p>샘플링</p>
+<ul>
+<li><p>디퓨전 샘플링은 미분 방정식 관점에서 설명될 수 있으며, 이를 통해 다양한 SDE 및 ODE 해석기를 사용하여 이러한 모델에서 샘플링할 수 있다.</p></li>
+<li><p>본 논문에서는 Karras et al. (2022)의 2차 ODE 해석기를 사용한다.</p></li>
+</ul>
+</li>
+<li><p>가이드 전략</p>
+<ul>
+<li><p>Dhariwal &amp; Nichol (2021)은 분류기 가이던스(classifier guidance)를 도입하여 생성 충실도를 높였다.</p></li>
+<li><p>Ho &amp; Salimans (2021)은 분류기 없는 가이던스(classifier-free guidance)를 도입하여 조건부 정보를 무작위로 삭제한다.</p></li>
+<li><p>본 논문에서는 학습 시 드롭 확률 0.1을 사용하여 이 기술을 적용한다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="related-work">
+<h1>3. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>포인트 클라우드 생성 모델:</p>
+<ul>
+<li><p>다양한 연구들이 GAN, VAE, 플로우 모델, 디퓨전 모델 등을 사용하여 포인트 클라우드를 생성한다.</p></li>
+<li><p>본 논문의 연구와 가장 유사한 PVD 모델은 단일 디퓨전 모델을 사용하여 포인트 클라우드 직접 생성한다.</p></li>
+<li><p>본 논문에서는 더 간단한 트랜스포머 기반 아키텍처를 사용하며, RGB 채널을 함께 생성하는 점에서 차별점을 가진다.</p></li>
+</ul>
+</li>
+<li><p>다른 3D 표현을 사용한 모델 생성:</p>
+<ul>
+<li><p>2D 이미지 데이터셋에서 3D 인식 GAN을 학습하거나, 직접 3D 메쉬를 생성하는 연구들이  있다.</p></li>
+<li><p>이러한 연구들은 주로 새로운 뷰 합성 문제에 초점을 맞추지만, 전체 360도 뷰를 재구성하려고 하지는 않는다.</p></li>
+</ul>
+</li>
+<li><p>텍스트 조건부 3D 생성:</p>
+<ul>
+<li><p>몇몇 연구들은 텍스트-이미지 매칭 목표에 따라 3D 표현을 최적화하는 접근 방식을 탐구한다.</p></li>
+<li><p>이러한 접근 방식들은 다양한 복잡한 객체나 장면을 생성할 수 있지만, 최적화 절차가 매우 시간이 많이 걸린다.</p></li>
+</ul>
+</li>
+<li><p>텍스트-3D 데이터 활용:</p>
+<ul>
+<li><p>텍스트-3D 쌍 데이터를 사용하여 텍스트 조건부 3D 모델을 생성하는 연구들도 있다.</p></li>
+<li><p>많은 연구들이 단순한 프롬프트나 좁은 객체 카테고리에 한정되지만, 본 논문에서는 사전 학습된 텍스트-이미지 모델을 활용하여 이러한 문제를 해결한다.</p></li>
+</ul>
+</li>
+<li><p>이미지 기반 3D 재구성:</p>
+<ul>
+<li><p>단일 또는 소수의 이미지에서 3D 모델을 재구성하는 회귀 기반 및 생성 접근 방식이 있.</p></li>
+<li><p>이들 접근 방식은 불충분한 문제를 다루면서도 유망한 결과를 보여주고 있다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method">
+<h1>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>텍스트를 조건으로 받아 단일 생성 모델로 포인트 클라우드를 직접 생성하는 대신 생성 프로세스를 세 단계로 나눈다.</p>
+<ol class="arabic simple">
+<li><p>‘텍스트 캡션’을 조건으로 받아 ‘합성 뷰’를 생성한다.  → <em>4.2 내용</em></p>
+<ol class="arabic simple">
+<li><p>GLIDE 모델 사용</p></li>
+<li><p>렌더링된 3D 모델로 파인튜닝</p></li>
+</ol>
+</li>
+<li><p>‘합성 뷰’를 조건으로 받아 ‘대략적인(coarse) 포인트 클라우드(1024개의 포인트)’를 생성한다 → <em>4.3 내용</em></p>
+<ol class="arabic simple">
+<li><p>조건부 순열 불변 디퓨전 모델(conditional, permutation invariant diffusion model) 사용</p></li>
+</ol>
+</li>
+<li><p>‘저해상도 포인트 클라우드와 합성 뷰’를 조건으로 받아 ‘고해상도 포인트 클라우드(4096 포인트)’를 생성한다. → <em>4.4 내용</em></p>
+<ol class="arabic simple">
+<li><p>2에서 사용된 모델과 유사하지만 저해상도 포인트 클라우드를 조건으로 하는 더 작은 디퓨전 모델을 사용</p></li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>수백만 개의 3D 모델과 관련 메타데이터로 구성된 데이터셋에서 모델을 훈련시킨다.</p></li>
+<li><p>데이터셋을 렌더링된 뷰, 텍스트 설명, 그리고 각 점에 대한 RGB 색상을 포함하는 3D 포인트 클라우드로 처리한다.</p></li>
+</ul>
+<section id="dataset">
+<h2>4-1. Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>수백만 개의 3D 모델은 데이터 형식과 품질이 데이터셋 전반에 걸쳐 매우 다양했고, 더 높은 데이터 품질을 보장하기 위해 다양한 후처리 단계가 필요했다.</p></li>
+<li><p>후처리 단계</p>
+<ol class="arabic simple">
+<li><p>Blender를 사용하여 모든 데이터를 하나의 일반적인 형식(RGBAD 이미지)으로 변환한다.</p>
+<ol class="arabic simple">
+<li><p>Blender: 다양한 3D 형식을 지원하며 최적화된 렌더링 엔진을 제공하는 프로그램</p></li>
+<li><p>RGBAD 이미지: RGB 이미지에 깊이(Depth)와 알파(Alpha) 채널이 추가된 형식의 이미지</p></li>
+<li><p>20개의 랜덤한 카메라 각도에서 각 3D 모델을 경계 상자(bounding cube)로 정규화하고 표준 조명 설정을 구성한 후, blender의 내장된 실시간 렌더링 엔진을 사용하여 RGBAD 이미지를 내보냈다.</p></li>
+</ol>
+</li>
+<li><p>각 객체를 렌더링을 사용해 색상이 있는 포인트 클라우드로 변환한다.</p>
+<ol class="arabic simple">
+<li><p>각 RGBAD 이미지의 각 픽셀에 대한 점을 계산하여 각 객체에 대한 밀집된(dense) 포인트 클라우드를 구성한다.</p></li>
+<li><p>이러한 포인트 클라우드는 일반적으로 고르게 분포되어 있지 않으므로, 가장 먼 점 샘플링을 사용하여 4K 점의 균일한 클라우드를 생성한다.</p></li>
+<li><p>렌더링에서 직접 포인트 클라우드를 구성함으로써, 3D 메쉬에서 직접 점을 샘플링할 때 발생할 수 있는 여러 가지 문제를 피할 수 있었다. (모델 내부에 포함된 점을 샘플링하는 문제, 이상한 파일 형식의 3D 모델로 인한 문제)</p></li>
+</ol>
+</li>
+<li><p>저품질 모델을 제거하기 위해 다양한 휴리스틱을 사용한다.</p>
+<ol class="arabic simple">
+<li><p>각 포인트 클라우드의 SVD를 계산하고, 가장 작은 특이값이 일정 임계값(threshold) 이상인 경우에만 유지함으로써 평평한 객체를 제거했다.</p></li>
+<li><p>다음으로, CLIP 특성에 따라 데이터셋을 클러스터링 했다. (일부 클러스터는 많은 저품질 모델 카테고리를 포함하는 반면, 다른 클러스터는 더 다양하거나 해석 가능한 것으로 나타났음)</p></li>
+<li><p>클러스터를 여러 가지 품질의 버킷으로 나누고, 최종 데이터셋으로서 결과 버킷의 가중치 혼합을 사용했다.</p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="view-synthesis-glide-model">
+<h2>4.2 View Synthesis GLIDE Model<a class="headerlink" href="#view-synthesis-glide-model" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>‘텍스트 캡션’을 조건으로 받아 ‘합성 뷰’를 생성하는 모델</p></li>
+<li><p>4.3에서 설명할 포인트 클라우드 모델은 모두 동일한 렌더러와 동일한 조명 설정을 사용하여 생성된 데이터셋의 렌더링된 뷰를 조건으로 받는다.</p></li>
+<li><p>따라서 해당 파트에서는 데이터셋의 분포와 일치하는 3D 렌더를 명시적으로 생성하고자 하였다.</p></li>
+<li><p>이를 위해 GLIDE를 원래의 데이터셋과 저자들의 3D 렌더링 데이터셋을 혼합하여 파인튜닝 하였다.</p>
+<ul>
+<li><p>저자들의 3D 렌더링 데이터셋이 원래 GLIDE 학습셋에 비해 작기 때문에 3D 렌더링 데이터셋에서 이미지를 샘플링하는 비율을 5%로만 설정하고, 나머지 95%는 원래의 데이터셋을 사용했다.</p></li>
+<li><p>반복(iterations) 횟수는 100,000번의 설정 하였으며, 이는 모델이 3D 데이터셋을 여러 번 거치는 학습을 진행했음을 의미한다. (단, 동일한 렌더링된 시점을 두 번 사용하지 않았다.)</p></li>
+</ul>
+</li>
+<li><p>테스트 시간에는 항상 분포 내 렌더를 샘플링하기 위해, 모든 3D 렌더의 텍스트 프롬프트에 특별한 토큰을 추가하여 이 토큰을 사용하여 샘플링을 수행하였다.</p></li>
+</ul>
+</section>
+<section id="point-cloud-diffusion">
+<h2>4.3  <strong>Point Cloud Diffusion</strong><a class="headerlink" href="#point-cloud-diffusion" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>‘합성 뷰’를 조건으로 받아 ‘대략적인(coarse) 포인트 클라우드(1024개의 포인트)’를 생성하는 모델</p></li>
+<li><p>디퓨전을 이용해 포인트 클라우드를 사용하기 위해 <a class="reference external" href="https://arxiv.org/abs/2104.03670">3D Shape Generation and Completion through Point-Voxel Diffusion</a>에서 사용한 프레임워크를 확장하여 포인트 클라우드의 각 포인트에 RGB 색상을 포함시켰다.</p></li>
+<li><p>포인트 클라우드를 K x 6 형태의 텐서로 나타내며 (K: 포인트 수), 내부 차원은 (x,y,z) 좌표와 (R,G,B) 색상을 포함한다.</p></li>
+<li><p>모든 좌표와 색상은 [-1, 1] 범위로 정규화 된다.</p></li>
+<li><p>K x 6 형태의 랜덤한 노이즈에서 시작하여 이를 점진적으로 디노이징하여 텐서를 직접 생성한다.</p></li>
+<li><p>기존 3D 전용 구조를 활용하던 이전 방법들과 달리, 본 논문에서는 트랜스포머 기반 모델을 사용한다. 모델은
+이미지, 타임 스텝 t, 노이즈가 있는 포인트 클라우드 <span class="math notranslate nohighlight">\(x_t\)</span>를 조건으로 받아 <span class="math notranslate nohighlight">\(\epsilon\)</span>과 <span class="math notranslate nohighlight">\(\sum\)</span>을 예측한다.</p></li>
+<li><p>모델 구조</p>
+<figure class="align-default" id="id2">
+<img alt="Point_E_02" class="bg-primary mb-1" src="pics/Point_E/02.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 629 </span><span class="caption-text">Point-E 모델 구조</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>포인트 클라우드의 각 포인트를 출력 차원이 D인 선형 레이어(linear layer)에 넣어 K×D 입력 텐서를 얻고 모델에 입력 컨텍스트로 사용한다. 또한 작은 MLP에 타임스텝 t를 넣어 컨텍스트 앞에 추가할 다른 D차원 벡터를 얻는다.</p></li>
+<li><p>이미지를 조건으로 입력 받기 위해, 사전 학습된 ViT-L/14 CLIP 모델에 이미지를 입력하고 이 CLIP 모델의 마지막 레이어의 임베딩을 가져온다. (shape: 256xD’), 이를 선형 투사(lienarly project)하여 256xD shape의 또 다른 텐서를 얻고 이를 트랜스포머 컨텍스트 앞에 추가한다. → 이 방법이 단일 CLIP 이미지 또는 텍스트 임베딩을 사용하는 것보다 우수했다.</p></li>
+<li><p>최종 입력 컨텍스트는 (K+257) x D의 shape가 된다. 길이 K의 최종 출력 시퀀스를 얻기 위해 최종 토큰 K개를 가져오고 이를 프로젝션하여 입력 포인트 K개에 대한 ε와 Σ 예측을 얻는다.</p></li>
+</ul>
+</li>
+</ul>
+<aside>
+💡 정리
+<ul>
+<li><p>입력 컨텍스트 구성:</p>
+<ul class="simple">
+<li><p>포인트 클라우드의 각 점: K×D</p></li>
+<li><p>CLIP 이미지 임베딩: 256×D</p></li>
+<li><p>타임스텝 임베딩: 1×D</p></li>
+</ul>
+<p>→ 최종 입력 컨텍스트: (K+257)×D</p>
+</li>
+<li><p>트랜스포머 모델의 출력: (K+257)개의 토큰 (각 토큰의 차원은 D)</p></li>
+<li><p>최종 출력 시퀀스 선택: 최종 K개의 토큰을 가져온다.</p></li>
+<li><p>ε와 Σ 예측**:** 최종 K개의 토큰을 ε와 Σ 예측을 위한 입력 포인트로 사용한다.</p></li>
+<li><p>예측된 ε와 Σ을 통해 노이즈를 제거하여 포인트 클라우드를 복원</p></li>
+</ul>
+</aside>
+<ul class="simple">
+<li><p>이 모델에서는 positional encoding을 사용하지 않는다. 따라서 모델 자체는  입력 포인트 클라우드에 대해 순열 분별(permutation-invariant)하다.</p></li>
+</ul>
+</section>
+<section id="point-cloud-upsampler">
+<h2>4.4 <strong>Point Cloud Upsampler</strong><a class="headerlink" href="#point-cloud-upsampler" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>이미지 디퓨전 모델에서의 계층 구조</p>
+<ul class="simple">
+<li><p>이미지 디퓨전 모델의 경우 가장 좋은 품질은 일반적으로 계층 구조를 사용하는 방식으로 달성된다.</p></li>
+<li><p>이 방식에서는 저해상도의 기본 모델이 출력을 생성한 후, 이를 다른 모델이 업샘플한다.</p></li>
+</ul>
+<p>→ 포인트 클라우드 생성에 이 접근 방식을 사용</p>
+</li>
+<li><p>포인트 클라우드 생성에서의 계층 구조</p>
+<ul class="simple">
+<li><p>큰 베이스 모델로 1K 포인트를 생성한 후, 작은 업샘플링 모델을 사용하여 4K 포인트로 업샘플링 한다.</p></li>
+<li><p>모델 크기가 같을 때, 4K 포인트를 생성하는 데에는 1K 포인트를 생성할 때보다 네 배 더 많은 연산을 필요로 한다.</p></li>
+</ul>
+</li>
+<li><p>업샘플러</p>
+<ul class="simple">
+<li><p>업샘플러는 베이스 모델과 동일한 아키텍처를 사용한다.</p></li>
+<li><p>모델은 저해상도 포인트 클라우드 모델과 동일한 아키텍처를 사용한다.</p></li>
+<li><p>저해상도 포인트 클라우드를 입력 받기 위한 추가 컨디셔닝 토큰이 있다.</p></li>
+<li><p>1K 포인트를 조건으로 입력 받아 추가로 3K 포인트를 생성하여 저해상도 포인트 클라우드에 추가한다.</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_t\)</span>에 사용된 레이어가 아닌 별도의 선형 임베딩 레이어를 통해 저해상도 포인트를 전달하여, 모델이 positional encoding을 사용할 필요 없이 조건부 정보와 새로운 포인트를 구별할 수 있도록 한다.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="producing-meshes">
+<h2>4.5 Producing Meshes<a class="headerlink" href="#producing-meshes" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>렌더링 기반 평가를 위해 생성된 포인트 클라우드를 직접 렌더링하지 않는다.</p></li>
+<li><p>대신, 포인트 클라우드를 텍스처가 입혀진 메쉬로 변환하고 Blender를 사용해 이러한 메쉬를 렌더링한다.</p></li>
+<li><p>포인트 클라우드에서 메쉬를 생성하는 것은 때때로 어렵고, 본 논문의 모델이 생성한 포인트 클라우드는 종종 균열, 이상치 또는 기타 유형의 노이즈를 가지고 있어 더욱 어렵다.</p></li>
+<li><p>포인트 클라우드에서 메쉬를 생성하기 위해 사전 학습된 SAP모델을 사용해봣으나 포인트 클라우드에 존재했던 큰 부분이나 중요한 세부 사항을 잃어버리는 경우가 있었다.</p></li>
+<li><p>따라서 본 논문에서는 회귀(regression) 기반 모델을 사용하여 signed distance field를 예측하고, 이를 merching cube 알고리즘을 적용하여 메쉬를 추출했다.</p></li>
+<li><p>그런 다음 원래 포인트 클라우드에서 가장 가까운 점의 색을 사용하여 메쉬의 각 버텍스에 색을 할당했다.</p></li>
+</ul>
+<aside>
+💡
+<ul class="simple">
+<li><p>렌더링 과정 요약</p>
+<ol class="arabic simple">
+<li><p>포인트 클라우드에서 SDF 예측: 회귀 기반 모델을 사용하여 포인트 클라우드로부터 객체의 SDF를 예측한다.</p></li>
+<li><p>메쉬 생성: 예측된 SDF를 기반으로 merching cube 알고리즘을 적용하여 메쉬를 생성합니다.</p></li>
+<li><p>색상 할당: 생성된 메쉬의 각 버텍스에 원래 포인트 클라우드의 색상을 할당하여 텍스처가 입혀진 메쉬를 만든다.</p></li>
+<li><p>Blender를 통한 렌더링: 최종적으로 텍스처가 입혀진 메쉬를 Blender를 사용하여 렌더링한다.</p></li>
+</ol>
+</li>
+</ul>
+</aside>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="results">
+<h1>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>평가 지표: CLIP R-Precision, P-IS, P-FID</p>
+<ul>
+<li><p>CLIP R-Precision</p>
+<ul>
+<li><p>특정 객체를 기준으로 하여 모델이 텍스트 설명과 얼마나 잘 일치하는지를 평가하는 지표</p></li>
+<li><p>계산하는 과정</p>
+<ul>
+<li><p>생성된 이미지와 텍스트 프롬프트를 기반으로 CLIP 모델을 사용하여 각 이미지의 텍스트 임베딩을 계산한다.</p></li>
+<li><p>CLIP 모델에서 계산된 텍스트 임베딩과 이미지 임베딩 간의 유사도를 계산한다.</p></li>
+<li><p>유사도가 가장 높은 상위 R개의 이미지 중 실제로 맞는 이미지의 비율을 계산한다.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>P-IS, P-FID</p>
+<ul>
+<li><p>포인트 클라우드의 Inception Score와 FID를 평가하기 위해 본 논문에서 도입한 지표</p></li>
+<li><p>수정된 PointNet++ 모델을 사용하여 포인트 클라우드에서 특징을 추출하고 클래스 확률을 에측</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<section id="model-scaling-and-ablations">
+<h2>5.1 <strong>Model Scaling and Ablations</strong><a class="headerlink" href="#model-scaling-and-ablations" title="Link to this heading">#</a></h2>
+<p>저자들은 다음과 같은 베이스 모델에 대하여 학습 중에 생성한 샘플들로 평가하였다.</p>
+<ul class="simple">
+<li><p>40M (uncond.): 어떠한 조건 정보도 없는 작은 모델</p></li>
+<li><p>40M (text vec.): 텍스트 캡션에만 의존하는 작은 모델 (이미지 사용 x), 파인튜닝된 GLIDE 모델 활용 x</p></li>
+<li><p>40M (image vec.): 렌더링된 이미지의 CLIP 이미지 임베딩에 의존하는 작은 모델, 단일 CLIP 임베딩 사용</p></li>
+<li><p>40M: CLIP 잠재 그리드(latent grid)를 통한 전체 이미지 조건을 사용하는 작은 모델</p></li>
+<li><p>300M: CLIP 잠재 그리드를 통한 전체 이미지 조건을 사용하는 중간 모델</p></li>
+<li><p>1B: CLIP 잠재 그리드를 통한 전체 이미지 조건을 사용하는 큰 모델</p></li>
+</ul>
+<p>평가 결과는 아래 그래프와 같다.</p>
+<figure class="align-default" id="id3">
+<img alt="Point_E_03" class="bg-primary mb-1" src="pics/Point_E/03.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 630 </span><span class="caption-text">평가 결과</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>결과</p>
+<ul>
+<li><p>텍스트 조건만 사용하고 텍스트에서 이미지로의 단계가 없는 경우 CLIP R-Precision이 매우 나쁘게 나오는 것을 발견</p></li>
+<li><p>이미지를 조건으로 사용할 때 단일 CLIP 임베딩보다 임베딩 그리드를 사용하는 것이 성능이 더 나은 것을 발견 →  조건 이미지에 대해 더 많은 (공간적인) 정보를 보는 것이 포인트 클라우드 모델에 이점이 있음을 시사</p></li>
+<li><p>모델의 스케일을 증가시키면 P-FID 수렴 속도가 향상되고 최종 CLIP R-Precision이 증가하는 것을 발견</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="qualitative-results">
+<h2>5.2 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>포인트 클라우드 생성 결과</p>
+<figure class="align-default" id="id4">
+<img alt="Point_E_04" class="bg-primary mb-1" src="pics/Point_E/04.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 631 </span><span class="caption-text">포인트클라우드 생성 결과</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Point·E 모델이 복잡한 프롬프트에 대해 종종 일관된 고품질의 3D 형상을 생성할 수 있다는 것을 발견했다.</p></li>
+<li><p>때때로 포인트 클라우드 디퓨전 모델은 조건화된 이미지를 이해하지 못하거나 예측할 수 없는 경우가 있다.  이는 주로 두 가지 문제 중 하나로 인해 발생한다.</p>
+<figure class="align-default" id="id5">
+<img alt="Point_E_05" class="bg-primary mb-1" src="pics/Point_E/05.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 632 </span><span class="caption-text">잘못 추론한 예시</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>모델이 이미지에 나타난 객체의 모양을 잘못 해석하는 경우</p></li>
+<li><p>모델이 이미지에서 가려진 형상의 일부를 잘못 추론하는 경우</p></li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="comparison-to-other-methods">
+<h2><strong>5.3 Comparison to Other Methods</strong><a class="headerlink" href="#comparison-to-other-methods" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>CLIP-R-Precision 지표를 이용하여 Point·E를 다른 3D 생성 기술과 비교했다.</p>
+<figure class="align-default" id="id6">
+<img alt="Point_E_06" class="bg-primary mb-1" src="pics/Point_E/06.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 633 </span><span class="caption-text">CLIP-R-Precision 성능</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>Point·E는 state-of-the-art 기술(DreamFusion)보다 성능이 좋지 않지만, 이 불일치의 일부를 설명할 수 있는 이 평가의 두 가지 미묘한 점에 주목해야 한다.</p>
+<ol class="arabic simple">
+<li><p>DreamFusion과 같은 멀티뷰 최적화 기반 방법과 달리 Point·E는 텍스트 프롬프트와 일치하도록 모든뷰를 명시적으로 최적화하지 않는다. 특정 객체가 모든 각도에서 쉽게 식별되지 않을 수 있기 때문에 CLIP R-Precision이 낮아질 수 있다.</p></li>
+<li><p>본 논문의 방법은 렌더링 전에 포인트 클라우드를 전처리해야 하는데, 포인트 클라우드를 메쉬로 변환하는 것은 어려운 문제다. 본 논문이 사용하는 접근 방식은 때때로 포인트 클라우드 자체에 있는 정보를 잃을 수 있다.</p></li>
+</ol>
+</li>
+<li><p>Point·E는 최신 테크닉보다 이 평가에서 성능이 좋지 않지만 짧은 시간 내에 샘플을 생성한다.</p></li>
+<li><p>이를 통해 보다 실용적으로 응용 프로그램을 만들거나 많은 개체를 샘플링하고 최상의 개체를 휴리스틱을 따라 선택하여 고품질 3D 개체를 찾을 수 있다.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="limitations-and-future-work">
+<h1><strong>6. Limitations and Future Work</strong><a class="headerlink" href="#limitations-and-future-work" title="Link to this heading">#</a></h1>
+<ul>
+<li><p>합성 렌더링을 필요로 한다. → 향후 실제 세계 이미지를 조건으로 하는 3D 생성기를 훈련시켜 해결할 수 있을 것</p></li>
+<li><p>색상이 있는 3D 형태를 생성하지만, 이 과정은 비교적 낮은 해상도의 3D 형식(포인트 클라우드)로 이루어진다. 형상이나 질감의 세부 사항을 캡처하지 못한다. → 메쉬나 NeRF와 같은 고해상도 3D 표현을 생성하도록 확장하면 해결할 수 있을 것</p></li>
+<li><p>최적화 기반 기술(optimization-based techniques)을 초기화하여 초기 수렴 속도를 높이는 데 사용할 수 있다.</p></li>
+<li><p>이 모델이 DALL·E 2 시스템과 많은 제한 사항을 공유할 것으로 예상한다. (데이터셋에서 야기된 많은 편향을 포함할 수 있다)</p></li>
+<li><p>모델이 생성한 3D 모델이 실제로 물리적으로 제작될 때, 그 제품이 위험할 수 있는 물체의 청사진을 생성할 수 있다.</p>
+<figure class="align-default" id="id7">
+<img alt="Point_E_07" class="bg-primary mb-1" src="pics/Point_E/07.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 634 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Point·E는 합성된 뷰를 생성하고 이를 기반으로 조건화된 색상 포인트 클라우드를 생성하는 텍스트 조건 합성 시스템이다.</p></li>
+<li><p>Point·E가 텍스트 프롬프트에 의해 조건화된 다양하고 복잡한 3D 형상을 효율적으로 생성할 수 있는 능력을 갖추고 있다는 것을 발견했다.</p></li>
+<li><p>본 논문의 방식이 텍스트에서 3D로의 합성 분야에서의 추가적인 연구의 시작점으로 기여할 수 있기를 희망한다.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3DGS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">3D Gaussian Splatting for Real-Time Radiance Field Rendering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Shap-E.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Shap-E</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">2. Background</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">3. Related Work</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">4-1. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-synthesis-glide-model">4.2 View Synthesis GLIDE Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud-diffusion">4.3  <strong>Point Cloud Diffusion</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#point-cloud-upsampler">4.4 <strong>Point Cloud Upsampler</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#producing-meshes">4.5 Producing Meshes</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">5. Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-scaling-and-ablations">5.1 <strong>Model Scaling and Ablations</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-results">5.2 Qualitative Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-other-methods"><strong>5.3 Comparison to Other Methods</strong></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-future-work"><strong>6. Limitations and Future Work</strong></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">7. Conclusion</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

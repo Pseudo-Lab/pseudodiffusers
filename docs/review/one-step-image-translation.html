@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>One-Step Image Translation with Text-to-Image Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/one-step-image-translation';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="DiT" href="DiT.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">One-Step Image Translation with Text-to-Image Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/one-step-image-translation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/one-step-image-translation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>One-Step Image Translation with Text-to-Image Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-conditional-input">3.1. Adding Conditional Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserving-input-details">3.2. Preserving Input Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpaired-training">3.3. Unpaired Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">3.4. Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-unpaired-methods">4.1. Comparison to Unpaired Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.2. Ablation Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.3. Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-and-limitations">5. Discussions and Limitations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> One-Step Image Translation with Text-to-Image Models</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2403.12036">https://arxiv.org/pdf/2403.12036</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/GaParmar/img2img-turbo">GaParmar/img2img-turbo</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Sangwoo Jo</p></li>
+<li><p><strong>Last updated on Sep. 24, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="one-step-image-translation-with-text-to-image-models">
+<h1>One-Step Image Translation with Text-to-Image Models<a class="headerlink" href="#one-step-image-translation-with-text-to-image-models" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>논문에서 기존의 conditional diffusion model 에 대해 다음과 같이 1) slow inference time, 2) paired data 에 대한 의존성 두 가지 한계점을 명시합니다. 이를 보완하기 위해, paired setting 과 unpaired setting 에서 모두 적용 가능한 학습 아키텍쳐를 제시합니다.</p>
+<p>기존에 adapter 를 추가하는 방식은 one-step diffusion model 에 적합하지 않다고 설명하고, 또한 SD-Turbo 모델의 Encoder-UNet-Decoder 형태의 multi-stage pipeline 에서 이미지의 많은 시각적 디테일이 손실된다고 주장합니다. 그리고 이러한 정보 손실은 입력 이미지가 실제 이미지일 때 특히 더 치명적이라고 합니다.</p>
+<p>이를 보완하기 위해, 논문에서는 첫번째로 input image 를 직접 noise encoder 에 입력함으로써 noise map 과 input control 의 충돌을 방지합니다. 두번째로, Encoder-Unet-Decoder 를 하나의 end-to-end 로 학습 가능한 아키텍처를 정의하고, 이를 위해 여러 LoRA adapter 를 정의합니다. 마지막으로, high-frequency detail 을 담아내기 위해 encoder 와 decoder 간의 skip connection 을 추가합니다.</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 515 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><strong>CycleGAN-Turbo 코드</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CycleGAN_Turbo</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pretrained_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ckpt_folder</span><span class="o">=</span><span class="s2">&quot;checkpoints&quot;</span><span class="p">,</span> <span class="n">lora_rank_unet</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">lora_rank_vae</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;tokenizer&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">text_encoder</span> <span class="o">=</span> <span class="n">CLIPTextModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;text_encoder&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sched</span> <span class="o">=</span> <span class="n">make_1step_sched</span><span class="p">()</span>
+        <span class="n">vae</span> <span class="o">=</span> <span class="n">AutoencoderKL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;vae&quot;</span><span class="p">)</span>
+        <span class="n">unet</span> <span class="o">=</span> <span class="n">UNet2DConditionModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;unet&quot;</span><span class="p">)</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">my_vae_encoder_fwd</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="p">,</span> <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">my_vae_decoder_fwd</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="p">,</span> <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+        <span class="c1"># add the skip connection convs</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
+        <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">ignore_skip</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unet</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">vae</span> <span class="o">=</span> <span class="n">unet</span><span class="p">,</span> <span class="n">vae</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>또한, 해당 논문에서 제시하는 아케텍쳐는 CycleGAN, pix2pix 등의 GAN 기반의 모델에 plug-and-play 형태로도 적용 가능하며, CycleGAN-Turbo, pix2pix-Turbo 모델이 기존의 GAN 기반 그리고 diffusion model 기반 모델의 image translation 성능보다 우수하다고 합니다.</p>
+</section>
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
+<p>기존에 paired dataset 에서의 image-to-image translation 모델들은 대표적으로 reconstruction loss 와 adversarial loss 를 기반으로 학습되었습니다. 최근에는 GLIGEN, T2I-Adapter, ControlNet 와 같이 adapter 를 통한 input conditioning 하는 방식도 소개되었습니다. 그리고 unpaired dataset 에서 diffusion 모델을 활용하여 image translation 하는 사례들도 있지만, 이들은 새로 보이는 domain 마다 scratch 로부터 모델을 학습해야 하는 치명적인 단점이 있습니다.</p>
+<p>SDEdit 와 Prompt-to-Prompt 모델과 같이 zero-shot 으로 이미지를 editing 하는 연구 사례들도 있지만, 이들은 multi-object 와 complex scene setting 에서 약점을 보인다고 합니다.</p>
+<p>이와 동시에 diffusion model 의 inference time 을 단축하기 위해서 ODE solver 혹은 knowledge distillation 을 활용한 연구 사례들도 있었습니다.</p>
+</section>
+<section id="method">
+<h2>3. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<section id="adding-conditional-input">
+<h3>3.1. Adding Conditional Input<a class="headerlink" href="#adding-conditional-input" title="Link to this heading">#</a></h3>
+<p>SD-Turbo 와 같이 pretrained 된 one-step text-to-image 모델을 기반으로 input image 에 대한 conditioning 을 하는 방법을 다음과 같이 처음에 제안합니다. 아래 사진과 같이, 사전학습된 stable diffusion encoder 의 가중치 혹은 랜덤한 가중치를 가진 adapter 를 새로 정의하여 input image 에 대한 feature map 을 추출합니다.</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_02.png"><img alt="translation_turbo_02" class="bg-primary mb-1" src="../../_images/translation_turbo_02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 516 </span><span class="caption-text">Adding Conditional Input</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>하지만 multi-step diffusion model 과 다르게 single-step 만으로도 noise map 이 생성되는 이미지의 전체적인 layout 을 결정하기 때문에, condition encoder 를 거쳐서 나온 feature map 와의 충돌이 생겨 학습에 어려움이 생기는 현상을 보여준다고 합니다.</p>
+<p>따라서, adapter 를 추가적으로 정의하는 방식이 아닌 conditioning input 을 network 에 직접 적용하는 방식을 논문에서 제안합니다.</p>
+</section>
+<section id="preserving-input-details">
+<h3>3.2. Preserving Input Details<a class="headerlink" href="#preserving-input-details" title="Link to this heading">#</a></h3>
+<p>Latent Diffusion Model (LDM) 이 image 를 encoding 하는 과정에서 차원을 8 배 축소하기 때문에 정보에 대한 손실이 크고, 따라서 이러한 방식은 fine detail 에 민감한 image translation task 에 적합하지 않을 수 있다고 주장합니다. 아래 사진을 보시면, 기존 아키텍쳐에서 skip connection 을 추가하기 전후로 원본 이미지에 대한 detail preservation 정도 차이를 확인할 수 있습니다.</p>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_03.png"><img alt="translation_turbo_03" class="bg-primary mb-1" src="../../_images/translation_turbo_03.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 517 </span><span class="caption-text">Preserving Input Details</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>더 자세하게는, skip connection 을 encoder 내의 각 downsampling layer 를 거쳐 4개의 activation 을 추출하고 이를 1 x 1 zero-convolution layer 를 통과시켜 decoder 에 대응되는 upsampling block 에 입력시킵니다.</p>
+</section>
+<section id="unpaired-training">
+<h3>3.3. Unpaired Training<a class="headerlink" href="#unpaired-training" title="Link to this heading">#</a></h3>
+<p>논문에서는 SD-Turbo (v2.1) 를 base network 로 사용하고, 변형된 CycleGAN objective 를 적용하여 unpaired translation 을 진행하였습니다. 이때, cycle-consistency loss 와 adversarial loss 를 다음과 같이 정의합니다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_04.png"><img alt="translation_turbo_04" class="bg-primary mb-1" src="../../_images/translation_turbo_04.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 518 </span><span class="caption-text">Cycle-Consistency Loss</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_05.png"><img alt="translation_turbo_05" class="bg-primary mb-1" src="../../_images/translation_turbo_05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 519 </span><span class="caption-text">Adversarial Loss</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>여기서 <span class="math notranslate nohighlight">\(X \subset \mathbb{R}^{H \times W \times 3}\)</span>, <span class="math notranslate nohighlight">\(Y \subset \mathbb{R}^{H \times W \times 3}\)</span> 는 각각 source domain, target domain, 그리고 <span class="math notranslate nohighlight">\(G(x, c_Y): X → Y\)</span>, <span class="math notranslate nohighlight">\(G(y, c_X):
+Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일한 generator <span class="math notranslate nohighlight">\(G\)</span> 를 사용하며, caption <span class="math notranslate nohighlight">\(c_X,c_Y\)</span> 만 task 에 따라 변형하게 됩니다. (i.e., day → night translation task 에서 <span class="math notranslate nohighlight">\(c_X\)</span> 는 “Driving in the day” 그리고 <span class="math notranslate nohighlight">\(c_Y\)</span> 는 “Driving in the night”)</p>
+<p>대부분의 layer 는 고정시킨 상태에서 U-Net 의 첫번째 convolutional layer 와 LoRA adapter 를 학습시켰다고 합니다.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 520 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>또한, 새롭게 소개되는 <span class="math notranslate nohighlight">\(L_{rec}\)</span> 손실함수는 <span class="math notranslate nohighlight">\(L_1\)</span> 과 <span class="math notranslate nohighlight">\(LPIPS\)</span> 의 조합으로 구성되어있습니다. 그리고 adversarial loss 에서 사용되는 discriminator <span class="math notranslate nohighlight">\(D_X(x),D_Y(y)\)</span> 는 CLIP 모델을 backbone 으로 사용하였습니다.</p>
+<p>마지막으로, identity regularization loss 도 <span class="math notranslate nohighlight">\(L_{idt} = E_y [L_{rec}(G(y, c_Y ), y)] + E_x [L_{rec}(G(x, c_X), x)]\)</span> 와 같이 정의하고, 최종 objective 를 이들의 가중치 합으로 정의합니다.</p>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_06.png"><img alt="translation_turbo_06" class="bg-primary mb-1" src="../../_images/translation_turbo_06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 521 </span><span class="caption-text">Full objective</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="extensions">
+<h3>3.4. Extensions<a class="headerlink" href="#extensions" title="Link to this heading">#</a></h3>
+<p>해당 논문에서 unpaired training setting 뿐만 아니라 paired training 그리고 stochastic output generation 에 대해서도 실험을 진행하였습니다.</p>
+<p><strong>Paired Training</strong></p>
+<p>Paired setting 에서는 single translation function <span class="math notranslate nohighlight">\(G(x,c): X \rightarrow Y\)</span> 를 학습하고, objective 는 (1)  perceptual loss 와 pixel-space reconstruction loss 로 구성된 reconstruction loss (2) unpaired setting 에서 target domain 에 대해서만 정의된 GAN loss, 그리고 (3) CLIP text-image alignment loss <span class="math notranslate nohighlight">\(L_{CLIP}\)</span> 의 가중치 합으로 정의합니다.</p>
+<p><strong>Generating Diverse Outputs</strong></p>
+<p>One-step model 로 diverse 한 output 을 생성하는 것은 어려운 일입니다. 논문에서는 해당 task 를 수행하기 위해 input image <span class="math notranslate nohighlight">\(x\)</span>, noise map <span class="math notranslate nohighlight">\(z\)</span>, 그리고 interpolation coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> 를 입력받는 <span class="math notranslate nohighlight">\(G(x,z,\gamma)\)</span> 를 정의합니다.</p>
+<p><span class="math notranslate nohighlight">\(G(x,z,\gamma)\)</span> 는 우선 noise <span class="math notranslate nohighlight">\(z\)</span> 와 encoder output <span class="math notranslate nohighlight">\(G_{enc}(x)\)</span> 를 다음과 같이 interpolation 합니다: <span class="math notranslate nohighlight">\(\gamma G_{enc}(x) + (1 − \gamma) z\)</span>. 그리고 LoRA adapter 가중치와 skip connection 출력값을 <span class="math notranslate nohighlight">\(\theta = \theta_0 + \gamma \cdot \Delta \theta\)</span> 와 같이 조정합니다. 여기서 <span class="math notranslate nohighlight">\(\theta_0\)</span> 는 원래 가중치이고, <span class="math notranslate nohighlight">\(\Delta \theta\)</span> 는 새로 추가된 가중치입니다.</p>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_07.png"><img alt="translation_turbo_07" class="bg-primary mb-1" src="../../_images/translation_turbo_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 522 </span><span class="caption-text">Reconstruction loss with interpolation coefficient</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>해당 objective 로 interpolation coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> 를 변화시키면서 모델을 fine-tuning 함으로써 다양한 output 을 생성할 수 있었다고 합니다.</p>
+</section>
+</section>
+<section id="experiments">
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<p><strong>Training Details</strong></p>
+<p>학습하는 파라미터: LoRA 가중치, zero-convolutional layer, 그리고 첫번째 U-Net convolutional layer 가 330MB 소요됩니다.</p>
+<ul>
+<li><p><strong>UNet initialization 코드</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize_unet</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">unet</span> <span class="o">=</span> <span class="n">UNet2DConditionModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;unet&quot;</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="n">l_target_modules_encoder</span><span class="p">,</span> <span class="n">l_target_modules_decoder</span><span class="p">,</span> <span class="n">l_modules_others</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="n">l_grep</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;to_k&quot;</span><span class="p">,</span> <span class="s2">&quot;to_q&quot;</span><span class="p">,</span> <span class="s2">&quot;to_v&quot;</span><span class="p">,</span> <span class="s2">&quot;to_out.0&quot;</span><span class="p">,</span> <span class="s2">&quot;conv&quot;</span><span class="p">,</span> <span class="s2">&quot;conv1&quot;</span><span class="p">,</span> <span class="s2">&quot;conv2&quot;</span><span class="p">,</span> <span class="s2">&quot;conv_in&quot;</span><span class="p">,</span> <span class="s2">&quot;conv_shortcut&quot;</span><span class="p">,</span> <span class="s2">&quot;conv_out&quot;</span><span class="p">,</span> <span class="s2">&quot;proj_out&quot;</span><span class="p">,</span> <span class="s2">&quot;proj_in&quot;</span><span class="p">,</span> <span class="s2">&quot;ff.net.2&quot;</span><span class="p">,</span> <span class="s2">&quot;ff.net.0.proj&quot;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">unet</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">():</span>
+        <span class="k">if</span> <span class="s2">&quot;bias&quot;</span> <span class="ow">in</span> <span class="n">n</span> <span class="ow">or</span> <span class="s2">&quot;norm&quot;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span> <span class="k">continue</span>
+        <span class="k">for</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">l_grep</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">n</span> <span class="ow">and</span> <span class="p">(</span><span class="s2">&quot;down_blocks&quot;</span> <span class="ow">in</span> <span class="n">n</span> <span class="ow">or</span> <span class="s2">&quot;conv_in&quot;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">):</span>
+                <span class="n">l_target_modules_encoder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.weight&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">n</span> <span class="ow">and</span> <span class="s2">&quot;up_blocks&quot;</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span>
+                <span class="n">l_target_modules_decoder</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.weight&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+                <span class="k">break</span>
+            <span class="k">elif</span> <span class="n">pattern</span> <span class="ow">in</span> <span class="n">n</span><span class="p">:</span>
+                <span class="n">l_modules_others</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.weight&quot;</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">))</span>
+                <span class="k">break</span>
+    <span class="n">lora_conf_encoder</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">init_lora_weights</span><span class="o">=</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span><span class="n">target_modules</span><span class="o">=</span><span class="n">l_target_modules_encoder</span><span class="p">,</span> <span class="n">lora_alpha</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+    <span class="n">lora_conf_decoder</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">init_lora_weights</span><span class="o">=</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span><span class="n">target_modules</span><span class="o">=</span><span class="n">l_target_modules_decoder</span><span class="p">,</span> <span class="n">lora_alpha</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+    <span class="n">lora_conf_others</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">init_lora_weights</span><span class="o">=</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span><span class="n">target_modules</span><span class="o">=</span><span class="n">l_modules_others</span><span class="p">,</span> <span class="n">lora_alpha</span><span class="o">=</span><span class="n">rank</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">add_adapter</span><span class="p">(</span><span class="n">lora_conf_encoder</span><span class="p">,</span> <span class="n">adapter_name</span><span class="o">=</span><span class="s2">&quot;default_encoder&quot;</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">add_adapter</span><span class="p">(</span><span class="n">lora_conf_decoder</span><span class="p">,</span> <span class="n">adapter_name</span><span class="o">=</span><span class="s2">&quot;default_decoder&quot;</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">add_adapter</span><span class="p">(</span><span class="n">lora_conf_others</span><span class="p">,</span> <span class="n">adapter_name</span><span class="o">=</span><span class="s2">&quot;default_others&quot;</span><span class="p">)</span>
+    <span class="n">unet</span><span class="o">.</span><span class="n">set_adapters</span><span class="p">([</span><span class="s2">&quot;default_encoder&quot;</span><span class="p">,</span> <span class="s2">&quot;default_decoder&quot;</span><span class="p">,</span> <span class="s2">&quot;default_others&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">return_lora_module_names</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">unet</span><span class="p">,</span> <span class="n">l_target_modules_encoder</span><span class="p">,</span> <span class="n">l_target_modules_decoder</span><span class="p">,</span> <span class="n">l_modules_others</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">unet</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>VAE initialization 코드</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize_vae</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">vae</span> <span class="o">=</span> <span class="n">AutoencoderKL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;vae&quot;</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">my_vae_encoder_fwd</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="p">,</span> <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">my_vae_decoder_fwd</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="p">,</span> <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+    <span class="c1"># add the skip connection convs</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">256</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">stride</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_1</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_2</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_3</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">constant_</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">skip_conv_4</span><span class="o">.</span><span class="n">weight</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">ignore_skip</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">decoder</span><span class="o">.</span><span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">l_vae_target_modules</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;conv1&quot;</span><span class="p">,</span><span class="s2">&quot;conv2&quot;</span><span class="p">,</span><span class="s2">&quot;conv_in&quot;</span><span class="p">,</span> <span class="s2">&quot;conv_shortcut&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;conv&quot;</span><span class="p">,</span> <span class="s2">&quot;conv_out&quot;</span><span class="p">,</span> <span class="s2">&quot;skip_conv_1&quot;</span><span class="p">,</span> <span class="s2">&quot;skip_conv_2&quot;</span><span class="p">,</span> <span class="s2">&quot;skip_conv_3&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;skip_conv_4&quot;</span><span class="p">,</span> <span class="s2">&quot;to_k&quot;</span><span class="p">,</span> <span class="s2">&quot;to_q&quot;</span><span class="p">,</span> <span class="s2">&quot;to_v&quot;</span><span class="p">,</span> <span class="s2">&quot;to_out.0&quot;</span><span class="p">,</span>
+    <span class="p">]</span>
+    <span class="n">vae_lora_config</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="n">rank</span><span class="p">,</span> <span class="n">init_lora_weights</span><span class="o">=</span><span class="s2">&quot;gaussian&quot;</span><span class="p">,</span> <span class="n">target_modules</span><span class="o">=</span><span class="n">l_vae_target_modules</span><span class="p">)</span>
+    <span class="n">vae</span><span class="o">.</span><span class="n">add_adapter</span><span class="p">(</span><span class="n">vae_lora_config</span><span class="p">,</span> <span class="n">adapter_name</span><span class="o">=</span><span class="s2">&quot;vae_skip&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">return_lora_module_names</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vae</span><span class="p">,</span> <span class="n">l_vae_target_modules</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">vae</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p><strong>Datasets</strong></p>
+<p>Unpaired datasets 에서 자주 사용되는 Horse <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> Zebra, Yosemite Summer <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> Winter, 그리고 고차원 이미지의 주행 데이터셋 BDD100k 의 day <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> night, clear <span class="math notranslate nohighlight">\(\leftrightarrow\)</span> foggy 데이터셋으로 실험하였습니다.</p>
+<p><strong>Evaluation Protocol</strong></p>
+<p>Image translation task 에서 다음과 같은 2가지 요소를 만족시켜야 한다고 합니다.</p>
+<p>(1) target domain 의 데이터셋 분포와의 일치: FID 로 측정</p>
+<p>(2) input image 의 구조적인 정보 유지: DINO-Struct-Dist 로 측정</p>
+<section id="comparison-to-unpaired-methods">
+<h3>4.1. Comparison to Unpaired Methods<a class="headerlink" href="#comparison-to-unpaired-methods" title="Link to this heading">#</a></h3>
+<p>기존에 GAN-based 그리고 Diffusion-based 모델들이 output realism 그리고 structure preservation 에 모두 좋은 성능을 내지는 못하는 것을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_08.png"><img alt="translation_turbo_08" class="bg-primary mb-1" src="../../_images/translation_turbo_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 523 </span><span class="caption-text">Comparison to baselines on 256 × 256 datasets.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_09.png"><img alt="translation_turbo_09" class="bg-primary mb-1" src="../../_images/translation_turbo_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 524 </span><span class="caption-text">Comparison to baselines on driving datasets (512 × 512).</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>아래 예시 사진들과 table 에서 보이듯이, CycleGAN-Turbo 모델이 CycleGAN 과 CUT 모델보다 더 낮은 FID, DINO Structure score 를 보여주는 것을 확인할 수 있습니다.</p>
+<p>또한, diffusion 기반의 zero-shot image translation 모델: SDEdit, Plug-and Play, pix2pix-zero, CycleDiffusion, 그리고 DDIB 들이 realistic 한 이미지는 잘 생성하지만 원본 이미지의 structure 를 훼손시키는 경우가 있음을 확인할 수 있습니다. 이러한 현상은 multiple object 가 존재하는 주행 데이터셋에서 더 빈번하게 발생하고, 이는 Instructpix2pix 모델을 제외하고는 noise map 으로 inverting 하는 과정에서 원본 이미지에 대한 손실이 일어나기 때문이라고 주장합니다.</p>
+<ul>
+<li><p><strong>Comparison to GAN-based methods</strong></p>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_10.png"><img alt="translation_turbo_10" class="bg-primary mb-1" src="../../_images/translation_turbo_10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 525 </span><span class="caption-text">Comparison to GAN-based methods on 256 × 256 datasets.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_11.png"><img alt="translation_turbo_11" class="bg-primary mb-1" src="../../_images/translation_turbo_11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 526 </span><span class="caption-text">Comparison to GAN-based methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p><strong>Comparison to Diffusion-based editing methods</strong></p>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_12.png"><img alt="translation_turbo_12" class="bg-primary mb-1" src="../../_images/translation_turbo_12.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 527 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id15">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_13.png"><img alt="translation_turbo_13" class="bg-primary mb-1" src="../../_images/translation_turbo_13.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 528 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<figure class="align-default" id="id16">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_14.png"><img alt="translation_turbo_14" class="bg-primary mb-1" src="../../_images/translation_turbo_14.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 529 </span><span class="caption-text">Evaluation on standard CycleGAN datasets (256 × 256).</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id17">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_15.png"><img alt="translation_turbo_15" class="bg-primary mb-1" src="../../_images/translation_turbo_15.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 530 </span><span class="caption-text">Comparison on 512 × 512 driving datasets.</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ablation-study">
+<h3>4.2. Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h3>
+<p><strong>Using pre-trained weights</strong></p>
+<p>랜덤한 가중치로 초기화하는 것보다 pre-trained 된 모델을 사용할 때, 모델 성능이 더 좋은 것을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id18">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_16.png"><img alt="translation_turbo_16" class="bg-primary mb-1" src="../../_images/translation_turbo_16.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 531 </span><span class="caption-text">Ablation with Horse to Zebra</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Different ways of adding conditioning inputs</strong></p>
+<p>ControlNet 이나 T2I-Adapter 를 사용하여 conditioning 할 때, 원본 이미지와의 structure 충돌이 일어나는 부분을 재차 확인할 수 있습니다.</p>
+<figure class="align-default" id="id19">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_17.png"><img alt="translation_turbo_17" class="bg-primary mb-1" src="../../_images/translation_turbo_17.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 532 </span><span class="caption-text">Ablating individual components</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Skip Connections and trainable encoder and decoder</strong></p>
+<p>Config D 와 비교하였을 때, FID 에 대한 성능이 미세하게 떨어지는 반면에 structure preservation 성능이 월등히 높음을 확인할 수 있습니다.</p>
+</section>
+<section id="id1">
+<h3>4.3. Extensions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p><strong>Paired translation</strong></p>
+<p>Pix2pix-Turbo 와 LCM-ControlNet, SD-Turbo ControlNet, 그리고 SD ControlNet 모델과 정성적인 평가를 진행하였습니다. Classifier-free guidance, negative prompt 없이 단일 step 만으로도 좋은 성능을 보여줌을 확인할 수 있습니다.</p>
+<figure class="align-default" id="id20">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_18.png"><img alt="translation_turbo_18" class="bg-primary mb-1" src="../../_images/translation_turbo_18.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 533 </span><span class="caption-text">Comparison on paired edge-to-image task (512 × 512).</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Generating diverse outputs</strong></p>
+<figure class="align-default" id="id21">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_19.png"><img alt="translation_turbo_19" class="bg-primary mb-1" src="../../_images/translation_turbo_19.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 534 </span><span class="caption-text">Generating diverse outputs</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="discussions-and-limitations">
+<h2>5. Discussions and Limitations<a class="headerlink" href="#discussions-and-limitations" title="Link to this heading">#</a></h2>
+<p>해당 논문은 multi-step diffusion training 에 의존하지 않고, single-step 만으로 다양한 GAN 기반의 objective 와 융합해서 downstream task 에 적용할 수 있는 방식을 제안합니다. 하지만, 다음과 같은 3가지 한계점을 제시합니다: (1) SD-Turbo 는 classifier-free guidance 를 사용하지 않아, guidance control 에 대한 설정할 수 없습니다. (2) 해당 방식은 negative prompt 를 지원하지 않습니다. 그리고 마지막으로 (3) high capacity generator 기반의 cycle consistency loss 로 학습하는데 메모리에 대한 부담이 큽니다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DiT.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DiT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-conditional-input">3.1. Adding Conditional Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preserving-input-details">3.2. Preserving Input Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unpaired-training">3.3. Unpaired Training</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extensions">3.4. Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-to-unpaired-methods">4.1. Comparison to Unpaired Methods</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.2. Ablation Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">4.3. Extensions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-and-limitations">5. Discussions and Limitations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

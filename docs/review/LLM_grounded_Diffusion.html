@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>LLM Grounded Diffusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -14,54 +15,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/LLM_grounded_Diffusion';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DiT" href="DiT.html" />
@@ -75,23 +80,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,13 +122,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -143,8 +147,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +164,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -267,6 +258,9 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -334,7 +328,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -343,14 +337,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -475,10 +469,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -486,14 +480,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -546,17 +540,17 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="llm-grounded-diffusion">
-<h1>LLM Grounded Diffusion<a class="headerlink" href="#llm-grounded-diffusion" title="Link to this heading">#</a></h1>
+<h1>LLM Grounded Diffusion<a class="headerlink" href="#llm-grounded-diffusion" title="Permalink to this heading">#</a></h1>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <p>최근의 text-to-image generation 모델을 큰 발전을 이루었다. 하지만 이러한 모델들은 여전히 numeracy와 spatial reasoning을 요구하는 복잡한 프롬프트를 잘 반영하지 못하고 이미지를 생성하는 문제들이 있다. 그래서 본 논문에서는 LLM과 레이아웃 기반 이미지 생성모델을 활용하여 Diffusion model에서 프롬프트 이해 능력을 향상시키는 방법을 제안한다.</p>
 </section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD1.png"><img alt="LMD_1" class="bg-primary mb-1" src="../../_images/LMD1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Limitation in Diffusion Model</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 489 </span><span class="caption-text">Limitation in Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Diffusion model의 등장과 발전에 따라 T2I(Text to Image) generation 모델은 크게 발전되어왔다. 최근의 SDXL 모델을 보면 상당한 quality의 이미지를 생성하는 것을 볼 수 있다. 그럼에도 불구하고, diffusion model은 복잡한 프롬프트를 잘 반영해서 이미지를 생성하는 것에 취약한 점을 보인다. 위의 figure를 보면 크게 Negation, Generative Numeracy, Attribute Binding, Spatial Relationships에서 큰 문제점을 보임을 알 수 있다.</p>
@@ -565,7 +559,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD2.png"><img alt="LMD_2" class="bg-primary mb-1" src="../../_images/LMD2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Overview of LLM-Grounded Diffusion</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Overview of LLM-Grounded Diffusion</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -585,21 +579,21 @@ document.write(`
 </ol>
 </section>
 <section id="id1">
-<h2>LLM-grounded Diffusion<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>LLM-grounded Diffusion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>LLM-based Layout Generation</p>
 <p>이 단계는 위의 stage1과 같은 단계로써 LLM을 통해 prompt로 부터 각 foreground object의 caption과 bounding box의 coordinate을 얻는 단계이다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD4.png"><img alt="LMD_4" class="bg-primary mb-1" src="../../_images/LMD4.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 492 </span><span class="caption-text">Overview Prompt</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Overview Prompt</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>우선 이 단계에서의 prompt는 다음과 같이 구성되어 있다. prompt의 가장 윗단인 Instruction을 보면 LLM에게 정보를 주는 말들로 이루어져 있으며 Task specification과 supporting details로 이루어져 있음을 알 수 있다. LLM에게 직접적으로 해야할 일들과 정보를 주는 prompt라고 볼 수 있다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD3.png"><img alt="LMD_3" class="bg-primary mb-1" src="../../_images/LMD3.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 493 </span><span class="caption-text">In-context Examples</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 492 </span><span class="caption-text">In-context Examples</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Overview Prompt의 In-context Examples에 관련된 부분이다. 이 부분을 통해 input prompt로 부터 원하는 형태로 output값을 얻을 수 있다. LLM을 직접 학습시키지 않고 few shot example을 통해 LLM으로 부터 원하는 결과를 이끌어내는 방법을 취한 부분이다. Gpt 3.5같은 경우에는 7-shot을 사용했고, Gpt4 같은 경우는 1-shot만으로도 충분히 원하는 형태로 결과를 얻을 수 있었다고 한다. 결과는 Objects 부분에 나와있다. Foreground Object에 대한 caption값과 해당 bounding box의 coordinate값으로 이루어져 있음을 알 수 있다.</p>
@@ -609,7 +603,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD7.png"><img alt="LMD_7" class="bg-primary mb-1" src="../../_images/LMD7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Overall image generation with masked latents as priors</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 493 </span><span class="caption-text">Overall image generation with masked latents as priors</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Stage2는 크게 step1,2로 나눠진다. step1의 경우에는 stage1에서 구한 각각의 box들에 대해서 box내의 object들에 대한 latent map을 구하는 과정이다. stage2는 stage1에서 구한 각 box에 대한 latent map을 compose하여 전체적인 image를 생성하는 과정이다.</p>
@@ -626,7 +620,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD6.png"><img alt="LMD_6" class="bg-primary mb-1" src="../../_images/LMD6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Overview of attention manipulation</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Overview of attention manipulation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Object와 Bounding box를 align하기 위해서는 위의 그림에서 보이듯이 box 내부 pixel의 object에 관한 token과의 attention은 증가되고 다른 token과의 attention은 감소되면 된다. 위의 그림을 예시로 보면 “a gray cat”이라는 token과는 box내부 pixel들이 attention이 증가하고, 다른 token과는 attention이 감소하도록 유도되면 된다. 이 방법을 유도 하기 위해 본 논문의 저자들은 energy function을 사용한다.</p>
@@ -663,59 +657,59 @@ document.write(`
 </ol>
 </section>
 <section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Link to this heading">#</a></h2>
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
 <p>Evaluation 같은 경우는 Qualitive한 결과와 Quantitive한 결과로 나누어서 보여준다. Introduction에서 소개한 기존 T2I model의 문제점 4가지를 잘 해결하고자 하는 것이 이 work의 목표이었기에 4가지 항목에 대해 평가를 진행한다. 데이터 같은 경우는 Negation, Attribute Binding, Generative Numeracy, Spatial Relationships를 각각 평가하기 위한 100개씩의 데이터를 수집해서 진행을 하였다고 한다. Evaluation metric이 존재하진 않고 Quantitive한 결과를 위해서 OWL-VIT detector를 활용하여 object들에 대한 bounding box값을 얻은 후에, 생성된 이미지가 prompt에 잘 맞게 생성되어있는지를 확인하였다고 한다. 추가적으로 Ablation study에 대한 다양한 결과들도 포함되어 있다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD8.png"><img alt="LMD_8" class="bg-primary mb-1" src="../../_images/LMD8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Qualititive Results1 of LMD</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Qualititive Results1 of LMD</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD13.png"><img alt="LMD_13" class="bg-primary mb-1" src="../../_images/LMD13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Qualititive Results2 of LMD</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Qualititive Results2 of LMD</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>기존 Stable Diffusion XL 모델과 비교하여 LMD가 얼마나 prompt에 잘 대응하는 이미지를 생성하는지를 보여주는 결과이다. Introduction에서 언급했듯이 기존 SDXL모델은 이미지의 전반적인 부분은 잘 생성하지만 numarcy, spatial relationship, attribute matching등을 잘 만족시키지 못하는 경우가 발생한다. 하지만 LMD는 이러한 문제점들을 잘 해결하고 있는 것으로 보인다.</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD9.png"><img alt="LMD_9" class="bg-primary mb-1" src="../../_images/LMD9.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Quantitive Results of LMD &amp; LMD+</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Quantitive Results of LMD &amp; LMD+</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 result는 기존 Stable Diffusion과 이 논문에서 제시하는 LMD 방법 그리고 기존 layout to image generation model인 GLIGEN의 adapter를 가져와서 통합한 방법인 LMD+ 세가지를 비교한다. LMD &amp; LMD+ 모두 기존 SD에 비해 월등한 결과를 보임을 알 수 있다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD11.png"><img alt="LMD11" class="bg-primary mb-1" src="../../_images/LMD11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Ablation of LMD &amp; LMD+</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Ablation of LMD &amp; LMD+</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Ablation study의 결과를 보면, 앞선 결과와 마찬가지로 LMD가 훨씬 더 좋은 성능임을 알 수 있다. LMD의 Baseline model로 SDv1.5, SDv2.1을 각각 써본 결과 둘의 차이는 거의 없었다고 한다. 또한 Foreground mask를 구하기 위해 SAM을 사용했을 경우와 SAM을 사용하지 않고 Threshold를 사용해서 구한 결과도 보여주었는데 이는 LMD일때와 LMD+일때가 서로 다른 결과를 보인다. LMD에서는 attention기반의 guidance가 layout box와 관련하여 공간적으로 정확하지 않기 때문에, SAM은 객체를 커버하는 올바른 마스크를 얻는 데 도움을 준다. 따라서 SAM을 제거하면 LMD에서 약간의 성능 저하가 발생하게 된다. 반면에 LMD+에서는 기존 잘 훈련된  GLIGEN 모델을 가져와 이용하기 때문에 대부분의 경우 SAM이 필요하지 않게된다. 오히려, SAM은 때때로 배경을 포함하는 영역을 선택하여 혼란을 일으키고 성능을 저하시키게 되어 SAM을 제거하면 LMD+에서는 결과가 오히려 개선되는 효과가 있었다고 한다.</p>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD10.png"><img alt="LMD10" class="bg-primary mb-1" src="../../_images/LMD10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Ablations on layout-to-image methods as stage 2 with LMD’s LLM layout generator as stage 1</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Ablations on layout-to-image methods as stage 2 with LMD’s LLM layout generator as stage 1</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 결과는 Stage1과 Stage2에 어떤 방법을 가져왔느냐에 따른 전체적인 Quantative한 결과를 보여준다. 우선 Stage1 즉, object에 대한 개별 bounding box를 생성하는 부분에 대해서는 이 논문의 LMD기법을 다 사용을 하였다. 생성된 box를 기반으로 이미지를 생성하는 Stage 2에 대해서 training-free 방법 즉, guidance를 주는 방법을 사용한 경우와 기존 pretrain된 layout to image generation model, 여기에 LMD기법을 추가적으로 더한 방법인 training-based 방법을 나누어서 비교한다. 우선 training-free 방법의 경우, 다른 guidance 기법에 비해 이 논문에서 제시한 stage2의 방법이 훨씬 더 뛰어난 성능을 보임을 알 수 있다. training-based 방법의 경우, 기존 layout to image generation model인 GLIGEN을 그대로 가져온 경우, GLIGEN에 이 논문의 stage2 기법을 적용한 LMD+, LMD+ 에서 GPT3.5대신 GPT4를 사용한 경우로 나누어서 비교를 한다. 사실상 LMD+가 가장 좋은 성능을 보임을 알 수 있다. GPT 버전을 GPT4로 바꾼 경우는 Numeracy에서는 성능이 살짝 감소하지만, 다른 부분에 대해서는 성능이 좀 더 많이 증가한 모습을 확인할 수 있다.</p>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD12.png"><img alt="LMD10" class="bg-primary mb-1" src="../../_images/LMD12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Ablations on GPT version + Compare with SD</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Ablations on GPT version + Compare with SD</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>GPT같은 경우 GPT3.5-turbo를 사용한 경우와 GPT4를 사용한 경우를 나누어서 실험을 진행하였다. GPT4의 경우 1-shot으로 진행을 해도 layout을 잘 만드는 모습을 보였고, GPT3.5의 경우 7shots으로 진행을 해야 완벽하게 layout을 생성하는 결과를 보임을 알 수 있다.</p>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LMD14.png"><img alt="LMD14" class="bg-primary mb-1" src="../../_images/LMD14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 502 </span><span class="caption-text">Ablations on different LLM and same LLM with different size</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Ablations on different LLM and same LLM with different size</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>서로 다른 LLM을 사용해서 진행을 해본 결과, 다른 open-source model에 비해 gpt4가 확실히 좋은 성능을 보였음을 알 수 있다. 또한 똑같은 open-source model을 다른 크기로 적용해본결과 더 큰 규모의 model이 더 좋은 성능을 보임을 알 수 있다.</p>
 </section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>LMD는 text-to-image generation diffusion model이 prompt를 더 잘 반영해서 이미지를 생성할 수 있도록 한 방법이다. 추가적인 Training을 하지 않고 prompt를 더 잘이해할 수 있도록 기존 Text to Image에서 intermediate representation인 layout을 활용한 방법이 특징이라고 할 수 있다. 두 가지 stage로 나눠 LLM-based text-grounded layout generation과 layout-grounded image generation을 통해 문제를 해결하고자 한 논문이다.</p>
 </section>
 </section>
@@ -747,7 +741,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -813,7 +807,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -837,8 +831,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

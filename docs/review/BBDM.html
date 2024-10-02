@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>BBDM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -14,54 +15,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/BBDM';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Your Diffusion Model is Secretly a Zero-Shot Classifier" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html" />
@@ -75,23 +80,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,13 +122,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -143,8 +147,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +164,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -267,6 +258,9 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -334,7 +328,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -343,14 +337,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -475,10 +469,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -486,7 +480,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -533,7 +527,7 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="bbdm">
-<h1>BBDM<a class="headerlink" href="#bbdm" title="Link to this heading">#</a></h1>
+<h1>BBDM<a class="headerlink" href="#bbdm" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>BBDM</strong></p>
 <ul>
@@ -569,7 +563,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_00.png"><img alt="img_00" class="bg-primary mb-1" src="../../_images/img_00.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 309 </span><span class="caption-text">굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 309 </span><span class="caption-text">굴뚝에서 퍼져나간 연기 사진을 오른쪽으로 90도 회전시킨 사진</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -583,7 +577,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_01.png"><img alt="img_01" class="bg-primary mb-1" src="../../_images/img_01.png" style="width: 2000px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 310 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 310 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 이고 max time T=1000 인 Wiener Process 를 100번 Sampling 한 결과</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -613,7 +607,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_02.png"><img alt="img_02" class="bg-primary mb-1" src="../../_images/img_02.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -671,14 +665,14 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_03.png"><img alt="img_03" class="bg-primary mb-1" src="../../_images/img_03.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 312 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 312 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>파란색 점들은, Brownian Motion Process 를 1번 Sampling 한 결과임 (one representation) 를 나타냄<br></p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_04.png"><img alt="img_04" class="bg-primary mb-1" src="../../_images/img_04.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 313 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 313 </span><span class="caption-text">Source : <a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -707,7 +701,7 @@ t 는 확률 변수가 관찰된 시간을 나타냄</p></li>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_05.png"><img alt="img_05" class="bg-primary mb-1" src="../../_images/img_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 314 </span><span class="caption-text">Brownian Bridge 이해를 위한 Linear Bridge</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 314 </span><span class="caption-text">Brownian Bridge 이해를 위한 Linear Bridge</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Brownian Bridge 는 Standard Wiener Process 의 Conditional Probability Distribution 이다.<br>
@@ -716,14 +710,14 @@ Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.<
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_06.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 315 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 315 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><br>아래의 그림을 보면, 0 이라는 시작값과 123 이라는 마지막 값에 conditioned 되어 있는 것을 확인할 수 있다. <br> Brownian Bridge 의 분산은 0 에서 시작해서 증가하다가, T/2 시점에서 최대가 되었다가, 이후로는 감소하여 마지막엔 0 에 수렴하게된다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_08.png"><img alt="img_08" class="bg-primary mb-1" src="../../_images/img_08.png" style="width: 2000px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 316 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 에서 <span class="math notranslate nohighlight">\(W_1000\)</span> = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 316 </span><span class="caption-text"><span class="math notranslate nohighlight">\(W_0\)</span> = 0 에서 <span class="math notranslate nohighlight">\(W_1000\)</span> = 123 까지 100개의 Brownian Bridge 를 샘플링한 결과</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -731,7 +725,7 @@ Starting state W(0) 과 Ending state W(T) 의 값에 Conditioned 되어 있다.<
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_09.png"><img alt="img_09" class="bg-primary mb-1" src="../../_images/img_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 317 </span><span class="caption-text">Conditional Diffusion Models 와 BBDM 의 비교</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 317 </span><span class="caption-text">Conditional Diffusion Models 와 BBDM 의 비교</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -782,7 +776,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_10.png"><img alt="img_10" class="bg-primary mb-1" src="../../_images/img_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 318 </span><span class="caption-text">BBDM 의 아키텍쳐</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 318 </span><span class="caption-text">BBDM 의 아키텍쳐</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -807,7 +801,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_11.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_11.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 319 </span><span class="caption-text">Diffusion Models 의 Simplified objective</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 319 </span><span class="caption-text">Diffusion Models 의 Simplified objective</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -817,7 +811,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_12.png"><img alt="img_12" class="bg-primary mb-1" src="../../_images/img_12.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 320 </span><span class="caption-text">Conditional Diffusion Models 의 Simplified objective</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 320 </span><span class="caption-text">Conditional Diffusion Models 의 Simplified objective</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -834,7 +828,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_13.png"><img alt="img_13" class="bg-primary mb-1" src="../../_images/img_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 321 </span><span class="caption-text">식(3)</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 321 </span><span class="caption-text">식(3)</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>앞서 보았던 Brownian Bridge 의 평균과 분산을 구해보자.<br>
@@ -842,7 +836,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_06.png"><img alt="img_06" class="bg-primary mb-1" src="../../_images/img_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 322 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 322 </span><span class="caption-text">Brownian Bridge</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
   <br>
@@ -859,7 +853,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_09.png"><img alt="img_09" class="bg-primary mb-1" src="../../_images/img_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 323 </span><span class="caption-text">Conditional Diffusion Models 와 BBDM 의 비교</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 323 </span><span class="caption-text">Conditional Diffusion Models 와 BBDM 의 비교</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
   <br>
@@ -872,7 +866,7 @@ conditional input domain 과 output domain 이 유사한
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_14.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 324 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 324 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -888,7 +882,7 @@ Brownian Bridge diffusion process 를 위한 <strong>분산 scheduling</strong> 
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_15.png"><img alt="img_15" class="bg-primary mb-1" src="../../_images/img_15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 325 </span><span class="caption-text">Brownian Bridge diffusion process 를 위한 분산 Scheduling</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 325 </span><span class="caption-text">Brownian Bridge diffusion process 를 위한 분산 Scheduling</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -898,7 +892,7 @@ Brownian Bridge diffusion process 를 위한 <strong>분산 scheduling</strong> 
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_16.png"><img alt="img_16" class="bg-primary mb-1" src="../../_images/img_16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 326 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_t\)</span> 를 시각화한 결과</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 326 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_t\)</span> 를 시각화한 결과</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
   <br>
@@ -921,7 +915,7 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_17.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 327 </span><span class="caption-text">식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 327 </span><span class="caption-text">식(5) : sampling diversity 조절을 위한 계수 s 가 포함된 분산 scheduling</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -938,13 +932,13 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_14.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 328 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 328 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_18.png"><img alt="img_18" class="bg-primary mb-1" src="../../_images/img_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 329 </span><span class="caption-text">식(6) &amp; 식(7)</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 329 </span><span class="caption-text">식(6) &amp; 식(7)</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -953,7 +947,7 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <figure class="align-default" id="id22">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_19.png"><img alt="img_19" class="bg-primary mb-1" src="../../_images/img_19.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 330 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\epsilon\)</span> 은 i.i.d 하게 N(0, I) 를 따른다</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 330 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\epsilon\)</span> 은 i.i.d 하게 N(0, I) 를 따른다</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -963,7 +957,7 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <figure class="align-default" id="id23">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_20.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_20.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 331 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 331 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -987,7 +981,7 @@ diffusion process 의 <strong>중간 지점까지는 최대 0.5 까지 증가</s
 <figure class="align-default" id="id24">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_21.png"><img alt="img_21" class="bg-primary mb-1" src="../../_images/img_21.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 332 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_{t|t-1}\)</span> 식</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 332 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\delta_{t|t-1}\)</span> 식</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1008,7 +1002,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id25">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_22.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_22.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 333 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 333 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1027,7 +1021,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id26">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_23.png"><img alt="img_23" class="bg-primary mb-1" src="../../_images/img_23.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 334 </span><span class="caption-text">DDPM 의 Loss</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 334 </span><span class="caption-text">DDPM 의 Loss</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1036,7 +1030,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id27">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_11.png"><img alt="img_11" class="bg-primary mb-1" src="../../_images/img_11.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 335 </span><span class="caption-text">DDPM 의 simplified objective</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 335 </span><span class="caption-text">DDPM 의 simplified objective</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1045,7 +1039,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id28">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_24.png"><img alt="img_24" class="bg-primary mb-1" src="../../_images/img_24.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 336 </span><span class="caption-text">식(10) : BBDM 의 ELBO</span><a class="headerlink" href="#id28" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 336 </span><span class="caption-text">식(10) : BBDM 의 ELBO</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1065,7 +1059,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id29">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_14.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 337 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id29" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 337 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1074,7 +1068,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id30">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_20.png"><img alt="img_20" class="bg-primary mb-1" src="../../_images/img_20.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 338 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id30" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 338 </span><span class="caption-text">식(8)</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1083,13 +1077,13 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id31">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_25.png"><img alt="img_25" class="bg-primary mb-1" src="../../_images/img_25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 339 </span><span class="caption-text">식(11)</span><a class="headerlink" href="#id31" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 339 </span><span class="caption-text">식(11)</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id32">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_26.png"><img alt="img_26" class="bg-primary mb-1" src="../../_images/img_26.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 340 </span><span class="caption-text">식(13)</span><a class="headerlink" href="#id32" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 340 </span><span class="caption-text">식(13)</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1105,7 +1099,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id33">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_27.png"><img alt="img_27" class="bg-primary mb-1" src="../../_images/img_27.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 341 </span><span class="caption-text">식(12)</span><a class="headerlink" href="#id33" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 341 </span><span class="caption-text">식(12)</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1115,7 +1109,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id34">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_28.png"><img alt="img_28" class="bg-primary mb-1" src="../../_images/img_28.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 342 </span><span class="caption-text">식(12) 의 변형</span><a class="headerlink" href="#id34" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 342 </span><span class="caption-text">식(12) 의 변형</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1124,7 +1118,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id35">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_14.png"><img alt="img_14" class="bg-primary mb-1" src="../../_images/img_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 343 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id35" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 343 </span><span class="caption-text">식(4)</span><a class="headerlink" href="#id35" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1137,13 +1131,13 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id36">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_22.png"><img alt="img_22" class="bg-primary mb-1" src="../../_images/img_22.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 344 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id36" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 344 </span><span class="caption-text">식(9)</span><a class="headerlink" href="#id36" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id37">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_29.png"><img alt="img_29" class="bg-primary mb-1" src="../../_images/img_29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 345 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id37" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 345 </span><span class="caption-text">식(14)</span><a class="headerlink" href="#id37" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1152,7 +1146,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id38">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_30.png"><img alt="img_30" class="bg-primary mb-1" src="../../_images/img_30.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 346 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\tilde {\mu}_t\)</span> 의 정리된 식</span><a class="headerlink" href="#id38" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 346 </span><span class="caption-text"><span class="math notranslate nohighlight">\(\tilde {\mu}_t\)</span> 의 정리된 식</span><a class="headerlink" href="#id38" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -1172,7 +1166,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id39">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_31.png"><img alt="img_31" class="bg-primary mb-1" src="../../_images/img_31.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 347 </span><span class="caption-text">BBDM 의 Simplified ELBO</span><a class="headerlink" href="#id39" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 347 </span><span class="caption-text">BBDM 의 Simplified ELBO</span><a class="headerlink" href="#id39" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1181,7 +1175,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id40">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_32.png"><img alt="img_32" class="bg-primary mb-1" src="../../_images/img_32.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 348 </span><span class="caption-text">Algorithm 1 : Training. 마치 DDPM 에서 그러했듯이, BBDM 도 실제 Loss 에는 Simplified ELBO 에서의 계수 <span class="math notranslate nohighlight">\(C_{\epsilon_t}\)</span> 가 빠진 것을 확인할 수 있다.</span><a class="headerlink" href="#id40" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 348 </span><span class="caption-text">Algorithm 1 : Training. 마치 DDPM 에서 그러했듯이, BBDM 도 실제 Loss 에는 Simplified ELBO 에서의 계수 <span class="math notranslate nohighlight">\(C_{\epsilon_t}\)</span> 가 빠진 것을 확인할 수 있다.</span><a class="headerlink" href="#id40" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1196,7 +1190,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id41">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_33.png"><img alt="img_33" class="bg-primary mb-1" src="../../_images/img_33.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 349 </span><span class="caption-text"><strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong></span><a class="headerlink" href="#id41" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 349 </span><span class="caption-text"><strong>latent varibales <span class="math notranslate nohighlight">\(x_{1:T}\)</span> 의 subset</strong></span><a class="headerlink" href="#id41" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1205,7 +1199,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id42">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_34.png"><img alt="img_34" class="bg-primary mb-1" src="../../_images/img_34.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 350 </span><span class="caption-text">inference process</span><a class="headerlink" href="#id42" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 350 </span><span class="caption-text">inference process</span><a class="headerlink" href="#id42" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1214,7 +1208,7 @@ conditional input 그 자체에서 Reverse process 를 시작</strong>함</p></l
 <figure class="align-default" id="id43">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_35.png"><img alt="img_35" class="bg-primary mb-1" src="../../_images/img_35.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 351 </span><span class="caption-text">Algorithm 2 : Sampling</span><a class="headerlink" href="#id43" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 351 </span><span class="caption-text">Algorithm 2 : Sampling</span><a class="headerlink" href="#id43" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1273,19 +1267,19 @@ Style transfer 실험에서는 서로 비슷한 domains 간의 I2I 변환 능력
 <figure class="align-default" id="id44">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_36.png"><img alt="img_36" class="bg-primary mb-1" src="../../_images/img_36.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Figure 3. CelebAMask-HQ 데이터셋에 대한 추론 결과</span><a class="headerlink" href="#id44" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 352 </span><span class="caption-text">Figure 3. CelebAMask-HQ 데이터셋에 대한 추론 결과</span><a class="headerlink" href="#id44" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id45">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_37.png"><img alt="img_37" class="bg-primary mb-1" src="../../_images/img_37.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 353 </span><span class="caption-text">Figure 4. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id45" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 353 </span><span class="caption-text">Figure 4. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id45" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id46">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_38.png"><img alt="img_38" class="bg-primary mb-1" src="../../_images/img_38.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 354 </span><span class="caption-text">Figure 5. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id46" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 354 </span><span class="caption-text">Figure 5. 다른 Image-to-Image 변환 task 에 대한 추론 결과</span><a class="headerlink" href="#id46" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1315,13 +1309,13 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id47">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_39.png"><img alt="img_39" class="bg-primary mb-1" src="../../_images/img_39.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Table 1. CelebAMask-HQ 데이터셋에 대한 FID, LPIPS 성능은 BBDM 이 가장 뛰어남</span><a class="headerlink" href="#id47" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 355 </span><span class="caption-text">Table 1. CelebAMask-HQ 데이터셋에 대한 FID, LPIPS 성능은 BBDM 이 가장 뛰어남</span><a class="headerlink" href="#id47" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id48">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_40.png"><img alt="img_40" class="bg-primary mb-1" src="../../_images/img_40.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 356 </span><span class="caption-text">Table 2. BBDM 은 FID, LPIPS 점수가 매우 뛰어났음</span><a class="headerlink" href="#id48" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 356 </span><span class="caption-text">Table 2. BBDM 은 FID, LPIPS 점수가 매우 뛰어났음</span><a class="headerlink" href="#id48" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1333,7 +1327,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id49">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_41.png"><img alt="img_41" class="bg-primary mb-1" src="../../_images/img_41.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Figure 6. Face-to-label, 색상화, inpainting 등의 다른 tasks 에서도 뛰어난 성능을 기록함</span><a class="headerlink" href="#id49" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 357 </span><span class="caption-text">Figure 6. Face-to-label, 색상화, inpainting 등의 다른 tasks 에서도 뛰어난 성능을 기록함</span><a class="headerlink" href="#id49" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1343,7 +1337,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id50">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_42.png"><img alt="img_42" class="bg-primary mb-1" src="../../_images/img_42.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 358 </span><span class="caption-text">Table 3. BBDM 은 LDM 에 비해 Downsampling factor 에 대해 robust 했음</span><a class="headerlink" href="#id50" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 358 </span><span class="caption-text">Table 3. BBDM 은 LDM 에 비해 Downsampling factor 에 대해 robust 했음</span><a class="headerlink" href="#id50" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1359,7 +1353,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id51">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_43.png"><img alt="img_43" class="bg-primary mb-1" src="../../_images/img_43.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함</span><a class="headerlink" href="#id51" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 359 </span><span class="caption-text">Table 4. 200 이상의 Sampling Steps 에서는 Steps 를 키워도 성능 변화가 미미함</span><a class="headerlink" href="#id51" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
   <br>
@@ -1368,7 +1362,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id52">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_44.png"><img alt="img_44" class="bg-primary mb-1" src="../../_images/img_44.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 360 </span><span class="caption-text">Table 5. Sampling diversity 조절 계수에 의해 실제로 Diversity 가 조절 되었음</span><a class="headerlink" href="#id52" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 360 </span><span class="caption-text">Table 5. Sampling diversity 조절 계수에 의해 실제로 Diversity 가 조절 되었음</span><a class="headerlink" href="#id52" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1379,7 +1373,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <figure class="align-default" id="id53">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_17.png"><img alt="img_17" class="bg-primary mb-1" src="../../_images/img_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 361 </span><span class="caption-text">식(5)</span><a class="headerlink" href="#id53" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 361 </span><span class="caption-text">식(5)</span><a class="headerlink" href="#id53" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1402,7 +1396,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
 <ul class="simple">
 <li><p><strong>참고 자료</strong></p>
 <ul>
-<li><p><a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB">https://www.youtube.com/watch?v=ld0rxwAJpkM&amp;ab_channel=finRGB</a></p></li>
 <li><p><a class="reference external" href="https://sine-qua-none.tistory.com/158">https://sine-qua-none.tistory.com/158</a></p></li>
 </ul>
 </li>
@@ -1436,7 +1430,7 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1464,6 +1458,8 @@ fidelity 와 diversity 가 높은 이미지들을 생성해냄<br></p></li>
             
             
               
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
             
           </div>
           <footer class="bd-footer-content">
@@ -1483,7 +1479,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1507,8 +1503,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

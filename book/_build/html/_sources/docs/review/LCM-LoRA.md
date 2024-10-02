@@ -46,7 +46,11 @@ Distillation 방법론 또한 Distillation 시 Computation적으로 Overhead가 
 
 CMs은 sampling step을 획기적으로 줄이면서도 Quality를 유지할 수 있는 방법론이다.  
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_1.png" alt="Consistency Models" class="bg-primary mb-1" width="800px">
+
+Consistency Models
+:::
 
 CMs의 핵심은 PF-ODE의 궤적의 points가 solution에 mapping 되는 function $(f: (x_t,t) \mapsto x_\epsilon)$을 추정하는 것이다.
 쉽게 말해 어떤 step의 noise image 던지 $x_0$ (정확히는 $x_\epsilon$)의 결과가 나오는 function을 추정한다. 또한 각 timestep에 관한function의 결과값은 self-consistency를 만족해야 한다.
@@ -79,7 +83,11 @@ $\Phi$는 numerical PF-ODE를 의미한다. (보통 DDIM을 사용하는 것 같
 
 ### Latent Consistency Models
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_2.png" alt="Latent Diffusion Models" class="bg-primary mb-1" width="800px">
+
+Latent Diffusion Models
+:::
 
 LCMs은 CMs에 condition을 추가해주고 $F_\theta(x,t)$를 $\epsilon-Prediction$의 수식으로 치환한다. ($\mu$나 $v$ prediction을 사용해도 됨.) 추가로 LDMs 기반이기 때문에 latent $z$에 대한 수식으로 변경해준다.
 
@@ -115,11 +123,19 @@ $$\underset{\Phi}{max}\sum_{(x,y)\in Z}\sum^{|y|}_{t=1}\log{(P_{\Phi_0+\Delta\Ph
 
 즉 기존의 잘 학습된 weight는 그대로 두고 low rank로 decomposition 된 weight만 optimization 하는 방법론을 Low Rank Adaptation(LoRA)라고 한다.  
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_3.png" alt="Low Rank Adaptation" class="bg-primary mb-1" width="300px">  
+
+Low Rank Adaptation
+:::
 
 위의 그림과 같이 원본 모델 weight는 freeze, LoRA는 rank를 r로 낮추어 finetuning한다. 이때 LoRA의 A는 random Gauissian으로, B는 zero로 weight initializing 한다.  
 
-<img src="../../pics/LCM-LoRA/LCM-LoRA_4.png" alt="Low Rank Adaptation" class="bg-primary mb-1" width="800px">  
+:::{figure-md} 
+<img src="../../pics/LCM-LoRA/LCM-LoRA_4.png" alt="Low Rank Adaptation matrix" class="bg-primary mb-1" width="800px">  
+
+Low Rank Adaptation matrix
+:::
 
 위 그림처럼 기존에는 d x d의 매우 큰 weight를 finetuning 해야 했지만, LoRA는 r만큼 압축된 weight matrix만 finetuning 하면 되기 때문에 훨씬 효율적이고 때에 따라 Fully fine-tuning 하는 방법들보다 더 좋은 성능을 보여주기도 한다. (그림은 [이곳](https://ffighting.net/deep-learning-paper-review/language-model/lora/)을 참고하였습니다.)
 
@@ -129,7 +145,11 @@ $$\underset{\Phi}{max}\sum_{(x,y)\in Z}\sum^{|y|}_{t=1}\log{(P_{\Phi_0+\Delta\Ph
 
 task Arithmetic은 특정 task에서 학습된 Model의 가중치를 task vector라 보고 각 task vector를 조합하여 새로운 task vector를 생성하는 방법론이다.
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_5.png" alt="Task Arithmetic" class="bg-primary mb-1" width="800px">  
+
+Task Arithmetic
+:::
 
 pre-trained parameter를 $\theta_{pre}$, fine-tuning parameter를 $\theta_{ft}$라고 할때 task vector $\tau$는 $\theta_{ft}-\theta_{pre}$로 정의할 수 있다.
 이를 다양하게 조합하고 특히 d)처럼 task 간 analogy를 고려하여 연산하는 경우 새로운 task에 대한 성능을 높일 수 있다.
@@ -140,7 +160,11 @@ pre-trained parameter를 $\theta_{pre}$, fine-tuning parameter를 $\theta_{ft}$�
 
 LCMs의 Latent Consistency Distillation에 대한 pseudo code는 다음과 같다:
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_6.png" alt="Latent Consistency Distillation" class="bg-primary mb-1" width="800px">
+
+Latent Consistency Distillation
+:::
 
 논문의 저자는 LCMs의 Distillation은 LDMs에 관한 일종의 fine-tuning으로 보고 LoRA를 적용하는 방법을 제안하였다.
 pre-trained 된 weight matrix $W_0$에 대하여 기울기 업데이트는 $W_0+\Delta W=W_0+BA, W_0\in \mathbb{R}^{d\times k}, B\in \mathbb{R}^{d\times r}, A\in \mathbb{R}^{r\times k}$ 로 표현할 수 있으며 rank $r \leq \min{(d,k)}$ 로 작은 값을 갖는다. $W_0$의 weight는 고정되며 input $x$ 에 대한 forward pass는 다음과 같다:
@@ -149,17 +173,29 @@ $$h=W_0x+\Delta Wx=W_0x+BAx. \tag{1}$$
 
 위와같이 LCMs에 LoRA를 적용할 경우 학습 parameter를 크게 줄일 수 있어 효율적이다.  
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_7.png" alt="compare trainable parameter" class="bg-primary mb-1" width="800px">
+
+compare trainable parameter
+:::
 
 따라서 LCM-loRA는 기존 LCMs 보다 더 큰 모델의 훈련과 실사용이 가능하다. LCMs의 경우 SD-V1.5나 SD-V2.1의 base Stable Diffusion을 사용했지만, LCM-LoRA는 SDXL과 SSD-1B(Segmind)을 확장하여 사용하였다. large Model에서도 LCD을 적용했을 때 잘 적응하는 모습을 볼 수 있었다.  
 
-<img src="../../pics/LCM-LoRA/LCM-LoRA_8.png" alt="1024 x 1024 resolution image results woth CFG scale w=7.5" class="bg-primary mb-1" width="800px">
+:::{figure-md} 
+<img src="../../pics/LCM-LoRA/LCM-LoRA_8.png" alt="1024 x 1024 resolution image results with CFG scale w=7.5" class="bg-primary mb-1" width="800px">
+
+1024 x 1024 resolution image results with CFG scale w=7.5
+:::
 
 ## 3.2 LCM-LoRA as Universal Acceleration Module
 
 LCM-LoRA는 sampling step을 줄이는 distillation에 LoRA를 적용하였다. LoRA는 이외에도 custionized datasets에 대해 fine-tuning할 때 주로 쓰이는데 이같은 style에 대한 LoRA와 LCM-LoRA가 추가 학습없이 바로 합쳐져 사용할 수 있음을 발견했다. 저자는 이 발견이 task arithmetic에 대한 관점으로 해석할 수 있다고 주장하였다.
 
+:::{figure-md} 
 <img src="../../pics/LCM-LoRA/LCM-LoRA_9.png" alt="Style-LoRA with LCM-LoRA" class="bg-primary mb-1" width="800px">
+
+Style LoRA with LCM-LoRA
+:::
 
 LCM-LoRA의 fine-tuned parameter를 $\tau_{LCM}$이라 할 때, $\tau_{LCM}$은 acceleration vector라 할수 있다. 그리고 custom dataset에서 학습한 LoRA의 fine-tuned parameter를 $\tau'$이라 할 때, $\tau'$은 style vector라 할 수 있다. LCMs를 통해 custom dataset에 대한 image를 생성할 때, 파라미터는 다음과 같이 조합된다:
 
@@ -168,7 +204,11 @@ $$\tau'_{LCM}=\lambda_1\tau'+\lambda_2\tau_{LCM} \tag{3}$$
 
 파라미터는 단순한 선형 결합을 통해 이루어지며 $\lambda_1$과 $\lambda_2$는 하이퍼파라미터다. 추가적인 학습없이 다음과 같은 결과를 얻을 수 있었다:
 
-<img src="../../pics/LCM-LoRA/LCM-LoRA_10.png" alt="finetuning with LCM-LoRA" class="bg-primary mb-1" width="800px">
+:::{figure-md} 
+<img src="../../pics/LCM-LoRA/LCM-LoRA_10.png" alt="fine-tuning with LCM-LoRA" class="bg-primary mb-1" width="800px">
+
+fine-tuning with LCM-LoRA
+:::
 
 # 4. Conclusion
 

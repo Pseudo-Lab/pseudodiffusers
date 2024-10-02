@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Magic3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -14,54 +15,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/magic-3d';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Dream Booth 3D" href="DreamBooth3D.html" />
@@ -75,23 +80,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,13 +122,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -143,8 +147,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +164,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -267,6 +258,9 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -334,7 +328,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -343,14 +337,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -475,10 +469,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -486,14 +480,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -550,9 +544,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="magic3d">
-<h1>Magic3D<a class="headerlink" href="#magic3d" title="Link to this heading">#</a></h1>
+<h1>Magic3D<a class="headerlink" href="#magic3d" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>Pre-trained 된 text-to-image diffusion model 을 활용하여 NeRF 를 optimize 하는 DreamFusion 모델의 두 가지 단점을 명시합니다.</p>
 <ul class="simple">
 <li><p>Extremely slow optimization of NeRF</p></li>
@@ -567,7 +561,7 @@ document.write(`
 </ul>
 </section>
 <section id="background-dreamfusion">
-<h2>3. Background: DreamFusion<a class="headerlink" href="#background-dreamfusion" title="Link to this heading">#</a></h2>
+<h2>3. Background: DreamFusion<a class="headerlink" href="#background-dreamfusion" title="Permalink to this heading">#</a></h2>
 <p>DreamFusion 을 크게 두 가지 component 로 구성되어있다고 할 수 있습니다.</p>
 <ul>
 <li><p>Neural scene representation</p>
@@ -581,21 +575,21 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_01.png"><img alt="magic_3d_01" class="bg-primary mb-1" src="../../_images/magic_3d_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Score Distillation Sampling</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 669 </span><span class="caption-text">Score Distillation Sampling</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="high-resolution-3d-generation">
-<h2>4. High-Resolution 3D Generation<a class="headerlink" href="#high-resolution-3d-generation" title="Link to this heading">#</a></h2>
+<h2>4. High-Resolution 3D Generation<a class="headerlink" href="#high-resolution-3d-generation" title="Permalink to this heading">#</a></h2>
 <p>Magic3D 에서 high-resolution text-to-3D synthesis 를 위한 two-stage coarse-to-fine framework 를 다음과 같이 소개합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_02.png"><img alt="magic_3d_02" class="bg-primary mb-1" src="../../_images/magic_3d_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 671 </span><span class="caption-text">Magic3D Framework</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Magic3D Framework</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="coarse-to-fine-diffusion-priors">
-<h3>4.1. Coarse-to-fine Diffusion Priors<a class="headerlink" href="#coarse-to-fine-diffusion-priors" title="Link to this heading">#</a></h3>
+<h3>4.1. Coarse-to-fine Diffusion Priors<a class="headerlink" href="#coarse-to-fine-diffusion-priors" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>64x64 rendered image 에 대한 rendered loss 를 계산하기 위해 Imagen 과 유사한 eDiff-I 를 base diffusion 모델로 사용합니다.</p></li>
 <li><p>512x512 high resolution rendered image 를 기반으로 backpropagation 할 수 있도록 Stable Diffusion model 을 LDM 으로 사용합니다. 다음과 같이 SDS 를 계산하는 과정에서 <span class="math notranslate nohighlight">\(\partial{x}/\partial{\theta}\)</span> 와 <span class="math notranslate nohighlight">\(\partial{z}/\partial{x}\)</span> 를 계산하는데 시간이 다소 소요된다고 합니다.</p></li>
@@ -603,12 +597,12 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_03.png"><img alt="magic_3d_03" class="bg-primary mb-1" src="../../_images/magic_3d_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 672 </span><span class="caption-text">SDS in high resolution 512x512</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 671 </span><span class="caption-text">SDS in high resolution 512x512</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="scene-models">
-<h3>4.2. Scene Models<a class="headerlink" href="#scene-models" title="Link to this heading">#</a></h3>
+<h3>4.2. Scene Models<a class="headerlink" href="#scene-models" title="Permalink to this heading">#</a></h3>
 <p><strong>Neural fields as coarse scene models</strong></p>
 <p>기존에 DreamFusion 에서 scene model 로 사용하였던 Mip-NeRF 360 모델이 3D geometry 에 대한 정보를 scratch 로부터 담아내는데 유용하다는 것을 보였지만, MLP 네트워크를 통해 dense 하게 sampling 하여 rendering 하는 과정이 computation cost 가 높다고 말합니다.</p>
 <p>이를 해결하기 위한 방법으로 InstantNGP 에서 소개하는 hash grid encoding 을 사용한다고 합니다. Hash grid 를 활용하여 두 개의 single layer neural network 를 학습하는데, 하나는 albedo 와 density 그리고 나머지 하나는 normal 을 예측합니다. 또한, density-based voxel pruning (empty space 에 대한 처리) 과 octree-based ray sampling/rendering 기법을 활용하여 computation cost 를 줄였다고 합니다.</p>
@@ -618,7 +612,7 @@ document.write(`
 <p>이로부터 differentiable 한 marching tetrahedra 알고리즘을 통해 SDF 로부터 surface mesh 를 생성할 수 있으며, texture 에 대한 정보는 neural color field 로 정의할 수 있다고 합니다.</p>
 </section>
 <section id="coarse-to-fine-optimization">
-<h3>4.3. Coarse-to-fine Optimization<a class="headerlink" href="#coarse-to-fine-optimization" title="Link to this heading">#</a></h3>
+<h3>4.3. Coarse-to-fine Optimization<a class="headerlink" href="#coarse-to-fine-optimization" title="Permalink to this heading">#</a></h3>
 <p><strong>Neural field optimization</strong></p>
 <p>Instant NGP 와 동일하게 <span class="math notranslate nohighlight">\(256^3\)</span> resolution 의 occupancy grid 로 initialize 하고, 10 iterations 마다 grid 를 업데이트하며 empty space skipping 을 위한 octree 를 생성합니다. 매 업데이트마다 Instant NGP 와 동일한 파라미터 값을 설정하였다고 합니다.</p>
 <p>또한, DreamFusion 과 동일하게 background 를 표현하는 environment map MLP 를 사용하는데, 이때 Mip-NeRF 360 에서 사용하는 scene representation 을 사용할 수 없어, 모델이 background 로부터 object 에 대한 정보를 학습할 수 있어 이를 방지하기 위해 MLP 사이즈를 작게 하고 learning rate 를 10배 증가시켰다고 합니다.</p>
@@ -628,7 +622,7 @@ document.write(`
 </section>
 </section>
 <section id="experiments">
-<h2>5. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
 <p>DreamFusion 과 397 개의 text prompt 에 대한 성능을 비교합니다.</p>
 <p><strong>Speed evaluation</strong></p>
 <ul class="simple">
@@ -640,7 +634,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_04.png"><img alt="magic_3d_04" class="bg-primary mb-1" src="../../_images/magic_3d_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 673 </span><span class="caption-text">Qualitative comparisons</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 672 </span><span class="caption-text">Qualitative comparisons</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>User studies</strong></p>
@@ -648,7 +642,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_05.png"><img alt="magic_3d_05" class="bg-primary mb-1" src="../../_images/magic_3d_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 674 </span><span class="caption-text">User studies</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 673 </span><span class="caption-text">User studies</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Can single-stage optimization work with LDM prior?</strong></p>
@@ -656,7 +650,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/magic-3d/magic_3d_06.png"><img alt="magic_3d_06" class="bg-primary mb-1" src="pics/magic-3d/magic_3d_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 675 </span><span class="caption-text">Single-stage vs Coarse-to-fine</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 674 </span><span class="caption-text">Single-stage vs Coarse-to-fine</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Can we use NeRF for the fine model?</strong></p>
@@ -666,18 +660,18 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_07.png"><img alt="magic_3d_07" class="bg-primary mb-1" src="../../_images/magic_3d_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Coarse models vs. fine models</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 675 </span><span class="caption-text">Coarse models vs. fine models</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="controllable-3d-generation">
-<h2>6. Controllable 3D Generation<a class="headerlink" href="#controllable-3d-generation" title="Link to this heading">#</a></h2>
+<h2>6. Controllable 3D Generation<a class="headerlink" href="#controllable-3d-generation" title="Permalink to this heading">#</a></h2>
 <p><strong>Personalized text-to-3D</strong></p>
 <p>사전에 diffusion model (eDiff-I, LDM) 을 DreamBooth 을 통해 학습하고, unique identifier <span class="math notranslate nohighlight">\([V]\)</span> 와 함께 3D scene model 을 학습합니다. 아래 사진과 같이, subject 에 대한 정보를 유지한 채 3D model 을 잘 생성하는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_08.png"><img alt="magic_3d_08" class="bg-primary mb-1" src="../../_images/magic_3d_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 677 </span><span class="caption-text">Controllable 3D Generation</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Controllable 3D Generation</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Prompt-based editing through fine-tuning</strong></p>
@@ -690,12 +684,12 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_09.png"><img alt="magic_3d_09" class="bg-primary mb-1" src="../../_images/magic_3d_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 678 </span><span class="caption-text">Prompt-based editing through fine-tuning</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 677 </span><span class="caption-text">Prompt-based editing through fine-tuning</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="conclusion">
-<h2>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2>7. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <p>정리하자면, 논문에서 Magic3D 의 coarse-to-fine optimization 방식을 소개하고, mesh 형태의 scene model 과 고해상도 이미지에 대한 diffusion prior 를 활용함으로써 high resolution 에 대해서도 좋은 성능을 보여줄 수 있었습니다. 추가적으로, 주어진 text prompt 에 대해 3D mesh model 을 40분 만에 생성이 가능하고, 그래픽 소프트웨어와 호환이 바로 가능하다는 장점이 있습니다.</p>
 </section>
 </section>
@@ -727,7 +721,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -799,7 +793,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -823,8 +817,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

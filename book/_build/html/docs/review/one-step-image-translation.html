@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>One-Step Image Translation with Text-to-Image Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -14,57 +15,61 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/one-step-image-translation';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="next" title="LCM-LoRA: A Universal Stable-Diffusion Acceleration Module" href="LCM-LoRA.html" />
     <link rel="prev" title="DiT" href="DiT.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -75,23 +80,27 @@
 
   
   
-  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-primary-sidebar-checkbox"/>
-  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          id="pst-secondary-sidebar-checkbox"/>
-  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -113,13 +122,8 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
-
-  <div class="pst-async-banner-revealer d-none">
-  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
-</div>
-
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
     </header>
   
 
@@ -143,8 +147,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +164,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -267,6 +258,9 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -334,7 +328,7 @@
 
       </div>
       
-      <main id="main-content" class="bd-main" role="main">
+      <main id="main-content" class="bd-main">
         
         
 
@@ -343,14 +337,14 @@
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article d-print-none">
+              <div class="bd-header-article">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -475,10 +469,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -486,14 +480,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -556,16 +550,16 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="one-step-image-translation-with-text-to-image-models">
-<h1>One-Step Image Translation with Text-to-Image Models<a class="headerlink" href="#one-step-image-translation-with-text-to-image-models" title="Link to this heading">#</a></h1>
+<h1>One-Step Image Translation with Text-to-Image Models<a class="headerlink" href="#one-step-image-translation-with-text-to-image-models" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>논문에서 기존의 conditional diffusion model 에 대해 다음과 같이 1) slow inference time, 2) paired data 에 대한 의존성 두 가지 한계점을 명시합니다. 이를 보완하기 위해, paired setting 과 unpaired setting 에서 모두 적용 가능한 학습 아키텍쳐를 제시합니다.</p>
 <p>기존에 adapter 를 추가하는 방식은 one-step diffusion model 에 적합하지 않다고 설명하고, 또한 SD-Turbo 모델의 Encoder-UNet-Decoder 형태의 multi-stage pipeline 에서 이미지의 많은 시각적 디테일이 손실된다고 주장합니다. 그리고 이러한 정보 손실은 입력 이미지가 실제 이미지일 때 특히 더 치명적이라고 합니다.</p>
 <p>이를 보완하기 위해, 논문에서는 첫번째로 input image 를 직접 noise encoder 에 입력함으로써 noise map 과 input control 의 충돌을 방지합니다. 두번째로, Encoder-Unet-Decoder 를 하나의 end-to-end 로 학습 가능한 아키텍처를 정의하고, 이를 위해 여러 LoRA adapter 를 정의합니다. 마지막으로, high-frequency detail 을 담아내기 위해 encoder 와 decoder 간의 skip connection 을 추가합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 515 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 514 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -594,49 +588,49 @@ document.write(`
 <p>또한, 해당 논문에서 제시하는 아케텍쳐는 CycleGAN, pix2pix 등의 GAN 기반의 모델에 plug-and-play 형태로도 적용 가능하며, CycleGAN-Turbo, pix2pix-Turbo 모델이 기존의 GAN 기반 그리고 diffusion model 기반 모델의 image translation 성능보다 우수하다고 합니다.</p>
 </section>
 <section id="related-work">
-<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
 <p>기존에 paired dataset 에서의 image-to-image translation 모델들은 대표적으로 reconstruction loss 와 adversarial loss 를 기반으로 학습되었습니다. 최근에는 GLIGEN, T2I-Adapter, ControlNet 와 같이 adapter 를 통한 input conditioning 하는 방식도 소개되었습니다. 그리고 unpaired dataset 에서 diffusion 모델을 활용하여 image translation 하는 사례들도 있지만, 이들은 새로 보이는 domain 마다 scratch 로부터 모델을 학습해야 하는 치명적인 단점이 있습니다.</p>
 <p>SDEdit 와 Prompt-to-Prompt 모델과 같이 zero-shot 으로 이미지를 editing 하는 연구 사례들도 있지만, 이들은 multi-object 와 complex scene setting 에서 약점을 보인다고 합니다.</p>
 <p>이와 동시에 diffusion model 의 inference time 을 단축하기 위해서 ODE solver 혹은 knowledge distillation 을 활용한 연구 사례들도 있었습니다.</p>
 </section>
 <section id="method">
-<h2>3. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<h2>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
 <section id="adding-conditional-input">
-<h3>3.1. Adding Conditional Input<a class="headerlink" href="#adding-conditional-input" title="Link to this heading">#</a></h3>
+<h3>3.1. Adding Conditional Input<a class="headerlink" href="#adding-conditional-input" title="Permalink to this heading">#</a></h3>
 <p>SD-Turbo 와 같이 pretrained 된 one-step text-to-image 모델을 기반으로 input image 에 대한 conditioning 을 하는 방법을 다음과 같이 처음에 제안합니다. 아래 사진과 같이, 사전학습된 stable diffusion encoder 의 가중치 혹은 랜덤한 가중치를 가진 adapter 를 새로 정의하여 input image 에 대한 feature map 을 추출합니다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_02.png"><img alt="translation_turbo_02" class="bg-primary mb-1" src="../../_images/translation_turbo_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 516 </span><span class="caption-text">Adding Conditional Input</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 515 </span><span class="caption-text">Adding Conditional Input</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 multi-step diffusion model 과 다르게 single-step 만으로도 noise map 이 생성되는 이미지의 전체적인 layout 을 결정하기 때문에, condition encoder 를 거쳐서 나온 feature map 와의 충돌이 생겨 학습에 어려움이 생기는 현상을 보여준다고 합니다.</p>
 <p>따라서, adapter 를 추가적으로 정의하는 방식이 아닌 conditioning input 을 network 에 직접 적용하는 방식을 논문에서 제안합니다.</p>
 </section>
 <section id="preserving-input-details">
-<h3>3.2. Preserving Input Details<a class="headerlink" href="#preserving-input-details" title="Link to this heading">#</a></h3>
+<h3>3.2. Preserving Input Details<a class="headerlink" href="#preserving-input-details" title="Permalink to this heading">#</a></h3>
 <p>Latent Diffusion Model (LDM) 이 image 를 encoding 하는 과정에서 차원을 8 배 축소하기 때문에 정보에 대한 손실이 크고, 따라서 이러한 방식은 fine detail 에 민감한 image translation task 에 적합하지 않을 수 있다고 주장합니다. 아래 사진을 보시면, 기존 아키텍쳐에서 skip connection 을 추가하기 전후로 원본 이미지에 대한 detail preservation 정도 차이를 확인할 수 있습니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_03.png"><img alt="translation_turbo_03" class="bg-primary mb-1" src="../../_images/translation_turbo_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 517 </span><span class="caption-text">Preserving Input Details</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 516 </span><span class="caption-text">Preserving Input Details</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>더 자세하게는, skip connection 을 encoder 내의 각 downsampling layer 를 거쳐 4개의 activation 을 추출하고 이를 1 x 1 zero-convolution layer 를 통과시켜 decoder 에 대응되는 upsampling block 에 입력시킵니다.</p>
 </section>
 <section id="unpaired-training">
-<h3>3.3. Unpaired Training<a class="headerlink" href="#unpaired-training" title="Link to this heading">#</a></h3>
+<h3>3.3. Unpaired Training<a class="headerlink" href="#unpaired-training" title="Permalink to this heading">#</a></h3>
 <p>논문에서는 SD-Turbo (v2.1) 를 base network 로 사용하고, 변형된 CycleGAN objective 를 적용하여 unpaired translation 을 진행하였습니다. 이때, cycle-consistency loss 와 adversarial loss 를 다음과 같이 정의합니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_04.png"><img alt="translation_turbo_04" class="bg-primary mb-1" src="../../_images/translation_turbo_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 518 </span><span class="caption-text">Cycle-Consistency Loss</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 517 </span><span class="caption-text">Cycle-Consistency Loss</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_05.png"><img alt="translation_turbo_05" class="bg-primary mb-1" src="../../_images/translation_turbo_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 519 </span><span class="caption-text">Adversarial Loss</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 518 </span><span class="caption-text">Adversarial Loss</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 <span class="math notranslate nohighlight">\(X \subset \mathbb{R}^{H \times W \times 3}\)</span>, <span class="math notranslate nohighlight">\(Y \subset \mathbb{R}^{H \times W \times 3}\)</span> 는 각각 source domain, target domain, 그리고 <span class="math notranslate nohighlight">\(G(x, c_Y): X → Y\)</span>, <span class="math notranslate nohighlight">\(G(y, c_X):
@@ -645,7 +639,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 520 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 519 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, 새롭게 소개되는 <span class="math notranslate nohighlight">\(L_{rec}\)</span> 손실함수는 <span class="math notranslate nohighlight">\(L_1\)</span> 과 <span class="math notranslate nohighlight">\(LPIPS\)</span> 의 조합으로 구성되어있습니다. 그리고 adversarial loss 에서 사용되는 discriminator <span class="math notranslate nohighlight">\(D_X(x),D_Y(y)\)</span> 는 CLIP 모델을 backbone 으로 사용하였습니다.</p>
@@ -653,12 +647,12 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_06.png"><img alt="translation_turbo_06" class="bg-primary mb-1" src="../../_images/translation_turbo_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 521 </span><span class="caption-text">Full objective</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 520 </span><span class="caption-text">Full objective</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="extensions">
-<h3>3.4. Extensions<a class="headerlink" href="#extensions" title="Link to this heading">#</a></h3>
+<h3>3.4. Extensions<a class="headerlink" href="#extensions" title="Permalink to this heading">#</a></h3>
 <p>해당 논문에서 unpaired training setting 뿐만 아니라 paired training 그리고 stochastic output generation 에 대해서도 실험을 진행하였습니다.</p>
 <p><strong>Paired Training</strong></p>
 <p>Paired setting 에서는 single translation function <span class="math notranslate nohighlight">\(G(x,c): X \rightarrow Y\)</span> 를 학습하고, objective 는 (1)  perceptual loss 와 pixel-space reconstruction loss 로 구성된 reconstruction loss (2) unpaired setting 에서 target domain 에 대해서만 정의된 GAN loss, 그리고 (3) CLIP text-image alignment loss <span class="math notranslate nohighlight">\(L_{CLIP}\)</span> 의 가중치 합으로 정의합니다.</p>
@@ -668,14 +662,14 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_07.png"><img alt="translation_turbo_07" class="bg-primary mb-1" src="../../_images/translation_turbo_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 522 </span><span class="caption-text">Reconstruction loss with interpolation coefficient</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 521 </span><span class="caption-text">Reconstruction loss with interpolation coefficient</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>해당 objective 로 interpolation coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> 를 변화시키면서 모델을 fine-tuning 함으로써 다양한 output 을 생성할 수 있었다고 합니다.</p>
 </section>
 </section>
 <section id="experiments">
-<h2>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
 <p><strong>Training Details</strong></p>
 <p>학습하는 파라미터: LoRA 가중치, zero-convolutional layer, 그리고 첫번째 U-Net convolutional layer 가 330MB 소요됩니다.</p>
 <ul>
@@ -752,18 +746,18 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <p>(1) target domain 의 데이터셋 분포와의 일치: FID 로 측정</p>
 <p>(2) input image 의 구조적인 정보 유지: DINO-Struct-Dist 로 측정</p>
 <section id="comparison-to-unpaired-methods">
-<h3>4.1. Comparison to Unpaired Methods<a class="headerlink" href="#comparison-to-unpaired-methods" title="Link to this heading">#</a></h3>
+<h3>4.1. Comparison to Unpaired Methods<a class="headerlink" href="#comparison-to-unpaired-methods" title="Permalink to this heading">#</a></h3>
 <p>기존에 GAN-based 그리고 Diffusion-based 모델들이 output realism 그리고 structure preservation 에 모두 좋은 성능을 내지는 못하는 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_08.png"><img alt="translation_turbo_08" class="bg-primary mb-1" src="../../_images/translation_turbo_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 523 </span><span class="caption-text">Comparison to baselines on 256 × 256 datasets.</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 522 </span><span class="caption-text">Comparison to baselines on 256 × 256 datasets.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_09.png"><img alt="translation_turbo_09" class="bg-primary mb-1" src="../../_images/translation_turbo_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 524 </span><span class="caption-text">Comparison to baselines on driving datasets (512 × 512).</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 523 </span><span class="caption-text">Comparison to baselines on driving datasets (512 × 512).</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 예시 사진들과 table 에서 보이듯이, CycleGAN-Turbo 모델이 CycleGAN 과 CUT 모델보다 더 낮은 FID, DINO Structure score 를 보여주는 것을 확인할 수 있습니다.</p>
@@ -773,13 +767,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_10.png"><img alt="translation_turbo_10" class="bg-primary mb-1" src="../../_images/translation_turbo_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 525 </span><span class="caption-text">Comparison to GAN-based methods on 256 × 256 datasets.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 524 </span><span class="caption-text">Comparison to GAN-based methods on 256 × 256 datasets.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_11.png"><img alt="translation_turbo_11" class="bg-primary mb-1" src="../../_images/translation_turbo_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 526 </span><span class="caption-text">Comparison to GAN-based methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 525 </span><span class="caption-text">Comparison to GAN-based methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -787,13 +781,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_12.png"><img alt="translation_turbo_12" class="bg-primary mb-1" src="../../_images/translation_turbo_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 527 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 526 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_13.png"><img alt="translation_turbo_13" class="bg-primary mb-1" src="../../_images/translation_turbo_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 528 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 527 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -801,24 +795,24 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_14.png"><img alt="translation_turbo_14" class="bg-primary mb-1" src="../../_images/translation_turbo_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 529 </span><span class="caption-text">Evaluation on standard CycleGAN datasets (256 × 256).</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 528 </span><span class="caption-text">Evaluation on standard CycleGAN datasets (256 × 256).</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_15.png"><img alt="translation_turbo_15" class="bg-primary mb-1" src="../../_images/translation_turbo_15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 530 </span><span class="caption-text">Comparison on 512 × 512 driving datasets.</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 529 </span><span class="caption-text">Comparison on 512 × 512 driving datasets.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="ablation-study">
-<h3>4.2. Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h3>
+<h3>4.2. Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h3>
 <p><strong>Using pre-trained weights</strong></p>
 <p>랜덤한 가중치로 초기화하는 것보다 pre-trained 된 모델을 사용할 때, 모델 성능이 더 좋은 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_16.png"><img alt="translation_turbo_16" class="bg-primary mb-1" src="../../_images/translation_turbo_16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 531 </span><span class="caption-text">Ablation with Horse to Zebra</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 530 </span><span class="caption-text">Ablation with Horse to Zebra</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Different ways of adding conditioning inputs</strong></p>
@@ -826,33 +820,33 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_17.png"><img alt="translation_turbo_17" class="bg-primary mb-1" src="../../_images/translation_turbo_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 532 </span><span class="caption-text">Ablating individual components</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 531 </span><span class="caption-text">Ablating individual components</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Skip Connections and trainable encoder and decoder</strong></p>
 <p>Config D 와 비교하였을 때, FID 에 대한 성능이 미세하게 떨어지는 반면에 structure preservation 성능이 월등히 높음을 확인할 수 있습니다.</p>
 </section>
 <section id="id1">
-<h3>4.3. Extensions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h3>4.3. Extensions<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <p><strong>Paired translation</strong></p>
 <p>Pix2pix-Turbo 와 LCM-ControlNet, SD-Turbo ControlNet, 그리고 SD ControlNet 모델과 정성적인 평가를 진행하였습니다. Classifier-free guidance, negative prompt 없이 단일 step 만으로도 좋은 성능을 보여줌을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_18.png"><img alt="translation_turbo_18" class="bg-primary mb-1" src="../../_images/translation_turbo_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 533 </span><span class="caption-text">Comparison on paired edge-to-image task (512 × 512).</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 532 </span><span class="caption-text">Comparison on paired edge-to-image task (512 × 512).</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Generating diverse outputs</strong></p>
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_19.png"><img alt="translation_turbo_19" class="bg-primary mb-1" src="../../_images/translation_turbo_19.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 534 </span><span class="caption-text">Generating diverse outputs</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 533 </span><span class="caption-text">Generating diverse outputs</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="discussions-and-limitations">
-<h2>5. Discussions and Limitations<a class="headerlink" href="#discussions-and-limitations" title="Link to this heading">#</a></h2>
+<h2>5. Discussions and Limitations<a class="headerlink" href="#discussions-and-limitations" title="Permalink to this heading">#</a></h2>
 <p>해당 논문은 multi-step diffusion training 에 의존하지 않고, single-step 만으로 다양한 GAN 기반의 objective 와 융합해서 downstream task 에 적용할 수 있는 방식을 제안합니다. 하지만, 다음과 같은 3가지 한계점을 제시합니다: (1) SD-Turbo 는 classifier-free guidance 를 사용하지 않아, guidance control 에 대한 설정할 수 없습니다. (2) 해당 방식은 negative prompt 를 지원하지 않습니다. 그리고 마지막으로 (3) high capacity generator 기반의 cycle consistency loss 로 학습하는데 메모리에 대한 부담이 큽니다.</p>
 </section>
 </section>
@@ -884,7 +878,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
               
               
               
-                <footer class="prev-next-footer d-print-none">
+                <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -897,11 +891,11 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
       </div>
     </a>
     <a class="right-next"
-       href="Make_A_Video.html"
+       href="LCM-LoRA.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Make A Video</p>
+        <p class="prev-next-title">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -961,7 +955,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -985,8 +979,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
 
   <footer class="bd-footer">
   </footer>

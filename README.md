@@ -72,6 +72,10 @@ CVPR 2024 Workshop
 | 31 | 2024.07.03 | Geonhak Song | [DreamFusion: Text-to-3D using 2D Diffusion](https://arxiv.org/abs/2209.14988) (ICLR 2023) |
 | 32 | 2024.07.17 | Sangwoo Jo <br> Junhyoung Lee | [Magic3D: High-Resolution Text-to-3D Content Creation](https://arxiv.org/abs/2211.10440) (CVPR 2023) <br> [Scalable Diffusion Models with Transformers](https://arxiv.org/abs/2212.09748) (ICCV 2023) |
 | 33 | 2024.07.24 | Jeongin Lee <br> Hyunsoo Kim | [DreamBooth3D: Subject-Driven Text-to-3D Generation](https://arxiv.org/abs/2303.13508) (ICCV 2023) <br> [Style Aligned Image Generation via Shared Attention](https://arxiv.org/abs/2312.02133) (CVPR 2024) |
+| 34 | 2024.09.18 | Sangwoo Jo | [One-step Image Translation with Text-to-Image Models](https://arxiv.org/abs/2403.12036) |
+| 35 | 2024.09.25 | Joongwon Lee | [One-step Diffusion with Distribution Matching Distillation](https://arxiv.org/abs/2311.18828) (CVPR 2024) |
+| 36 | 2024.10.02 | Donghyun Han | [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](https://arxiv.org/abs/2311.05556)|
+
 
 
 ## Jupyter Book Update Procedure  

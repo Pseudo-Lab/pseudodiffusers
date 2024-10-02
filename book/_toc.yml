@@ -45,6 +45,7 @@ parts:
   - file: docs/review/LLM_grounded_Diffusion
   - file: docs/review/DiT
   - file: docs/review/one-step-image-translation
+  - file: docs/review/LCM-LoRA
 
 - caption: Video Generation
   chapters:

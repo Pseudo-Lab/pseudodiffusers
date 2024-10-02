@@ -1,4 +1,4 @@
-```
+```{admonition} Information
 - **Title:** LCM-LoRA: A Universal Stable-Diffusion Acceleration Module 
 
 - **Reference**

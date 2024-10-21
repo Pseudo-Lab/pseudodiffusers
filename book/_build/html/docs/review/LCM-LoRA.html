@@ -227,6 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -602,7 +608,7 @@ ex)<a class="reference external" href="https://arxiv.org/pdf/2210.03142">Guided 
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_1.png"><img alt="Consistency Models" class="bg-primary mb-1" src="../../_images/LCM-LoRA_1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 534 </span><span class="caption-text">Consistency Models</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 560 </span><span class="caption-text">Consistency Models</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>CMs의 핵심은 PF-ODE의 궤적의 points가 solution에 mapping 되는 function <span class="math notranslate nohighlight">\((f: (x_t,t) \mapsto x_\epsilon)\)</span>을 추정하는 것이다.
@@ -634,7 +640,7 @@ L(\theta,\theta^-;\Phi)=\mathbb{E}_{x,t}\bigg[d\bigg(f_\theta(x_{t_{n+1}},t_{n+1
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_2.png"><img alt="Latent Diffusion Models" class="bg-primary mb-1" src="../../_images/LCM-LoRA_2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 535 </span><span class="caption-text">Latent Diffusion Models</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 561 </span><span class="caption-text">Latent Diffusion Models</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>LCMs은 CMs에 condition을 추가해주고 <span class="math notranslate nohighlight">\(F_\theta(x,t)\)</span>를 <span class="math notranslate nohighlight">\(\epsilon-Prediction\)</span>의 수식으로 치환한다. (<span class="math notranslate nohighlight">\(\mu\)</span>나 <span class="math notranslate nohighlight">\(v\)</span> prediction을 사용해도 됨.) 추가로 LDMs 기반이기 때문에 latent <span class="math notranslate nohighlight">\(z\)</span>에 대한 수식으로 변경해준다.</p>
@@ -673,14 +679,14 @@ L(\theta,\theta^-;\Phi)=\mathbb{E}_{x,t}\bigg[d\bigg(f_\theta(x_{t_{n+1}},t_{n+1
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_3.png"><img alt="Low Rank Adaptation" class="bg-primary mb-1" src="../../_images/LCM-LoRA_3.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 536 </span><span class="caption-text">Low Rank Adaptation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 562 </span><span class="caption-text">Low Rank Adaptation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 그림과 같이 원본 모델 weight는 freeze, LoRA는 rank를 r로 낮추어 finetuning한다. 이때 LoRA의 A는 random Gauissian으로, B는 zero로 weight initializing 한다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_4.png"><img alt="Low Rank Adaptation matrix" class="bg-primary mb-1" src="../../_images/LCM-LoRA_4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 537 </span><span class="caption-text">Low Rank Adaptation matrix</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 563 </span><span class="caption-text">Low Rank Adaptation matrix</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 그림처럼 기존에는 d x d의 매우 큰 weight를 finetuning 해야 했지만, LoRA는 r만큼 압축된 weight matrix만 finetuning 하면 되기 때문에 훨씬 효율적이고 때에 따라 Fully fine-tuning 하는 방법들보다 더 좋은 성능을 보여주기도 한다. (그림은 <a class="reference external" href="https://ffighting.net/deep-learning-paper-review/language-model/lora/">이곳</a>을 참고하였습니다.)</p>
@@ -693,7 +699,7 @@ L(\theta,\theta^-;\Phi)=\mathbb{E}_{x,t}\bigg[d\bigg(f_\theta(x_{t_{n+1}},t_{n+1
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_5.png"><img alt="Task Arithmetic" class="bg-primary mb-1" src="../../_images/LCM-LoRA_5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 538 </span><span class="caption-text">Task Arithmetic</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 564 </span><span class="caption-text">Task Arithmetic</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>pre-trained parameter를 <span class="math notranslate nohighlight">\(\theta_{pre}\)</span>, fine-tuning parameter를 <span class="math notranslate nohighlight">\(\theta_{ft}\)</span>라고 할때 task vector <span class="math notranslate nohighlight">\(\tau\)</span>는 <span class="math notranslate nohighlight">\(\theta_{ft}-\theta_{pre}\)</span>로 정의할 수 있다.
@@ -708,7 +714,7 @@ L(\theta,\theta^-;\Phi)=\mathbb{E}_{x,t}\bigg[d\bigg(f_\theta(x_{t_{n+1}},t_{n+1
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_6.png"><img alt="Latent Consistency Distillation" class="bg-primary mb-1" src="../../_images/LCM-LoRA_6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 539 </span><span class="caption-text">Latent Consistency Distillation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 565 </span><span class="caption-text">Latent Consistency Distillation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문의 저자는 LCMs의 Distillation은 LDMs에 관한 일종의 fine-tuning으로 보고 LoRA를 적용하는 방법을 제안하였다.
@@ -719,14 +725,14 @@ pre-trained 된 weight matrix <span class="math notranslate nohighlight">\(W_0\)
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_7.png"><img alt="compare trainable parameter" class="bg-primary mb-1" src="../../_images/LCM-LoRA_7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 540 </span><span class="caption-text">compare trainable parameter</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 566 </span><span class="caption-text">compare trainable parameter</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서 LCM-loRA는 기존 LCMs 보다 더 큰 모델의 훈련과 실사용이 가능하다. LCMs의 경우 SD-V1.5나 SD-V2.1의 base Stable Diffusion을 사용했지만, LCM-LoRA는 SDXL과 SSD-1B(Segmind)을 확장하여 사용하였다. large Model에서도 LCD을 적용했을 때 잘 적응하는 모습을 볼 수 있었다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_8.png"><img alt="1024 x 1024 resolution image results with CFG scale w=7.5" class="bg-primary mb-1" src="../../_images/LCM-LoRA_8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 541 </span><span class="caption-text">1024 x 1024 resolution image results with CFG scale w=7.5</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 567 </span><span class="caption-text">1024 x 1024 resolution image results with CFG scale w=7.5</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -736,7 +742,7 @@ pre-trained 된 weight matrix <span class="math notranslate nohighlight">\(W_0\)
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_9.png"><img alt="Style-LoRA with LCM-LoRA" class="bg-primary mb-1" src="../../_images/LCM-LoRA_9.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 542 </span><span class="caption-text">Style LoRA with LCM-LoRA</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 568 </span><span class="caption-text">Style LoRA with LCM-LoRA</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>LCM-LoRA의 fine-tuned parameter를 <span class="math notranslate nohighlight">\(\tau_{LCM}\)</span>이라 할 때, <span class="math notranslate nohighlight">\(\tau_{LCM}\)</span>은 acceleration vector라 할수 있다. 그리고 custom dataset에서 학습한 LoRA의 fine-tuned parameter를 <span class="math notranslate nohighlight">\(\tau'\)</span>이라 할 때, <span class="math notranslate nohighlight">\(\tau'\)</span>은 style vector라 할 수 있다. LCMs를 통해 custom dataset에 대한 image를 생성할 때, 파라미터는 다음과 같이 조합된다:</p>
@@ -748,7 +754,7 @@ pre-trained 된 weight matrix <span class="math notranslate nohighlight">\(W_0\)
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LCM-LoRA_10.png"><img alt="fine-tuning with LCM-LoRA" class="bg-primary mb-1" src="../../_images/LCM-LoRA_10.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 543 </span><span class="caption-text">fine-tuning with LCM-LoRA</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 569 </span><span class="caption-text">fine-tuning with LCM-LoRA</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -227,6 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -601,7 +607,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_01.png"><img alt="ldm_01" class="bg-primary mb-1" src="../../_images/ldm_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 480 </span><span class="caption-text">768x768 Resolution image in 1~4 steps.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 506 </span><span class="caption-text">768x768 Resolution image in 1~4 steps.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -642,7 +648,7 @@ f(t)=\frac{d\log{\alpha(t)}}{dt}, g^2(t)=\frac{d\sigma^2(t)}{dt}-2\frac{d\log{\a
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_02.png"><img alt="ldm_02" class="bg-primary mb-1" src="../../_images/ldm_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 481 </span><span class="caption-text">Consistency Models (CM).</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 507 </span><span class="caption-text">Consistency Models (CM).</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\epsilon\)</span>은 고정된 매우 작은 양수값을 가지며 CM의 function은 자기 자신에 대한 <strong>self-consistency</strong>를 만족해야한다. 즉 어떠한 time step에 대해서도 <span class="math notranslate nohighlight">\(x_\epsilon\)</span>을 sampling 할 수 있어야 한다.</p>
@@ -723,7 +729,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_03.png"><img alt="ldm_03" class="bg-primary mb-1" src="../../_images/ldm_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 482 </span><span class="caption-text">2 Stage Distillation.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 508 </span><span class="caption-text">2 Stage Distillation.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>t이에 반해 LCMs는 augmented PF-ODE를 해결하는 방식으로 one-stage의 guided Distillation을 제안했다. 일단 CFG에 대한 reverse diffusion process는 다음과 같다:</p>
@@ -789,13 +795,13 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_04.png"><img alt="ldm_04" class="bg-primary mb-1" src="../../_images/ldm_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 483 </span><span class="caption-text">Quantitative results at 512 x 512 &amp; 768 x 768 resolution.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 509 </span><span class="caption-text">Quantitative results at 512 x 512 &amp; 768 x 768 resolution.</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_05.png"><img alt="ldm_05" class="bg-primary mb-1" src="../../_images/ldm_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 484 </span><span class="caption-text">Qualitative results on LAION-Aesthetic-6.5+ Dataset. (2,4 steps)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 510 </span><span class="caption-text">Qualitative results on LAION-Aesthetic-6.5+ Dataset. (2,4 steps)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DDIM, DPM-Solver, DPM-Solver++, Guided-Distill 4가지 모델에 대해 LCM과 성능비교를 했는데 이때 Guided-Distill은 오픈소스 코드가 없기 때문에 논문의 내용과 동일하게 Implementation 해서 성능을 비교하였다. LCM은 같은 메모리 Cost 대비 더 빠르게 수렴하고 더 좋은 품질의 영상을 생성하였다. 특히 Guided-Distill은 2 stage Distillation이지만 LCM은 <strong>1 Stage</strong>만 사용해도 이같은 성능을 보여줬다.</p>
@@ -808,7 +814,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_06.png"><img alt="ldm_06" class="bg-primary mb-1" src="../../_images/ldm_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 485 </span><span class="caption-text">Different ODE solvers and skipping step k.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 511 </span><span class="caption-text">Different ODE solvers and skipping step k.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Skipping step의 경우 <span class="math notranslate nohighlight">\(k\)</span> 값을 올렸을 때 훨씬더 빠르게 수렴하며 때때로 더 좋은 FID 값을 보여주었다. 또한 DPM과 DPM++은 <span class="math notranslate nohighlight">\(k\)</span>가 50일 때 DDIM보다 더 좋은 성능을 보였다. 이는 <strong><span class="math notranslate nohighlight">\(k\)</span> 값이 클수록 더 큰 ODE approximation error를 가지는 DDIM에 비해 오차가 적기 때문</strong>이다.</p>
@@ -820,14 +826,14 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_07.png"><img alt="ldm_07" class="bg-primary mb-1" src="../../_images/ldm_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Different classifier-free guidance scales <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 512 </span><span class="caption-text">Different classifier-free guidance scales <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>그래프를 보면 2~8 step inference는 성능에 큰 차이를 가지지는 않는것으로 확인된다. 그러나 <strong>1 step inference는 아직 개선의 여지가 있는것</strong>을 확인할 수 있다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_08.png"><img alt="ldm_08" class="bg-primary mb-1" src="../../_images/ldm_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Different classifier-free guidance scales <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 513 </span><span class="caption-text">Different classifier-free guidance scales <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\omega\)</span>에 따른 실제 생성 이미지를 비교해 봤을 때 생성 영상의 Quality 차이가 확연하게 들어난다. 즉 Distillation 시에도 CFG를 적용하는 것이 성능을 크게 개선할 수 있다는 것을 증명한다.</p>
@@ -839,7 +845,7 @@ t_i=(\epsilon^{1 / \rho} +\frac{i-1}{N-1}(T^{1 / \rho}-\epsilon^{1 / \rho}))^\rh
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/ldm_09.png"><img alt="ldm_09" class="bg-primary mb-1" src="../../_images/ldm_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 488 </span><span class="caption-text">Latent Consistency Fine-tuning(LCF) on two customized dataset.. <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 514 </span><span class="caption-text">Latent Consistency Fine-tuning(LCF) on two customized dataset.. <span class="math notranslate nohighlight">\(\omega\)</span>.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

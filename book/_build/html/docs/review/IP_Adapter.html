@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>IP-Adapter &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
@@ -63,6 +63,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/IP_Adapter';</script>
     <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -186,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
@@ -225,6 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -497,7 +505,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><no title></h1>
+    <h1>IP-Adapter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -506,7 +514,27 @@ document.write(`
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">IP-Adapter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">Related Works</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-diffusion-models">Text-to-Image Diffusion Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapters-for-large-models">Adapters for Large Models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-prompt-adapter">Image Prompt Adapter</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">Experimental Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-existing-methods">Comparison with Existing Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-results">More Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">Ablation Study</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 
             </nav>
@@ -531,315 +559,390 @@ document.write(`
 </ul>
 </li>
 <li><p><strong>Author:</strong> Kyeongmin Yu</p></li>
-<li><p><strong>Last updated on Sep. 18, 2024</strong></p></li>
+<li><p><strong>Last updated on Sep. 21, 2024</strong></p></li>
 </ul>
 </div>
-<div class="highlight-aside notranslate"><div class="highlight"><pre><span></span>📌
-| 
-### 문제상황
-
-text-to-image diffusion model(T2I diffusion model)이 생성하는 이미지 품질은 훌륭하지만 text prompt를 통해 원하는 형태의 이미지를 생성하는 것이 어렵다. 복잡한 prompt engineering을 시도하거나, image prompt를 활용할 수도 있지만 사전학습된 모델을 fine-tuning하게 되면 많은 리소스가 필요할 뿐만 아니라 해당 방식은 범용성, 호환성도 떨어진다.
-
-### 해결방안
-
-**cross-attention을 text features와 image features로 decoupling한다.** 기존 학습된 diffusion model은 text feature에 맞춰 학습된 상태이므로 기존 layer에 image feature를 넣게 되면 image feature와 text feature를 align을 수행하게 되므로 기존 cross-attention layer 하나를 통해  image-feature와 text-feature를 결합하는 것은 적절하지 않다. 
-
-### 논문의 강점
-
-- 어떤 모델 구조에도 활용가능하다.
-- 적은 수의 파라미터(22M)만 추가적으로 학습하므로 가볍다.
-- 기존 controllable tools에 덧붙여 쓸 수도 있다.
-```` aside
-
-![IMG_47A446BA601B-1.jpeg](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/IMG_47A446BA601B-1.jpeg)
-
-# Introduction
-
-**:image prompt의 필요성과 기존 연구에서 image prompt를 사용해 이미지를 생성하려는 시도의 종류와 장단점을 말한다.**
-
-복잡한 scene이나 concept을 입력할때 이미지 형태로 입력하는 것이 간편하고 효과적이다. 
-image prompt + text prompt(“an image is worth a thousand words”)
-
-![IMG_4891.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/IMG_4891.png)
-
-**vs**
-
-“내츄럴 풍으로 카페를 꾸미고 여러 식물을 두어 장식하고 싶어. 내가 좋아하는 식물은 스노우 사파이어, 호야, 자미오쿨카스등 이고, 의자와 테이블은 원목을 선호해.”
-
-DALL-E2는 처음으로 image prompt를 지원한 모델으로, T2I prior model이 image embedding을 조건으로 이미지를 생성하도록 했다. 하지만 기존 대부분의 T2I 모델은 주로 text를 조건으로 이미지를 생성하는 방식이었다. 예를 들어 stable diffusion(SD) 모델의 경우 CLIP text encoder로 부터 text embedding을 뽑아내 사용했다. 
-
-본 논문에서는 “image prompt를 기존 T2I 모델에서 사용할 수 있는지”, image prompt를 사용한 T2I 이미지 생성을 단순한 방식으로 가능케 한다.
-
-![비교를 위한 DALL-E2(unCLIP) 구조](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image.png)
-
-비교를 위한 DALL-E2(unCLIP) 구조
-
-![비교를 위한 Stable Diffusion의 구조](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%201.png)
-
-비교를 위한 Stable Diffusion의 구조
-
-SD Image Variations와 Stable UnCLIP과 같은 기존 연구에서 image prompt를 사용한 이미지 생성을 위해 text-conditioned diffusion models을 image embedding을 사용해 직접 fine-tuning하려는 시도를 했다. 하지만 많은 양의 컴퓨터 리소스 사용과 기존 T2I 생성능력 저하, 재사용성 저하라는 단점이 있었다. 또한 해당 방식은 ControlNet과 같은 기존 structural control tools과 호환되지 않았다. 이는 downstream application에 치명적이다.
-
-이를 피하기 위해 diffusion model 자체를 fine-tuning하지 않고 text encoder를 image encoder로 교체하는 방식도 있었지만 text prompt를 지원할 수 없게 되고 이미지 품질이 충분하지 않다는 단점이 있었다.
-
-최근에는 T2I base model을 건드리지 않고 추가적인 네트워크를 이용해 image prompt를 지원하는 연구들이 있었다. ControlNet, T2I-Adapter와 같은 연구들은 대부분 sketch, depth map, segmenation map 등의 추가적인 입력을 활용했다. 또한 T2I-Adapter나 Uni-ControlNet 같이reference image를 입력해 style 이나 concept을 전달하려는 시도도 있었다. 이런 흐름의 연구들은 CLIP image encoder에서 image embedding을 추출하여 추가 trainable network에 새로운 feature들을 mapping하여 text feature와 융합하고자 했다. 기존 text feature대신 text feature+image feature를 디퓨전 모델 내 UNet 구조에 넣어 prompt에 넣은 이미지에 적합한(faithful) 이미지를 생성하고자 했다. 이런 연구들을 통해 image prompt의 가능성을 볼수 있었지만 그 충실도가 충분하지 않았다. 또한 이미지 품질이 fine-tuning된 image prompt model보다 나빴다.
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/f5ee9e88-e2b9-4ef8-9e8d-3fbe9b4b6a0a.png)
-
-**image prompt를 지원하는 기존 방식**
-
-- input image embedding to T2I model
-- base model fine-tuning
-- text encoder → image encoder
-- additional network
-
-본 논문에서는 앞서 언급한 문제점의 원인을 T2I model내의 cross-attention이라고 보고 있다. **사전학습된 cross-attention에서 key, value projection weights은 text feature에 맞게 훈련되어 잇는 상태이다.** 
-결과적으로 image feature와 text feature를 cross-attention layer에서 합쳐지는데 이때 image-specific 특성들이 무시되어 reference image에 아주 충실한 이미지를 생성하지 못하고 coarse-grained controllable generation(e.g., image style)만 달성 가능해진다.
-
-마지막으로 앞선 연구의 문제점들을 극복한 효과적인 image prompt adapter, IP-Adapter를 제안한다. 특히 IP-Adapter의 경우 decoupled cross-attention mechanism을 사용해 text feature와 image feature를 분리한다. image feature를 위해 base model내 모든 UNet cross-attention layer에 cross-attention layer 를 추가하여 훈련단계에서는 적은 수의 파라미터(22M)만 훈련한다. 본 논문에서 제안하는 IP-Adapter는 매우 가볍고 효과적이다. 또한 일반화 능력(generalization capability)가 높고 text prompt와도 잘 어울린다(compatible). 
-
-**IP-Adapter에서 제안하는 방식**
-
-- additional cross-attention layer in UNet of diffusion model
-- reusable and flexible (base + IP-Adapter + ControlNet가능)
-- multimodal compatibility (image prompt + text prompt)
-
-# Related Works
-
-### Text-to-Image Diffusion Models
-
-large T2I model은 크게 autoregressive models, diffusion models 두 부류로 나눌 수 있다. DALLE, CogView, Make-A-Scene과 같은 초기 연구들은 autoregressive model 이었다. autoregressive model은 VQ-VAE와 같은 image tokenizer를 사용해 image들을 token화 하여 autoregressive transformer에 text token을 이용해 image token을 예측하게 하는 방식으로 학습했다. 하지만 autoregressive model은 파라미터 수가 많고 고화질 이미지를 생성하기 위해 많은 리소스가 필요했다.
-
-최근에는 diffusion models(DM)이 등장하여 T2I 생성모델의 state-of-the-art를 달성했다. 이전에 GLIDE는 cascaded diffusion 구조를 통해 64x64 → 256x256 이미지를 생성했다. 
-DALL-E2의 경우, text prompt로 이미지를 생성하도록 학습된 모델을 활용해 image embedding을 조건으로 이미지를 생성했다. DALL-E2는 text prompt를 통한 이미지 생성을 지원하지 않았다. text 이해도를 높이기 위해 Imagen은 거대 transformer language model인 T5를 도입했다. Re-Imagen의 경우 드물거나 학습한적없는 entity에 대한 image에 대한 충성도를 개선했다. 
-SD는 latent diffusion model로 pixel space가 아닌 latent space상에서 동작하게 하여 diffusion model만 사용하여 고품질의 이미지를 생성할 수 있게 했다. text 일치도(alignment)를 높이기 위해 eDiff-I의 경우 T2I diffusion model과 유사한 디자인을 채택하여 T5 text, CLIP text embedding, CLIP image embedding등 멀티모달 조건을 활용했다. Versatile Diffusion은 unified multi-flow diffusion framework를 이용해 T2I, I2T, 등 다양한 생성방식을 하나의 모델로 가능하게 했다. controllable image 생성 면에서는 Composer가 image embedding을 활용한 joint fine-tuning을 시도했었다. RAPHAEL은 mixture of experts(MoEs) 전략을 사용해 T2I model의 이미지 품질을 향상시켰다.
-
-DALL-E2는 image prompt를 통해 해당 풍의 이미지들을 생성할 수 있다는 점에서 매력적이다. 또한 image prompt를 T2I model에서 지원하고자 하는 연구들이 있다. SD Image Variants model은 변경한 SD를 fine-tuning하여 text feature를 CLIP image encoder의 image embedding으로 교체할 수 있게 했다. Stable unCLIP 또한 SD를 fine-tuning하여 time embedding에 image embedding을 추가했다. 기존 모델을 fine-tuning하는 방식은 고품질의 이미지를 생성 할 수 있다는 장점이 있지만 비교적 training cost가 높으며 기존 tools(e.g.,ControlNet)과 호환되지 않는다는 단점이 있다.
-
-### Adapters for Large Models
-
-거대한 사전학습된 모델 전체를 fine-tuning하는 것은 비효율적이다. 이 대안으로 떠오르는 것이 adapter를 사용하는 것인데, 기존 모델은 freeze시켜 학습하는 파라미터 수를 줄일 수 있다. adapter는 NLP에서 오랫동안 사용되던 방식이다. 최근에는 LLM의 vision-language 이해를 위해 adapter를 사용하고 있다.
-
-T2I model의 최근 인기로 인해 adapter들도 여기에 추가적인 control을 주는 방향으로 사용되고 있다. ControlNet의 경우 사전학습된 T2I diffusion model에 task-specific한 입력
-(e.g.,canny edge)을 추가적으로 넣기위해 adapter를 사용할 수 있다는 것을 보여주었다. 유사한 시기에 T2I-Adapter도 등장했는데 보다 간단하고 가벼운 형태로 색이나 구조적인 면에서 
-fine-grained control을 주고자 했다. fine-tuning에 사용되는 비용을 줄이기 위해 Uni-ControlNet은 multi-scale condition injection을 사용했다. 
-
-structural control외에 이미지 집합을 통해 content나 style을 조절하고자 한 연구도 있다. ControlNet Shuffle의 경우 이미지들을 recompose하도록 학습하여 사용자가 제공한 이미지들을 바탕으로 이미지를 생성 할 수 있었다. 또한 ControlNet Reference-only의 경우, 학습없이 SD에 feature injection을 통해 이미지를 변형했다. T2I-Adapter의 최근 버전의 경우, CLIP image encoder로 부터 reference image의 image feature를 text feature에 더해줌으로서 style adapter로서의 역할도 가능하다. Uni-ControlNet의 global control adapter 또한 CLIP image encoder로 부터 추출한 image embedding을 작은 네트워크를 통해 projection하 condition embedding으로 projection하여 사용한다. SeeCoder는 기존 text encoder를 semantic context encoder로 교체하여 image variants를 생성하고자 했다.
-
-**ControlNet**
-
-![비교를 위한 ControlNet의 작동 방식](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%202.png)
-
-비교를 위한 ControlNet의 작동 방식
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%203.png)
-
-**Uni-ControlNet**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%204.png)
-
-**T2I-Adapter**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%205.png)
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%206.png)
-
-비교를 위한 T2I Adapter의 작동 방식
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%207.png)
-
-**SeeCoder**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%208.png)
-
-# Method
-
-### Preliminaries
-
-&lt;aside&gt;
-📌
-
-생성모델의 일종인 diffusion model의 이미지 생성단계 
-
-1. **diffusion process (forward process)**
-    
-    T step의 fixed Markov chain을 통해데이터에 gaussian noise를 점차 추가.  
-    
-2. **denoising process**
-    
-    gaussian noise로 부터 learnable model을 통해 sample을 생성.
-    
-&lt;/aside&gt;
-
-일반적으로 noise 예측을 위한 diffusion model($\epsilon_\theta$)의 training objective는 아래와 같이 단순한 variant of variational bound 로 표현된다. 
-
-$$
-L_{\text{simple}}=\Bbb E_{x_0, \epsilon\sim \mathcal N(0,I),c,t}\|\epsilon-\epsilon_\theta(x_t,\bold c,t)\|^2 \tag{1}
-$$
-
-$x_0$ 는 real data, $\bold c$ 는 추가조건, $t$ 는 time step을 말하며 $[0,T]$ 내에 속한다.  $x_t=\alpha_t x_0+\sigma_t\epsilon$은 step t에 해당하는 noisy data를 말하고, $\alpha_t, \sigma_t$는 diffusino process를 결정하는 predefined function이다. $\epsilon_\theta$가 한번 학습되고 나면 랜덤 노이즈로부터 이미지를 반복적으로 생성할 수 있다. 일반적으로 생성 속도를 높이기 위해 DDIM, PNDM, DPM-solver와 같은 fast sampler를 inference시 사용한다.
-
-conditional diffusion model에서 classifier guidance를 통해 이미지 정확도(fidelity)와 다양성(sample diversity)를 밸런싱할 수 있다. 이는 따로 학습된 classifier의 gradient를 활용하는데, classifier를 따로 학습하는 번거로움을 지우기 위해 classifier-free guidance를 사용하기도 한다. 이런 접근에서 conditional, unconditional diffusion models는 학습시 랜덤하게 조건 $c$ 를 배제하여 합동 학습(joint training)된다. sampling단계 에서는 conditional model과 unconditional model의 prediction을 모두 이용하여 noise를 계산한다. 
-
-$$
-\hat \epsilon_\theta(x_t,\bold c,t)=\mathcal w \epsilon_\theta(x_t,\bold c, t)+(1-\mathcal w)\epsilon_\theta(x_t,t) \tag{2}
-$$
-
-$\mathcal w$은 guidance scale 혹은 guidance weight로 불리는데 condition $c$의 영향력을 조절하기 위한 상수값이다. T2I diffusion model의 경우 image-text 일치성을 높이는데 classifier-free guidance가 큰 역할을 한다. 
-
-본 논문에서는 open-source SD에 IP-Adapter를 덧붙여 실험을 진행했다. SD는 latent diffusion model로 frozen CLIP text encoder로 뽑아낸 text feature를 condition으로 사용한다. diffusion model은 Unet에 attention layer가 추가된 형태이다. Imagen과 같은 pixel-based diffusion model과 비교해 SD는 사전학습된 auto-encoder model을 활용해 latent space에서 동작하므로 효율적이다. 
-
-### Image Prompt Adapter
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%209.png)
-
-![비교를 위한 Stable Diffusion의 구조](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%201.png)
-
-비교를 위한 Stable Diffusion의 구조
-
-**Image Encoder**
-
-pretained CLIP image encoder를 사용해 image prompt에서 image feature를 뽑아냈다. CLIP은 multimodal model로 거대 image-text pair 데이터셋으로 contrastive learning시킨 모델이다. CLIP image encoder를 통해 global image embedding을 얻었다. 이는 image로 부터 풍부한 내용(content)와 스타일을 담은 image caption과 잘 조정되어(well-aligned) 있다. 학습단계에서 CLIP image encoder는 frozen되어 학습되지 않는다.
-
-**Decoupled Cross-Attention**
-
-image feature는 사전학습된 UNet에 decoupled cross-attention을 통해 결합된다. 초기 SD model에서는 CLIP text encoder를 통해 뽑아낸 text feature를 UNet의 cross-attention layer에 넣었다. 
-
-$$
-\mathbf Z&#39;=\text{Attention}(\bold{Q,K,V})=\text{Softmax}(\frac{\bold {QK}^T}{\sqrt{d}})\bold V, \tag{3}
-$$
-
-query feature는 $Z$, text feature는 $c_t$, cross-attention의 결과는 $Z’$이고, $\bold{Q=ZW_q, K=c_tW_k, V=c_tW_v}$는 attention 연산의 각각 query, key, value 행렬이다. $\bold{W_q, W_k, W_v}$는 linear projection layers의 학습가능한 weigth matrices다.
-
-image feature를 이미지 생성에 반영하는 직관적인 방법은 cross-attention시 text feature+image feature로 결합(concatenate)하여 처리하는 것이다. 하지만 이 방법은 충분하지 않다는 것을 발견하여 decoupled cross-attention을 제안한다. 이는 cross-attention 에서 image feature와 text feature를 따로 처리하는 것이다. 구체적으로는 기존 cross-attention layer가 존재하던 곳에 새로운 cross-attention layer를 추가하여 image feature를 처리하도록 했다. image feature $c_i$가 주어질때 새로운 attention layer의 결과는 다음과 같다. 
-
-$$
-\mathbf Z&#39;&#39;=\text{Attention}(\bold{Q,K&#39;,V&#39;})=\text{Softmax}(\frac{\bold {Q(K&#39;)}^T}{\sqrt{d}})\bold V&#39;, \tag{4}
-$$
-
-$\bold{Q=ZW_q, K&#39;=c_tW&#39;_k, V&#39;=c_tW&#39;_v}$는 image feature를 위한 query, key, value 행렬이다. 여기서 핵심은 text cross-attention과 image cross-attention에서 동일한 qeury를 사용했다는 점이다. 결과적으로는 각 cross-attention layer 마다 2개의 파라미터 $\bold{W&#39;_k,W&#39;_v}$ 를 추가하게 된다. 수렴속도를 높이기 위해 $\bold{W&#39;_k,W&#39;_v}$는 $\bold{W_k,W_v}$로 초기화했다. 그러면 두 cross-attention layer의 결과를 더함으로써 최종 결과를 구할 수 있다. decoupled cross-attention의 최종적인 형태는 다음과 같다.
-
-$$
-\mathbf Z^\text{new}=\text{Softmax}(\frac{\bold {QK}^T}{\sqrt{d}})\bold V + \text{Softmax}(\frac{\bold {Q(K&#39;)}^T}{\sqrt{d}})\bold V&#39;\\ \text{where} \space \bold{Q=ZW}_q,\space \bold{k=c}_t\bold W_k,\space \bold{K&#39;=c}_i\bold W&#39;_k, \space \bold{V&#39;=c}_i\bold W&#39;_v \tag{5}
-$$
-
-사전학습한 UNet은 freeze시키고 훈련을 진행하므로 $\bold{W&#39;_k,W&#39;_v}$ **만** 학습된다.
-
- 
-
-**Training and Inference**
-
-학습시 IP-Adapter만 최적화하고 기존 사전학습된 diffusion model은 고정한다. IP-Adapter는 image-text pair dataset으로 학습시키며 original SD와 동일한 objective를 사용한다.
-
-$$
-L_{\text{simple}}=\Bbb E_{x_0, \epsilon\sim \mathcal N(0,I),c_t,c_i,t}\|\epsilon-\epsilon_\theta(x_t,\bold {c_t,c_i},t)\|^2 \tag{6}
-$$
-
-또 random하게 image condition을 drop하여 inference 단계에서 classifier-free guidance를 사용할 수 있도록 한다.
-
-$$
-\hat \epsilon_\theta(x_t,\bold {c_t,c_i},t)=\mathcal w \epsilon_\theta(x_t,\bold {c_t,c_i}, t)+(1-\mathcal w)\epsilon_\theta(x_t,t) \tag{7}
-$$
-
-image condition이 drop되면  CLIP image embedding은 0으로 처리했다. text cross-attention과 image cross-attention을 detach되며 inference시 image condition의 가중치도 조절할 수 있다. $\lambda$ 가 0이 되면 기존 T2I 모델이 된다.
-
-$$
-\mathbf Z^\text{new}=\text{Softmax}(\bold {Q,K,V})+ \lambda\cdot\text{Softmax}(\bold {Q,K&#39;,V&#39;})\tag{8}
-$$
-
-# Experiments
-
-### Experimental Setup
-
-| base model | SD v1.5 |
-| --- | --- |
-| image encoder | OpenCLIP ViT-H/14 |
-| resolution | 512x512 (resized and center crop) |
-| optimizer | AdamW |
-| learning rate | 0.0001 |
-| weight decay | 0.01 |
-| libraries | Hugging Face diffusers, DeepSpeed SeRO-2 |
-| GPU | 8 V100 |
-| training step | 1M |
-| batch size | 8 per GPU |
-| classifier-free guidance | 0.05 |
-
-| training data | LAION-2B, COYO-700M |
-| --- | --- |
-| sampler for inference | DDIM (50steps) |
-| guidance scale | 7.5 |
-| $\lambda$ | 1.0 for only image prompt |
-
-### Comparison with Existing Methods
-
-**Quantitative Comparison**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2010.png)
-
-**Qualitative Comparison**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2011.png)
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2012.png)
-
-### More Results
-
-**Generalizable to Custom Models**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2013.png)
-
-**Structure Control**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2014.png)
-
-**Image-to-Image Inpainting**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2015.png)
-
-**Multimodal Prompts**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2016.png)
-
-### Ablation Study
-
-**Importance of Decoupled Cross-Attention**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2017.png)
-
-**Comparison of Fine-grained Features and Global Features**
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2018.png)
-
-IP-Adapter는 CLIP image encoder로 부터 추출한 global image embedding를 사용하기 때문에 reference image의 일부 특성을 잃어버릴 수 있다. 따라서 fine-grained feature를 위한 IP-Adapter를 디자인했다. 첫번째로 CLIP image encoder에서 penultimate layer에서 grid feature를 뽑아낸다. 이후 작은 query network를 이용해 feature를 학습한다. grid feature로 부터 정보를 뽑아내기 위해 lightweight transformer를 사용해 learnable 16 token들을 정의한다. 이 token feature들을 query network의 cross-attention layer에 입력으로 넣어준다.
-
-두 adapter의 생성 결과를 비교하면 finer-grained feature를 이용하면 보다 image prompt와 가까운 결과를 얻을 수 있다. finer-grained feature는 spatial structure information을 학습하여 생성된 이미지의 diversity를 낮추는 결과를 초래할 수 있으나 추가적인 조건(text prompt, structure map)을 활용하면 다양한 이미지를 만들 수 있다. 예를 들어 위의 그림과 같이 사진+pose를 통해 이미지를 생성 할 수 있다.
-
-# Conclusion
-
-본 연구에서는 사전 학습된 T2I diffusion model에 image prompt capability를 달성하기 위해 IP-Adapter를 제안한다. IP-Adapter의 핵심 디자인은 decoupled cross-attention으로 image feature를 분리하여 cross-attention을 수행한다. 고작 22M parameter가 추가된 IP-Adapter는 qualitative, quantitative experimental results 모두에서 비등하거나 나은 성능을 보인다. 또한 IP-Adapter는 확장성이 좋아 한번 훈련된 뒤, 다른 custom model, structural controllable tools에 곧바로 덧붙여 사용할 수도 있다. 더욱 중요한 점은 image prompt를 text prompt와 더애 멀티모달 이미지 생성을 가능케한다는 점이다.
-
-IP-Adapter는 효과적이지만 reference image와 content, style이 유사한 이미지만 생성할 수 있다는 단점이 있을 수 있다. 때문에 Textual Inversion이나 DreamBooth와 같이 특정 이미지 집합 풍의 이미지를 생성하지는 못한다. 미래에 consistency를 향상시킨 더 강력한 Image prompt adapter를 개발하는 것이 목표다.
-
-Textural Inversion
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2019.png)
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2020.png)
-
-DreamBooth
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2021.png)
-
-![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2022.png)
-
-- 
-    
-    
-    ![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2023.png)
-    
-    ![image.png](IP-Adapter%2011aa380d107c800eb2f1cf2bff1b23cd/image%2024.png)
-</pre></div>
+<section class="tex2jax_ignore mathjax_ignore" id="ip-adapter">
+<h1>IP-Adapter<a class="headerlink" href="#ip-adapter" title="Permalink to this heading">#</a></h1>
+<blockquote>
+<div><p>📌 문제상황 <br />
+text-to-image diffusion model(T2I diffusion model)이 생성하는 이미지 품질은 훌륭하지만 text prompt를 통해 원하는 형태의 이미지를 생성하는 것이 어렵다. 복잡한 prompt engineering을 시도하거나, image prompt를 활용할 수도 있지만 사전학습된 모델을 fine-tuning하게 되면 많은 리소스가 필요할 뿐만 아니라 해당 방식은 범용성, 호환성도 떨어진다. <br />
+<br />
+📌 해결방안 <br />
+<strong>cross-attention을 text features와 image features로 decoupling한다.</strong> 기존 학습된 diffusion model은 text feature에 맞춰 학습된 상태이므로 기존 layer에 image feature를 넣게 되면 image feature와 text feature를 align을 수행하게 되므로 기존 cross-attention layer 하나를 통해  image-feature와 text-feature를 결합하는 것은 적절하지 않다. <br />
+<br />
+📌  논문의 강점</p>
+<ul class="simple">
+<li><p>어떤 모델 구조에도 활용가능하다.</p></li>
+<li><p>적은 수의 파라미터(22M)만 추가적으로 학습하므로 가볍다.</p></li>
+<li><p>기존 controllable tools에 덧붙여 쓸 수도 있다.</p></li>
+</ul>
+</div></blockquote>
+<figure class="align-default" id="id1">
+<a class="mb-1 reference internal image-reference" href="../../_images/main.jpeg"><img alt="IP-Adapter를 활용한 이미지 합성" class="mb-1" src="../../_images/main.jpeg" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 268 </span><span class="caption-text">IP-Adapter를 활용한 이미지 합성 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<p><strong>:image prompt의 필요성과 기존 연구에서 image prompt를 사용해 이미지를 생성하려는 시도의 종류와 장단점을 말한다.</strong></p>
+<p>복잡한 scene이나 concept을 입력할때 이미지 형태로 입력하는 것이 간편하고 효과적이다.
+image prompt + text prompt(“an image is worth a thousand words”)</p>
+<figure class="align-default" id="id2">
+<a class="mb-1 reference internal image-reference" href="../../_images/IMG_4891.png"><img alt="카페" class="mb-1" src="../../_images/IMG_4891.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 269 </span><span class="caption-text">“내츄럴 풍으로 카페를 꾸미고 여러 식물을 두어 장식하고 싶어. 내가 좋아하는 식물은 스노우 사파이어, 호야, 자미오쿨카스등 이고, 의자와 테이블은 원목을 선호해.”</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>DALL-E2는 처음으로 image prompt를 지원한 모델으로, T2I prior model이 image embedding을 조건으로 이미지를 생성하도록 했다. 하지만 기존 대부분의 T2I 모델은 주로 text를 조건으로 이미지를 생성하는 방식이었다. 예를 들어 stable diffusion(SD) 모델의 경우 CLIP text encoder로 부터 text embedding을 뽑아내 사용했다.</p>
+<p>본 논문에서는 “image prompt를 기존 T2I 모델에서 사용할 수 있는지”, image prompt를 사용한 T2I 이미지 생성을 단순한 방식으로 가능케 한다.</p>
+<figure class="align-default" id="id3">
+<a class="mb-1 reference internal image-reference" href="../../_images/image.png"><img alt="비교를 위한 DALL-E2(unCLIP) 구조" class="mb-1" src="../../_images/image.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 270 </span><span class="caption-text">비교를 위한 DALL-E2(unCLIP) 구조 <a class="reference external" href="https://arxiv.org/abs/2204.06125">출처</a></span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="mb-1 reference internal image-reference" href="../../_images/image11.png"><img alt="비교를 위한 Stable Diffusion의 구조" class="mb-1" src="../../_images/image11.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 271 </span><span class="caption-text">비교를 위한 Stable Diffusion의 구조 구조 <a class="reference external" href="https://arxiv.org/abs/2112.10752">출처</a></span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>SD Image Variations와 Stable UnCLIP과 같은 기존 연구에서 image prompt를 사용한 이미지 생성을 위해 text-conditioned diffusion models을 image embedding을 사용해 직접 fine-tuning하려는 시도를 했다. 하지만 많은 양의 컴퓨터 리소스 사용과 기존 T2I 생성능력 저하, 재사용성 저하라는 단점이 있었다. 또한 해당 방식은 ControlNet과 같은 기존 structural control tools과 호환되지 않았다. 이는 downstream application에 치명적이다.</p>
+<p>이를 피하기 위해 diffusion model 자체를 fine-tuning하지 않고 text encoder를 image encoder로 교체하는 방식도 있었지만 text prompt를 지원할 수 없게 되고 이미지 품질이 충분하지 않다는 단점이 있었다.</p>
+<p>최근에는 T2I base model을 건드리지 않고 추가적인 네트워크를 이용해 image prompt를 지원하는 연구들이 있었다. ControlNet, T2I-Adapter와 같은 연구들은 대부분 sketch, depth map, segmenation map 등의 추가적인 입력을 활용했다. 또한 T2I-Adapter나 Uni-ControlNet 같이reference image를 입력해 style 이나 concept을 전달하려는 시도도 있었다. 이런 흐름의 연구들은 CLIP image encoder에서 image embedding을 추출하여 추가 trainable network에 새로운 feature들을 mapping하여 text feature와 융합하고자 했다. 기존 text feature대신 text feature+image feature를 디퓨전 모델 내 UNet 구조에 넣어 prompt에 넣은 이미지에 적합한(faithful) 이미지를 생성하고자 했다. 이런 연구들을 통해 image prompt의 가능성을 볼수 있었지만 그 충실도가 충분하지 않았다. 또한 이미지 품질이 fine-tuning된 image prompt model보다 나빴다.</p>
+<figure class="align-default" id="id5">
+<a class="mb-1 reference internal image-reference" href="../../_images/compare_table.png"><img alt="기존 모델과 IP-Adapter 비교" class="mb-1" src="../../_images/compare_table.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 272 </span><span class="caption-text">기존 모델과 IP-Adapter 비교 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>image prompt를 지원하는 기존 방식</strong></p>
+<ul class="simple">
+<li><p>input image embedding to T2I model</p></li>
+<li><p>base model fine-tuning</p></li>
+<li><p>text encoder → image encoder</p></li>
+<li><p>additional network</p></li>
+</ul>
+<p>본 논문에서는 앞서 언급한 문제점의 원인을 T2I model내의 cross-attention이라고 보고 있다. <strong>사전학습된 cross-attention에서 key, value projection weights은 text feature에 맞게 훈련되어 잇는 상태이다.</strong>
+결과적으로 image feature와 text feature를 cross-attention layer에서 합쳐지는데 이때 image-specific 특성들이 무시되어 reference image에 아주 충실한 이미지를 생성하지 못하고 coarse-grained controllable generation(e.g., image style)만 달성 가능해진다.</p>
+<p>마지막으로 앞선 연구의 문제점들을 극복한 효과적인 image prompt adapter, IP-Adapter를 제안한다. 특히 IP-Adapter의 경우 decoupled cross-attention mechanism을 사용해 text feature와 image feature를 분리한다. image feature를 위해 base model내 모든 UNet cross-attention layer에 cross-attention layer 를 추가하여 훈련단계에서는 적은 수의 파라미터(22M)만 훈련한다. 본 논문에서 제안하는 IP-Adapter는 매우 가볍고 효과적이다. 또한 일반화 능력(generalization capability)가 높고 text prompt와도 잘 어울린다(compatible).</p>
+<p><strong>IP-Adapter에서 제안하는 방식</strong></p>
+<ul class="simple">
+<li><p>additional cross-attention layer in UNet of diffusion model</p></li>
+<li><p>reusable and flexible (base + IP-Adapter + ControlNet가능)</p></li>
+<li><p>multimodal compatibility (image prompt + text prompt)</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="related-works">
+<h1>Related Works<a class="headerlink" href="#related-works" title="Permalink to this heading">#</a></h1>
+<section id="text-to-image-diffusion-models">
+<h2>Text-to-Image Diffusion Models<a class="headerlink" href="#text-to-image-diffusion-models" title="Permalink to this heading">#</a></h2>
+<p>large T2I model은 크게 autoregressive models, diffusion models 두 부류로 나눌 수 있다. DALLE, CogView, Make-A-Scene과 같은 초기 연구들은 autoregressive model 이었다. autoregressive model은 VQ-VAE와 같은 image tokenizer를 사용해 image들을 token화 하여 autoregressive transformer에 text token을 이용해 image token을 예측하게 하는 방식으로 학습했다. 하지만 autoregressive model은 파라미터 수가 많고 고화질 이미지를 생성하기 위해 많은 리소스가 필요했다.</p>
+<p>최근에는 diffusion models(DM)이 등장하여 T2I 생성모델의 state-of-the-art를 달성했다. 이전에 GLIDE는 cascaded diffusion 구조를 통해 64x64 → 256x256 이미지를 생성했다.
+DALL-E2의 경우, text prompt로 이미지를 생성하도록 학습된 모델을 활용해 image embedding을 조건으로 이미지를 생성했다. DALL-E2는 text prompt를 통한 이미지 생성을 지원하지 않았다. text 이해도를 높이기 위해 Imagen은 거대 transformer language model인 T5를 도입했다. Re-Imagen의 경우 드물거나 학습한적없는 entity에 대한 image에 대한 충성도를 개선했다.
+SD는 latent diffusion model로 pixel space가 아닌 latent space상에서 동작하게 하여 diffusion model만 사용하여 고품질의 이미지를 생성할 수 있게 했다. text 일치도(alignment)를 높이기 위해 eDiff-I의 경우 T2I diffusion model과 유사한 디자인을 채택하여 T5 text, CLIP text embedding, CLIP image embedding등 멀티모달 조건을 활용했다. Versatile Diffusion은 unified multi-flow diffusion framework를 이용해 T2I, I2T, 등 다양한 생성방식을 하나의 모델로 가능하게 했다. controllable image 생성 면에서는 Composer가 image embedding을 활용한 joint fine-tuning을 시도했었다. RAPHAEL은 mixture of experts(MoEs) 전략을 사용해 T2I model의 이미지 품질을 향상시켰다.</p>
+<p>DALL-E2는 image prompt를 통해 해당 풍의 이미지들을 생성할 수 있다는 점에서 매력적이다. 또한 image prompt를 T2I model에서 지원하고자 하는 연구들이 있다. SD Image Variants model은 변경한 SD를 fine-tuning하여 text feature를 CLIP image encoder의 image embedding으로 교체할 수 있게 했다. Stable unCLIP 또한 SD를 fine-tuning하여 time embedding에 image embedding을 추가했다. 기존 모델을 fine-tuning하는 방식은 고품질의 이미지를 생성 할 수 있다는 장점이 있지만 비교적 training cost가 높으며 기존 tools(e.g.,ControlNet)과 호환되지 않는다는 단점이 있다.</p>
+</section>
+<section id="adapters-for-large-models">
+<h2>Adapters for Large Models<a class="headerlink" href="#adapters-for-large-models" title="Permalink to this heading">#</a></h2>
+<p>거대한 사전학습된 모델 전체를 fine-tuning하는 것은 비효율적이다. 이 대안으로 떠오르는 것이 adapter를 사용하는 것인데, 기존 모델은 freeze시켜 학습하는 파라미터 수를 줄일 수 있다. adapter는 NLP에서 오랫동안 사용되던 방식이다. 최근에는 LLM의 vision-language 이해를 위해 adapter를 사용하고 있다.</p>
+<p>T2I model의 최근 인기로 인해 adapter들도 여기에 추가적인 control을 주는 방향으로 사용되고 있다. ControlNet(아래 사진 참고)의 경우 사전학습된 T2I diffusion model에 task-specific한 입력
+(e.g.,canny edge)을 추가적으로 넣기위해 adapter를 사용할 수 있다는 것을 보여주었다. 유사한 시기에 T2I-Adapter(아래 사진 참고)도 등장했는데 보다 간단하고 가벼운 형태로 색이나 구조적인 면에서
+fine-grained control을 주고자 했다. fine-tuning에 사용되는 비용을 줄이기 위해 Uni-ControlNet은 multi-scale condition injection을 사용했다.</p>
+<p>structural control외에 이미지 집합을 통해 content나 style을 조절하고자 한 연구도 있다. ControlNet Shuffle의 경우 이미지들을 recompose하도록 학습하여 사용자가 제공한 이미지들을 바탕으로 이미지를 생성 할 수 있었다. 또한 ControlNet Reference-only의 경우, 학습없이 SD에 feature injection을 통해 이미지를 변형했다. T2I-Adapter의 최근 버전의 경우, CLIP image encoder로 부터 reference image의 image feature를 text feature에 더해줌으로서 style adapter로서의 역할도 가능하다. Uni-ControlNet(아래 사진 참고)의 global control adapter 또한 CLIP image encoder로 부터 추출한 image embedding을 작은 네트워크를 통해 projection하 condition embedding으로 projection하여 사용한다. SeeCoder(아래 사진 참고)는 기존 text encoder를 semantic context encoder로 교체하여 image variants를 생성하고자 했다.</p>
+<p><strong>ControlNet</strong></p>
+<figure class="align-default" id="id6">
+<a class="mb-1 reference internal image-reference" href="../../_images/image21.png"><img alt="비교를 위한 ControlNet의 작동 방식" class="mb-1" src="../../_images/image21.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 273 </span><span class="caption-text">비교를 위한 ControlNet의 작동 방식 <a class="reference external" href="https://arxiv.org/abs/2302.05543">출처</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<a class="mb-1 reference internal image-reference" href="../../_images/image31.png"><img alt="" class="mb-1" src="../../_images/image31.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 274 </span><span class="caption-text">ControlNet preprocessor<a class="reference external" href="https://github.com/pytorch/pytorch/blob/main/torch/nn/modules/pixelshuffle.py">ContentShuffleDetector</a></span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Uni-ControlNet</strong></p>
+<figure class="align-default" id="id8">
+<a class="mb-1 reference internal image-reference" href="../../_images/image41.png"><img alt="Uni-ControlNet Architecture" class="mb-1" src="../../_images/image41.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 275 </span><span class="caption-text">Uni-ControlNet Architecture <a class="reference external" href="https://arxiv.org/abs/2305.16322">출처</a></span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>T2I-Adapter</strong></p>
+<figure class="align-default" id="id9">
+<a class="mb-1 reference internal image-reference" href="../../_images/image61.png"><img alt="비교를 위한 T2I Adapter의 작동 방식" class="mb-1" src="../../_images/image61.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 276 </span><span class="caption-text">비교를 위한 T2I Adapter의 작동 방식 <a class="reference external" href="https://arxiv.org/abs/2302.08453">출처</a> <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.nn.PixelUnshuffle.html">PixelUnshuffle</a></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<a class="mb-1 reference internal image-reference" href="../../_images/image5.png"><img alt="비교를 위한 T2I Adapter의 작동 방식" class="mb-1" src="../../_images/image5.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 277 </span><span class="caption-text">T2I Adapter의 장점 <a class="reference external" href="https://arxiv.org/abs/2302.08453">출처</a></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="mb-1 reference internal image-reference" href="../../_images/image71.png"><img alt="비교를 위한 T2I Adapter의 작동 방식" class="mb-1" src="../../_images/image71.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 278 </span><span class="caption-text">T2I-adapter의 결과는 기존 모델의 각 층의 feature map 크기가 맞도록 더해짐 <a class="reference external" href="https://arxiv.org/abs/2302.08453">출처</a></span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>SeeCoder</strong></p>
+<figure class="align-default" id="id12">
+<a class="mb-1 reference internal image-reference" href="../../_images/image81.png"><img alt="SeeCoder Architecture" class="mb-1" src="../../_images/image81.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 279 </span><span class="caption-text">SeeCoder Architecture <a class="reference external" href="https://arxiv.org/abs/2305.16223">출처</a></span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method">
+<h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<section id="preliminaries">
+<h2>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h2>
+<blockquote>
+<div><p>📌 생성모델의 일종인 diffusion model의 이미지 생성단계</p>
+<ol class="arabic simple">
+<li><p><strong>diffusion process (forward process)</strong> <br />
+T step의 fixed Markov chain을 통해데이터에 gaussian noise를 점차 추가.</p></li>
+<li><p><strong>denoising process</strong> <br />
+gaussian noise로 부터 learnable model을 통해 sample을 생성.</p></li>
+</ol>
+</div></blockquote>
+<p>일반적으로 noise 예측을 위한 diffusion model(<span class="math notranslate nohighlight">\(\epsilon_\theta\)</span>)의 training objective는 아래와 같이 단순한 variant of variational bound 로 표현된다.</p>
+<div class="math notranslate nohighlight">
+\[
+L_{\text{simple}}=\Bbb E_{x_0, \epsilon\sim \mathcal N(0,I),c,t}\|\epsilon-\epsilon_\theta(x_t, \mathbf c,t)\|^2 \tag{1}
+\]</div>
+<p><span class="math notranslate nohighlight">\(x_0\)</span> 는 real data, <span class="math notranslate nohighlight">\(\mathbf c\)</span> 는 추가조건, <span class="math notranslate nohighlight">\(t\)</span> 는 time step을 말하며 <span class="math notranslate nohighlight">\([0,T]\)</span> 내에 속한다.  <span class="math notranslate nohighlight">\(x_t=\alpha_t x_0+\sigma_t\epsilon\)</span>은 step t에 해당하는 noisy data를 말하고, <span class="math notranslate nohighlight">\(\alpha_t, \sigma_t\)</span>는 diffusino process를 결정하는 predefined function이다. <span class="math notranslate nohighlight">\(\epsilon_\theta\)</span>가 한번 학습되고 나면 랜덤 노이즈로부터 이미지를 반복적으로 생성할 수 있다. 일반적으로 생성 속도를 높이기 위해 DDIM, PNDM, DPM-solver와 같은 fast sampler를 inference시 사용한다.</p>
+<p>conditional diffusion model에서 classifier guidance를 통해 이미지 정확도(fidelity)와 다양성(sample diversity)를 밸런싱할 수 있다. 이는 따로 학습된 classifier의 gradient를 활용하는데, classifier를 따로 학습하는 번거로움을 지우기 위해 classifier-free guidance를 사용하기도 한다. 이런 접근에서 conditional, unconditional diffusion models는 학습시 랜덤하게 조건 <span class="math notranslate nohighlight">\(c\)</span> 를 배제하여 합동 학습(joint training)된다. sampling단계 에서는 conditional model과 unconditional model의 prediction을 모두 이용하여 noise를 계산한다.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat \epsilon_\theta(x_t,\mathbf c,t)=\mathcal w \epsilon_\theta(x_t,\mathbf c, t)+(1-\mathcal w)\epsilon_\theta(x_t,t) \tag{2}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\mathcal w\)</span>은 guidance scale 혹은 guidance weight로 불리는데 condition <span class="math notranslate nohighlight">\(c\)</span>의 영향력을 조절하기 위한 상수값이다. T2I diffusion model의 경우 image-text 일치성을 높이는데 classifier-free guidance가 큰 역할을 한다.</p>
+<p>본 논문에서는 open-source SD에 IP-Adapter를 덧붙여 실험을 진행했다. SD는 latent diffusion model로 frozen CLIP text encoder로 뽑아낸 text feature를 condition으로 사용한다. diffusion model은 Unet에 attention layer가 추가된 형태이다. Imagen과 같은 pixel-based diffusion model과 비교해 SD는 사전학습된 auto-encoder model을 활용해 latent space에서 동작하므로 효율적이다.</p>
+</section>
+<section id="image-prompt-adapter">
+<h2>Image Prompt Adapter<a class="headerlink" href="#image-prompt-adapter" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id13">
+<a class="mb-1 reference internal image-reference" href="../../_images/image9.png"><img alt="S" class="mb-1" src="../../_images/image9.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 280 </span><span class="caption-text">IP-Adapter의 동작방식 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id14">
+<a class="mb-1 reference internal image-reference" href="../../_images/image11.png"><img alt="비교를 위한 Stable Diffusion의 구조" class="mb-1" src="../../_images/image11.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 281 </span><span class="caption-text">비교를 위한 Stable Diffusion의 구조 <a class="reference external" href="https://arxiv.org/abs/2112.10752">출처</a></span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Image Encoder</strong></p>
+<p>pretained CLIP image encoder를 사용해 image prompt에서 image feature를 뽑아냈다. CLIP은 multimodal model로 거대 image-text pair 데이터셋으로 contrastive learning시킨 모델이다. CLIP image encoder를 통해 global image embedding을 얻었다. 이는 image로 부터 풍부한 내용(content)와 스타일을 담은 image caption과 잘 조정되어(well-aligned) 있다. 학습단계에서 CLIP image encoder는 frozen되어 학습되지 않는다.</p>
+<p><strong>Decoupled Cross-Attention</strong></p>
+<p>image feature는 사전학습된 UNet에 decoupled cross-attention을 통해 결합된다. 초기 SD model에서는 CLIP text encoder를 통해 뽑아낸 text feature를 UNet의 cross-attention layer에 넣었다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Z'=\text{Attention}(\mathbf{Q,K,V})=\text{Softmax}(\frac{\mathbf {QK}^T}{\sqrt{d}})\mathbf V, \tag{3}
+\]</div>
+<p>query feature는 <span class="math notranslate nohighlight">\(Z\)</span>, text feature는 <span class="math notranslate nohighlight">\(c_t\)</span>, cross-attention의 결과는 <span class="math notranslate nohighlight">\(Z’\)</span>이고, <span class="math notranslate nohighlight">\(\mathbf{Q=ZW_q, K=c_t W_k, V=c_t W_v}\)</span>는 attention 연산의 각각 query, key, value 행렬이다. <span class="math notranslate nohighlight">\(\mathbf{W_q, W_k, W_v}\)</span>는 linear projection layers의 학습가능한 weigth matrices다.</p>
+<p>image feature를 이미지 생성에 반영하는 직관적인 방법은 cross-attention시 text feature+image feature로 결합(concatenate)하여 처리하는 것이다. 하지만 이 방법은 충분하지 않다는 것을 발견하여 decoupled cross-attention을 제안한다. 이는 cross-attention 에서 image feature와 text feature를 따로 처리하는 것이다. 구체적으로는 기존 cross-attention layer가 존재하던 곳에 새로운 cross-attention layer를 추가하여 image feature를 처리하도록 했다. image feature <span class="math notranslate nohighlight">\(c_i\)</span>가 주어질때 새로운 attention layer의 결과는 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Z''=\text{Attention}(\mathbf{Q,K',V'})=\text{Softmax}(\frac{\mathbf{Q(K')}^T}{\sqrt{d}})\mathbf V', \tag{4}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{Q=ZW_q}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{K'=c_t W'_k}\)</span> , <span class="math notranslate nohighlight">\(\mathbf{V'=c_t W'_v}\)</span> 는 image feature를 위한 query, key, value 행렬이다. 여기서 핵심은 text cross-attention과 image cross-attention에서 동일한 qeury를 사용했다는 점이다. 결과적으로는 각 cross-attention layer 마다 2개의 파라미터 <span class="math notranslate nohighlight">\(\mathbf{W'_k,W'_v}\)</span> 를 추가하게 된다. 수렴속도를 높이기 위해 <span class="math notranslate nohighlight">\(\mathbf{W'_k,W'_v}\)</span>는 <span class="math notranslate nohighlight">\(\mathbf{W_k,W_v}\)</span>로 초기화했다. 그러면 두 cross-attention layer의 결과를 더함으로써 최종 결과를 구할 수 있다. decoupled cross-attention의 최종적인 형태는 다음과 같다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Z^\text{new}=\text{Softmax}(\frac{\mathbf {QK}^T}{\sqrt{d}})\mathbf V + \text{Softmax}(\frac{\mathbf {Q(K')}^T}{\sqrt{d}})\mathbf V' \tag{5}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ \text{where} \space \mathbf{Q=ZW}_q,\space \mathbf{k=c}_t\mathbf W_k,\space \mathbf{K'=c}_i\mathbf W'_k, \space \mathbf{V'=c}_i\mathbf W'_v 
+\]</div>
+<p>사전학습한 UNet은 freeze시키고 훈련을 진행하므로 <span class="math notranslate nohighlight">\(\mathbf{W'_k,W'_v}\)</span> <strong>만</strong> 학습된다.</p>
+<p><strong>Training and Inference</strong></p>
+<p>학습시 IP-Adapter만 최적화하고 기존 사전학습된 diffusion model은 고정한다. IP-Adapter는 image-text pair dataset으로 학습시키며 original SD와 동일한 objective를 사용한다.</p>
+<div class="math notranslate nohighlight">
+\[
+L_{\text{simple}}=\Bbb E_{x_0, \epsilon\sim \mathcal N(0,I),c_t,c_i,t}\|\epsilon-\epsilon_\theta(x_t,\mathbf {c_t,c_i},t)\|^2 \tag{6}
+\]</div>
+<p>또 random하게 image condition을 drop하여 inference 단계에서 classifier-free guidance를 사용할 수 있도록 한다.</p>
+<div class="math notranslate nohighlight">
+\[
+\hat \epsilon_\theta(x_t,\mathbf {c_t,c_i},t)=\mathcal w \epsilon_\theta(x_t,\mathbf {c_t,c_i}, t)+(1-\mathcal w)\epsilon_\theta(x_t,t) \tag{7}
+\]</div>
+<p>image condition이 drop되면  CLIP image embedding은 0으로 처리했다. text cross-attention과 image cross-attention을 detach되며 inference시 image condition의 가중치도 조절할 수 있다. <span class="math notranslate nohighlight">\(\lambda\)</span> 가 0이 되면 기존 T2I 모델이 된다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf Z^\text{new}=\text{Softmax}(\mathbf {Q,K,V})+ \lambda\cdot\text{Softmax}(\mathbf {Q,K',V'})\tag{8}
+\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiments">
+<h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<section id="experimental-setup">
+<h2>Experimental Setup<a class="headerlink" href="#experimental-setup" title="Permalink to this heading">#</a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>항목</p></th>
+<th class="head text-center"><p>값</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>base model</p></td>
+<td class="text-center"><p>SD v1.5</p></td>
+</tr>
+<tr class="row-odd"><td><p>image encoder</p></td>
+<td class="text-center"><p>OpenCLIP ViT-H/14</p></td>
+</tr>
+<tr class="row-even"><td><p>resolution</p></td>
+<td class="text-center"><p>512x512 (resized and center crop)</p></td>
+</tr>
+<tr class="row-odd"><td><p>optimizer</p></td>
+<td class="text-center"><p>AdamW</p></td>
+</tr>
+<tr class="row-even"><td><p>learning rate</p></td>
+<td class="text-center"><p>0.0001</p></td>
+</tr>
+<tr class="row-odd"><td><p>weight decay</p></td>
+<td class="text-center"><p>0.01</p></td>
+</tr>
+<tr class="row-even"><td><p>libraries</p></td>
+<td class="text-center"><p>Hugging Face diffusers,\ DeepSpeed SeRO-2</p></td>
+</tr>
+<tr class="row-odd"><td><p>GPU</p></td>
+<td class="text-center"><p>8 V100</p></td>
+</tr>
+<tr class="row-even"><td><p>training step</p></td>
+<td class="text-center"><p>1M</p></td>
+</tr>
+<tr class="row-odd"><td><p>batch size</p></td>
+<td class="text-center"><p>8 per GPU</p></td>
+</tr>
+<tr class="row-even"><td><p>classifier-free guidance</p></td>
+<td class="text-center"><p>0.05</p></td>
+</tr>
+<tr class="row-odd"><td><p>training data</p></td>
+<td class="text-center"><p>LAION-2B, COYO-700M</p></td>
+</tr>
+<tr class="row-even"><td><p>sampler for inference</p></td>
+<td class="text-center"><p>DDIM (50steps)</p></td>
+</tr>
+<tr class="row-odd"><td><p>guidance scale</p></td>
+<td class="text-center"><p>7.5</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\lambda\)</span></p></td>
+<td class="text-center"><p>1.0 for only image prompt</p></td>
+</tr>
+</tbody>
+</table>
 </div>
+</section>
+<section id="comparison-with-existing-methods">
+<h2>Comparison with Existing Methods<a class="headerlink" href="#comparison-with-existing-methods" title="Permalink to this heading">#</a></h2>
+<p><strong>Quantitative Comparison</strong></p>
+<figure class="align-default" id="id15">
+<a class="mb-1 reference internal image-reference" href="../../_images/image10.png"><img alt="실험결과" class="mb-1" src="../../_images/image10.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 282 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Qualitative Comparison</strong></p>
+<figure class="align-default" id="id16">
+<a class="mb-1 reference internal image-reference" href="../../_images/image111.png"><img alt="실험결과" class="mb-1" src="../../_images/image111.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 283 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>(실험 결과를 보고 IP-Adapter를 활용해 생성한 이미지가 reference와 지나치게 유사하다는 생각이 들었습니다. 몇몇은 그냥 좌우반전을 한것처럼 느껴졌습니다. 흔히 GAN에서 말하는 Model Collapse와 같은 현상이 아닌가 싶어 다양성이 낮아보이는 결과가 의아했으나, conclusion에서 이 단점을 언급합니다.)</p>
+</section>
+<section id="more-results">
+<h2>More Results<a class="headerlink" href="#more-results" title="Permalink to this heading">#</a></h2>
+<p><strong>Generalizable to Custom Models</strong></p>
+<figure class="align-default" id="id17">
+<a class="mb-1 reference internal image-reference" href="../../_images/image131.png"><img alt="실험결과" class="mb-1" src="../../_images/image131.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 284 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Structure Control</strong></p>
+<figure class="align-default" id="id18">
+<a class="mb-1 reference internal image-reference" href="../../_images/image14.png"><img alt="실험결과" class="mb-1" src="../../_images/image14.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 285 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Image-to-Image Inpainting</strong></p>
+<figure class="align-default" id="id19">
+<a class="mb-1 reference internal image-reference" href="../../_images/image15.png"><img alt="실험결과" class="mb-1" src="../../_images/image15.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 286 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Multimodal Prompts</strong></p>
+<figure class="align-default" id="id20">
+<a class="mb-1 reference internal image-reference" href="../../_images/image16.png"><img alt="실험결과" class="mb-1" src="../../_images/image16.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 287 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ablation-study">
+<h2>Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h2>
+<p><strong>Importance of Decoupled Cross-Attention</strong></p>
+<figure class="align-default" id="id21">
+<a class="mb-1 reference internal image-reference" href="../../_images/image17.png"><img alt="실험결과" class="mb-1" src="../../_images/image17.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 288 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Comparison of Fine-grained Features and Global Features</strong></p>
+<figure class="align-default" id="id22">
+<a class="mb-1 reference internal image-reference" href="../../_images/image181.png"><img alt="실험결과" class="mb-1" src="../../_images/image181.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 289 </span><span class="caption-text">실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>IP-Adapter는 CLIP image encoder로 부터 추출한 global image embedding를 사용하기 때문에 reference image의 일부 특성을 잃어버릴 수 있다. 따라서 fine-grained feature를 위한 IP-Adapter를 디자인했다. 첫번째로 CLIP image encoder에서 penultimate layer에서 grid feature를 뽑아낸다. 이후 작은 query network를 이용해 feature를 학습한다. grid feature로 부터 정보를 뽑아내기 위해 lightweight transformer를 사용해 learnable 16 token들을 정의한다. 이 token feature들을 query network의 cross-attention layer에 입력으로 넣어준다.</p>
+<p>두 adapter의 생성 결과를 비교하면 finer-grained feature를 이용하면 보다 image prompt와 가까운 결과를 얻을 수 있다. finer-grained feature는 spatial structure information을 학습하여 생성된 이미지의 diversity를 낮추는 결과를 초래할 수 있으나 추가적인 조건(text prompt, structure map)을 활용하면 다양한 이미지를 만들 수 있다. 예를 들어 위의 그림과 같이 사진+pose를 통해 이미지를 생성 할 수 있다.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
+<h1>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<p>본 연구에서는 사전 학습된 T2I diffusion model에 image prompt capability를 달성하기 위해 IP-Adapter를 제안한다. IP-Adapter의 핵심 디자인은 decoupled cross-attention으로 image feature를 분리하여 cross-attention을 수행한다. 고작 22M parameter가 추가된 IP-Adapter는 qualitative, quantitative experimental results 모두에서 비등하거나 나은 성능을 보인다. 또한 IP-Adapter는 확장성이 좋아 한번 훈련된 뒤, 다른 custom model, structural controllable tools에 곧바로 덧붙여 사용할 수도 있다. 더욱 중요한 점은 image prompt를 text prompt와 더애 멀티모달 이미지 생성을 가능케한다는 점이다.</p>
+<p>IP-Adapter는 효과적이지만 reference image와 content, style이 유사한 이미지만 생성할 수 있다는 단점이 있을 수 있다. 때문에 Textual Inversion이나 DreamBooth와 같이 특정 이미지 집합 풍의 이미지를 생성하지는 못한다. 미래에 consistency를 향상시킨 더 강력한 Image prompt adapter를 개발하는 것이 목표다.</p>
+<p><strong>Textural Inversion</strong></p>
+<figure class="align-default" id="id23">
+<a class="mb-1 reference internal image-reference" href="../../_images/image191.png"><img alt="실험결과" class="mb-1" src="../../_images/image191.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Textural Inversion 동작방식 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id24">
+<a class="mb-1 reference internal image-reference" href="../../_images/image20.png"><img alt="실험결과" class="mb-1" src="../../_images/image20.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Textural Inversion 실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>DreamBooth</strong></p>
+<figure class="align-default" id="id25">
+<a class="mb-1 reference internal image-reference" href="../../_images/image211.png"><img alt="실험결과" class="mb-1" src="../../_images/image211.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 292 </span><span class="caption-text">DreamBooth 동작 방식 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id26">
+<a class="mb-1 reference internal image-reference" href="../../_images/image22.png"><img alt="실험결과" class="mb-1" src="../../_images/image22.png" style="width: 40%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 293 </span><span class="caption-text">DreamBooth 실험결과 <a class="reference external" href="https://arxiv.org/abs/2308.06721">출처</a></span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -904,7 +1007,27 @@ DreamBooth
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="simple visible nav section-nav flex-column">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">IP-Adapter</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">Related Works</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-diffusion-models">Text-to-Image Diffusion Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adapters-for-large-models">Adapters for Large Models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">Preliminaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-prompt-adapter">Image Prompt Adapter</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experimental-setup">Experimental Setup</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-existing-methods">Comparison with Existing Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-results">More Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">Ablation Study</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 
   </nav></div>

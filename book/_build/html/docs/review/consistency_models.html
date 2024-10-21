@@ -227,6 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -556,7 +562,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_01.png"><img alt="consistency_models_01" class="bg-primary mb-1" src="../../_images/consistency_models_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 454 </span><span class="caption-text">Overview of Consistency Models</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 480 </span><span class="caption-text">Overview of Consistency Models</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 사진처럼 주어진 PF ODE (Probability Flow Ordinary Differential Equation) 에 대해서 동일한 trajectory 에 있는 point 들이 동일한 시작점으로 매핑되도록 모델을 학습하는 방식을 제안하고, 이러한 self-consistency 특성을 만족시킬 수 있도록 2가지 학습 방식을 소개합니다.</p>
@@ -573,7 +579,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_02.png"><img alt="consistency_models_02" class="bg-primary mb-1" src="../../_images/consistency_models_02.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 455 </span><span class="caption-text">Diffusion Models in Continuous Time</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 481 </span><span class="caption-text">Diffusion Models in Continuous Time</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -585,14 +591,14 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_03.png"><img alt="consistency_models_03" class="bg-primary mb-1" src="../../_images/consistency_models_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 456 </span><span class="caption-text">Probability Flow (PF) ODE</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 482 </span><span class="caption-text">Probability Flow (PF) ODE</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>일반적으로 위의 SDE 수식에서 <span class="math notranslate nohighlight">\(p_T(x)\)</span> 가 Gaussian distribution <span class="math notranslate nohighlight">\(\pi(x)\)</span> 를 따르도록 정의하고, 해당 논문에서 <a class="reference external" href="https://arxiv.org/abs/2206.00364">Karras et al., 2022</a> 와 동일하게 <span class="math notranslate nohighlight">\(\mu(x,t) = 0, \sigma(t) = \sqrt{2}t\)</span> 로 설정하였습니다. 그리고 sampling 시, score matching 을 통해 score model <span class="math notranslate nohighlight">\(s_{\phi}(x,t) \approx \nabla \log p_t(x)\)</span> 우선적으로 학습한 후, 위의 식에 대입하면 다음과 같은 empirical PF ODE 로 표현할 수 있습니다</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_04.png"><img alt="consistency_models_04" class="bg-primary mb-1" src="../../_images/consistency_models_04.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 457 </span><span class="caption-text">Empirical PF ODE</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 483 </span><span class="caption-text">Empirical PF ODE</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>다음 과정으로는 initial condition <span class="math notranslate nohighlight">\(x_T \sim N(0, T^2I)\)</span>  을 기반으로 Euler 나 Heun 등의 numerical ode solver 를 통해 역방향으로 풀어 solution trajectory <span class="math notranslate nohighlight">\(\{x_t\}_{t \in [0,T]}\)</span><span class="math notranslate nohighlight">\({x_t}\)</span><span class="math notranslate nohighlight">\(\hat{x}_0\)</span><span class="math notranslate nohighlight">\({x_t}\)</span><span class="math notranslate nohighlight">\(p_{data}(x)\)</span> 로부터 나온 샘플에 대한 근사값이라고 할 수 있습니다.</p>
@@ -607,7 +613,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_05.png"><img alt="consistency_models_05" class="bg-primary mb-1" src="../../_images/consistency_models_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 458 </span><span class="caption-text">Self-Consistency</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 484 </span><span class="caption-text">Self-Consistency</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Parameterization</strong></p>
@@ -615,21 +621,21 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_06.png"><img alt="consistency_models_06" class="bg-primary mb-1" src="../../_images/consistency_models_06.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 459 </span><span class="caption-text">Parameterization Method 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 485 </span><span class="caption-text">Parameterization Method 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 <span class="math notranslate nohighlight">\(F_{\theta}(x,t)\)</span> 는 output 차원이 <span class="math notranslate nohighlight">\(x\)</span> 와 동일한 free-form deep neural network 입니다. 두번째 방식으로는, 다음과 같이 skip-connection 을 활용합니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_07.png"><img alt="consistency_models_07" class="bg-primary mb-1" src="../../_images/consistency_models_07.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 460 </span><span class="caption-text">Parameterization Method 2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Parameterization Method 2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(F_{\theta}(x,t), c_{skip}(t), c_{out}(t)\)</span> 는 <span class="math notranslate nohighlight">\(c_{skip}(\epsilon) = 1, c_{out}(\epsilon) = 0\)</span> 조건을 만족시키는 미분 가능한 함수로 정의합니다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_08.png"><img alt="consistency_models_08" class="bg-primary mb-1" src="../../_images/consistency_models_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 461 </span><span class="caption-text">Parameterization Method 2 - <span class="math notranslate nohighlight">\(c_{skip}(t), c_{out}(t)\)</span></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Parameterization Method 2 - <span class="math notranslate nohighlight">\(c_{skip}(t), c_{out}(t)\)</span></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>두번째 parameterization 기법이 diffusion model 형식과 매우 유사하여 이러한 diffusion model 아키텍쳐를 leverage 하기 위해 논문에서 두번째 방식으로 parameterization 을 하는 방식을 택합니다.</p>
@@ -638,7 +644,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_09.png"><img alt="consistency_models_09" class="bg-primary mb-1" src="../../_images/consistency_models_09.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 462 </span><span class="caption-text">Multistep Consistency Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 488 </span><span class="caption-text">Multistep Consistency Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Zero-Shot Data Editing</strong></p>
@@ -648,7 +654,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_10.png"><img alt="consistency_models_10" class="bg-primary mb-1" src="../../_images/consistency_models_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 463 </span><span class="caption-text">Consistency Models - Inpainting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 489 </span><span class="caption-text">Consistency Models - Inpainting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -656,7 +662,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_11.png"><img alt="consistency_models_11" class="bg-primary mb-1" src="../../_images/consistency_models_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 464 </span><span class="caption-text">Consistency Models - Interpolation</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Consistency Models - Interpolation</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -664,7 +670,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_12.png"><img alt="consistency_models_12" class="bg-primary mb-1" src="../../_images/consistency_models_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 465 </span><span class="caption-text">Consistency Models - Self-consistency</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Consistency Models - Self-consistency</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -682,35 +688,35 @@ t_i = (\epsilon^{1/\rho} + \frac{i-1}{N-1}(T^{1/\rho}-\epsilon^{1/\rho}))^{\rho}
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_13.png"><img alt="consistency_models_13" class="bg-primary mb-1" src="../../_images/consistency_models_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 466 </span><span class="caption-text">One Discretization Step of a Numerical ODE Solver</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 492 </span><span class="caption-text">One Discretization Step of a Numerical ODE Solver</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(\Phi(\cdots; \phi)\)</span> 은 empirical PF ODE 에 적용되는 one step ODE solver 의 update function 입니다. Euler solver 같은 경우, <span class="math notranslate nohighlight">\(\Phi(x,t;\phi) = -ts_{\phi}(x,t)\)</span> 를 대입하면 다음과 같이 표현할 수 있게 됩니다.</p>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_14.png"><img alt="consistency_models_14" class="bg-primary mb-1" src="../../_images/consistency_models_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 467 </span><span class="caption-text">One Discretization Step of a Euler ODE Solver</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 493 </span><span class="caption-text">One Discretization Step of a Euler ODE Solver</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 수식을 활용하여 주어진 <span class="math notranslate nohighlight">\(x \sim p_{data}\)</span> 에 대해서 PF ODE trajectory 에 있는 인접한 두 지점 <span class="math notranslate nohighlight">\((\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})\)</span> 을 샘플링할 수 있게 됩니다. 더 자세하게는, <span class="math notranslate nohighlight">\(x_{t_{n+1}} \sim N(x,t^2_{n+1}I)\)</span> 를 우선적으로 샘플링한 후, 위 수식을 기반으로 numerical ode solver 의 discretization step 을 한번 거쳐 <span class="math notranslate nohighlight">\(\hat{x}^{\phi}_{t_n}\)</span> 을 계산합니다. 최종적으로 <span class="math notranslate nohighlight">\((\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})\)</span> 로부터의 모델 출력값 차이를 최소화하도록 consistency model 을 학습하게 되고, 학습 시 사용되는 <em>consistency distillation loss</em> 는 다음과 같이 정의합니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_15.png"><img alt="consistency_models_15" class="bg-primary mb-1" src="../../_images/consistency_models_15.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 468 </span><span class="caption-text">Consistency Distillation Loss</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Consistency Distillation Loss</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 metric function <span class="math notranslate nohighlight">\(d(\cdot,\cdot)\)</span> 로는 L1 distance, L2 distance, 그리고 LPIPS distance 를 사용하였고, 실험적으로 확인해본 결과 <span class="math notranslate nohighlight">\(\lambda(t_n) \equiv 1\)</span> 를 적용했을 때 모델 성능이 가장 좋은 부분을 확인할 수 있었다고 합니다. 파라미터 <span class="math notranslate nohighlight">\(\theta\)</span> 는 stochastic gradient descent 그리고 <span class="math notranslate nohighlight">\(\theta^-\)</span> 는 exponential moving average (EMA) 로 학습하였다고 합니다.</p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_16.png"><img alt="consistency_models_16" class="bg-primary mb-1" src="../../_images/consistency_models_16.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 469 </span><span class="caption-text">Exponential Moving Average (EMA)</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Exponential Moving Average (EMA)</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이처럼 EMA update 와 stopgrad operator 로 학습할 시, <span class="math notranslate nohighlight">\(\theta = \theta^{-}\)</span> 로 설정할때보다 모델을 더 안정적으로 학습할 수 있고 성능에도 개선이 있었다고 합니다. 전체적인 학습 절차는 하단의 Algorithm 2 처럼 정리할 수 있습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_17.png"><img alt="consistency_models_17" class="bg-primary mb-1" src="../../_images/consistency_models_17.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 470 </span><span class="caption-text">Overview of Consistency Distillation (CD)</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Overview of Consistency Distillation (CD)</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\theta^{-}\)</span>  는 과거 <span class="math notranslate nohighlight">\(\theta\)</span> 에 대한 running average 이므로 Algorithm 2 가 수렴할 시 이 둘은 일치하게 됩니다. 즉, target network <span class="math notranslate nohighlight">\(f_{\theta^-}\)</span>와 online network <span class="math notranslate nohighlight">\(f_{\theta}\)</span>  가 일치하게 됩니다.</p>
@@ -721,7 +727,7 @@ t_i = (\epsilon^{1/\rho} + \frac{i-1}{N-1}(T^{1/\rho}-\epsilon^{1/\rho}))^{\rho}
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_18.png"><img alt="consistency_models_18" class="bg-primary mb-1" src="../../_images/consistency_models_18.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 471 </span><span class="caption-text">Unbiased Estimator of Score Function</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Unbiased Estimator of Score Function</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -738,7 +744,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_19.png"><img alt="consistency_models_19" class="bg-primary mb-1" src="../../_images/consistency_models_19.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 472 </span><span class="caption-text">Consistency Training Loss</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Consistency Training Loss</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -746,14 +752,14 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_20.png"><img alt="consistency_models_20" class="bg-primary mb-1" src="../../_images/consistency_models_20.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 473 </span><span class="caption-text">Schedule Functions for Consistency Training</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Schedule Functions for Consistency Training</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서 추가적인 성능 개선을 위해 <span class="math notranslate nohighlight">\(N\)</span> 을 점진적으로 증가시키는 방식을 제안합니다. <span class="math notranslate nohighlight">\(N\)</span>  이 작을수록 (<span class="math notranslate nohighlight">\(i.e., \Delta t\)</span> 가 클수록) consistency training loss 가 consistency distillation loss 와 비교했을때 variance 는 감소하지만 bias 는 증가하게 되어, 초기에 더 빠른 convergence 에 이르는데 용이합니다. 반면에, <span class="math notranslate nohighlight">\(N\)</span> 이 클수록 (<span class="math notranslate nohighlight">\(i.e., \Delta t\)</span> 가 작을수록) variance 는 증가하고 bias 는 감소하게 되어, 학습의 마지막 단계에 적용하는 것이 바람직하다고 제안합니다. EMA decay rate schedule function <span class="math notranslate nohighlight">\(\mu(\cdot)\)</span> 도 <span class="math notranslate nohighlight">\(N\)</span>  에 따라 바뀌는 함수로 최종적으로 정의합니다. 전체적인 학습 절차는 하단의 Algorithm 3 처럼 정리할 수 있습니다.</p>
 <figure class="align-default" id="id22">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_21.png"><img alt="consistency_models_21" class="bg-primary mb-1" src="../../_images/consistency_models_21.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 474 </span><span class="caption-text">Overview of Consistency Training (CT)</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Overview of Consistency Training (CT)</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -774,7 +780,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id23">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_22.png"><img alt="consistency_models_22" class="bg-primary mb-1" src="../../_images/consistency_models_22.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 475 </span><span class="caption-text">Experimental Results - Hyperparameters</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Experimental Results - Hyperparameters</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -800,7 +806,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id24">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_23.png"><img alt="consistency_models_23" class="bg-primary mb-1" src="../../_images/consistency_models_23.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 476 </span><span class="caption-text">Experimental Results - Distillation</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 502 </span><span class="caption-text">Experimental Results - Distillation</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Direct Generation</strong></p>
@@ -808,7 +814,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id25">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_24.png"><img alt="consistency_models_24" class="bg-primary mb-1" src="../../_images/consistency_models_24.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 477 </span><span class="caption-text">Experimental Results - Direct Generation</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 503 </span><span class="caption-text">Experimental Results - Direct Generation</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -819,13 +825,13 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id26">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_25.png"><img alt="consistency_models_25" class="bg-primary mb-1" src="../../_images/consistency_models_25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 478 </span><span class="caption-text">Pseudocode for Zero-Shot Image Editing</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 504 </span><span class="caption-text">Pseudocode for Zero-Shot Image Editing</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id27">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_26.png"><img alt="consistency_models_26" class="bg-primary mb-1" src="../../_images/consistency_models_26.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 479 </span><span class="caption-text">Zero-Shot Image Editing Results</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 505 </span><span class="caption-text">Zero-Shot Image Editing Results</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

@@ -75,6 +75,7 @@ CVPR 2024 Workshop
 | 34 | 2024.09.18 | Sangwoo Jo | [One-step Image Translation with Text-to-Image Models](https://arxiv.org/abs/2403.12036) |
 | 35 | 2024.09.25 | Joongwon Lee | [One-step Diffusion with Distribution Matching Distillation](https://arxiv.org/abs/2311.18828) (CVPR 2024) |
 | 36 | 2024.10.02 | Donghyun Han | [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](https://arxiv.org/abs/2311.05556)|
+| 37 | 2024.10.09 | Kyeongmin Yu | [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)|
 
 
 

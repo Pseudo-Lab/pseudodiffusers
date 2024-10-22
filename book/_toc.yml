@@ -29,6 +29,7 @@ parts:
   - file: docs/review/SDEdit
   - file: docs/review/SDXL
   - file: docs/review/t2i_adapter
+  - file: docs/review/IP_Adapter
   - file: docs/review/HyperDreamBooth
   - file: docs/review/CM3leon
   - file: docs/review/Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification

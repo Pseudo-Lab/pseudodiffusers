@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>MimicBrush: Zero-shot Image Editing with Reference Imitation &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/MimicBrush';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="LCM-LoRA: A Universal Stable-Diffusion Acceleration Module" href="LCM-LoRA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/MimicBrush.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/MimicBrush.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MimicBrush: Zero-shot Image Editing with Reference Imitation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-lines-summary">Three Lines Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">2. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-pipeline">Overall Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-structure">Model Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-strategy">Training Strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-benchmark">Evaluation Benchmark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-with-other-works">Comparisons with Other Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">Ablation Studies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">Qualitative Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> MimicBrush: Zero-shot Image Editing with Reference Imitation</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2406.07547">https://arxiv.org/pdf/2406.07547</a></p></li>
+<li><p>Code: <a class="reference external" href="https://github.com/ali-vilab/MimicBrush">Official</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Chanyeong Shin</p></li>
+<li><p><strong>Last updated on Nov. 05, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="mimicbrush-zero-shot-image-editing-with-reference-imitation">
+<h1>MimicBrush: Zero-shot Image Editing with Reference Imitation<a class="headerlink" href="#mimicbrush-zero-shot-image-editing-with-reference-imitation" title="Permalink to this heading">#</a></h1>
+<section id="three-lines-summary">
+<h2>Three Lines Summary<a class="headerlink" href="#three-lines-summary" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Edited Image 로 어떻게 자연스럽게 변해야 할지에 관한 <strong>“imitative editing” 에 관한 아이디어</strong></p></li>
+<li><p><strong>Source Image 와 Reference Image 간의 correspondence</strong> 를 이용해 바뀌어야 할 부분을 잘 가져오는 방법인 MimicBrush 라고 명명한 generative training framework 제안</p></li>
+<li><p><strong>SOTA 인 동시에 앞으로의 imitative editing 연구를 위한 evaluation benchmark</strong> 제안</p></li>
+</ol>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Image editing 분야 자체가 굉장히 수많은 요구 조건과 시나리오를 만족하면서 수행되어야 했기에 기존의 방법들이 여전히 challenging 한 문제를 풀고 있음</p></li>
+<li><p>기존의 방법들은 현재 source image 와 함께 해당 mask 를 input 으로 넣어주고 있음 (이건 공통)</p>
+<ul>
+<li><p>Inpainting method</p>
+<ul>
+<li><p>editing 이라는 task 를 <strong>“Text Prompt”</strong> 하나로만 해결하고자 했는데 이건 원하는 결과를 뽑아내기에는 적절하지 않음</p></li>
+<li><p>My thoughts : 실제로 inpainting 은 refining 과 같이 자연스럽게 만들어주는 것 외에는 실무에서 잘 사용하지는 않았던 것 같음</p></li>
+</ul>
+</li>
+<li><p>Composition method</p>
+<ul>
+<li><p>ref image 와 ref mask/box 를 이용해 이를 해결하고자 하였는데, 아무래도 <strong>“individual object” 를 insertion</strong> 하는 작업처럼 느껴 모델이 어려워 할 만 했음</p>
+<ul>
+<li><p>shoe soles 이나 hair 와 같은 local components 나 로고나 texture 같은 local patterns</p></li>
+</ul>
+</li>
+<li><p>또한, Image 로부터 reference area 를 완벽하게 잘 추출하는 방법이 필요했음</p></li>
+<li><p>Local components 들은 또 전체 image 에 잘 어우러지게 하는 것도 고려해야 했고, 학습 과정에서 같은 object 인데 frame 에 따라 모양도 조금씩 달라서 이런 다양한 문제들을 풀어야 했음</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>앞선 문제들을 해결하기 위해서, editing 을 할 수 있는 novel pipeline 인 <strong>imitative editing</strong> 을 제안</p>
+<ul>
+<li><p>Ref image 에서 mask 는 사용하지 않고 source image 의 mask area 부분을 ref image 에서 어디에 해당하는지 자동으로 찾고 모방할 수 있도록 하였음</p></li>
+</ul>
+</li>
+<li><p>Imitative editing 을 하기 위해서 <strong>MimicBrush 라고 하는 dual diffusion U-Nets network framework</strong> 를 제안</p>
+<ul>
+<li><p>self-supervised manner 로 학습함 → 같은 video 에서 source / ref image 를 뽑아서 학습에 활용하는 방식</p></li>
+<li><p>당연히 같은 video 에서 추출했기 때문에 semantic correspondence 와 visual variations 를 가지고 있을 것</p></li>
+<li><p>masked source image 는 imitative U-Net 으로 / reference image 는 reference U-Net 으로 통과 → 이후  reference U-Net 의 attention K,V 를 imitative U-Net 에 injection 시키는 방식</p></li>
+</ul>
+</li>
+<li><p>이 Image editing 방식을 이용하여 학습된 model 은 구도, 조명, 카테고리 자체가 달라도 잘 변환이 되는 결과를 보였으며, ref image 의 visual concepts 의 detail 도 잘 유지한 채로 가져오는 것을 확인하였음</p></li>
+<li><p>조금 더 comprehensive 한 evaluation 을 위해서 imitative editing 의 benchmark 까지 제안</p>
+<ul>
+<li><p>part composition : 얼마나 part 구성이 자연스럽게 잘 되었는가?</p></li>
+<li><p>texture transfer : 느낌을 얼마나 잘 유지하면서 texture 가 변환됐는가?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="method">
+<h2>2. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_1.png"><img alt="The training process of MimicBrush" class="bg-primary mb-1" src="../../_images/MimicBrush_1.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 570 </span><span class="caption-text">The training process of MimicBrush</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="overall-pipeline">
+<h3>Overall Pipeline<a class="headerlink" href="#overall-pipeline" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Dual diffusion models architecture + self-supervised manner</strong></p></li>
+<li><p>Video data 에는 consistent content 를 가지고 있고 visual variations 까지 있기 때문에 이를 활용</p>
+<ul>
+<li><p>랜덤하게 video clip 에서 two frames 를 뽑아서 학습 sample 로 활용</p></li>
+</ul>
+</li>
+<li><p>source image 는 masking 시키고, ref image 는 masked source image 를 recover 할 수 있도록 도움을 주도록 넣음</p></li>
+<li><p>결국 MimicBrush 는 dog’s face 와 같은 corresponding visual information 이 위치하는 것을 학습하고 source image 의 masked area 를 repaint 시킴</p></li>
+<li><p>또한 source image 의 빈 부분을 채우는 과정에서 자연스럽게 blending 시켜야 하기 때문에 visual content 를 같은 환경의 포즈, 조명, 시점으로 변환하는 것도 학습</p></li>
+<li><p>앞서 언급했던 것처럼 dual branch 의 U-Nets 구조를 활용 → imitative and reference U-Net</p>
+<ul>
+<li><p>attention layers 의 K,V 는 서로 share 하고(실질적으로는 concat) reference image 로부터 indications 을 찾아 masked source image 를 만들도록 함</p></li>
+</ul>
+</li>
+<li><p>추가로, source &amp; ref image 에 variation 을 증가시키기 위해 augmentation 도 적용</p></li>
+<li><p>또한, optional condition 으로 imitative U-Net 에 depth map 도 줌</p>
+<ul>
+<li><p>inference 단계에서 object 의 shape 가 잘 유지됐는지 depth map 을 활용할지 말지를 결정할 수도 있게 하였음</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="model-structure">
+<h3>Model Structure<a class="headerlink" href="#model-structure" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Imitative U-Net</p>
+<ul>
+<li><p>Base : SD-1.5 inpainting model</p></li>
+<li><p>Input : 13 channels tensor</p>
+<ul>
+<li><p>image latent → 4 channels</p></li>
+<li><p>binary mask → 1 channel</p></li>
+<li><p>background latent → 4 channels</p></li>
+<li><p>depth latent → 4 channels</p></li>
+</ul>
+</li>
+<li><p>(Figure 에는 나와있지 않지만) 기존 original U-Net 은 CLIP 을 text embedding 으로 활용하는데, 본 논문은 CLIP 을 reference image 으로부터 뽑아낸 image embedding 을 cross-attention 에 활용</p>
+<ul>
+<li><p>image embedding 이후에 projection layer 을 거쳐 들어감</p></li>
+</ul>
+</li>
+<li><p>학습은 imitative U-Net 과 CLIP projection layer 의 parameters 들이 학습..</p></li>
+</ul>
+</li>
+<li><p>Reference U-Net</p>
+<ul>
+<li><p>최근에 굉장히 많은 연구들이 reference image 로부터 fine-grained features 를 뽑아내기 위해 additional U-Net 을 활용하는 것이 훨씬 더 효율적이라는 것을 증명하였음</p></li>
+<li><p>Base : SD-1.5</p></li>
+<li><p>reference features 를 imitative U-Net 의 middle &amp; upper stages 에 K,V 를 injection (concat) 시킴</p>
+<ul>
+<li><p>이를 통해, imitative U-Net 이 reference image 의 content 를 활용해 source image 의 masking 된 부분을 완성시킴</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Depth Model</p>
+<ul>
+<li><p>Depth Anything 으로 unmasked source image 의 depth map 을 뽑도록 했음</p></li>
+<li><p>Depth model 자체는 freeze 시키고, trainable projector 를 넣어 depth map 을 depth latent 인 4-channel 로 projection 시킬 수 있도록 함</p></li>
+<li><p>학습 중에는 depth model 의 input 을 0.5 확률로 drop 시킴으로써 inference 중에 optional 하게 shape control 을 가능하도록 함</p>
+<ul>
+<li><p>My thoughts : 아마 texture transfer task 를 위함 일듯</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="training-strategy">
+<h3>Training Strategy<a class="headerlink" href="#training-strategy" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>MimicBrush 의 cross-image imitation ability (서로 다른 카테고리에서 잘 모방해오는 능력 정도로 이해하면 됨) 를 끌어올리기 위해서는 조금 더 적합한 training sample 을 모아서 학습할 수 있는 방법이 필요했음</p></li>
+<li><p>Training data 를 구축하는 과정에서 두 가지의 철학을 지키려 하였음</p>
+<ol class="arabic simple">
+<li><p>source / reference images 들 간의 correspondence relation 이 존재해야 한다.</p></li>
+<li><p>robustness 를 위해 source / reference image 사이의 large variations 을 기대할 수 있어야 한다.</p></li>
+</ol>
+</li>
+<li><p>Data selection</p>
+<ul>
+<li><p>학습 중에는 같은 비디오로부터 frame 2개를 sampling 해서 뽑았음</p></li>
+<li><p>SSIM 을 이용해 video frames 간의 similarity 를 측정했고 너무 그 값이 크거나 작으면 filtering 했음</p></li>
+</ul>
+</li>
+<li><p>Data augmentation</p>
+<ul>
+<li><p>source &amp; reference image 의 variation 을 증가시키기 위해서, 강력한 data augmentation 을 활용</p>
+<ul>
+<li><p>color jitter, rotation, resizing, flipping, 심지어는 random projection transformation 으로 더욱 강한 deformation 도 수행</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Masking strategy</p>
+<ul>
+<li><p>가장 간단하게는 image 를 N x N grid 로 나누고 랜덤하게 masking 시키는 방법인데 저자들은 이렇게 랜덤하게 가져가면 easy cases 들이 많은 portion 을 차지한다는 것을 발견</p>
+<ul>
+<li><p>ex. 배경 같은 큰 area 를 차지하는 것들은 계속 반복되는 content/textures 이기 때문에 도움이 안됨</p></li>
+</ul>
+</li>
+<li><p>SIFT matching 을 이용해서 source &amp; ref image 의 matching points 를 얻고 그 matched feature points 의 grids 들을 좀 더 masking 하도록 하였음</p></li>
+<li><p>video 보다 high-quality image 를 찾는 것이 더 쉬웠기 때문에 static image 한 장을 가지고 augmentation 시킨 다음, seg map 가지고 masking 시키는 방식으로도 활용 → robustness 를 증가시키는 효과를 불러일으킴</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="evaluation-benchmark">
+<h3>Evaluation Benchmark<a class="headerlink" href="#evaluation-benchmark" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_2.png"><img alt="Evaluation Benchmark" class="bg-primary mb-1" src="../../_images/MimicBrush_2.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 571 </span><span class="caption-text">Evaluation Benchmark</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Imitative editing 은 굉장히 novel 한 task 이기 때문에 본 논문에서 성능을 evaluation 할 수 있는 benchmark 까지 제공</p></li>
+<li><p>Part composition</p>
+<ul>
+<li><p>source / ref image 간의 semantic correspondence 를 찾고 composition 시키는 task</p></li>
+<li><p>Inter-ID track</p>
+<ul>
+<li><p>Fashion, animal, product, scenario 등 다양한 data 를 각 topic 마다 30 장씩 모았음</p></li>
+<li><p>수동으로 source mask 를 다 그리고, 생성된 결과 GT 도 없기 때문에 직접 reference regions 과 text prompt 까지 다 annotation 시킴 = 노가다 했음</p></li>
+<li><p>reference region 과 생성된 region 사이의 similarity 도 DINO 와 CLIP image sim score 를 계산하도록 했고 edited image 와 text prompt 사이의 CLIP text similarity 도 report 해놓음</p></li>
+</ul>
+</li>
+<li><p>Inner-ID track</p>
+<ul>
+<li><p>DreamBooth 로부터 30 image paris 가져와서 source image masking 다 함</p></li>
+<li><p>GT 와는 SSIM, PSNR, LPIPS score 활용</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Texture transfer</p>
+<ul>
+<li><p>ref image 의 texture 나 pattern 을 얼마나 잘 transfer 했는지에 관한 task</p></li>
+<li><p>Additional condition 으로 depth map 을 활용</p></li>
+<li><p>Part composition 은 semantic correspondence 를 찾도록 하지만, 이 task 는 source shape 는 유지하면서 reference 의 texture 를 얼마나 잘 가져오는지를 판단하도록 objects 전체를 masking</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<section id="implementation-details">
+<h3>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Hyperparameters</p>
+<ul>
+<li><p>512x512 image 로 resolution 다 맞추도록 해서 학습</p></li>
+<li><p>Adam optimizer &amp; lr : 1e-5</p></li>
+<li><p>grid number N : 3~10 에서 randomly choose</p></li>
+<li><p>masking 은 SIFT-matched features points 는 75% 고르도록 하고, 나머지는 50% 고르도록 하였음</p></li>
+<li><p>Reference U-Net 에는 CFG 10% 확률로 drop 하도록 하였고, inference 시에 guidance scale 은 5</p></li>
+</ul>
+</li>
+<li><p>Training data</p>
+<ul>
+<li><p>Pexels 같은 websites 에서 100k video</p></li>
+<li><p>diversity 증가시키기 위해서 SAM dataset 도 활용 → 여기서 static image augmentation 적용</p></li>
+<li><p>학습 중에는 Pexels 70% , SAM 30%</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="comparisons-with-other-works">
+<h3>Comparisons with Other Works<a class="headerlink" href="#comparisons-with-other-works" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_3.png"><img alt="Qualitative Result" class="bg-primary mb-1" src="../../_images/MimicBrush_3.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Qualitative Result</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_4.png"><img alt="Quantitative Result" class="bg-primary mb-1" src="../../_images/MimicBrush_4.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 573 </span><span class="caption-text">Quantitative Result</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ablation-studies">
+<h3>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_5.png"><img alt="Ablation Studies" class="bg-primary mb-1" src="../../_images/MimicBrush_5.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Ablation Studies</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="qualitative-analysis">
+<h3>Qualitative Analysis<a class="headerlink" href="#qualitative-analysis" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_6.png"><img alt="Qualitative Analysis" class="bg-primary mb-1" src="../../_images/MimicBrush_6.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 575 </span><span class="caption-text">Qualitative Analysis</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Robust performance.. But, region 이 너무 작거나 multiple candidates 가 있게 되면 실패하는 경우가 생기긴 했음</p>
+<ul>
+<li><p>이럴 때는 zoom in 을 해서 하는 것을 추천한다고 함</p></li>
+</ul>
+</li>
+<li><p>여전히 유해한 content 들을 editing 하는 경우도 있기 때문에 이를 필터링 할 수 있는 방법이 고안되어야 한다고 주장</p></li>
+</ul>
+</section>
+<section id="review">
+<h2>Review<a class="headerlink" href="#review" title="Permalink to this heading">#</a></h2>
+<aside>
+🔖
+<p><strong>Three Line Review</strong></p>
+<ol class="arabic simple">
+<li><p>논문 자체의 색깔이 역시 실무에 적합한 페이퍼다 !</p></li>
+<li><p>Evaluation benchmark 까지 제안하면서 새로운 field 를 열려고 하는 시도가 인상 깊었다</p></li>
+<li><p>paper 자체는 24.06 으로 따끈따끈한데 왜 SD 1.5 썼는지 이해가 잘 안 됐던.. 다른 baseline 도 써봤으면 더 좋았을 것 같다</p></li>
+</ol>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LCM-LoRA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#three-lines-summary">Three Lines Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">2. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-pipeline">Overall Pipeline</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-structure">Model Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-strategy">Training Strategy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-benchmark">Evaluation Benchmark</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons-with-other-works">Comparisons with Other Works</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">Ablation Studies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">Qualitative Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review">Review</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

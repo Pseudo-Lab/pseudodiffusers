@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -147,6 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -268,6 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="current nav bd-sidenav">
@@ -476,10 +479,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -487,7 +490,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -592,7 +595,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/inference_pipeline.png"><img alt="inference_pipeline" class="bg-primary mb-1" src="../../_images/inference_pipeline.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 595 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 601 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -646,7 +649,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_pipeline.png"><img alt="training_pipeline" class="bg-primary mb-1" src="../../_images/training_pipeline.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 596 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 602 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -672,19 +675,19 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id5">
 <a class="reference internal image-reference" href="../../_images/clip.png"><img alt="clip_pipeline" src="../../_images/clip.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 597 </span><span class="caption-text">CLIP:Contrastive language-image pre-training</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 603 </span><span class="caption-text">CLIP:Contrastive language-image pre-training</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../../_images/imagen.png"><img alt="imagen_pipeline" src="../../_images/imagen.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 598 </span><span class="caption-text">Imagen</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 604 </span><span class="caption-text">Imagen</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../../_images/eDiff-I.png"><img alt="eDiff-I_pipeline" src="../../_images/eDiff-I.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 599 </span><span class="caption-text">eDiff-I</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 605 </span><span class="caption-text">eDiff-I</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -787,7 +790,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/inference_pipeline.png"><img alt="inference_pipeline" class="bg-primary mb-1" src="../../_images/inference_pipeline.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 600 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 606 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -802,7 +805,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_pipeline.png"><img alt="training_pipeline" class="bg-primary mb-1" src="../../_images/training_pipeline.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 601 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 607 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="alleviate-negative-effects-from-training-data-with-domain-adapter">
@@ -813,7 +816,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/lora.png"><img alt="lora" class="bg-primary mb-1" src="../../_images/lora.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 602 </span><span class="caption-text">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 608 </span><span class="caption-text">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -880,7 +883,7 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-1.png"><img alt="experiments_1" class="bg-primary mb-1" src="../../_images/exp-1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 603 </span><span class="caption-text">qualitative results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 609 </span><span class="caption-text">qualitative results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -889,7 +892,7 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-2.png"><img alt="experiments_2" class="bg-primary mb-1" src="../../_images/exp-2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 604 </span><span class="caption-text">quantitative results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 610 </span><span class="caption-text">quantitative results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -926,7 +929,7 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-3.png"><img alt="effect_of_domain_adapter" class="bg-primary mb-1" src="../../_images/exp-3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 605 </span><span class="caption-text">scaler를 0으로 하면 domain adapter에 의한 효과를 제거한 것과 같다. 위의 그림은 모델이 생성한 animation clip의 첫번째 프레임이다.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 611 </span><span class="caption-text">scaler를 0으로 하면 domain adapter에 의한 효과를 제거한 것과 같다. 위의 그림은 모델이 생성한 animation clip의 첫번째 프레임이다.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>domain adapter에 의한 효과를 제거했을때 전체적인 이미지 퀄리티가 높아 보이는데, 이는 domain adapter가 video dataset의 특성이라고 할 수 있는 watermark나 모션 블러 등을 학습했기 때문이다. 즉, domain adapter가 전체 학습과정에 도움이 되었음을 보여준다.</p>
@@ -942,7 +945,7 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-4.png"><img alt="experiments-4" class="bg-primary mb-1" src="../../_images/exp-4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 606 </span><span class="caption-text">Efficiency of MotionLoRA</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 612 </span><span class="caption-text">Efficiency of MotionLoRA</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -966,7 +969,7 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-5.png"><img alt="experiments_5" class="bg-primary mb-1" src="../../_images/exp-5.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 607 </span><span class="caption-text">Controllability of AnimateDiff</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 613 </span><span class="caption-text">Controllability of AnimateDiff</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>visual content와 motion prior의 개별 학습을 통해 AnimateDiff가 existing content를 조절할 수 있도록 했다. 이 특성을 확인하기 위해 AnimateDiff를 ControlNet과 결합하여 영상 생성시 depth를 통해 조절할 수 있도록 했다.</p>
@@ -985,14 +988,14 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/0-side-view-photo-of-17-year-old-girl-in-a-japanese-school_edit.gif"><img alt="hands_on_1" class="bg-primary mb-1" src="../../_images/0-side-view-photo-of-17-year-old-girl-in-a-japanese-school_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 608 </span><span class="caption-text">side-view-photo-of-17-year-old-girl-in-a-japanese-school<br />
+<p><span class="caption-number">Fig. 614 </span><span class="caption-text">side-view-photo-of-17-year-old-girl-in-a-japanese-school<br />
 gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/0-side-view-photo-of-man-in-black-padded-jumper,-hallway,_edit.gif"><img alt="hands_on_2" class="bg-primary mb-1" src="../../_images/0-side-view-photo-of-man-in-black-padded-jumper,-hallway,_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 609 </span><span class="caption-text">side-view-photo-of-man-in-black-padded-jumper<br />
+<p><span class="caption-number">Fig. 615 </span><span class="caption-text">side-view-photo-of-man-in-black-padded-jumper<br />
 직접 촬영한 사진을 input으로 사용함<br />
 입력한 사진의 인물의 인종이 유지되지 않았는데 학습데이터 셋의 불균형 때문으로 사료됨</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1000,7 +1003,7 @@ gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" hre
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes,_edit.gif"><img alt="hands_on_3" class="bg-primary mb-1" src="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes,_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 610 </span><span class="caption-text">image-of-a-man-with-blonde-hair-and-blue-eyes<br />
+<p><span class="caption-number">Fig. 616 </span><span class="caption-text">image-of-a-man-with-blonde-hair-and-blue-eyes<br />
 gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -1167,8 +1170,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

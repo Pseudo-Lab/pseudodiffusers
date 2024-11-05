@@ -47,6 +47,7 @@ parts:
   - file: docs/review/DiT
   - file: docs/review/one-step-image-translation
   - file: docs/review/LCM-LoRA
+  - file: docs/review/MimicBrush
 
 - caption: Video Generation
   chapters:

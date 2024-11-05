@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -80,27 +80,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,8 +118,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -146,6 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -226,6 +229,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -261,6 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -328,7 +338,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -337,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -469,10 +479,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -480,7 +490,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -569,7 +579,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure1.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/figure1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 644 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -621,7 +631,7 @@ F_{\Theta} : (\mathbf{x},\mathbf d)↦(\mathbf c,\sigma) \tag{1}
 <figure class="align-default" id="id3">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4859.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/IMG_4859.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 645 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 677 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -646,7 +656,7 @@ w_i \sim T_i(1-\text{exp}(-\sigma(\mathbf r(t_i))\delta_i))\tag{4}
 <figure class="align-default" id="id4">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4860.png"><img alt="figure2" class="bg-light mb-1" src="../../_images/IMG_4860.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 646 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 678 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -658,7 +668,7 @@ w_i \sim T_i(1-\text{exp}(-\sigma(\mathbf r(t_i))\delta_i))\tag{4}
 <figure class="align-default" id="id5">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4872.png"><img alt="figure3" class="bg-light mb-1" src="../../_images/IMG_4872.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 647 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
+<p><span class="caption-number">Fig. 679 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
 source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -670,7 +680,7 @@ source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href=
 <figure class="align-default" id="id6">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure4" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 648 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+<p><span class="caption-number">Fig. 680 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
 source - <a class="reference external" href="https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models">tutorials in grabcad</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -745,7 +755,7 @@ two stage 방식으로 Shap-E를 학습시킨다.<br />
 <figure class="align-default" id="id7">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4861.png"><img alt="figure5" class="bg-light mb-1" src="../../_images/IMG_4861.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 649 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 681 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>encoder의 input :</strong>  (point clouds, rendered views) <br />
@@ -762,7 +772,7 @@ Point-E와 비교하였을때, post-processing 방식을 변경하여 3D Asset�
 <figure class="align-default" id="id8">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4869.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/IMG_4869.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 650 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 682 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>encoder에 입력된 point clouds와 views는 cross-attention과 transformer backbone에 의해 처리되어 sequence of vectors가 된다. 이후 latent bottleneck과 projection layer를 통과하여 MLP weight matrices를 만든다.</p>
@@ -790,7 +800,7 @@ L_\text{NeRF}=L_\text{RGB}+L_T \tag{12}
 <figure class="align-default" id="id9">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 651 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+<p><span class="caption-number">Fig. 683 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
 source - https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -831,9 +841,9 @@ L_\text{FT}=L_\text{NeRF}+L_\text{STF}\tag{15}
 <li><p>point cloud를 4K 가아닌 16K의 point로 만들었다.</p></li>
 <li><p>encoder학습을 위한 view를 렌더링 할때 단순한 소재와 라이팅을 사용하였다. 특히 모든 모델은 동일한 고정된 라이팅 조건내에서 렌더링 되었다. ambient와 diffuse shading만 사용 (+반사광이 고려되지 않아 표면이 매끈한 물체는 생성하기 어려울 것으로 추정됨)</p>
 <figure class="align-default" id="id10">
-<a class="bg-light mb-1 reference internal image-reference" href="pics/Shap_E/untitled.png"><img alt="figure7" class="bg-light mb-1" src="pics/Shap_E/untitled.png" style="width: 800px;" /></a>
+<a class="bg-light mb-1 reference internal image-reference" href="../../_images/untitled.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/untitled.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 652 </span><span class="caption-text">Phong model <br />
+<p><span class="caption-number">Fig. 684 </span><span class="caption-text">Phong model <br />
 기본적인 shading방식으로 본 논문에서는 specular를 사용하지 않았다 <br />
 source - <a class="reference external" href="https:www.researchgate.net/publication/265514880_Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment">Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment</a></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -850,7 +860,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id11">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table12.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/table12.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 653 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 685 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>distillation에서 rendering 이미지의 퀄리티가 떨어지는 것처럼 보이나 finetuning시 퀄리티가 더욱 좋아진다. 또한 STF의 퀄리티 또한 크게 상승한다.</p>
@@ -860,7 +870,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id12">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure4.png"><img alt="figure9" class="bg-light mb-1" src="../../_images/figure4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 654 </span><span class="caption-text">Shap-E와 Point-E비교<br />
+<p><span class="caption-number">Fig. 686 </span><span class="caption-text">Shap-E와 Point-E비교<br />
 세모 마크가 Point-E, 원형 마크가 Shap-E이다.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -869,14 +879,14 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id13">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure5.png"><img alt="figure10" class="bg-light mb-1" src="../../_images/figure5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 655 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 687 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 base model의 크기 동일한 데이터셋으로 학습시킨 결과. 텍스트 조건부 생성시에는 퀄리티 차이가 크지 않음.</p>
 <figure class="align-default" id="id14">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure6.png"><img alt="figure11" class="bg-light mb-1" src="../../_images/figure6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 656 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 688 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이미지 조건부 생성시에는 비교적 차이가 크다.
@@ -888,7 +898,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id15">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table21.png"><img alt="figure12" class="bg-light mb-1" src="../../_images/table21.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 657 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 689 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>reference latency에서 point-E와 Shap-E의 차이가 있는데, 이는 Shap-E는 추가적인 upsampling diffusion model을 사용하지 않기 때문이다.</p>
@@ -899,7 +909,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id16">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure7.png"><img alt="figure13" class="bg-light mb-1" src="../../_images/figure7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 658 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 690 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림과 같이 여러가지 특성을 가진물체를 생성하는데에 어려움을 겪는 모습을 보인다. 이는 학습에 사용한 paired data가 제한적이기 때문으로 더 많은 3D dataset을 수집하면 나아질 수 있다. 또한 texture의 세부 특성을 encoder가 무시하는 경우도 있는데, 더 나은 encoder를 사용함으로써 개선될수 있다.</p>
@@ -941,7 +951,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1057,8 +1067,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

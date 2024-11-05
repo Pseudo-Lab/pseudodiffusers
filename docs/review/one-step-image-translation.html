@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -80,27 +80,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -122,8 +118,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -146,6 +147,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -226,6 +229,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -261,6 +270,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -328,7 +338,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -337,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -469,10 +479,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -480,7 +490,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -559,7 +569,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 514 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 540 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -601,7 +611,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_02.png"><img alt="translation_turbo_02" class="bg-primary mb-1" src="../../_images/translation_turbo_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 515 </span><span class="caption-text">Adding Conditional Input</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 541 </span><span class="caption-text">Adding Conditional Input</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 multi-step diffusion model 과 다르게 single-step 만으로도 noise map 이 생성되는 이미지의 전체적인 layout 을 결정하기 때문에, condition encoder 를 거쳐서 나온 feature map 와의 충돌이 생겨 학습에 어려움이 생기는 현상을 보여준다고 합니다.</p>
@@ -613,7 +623,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_03.png"><img alt="translation_turbo_03" class="bg-primary mb-1" src="../../_images/translation_turbo_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 516 </span><span class="caption-text">Preserving Input Details</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 542 </span><span class="caption-text">Preserving Input Details</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>더 자세하게는, skip connection 을 encoder 내의 각 downsampling layer 를 거쳐 4개의 activation 을 추출하고 이를 1 x 1 zero-convolution layer 를 통과시켜 decoder 에 대응되는 upsampling block 에 입력시킵니다.</p>
@@ -624,13 +634,13 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_04.png"><img alt="translation_turbo_04" class="bg-primary mb-1" src="../../_images/translation_turbo_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 517 </span><span class="caption-text">Cycle-Consistency Loss</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 543 </span><span class="caption-text">Cycle-Consistency Loss</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_05.png"><img alt="translation_turbo_05" class="bg-primary mb-1" src="../../_images/translation_turbo_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 518 </span><span class="caption-text">Adversarial Loss</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 544 </span><span class="caption-text">Adversarial Loss</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 <span class="math notranslate nohighlight">\(X \subset \mathbb{R}^{H \times W \times 3}\)</span>, <span class="math notranslate nohighlight">\(Y \subset \mathbb{R}^{H \times W \times 3}\)</span> 는 각각 source domain, target domain, 그리고 <span class="math notranslate nohighlight">\(G(x, c_Y): X → Y\)</span>, <span class="math notranslate nohighlight">\(G(y, c_X):
@@ -639,7 +649,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_01.png"><img alt="translation_turbo_01" class="bg-primary mb-1" src="../../_images/translation_turbo_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 519 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 545 </span><span class="caption-text">Overall Architecture</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, 새롭게 소개되는 <span class="math notranslate nohighlight">\(L_{rec}\)</span> 손실함수는 <span class="math notranslate nohighlight">\(L_1\)</span> 과 <span class="math notranslate nohighlight">\(LPIPS\)</span> 의 조합으로 구성되어있습니다. 그리고 adversarial loss 에서 사용되는 discriminator <span class="math notranslate nohighlight">\(D_X(x),D_Y(y)\)</span> 는 CLIP 모델을 backbone 으로 사용하였습니다.</p>
@@ -647,7 +657,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_06.png"><img alt="translation_turbo_06" class="bg-primary mb-1" src="../../_images/translation_turbo_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 520 </span><span class="caption-text">Full objective</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 546 </span><span class="caption-text">Full objective</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -662,7 +672,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_07.png"><img alt="translation_turbo_07" class="bg-primary mb-1" src="../../_images/translation_turbo_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 521 </span><span class="caption-text">Reconstruction loss with interpolation coefficient</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 547 </span><span class="caption-text">Reconstruction loss with interpolation coefficient</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>해당 objective 로 interpolation coefficient <span class="math notranslate nohighlight">\(\gamma\)</span> 를 변화시키면서 모델을 fine-tuning 함으로써 다양한 output 을 생성할 수 있었다고 합니다.</p>
@@ -751,13 +761,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_08.png"><img alt="translation_turbo_08" class="bg-primary mb-1" src="../../_images/translation_turbo_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 522 </span><span class="caption-text">Comparison to baselines on 256 × 256 datasets.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 548 </span><span class="caption-text">Comparison to baselines on 256 × 256 datasets.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_09.png"><img alt="translation_turbo_09" class="bg-primary mb-1" src="../../_images/translation_turbo_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 523 </span><span class="caption-text">Comparison to baselines on driving datasets (512 × 512).</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 549 </span><span class="caption-text">Comparison to baselines on driving datasets (512 × 512).</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래 예시 사진들과 table 에서 보이듯이, CycleGAN-Turbo 모델이 CycleGAN 과 CUT 모델보다 더 낮은 FID, DINO Structure score 를 보여주는 것을 확인할 수 있습니다.</p>
@@ -767,13 +777,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_10.png"><img alt="translation_turbo_10" class="bg-primary mb-1" src="../../_images/translation_turbo_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 524 </span><span class="caption-text">Comparison to GAN-based methods on 256 × 256 datasets.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 550 </span><span class="caption-text">Comparison to GAN-based methods on 256 × 256 datasets.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_11.png"><img alt="translation_turbo_11" class="bg-primary mb-1" src="../../_images/translation_turbo_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 525 </span><span class="caption-text">Comparison to GAN-based methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 551 </span><span class="caption-text">Comparison to GAN-based methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -781,13 +791,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_12.png"><img alt="translation_turbo_12" class="bg-primary mb-1" src="../../_images/translation_turbo_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 526 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 552 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_13.png"><img alt="translation_turbo_13" class="bg-primary mb-1" src="../../_images/translation_turbo_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 527 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 553 </span><span class="caption-text">Comparison to Diffusion-based editing methods on driving datasets (512 × 512).</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -795,13 +805,13 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_14.png"><img alt="translation_turbo_14" class="bg-primary mb-1" src="../../_images/translation_turbo_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 528 </span><span class="caption-text">Evaluation on standard CycleGAN datasets (256 × 256).</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 554 </span><span class="caption-text">Evaluation on standard CycleGAN datasets (256 × 256).</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_15.png"><img alt="translation_turbo_15" class="bg-primary mb-1" src="../../_images/translation_turbo_15.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 529 </span><span class="caption-text">Comparison on 512 × 512 driving datasets.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 555 </span><span class="caption-text">Comparison on 512 × 512 driving datasets.</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -812,7 +822,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_16.png"><img alt="translation_turbo_16" class="bg-primary mb-1" src="../../_images/translation_turbo_16.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 530 </span><span class="caption-text">Ablation with Horse to Zebra</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 556 </span><span class="caption-text">Ablation with Horse to Zebra</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Different ways of adding conditioning inputs</strong></p>
@@ -820,7 +830,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_17.png"><img alt="translation_turbo_17" class="bg-primary mb-1" src="../../_images/translation_turbo_17.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 531 </span><span class="caption-text">Ablating individual components</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 557 </span><span class="caption-text">Ablating individual components</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Skip Connections and trainable encoder and decoder</strong></p>
@@ -833,14 +843,14 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_18.png"><img alt="translation_turbo_18" class="bg-primary mb-1" src="../../_images/translation_turbo_18.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 532 </span><span class="caption-text">Comparison on paired edge-to-image task (512 × 512).</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 558 </span><span class="caption-text">Comparison on paired edge-to-image task (512 × 512).</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Generating diverse outputs</strong></p>
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/translation_turbo_19.png"><img alt="translation_turbo_19" class="bg-primary mb-1" src="../../_images/translation_turbo_19.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 533 </span><span class="caption-text">Generating diverse outputs</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 559 </span><span class="caption-text">Generating diverse outputs</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -878,7 +888,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -979,8 +989,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

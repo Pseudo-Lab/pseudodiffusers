@@ -15,19 +15,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
     <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
-  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -78,27 +78,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -120,8 +116,13 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
     </header>
   
 
@@ -144,6 +145,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -224,6 +227,12 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -259,6 +268,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
 
 
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -326,7 +336,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -335,7 +345,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -467,10 +477,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -478,7 +488,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -575,7 +585,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/14.png"><img alt="improved_imagenet_classification_00" class="bg-primary mb-1" src="../../_images/14.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 287 </span><span class="caption-text">위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교 \
+<p><span class="caption-number">Fig. 313 </span><span class="caption-text">위 그림: 합성 데이터로만 학습된 모델 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교 \
 아래 그림: 합성 및 진짜 데이터를 사용하였을 때의 분류 성능과 진짜 데이터로 학습된 모델의 분류 성능 비교</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -604,7 +614,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/21.png"><img alt="improved_imagenet_classification_01" class="bg-primary mb-1" src="../../_images/21.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 288 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 314 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림이 fine-tuning이 적용된 Imagen이 만들어낸 이미지고, 오른쪽이 fine-tuning이 적용되지 않은 Imagen입니다. 아래에서 두 번째 클래스인 Schipperke를 보면, 이것은 스키퍼키라는 개 품종을 의미하는데 fine-tuning이 적용되지 않은 Imagen의 경우는 꽃과 같은 전혀 엉뚱한 이미지를 만들고 있는 것을 볼 수 있습니다.</p>
@@ -615,7 +625,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/31.png"><img alt="improved_imagenet_classification_02" class="bg-primary mb-1" src="../../_images/31.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 289 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 315 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>본 논문에서는 위의 Imagen 구조에서 빨간 원으로 표시된 부분에 대해서만 fine-tuning 했습니다. Frozen Text Encoder의 경우는 원래 Imagen에서도 학습을 하지 않는 부분이라 마찬가지로 학습을 하지 않았고, 1024x1024 Image를 출력으로 하는 마지막 Super-Resolution Diffusion Model의 경우 ImageNet에 고해상도의 데이터가 적어서 fine-tuning을 하지 않았다고 합니다.</p>
@@ -652,7 +662,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/41.png"><img alt="improved_imagenet_classification_03" class="bg-primary mb-1" src="../../_images/41.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 290 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 316 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림이 1차 sweep에 대한 결과고, 가운데와 오른쪽 그림이 2차 sweep에 대한 결과로 guidance weight에 따른 FID, IS, CAS를 나타낸 결과입니다.</p>
@@ -664,7 +674,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/51.png"><img alt="improved_imagenet_classification_04" class="bg-primary mb-1" src="../../_images/51.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 291 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 317 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 그래프는 guidance weight를 1.0으로 설정하고 noise condition 파라미터를 변경했을 때 FID와 CAS의 그래프를 나타낸 그래프입니다. CAS 같은 경우는 logvar coeff가 0.3일 때 전반적으로 좋은 성능을 보였으며, FID 같은 경우도 logvar coeff가 0.3일 때 전반적으로 좋은 성능을 보인 것을 알 수 있습니다.</p>
@@ -701,7 +711,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/61.png"><img alt="improved_imagenet_classification_05" class="bg-primary mb-1" src="../../_images/61.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 292 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 318 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 표에서 볼 수 있듯이, 본 논문의 파인 튜닝된 Imagen이 ImageNet에 대한 데이터 생성에 대해 다른 베이스모델들 보다 FID와 IS가 뛰어난 것을 알 수 있습니다. 이는 64x64 resolution과 256x256 resolution에서 모두 해당되었습니다.</p>
@@ -712,7 +722,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/71.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/71.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 293 </span><span class="caption-text">CAS score</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 319 </span><span class="caption-text">CAS score</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Figure 5에서 파란색 부분은 실제 학습 데이터로 학습된 모델의 분류 성능이고, 빨간색 부분은 합성된 데이터로 학습된 모델의 분류 성능입니다. 왼쪽 그림은 베이스라인 중 하나인 CDM 모델의 성능을 나타낸 그림이며, 가운데는 본 논문에서 256x256 resolution 모델의 성능, 오른쪽은 본 논문에서 제안한 1024x1024 resolution 모델의 성능을 나타낸 것입니다. 빨간색 부분이 파란색 부분보다 전반적으로 위쪽에 위치하면 모델의 성능이 좋다고 해석할 수 있습니다. 이 그림을 통해 본 논문에서 제안한 모델들이 베이스라인보다 좋은 성능을 보인다는 것을 알 수 있습니다.</p>
@@ -724,7 +734,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/81.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/81.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 294 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 320 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 표에서 확인할 수 있듯이, 다양한 모델에 대해서 분류 정확도를 살펴본 결과 생성된 데이터로만 학습될 경우에는 실제 데이터로 학습할 때 보다 성능이 낮았지만, 실제 데이터와 생성된 데이터를 합쳐서 학습할 경우 실제 데이터만 사용했을 때보다 성능이 증가한 것을 볼 수 있습니다. 이것은 onvNet기반 모델과 transformer 기반 모델에 대해서 동일한 양상을 보였습니다.</p>
@@ -735,14 +745,14 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/91.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/91.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 295 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 321 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>64x64 이미지의 경우 생성되는 데이터의 양이 증가함에 따라 성능이 지속적으로 향상되는 것을 볼 수 있습니다.</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/102.png"><img alt="improved_imagenet_classification_06" class="bg-primary mb-1" src="../../_images/102.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 296 </span><span class="caption-text">Table 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 322 </span><span class="caption-text">Table 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 다른 resolution에 대해서는 다른 양상을 보였습니다. 학습 데이터가 4.8M 규모가 될 때까지는 합성 데이터를 추가하는 것이 분류 성능에 좋았으나, 합성 데이터를 더 늘려 그 이상의 규모가 되었을 때는 오히려 성능이 떨어지는 것을 볼 수 있었습니다.</p>
@@ -789,7 +799,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -893,8 +903,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

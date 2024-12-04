@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>One-step Diffusion with Distribution Matching Distillation &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/one_step_diffusion_with_distribution_matching_distillation';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="prev" title="MimicBrush: Zero-shot Image Editing with Reference Imitation" href="MimicBrush.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/one_step_diffusion_with_distribution_matching_distillation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/one_step_diffusion_with_distribution_matching_distillation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>One-step Diffusion with Distribution Matching Distillation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">One-step Diffusion with Distribution Matching Distillation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-and-preliminaries">Introduction and Preliminaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-matching-loss">Distribution Matching Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-loss">Regression Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-algorithm">Full algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-comparison">Main comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">Ablation Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-unaccelerated-models">Comparison with Unaccelerated Models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-and-limitations">Conclusion and Limitations</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> One-Step Image Diffusion with Distribution Matching Distillation</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2311.18828">https://arxiv.org/abs/2311.18828</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/tianweiy/DMD2">tianweiy/DMD2</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Joongwon Lee</p></li>
+<li><p><strong>Last updated on Oct. 16, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="one-step-diffusion-with-distribution-matching-distillation">
+<h1>One-step Diffusion with Distribution Matching Distillation<a class="headerlink" href="#one-step-diffusion-with-distribution-matching-distillation" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="introduction-and-preliminaries">
+<h1>Introduction and Preliminaries<a class="headerlink" href="#introduction-and-preliminaries" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>Diffusion model has revolutionized image generation, 하지만 느린 sampling speed 가 느린 문제점이 있음</p></li>
+<li><p>Accelerating sampling speed 를 목적으로 하는 많은 연구가 이루어져 왔음</p>
+<ul class="simple">
+<li><p>ODE solving: diffusion model 의 큰 틀은 유지한 채 sampling step 의 수를 줄이면서 유사한 수준의 sample 생성 (DDIM, InstaFlow, CFM)</p></li>
+<li><p>하지만 여전히 50 ~ 100 step 이하로 step 을 줄이게 되면 sample quality 가 크게 감소하여 diffusion distillation 을 통한 one-step generation 방법이 연구되어지고 있음</p></li>
+<li><p>Single step distillation: Diffusion model 을 teacher 삼아 one-step generation model 학습</p></li>
+<li><p>직관적으로 생각해보면, diffusion model 을 학습 시킨후 학습된 모델을 통해 다수의 (noise, image) pair 얻은 후 one-step VAE 를 학습시키는 것을 생각 해 볼 수 있음.</p></li>
+<li><p>그러나, 학습된 multi step 으로 학습 된 diffusion model 을 one-step generation model 에 distillation 을 하는 것은 어려움이 있음</p>
+<ul>
+<li><p>Noise level 을 점진적으로 증가 시키며, one-step generation 을 학습시키는 방법</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>GAN 에서 영감을 받아, (noise, image) 의 대응을 강제하는 대신 (such as autoencoder),  student model 이 생성하는 이미지를 teacher model (original diffusion model) 이 생성하는 이미지와 indistinguishable 하게 학습시키는 distribution matching 전략을 생각해 볼 수 있음</p></li>
+<li><p>Diffusion model 의 score (<span class="math notranslate nohighlight">\(\newcommand{\laplacianx}{\Delta x}\)</span><span class="math notranslate nohighlight">\(\nabla_{\mathbf{x}} \log p(\mathbf{x})\)</span>) 을 사용해서 student model (<span class="math notranslate nohighlight">\(p(x)\)</span>) 을 학습시킬 수 있음 (real image score 가 증가하는 방향으로 pattern 을 업데이트 하는 것이 desired 방향 + fake image 를 생성하는 diffusion model 의 score 을 감소시키는 방향으로 parameter update)</p>
+<ul>
+<li><p>Diffusion model and score base model</p>
+<p>엄밀하게 본다면, 이 논문은 diffusion model (DDPM style) 보다는 score matching 의 철학과 논리전개를 바탕으로 두고 있음. 그러나, diffusion model 과 score based model 은 궁극적으로 같은 objective 를 다른 방식으로 학습하고 있을 뿐이고, 그 score 과 diffusion model 이 예측하는 one-step denoised 분포 (<span class="math notranslate nohighlight">\(\mu_{base}\)</span>) 는 쉽게 변환 가능함.</p>
+<div class="math notranslate nohighlight">
+\[
+        s_{\text{real}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{base}}(x_t, t)}{\sigma_t^2}
+        \]</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method">
+<h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<section id="id1">
+<h2>Overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<ul>
+<li><p>학습된 diffusion model (real data score function)  이 주어진 상황에서 one-step generator (<span class="math notranslate nohighlight">\(G_{\theta}\)</span>) 를 학습시키기 위해, 두개의 loss 1) distribution matching gradient (엄밀하게는 loss 보다는 parameter update gradient) 2) regression loss 를 사용</p></li>
+<li><p>Adversarial AutoEncoder 가 연상되는 architecture 를 가지고 있음</p>
+<ul>
+<li><p>Adversarial AutoEncoder</p>
+<p>AAE 는 VAE 가 생성하는 이미지에 대한 1) regression loss 와 2) implicit distribution matching loss 를 가지고 있는데, 여기서 implicit distribution matching 을 teacher diffusion model 의 distribution matching gradient 로 대체한 형태</p>
+</li>
+</ul>
+</li>
+<li><p>총  네 부분으로 나뉘어져 있음</p>
+<ul class="simple">
+<li><p>Paired dataset construction</p></li>
+<li><p>Pretrained base model (= real data score function, freezed)</p></li>
+<li><p>One-step generator (main objective)</p></li>
+<li><p>Fake data generator (= fake data score function, on-line training)</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="distribution-matching-loss">
+<h2>Distribution Matching Loss<a class="headerlink" href="#distribution-matching-loss" title="Permalink to this heading">#</a></h2>
+<p>우선, 생성모델의 training objective를 생각해보면, <span class="math notranslate nohighlight">\(p_\text{fake}\)</span> (one-step generator이 생성하는 분포)  <span class="math notranslate nohighlight">\(p_\text{real}\)</span> (실제 데이터의 분포) 를 matching 시키도록 학습을 시켜야하는 것이 one-step generator의 학습 objective이고 아래와 같이 씌여질 수 있음:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+D_{KL}(p_{\text{fake}} \parallel p_{\text{real}}) &amp;= \mathbb{E}_{x \sim p_{\text{fake}}} \left( \log \frac{p_{\text{fake}}(x)}{p_{\text{real}}(x)} \right) \\
+&amp;= \mathbb{E}_{\substack{z \sim \mathcal{N}(0; I) \\ x = G_{\theta}(z)}} \left( - \log p_{\text{real}}(x) + \log p_{\text{fake}}(x|z)\right)
+\end{align*}
+\end{split}\]</div>
+<p>지만, <span class="math notranslate nohighlight">\(p_\text{real}(x)\)</span> 를 바로 구하는 것이 어려움 (이것이 곧 생성모델의 objective). 그러나, 모델을 학습시키기 위해서는 <span class="math notranslate nohighlight">\(D_{KL}\)</span> 을 직접 구할 필요는 없고, <span class="math notranslate nohighlight">\(D_{KL}\)</span> 을 minimize 하는 (fake 과 real 의 분포사이의 거리를 최소화 시키는 방향으로) parameter update 를 하기 위한 미분값만 알면 충분함. 위 식을 one-step generator 의 learnable paramter (<span class="math notranslate nohighlight">\(\theta\)</span>) 에 대해 미분 해주면,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\nabla_{\theta} D_{KL} = \mathbb{E}_{\substack{z \sim \mathcal{N}(0; I) \\ x = G_{\theta}(z)}} \left[ - \left( s_{\text{real}}(x) - s_{\text{fake}}(x) \right) \nabla_{\theta} G_{\theta}(z) \right]
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[
+s_{\text{real}}(x) = \nabla_x \log p_{\text{real}}(x), \quad s_{\text{fake}}(x) = \nabla_x \log p_{\text{fake}}(x)
+\]</div>
+<p>이 유도되는데, 여기서 score <span class="math notranslate nohighlight">\(s_{\text{real}}(x)\)</span> 와  <span class="math notranslate nohighlight">\(s_{\text{fake}}(x)\)</span> 를 정확히 알 수 있다면, one-step generator 을 학습시킬 수 있음. 단, score 이 <span class="math notranslate nohighlight">\(x\)</span> 가 존재하는 전체 space 에 대해서 잘 작동하는 score 이여야함 (= Score-SDE).</p>
+<p>이제, 그러면 우리의 objective 는 real score 와 fake score 을 어떻게 구할지가 되는데, <span class="math notranslate nohighlight">\(s_{\text{real}}(x)\)</span> 은 pretrained diffusion model 에서:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{\text{real}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{base}}(x_t, t)}{\sigma_t^2}
+\]</div>
+<p>와 같이 유도됨.  <span class="math notranslate nohighlight">\(s_{\text{fake}}(x)\)</span> 의 경우가 복잡해지는데, <span class="math notranslate nohighlight">\(s_{\text{fake}}(x)\)</span> 는 one-step generator 가 생성하는 이미지의 score function 라서 one-step generator 로 생성 된 이미지가 있어야 해당 이미지를 생성하는 diffusion 모델을 학습시켜서 구할 수 있음.</p>
+<p>여기서 저자들은 fake data score function (initialized to real data score function) 을 동시에 학습시키는 방법으로 해결</p>
+<div class="math notranslate nohighlight">
+\[
+s_{\text{fake}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{fake}}^{\phi}(x_t, t)}{\sigma_t^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{denoise}}^{\phi} = \left\lVert \mu_{\text{fake}}^{\phi}(x_t, t) - x_0 \right\rVert_2^2
+\]</div>
+<p>정리하자면, real score 은 real distribution (data distribution) 방향으로 parameter update를 하면서 fake distribution (one-step generation 의 output) 을 real distribution 에 가깝게 일치시키는 역할을 하며, fake score 의 반대방향으로 parameter update 를 하는 것은 fake data generator (one-step generator) 의 반대방향으로 distribution 을 밀어내서 most probable 한 한개의 점으로 모든 fake image 가 collapse 하는것을 방지하는 regularizer 역할을 한다.</p>
+</section>
+<section id="regression-loss">
+<h2>Regression Loss<a class="headerlink" href="#regression-loss" title="Permalink to this heading">#</a></h2>
+<p>그런데, score 만을 사용하여 one-step generator 을 학습시키는 것은 충분하지 않음. 두가지 측면에서 생각 해 볼 수 있는데 1) Practically, 매우 작은 noise level 에서는 score 이 reliable 하지 않아짐 2) Theoretically, <span class="math notranslate nohighlight">\(\nabla_x \log p_(x)\)</span> 는 <span class="math notranslate nohighlight">\(p(x)\)</span> 의 scale 에 영향을 받지 않아, 데이터의 높고 낮음에 대한 정보를 줄 수 없음.</p>
+<p>따라서, real + fake score 로 학습이 진행된다면,  낮은 real score 을 보이는 영역은 커버하지 못하는 부분으로 one-step generation 모델이 수렴하게 될 것 이고, high dimension 에서는 generated image 의 pixel level accuracy 에 문제가 생길 수 있음.</p>
+<p>여기서 저자들은 pixel-wise MSE (regression loss) 를 사용하여 간단히 이 문제를 해결함.</p>
+<ul>
+<li><p>그렇다면, Regression loss 하나만으로는 학습이 왜 불가능한가? (개인적 생각)</p>
+<p>이론상 regression loss 만을 사용해도 충분히 one-step generator 을 학습시킬 수 있어 보인다. 그러나, regression 의 근본적 문제점은 distribution to distribution matching 이 아니라는 점이다. e.g.</p>
+</li>
+</ul>
+<p>Regression loss 를 얻기 위해서는 (noise, real image) pair 가 필요하게 되는데, 저자들은 학습된 diffusion model 에서부터 ODE solver 을 사용하여 gaussian noise와 real image 사이에 쌍을 얻어서 데이터셋을 학습 이전에 구축, 해당 pair들을 바탕으로 regression loss 를 구함 (Learned Perceptual Image Patch Similarity).</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\text{reg}} = \mathbb{E}_{(z,y) \sim \mathcal{D}} \, \ell(G_\theta(z), y)
+\]</div>
+</section>
+<section id="full-algorithm">
+<h2>Full algorithm<a class="headerlink" href="#full-algorithm" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="results">
+<h1>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
+<section id="main-comparison">
+<h2>Main comparison<a class="headerlink" href="#main-comparison" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="ablation-study">
+<h2>Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="comparison-with-unaccelerated-models">
+<h2>Comparison with Unaccelerated Models<a class="headerlink" href="#comparison-with-unaccelerated-models" title="Permalink to this heading">#</a></h2>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="conclusion-and-limitations">
+<h1>Conclusion and Limitations<a class="headerlink" href="#conclusion-and-limitations" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Score model 을 사용한 distribution matching loss 와 regularizing term 인 regression loss 를 통해, teacher model 에 준하는 성능을 낼 수 있었다</p></li>
+<li><p>One step generator 와 multi-step generation 사이에는 근본적인 성능 tradeoff 가 존재함</p></li>
+<li><p>one-step generator 의 성능은 teacher diffusion model 의 성능에 종속된다</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MimicBrush.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MimicBrush: Zero-shot Image Editing with Reference Imitation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Make_A_Video.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Make A Video</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">One-step Diffusion with Distribution Matching Distillation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-and-preliminaries">Introduction and Preliminaries</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-matching-loss">Distribution Matching Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression-loss">Regression Loss</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#full-algorithm">Full algorithm</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-comparison">Main comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">Ablation Study</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-unaccelerated-models">Comparison with Unaccelerated Models</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion-and-limitations">Conclusion and Limitations</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

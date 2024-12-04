@@ -48,6 +48,7 @@ parts:
   - file: docs/review/one-step-image-translation
   - file: docs/review/LCM-LoRA
   - file: docs/review/MimicBrush
+  - file: docs/review/one_step_diffusion_with_distribution_matching_distillation
 
 - caption: Video Generation
   chapters:

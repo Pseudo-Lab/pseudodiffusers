@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022) &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Point_E';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Shap-E" href="Shap-E.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -323,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -357,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -500,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -571,7 +578,7 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts-arxiv-2022">
-<h1>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)<a class="headerlink" href="#point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts-arxiv-2022" title="Permalink to this heading">#</a></h1>
+<h1>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)<a class="headerlink" href="#point-e-a-system-for-generating-3d-point-clouds-from-complex-prompts-arxiv-2022" title="Link to this heading">#</a></h1>
 <aside>
 💡 핵심 요약
 <ul class="simple">
@@ -603,7 +610,7 @@ document.write(`
 </aside>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="abstract">
-<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>제안 배경</p>
 <ul>
@@ -625,7 +632,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <ul>
 <li><p>Text-to-image 생성 모델에서 text-to-vide/3D로의 발전</p>
 <ul class="simple">
@@ -663,7 +670,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <img alt="Point_E_01" class="bg-primary mb-1" src="pics/Point_E/01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 669 </span><span class="caption-text">Point-E 파이프라인 개요</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 682 </span><span class="caption-text">Point-E 파이프라인 개요</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -697,7 +704,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
+<h1>2. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>디퓨전 모델 개요:</p>
 <ul>
@@ -738,7 +745,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>3. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<h1>3. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>포인트 클라우드 생성 모델:</p>
 <ul>
@@ -774,7 +781,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1>4. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<h1>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>텍스트를 조건으로 받아 단일 생성 모델로 포인트 클라우드를 직접 생성하는 대신 생성 프로세스를 세 단계로 나눈다.</p>
 <ol class="arabic simple">
@@ -800,7 +807,7 @@ document.write(`
 <li><p>데이터셋을 렌더링된 뷰, 텍스트 설명, 그리고 각 점에 대한 RGB 색상을 포함하는 3D 포인트 클라우드로 처리한다.</p></li>
 </ul>
 <section id="dataset">
-<h2>4-1. Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
+<h2>4-1. Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>수백만 개의 3D 모델은 데이터 형식과 품질이 데이터셋 전반에 걸쳐 매우 다양했고, 더 높은 데이터 품질을 보장하기 위해 다양한 후처리 단계가 필요했다.</p></li>
 <li><p>후처리 단계</p>
@@ -831,7 +838,7 @@ document.write(`
 </ul>
 </section>
 <section id="view-synthesis-glide-model">
-<h2>4.2 View Synthesis GLIDE Model<a class="headerlink" href="#view-synthesis-glide-model" title="Permalink to this heading">#</a></h2>
+<h2>4.2 View Synthesis GLIDE Model<a class="headerlink" href="#view-synthesis-glide-model" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>‘텍스트 캡션’을 조건으로 받아 ‘합성 뷰’를 생성하는 모델</p></li>
 <li><p>4.3에서 설명할 포인트 클라우드 모델은 모두 동일한 렌더러와 동일한 조명 설정을 사용하여 생성된 데이터셋의 렌더링된 뷰를 조건으로 받는다.</p></li>
@@ -846,7 +853,7 @@ document.write(`
 </ul>
 </section>
 <section id="point-cloud-diffusion">
-<h2>4.3  <strong>Point Cloud Diffusion</strong><a class="headerlink" href="#point-cloud-diffusion" title="Permalink to this heading">#</a></h2>
+<h2>4.3  <strong>Point Cloud Diffusion</strong><a class="headerlink" href="#point-cloud-diffusion" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>‘합성 뷰’를 조건으로 받아 ‘대략적인(coarse) 포인트 클라우드(1024개의 포인트)’를 생성하는 모델</p></li>
 <li><p>디퓨전을 이용해 포인트 클라우드를 사용하기 위해 <a class="reference external" href="https://arxiv.org/abs/2104.03670">3D Shape Generation and Completion through Point-Voxel Diffusion</a>에서 사용한 프레임워크를 확장하여 포인트 클라우드의 각 포인트에 RGB 색상을 포함시켰다.</p></li>
@@ -859,7 +866,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <img alt="Point_E_02" class="bg-primary mb-1" src="pics/Point_E/02.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Point-E 모델 구조</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 683 </span><span class="caption-text">Point-E 모델 구조</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -891,7 +898,7 @@ document.write(`
 </ul>
 </section>
 <section id="point-cloud-upsampler">
-<h2>4.4 <strong>Point Cloud Upsampler</strong><a class="headerlink" href="#point-cloud-upsampler" title="Permalink to this heading">#</a></h2>
+<h2>4.4 <strong>Point Cloud Upsampler</strong><a class="headerlink" href="#point-cloud-upsampler" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>이미지 디퓨전 모델에서의 계층 구조</p>
 <ul class="simple">
@@ -918,7 +925,7 @@ document.write(`
 </ul>
 </section>
 <section id="producing-meshes">
-<h2>4.5 Producing Meshes<a class="headerlink" href="#producing-meshes" title="Permalink to this heading">#</a></h2>
+<h2>4.5 Producing Meshes<a class="headerlink" href="#producing-meshes" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>렌더링 기반 평가를 위해 생성된 포인트 클라우드를 직접 렌더링하지 않는다.</p></li>
 <li><p>대신, 포인트 클라우드를 텍스처가 입혀진 메쉬로 변환하고 Blender를 사용해 이러한 메쉬를 렌더링한다.</p></li>
@@ -943,7 +950,7 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="results">
-<h1>5. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
+<h1>5. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>평가 지표: CLIP R-Precision, P-IS, P-FID</p>
 <ul>
@@ -969,7 +976,7 @@ document.write(`
 </li>
 </ul>
 <section id="model-scaling-and-ablations">
-<h2>5.1 <strong>Model Scaling and Ablations</strong><a class="headerlink" href="#model-scaling-and-ablations" title="Permalink to this heading">#</a></h2>
+<h2>5.1 <strong>Model Scaling and Ablations</strong><a class="headerlink" href="#model-scaling-and-ablations" title="Link to this heading">#</a></h2>
 <p>저자들은 다음과 같은 베이스 모델에 대하여 학습 중에 생성한 샘플들로 평가하였다.</p>
 <ul class="simple">
 <li><p>40M (uncond.): 어떠한 조건 정보도 없는 작은 모델</p></li>
@@ -983,7 +990,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <img alt="Point_E_03" class="bg-primary mb-1" src="pics/Point_E/03.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 671 </span><span class="caption-text">평가 결과</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 684 </span><span class="caption-text">평가 결과</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -997,13 +1004,13 @@ document.write(`
 </ul>
 </section>
 <section id="qualitative-results">
-<h2>5.2 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Permalink to this heading">#</a></h2>
+<h2>5.2 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>포인트 클라우드 생성 결과</p>
 <figure class="align-default" id="id4">
 <img alt="Point_E_04" class="bg-primary mb-1" src="pics/Point_E/04.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 672 </span><span class="caption-text">포인트클라우드 생성 결과</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 685 </span><span class="caption-text">포인트클라우드 생성 결과</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1012,7 +1019,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <img alt="Point_E_05" class="bg-primary mb-1" src="pics/Point_E/05.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 673 </span><span class="caption-text">잘못 추론한 예시</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 686 </span><span class="caption-text">잘못 추론한 예시</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -1023,13 +1030,13 @@ document.write(`
 </ul>
 </section>
 <section id="comparison-to-other-methods">
-<h2><strong>5.3 Comparison to Other Methods</strong><a class="headerlink" href="#comparison-to-other-methods" title="Permalink to this heading">#</a></h2>
+<h2><strong>5.3 Comparison to Other Methods</strong><a class="headerlink" href="#comparison-to-other-methods" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>CLIP-R-Precision 지표를 이용하여 Point·E를 다른 3D 생성 기술과 비교했다.</p>
 <figure class="align-default" id="id6">
 <img alt="Point_E_06" class="bg-primary mb-1" src="pics/Point_E/06.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 674 </span><span class="caption-text">CLIP-R-Precision 성능</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 687 </span><span class="caption-text">CLIP-R-Precision 성능</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1045,7 +1052,7 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="limitations-and-future-work">
-<h1><strong>6. Limitations and Future Work</strong><a class="headerlink" href="#limitations-and-future-work" title="Permalink to this heading">#</a></h1>
+<h1><strong>6. Limitations and Future Work</strong><a class="headerlink" href="#limitations-and-future-work" title="Link to this heading">#</a></h1>
 <ul>
 <li><p>합성 렌더링을 필요로 한다. → 향후 실제 세계 이미지를 조건으로 하는 3D 생성기를 훈련시켜 해결할 수 있을 것</p></li>
 <li><p>색상이 있는 3D 형태를 생성하지만, 이 과정은 비교적 낮은 해상도의 3D 형식(포인트 클라우드)로 이루어진다. 형상이나 질감의 세부 사항을 캡처하지 못한다. → 메쉬나 NeRF와 같은 고해상도 3D 표현을 생성하도록 확장하면 해결할 수 있을 것</p></li>
@@ -1055,14 +1062,14 @@ document.write(`
 <figure class="align-default" id="id7">
 <img alt="Point_E_07" class="bg-primary mb-1" src="pics/Point_E/07.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 675 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 688 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>7. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<h1>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Point·E는 합성된 뷰를 생성하고 이를 기반으로 조건화된 색상 포인트 클라우드를 생성하는 텍스트 조건 합성 시스템이다.</p></li>
 <li><p>Point·E가 텍스트 프롬프트에 의해 조건화된 다양하고 복잡한 3D 형상을 효율적으로 생성할 수 있는 능력을 갖추고 있다는 것을 발견했다.</p></li>
@@ -1180,7 +1187,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

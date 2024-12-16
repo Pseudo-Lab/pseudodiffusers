@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>LoRA &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/LoRA';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="I-DDPM" href="I-DDPM.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -566,10 +578,10 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="lora">
-<h1>LoRA<a class="headerlink" href="#lora" title="Permalink to this heading">#</a></h1>
+<h1>LoRA<a class="headerlink" href="#lora" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="abstract">
-<h1>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<h1>0. Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
 <p>LoRA는 <strong>PEFT(Parameter Effecient Fine-Tuning)의 기법 중 하나</strong>이다. Pre-trained model의 weight는 고정한 채로, <strong>몇 개의 dense(fc) layer만 학습시켜 downstream task의 연산량을 줄일 수 있다.</strong> GPT-3을 기준으로 parameter는 10000배, GPU 메모리는 3배를 줄일 수 있다. 또한 inference 과정에서 추가적인 latency가 없음</p>
 <blockquote>
 <div><ul class="simple">
@@ -584,25 +596,25 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>LLM은 기본적으로 pre-trained model을 특정 task에 맞게 fine-tuning을 시킴. 하지만 fine-tuning에서 모든 weight를 다시 학습시키면 GPT-2, GPT-3, RoBERTa 등 큰 모델의 경우 학습에 몇 달이 걸림.</p>
 <p>이전 연구에서 over-parameterized model들은 low intrinsic dimension에 기반하고 있다는 사실에 기반해, 저자는 학습 과정에서도 모델은 <code class="docutils literal notranslate"><span class="pre">low</span> <span class="pre">intrinsic</span> <span class="pre">rank</span></code>을 갖고 있을 것이라 가정함.</p>
 <p><strong>LoRA는 기존 pre-trained weight는 고정하고, 몇 개의 dense layer만 rank decomposition matrices를 최적화하는 방식으로 학습</strong>시키기로 함.</p>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(0).png"><img alt="LoRA_00" class="bg-primary mb-1" src="../../_images/image(0).png" style="width: 550px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(0).png"><img alt="LoRA_00" class="bg-primary mb-1" src="../../_images/image%280%29.png" style="width: 550px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 176 </span><span class="caption-text">LoRA structure</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 176 </span><span class="caption-text">LoRA structure</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(1).png"><img alt="LoRA_01" class="bg-primary mb-1" src="../../_images/image(1).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(1).png"><img alt="LoRA_01" class="bg-primary mb-1" src="../../_images/image%281%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 177 </span><span class="caption-text">LoRA structure 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 177 </span><span class="caption-text">LoRA structure 2</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 그림처럼 <strong>기존 pre-trained weight <span class="math notranslate nohighlight">\(W\)</span>는 고정하고 low rank decomposition된 weight <span class="math notranslate nohighlight">\(A, B\)</span>만 학습시켜 <span class="math notranslate nohighlight">\(W\)</span>에 더해줌</strong>. <span class="math notranslate nohighlight">\(A, B\)</span>의 크기는 <span class="math notranslate nohighlight">\(W\)</span>보다 작아 time, computational cost를 최대 3배까지 줄일 수 있음. 또한 task에 따라 LoRA module(<span class="math notranslate nohighlight">\(A, B\)</span>)만 바꿔주면 되기 때문에 storage requirement, task-switching overhead를 줄일 수 있음. 이 외에도 추가적인 inference latency가 없다, 다른 기법들과 함께 적용이 가능하다는 장점이 있음.</p>
 <section id="terminologies-and-conventions">
-<h2>1.1. Terminologies and Conventions<a class="headerlink" href="#terminologies-and-conventions" title="Permalink to this heading">#</a></h2>
+<h2>1.1. Terminologies and Conventions<a class="headerlink" href="#terminologies-and-conventions" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(d_{model}\)</span>: Transformer의 input/output dimension size</p></li>
 <li><p><span class="math notranslate nohighlight">\(W_q, W_k, W_v, W_o\)</span>: Self-attention module의 query/key/value/output projection matrices</p></li>
@@ -616,7 +628,7 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="problem-statement">
-<h1>2. Problem Statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h1>
+<h1>2. Problem Statement<a class="headerlink" href="#problem-statement" title="Link to this heading">#</a></h1>
 <p>LoRA는 agnostic하지만 본 논문에서는 language model에 집중함.</p>
 <blockquote>
 <div><ul class="simple">
@@ -640,12 +652,12 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="aren-t-existing-solutions-good-enough">
-<h1>3. Aren’t Existing Solutions Good Enough?<a class="headerlink" href="#aren-t-existing-solutions-good-enough" title="Permalink to this heading">#</a></h1>
+<h1>3. Aren’t Existing Solutions Good Enough?<a class="headerlink" href="#aren-t-existing-solutions-good-enough" title="Link to this heading">#</a></h1>
 <p>기존에도 transfer learning에서 parameter-/compute-effecient를 위한 방법은 몇 가지가 있었음.</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(2).png"><img alt="LoRA_02" class="bg-primary mb-1" src="../../_images/image(2).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(2).png"><img alt="LoRA_02" class="bg-primary mb-1" src="../../_images/image%282%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Performance Comparison</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 178 </span><span class="caption-text">Performance Comparison</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>하지만 adapter layer를 추가하는 방식은 hardware parellelism이 없다면 작은 bottleneck layer만 추가해도 latency가 상당히 증가해 사용하기 어려웠음.</p>
@@ -653,9 +665,9 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="our-method">
-<h1>4. Our Method<a class="headerlink" href="#our-method" title="Permalink to this heading">#</a></h1>
+<h1>4. Our Method<a class="headerlink" href="#our-method" title="Link to this heading">#</a></h1>
 <section id="low-rank-parameterized-update-matrices">
-<h2>4.1. Low-Rank-Parameterized Update Matrices<a class="headerlink" href="#low-rank-parameterized-update-matrices" title="Permalink to this heading">#</a></h2>
+<h2>4.1. Low-Rank-Parameterized Update Matrices<a class="headerlink" href="#low-rank-parameterized-update-matrices" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 h=W_0 x+\Delta W x=W_0 x+B A x
@@ -720,65 +732,65 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 </pre></div>
 </div>
 <section id="no-additional-inference-latency">
-<h3>4.1.1. No Additional Inference Latency<a class="headerlink" href="#no-additional-inference-latency" title="Permalink to this heading">#</a></h3>
+<h3>4.1.1. No Additional Inference Latency<a class="headerlink" href="#no-additional-inference-latency" title="Link to this heading">#</a></h3>
 <p>LoRA를 이용하면 inference시 latency 성능 하락이 없음. 또한 다른 task에 사용할 경우엔 <span class="math notranslate nohighlight">\(BA\)</span>만 제외하고 <span class="math notranslate nohighlight">\(W_0\)</span>로 학습한 다른 <span class="math notranslate nohighlight">\(B'A'\)</span>만 추가하면 되기 때문에 memory overhead가 낮음.</p>
 </section>
 </section>
 <section id="applying-lora-to-transformer">
-<h2>4.2. Applying LoRA to Transformer<a class="headerlink" href="#applying-lora-to-transformer" title="Permalink to this heading">#</a></h2>
+<h2>4.2. Applying LoRA to Transformer<a class="headerlink" href="#applying-lora-to-transformer" title="Link to this heading">#</a></h2>
 <p>본 논문에서는 trainable weight를 최소화하기 위해 LoRA를 attention weight만 적용하고 MLP module은 고정함. 이를 통해 GPT-3 175B를 기준으로 VRAM은 1.2TB에서 350GB, checkpoint size는 350GB에서 35MB로 줄임. 또한 학습 속도 또한 25% 정도 빨라짐.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="empirical-experiments">
-<h1>5.Empirical Experiments<a class="headerlink" href="#empirical-experiments" title="Permalink to this heading">#</a></h1>
+<h1>5.Empirical Experiments<a class="headerlink" href="#empirical-experiments" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(3).png"><img alt="LoRA_03" class="bg-primary mb-1" src="../../_images/image(3).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(3).png"><img alt="LoRA_03" class="bg-primary mb-1" src="../../_images/image%283%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Performance on BERT</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 179 </span><span class="caption-text">Performance on BERT</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(4).png"><img alt="LoRA_04" class="bg-primary mb-1" src="../../_images/image(4).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(4).png"><img alt="LoRA_04" class="bg-primary mb-1" src="../../_images/image%284%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Performance on GPT-2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 180 </span><span class="caption-text">Performance on GPT-2</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(5).png"><img alt="LoRA_05" class="bg-primary mb-1" src="../../_images/image(5).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(5).png"><img alt="LoRA_05" class="bg-primary mb-1" src="../../_images/image%285%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 181 </span><span class="caption-text">Performance on GPT-3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 181 </span><span class="caption-text">Performance on GPT-3</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>대부분의 경우에서 성능이 좋음</p>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(6).png"><img alt="LoRA_06" class="bg-primary mb-1" src="../../_images/image(6).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(6).png"><img alt="LoRA_06" class="bg-primary mb-1" src="../../_images/image%286%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 182 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(7).png"><img alt="LoRA_07" class="bg-primary mb-1" src="../../_images/image(7).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(7).png"><img alt="LoRA_07" class="bg-primary mb-1" src="../../_images/image%287%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 183 </span><span class="caption-text">Validation accuracy table with different hyper-parameters</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Transformer에서 한 projection matrix에 큰 r을 적용하는 것보다 모든 matrices에 작은 r을 적용하는 것이 더 성능이 좋았음.</p>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="a-ia3">
-<h1>+a) IA3<a class="headerlink" href="#a-ia3" title="Permalink to this heading">#</a></h1>
+<h1>+a) IA3<a class="headerlink" href="#a-ia3" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(8).png"><img alt="LoRA_08" class="bg-primary mb-1" src="../../_images/image(8).png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image(8).png"><img alt="LoRA_08" class="bg-primary mb-1" src="../../_images/image%288%29.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 184 </span><span class="caption-text">IA3 structure</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 184 </span><span class="caption-text">IA3 structure</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>뉴럴네트워크의 Inner Activation을 줄이기도하고 늘리기도하는 어댑터를 중간에 삽입하는 방법론. 기존에 공개된 LoRA보다 적은 파라미터를 사용하면서 높은 성능을 내는 것으로 알려져있으며, GPT-3를 in-context learning 했을때 보다도 성능이 좋다 라고 주장하고 있음. 학습시간도 매우 짧아 A100 GPU 하나로 30분만에 튜닝할 수 있었다고 함.</p>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="aa-lora">
-<h1>+aa) LoRA 사용법<a class="headerlink" href="#aa-lora" title="Permalink to this heading">#</a></h1>
+<h1>+aa) LoRA 사용법<a class="headerlink" href="#aa-lora" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">loralib</span></code> 설치</p></li>
 </ol>
@@ -832,10 +844,10 @@ h=W_0 x+\Delta W x=W_0 x+B A x
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="reference">
-<h1>Reference<a class="headerlink" href="#reference" title="Permalink to this heading">#</a></h1>
+<h1>Reference<a class="headerlink" href="#reference" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://da2so.tistory.com/79">LoRA 논문 리뷰</a></p></li>
-<li><p><a class="reference external" href="https://devocean.sk.com/blog/techBoardDetail.do?ID=164779&amp;boardType=techBlog">LLM 모델 튜닝, 하나의 GPU로 가능할까? Parameter Efficient Fine-Tuning(PEFT)을 소개합니다!</a></p></li>
+<li><p><a class="reference external" href="https://devocean.sk.com/blog/techBoardDetail.do?ID=164779&amp;amp;boardType=techBlog">LLM 모델 튜닝, 하나의 GPU로 가능할까? Parameter Efficient Fine-Tuning(PEFT)을 소개합니다!</a></p></li>
 <li><p><a class="reference external" href="https://zzambab98.tistory.com/226">Stable Diffusion LoRA 생성 및 사용법</a></p></li>
 <li><p><a class="reference external" href="https://www.internetmap.kr/entry/How-to-LoRA-Model">Stable Diffusion - LoRA 모델 사용법
 </a></p></li>
@@ -953,7 +965,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

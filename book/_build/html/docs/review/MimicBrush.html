@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>MimicBrush: Zero-shot Image Editing with Reference Imitation &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,45 +28,41 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/MimicBrush';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Make A Video" href="Make_A_Video.html" />
+    <link rel="next" title="One-step Diffusion with Distribution Matching Distillation" href="one_step_diffusion_with_distribution_matching_distillation.html" />
     <link rel="prev" title="LCM-LoRA: A Universal Stable-Diffusion Acceleration Module" href="LCM-LoRA.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -165,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -269,6 +275,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -316,6 +327,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -350,9 +362,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -493,9 +505,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -560,9 +572,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="mimicbrush-zero-shot-image-editing-with-reference-imitation">
-<h1>MimicBrush: Zero-shot Image Editing with Reference Imitation<a class="headerlink" href="#mimicbrush-zero-shot-image-editing-with-reference-imitation" title="Permalink to this heading">#</a></h1>
+<h1>MimicBrush: Zero-shot Image Editing with Reference Imitation<a class="headerlink" href="#mimicbrush-zero-shot-image-editing-with-reference-imitation" title="Link to this heading">#</a></h1>
 <section id="three-lines-summary">
-<h2>Three Lines Summary<a class="headerlink" href="#three-lines-summary" title="Permalink to this heading">#</a></h2>
+<h2>Three Lines Summary<a class="headerlink" href="#three-lines-summary" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Edited Image 로 어떻게 자연스럽게 변해야 할지에 관한 <strong>“imitative editing” 에 관한 아이디어</strong></p></li>
 <li><p><strong>Source Image 와 Reference Image 간의 correspondence</strong> 를 이용해 바뀌어야 할 부분을 잘 가져오는 방법인 MimicBrush 라고 명명한 generative training framework 제안</p></li>
@@ -570,7 +582,7 @@ document.write(`
 </ol>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Image editing 분야 자체가 굉장히 수많은 요구 조건과 시나리오를 만족하면서 수행되어야 했기에 기존의 방법들이 여전히 challenging 한 문제를 풀고 있음</p></li>
 <li><p>기존의 방법들은 현재 source image 와 함께 해당 mask 를 input 으로 넣어주고 있음 (이건 공통)</p>
@@ -616,15 +628,15 @@ document.write(`
 </ul>
 </section>
 <section id="method">
-<h2>2. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<h2>2. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_1.png"><img alt="The training process of MimicBrush" class="bg-primary mb-1" src="../../_images/MimicBrush_1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 570 </span><span class="caption-text">The training process of MimicBrush</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 571 </span><span class="caption-text">The training process of MimicBrush</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="overall-pipeline">
-<h3>Overall Pipeline<a class="headerlink" href="#overall-pipeline" title="Permalink to this heading">#</a></h3>
+<h3>Overall Pipeline<a class="headerlink" href="#overall-pipeline" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Dual diffusion models architecture + self-supervised manner</strong></p></li>
 <li><p>Video data 에는 consistent content 를 가지고 있고 visual variations 까지 있기 때문에 이를 활용</p>
@@ -649,7 +661,7 @@ document.write(`
 </ul>
 </section>
 <section id="model-structure">
-<h3>Model Structure<a class="headerlink" href="#model-structure" title="Permalink to this heading">#</a></h3>
+<h3>Model Structure<a class="headerlink" href="#model-structure" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Imitative U-Net</p>
 <ul>
@@ -695,7 +707,7 @@ document.write(`
 </ul>
 </section>
 <section id="training-strategy">
-<h3>Training Strategy<a class="headerlink" href="#training-strategy" title="Permalink to this heading">#</a></h3>
+<h3>Training Strategy<a class="headerlink" href="#training-strategy" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>MimicBrush 의 cross-image imitation ability (서로 다른 카테고리에서 잘 모방해오는 능력 정도로 이해하면 됨) 를 끌어올리기 위해서는 조금 더 적합한 training sample 을 모아서 학습할 수 있는 방법이 필요했음</p></li>
 <li><p>Training data 를 구축하는 과정에서 두 가지의 철학을 지키려 하였음</p>
@@ -733,11 +745,11 @@ document.write(`
 </ul>
 </section>
 <section id="evaluation-benchmark">
-<h3>Evaluation Benchmark<a class="headerlink" href="#evaluation-benchmark" title="Permalink to this heading">#</a></h3>
+<h3>Evaluation Benchmark<a class="headerlink" href="#evaluation-benchmark" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_2.png"><img alt="Evaluation Benchmark" class="bg-primary mb-1" src="../../_images/MimicBrush_2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 571 </span><span class="caption-text">Evaluation Benchmark</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Evaluation Benchmark</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -771,9 +783,9 @@ document.write(`
 </section>
 </section>
 <section id="experiments">
-<h2>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <section id="implementation-details">
-<h3>Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h3>
+<h3>Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Hyperparameters</p>
 <ul>
@@ -794,41 +806,41 @@ document.write(`
 </ul>
 </section>
 <section id="comparisons-with-other-works">
-<h3>Comparisons with Other Works<a class="headerlink" href="#comparisons-with-other-works" title="Permalink to this heading">#</a></h3>
+<h3>Comparisons with Other Works<a class="headerlink" href="#comparisons-with-other-works" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_3.png"><img alt="Qualitative Result" class="bg-primary mb-1" src="../../_images/MimicBrush_3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 572 </span><span class="caption-text">Qualitative Result</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 573 </span><span class="caption-text">Qualitative Result</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_4.png"><img alt="Quantitative Result" class="bg-primary mb-1" src="../../_images/MimicBrush_4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 573 </span><span class="caption-text">Quantitative Result</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Quantitative Result</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="ablation-studies">
-<h3>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
+<h3>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_5.png"><img alt="Ablation Studies" class="bg-primary mb-1" src="../../_images/MimicBrush_5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 574 </span><span class="caption-text">Ablation Studies</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 575 </span><span class="caption-text">Ablation Studies</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="qualitative-analysis">
-<h3>Qualitative Analysis<a class="headerlink" href="#qualitative-analysis" title="Permalink to this heading">#</a></h3>
+<h3>Qualitative Analysis<a class="headerlink" href="#qualitative-analysis" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/MimicBrush_6.png"><img alt="Qualitative Analysis" class="bg-primary mb-1" src="../../_images/MimicBrush_6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 575 </span><span class="caption-text">Qualitative Analysis</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 576 </span><span class="caption-text">Qualitative Analysis</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="limitations">
-<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h2>
+<h2>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Robust performance.. But, region 이 너무 작거나 multiple candidates 가 있게 되면 실패하는 경우가 생기긴 했음</p>
 <ul>
@@ -839,7 +851,7 @@ document.write(`
 </ul>
 </section>
 <section id="review">
-<h2>Review<a class="headerlink" href="#review" title="Permalink to this heading">#</a></h2>
+<h2>Review<a class="headerlink" href="#review" title="Link to this heading">#</a></h2>
 <aside>
 🔖
 <p><strong>Three Line Review</strong></p>
@@ -892,11 +904,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="Make_A_Video.html"
+       href="one_step_diffusion_with_distribution_matching_distillation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Make A Video</p>
+        <p class="prev-next-title">One-step Diffusion with Distribution Matching Distillation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -958,7 +970,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

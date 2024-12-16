@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Introduction &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Latent_Diffusion_Model';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Textual Inversion" href="Textual_Inversion.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -560,12 +572,12 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>latent diffusion model이 어떻게 학습하는지 rate-distortion trade-off로 분석할 수 있다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Latent_Space.png"><img alt="../../_images/Latent_Space.png" class="bg-primary mb-1" src="../../_images/Latent_Space.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Analysis of Latent Diffusion Model with rate-distortion trade-off</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Analysis of Latent Diffusion Model with rate-distortion trade-off</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>학습 단계는 크게 2단계로 나눌 수 있다.</p>
@@ -593,7 +605,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<h1>Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
 <p>생성 모델의 기존 모델은 다음과 같다.</p>
 <ul class="simple">
 <li><p>GAN : 좋은 perceptual quality를 가진 고해상도 image의 sampling을 효율적으로 수행하나 최적화나 full data distribution을 찾기 어렵다.</p>
@@ -627,14 +639,14 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="latent-diffusion-model">
-<h1>Latent Diffusion Model<a class="headerlink" href="#latent-diffusion-model" title="Permalink to this heading">#</a></h1>
+<h1>Latent Diffusion Model<a class="headerlink" href="#latent-diffusion-model" title="Link to this heading">#</a></h1>
 <p>오늘 알아볼 모델은 Latent Diffusion Model이다.
 기존에 다뤘던 Diffusion Model과 유사하게 동작하는 생성 모델이다. 이 논문에서는 컴퓨터 자원의 소모를 줄이면서 Diffusion Model과 유사한 성능을 얻는것이 그 목표이다.</p>
 <p>Latent Diffusion Model은 전반적으로 아래와 같은 구조를 가진다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Unet.png"><img alt="../../_images/Unet.png" class="bg-primary mb-1" src="../../_images/Unet.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Structure of Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H\times W \times 3}\)</span>이 input으로 주어졌을때 이를 encoder <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>를 통해서 <span class="math notranslate nohighlight">\(z=\mathcal{E}(x) \in \mathbb{R}^{h\times w\times c }\)</span>로 인코딩 하고 <span class="math notranslate nohighlight">\(\hat{x}=\mathcal{D}(z)\)</span>
@@ -672,9 +684,9 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="experiments">
-<h1>Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<h1>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h1>
 <section id="on-perceptual-compression-tradeoffs">
-<h2>4.1. On Perceptual Compression Tradeoffs<a class="headerlink" href="#on-perceptual-compression-tradeoffs" title="Permalink to this heading">#</a></h2>
+<h2>4.1. On Perceptual Compression Tradeoffs<a class="headerlink" href="#on-perceptual-compression-tradeoffs" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>different downsampling factor <span class="math notranslate nohighlight">\(f \in \{1,2,4,8,16,32\}\)</span> 에 대한 분석</p>
 <ul>
@@ -706,7 +718,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 </ul>
 </section>
 <section id="image-generation-with-latent-diffusion">
-<h2>4.2. Image Generation with Latent Diffusion<a class="headerlink" href="#image-generation-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<h2>4.2. Image Generation with Latent Diffusion<a class="headerlink" href="#image-generation-with-latent-diffusion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>256x256 image의 unconditional model을 CelebA-HQ, FFHQ, LSUN-Churches, Bedrooms로 학습하고 sample quality, data manifold의 coverage(FID, Precision-and-Recall) 평가</p></li>
 </ul>
@@ -725,9 +737,9 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 </ul>
 </section>
 <section id="conditional-latent-diffusion">
-<h2>4.3. Conditional Latent Diffusion<a class="headerlink" href="#conditional-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<h2>4.3. Conditional Latent Diffusion<a class="headerlink" href="#conditional-latent-diffusion" title="Link to this heading">#</a></h2>
 <section id="transformer-encoders-for-ldms">
-<h3>4.3.1 Transformer Encoders for LDMs<a class="headerlink" href="#transformer-encoders-for-ldms" title="Permalink to this heading">#</a></h3>
+<h3>4.3.1 Transformer Encoders for LDMs<a class="headerlink" href="#transformer-encoders-for-ldms" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>text-to-image modeling : 1.45B parameter KL-regularized LDM</p>
 <ul>
@@ -740,7 +752,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/text_to_image.png"><img alt="../../_images/text_to_image.png" class="bg-primary mb-1" src="../../_images/text_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 150 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">text to image on LAION</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -749,7 +761,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/layout_to_image.png"><img alt="../../_images/layout_to_image.png" class="bg-primary mb-1" src="../../_images/layout_to_image.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 151 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 151 </span><span class="caption-text">layout-to-image</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -757,7 +769,7 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 </ul>
 </section>
 <section id="convolutional-sampling-beyond-256x256">
-<h3>4.3.2 Convolutional Sampling Beyond 256x256<a class="headerlink" href="#convolutional-sampling-beyond-256x256" title="Permalink to this heading">#</a></h3>
+<h3>4.3.2 Convolutional Sampling Beyond 256x256<a class="headerlink" href="#convolutional-sampling-beyond-256x256" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>spatially aligned conditioning information(semantic map 등)을 input에 연결했을 때 image-to-image translation model 목적 수행 가능</p>
 <ul>
@@ -779,14 +791,14 @@ Attention(Q, K, V) = softmax(\frac{QK^T}{\sqrt{d}})\cdot V
 </section>
 </section>
 <section id="super-resolution-with-latent-diffusion">
-<h2>4.4. Super-Resolution with Latent Diffusion<a class="headerlink" href="#super-resolution-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<h2>4.4. Super-Resolution with Latent Diffusion<a class="headerlink" href="#super-resolution-with-latent-diffusion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>OpenImages로 사전학습된 <span class="math notranslate nohighlight">\(f=4\)</span> autoencoding model(VQ-reg) 사용</p></li>
 <li><p>low-resolution data가 input으로 들어감</p></li>
 </ul>
 </section>
 <section id="inpainting-with-latent-diffusion">
-<h2>4.5. Inpainting with Latent Diffusion<a class="headerlink" href="#inpainting-with-latent-diffusion" title="Permalink to this heading">#</a></h2>
+<h2>4.5. Inpainting with Latent Diffusion<a class="headerlink" href="#inpainting-with-latent-diffusion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>원본 이미지에서 원하는 물체를 제거한 뒤 이미지가 잘 복구된 것을 볼 수 있음</p></li>
 </ul>
@@ -897,7 +909,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

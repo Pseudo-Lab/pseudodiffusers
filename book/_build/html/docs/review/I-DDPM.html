@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>I-DDPM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/I-DDPM';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="StyO" href="StyO.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -550,9 +562,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="i-ddpm">
-<h1>I-DDPM<a class="headerlink" href="#i-ddpm" title="Permalink to this heading">#</a></h1>
+<h1>I-DDPM<a class="headerlink" href="#i-ddpm" title="Link to this heading">#</a></h1>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>DDPM을 약간 수정함으로써 High Quality를 유지하고, Log Likelihood수치도 개선할 수 있는 향상된 모델을 제안</p></li>
 <li><p>Sampling시 Base 보다 더 적은 Step으로 비슷한 퀄리티의 결과를 낼 수 있는 방법을 제안</p></li>
@@ -560,7 +572,7 @@ document.write(`
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>최근 DDPM(Ho et al.) 모델은 Generate 분야에서 High Quality의 이미지를 생성해내는 수준까지 왔다.</p></li>
 <li><p>하지만, Image의 Quality에 반해 log-likelihood 수치는 다른 generative 모델에비해 현저히 떨어졌다. (e.g. VAE)</p></li>
@@ -588,7 +600,7 @@ document.write(`
 </ul>
 </section>
 <section id="denoising-diffusion-probabilistic-models">
-<h2>2. Denoising Diffusion Probabilistic Models<a class="headerlink" href="#denoising-diffusion-probabilistic-models" title="Permalink to this heading">#</a></h2>
+<h2>2. Denoising Diffusion Probabilistic Models<a class="headerlink" href="#denoising-diffusion-probabilistic-models" title="Link to this heading">#</a></h2>
 <p><strong>DDPM</strong></p>
 <ul>
 <li><p>Process</p>
@@ -597,7 +609,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img03.png"><img alt="I-DDPM_00" class="bg-primary mb-1" src="../../_images/img03.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 185 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -605,7 +617,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img19.png"><img alt="I-DDPM_01" class="bg-primary mb-1" src="../../_images/img19.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 186 </span><span class="caption-text">Equation 2</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -619,7 +631,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img24.png"><img alt="I-DDPM_02" class="bg-primary mb-1" src="../../_images/img24.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 187 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -629,7 +641,7 @@ document.write(`
 </ul>
 </section>
 <section id="improving-the-log-likelihood">
-<h2>3. Improving the Log-likelihood<a class="headerlink" href="#improving-the-log-likelihood" title="Permalink to this heading">#</a></h2>
+<h2>3. Improving the Log-likelihood<a class="headerlink" href="#improving-the-log-likelihood" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>위의 문장 (<span class="math notranslate nohighlight">\(\tilde{B_{t}}\)</span> 대신 <span class="math notranslate nohighlight">\({B_{t}}\)</span>를 사용)에서 의문점</p>
 <ul>
@@ -637,7 +649,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img34.png"><img alt="I-DDPM_03" class="bg-primary mb-1" src="../../_images/img34.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 188 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -645,7 +657,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img43.png"><img alt="I-DDPM_04" class="bg-primary mb-1" src="../../_images/img43.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 189 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -659,7 +671,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img53.png"><img alt="I-DDPM_05" class="bg-primary mb-1" src="../../_images/img53.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 190 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -677,7 +689,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img63.png"><img alt="I-DDPM_06" class="bg-primary mb-1" src="../../_images/img63.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 191 </span><span class="caption-text">Equation 4</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -690,7 +702,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img73.png"><img alt="I-DDPM_07" class="bg-primary mb-1" src="../../_images/img73.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 192 </span><span class="caption-text">Equation 5</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -698,7 +710,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img84.png"><img alt="I-DDPM_08" class="bg-primary mb-1" src="../../_images/img84.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 193 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -711,7 +723,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img93.png"><img alt="I-DDPM_09" class="bg-primary mb-1" src="../../_images/img93.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 194 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -730,13 +742,13 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img103.png"><img alt="I-DDPM_10" class="bg-primary mb-1" src="../../_images/img103.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 195 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img113.png"><img alt="I-DDPM_11" class="bg-primary mb-1" src="../../_images/img113.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 196 </span><span class="caption-text">Table 2</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -749,7 +761,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img123.png"><img alt="I-DDPM_12" class="bg-primary mb-1" src="../../_images/img123.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 197 </span><span class="caption-text">Table 3</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -757,7 +769,7 @@ document.write(`
 </ul>
 </section>
 <section id="improcing-sampling-speed">
-<h2>4. Improcing Sampling Speed<a class="headerlink" href="#improcing-sampling-speed" title="Permalink to this heading">#</a></h2>
+<h2>4. Improcing Sampling Speed<a class="headerlink" href="#improcing-sampling-speed" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Sampling Speed를 높이기 위한 방법을 제안</p>
 <ul>
@@ -770,25 +782,25 @@ document.write(`
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img131.png"><img alt="I-DDPM_13" class="bg-primary mb-1" src="../../_images/img131.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 198 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img141.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img141.png" style="width: 500px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img142.png"><img alt="I-DDPM_14" class="bg-primary mb-1" src="../../_images/img142.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 199 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 100 Step만 가도 Full Model과 비슷한 FiD값을 보임</p>
 </section>
 <section id="comparison-to-gans">
-<h2>5. Comparison to GANs<a class="headerlink" href="#comparison-to-gans" title="Permalink to this heading">#</a></h2>
+<h2>5. Comparison to GANs<a class="headerlink" href="#comparison-to-gans" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Class Conditional Generation + P&amp;R Metric으로 GAN 모델(BigGAN)과 성능을 비교</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img152.png"><img alt="I-DDPM_15" class="bg-primary mb-1" src="../../_images/img152.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 200 </span><span class="caption-text">Figure 7</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -798,20 +810,20 @@ document.write(`
 </ul>
 </section>
 <section id="scaling-model-size">
-<h2>6. Scaling Model Size<a class="headerlink" href="#scaling-model-size" title="Permalink to this heading">#</a></h2>
+<h2>6. Scaling Model Size<a class="headerlink" href="#scaling-model-size" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>다양한 Capacity를 가진 모델의 FiD와 NLL 값을 비교</p></li>
 </ul>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img161.png"><img alt="I-DDPM_16" class="bg-primary mb-1" src="../../_images/img161.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 201 </span><span class="caption-text">Figure 8</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img171.png"><img alt="I-DDPM_17" class="bg-primary mb-1" src="../../_images/img171.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 202 </span><span class="caption-text">Figure 9</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>⇒ 모델의 크기와 학습량 모두 Step에 어느정도 비례함</p>
@@ -913,7 +925,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

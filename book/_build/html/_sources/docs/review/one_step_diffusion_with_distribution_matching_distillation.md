@@ -38,12 +38,14 @@
 
         :::{figure-md} 
         <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%202.png"  alt ="NCSN" class="bg-primary mb-1" width="700px">
-        NCSN\
+
+        NCSN
         :::
 
         :::{figure-md} 
         <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/langevin.gif" alt ="Langevin" class="bg-primary mb-1" width="300px">
-        Langevin sampling of score models\
+
+        Langevin sampling of score models
         :::
         
 
@@ -53,7 +55,8 @@
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%203.png" class="bg-primary mb-1" width="700px">
-Overall scheme\
+
+Overall scheme
 :::
 
 - 학습된 diffusion model (real data score function)  이 주어진 상황에서 one-step generator ($G_{\theta}$) 를 학습시키기 위해, 두개의 loss 1) distribution matching gradient (엄밀하게는 loss 보다는 parameter update gradient) 2) regression loss 를 사용
@@ -62,7 +65,8 @@ Overall scheme\
         
         :::{figure-md} 
         <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%204.png" class="bg-primary mb-1" width="700px">
-        Adeverserial AE architecture\
+
+        Adeverserial AE architecture
         :::
         
         AAE 는 VAE 가 생성하는 이미지에 대한 1) regression loss 와 2) implicit distribution matching loss 를 가지고 있는데, 여기서 implicit distribution matching 을 teacher diffusion model 의 distribution matching gradient 로 대체한 형태
@@ -106,7 +110,8 @@ $$
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/f637f3b3-9e18-48d1-946a-784830e6fb98.png" class="bg-primary mb-1" width="700px">
-Distribution matching gradient computation\
+
+Distribution matching gradient computation
 :::
 
 여기서 저자들은 fake data score function (initialized to real data score function) 을 동시에 학습시키는 방법으로 해결 
@@ -132,12 +137,14 @@ $$
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/fed6a1b4-97d4-4ef7-ab99-6ac3cef4bbbd.png" class="bg-primary mb-1" width="500px">
-Regression loss\
+
+Regression loss
 :::
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2011.png" class="bg-primary mb-1" width="500px">
-The effect of real and fake scores and regression loss\
+
+The effect of real and fake scores and regression loss
 :::
 
 - 그렇다면, Regression loss 하나만으로는 학습이 왜 불가능한가? (개인적 생각)
@@ -157,7 +164,8 @@ $$
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2012.png" class="bg-primary mb-1" width="400px">
-Training algoritm\
+
+Training algorithm
 :::
 
 
@@ -167,19 +175,22 @@ Training algoritm\
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2013.png" class="bg-primary mb-1" width="300px">
-Image generation benchmarks\
+
+Image generation benchmarks
 :::
 
 ## Ablation Study
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2014.png" class="bg-primary mb-1" width="300px">
-Ablation on distribution matchin\
+
+Ablation on distribution matching
 :::
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2015.png" class="bg-primary mb-1" width="500px">
-Ablation on regression loss\
+
+Ablation on regression loss
 :::
 
 
@@ -187,7 +198,8 @@ Ablation on regression loss\
 
 :::{figure-md} 
 <img src="../../pics/one_step_diffusion_with_distribution_matching_distillation/image%2017.png" class="bg-primary mb-1" width="500px">
-Comparison with Unaccelerated Models\
+
+Comparison with Unaccelerated Models
 :::
 
 # Conclusion and Limitations

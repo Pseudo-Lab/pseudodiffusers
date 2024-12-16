@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>One-step Diffusion with Distribution Matching Distillation &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/one_step_diffusion_with_distribution_matching_distillation';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Make A Video" href="Make_A_Video.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -323,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -357,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -500,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -569,12 +576,12 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="one-step-diffusion-with-distribution-matching-distillation">
-<h1>One-step Diffusion with Distribution Matching Distillation<a class="headerlink" href="#one-step-diffusion-with-distribution-matching-distillation" title="Permalink to this heading">#</a></h1>
+<h1>One-step Diffusion with Distribution Matching Distillation<a class="headerlink" href="#one-step-diffusion-with-distribution-matching-distillation" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction-and-preliminaries">
-<h1>Introduction and Preliminaries<a class="headerlink" href="#introduction-and-preliminaries" title="Permalink to this heading">#</a></h1>
+<h1>Introduction and Preliminaries<a class="headerlink" href="#introduction-and-preliminaries" title="Link to this heading">#</a></h1>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Diffusion model has revolutionized image generation, 하지만 느린 sampling speed 가 느린 문제점이 있음</p></li>
 <li><p>Accelerating sampling speed 를 목적으로 하는 많은 연구가 이루어져 왔음</p>
@@ -599,6 +606,18 @@ document.write(`
 \[
         s_{\text{real}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{base}}(x_t, t)}{\sigma_t^2}
         \]</div>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%202.png"><img alt="NCSN" class="bg-primary mb-1" src="../../_images/image%25202.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 577 </span><span class="caption-text">NCSN</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/langevin.gif"><img alt="Langevin" class="bg-primary mb-1" src="../../_images/langevin.gif" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 578 </span><span class="caption-text">Langevin sampling of score models</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </li>
 </ul>
 </li>
@@ -606,14 +625,26 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<h1>Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h1>
 <section id="id1">
-<h2>Overview<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Overview<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%203.png"><img alt="../../_images/image%25203.png" class="bg-primary mb-1" src="../../_images/image%25203.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Overall scheme</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul>
 <li><p>학습된 diffusion model (real data score function)  이 주어진 상황에서 one-step generator (<span class="math notranslate nohighlight">\(G_{\theta}\)</span>) 를 학습시키기 위해, 두개의 loss 1) distribution matching gradient (엄밀하게는 loss 보다는 parameter update gradient) 2) regression loss 를 사용</p></li>
 <li><p>Adversarial AutoEncoder 가 연상되는 architecture 를 가지고 있음</p>
 <ul>
 <li><p>Adversarial AutoEncoder</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%204.png"><img alt="../../_images/image%25204.png" class="bg-primary mb-1" src="../../_images/image%25204.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Adeverserial AE architecture</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>AAE 는 VAE 가 생성하는 이미지에 대한 1) regression loss 와 2) implicit distribution matching loss 를 가지고 있는데, 여기서 implicit distribution matching 을 teacher diffusion model 의 distribution matching gradient 로 대체한 형태</p>
 </li>
 </ul>
@@ -629,7 +660,7 @@ document.write(`
 </ul>
 </section>
 <section id="distribution-matching-loss">
-<h2>Distribution Matching Loss<a class="headerlink" href="#distribution-matching-loss" title="Permalink to this heading">#</a></h2>
+<h2>Distribution Matching Loss<a class="headerlink" href="#distribution-matching-loss" title="Link to this heading">#</a></h2>
 <p>우선, 생성모델의 training objective를 생각해보면, <span class="math notranslate nohighlight">\(p_\text{fake}\)</span> (one-step generator이 생성하는 분포)  <span class="math notranslate nohighlight">\(p_\text{real}\)</span> (실제 데이터의 분포) 를 matching 시키도록 학습을 시켜야하는 것이 one-step generator의 학습 objective이고 아래와 같이 씌여질 수 있음:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -654,6 +685,12 @@ s_{\text{real}}(x) = \nabla_x \log p_{\text{real}}(x), \quad s_{\text{fake}}(x) 
 s_{\text{real}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{base}}(x_t, t)}{\sigma_t^2}
 \]</div>
 <p>와 같이 유도됨.  <span class="math notranslate nohighlight">\(s_{\text{fake}}(x)\)</span> 의 경우가 복잡해지는데, <span class="math notranslate nohighlight">\(s_{\text{fake}}(x)\)</span> 는 one-step generator 가 생성하는 이미지의 score function 라서 one-step generator 로 생성 된 이미지가 있어야 해당 이미지를 생성하는 diffusion 모델을 학습시켜서 구할 수 있음.</p>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/f637f3b3-9e18-48d1-946a-784830e6fb98.png"><img alt="../../_images/f637f3b3-9e18-48d1-946a-784830e6fb98.png" class="bg-primary mb-1" src="../../_images/f637f3b3-9e18-48d1-946a-784830e6fb98.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Distribution matching gradient computation</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>여기서 저자들은 fake data score function (initialized to real data score function) 을 동시에 학습시키는 방법으로 해결</p>
 <div class="math notranslate nohighlight">
 \[
@@ -666,10 +703,22 @@ s_{\text{fake}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{fake}}^{\phi}(x_t, t
 <p>정리하자면, real score 은 real distribution (data distribution) 방향으로 parameter update를 하면서 fake distribution (one-step generation 의 output) 을 real distribution 에 가깝게 일치시키는 역할을 하며, fake score 의 반대방향으로 parameter update 를 하는 것은 fake data generator (one-step generator) 의 반대방향으로 distribution 을 밀어내서 most probable 한 한개의 점으로 모든 fake image 가 collapse 하는것을 방지하는 regularizer 역할을 한다.</p>
 </section>
 <section id="regression-loss">
-<h2>Regression Loss<a class="headerlink" href="#regression-loss" title="Permalink to this heading">#</a></h2>
+<h2>Regression Loss<a class="headerlink" href="#regression-loss" title="Link to this heading">#</a></h2>
 <p>그런데, score 만을 사용하여 one-step generator 을 학습시키는 것은 충분하지 않음. 두가지 측면에서 생각 해 볼 수 있는데 1) Practically, 매우 작은 noise level 에서는 score 이 reliable 하지 않아짐 2) Theoretically, <span class="math notranslate nohighlight">\(\nabla_x \log p_(x)\)</span> 는 <span class="math notranslate nohighlight">\(p(x)\)</span> 의 scale 에 영향을 받지 않아, 데이터의 높고 낮음에 대한 정보를 줄 수 없음.</p>
 <p>따라서, real + fake score 로 학습이 진행된다면,  낮은 real score 을 보이는 영역은 커버하지 못하는 부분으로 one-step generation 모델이 수렴하게 될 것 이고, high dimension 에서는 generated image 의 pixel level accuracy 에 문제가 생길 수 있음.</p>
 <p>여기서 저자들은 pixel-wise MSE (regression loss) 를 사용하여 간단히 이 문제를 해결함.</p>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/fed6a1b4-97d4-4ef7-ab99-6ac3cef4bbbd.png"><img alt="../../_images/fed6a1b4-97d4-4ef7-ab99-6ac3cef4bbbd.png" class="bg-primary mb-1" src="../../_images/fed6a1b4-97d4-4ef7-ab99-6ac3cef4bbbd.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Regression loss</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2011.png"><img alt="../../_images/image%252011.png" class="bg-primary mb-1" src="../../_images/image%252011.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 583 </span><span class="caption-text">The effect of real and fake scores and regression loss</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <ul>
 <li><p>그렇다면, Regression loss 하나만으로는 학습이 왜 불가능한가? (개인적 생각)</p>
 <p>이론상 regression loss 만을 사용해도 충분히 one-step generator 을 학습시킬 수 있어 보인다. 그러나, regression 의 근본적 문제점은 distribution to distribution matching 이 아니라는 점이다. e.g.</p>
@@ -682,23 +731,53 @@ s_{\text{fake}}(x_t, t) = - \frac{x_t - \alpha_t \mu_{\text{fake}}^{\phi}(x_t, t
 \]</div>
 </section>
 <section id="full-algorithm">
-<h2>Full algorithm<a class="headerlink" href="#full-algorithm" title="Permalink to this heading">#</a></h2>
+<h2>Full algorithm<a class="headerlink" href="#full-algorithm" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2012.png"><img alt="../../_images/image%252012.png" class="bg-primary mb-1" src="../../_images/image%252012.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 584 </span><span class="caption-text">Training algorithm</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="results">
-<h1>Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
+<h1>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
 <section id="main-comparison">
-<h2>Main comparison<a class="headerlink" href="#main-comparison" title="Permalink to this heading">#</a></h2>
+<h2>Main comparison<a class="headerlink" href="#main-comparison" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2013.png"><img alt="../../_images/image%252013.png" class="bg-primary mb-1" src="../../_images/image%252013.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 585 </span><span class="caption-text">Image generation benchmarks</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="ablation-study">
-<h2>Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h2>
+<h2>Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2014.png"><img alt="../../_images/image%252014.png" class="bg-primary mb-1" src="../../_images/image%252014.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 586 </span><span class="caption-text">Ablation on distribution matching</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2015.png"><img alt="../../_images/image%252015.png" class="bg-primary mb-1" src="../../_images/image%252015.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 587 </span><span class="caption-text">Ablation on regression loss</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="comparison-with-unaccelerated-models">
-<h2>Comparison with Unaccelerated Models<a class="headerlink" href="#comparison-with-unaccelerated-models" title="Permalink to this heading">#</a></h2>
+<h2>Comparison with Unaccelerated Models<a class="headerlink" href="#comparison-with-unaccelerated-models" title="Link to this heading">#</a></h2>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image%2017.png"><img alt="../../_images/image%252017.png" class="bg-primary mb-1" src="../../_images/image%252017.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 588 </span><span class="caption-text">Comparison with Unaccelerated Models</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion-and-limitations">
-<h1>Conclusion and Limitations<a class="headerlink" href="#conclusion-and-limitations" title="Permalink to this heading">#</a></h1>
+<h1>Conclusion and Limitations<a class="headerlink" href="#conclusion-and-limitations" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Score model 을 사용한 distribution matching loss 와 regularizing term 인 regression loss 를 통해, teacher model 에 준하는 성능을 낼 수 있었다</p></li>
 <li><p>One step generator 와 multi-step generation 사이에는 근본적인 성능 tradeoff 가 존재함</p></li>
@@ -814,7 +893,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

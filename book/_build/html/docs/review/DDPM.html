@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>DDPM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DDPM';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DDIM" href="DDIM.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -567,21 +579,21 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="ddpm">
-<h1>DDPM<a class="headerlink" href="#ddpm" title="Permalink to this heading">#</a></h1>
+<h1>DDPM<a class="headerlink" href="#ddpm" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img12.png"><img alt="DDPM_01" class="bg-primary mb-1" src="../../_images/img12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">DDPM samples \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img22.png"><img alt="DDPM_02" class="bg-primary mb-1" src="../../_images/img22.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Diffusion models \ (source: <a class="reference external" href="https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models">https://velog.io/&#64;yetsyl0705/What-are-Diffusion-Models</a>)</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Diffusion model</strong>은 <strong>variational inference로 학습시켜 데이터를 생성하는 parameterized Markov chain</strong>. Diffusion model은 Markov가 데이터가 normal distribution의 형태를 할 때까지 <strong>noise를 더해가는 diffusion process</strong>와 <strong>이를 역으로 거치며 학습하는 reverse process</strong>로 구성됨.</p>
@@ -597,15 +609,15 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
+<h1>2. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img32.png"><img alt="DDPM_03" class="bg-primary mb-1" src="../../_images/img32.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Graphical model of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1">
-<h2>2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span><a class="headerlink" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1" title="Permalink to this heading">#</a></h2>
+<h2>2-1. Forward(diffusion) process <span class="math notranslate nohighlight">\(q(\mathbf{x}_t|\mathbf{x}_{t-1})\)</span><a class="headerlink" href="#forward-diffusion-process-q-mathbf-x-t-mathbf-x-t-1" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 q\left(\mathbf{x}_{1: T} \mid \mathbf{x}_0\right):=\prod_{t=1}^T q\left(\mathbf{x}_t \mid \mathbf{x}_{t-1}\right), \quad q\left(\mathbf{x}_t \mid \mathbf{x}_{t-1}\right):=\mathcal{N}\left(\mathbf{x}_t ; \sqrt{1-\beta_t} \mathbf{x}_{t-1}, \beta_t \mathbf{I}\right)
@@ -619,7 +631,7 @@ q\left(\mathbf{x}_{1: T} \mid \mathbf{x}_0\right):=\prod_{t=1}^T q\left(\mathbf{
 </ul>
 </section>
 <section id="reverse-process-p-mathbf-x-t-1-mathbf-x-t">
-<h2>2-2. Reverse process <span class="math notranslate nohighlight">\(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)</span><a class="headerlink" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t" title="Permalink to this heading">#</a></h2>
+<h2>2-2. Reverse process <span class="math notranslate nohighlight">\(p(\mathbf{x}_{t-1}|\mathbf{x}_t)\)</span><a class="headerlink" href="#reverse-process-p-mathbf-x-t-1-mathbf-x-t" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right), \quad p_\theta\left(\mathbf{x}_{t-1} \mid \mathbf{x}_t\right):=\mathcal{N}\left(\mathbf{x}_{t-1} ; \boldsymbol{\mu}_\theta\left(\mathbf{x}_t, t\right), \boldsymbol{\Sigma}_\theta\left(\mathbf{x}_t, t\right)\right)
@@ -632,7 +644,7 @@ p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T
 </ul>
 </section>
 <section id="loss-function-l">
-<h2>2-3. Loss Function <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#loss-function-l" title="Permalink to this heading">#</a></h2>
+<h2>2-3. Loss Function <span class="math notranslate nohighlight">\(L\)</span><a class="headerlink" href="#loss-function-l" title="Link to this heading">#</a></h2>
 <p>Diffusion model의 목적은 **noise를 어떻게 제거할 것인가?**이다. <span class="math notranslate nohighlight">\(x_t\)</span>가 들어왔을 때 <span class="math notranslate nohighlight">\(x_{t-1}\)</span>을 예측할 수 있다면 <span class="math notranslate nohighlight">\(x_0\)</span> 또한 예측이 가능해짐.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -656,18 +668,18 @@ p_\theta\left(\mathbf{x}_{0: T}\right):=p\left(\mathbf{x}_T\right) \prod_{t=1}^T
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="diffusion-models-and-denoising-encoders">
-<h1>3. Diffusion models and denoising encoders<a class="headerlink" href="#diffusion-models-and-denoising-encoders" title="Permalink to this heading">#</a></h1>
+<h1>3. Diffusion models and denoising encoders<a class="headerlink" href="#diffusion-models-and-denoising-encoders" title="Link to this heading">#</a></h1>
 <p>DDPM에서는 <strong>inductive bias를 늘려</strong> 모델을 더 stable하고 성능도 개선할 수 있었음.</p>
 <blockquote>
 <div><p>Inductive bias: 학습 모델이 지금까지 만나보지 못했던 상황에서 정확한 예측을 하기 위해 사용하는 <strong>추가적인 가정</strong>, 즉 우리가 풀려는 문제에 대한 정보를 모델에 적용하는 것</p>
 </div></blockquote>
 <section id="forward-process-and-l-t">
-<h2>3-1. Forward process and <span class="math notranslate nohighlight">\(L_T\)</span><a class="headerlink" href="#forward-process-and-l-t" title="Permalink to this heading">#</a></h2>
+<h2>3-1. Forward process and <span class="math notranslate nohighlight">\(L_T\)</span><a class="headerlink" href="#forward-process-and-l-t" title="Link to this heading">#</a></h2>
 <p><strong><span class="math notranslate nohighlight">\(\beta_t\)</span>를 고정</strong>했더니 학습이 잘됨. 10^-4 ~ 0.02로 linear하게 image에 가까울수록 noise를 적게 주는 방식으로 설정.</p>
 <p>따라서 <span class="math notranslate nohighlight">\(q\)</span>에는 학습 가능한 parameter가 없어 <strong><span class="math notranslate nohighlight">\(L_T\)</span>는 0이 되기 때문에 삭제</strong>할 수 있었음.</p>
 </section>
 <section id="reverse-process-and-l-1-t-1">
-<h2>3-2. Reverse process and <span class="math notranslate nohighlight">\(L_{1:T-1}\)</span><a class="headerlink" href="#reverse-process-and-l-1-t-1" title="Permalink to this heading">#</a></h2>
+<h2>3-2. Reverse process and <span class="math notranslate nohighlight">\(L_{1:T-1}\)</span><a class="headerlink" href="#reverse-process-and-l-1-t-1" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[
 L_{t-1}=D_{K L}\left(q\left(x_{t-1} \mid x_t, x_0\right) \| p_\theta\left(x_{t-1} \mid x_t\right)\right)
@@ -684,7 +696,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img82.png"><img alt="DDPM_08" class="bg-primary mb-1" src="../../_images/img82.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Loss Simplication \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -693,7 +705,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img91.png"><img alt="DDPM_09" class="bg-primary mb-1" src="../../_images/img91.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Residual Estimation \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -701,7 +713,7 @@ p_\theta\left(x_{t-1} \mid x_t\right)=\mathcal{N}\left(x_{t-1} ; \mu_\theta\left
 </ul>
 </section>
 <section id="data-scaling-reverse-process-decoder-and-l-0">
-<h2>3-3. Data scaling, reverse process decoder and <span class="math notranslate nohighlight">\(L_0\)</span><a class="headerlink" href="#data-scaling-reverse-process-decoder-and-l-0" title="Permalink to this heading">#</a></h2>
+<h2>3-3. Data scaling, reverse process decoder and <span class="math notranslate nohighlight">\(L_0\)</span><a class="headerlink" href="#data-scaling-reverse-process-decoder-and-l-0" title="Link to this heading">#</a></h2>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -721,17 +733,17 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </ul>
 </section>
 <section id="simplified-training-objective">
-<h2>3-4. Simplified training objective<a class="headerlink" href="#simplified-training-objective" title="Permalink to this heading">#</a></h2>
+<h2>3-4. Simplified training objective<a class="headerlink" href="#simplified-training-objective" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img101.png"><img alt="DDPM_10" class="bg-primary mb-1" src="../../_images/img101.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Simplified training objective \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img111.png"><img alt="DDPM_11" class="bg-primary mb-1" src="../../_images/img111.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Final Loss \ (source: <a class="reference external" href="https://velog.io/&#64;sjina0722/%EB%85%BC%EB%AC%B8-%EB%A6%AC%EB%B7%B0-Denoising-Diffusion-Probabilistic-Models">https://velog.io/&#64;sjina0722/논문-리뷰-Denoising-Diffusion-Probabilistic-Models</a>)</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최종 loss는 위와 같이 나타난다. Ground truth - estimated output간 MSE loss를 줄이는 과정이 denoising과 비슷해 DDPM이라는 이름이 붙음.</p>
@@ -739,7 +751,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img121.png"><img alt="DDPM_12" class="bg-primary mb-1" src="../../_images/img121.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Psuedo code of training process \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -811,7 +823,7 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="experiments">
-<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<h1>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>T: 1000</p></li>
 <li><p>backbone: U-Net<br />
@@ -1046,11 +1058,11 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 </pre></div>
 </div>
 <section id="sample-quality">
-<h2>4-1. Sample quality<a class="headerlink" href="#sample-quality" title="Permalink to this heading">#</a></h2>
+<h2>4-1. Sample quality<a class="headerlink" href="#sample-quality" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img13.png"><img alt="DDPM_13" class="bg-primary mb-1" src="../../_images/img13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Train score of DDPM \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>FID, IS로 metric 계산. Unconditional model인데도 conditional model보다 우월. Codelength에서 차이가 없기 때문에 overfitting의 가능성도 적음.</p>
@@ -1065,17 +1077,17 @@ x-\frac{1}{255} &amp; \text { if } x&gt;-1\end{cases} \right.
 <p><span class="math notranslate nohighlight">\(\mu\)</span>보다 <span class="math notranslate nohighlight">\(\epsilon\)</span>을 계산하는 것이 성적이 좋고, fixed variance를 사용했을 때에도 성능이 감소하지 않음.</p>
 </section>
 <section id="reverse-process-parameterization-and-training-objective-ablation">
-<h2>4-2. Reverse process parameterization and training objective ablation<a class="headerlink" href="#reverse-process-parameterization-and-training-objective-ablation" title="Permalink to this heading">#</a></h2>
+<h2>4-2. Reverse process parameterization and training objective ablation<a class="headerlink" href="#reverse-process-parameterization-and-training-objective-ablation" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img14.png"><img alt="DDPM_14" class="bg-primary mb-1" src="../../_images/img14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison between <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span> \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Comparison between <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\epsilon\)</span> \ (source: <a class="reference external" href="https://arxiv.org/abs/2006.11239">https://arxiv.org/abs/2006.11239</a>)</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\mu\)</span>의 실험 결과를 보면 분산을 고정했을 때 FID에서 성능 차이가 나는 것을 볼 수 있음. 또한 <span class="math notranslate nohighlight">\(\epsilon\)</span>을 사용하면서 Simplified objective를 사용하면 FID, IS가 더 개선됨</p>
 </section>
 <section id="id1">
-<h2>4-3. Reverse process parameterization and training objective ablation<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>4-3. Reverse process parameterization and training objective ablation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1189,7 +1201,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

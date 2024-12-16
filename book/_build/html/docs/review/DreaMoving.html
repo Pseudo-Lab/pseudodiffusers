@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>DreaMoving &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DreaMoving';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion" href="DreamPose.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="current nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -557,9 +569,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="dreamoving">
-<h1>DreaMoving<a class="headerlink" href="#dreamoving" title="Permalink to this heading">#</a></h1>
+<h1>DreaMoving<a class="headerlink" href="#dreamoving" title="Link to this heading">#</a></h1>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>고품질 customized human video 생성을 위해 제어가능한 diffusion 기반 video generation framework인 DreaMoving 제안</p></li>
 <li><p>target identity와 posture sequence가 주어졌을 때, target identity moving이나 dancing video 생성이 가능하다.</p></li>
@@ -567,7 +579,7 @@ document.write(`
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>T2V의 진전에도 인간 중심 기반 생성에는 어려움을 겪는 중.</p></li>
 <li><p>open-source human dance video dataset의 부족, text 묘사의 어려움으로 인해 frame간 일관성, 긴 길이, 다양성을 포함한 비디오 생성에 어려움을 겪는다.</p></li>
@@ -578,11 +590,11 @@ document.write(`
 </ul>
 </section>
 <section id="architecture">
-<h2>2. Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
+<h2>2. Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_1.png"><img alt="figure_1" class="bg-primary mb-1" src="../../_images/figure_1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 628 </span><span class="caption-text">Figure 1. The overview of DreaMoving</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 641 </span><span class="caption-text">Figure 1. The overview of DreaMoving</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -595,7 +607,7 @@ document.write(`
 <li><p>Plug-in : motion-controlling을 위한 <strong>Video ControlNet</strong> &amp; identity preserving을 위한 <strong>Content Guider</strong></p></li>
 </ul>
 <section id="data-collection-and-preprocessing">
-<h3>2.1 Data Collection and Preprocessing<a class="headerlink" href="#data-collection-and-preprocessing" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Data Collection and Preprocessing<a class="headerlink" href="#data-collection-and-preprocessing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>인터넷에서 human dance video 1000의 고품질 영상으로 훈련</p></li>
 <li><p>temporal module 훈련은 변이나 특별한 효과 없는 연속적 frame이 필요하기 때문에 clip video로 split하여 6000개의 짧은 비디오를 획득한다.(8~10s)</p></li>
@@ -608,7 +620,7 @@ document.write(`
 </ul>
 </section>
 <section id="motion-block">
-<h3>2.2 Motion Block<a class="headerlink" href="#motion-block" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Motion Block<a class="headerlink" href="#motion-block" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>temporal consistency와 motion fidelity 향상을 위해서 U-Net과 ControlNet를 motion block으로 통합.</p></li>
 <li><p>motion block은 AnimateDiff로 확장. temporal sequence length는 64로 확장</p></li>
@@ -617,7 +629,7 @@ document.write(`
 </ul>
 </section>
 <section id="content-guider">
-<h3>2.3 Content Guider<a class="headerlink" href="#content-guider" title="Permalink to this heading">#</a></h3>
+<h3>2.3 Content Guider<a class="headerlink" href="#content-guider" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Content Guider는 인물의 appearance와 배경을 포함한 생성된 video의 내용을 제어하기 위해 고안됨.</p></li>
 <li><p>가장 간단한 방법은 text prompt이지만, 개인화된 인물 외관 묘사가 어렵다.</p></li>
@@ -628,7 +640,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/eq_11.png"><img alt="eq_1" class="bg-primary mb-1" src="../../_images/eq_11.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 629 </span><span class="caption-text">Equation 1 Content Guider cross attentino output given query, text, face, cloth features</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 642 </span><span class="caption-text">Equation 1 Content Guider cross attentino output given query, text, face, cloth features</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -639,7 +651,7 @@ document.write(`
 </section>
 </section>
 <section id="model-training">
-<h2>2.4 Model Training<a class="headerlink" href="#model-training" title="Permalink to this heading">#</a></h2>
+<h2>2.4 Model Training<a class="headerlink" href="#model-training" title="Link to this heading">#</a></h2>
 <p><strong>2.4.1 Content Guider Training</strong></p>
 <ul class="simple">
 <li><p>Base Model : SD v1.5 기반</p></li>
@@ -683,7 +695,7 @@ document.write(`
 <li><p>batch size 1, 20k steps 이후 훈련 종료</p></li>
 </ul>
 <section id="model-inference">
-<h3>2.5 Model Inference<a class="headerlink" href="#model-inference" title="Permalink to this heading">#</a></h3>
+<h3>2.5 Model Inference<a class="headerlink" href="#model-inference" title="Link to this heading">#</a></h3>
 <p>입력 : text prompt, reference image, pose/depth sequence</p>
 <p>Video ControlNet control scale : 1 (pose/depth에서만)</p>
 <p>multi-controlnet을 통해 pose &amp; depth 동시 사용 가능</p>
@@ -692,25 +704,25 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_21.png"><img alt="figure_2" class="bg-primary mb-1" src="../../_images/figure_21.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 630 </span><span class="caption-text">Figure 2. The results of DreaMoving with text prompt as input</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 643 </span><span class="caption-text">Figure 2. The results of DreaMoving with text prompt as input</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_31.png"><img alt="figure_3" class="bg-primary mb-1" src="../../_images/figure_31.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 631 </span><span class="caption-text">Figure 3. The results of DreaMoving with text prompt and face image as inputs</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 644 </span><span class="caption-text">Figure 3. The results of DreaMoving with text prompt and face image as inputs</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_41.png"><img alt="figure_4" class="bg-primary mb-1" src="../../_images/figure_41.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 632 </span><span class="caption-text">Figure 4. The results of DreaMoving with face and cloth images as inputs</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 645 </span><span class="caption-text">Figure 4. The results of DreaMoving with face and cloth images as inputs</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_52.png"><img alt="figure_5" class="bg-primary mb-1" src="../../_images/figure_52.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 633 </span><span class="caption-text">Figure 5. The results of DreaMoving with stylized image as input</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 646 </span><span class="caption-text">Figure 5. The results of DreaMoving with stylized image as input</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -817,7 +829,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -68,6 +68,7 @@ parts:
   - file: docs/review/DreamFusion
   - file: docs/review/magic-3d
   - file: docs/review/DreamBooth3D
+  - file: docs/review/zero123plus
   
 - caption: Experiments
   chapters:

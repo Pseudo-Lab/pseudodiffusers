@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>GLIDE &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -29,44 +28,40 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
   <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/GLIDE';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="BBDM" href="BBDM.html" />
@@ -167,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -271,6 +277,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -352,9 +364,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -495,9 +507,9 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -560,9 +572,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="glide">
-<h1>GLIDE<a class="headerlink" href="#glide" title="Permalink to this heading">#</a></h1>
+<h1>GLIDE<a class="headerlink" href="#glide" title="Link to this heading">#</a></h1>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>GLIDE 기법이 DALL-E보다 human-evaluator 평가가 더 우수하다고 한다.</p></li>
 <li><p>classifier-free Guidance vs CLIP-Guidance(classifier-free Guidance를 결국 사용.)</p></li>
@@ -570,7 +582,7 @@ document.write(`
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Natural language로 부터 realistic한 image를 만드는 많은 방법들이 생겨나고 있다. 하지만 text prompts에 정확히 대응하는 photorealistic한 image를 생성하기에는 어려움을 겪고 있다.</p>
 <p>Diffusion model이 DDPM, DDIM 논문을 통해 생성모델의 중심으로 떠오르며 unconditional한 image에 대해서는 SOTA를 찍었다고 한다. 자연스럽게 class-conditional한 image 생성에 대해서도 연구가 이루어졌는데, Diffusion models beat gans on image synthesis라는 논문에서 저자들은 noise한 image에 대해 class를 예측하는 classifier를 추가하여 sampling과정에서 label에 해당하는 이미지를 생성하도록 gradient를 control시키는 classifier guidance 방법을 소개한다. 이후, classifier없이 guidance를 줄 수 있는 classifier-free guidance 방법이 소개되었다.</p>
 <p>이 논문에서는 classifier-free guidance 방법과 기존 diffusion model을 활용하여 text-conditional image synthesis를 잘 수행했다고 보여준다. 추가적으로  pretrained CLIP 모델을 활용하여 CLIP guidance라는 방법을 제시하며 classifier-free guidance와 비교를 한다. 결과적으로는 classifier-free guidance가 더 좋은 성능을 보인다고 한다.</p>
@@ -578,20 +590,20 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide1.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide1.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 323 </span><span class="caption-text">GLIDE text to image</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 323 </span><span class="caption-text">GLIDE text to image</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide2.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide2.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 324 </span><span class="caption-text">GLIDE image impainting</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 324 </span><span class="caption-text">GLIDE image impainting</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="background">
-<h2>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h2>
+<h2>2. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
 <section id="diffusion-models">
-<h3>2.1 Diffusion Models<a class="headerlink" href="#diffusion-models" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Diffusion Models<a class="headerlink" href="#diffusion-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>DDPM</p></li>
 </ul>
@@ -611,7 +623,7 @@ p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide5.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide5.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 325 </span><span class="caption-text">Proof of proportional relationship to finding score and epsilon</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 325 </span><span class="caption-text">Proof of proportional relationship to finding score and epsilon</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -620,82 +632,82 @@ p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
 <p><span class="math notranslate nohighlight">\(\sum_{\theta}\)</span>를 constant값으로 고정시킨 이전 DDPM과 달리 해당 논문에서는 <span class="math notranslate nohighlight">\(\sum_{\theta}\)</span> learnable parameter로 설정하여 더 적은 diffusion step만으로 더 좋은 quality의 sample을 만들어낼 수 있다고 제시한다.</p>
 </section>
 <section id="guided-diffusion">
-<h3>2.2 Guided Diffusion<a class="headerlink" href="#guided-diffusion" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Guided Diffusion<a class="headerlink" href="#guided-diffusion" title="Link to this heading">#</a></h3>
 <p>Diffusion model beat GANS on Image Synthesis(Dharwial et al.)에서는 diffusion model을 통해 class-conditional한 image생성을 제시한다. 이 논문에서의 가장 핵심적인 기술이 classifier-guidance이다. noise한 image로부터 epsilon을 예측하는 model은 그대로 유지하되, 해당 noise image가 어떤 class에 속하는지 분류하는 별도의 classifier를 설정한다. 이 classifier의 score를 통해 class-conditional한 전체 과정의 score에게 guide를 주는 방법을 제시한다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide6.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide6.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 326 </span><span class="caption-text">Classifier guidance</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 326 </span><span class="caption-text">Classifier guidance</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide10.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 327 </span><span class="caption-text">Classifier guidance</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 327 </span><span class="caption-text">Classifier guidance</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="classifier-free-guidance">
-<h3>2.3 Classifier-free guidance<a class="headerlink" href="#classifier-free-guidance" title="Permalink to this heading">#</a></h3>
+<h3>2.3 Classifier-free guidance<a class="headerlink" href="#classifier-free-guidance" title="Link to this heading">#</a></h3>
 <p>classifier를 통해 class-conditional한 image생성을 하는 방법이 위에 소개되었는데, 이 방법은 noise한 image에 대해서 classifiy를 해야하므로 pretrained model을 사용할 수 없고 모델 규모가 너무 heavy해지는 등 몇몇 문제점을 가지고 있었다. 이 방법에 대한 개선점을 Classifier-Free Diffusion Guidance(Ho et al.)에서 Classifer-free guidance라는 기법으로 제시한다. 위의 score 식에서 약간의 변형을 통해 classifier 없이 단일 model만으로 guidance를 줄 수 있는 방법을 제시한다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide7.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide7.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 328 </span><span class="caption-text">Classifier-free guidance</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 328 </span><span class="caption-text">Classifier-free guidance</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="clip-guidance">
-<h3>2.4 CLIP guidance<a class="headerlink" href="#clip-guidance" title="Permalink to this heading">#</a></h3>
+<h3>2.4 CLIP guidance<a class="headerlink" href="#clip-guidance" title="Link to this heading">#</a></h3>
 <p>CLIP은 텍스트와 이미지 사이의 joint representation을 학습할 수 있는 모델이다. Image encoder f(x)와 Text encoder g(c)로 이루어져 있다. (x,c) 즉 이미지와 이미지 캡션 쌍으로 이루어진 대규모 데이터를 이용해 contrastive learning을 진행시킨 모델이다. 같은 의미를 가진 positive pair에 대해서는 f(x) · g(c)(유사도)가 커지도록 negative pair에 대해서는 f(x) · g(c)가 작아지도록 하는 것이다. CLIP guidance에서는 classifier guidance에서 classifier대신에 pretrained CLIP모델을 사용한다. 따라서 guidance를 주는 방식도 classifier대신 CLIP모델을 통해 구한 noise한 image x와 주어진 text간의 유사도를 이용한다.</p>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide8.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 329 </span><span class="caption-text">CLIP</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 329 </span><span class="caption-text">CLIP</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide9.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide9.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 330 </span><span class="caption-text">CLIP guidance</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 330 </span><span class="caption-text">CLIP guidance</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="training">
-<h2>3. Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<h2>3. Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
 <p>실험에서 3.5 billion parameter의 text-conditional diffusion model을 64x64 resolution을 위해 사용했고 또다른 1.5 billion parameter의 text-conditional upsampling diffusion model을 256x256으로 resolution을 증가시키는데 사용하였다고 한다. 또한, CLIP guidance를 위해 noised 64x64 ViT-L CLIP model을 사용했다고 한다.</p>
 <section id="text-conditional-diffusion-models">
-<h3>3.1 Text-Conditional Diffusion Models<a class="headerlink" href="#text-conditional-diffusion-models" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Text-Conditional Diffusion Models<a class="headerlink" href="#text-conditional-diffusion-models" title="Link to this heading">#</a></h3>
 <p>Improved DDPM의 ADM model을 base로 text-conditioning을 추가하여 학습을 진행하였다. 주어진 noised image <span class="math notranslate nohighlight">\(x_t\)</span>로부터 <span class="math notranslate nohighlight">\(x_{t-1}\)</span>을 예측하는 <span class="math notranslate nohighlight">\(p_{\theta}(x_{t-1}|x_t,c)\)</span>를 수행해야한다. text를 condition으로 주기 위해서 우선 주어진 text를 K개의 token으로 encoding한 후, Transformer model에 input값으로 넣어준다. Transformer output의 마지막 embedding token과 positional encoding을 통해 나온 time step embedding token을 연산하고자 하는 크기에 맞게 linear projection하여 더한 후, residual block을 거친 image와 AdaIN기법을 통해 residual block의 output을 도출한다. Transformer output의 마지막 layer는 연산하고자 하는 크기에 맞게 linear projection하여 residual block뒤에 붙는 attention block에 이용한다.</p>
 <p>학습 데이터셋은 DALL-E와 같은 데이터셋을 사용하였고 model architecture로는 기존  ADM model보다 더 scale up된 model과 1.2B paremeters를 갖는 Transformer를 사용했다고 한다. 게다가 64x64 image를 256x256 image로 upsampling하는 Upsampler model도 학습시켰다고 한다. upsampler model은 Improved DDPM에서의 ImageNet Upsampler와 거의 비슷하다고 한다.</p>
 </section>
 <section id="fine-tuning-for-classifier-free-guidance">
-<h3>3.2. Fine-tuning for classifier-free guidance<a class="headerlink" href="#fine-tuning-for-classifier-free-guidance" title="Permalink to this heading">#</a></h3>
+<h3>3.2. Fine-tuning for classifier-free guidance<a class="headerlink" href="#fine-tuning-for-classifier-free-guidance" title="Link to this heading">#</a></h3>
 <p>처음 training을 진행했을때는, text를 condition으로 준 conditional image generation에 맞춰 training을 진행했다고 한다. 이 후, unconditional image generation의 성능을 위해 데이터셋의 약 20%의 text condition에 empty sequence를 주고 training을 진행했다고 한다.</p>
 </section>
 <section id="image-inpainting">
-<h3>3.3. Image Inpainting<a class="headerlink" href="#image-inpainting" title="Permalink to this heading">#</a></h3>
+<h3>3.3. Image Inpainting<a class="headerlink" href="#image-inpainting" title="Link to this heading">#</a></h3>
 <p>이전 연구에서는, impainting을 위해 diffusion model로 학습시키는 과정을 거치지 않았다. diffusion model로 sampling을 한 후, 알려진 영역에 대해서는 <span class="math notranslate nohighlight">\(q(x_t|x_0)\)</span>로 대체하는 방식을 사용했기에 model이 sampling을 하는 과정에서 전체 context를 참조할 수 없다는 단점이 있었다.</p>
 <p>이 논문에서는 fine-tuning과정에서 training example의 임의의 부분을 지운다음, 남은 부분은 모델에 추가적인 조건 정보로서 마스크 채널과 함께 입력되도록 설계하였다.</p>
 </section>
 <section id="noised-clip-models">
-<h3>3.4. Noised CLIP models<a class="headerlink" href="#noised-clip-models" title="Permalink to this heading">#</a></h3>
+<h3>3.4. Noised CLIP models<a class="headerlink" href="#noised-clip-models" title="Link to this heading">#</a></h3>
 <p>classifier guidance에 더 적합하게 훈련시키기 위해 clip guidance를 사용해서 classifier-free guidance와 비교했음을 위에서 언급했다. clip guidance를 사용하기 위해 저자들은 noise image에 대해 학습시킨 Noised CLIP models를 사용했음을 밝힌다. 위에서 언급했듯이 결과는 classifier-free guidance가 더 좋았다고 한다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide14.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 331 </span><span class="caption-text">comparison between CLIP guidance and classifier-free guidance</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 331 </span><span class="caption-text">comparison between CLIP guidance and classifier-free guidance</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="results">
-<h2>4. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<h2>4. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide12.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 332 </span><span class="caption-text">Quantitive Results</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 332 </span><span class="caption-text">Quantitive Results</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서는 classifier-free guidance와 CLIP guidance에 대해 Precision과 Recall, FID와 IS, CLIP score와 FID 간의 명확한 trade-off 를 관찰하고 있다고 언급한다.</p>
@@ -703,7 +715,7 @@ p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide13.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide13.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 333 </span><span class="caption-text">Zero-shot FID results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 333 </span><span class="caption-text">Zero-shot FID results</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Table1은 Unguided, CLIP guidance, Classifier-free guidance 기법을 각각 적용한 256x256 resolution image에 대해 human evaluation을 진행한 결과이다. Classifier-free guidance를 적용한 결과가 photorealism, caption 항목에 대해 압도적인 결과를 보임을 알 수 있다.</p>
@@ -711,7 +723,7 @@ p_{\theta}(x_{t-1}|x_t) := \mathcal{N}(\mu_{\theta}(x_t), \sum_{\theta}(x_t))
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/glide15.png"><img alt="GLIDE_1" class="bg-primary mb-1" src="../../_images/glide15.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 334 </span><span class="caption-text">final results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 334 </span><span class="caption-text">final results</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -822,7 +834,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

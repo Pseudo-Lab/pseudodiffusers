@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>StyO &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -18,50 +19,54 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/StyO';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Imagen" href="imagen.html" />
@@ -143,8 +148,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +165,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -330,6 +322,13 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -364,9 +363,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -491,10 +490,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -502,14 +501,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -568,16 +567,16 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="styo">
-<h1>StyO<a class="headerlink" href="#styo" title="Link to this heading">#</a></h1>
+<h1>StyO<a class="headerlink" href="#styo" title="Permalink to this heading">#</a></h1>
 <section id="abstract">
-<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>“<strong>Sty</strong>lize the face in only <strong>O</strong>ne-shot.”</p></li>
 <li><p>한장의 이미지만으로 다른 이미지로 스타일을 Transfer!</p></li>
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>현재 다양한 분야에서 이미지에 특정 스타일을 입히고자하는 연구들이 활발히 진행중이다.</p></li>
 <li><p>이전까지의 연구들은 대부분 각각의 source 이미지, target 이미지 한장씩을 사용해 GAN based model을 활용하려는 식이 주를 이루었다.</p></li>
@@ -611,9 +610,9 @@ document.write(`
 </ul>
 </section>
 <section id="related-work">
-<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
 <section id="diffusion-model">
-<h3>2.1. Diffusion Model<a class="headerlink" href="#diffusion-model" title="Link to this heading">#</a></h3>
+<h3>2.1. Diffusion Model<a class="headerlink" href="#diffusion-model" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>GAN이 생성 분야를 장악하던 중 최근 DDPM의 등장으로 Diffusion 모델이 주목을 받기 시작했다.</p></li>
 <li><p>text prompt를 기반으로 manipulated image 생성이 가능해졌지만, detail한 부분까지 control하기에는 한계가 있었다.</p></li>
@@ -621,7 +620,7 @@ document.write(`
 </ul>
 </section>
 <section id="face-stylization">
-<h3>2.2. Face Stylization<a class="headerlink" href="#face-stylization" title="Link to this heading">#</a></h3>
+<h3>2.2. Face Stylization<a class="headerlink" href="#face-stylization" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>최근 GAN Based 생성 모델이 좋은 성능을 보이면서 styleGAN을 베이스로 하는 face image style transfer 모델이 좋은 성능을 보여주었다.</p></li>
 <li><p>하지만 real face dataset을 학습한 pretrained checkpoint를 사용하고 이에 대한 의존성이 너무 커 artistic style 정보를 입히는데 한계를 보여준다.</p></li>
@@ -630,13 +629,13 @@ document.write(`
 </section>
 </section>
 <section id="method">
-<h2>3. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<h2>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
 <section id="framework-of-styo">
-<h3>3.2. Framework of StyO<a class="headerlink" href="#framework-of-styo" title="Link to this heading">#</a></h3>
+<h3>3.2. Framework of StyO<a class="headerlink" href="#framework-of-styo" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img.png"><img alt="StyO_00" class="bg-primary mb-1" src="../../_images/img.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 203 </span><span class="caption-text">Figure 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -670,7 +669,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img114.png"><img alt="StyO_01" class="bg-primary mb-1" src="../../_images/img114.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 204 </span><span class="caption-text">Equation 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -680,7 +679,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img26.png"><img alt="StyO_02" class="bg-primary mb-1" src="../../_images/img26.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 205 </span><span class="caption-text">Figure 2</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -709,7 +708,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img36.png"><img alt="StyO_03" class="bg-primary mb-1" src="../../_images/img36.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 206 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 206 </span><span class="caption-text">Equation 3</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -731,7 +730,7 @@ document.write(`
 </section>
 </section>
 <section id="experiments">
-<h2>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
 <p><strong>Implementation Details</strong></p>
 <ul class="simple">
 <li><p>base model : Pretrained LDM model checkpoint (trained by LAION-5B)</p></li>
@@ -750,7 +749,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img45.png"><img alt="StyO_04" class="bg-primary mb-1" src="../../_images/img45.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 207 </span><span class="caption-text">Figure 3</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -759,7 +758,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img55.png"><img alt="StyO_05" class="bg-primary mb-1" src="../../_images/img55.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 208 </span><span class="caption-text">Table 1</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -772,7 +771,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img65.png"><img alt="StyO_06" class="bg-primary mb-1" src="../../_images/img65.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 209 </span><span class="caption-text">Figure 4</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -785,7 +784,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img75.png"><img alt="StyO_07" class="bg-primary mb-1" src="../../_images/img75.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 210 </span><span class="caption-text">Figure 5</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -799,7 +798,7 @@ document.write(`
 </ol>
 </section>
 <section id="conclusion">
-<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>StyO는 IDL과 FCC를 사용해 기존 GAN을 이용한 SOTA 모델들보다 더 자연스럽고 Quality 좋은 style transfered 이미지를 생성해낼 수 있었다.</p></li>
 <li><p><strong>단, style 하나의 transfer를 위해 single GPU로 10분이 걸리므로 time-efficiency가 좋지 못하다는 단점이 있다.</strong></p></li>
@@ -908,7 +907,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -932,8 +931,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

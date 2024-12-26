@@ -1,0 +1,1375 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>DreamGaussian &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DreamGaussian';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="Zero123++" href="zero123plus.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DreamGaussian</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/DreamGaussian.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/DreamGaussian.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DreamGaussian</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DreamGaussian</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">1. Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-representations">2.1 3D representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d-generation">2.2 Text-to-3D Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-3d-generation">2.3 Image-to-3D Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.4 추가 참고자료</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-gaussian-splatting">3.1 Generative Gaussian Splatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-3d">Image-to-3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d">Text-to-3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-mesh-extraction">3.2 Efficient Mesh Extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-density-query">Local Density Query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color-back-projection">Color Back-projection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-space-texture-refinement">3.3 UV-space Texture Refinement</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">4.1 Implementation Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-comparison">4.2 Qualitative Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-comparison">4.3 Quantitative Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.4 Ablation Study</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-conclusion">5. Limitations and Conclusion</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation (ICLR 2024)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2309.16653">https://arxiv.org/abs/2309.16653</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/dreamgaussian/dreamgaussian/tree/main">dreamgaussian/dreamgaussian</a></p></li>
+<li><p>Project Page: <a class="reference external" href="https://dreamgaussian.github.io/">https://dreamgaussian.github.io/</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Kyeongmin Yu</p></li>
+<li><p><strong>Last updated on Dec. 26, 2024</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="dreamgaussian">
+<h1>DreamGaussian<a class="headerlink" href="#dreamgaussian" title="Permalink to this heading">#</a></h1>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="abstract">
+<h1>1. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<aside>
+<ul class="simple">
+<li><p>A novel 3D content generation framework that achieves both efficiency and quality simultaneously.</p></li>
+<li><p>3D gaussian을 3D generation task에 적용하고 3D gaussians 로 부터 textured mesh 를 추출하는 효율적인 알고리즘 제안.</p></li>
+<li><p>DreamGaussian produces high-quality textured meshes in just 2 min from a single-view image, achieving approximately 10 times acceleration compared to existing methods.</p></li>
+</ul>
+</aside>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="related-work">
+<h1>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<section id="d-representations">
+<h2>2.1 3D representations<a class="headerlink" href="#d-representations" title="Permalink to this heading">#</a></h2>
+<details>
+<summary> <strong> Neural Radiance Fields (NeRF) </strong></summary>
+<table>
+<tr>
+<th align="center">
+<strong>original NeRF</strong>
+</th>
+<th align="center">
+NeRF와 <strong>Mip-NeRF</strong>의 차이점
+</th>
+<th align="center">
+<strong>Mip-NeRF 360</strong>의 contract($\cdot$) function
+</th>
+</tr>
+<tr>
+<td>
+<img src="/book/pics/DreamGaussian/image_1.png" alt="original nerf" width="400px">
+</td>
+<td>
+<img src="../../pics/DreamGaussian/image_1.png" alt="mip-nerf" width="400px">
+</td>
+<td>
+<img src="../../pics/DreamGaussian/image_2.png" alt="mip-nerf" width="400px">
+</td>
+</tr>
+<tr>
+<td>
+신경망(MLP)을 이용해 3d 물체에 대한 정보를 표현했다.
+신경망은 카메라의 위치와 방향을 입력으로 해당 지점의 density와 color를 리턴한다. 온전한 하나의 이미지를 렌더링 하기 위해서는 모든 camera ray를 따라 (이론상)적분이 필요하다.
+</td>
+<td >
+ray tracing이 아닌 cone tracing 방식으로, 렌더링 된 이미지의 품질을 향상시킴.
+</td>
+<td >
+파란 영역은 euclidean space, 노란 영역은 맵핑된 영역이다.
+이외에도 기존 방식(coarse-to-fine)과 다르게 n개의 신경망을 사용했으며 초기 신경망을 최종 결과물 출력시 사용하지 않았다.
+</td>
+</tr>
+</table>
+<table>
+<tr>
+<th align="center">
+<strong>Instant NGP</strong>
+</th>
+<th align="center">
+<strong>Block-NeRF</strong>
+</th>
+<th align="center">
+<strong>NeRF in the wild</strong>
+</th>
+</tr>
+<tr>
+<td>
+<img src="../../pics/DreamGaussian/image_3.png" alt="instant-ngp" width="400px">
+</td>
+<td>
+<img src="../../pics/DreamGaussian/image_4.png" alt="block-nerf" width="400px">
+</td>
+<td>
+<img src="../../pics/DreamGaussian/image_5.png" alt="nerfinthewild" width="400px">
+</td>
+</tr>
+<tr>
+<td>
+voxel기반의 multiresolution hash encoding을 통해 기존 sin/cos을 이용한 positional encoding 방식을 발전시킴. 이러한 encoding 방식을 채택함으로써 encoding 자체의 속도도 빨라졌으며 다중 스케일 정보를 담은 encoding을 이용함으로써 original NeRF의 신경망보다 오히려 작은 구조를 채택할 수 있었다. 또한 cuda를 활용하여 처리속도를 향상시킴으로써 real-time에 가까운 속도를 낼 수 있었다.
+</td>
+<td >
+대규모 장면을 모델링하기 위해 여러 NeRF를 합쳐서 하나의 큰 장면을 구성하는 방법
+</td>
+<td >
+in the wild dataset에서 scene 재구성을 위해 scene을 
+"static 요소"와 "transient 요소"로 분리하여 모델링
+</td>
+</tr>
+</table>
+</details>
+<details>
+<summary> <strong>3D Gaussian Splatting (3DGS)</strong></summary>
+<table>
+<tr>
+<th align="center">
+<strong>point cloud 예시</strong>
+</th>
+<th align="center">
+<strong>Gaussian densification 과정</strong>
+</th>
+</tr>
+<tr>
+<td>
+<img src="../../pics/DreamGaussian/image_6.png" alt="point cloud" class="mb-1" width="400px">
+</td>
+<td>
+<img src="../../pics/DreamGaussian/image_7.png" alt="gaussian densification" class="mb-1" width="400px">
+</td>
+</tr>
+</table>
+<figure class="align-default" id="id2">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_8.png"><img alt="GS optimization" class="mb-1" src="../../_images/image_8.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 754 </span><span class="caption-text">Gaussian Splatting optimization
+colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D gaussian을 초기화 한다. 이후 gaussian들을 합치거나 쪼개며 최적화를 진행한다. 렌더링 시에는 3D gaussian들을 2D projection하여 하나의 이미지를 만든다.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<hr class="docutils" />
+<ul>
+<li><p><strong>3D Gaussian representation [<a class="reference external" href="https://towardsdatascience.com/a-comprehensive-overview-of-gaussian-splatting-e7d570081362#4cd8">참고1</a>][<a class="reference external" href="https://patapom.com/blog/SHPortal/">참고2</a>]</strong></p>
+<p>각각의 3D Gaussians은 3D position(mean) <span class="math notranslate nohighlight">\(\mu\)</span>, opacity <span class="math notranslate nohighlight">\(\alpha\)</span>, anisotropic covariance <span class="math notranslate nohighlight">\(\Sigma\)</span>로 위치와 크기, 방향을 표현하며, 여기에 spherical harmonic (SH) coefficients를 추가해 view-dependent appearance(color)를 표현했다.</p>
+<ul class="simple">
+<li><p>covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> 를 rotation matrix <span class="math notranslate nohighlight">\(\mathbf R\)</span> 와 scaling matrix <span class="math notranslate nohighlight">\(\mathbf S\)</span>로 분리가능.</p>
+<ul>
+<li><p>rotation matrix는 (real <span class="math notranslate nohighlight">\(r\)</span>+ imaginery <span class="math notranslate nohighlight">\(i,j,k\)</span>) 4차원의 quaternion으로  표현가능.</p></li>
+<li><p>scaling matrix는 (<span class="math notranslate nohighlight">\(x,y,z\)</span>) 3차원의 scale로 표현가능.</p></li>
+</ul>
+</li>
+<li><p>SH 계수의 경우 일반적으로 각 색상 채널(R, G, B)당 9개의 계수, 총 27개의 계수를 사용합니다.</p>
+<ul>
+<li><p>9개의 계수를 사용한다는 말은 <span class="math notranslate nohighlight">\(l\in[0,1,2]\)</span> 라는 뜻이며, <span class="math notranslate nohighlight">\(m \in [-l,+l]\)</span> 이다.</p></li>
+<li><p>SH를 이용하면 빛이 균일하게 퍼지는 표면(매트한 표면)외에도 입사각(보는 방향)에 따라 달라지는 Non-Lambertian effects도 표현할 수 있다.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Spherical Harmonics</strong> <span class="math notranslate nohighlight">\(Y_l^m(\theta,\phi)\)</span> <strong>를 이용한 lighting</strong> [<a class="reference external" href="https://3dvar.com/Green2003Spherical.pdf">paper</a>]</p>
+<p>Spherical Harmonics는 번역하면 구면조화함수로 구의 표면에서 정의되는 함수를 말한다. 구면좌표계 <span class="math notranslate nohighlight">\((r,\theta,\phi)\)</span> 에서 <span class="math notranslate nohighlight">\(r\)</span> 을 고정하고 <span class="math notranslate nohighlight">\(\theta, \phi\)</span>에 따라 값을 출력하는 함수이다.</p>
+<figure class="align-default" id="id3">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_9.png"><img alt="image9" class="mb-1" src="../../_images/image_9.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 755 </span><span class="caption-text">수학적으로는 라플라스 미분방정식의 해</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id4">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_10.png"><img alt="image10" class="mb-1" src="../../_images/image_10.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 756 </span><span class="caption-text">Spherical Harmonics 시각화 [<a class="reference external" href="https://en.wikipedia.org/wiki/Table_of_spherical_harmonics">eq</a>]</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id5">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_11.png"><img alt="image11" class="mb-1" src="../../_images/image_11.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 757 </span><span class="caption-text">Spherical Harmonics 시각화</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+  <img src="../../pics/DreamGaussian/Rotating_spherical_harmonics.gif" width="40" height="40"/>
+<ul>
+<li><p>cf. fourier series</p>
+<figure class="align-default" id="id6">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_12.png"><img alt="image12" class="mb-1" src="../../_images/image_12.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 758 </span><span class="caption-text">삼각함수들을 이용해 임의의 주기함수를 근사하는 푸리에 변환의 3D 확장판</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_13.png"><img alt="image13" class="mb-1" src="../../_images/image_13.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 759 </span><span class="caption-text">SH를 이용한 근사 예시. SH는 구 표면에서의 분포의 basis에 해당.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<p><strong>Lambertian vs. Non-lambertian</strong></p>
+<figure class="align-default" id="id8">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_14.png"><img alt="image14" class="mb-1" src="../../_images/image_14.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 760 </span><span class="caption-text">Diffuse reflection (~ Lambertian effects)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Lambertian reflection은 어떤 각도에서 보든 같은 양 빛을 관찰 할 수 있는 이상적인 상태</p>
+<figure class="align-default" id="id9">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_15.png"><img alt="image15" class="mb-1" src="../../_images/image_15.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 761 </span><span class="caption-text">Non-lambertian effects -&gt; 즉, 반사광 표현가능</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><strong>Pruning and Densification</strong></p>
+<figure class="align-default" id="id10">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_16.png"><img alt="image16" class="mb-1" src="../../_images/image_16.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 762 </span><span class="caption-text">3D Gaussian Splatting
+initialization, optimization, adaptive control of gaussians</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><strong>Volumetric Rendering</strong></p>
+<figure class="align-default" id="id11">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_17.png"><img alt="image17" class="mb-1" src="../../_images/image_17.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 763 </span><span class="caption-text">3D Gaussian Splatting Volumetric Rendering</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id12">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_18.png"><img alt="image18" class="mb-1" src="../../_images/image_18.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 764 </span><span class="caption-text">from nerfstudio</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>frustrum culling을 통해 보이지 않는 3D gaussian들을 제외하고 2D로 projection.</p></li>
+<li><p>3D gaussian들을 sorting하고 각 픽셀의 ray에 겹치는 3D gaussian들만 color, opacity 값을 반영한다.</p></li>
+</ul>
+<figure class="align-default" id="id13">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_19.png"><img alt="image19" class="mb-1" src="../../_images/image_19.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 765 </span><span class="caption-text">original NeRF vs 3d Gaussian Splatting rendering</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+<hr class="docutils" />
+</details> 
+</section>
+<section id="text-to-3d-generation">
+<h2>2.2 Text-to-3D Generation<a class="headerlink" href="#text-to-3d-generation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>data-driven 3D diffusion models</p></li>
+<li><p>3D native diffusion models</p></li>
+<li><p>lift 2D image models for 3D generation</p></li>
+</ul>
+</section>
+<section id="image-to-3d-generation">
+<h2>2.3 Image-to-3D Generation<a class="headerlink" href="#image-to-3d-generation" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>generating 3D assets form a reference image(~ single-view 3D reconstruction)</p></li>
+<li><p>text-to-3D methods can also be image-to-3D methods</p></li>
+<li><p>Zero-1-to-3</p></li>
+<li><p>One-2-3-45</p></li>
+</ul>
+<section id="id1">
+<h3>2.4 추가 참고자료<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<details>
+<summary> <strong>DreamFusion</strong></summary>
+<ul>
+<li><p>Score Distillation Sampling (SDS) [<a class="reference external" href="https://arxiv.org/abs/2209.14988">arXiv</a>]</p>
+<ul class="simple">
+<li><p>pretrained 2D diffusion model을 parametric image generator로서 사용하는 방식을 제안함. image generator로서 NeRF를 사용하여 differentiable 3D representation을 가능하도록 함.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    \mathbf x=g_\Theta(p)
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf x\)</span> 는 카메라 포즈 <span class="math notranslate nohighlight">\(p\)</span>에서 렌더링된 이미지를 의미한다. <span class="math notranslate nohighlight">\(g_\Theta(\cdot)\)</span>는 differentiable rendering function으로 NeRF parameters <span class="math notranslate nohighlight">\(\Theta\)</span>를 paramter로 갖는다.</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+    \triangledown_\Theta\mathcal L_\text{SDS}=\Bbb E_{t,p,\epsilon}\Big[w(t)(\epsilon_\phi(\mathbf x;t,e)-\epsilon)\frac{\partial\mathbf x}{\partial\Theta} \Big]
+    \]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(w(t)=\sigma_t^2\)</span> 는 DDPM의 weighting function, <span class="math notranslate nohighlight">\(\epsilon_\phi(\cdot)\)</span>은 pretrained parameter <span class="math notranslate nohighlight">\(\phi\)</span>로  noise를 예측하는 함수이다.</p></li>
+</ul>
+</li>
+<li><p>즉, SDS formulation은 사전학습된 2D 이미지 생성 디퓨전 모델을 이용해 NeRF parameter <span class="math notranslate nohighlight">\(\Theta\)</span>를 최적화하는 식이다. 이를 통해 text description에 맞는 NeRF 3D shape을 최적화 할 수 있는 것이다.</p></li>
+</ul>
+</details>
+<details>
+<summary> <strong>Marching Cube</strong></summary>
+- 3d 모델에서 표면(mesh)을 추출하기 위한 알고리즘. 여기서 표면은 밀도가 특정 값을 넘는 지점을 의미한다. 
+<ul class="simple">
+<li><p>주어진 3D 공간을 작은 <strong>큐브</strong>(cube/voxel)로 나누고, 각 큐브의 <strong>8개 코너</strong>에서 값(일반적으로 밀도값)을 보고 그 값을 바탕으로 표면을 추출한다.</p></li>
+<li><p>8개의 코너의 밀도값에 따라 어떤 표면을 가지게 되는지는 미리 정해둔 정보(<span class="math notranslate nohighlight">\(2^8\)</span>)를 이용한다.</p></li>
+</ul>
+<ol class="arabic">
+<li><p>3D 공간을 작은 큐브로 분할</p></li>
+<li><p>임계값을 기준으로 판단</p>
+<ul class="simple">
+<li><p>해당 지점이 물체 내부에 속하는지 외부에 속하는지 판단함</p></li>
+</ul>
+</li>
+<li><p>표면 생성</p>
+<ul class="simple">
+<li><p>각 큐브의 꼭짓점 값에 따라 표면이 어떻게 생길지에 대한 규칙을 미리 정의해두고,
+이를 바탕으로 표면을 추출</p></li>
+</ul>
+<figure class="align-default" id="id14">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_21.png"><img alt="marching cube" class="mb-1" src="../../_images/image_21.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 766 </span><span class="caption-text">from wikipedia</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>오렌지 점들은 물체의 표면 혹은 가장자리에 위치한 점들을 의미함.</p></li>
+</ul>
+</li>
+</ol>
+</details>        
+<details>
+<summary> <strong>NVDiffrast</strong></summary>
+<p>nvidia 2020 ACMTOG [<a class="reference external" href="https://arxiv.org/abs/2011.03277">arXiv</a>][<a class="reference external" href="https://github.com/NVlabs/nvdiffrast?tab=readme-ov-file">github</a>]</p>
+<ul>
+<li><p>미분가능한 렌더링 방법론으로 cuda를 이용해 가속화한 것이 특징.</p>
+<ul class="simple">
+<li><p>주로 삼각형 메시를 효율적으로 렌더링하고 그래디언트를 계산하기 위해 사용됨.</p></li>
+</ul>
+</li>
+<li><p>FLAME, 3DMM, SMPL등은 미분가능한 3D 모델으로 렌더링 방법론은 아님.</p>
+<ul class="simple">
+<li><p>3DMM (3D Morphable Models) 1999</p></li>
+</ul>
+<figure class="align-default" id="id15">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_22.png"><img alt="3DMM" class="mb-1" src="../../_images/image_22.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 767 </span><span class="caption-text">3DMM</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>SMPL (Skinned Multi-Person Linear Model) 2015</p></li>
+</ul>
+<figure class="align-default" id="id16">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_23.png"><img alt="SMPL" class="mb-1" src="../../_images/image_23.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 768 </span><span class="caption-text">SMPL</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>FLAME (Faces Learned with an Articulated Model and Expressions) 2017</p></li>
+</ul>
+<figure class="align-default" id="id17">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_24.png"><img alt="FLAME" class="mb-1" src="../../_images/image_24.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 769 </span><span class="caption-text">FLAME</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</details>       
+<details>
+<summary> <strong>Zero-1-to-3</strong></summary>
+<p>[<a class="reference external" href="https://zero123.cs.columbia.edu/">project page</a>] [<a class="reference external" href="https://www.notion.so/DDPM-NeurIPS-2020-05eb365e0ece43c0bc55ef21a8d4c6f0?pvs=21">DDPM (NeurIPS 2020)</a>]</p>
+<ul class="simple">
+<li><p><strong>Zero-1-to-3</strong> control the camera perspective in large-scale diffusion models,
+enabling zero-shot novel view synthesis and 3D reconstruction from a single image.</p></li>
+<li><p>RGB image <span class="math notranslate nohighlight">\(x\in\Bbb R^{H\times W\times 3}\)</span> , relative camera rotation <span class="math notranslate nohighlight">\(R\in \Bbb R^{3\times 3}\)</span>,relative camera translation <span class="math notranslate nohighlight">\(T\in\Bbb R^3\)</span></p></li>
+</ul>
+<figure class="align-default" id="id18">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_24.png"><img alt="zero 1-to-3" class="mb-1" src="../../_images/image_24.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 770 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id19">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_25.png"><img alt="zero 1-to-3" class="mb-1" src="../../_images/image_25.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 771 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</details>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="method">
+<h1>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<figure class="align-default" id="id20">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_26.png"><img alt="method overview" class="mb-1" src="../../_images/image_26.png" style="width: 500px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 772 </span><span class="caption-text">Method Overview</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>2-stage framework for 3D content generation
+for both Image-to-3D and Text-to-3D tasks.</p>
+<ul>
+<li><p>SDS를 이용해 초기화 한 3D gaussian splatting을 이용하여 3D generation</p></li>
+<li><p>3D gaussians에서 textured mesh 추출</p></li>
+<li><p>UV-space refinement를 통해 texture fine-tuning</p></li>
+</ul>
+</li>
+</ul>
+<section id="generative-gaussian-splatting">
+<h2>3.1 Generative Gaussian Splatting<a class="headerlink" href="#generative-gaussian-splatting" title="Permalink to this heading">#</a></h2>
+<p>개별 3D gaussian의 위치와 형태는 center(<span class="math notranslate nohighlight">\(\mathbf x\)</span>), scaling factor(<span class="math notranslate nohighlight">\(\mathbf x\)</span>), rotation quaternion(<span class="math notranslate nohighlight">\(\mathbf q\)</span>)으로 표현되며, opacity value(<span class="math notranslate nohighlight">\(\alpha\)</span>), color feature(<span class="math notranslate nohighlight">\(\mathbf c\)</span>)를 저장하여 volumetric rendering시 사용한다.</p>
+<p><span class="math notranslate nohighlight">\(\Theta_i=\{\mathbf x_i, \mathbf s_i,\mathbf q_i, \alpha_i, \mathbf c_i\}\)</span>,  <span class="math notranslate nohighlight">\(\mathbf x \in \Bbb R^3, \mathbf s\in \Bbb R^3, \mathbf q \in \Bbb R^4, \alpha\in \Bbb R, \mathbf c \in \Bbb R^3\)</span>
+original gaussian splatting에서는 spherical harmonics 계수를 이용하여 색을 표현하지만
+simple diffuse color를 모델링 하기 위해 간략화 → 재질 표현이 어려울 수 있다.</p>
+<p>3D Gaussians은 random position, unit scaling, no rotation으로 initialization 한 후, SDS를 이용해 최적화 한다.</p>
+<section id="image-to-3d">
+<h3>Image-to-3D<a class="headerlink" href="#image-to-3d" title="Permalink to this heading">#</a></h3>
+<ul>
+<li><p>사전학습된 Zero-1-to-3 XL을 사용했으며 image <span class="math notranslate nohighlight">\(\tilde I^r_\text{RGB}\)</span> 와 foreground mask <span class="math notranslate nohighlight">\(\tilde I^r_A\)</span> 를 입력으로 사용한다.</p>
+<div class="math notranslate nohighlight">
+\[
+    \triangledown_\Theta\mathcal L_\text{SDS}=\Bbb E_{t,p,\epsilon} \Big[w(t)(\epsilon_\phi(I^p_\text{RGB};t,\tilde I^r_\text{RGB},\triangle p)-\epsilon)\frac{\partial I^p_\text{RGB}}{\partial\Theta} \Big] \tag 1
+    \]</div>
+<p><span class="math notranslate nohighlight">\(w(t)\)</span>는 weighting function이고, <span class="math notranslate nohighlight">\(\epsilon_\phi(\cdot)\)</span> 는 사전학습된 <span class="math notranslate nohighlight">\(\phi\)</span>를 이용해 예측된 noise를 뜻한다.
+<span class="math notranslate nohighlight">\(\triangle p\)</span> 는 relative camera pose, <span class="math notranslate nohighlight">\(r\)</span>은 reference camera이다.</p>
+</li>
+<li><p>추가적으로 reference view와 transparency 를 input에 align했다.</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal L_\text{Ref}=\lambda_\text{RGB}\|I^r_\text{RGB}-\tilde I_\text{RGB}^r \|^2_2 + \lambda_A\|I^r_A-\tilde I^r_A\|^2_2 \tag 2
+    \]</div>
+</li>
+</ul>
+</section>
+<section id="text-to-3d">
+<h3>Text-to-3D<a class="headerlink" href="#text-to-3d" title="Permalink to this heading">#</a></h3>
+<p>Stable diffusion을 활용하여 text-to-3D task를 수행했다.</p>
+<div class="math notranslate nohighlight">
+\[
+\triangledown_\Theta\mathcal L_\text{SDS}=\Bbb E_{t,p,\epsilon}\Big [ w(t)(\epsilon_\phi(I^p_\text{RGB};t,e)-\epsilon)\frac{\partial I^p_\text{RGB}}{\partial \Theta} \Big] \tag 3
+\]</div>
+<p><span class="math notranslate nohighlight">\(e\)</span>는 주어진 text prompt의 CLIP embedding을 의미한다.</p>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h3>
+<p>하지만 논문의 저자들은 SDS loss의 ambiguity 때문에 길게 학습하더라도 생성된 3D gaussians이  blurry하고 디테일이 부족하다고 한다. 이를 개선하기 위해 다음 단계인 mesh extraction과 texture refinement를 수행한다.</p>
+</section>
+</section>
+<section id="efficient-mesh-extraction">
+<h2>3.2 Efficient Mesh Extraction<a class="headerlink" href="#efficient-mesh-extraction" title="Permalink to this heading">#</a></h2>
+<p>block-wise local density query와 back-projected color를 이용해 textured mesh를 추출하는 효과적인 알고리즘을 제안한다.</p>
+<section id="local-density-query">
+<h3>Local Density Query<a class="headerlink" href="#local-density-query" title="Permalink to this heading">#</a></h3>
+<p>marching cube algorithm을 적용하기 위해서는 local density grid가 필요하다. gaussian splatting 알고리즘의 주요 특징은 over-sized Gaussian 들은 최적화 과정에서 split 및 pruning된다는 점이다. 이는 효과적인 rasterization을 위해 culling technique을 적용 할 수 있는 근거가 된다. 또한 이 점은 block-wise density queries를 perform 할 때도 사용할 수 있다.</p>
+<p>먼저 3D space를 <span class="math notranslate nohighlight">\((-1,1)^3\)</span> 으로 맵핑한다. (그냥 최대, 최소값을 이용해 정규화)  그리고 이 공간을 <span class="math notranslate nohighlight">\(16^3\)</span>의 overlapping blocks(multiscale voxels)으로 나눈다. 그리고 각 블록의 외부에 위치한 gaussian들은 제외한다. 이를 통해 계산해야 할 gaussian의 총 개수를 효과적으로 줄일 수 있다. 그리고 각 블록의 내부에 <span class="math notranslate nohighlight">\(8^3\)</span> dense grid를 만들어 최종적으로는 <span class="math notranslate nohighlight">\(128^3\)</span>의 dense grid를 만든다. grid position <span class="math notranslate nohighlight">\(\mathbf x\)</span>의 각 query는 남아있는 3D gaussian들의 opacity의 weighted sum으로 local density grid를 얻는다.</p>
+<div class="math notranslate nohighlight">
+\[
+d(\mathbf x)=\sum_i\alpha_i\text{exp}(-\frac{1}{2}(\mathbf x-\mathbf x_i)^T\Sigma_i^{-1}(\mathbf x-\mathbf x_i)) \tag{4}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\Sigma\)</span>는 covariance matrix로 scaling <span class="math notranslate nohighlight">\(\mathbf s\)</span>, rotation <span class="math notranslate nohighlight">\(\mathbf q\)</span>로 이루어져 있다. 이후에는 empirical threshold를 marching cube 알고리즘에 적용하여 mesh surface를 추출한다. <a class="reference external" href="https://www.meshlab.net">decimation과 remeshing</a>을 이용해 후처리하여 더욱 자연스럽고(smoother), 간결한(compact) mesh를 만들었다.</p>
+</section>
+<section id="color-back-projection">
+<h3>Color Back-projection<a class="headerlink" href="#color-back-projection" title="Permalink to this heading">#</a></h3>
+<p>앞선 단계에서 mesh를 얻었기 때문에 rendered RGB 이미지를 mesh surface로 back-project하여 texture map으로 만들 수 있다.</p>
+<details>
+<summary>UV mapping from wikipedia</summary>
+<figure class="align-default" id="id21">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_27.png"><img alt="uv mapping" class="mb-1" src="../../_images/image_27.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 773 </span><span class="caption-text">uv mapping</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>먼저 mesh의 UV coordinate를 unwrap하고 빈 texture image로 초기화 한다. 그리고 8개의 azimuth, 3개의 elevation을 균일하게 선택하고 top, bottom view까지 포함하여 corresponding RGB image를 렌더링 할 수 있게 한다. 이러한 RGB 이미지들의 각 픽셀은 UV coordinate를 기반으로 texture image로 맵핑할 수 있다.</p>
+<p>이렇게 back-project된 texture image는 다음의 texture fine-tuning 단계의 초기 설정으로 사용된다.</p>
+</details>
+</section>
+</section>
+<section id="uv-space-texture-refinement">
+<h2>3.3 UV-space Texture Refinement<a class="headerlink" href="#uv-space-texture-refinement" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id22">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_28.png"><img alt="uv-space texture refinement" class="mb-1" src="../../_images/image_28.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 774 </span><span class="caption-text">UV-space Texture Refinement</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>앞선 back-projection된 coarse texture를 시작으로 texture 품질을 올리고자 했으나, SDS loss를 이용해
+UV-space를 직접 fine-tuning 하면 위의 그림과 같은 artifact가 발생하게된다. 이는 differentiable rasterization시 사용되는 mipmap texture sampling 기법때문이다. SDS와 같이 모호한 guidance를 이용하면 각 mipmap level에 따라 over-saturation된 color block으로 gradient가 전파 된다.</p>
+<ul>
+<li><p>mipmap in rasterization</p>
+<figure class="align-default" id="id23">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_29.png"><img alt="rasterization" class="mb-1" src="../../_images/image_29.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 775 </span><span class="caption-text">from widipedia</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id24">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_30.png"><img alt="rasterization" class="mb-1" src="../../_images/image_30.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 776 </span><span class="caption-text">from unity document</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>위와 같은 고품질 렌더링와 렌더링 속도 향상을 위해 mipmap이라는 기법을 활용한다. 본 논문에서 texture mapping, rendering시 사용한 NVdiffrast도 mipmap을 활용하고 있다.
+mipmap은 texture를 여러 레벨의 화질으로 저장하는 방식으로 mipmap level은 특정 화질의 texture version을 의미한다. 카메라로 부터 멀리 떨어진 object는 저레벨의 mipmap을 사용해 렌더링 한다. 저레벨의 mipmap은 이미 정보손실이 일어난 상태이고 이를 이용해 렌더링 되었다면 gradient가 흐르는 방향이 왜곡 될수 있다.</p>
+</li>
+</ul>
+<hr class="docutils" />
+<div class="math notranslate nohighlight">
+\[
+I^p_\text{fine}=f_\phi(I^p_\text{coarse}+\epsilon(t_\text{start});t_\text{start},c) \tag 5
+\]</div>
+<p>stage 2 의 학습은 image-to-image synthesis와 같은 방식으로 진행된다. initialization texture가 있으므로 임의의 camera view <span class="math notranslate nohighlight">\(p\)</span> <span class="math notranslate nohighlight">\(p\)</span></p>
+<figure class="align-default" id="id25">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_31.png"><img alt="from SDEdit" class="mb-1" src="../../_images/image_31.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 777 </span><span class="caption-text">from SDEdit</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><span class="math notranslate nohighlight">\(f_\phi(\cdot)\)</span> 는 사전학습된 2D diffusion 을 통해 refined image를 얻는 multi-step denoising process를 의미한다. <span class="math notranslate nohighlight">\(\epsilon(t_\text{start})\)</span> 는 timestep <span class="math notranslate nohighlight">\(t_\text{start}\)</span>의 랜덤 노이즈를 말한다. <span class="math notranslate nohighlight">\(c\)</span> 는 image-to-3D를 위한 condition인 카메라 포즈 변화량 <span class="math notranslate nohighlight">\(\Delta p\)</span> 이고, <span class="math notranslate nohighlight">\(e\)</span>는 text-to-3D의 condition을 말한다. 시작 timestep <span class="math notranslate nohighlight">\(t_\text{start}\)</span>는 noise 강도를 제한하기 위해 신중히 선택되어야 refined image의 original content를 유지하며 detail을 향상 시킬수 있다고 한다. refined image는 이후 pixel-wise MSE loss에 texture 최적화를 위해 사용된다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal L_\text{MSE}=\|I^p_\text{fine}-I^p_\text{coarse}\|^2_2 \tag 6
+\]</div>
+<p>image-to-3D task에서는 reference view RGBA loss <span class="math notranslate nohighlight">\(\mathcal L_\text{Ref}\)</span> 를 적용했다.</p>
+<p>실험 결과에 따르면 50 step 정도 만에 대부분 detail이 좋아졌다고 하며 반복횟수를 늘릴수록 texture의 detail이 향상되었다고 합니다.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="experiments">
+<h1>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<section id="implementation-details">
+<h2>4.1 Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Number of iterations</p>
+<ul>
+<li><p>first stage - 500 steps</p></li>
+<li><p>second stage - 50 steps</p></li>
+</ul>
+</li>
+<li><p>3D Gaussian initialization</p>
+<ul>
+<li><p>number - 5000 for image-to-3D, 1000 for text-to-3D</p></li>
+<li><p>opacity - 0.1</p></li>
+<li><p>color - grey</p></li>
+<li><p>radius - 0.5</p></li>
+</ul>
+</li>
+<li><p>Rendering resolution - 64 to 512 for gaussian splatting, 128 to 1024 for mesh</p></li>
+<li><p>Loss weights in eq(2) - RGB, transperency 가중치(<span class="math notranslate nohighlight">\(\lambda_\text{RGB}, \lambda_A\)</span>)는 0에서 부터 각각 10000, 1000로 linearly increasing</p></li>
+<li><p>Camera pose sampling - fixed radius 2 for image-to-3D / 2.5 for text-to-3D,
+y-axis FOV 49 degree,
+azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degree, elevation in <span class="math notranslate nohighlight">\([-30,30]\)</span>.</p></li>
+</ul>
+<figure class="align-default" id="id26">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_32.png"><img alt="Horizontal coordinates from wikipedia" class="mb-1" src="../../_images/image_32.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 778 </span><span class="caption-text">Horizontal coordinates from wikipedia</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id27">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_33.png"><img alt="Horizontal coordinates from wikipedia" class="mb-1" src="../../_images/image_33.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 779 </span><span class="caption-text"><a class="reference external" href="https://www.epd.gov.hk/eia/register/report/eiareport/eia_2522017/EIA/html/Appendix/Appendix%2011.1.pdf">출처</a></span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Background color - white or black randomly for gaussian splatting</p></li>
+<li><p>Run-time - 1min/stage for image-to-3D
+2min/stage for text-to-3D w. Stable Diffusion <span class="math notranslate nohighlight">\(512\times512\)</span> resolution</p></li>
+<li><p>Marching cube threshold - 1</p></li>
+<li><p>GPU - NVIDIA V100(16GB), less than 8GB for this experiments</p></li>
+</ul>
+</section>
+<section id="qualitative-comparison">
+<h2>4.2 Qualitative Comparison<a class="headerlink" href="#qualitative-comparison" title="Permalink to this heading">#</a></h2>
+<p><strong>Image-to-3D comparison</strong></p>
+<figure class="align-default" id="id28">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_34.png"><img alt="실험결과" class="mb-1" src="../../_images/image_34.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 780 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Text-to-3D comparison</strong></p>
+<figure class="align-default" id="id29">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_35.png"><img alt="실험결과" class="mb-1" src="../../_images/image_35.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 781 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>최적화를 진행하는 방법론 뿐만 아니라 inference-only 방법론들과 비교해도 매우 빠른 생성 속도를 보였다고 함.</p>
+<figure class="align-default" id="id30">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_36.png"><img alt="실험결과" class="mb-1" src="../../_images/image_36.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 782 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>이렇게 뽑아낸 mesh는 blender와 같은 리깅 툴을 이용해 애니메이팅 가능.</p>
+</section>
+<section id="quantitative-comparison">
+<h2>4.3 Quantitative Comparison<a class="headerlink" href="#quantitative-comparison" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id31">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_37.png"><img alt="실험결과" class="mb-1" src="../../_images/image_37.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 783 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id32">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_38.png"><img alt="실험결과" class="mb-1" src="../../_images/image_38.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 784 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="ablation-study">
+<h2>4.4 Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id33">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_39.png"><img alt="실험결과" class="mb-1" src="../../_images/image_39.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 785 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>논문에서 제안하는 파이프라인의 모든 과정이 필요함을 보여줌.</p>
+<ul class="simple">
+<li><p>Periodical densificaiton of 3D Gaussians</p></li>
+<li><p>Linear annealing of timestep t for SDS loss</p></li>
+<li><p>Effect of the reference view loss <span class="math notranslate nohighlight">\(\mathcal L_{\text{Ref}}\)</span></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="limitations-and-conclusion">
+<h1>5. Limitations and Conclusion<a class="headerlink" href="#limitations-and-conclusion" title="Permalink to this heading">#</a></h1>
+<ul class="simple">
+<li><p>3D content generation framework인 DreamGaussian을 통해 3D content 생성을 효율성을 증대.</p></li>
+<li><p>3D Gaussian으로 부터 mesh를 추출하는 알고리즘 제안.</p></li>
+<li><p>texture fine-tuning stage를 통해 image나 text로 부터 고품질의 polygonal mesh생성 가능.</p></li>
+</ul>
+<figure class="align-default" id="id34">
+<a class="mb-1 reference internal image-reference" href="../../_images/image_40.png"><img alt="실험결과" class="mb-1" src="../../_images/image_40.png" style="width: 400px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 786 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>아래와 같은 기존 방법론들의 문제점들을 여전히 가지고 있으나 score debiasing/ camera-conditioned 2D diffusion models/ BRDF auto-encoder와 같은 방법을 도입하면, 개선가능할 것으로 기대함.</p>
+<ul class="simple">
+<li><p>Janus prob</p></li>
+<li><p>over saturated texture</p></li>
+<li><p>baked lighting</p></li>
+</ul>
+<p>덧붙여 texture refinement를 진행하는 stage 2에서 blurry한 결과를 얻을 수 있으나 학습을 더 진행하면 개선된다고 함.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="zero123plus.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Zero123++</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DreamGaussian</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">1. Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-representations">2.1 3D representations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d-generation">2.2 Text-to-3D Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-3d-generation">2.3 Image-to-3D Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2.4 추가 참고자료</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generative-gaussian-splatting">3.1 Generative Gaussian Splatting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#image-to-3d">Image-to-3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d">Text-to-3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-mesh-extraction">3.2 Efficient Mesh Extraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-density-query">Local Density Query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#color-back-projection">Color Back-projection</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uv-space-texture-refinement">3.3 UV-space Texture Refinement</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">4.1 Implementation Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-comparison">4.2 Qualitative Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-comparison">4.3 Quantitative Comparison</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.4 Ablation Study</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-and-conclusion">5. Limitations and Conclusion</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

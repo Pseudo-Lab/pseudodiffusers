@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Training DreamBooth on Naver Webtoon Face Dataset &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -18,48 +19,52 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/experiments/swjo_exp';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/experiments/swjo_exp';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="prev" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="js_exp.html" />
@@ -140,8 +145,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -159,18 +162,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -327,6 +319,19 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../review/zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../review/DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="current nav bd-sidenav">
@@ -361,9 +366,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -488,10 +493,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -499,14 +504,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -555,23 +560,23 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="training-dreambooth-on-naver-webtoon-face-dataset">
-<h1>Training DreamBooth on Naver Webtoon Face Dataset<a class="headerlink" href="#training-dreambooth-on-naver-webtoon-face-dataset" title="Link to this heading">#</a></h1>
+<h1>Training DreamBooth on Naver Webtoon Face Dataset<a class="headerlink" href="#training-dreambooth-on-naver-webtoon-face-dataset" title="Permalink to this heading">#</a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
 <p>이번 포스팅에서는 DreamBooth 를 직접 학습해보고 실험한 결과들을 공유할려고 합니다.</p>
 <p>우선적으로 학습데이터는 <a class="github reference external" href="https://github.com/bryandlee/naver-webtoon-data">bryandlee/naver-webtoon-data</a> 에 공개된 YOLOv5 모델 및 Waifu2x 후처리 기법을 활용하여 프리드로우에 등장하는 인물 사진들을 수집했습니다. 논문에서는 3-5 장으로 fine-tuning 이 가능하다고 제시되어있지만, 인물 사진 같은 경우 더 많은 데이터로 학습하면 성능이 더 좋아져서 15-20 장의 이미지로 학습하였습니다. 학습한 이미지들 예시입니다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_01.png"><img alt="swjo_exp_01" class="bg-primary mb-1" src="../../_images/swjo_exp_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 774 </span><span class="caption-text">Training Data</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 828 </span><span class="caption-text">Training Data</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DreamBooth 를 실험하면서 대표적으로 instance prompt, guidance scale, negative prompt, 그리고 마지막으로 prior preservation loss 를 반영하는 정도를 조절하는 prior_loss_weight 를 바꿔가면서 학습해보았습니다. 사전학습된 text-to-image 모델로 처음에는 <em>hakurei/waifu-diffusion</em> 모델을 시도해봤지만 결과가 만족스럽지 못해 <em>runwayml/stable-diffusion-v1-5</em> 모델로 fine-tuning 작업을 진행했습니다.</p>
 </section>
 <section id="ablation-studies">
-<h2>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Link to this heading">#</a></h2>
+<h2>Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h2>
 <section id="prior-preservation-loss">
-<h3>Prior Preservation Loss<a class="headerlink" href="#prior-preservation-loss" title="Link to this heading">#</a></h3>
+<h3>Prior Preservation Loss<a class="headerlink" href="#prior-preservation-loss" title="Permalink to this heading">#</a></h3>
 <p>Prior Preservation Loss 를 제외한 동일한 configuration 으로 모델 학습한 결과입니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># with prior-preservation loss
 MODEL_NAME = “runwayml/stable-diffusion-v1-5”
@@ -638,45 +643,45 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_02.png"><img alt="swjo_exp_02" class="bg-primary mb-1" src="../../_images/swjo_exp_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 775 </span><span class="caption-text">With Prior Preservation Loss</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 829 </span><span class="caption-text">With Prior Preservation Loss</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
-<li><p><strong>Inference Prompt: “ A photo of <em>sks</em> girl with pink hair” (w/o prior-preservation loss)</strong></p></li>
+<li><p><strong>Inference Prompt: ” A photo of <em>sks</em> girl with pink hair” (w/o prior-preservation loss)</strong></p></li>
 </ul>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_03.png"><img alt="swjo_exp_03" class="bg-primary mb-1" src="../../_images/swjo_exp_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 776 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 830 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="negative-prompt">
-<h3>Negative Prompt<a class="headerlink" href="#negative-prompt" title="Link to this heading">#</a></h3>
+<h3>Negative Prompt<a class="headerlink" href="#negative-prompt" title="Permalink to this heading">#</a></h3>
 <p>Negative Prompt 에 대한 Ablation Study 도 진행했습니다. 캐릭터의 부자연스러운 부분이나 저해상도 이미지들을 생성하는 경우들이 종종 발생했는데, negative prompt 를 통해 더 좋은 퀄리티의 웹툰 캐릭터를 생성할 수 있었습니다.</p>
 <ul class="simple">
-<li><p><strong>Inference Prompt: “ A photo of <em>sks</em> girl with pink hair” (w/o negative prompt)</strong></p></li>
+<li><p><strong>Inference Prompt: ” A photo of <em>sks</em> girl with pink hair” (w/o negative prompt)</strong></p></li>
 </ul>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_03.png"><img alt="swjo_exp_03" class="bg-primary mb-1" src="../../_images/swjo_exp_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 777 </span><span class="caption-text">Without Negative Prompt</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 831 </span><span class="caption-text">Without Negative Prompt</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
-<li><p><strong>Inference Prompt: “ A photo of <em>sks</em> girl with pink hair”</strong></p>
+<li><p><strong>Inference Prompt: ” A photo of <em>sks</em> girl with pink hair”</strong></p>
 <p><strong>+</strong> <strong>Negative Prompt: “ugly, disfigured, deformed, low resolution”</strong></p>
 </li>
 </ul>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_04.png"><img alt="swjo_exp_04" class="bg-primary mb-1" src="../../_images/swjo_exp_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 778 </span><span class="caption-text">With Negative Prompt</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 832 </span><span class="caption-text">With Negative Prompt</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="instance-prompt-guidance-scale">
-<h3>Instance Prompt / Guidance Scale<a class="headerlink" href="#instance-prompt-guidance-scale" title="Link to this heading">#</a></h3>
+<h3>Instance Prompt / Guidance Scale<a class="headerlink" href="#instance-prompt-guidance-scale" title="Permalink to this heading">#</a></h3>
 <p>DreamBooth 논문에서 제시한 instance prompt 외에 “A photo of a girl in the style of <em>sks</em>” 라는 prompt 로 학습을 시도해보기도 했습니다. <em>sks</em> 라는 unique identifier 에 특정 여자 캐릭터에 대한 정보뿐만 아니라 프리드로우 그림체 자체를 담아내기 위한 목적이였습니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># different instance prompt with prior-preservation loss
 MODEL_NAME = “runwayml/stable-diffusion-v1-5”
@@ -745,7 +750,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_05.png"><img alt="swjo_exp_05" class="bg-primary mb-1" src="../../_images/swjo_exp_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 779 </span><span class="caption-text">Instance Prompt</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 833 </span><span class="caption-text">Instance Prompt</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Inference step 을 늘려가면서 추론된 인물 이미지의 퀄리티가 상승하는 부분도 확인할 수 있었습니다. 또한, guidance scale 에 대한 실험도 진행했는데 guidance scale 이 작을수록 prompt 와 무관한 random 한 이미지들을 생성하게 됩니다. 최종적으로 num_inference steps 와 guidance scale 의 값은 각각 100 과 7.5 로 설정하였습니다.</p>
@@ -755,7 +760,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_06.png"><img alt="swjo_exp_06" class="bg-primary mb-1" src="../../_images/swjo_exp_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 780 </span><span class="caption-text">Increasing Number of Inference Steps</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 834 </span><span class="caption-text">Increasing Number of Inference Steps</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -766,7 +771,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_07.png"><img alt="swjo_exp_07" class="bg-primary mb-1" src="../../_images/swjo_exp_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 781 </span><span class="caption-text">Increasing Number of Inference Steps / Negative Prompt</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 835 </span><span class="caption-text">Increasing Number of Inference Steps / Negative Prompt</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -778,7 +783,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_08.png"><img alt="swjo_exp_08" class="bg-primary mb-1" src="../../_images/swjo_exp_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 782 </span><span class="caption-text">Guidance Scale</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 836 </span><span class="caption-text">Guidance Scale</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 inference prompt 로 prior-preservation loss 를 제외해본 결과, 생성된 남자의 머리카락이 더 길어지고 더 여성스러운 생김새를 가지는 놀라운 사실도 발견했습니다.</p>
@@ -790,13 +795,13 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_09.png"><img alt="swjo_exp_09" class="bg-primary mb-1" src="../../_images/swjo_exp_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 783 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 837 </span><span class="caption-text">Without Prior Preservation Loss</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="appendix">
-<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
 <p>그 외 다양한 inference prompt 에 따른 재미있는 실험결과들을 공유합니다. 아직 손의 모양을 text-to-image 모델이 생성하지 못하는 부분도 재차 확인할 수 있었습니다.</p>
 <ul>
 <li><p><strong>Inference Prompt: “A photo of a boy climbing up the mountain in the style of <em>sks</em>” (num_inference_steps = 100 / w/o prior-preservation loss)</strong></p>
@@ -806,7 +811,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_10.png"><img alt="swjo_exp_10" class="bg-primary mb-1" src="../../_images/swjo_exp_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 784 </span><span class="caption-text">Appendix 1</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 838 </span><span class="caption-text">Appendix 1</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -817,7 +822,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_11.png"><img alt="swjo_exp_11" class="bg-primary mb-1" src="../../_images/swjo_exp_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 785 </span><span class="caption-text">Appendix 2</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 839 </span><span class="caption-text">Appendix 2</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -828,7 +833,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_12.png"><img alt="swjo_exp_12" class="bg-primary mb-1" src="../../_images/swjo_exp_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 786 </span><span class="caption-text">Appendix 3</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 840 </span><span class="caption-text">Appendix 3</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>마지막으로 하단의 좌측과 우측 사진은 각각 “A photo of <em>sks</em> girl” 그리고 “A photo of a girl in the style of <em>sks</em>” 이라는 prompt 로 DreamBooth 모델을 각각 학습한 후, 나비를 생성하라는 동일한 prompt 로 추론해본 결과입니다. <em>sks</em> 가 수식하는 명사가 girl 이 아닌 style 이도록 prompt 를 수정함으로써, butterfly 사진을 생성할때 조금이나마 더 프리드로우 웹툰의 그림체를 반영할 수 있었던 부분도 확인할 수 있었습니다.</p>
@@ -838,7 +843,7 @@ python3 train_dreambooth.py \
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/swjo_exp_13.png"><img alt="swjo_exp_13" class="bg-primary mb-1" src="../../_images/swjo_exp_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 787 </span><span class="caption-text">Appendix 4</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 841 </span><span class="caption-text">Appendix 4</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -931,7 +936,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -955,8 +960,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

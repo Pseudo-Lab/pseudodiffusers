@@ -69,6 +69,8 @@ parts:
   - file: docs/review/magic-3d
   - file: docs/review/DreamBooth3D
   - file: docs/review/zero123plus
+  - file: docs/review/ProlificDreamer
+  - file: docs/review/DreamGaussian
   
 - caption: Experiments
   chapters:

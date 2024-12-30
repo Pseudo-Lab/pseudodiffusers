@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Synthetic Data with Stable Diffusion for Foliar Disease Classification &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -18,52 +19,56 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/experiments/js_exp';</script>
+    <script src="../../_static/togglebutton.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/experiments/js_exp';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Training DreamBooth on Naver Webtoon Face Dataset" href="swjo_exp.html" />
-    <link rel="prev" title="Zero123++" href="../review/zero123plus.html" />
+    <link rel="prev" title="DreamGaussian" href="../review/DreamGaussian.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -141,8 +146,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -160,18 +163,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -328,6 +320,19 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="../review/zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../review/ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../review/DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="current nav bd-sidenav">
@@ -362,9 +367,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -489,10 +494,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -500,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -554,9 +559,9 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="synthetic-data-with-stable-diffusion-for-foliar-disease-classification">
-<h1>Synthetic Data with Stable Diffusion for Foliar Disease Classification<a class="headerlink" href="#synthetic-data-with-stable-diffusion-for-foliar-disease-classification" title="Link to this heading">#</a></h1>
+<h1>Synthetic Data with Stable Diffusion for Foliar Disease Classification<a class="headerlink" href="#synthetic-data-with-stable-diffusion-for-foliar-disease-classification" title="Permalink to this heading">#</a></h1>
 <section id="id1">
-<h2>1. 개요<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>1. 개요<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>사과 나무의 잎에 생기는 질병을 이미지로 판별하는 Kaggle competition (<a class="reference external" href="https://www.kaggle.com/competitions/plant-pathology-2020-fgvc7">링크</a>)에서 아이디어를 얻어서 진행한 프로젝트입니다.</p></li>
 <li><p>해당 competition은 사과나무 잎에 걸린 질병에 따라 잎 이미지를 4개의 class로 분류하는 task입니다.</p></li>
@@ -564,7 +569,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/4classes.png"><img alt="4classes" class="bg-primary mb-1" src="../../_images/4classes.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 755 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 809 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -573,7 +578,7 @@ document.write(`
 </ul>
 </section>
 <section id="baseline">
-<h2>2. Baseline 구축<a class="headerlink" href="#baseline" title="Link to this heading">#</a></h2>
+<h2>2. Baseline 구축<a class="headerlink" href="#baseline" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>문제 상황을 재현하기 위해 기존 데이터로 image classifier를 학습하여 baseline으로 잡았습니다.</p></li>
 <li><p>모델은 pretrained된 ResNet18에 linear layer를 붙여서 사용했습니다.</p></li>
@@ -585,19 +590,19 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_ex.png"><img alt="multiple_ex" class="bg-primary mb-1" src="../../_images/multiple_ex.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 756 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 810 </span><span class="caption-text">4 classes of leaves</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="stable-diffusion-fine-tuning">
-<h2>3. Stable diffusion fine tuning<a class="headerlink" href="#stable-diffusion-fine-tuning" title="Link to this heading">#</a></h2>
+<h2>3. Stable diffusion fine tuning<a class="headerlink" href="#stable-diffusion-fine-tuning" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>pretraned stable diffusion의 경우 multiple diseases class에 대한 정보가 없어서 이미지를 생성할 경우 아래와 같이 관련없는 이미지가 생성됩니다.</p></li>
 </ul>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_sd.png"><img alt="multiple_sd" class="bg-primary mb-1" src="../../_images/multiple_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 757 </span><span class="caption-text">prompt: “a photo of leaves with multiple diseases</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 811 </span><span class="caption-text">prompt: “a photo of leaves with multiple diseases</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -608,7 +613,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_db.png"><img alt="multiple_db" class="bg-primary mb-1" src="../../_images/multiple_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 758 </span><span class="caption-text">prompt: “a photo of a &lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 812 </span><span class="caption-text">prompt: “a photo of a &lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -619,13 +624,13 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_sd.png"><img alt="leaf_sd" class="bg-primary mb-1" src="../../_images/leaf_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 759 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 813 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_db.png"><img alt="leaf_db" class="bg-primary mb-1" src="../../_images/leaf_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 760 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 814 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -635,13 +640,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_sd.png"><img alt="photo_sd" class="bg-primary mb-1" src="../../_images/photo_sd.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 761 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 815 </span><span class="caption-text">fine tuning 전</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_db.png"><img alt="photo_db" class="bg-primary mb-1" src="../../_images/photo_db.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 762 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 816 </span><span class="caption-text">fine tuning 후</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -651,13 +656,13 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/multiple_pp.png"><img alt="multiple_pp" class="bg-primary mb-1" src="../../_images/multiple_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 763 </span><span class="caption-text">multiple diseases class 이미지 생성 결과, prompt: “&lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 817 </span><span class="caption-text">multiple diseases class 이미지 생성 결과, prompt: “&lt;diseaes-leaf&gt; leaf”</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/leaf_pp.png"><img alt="leaf_pp" class="bg-primary mb-1" src="../../_images/leaf_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 764 </span><span class="caption-text">leaf 생성 결과, prompt: “leaf”</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 818 </span><span class="caption-text">leaf 생성 결과, prompt: “leaf”</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -666,7 +671,7 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/photo_pp.png"><img alt="photo_pp" class="bg-primary mb-1" src="../../_images/photo_pp.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 765 </span><span class="caption-text">photo 생성 결과, prompt: “photo”</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 819 </span><span class="caption-text">photo 생성 결과, prompt: “photo”</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -676,7 +681,7 @@ document.write(`
 </ul>
 </section>
 <section id="id2">
-<h2>4. 성능 비교<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<h2>4. 성능 비교<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>fine tuning한 stable diffusion model로 multiple diseases class의 이미지를 400장 생성하여 classifier를 다시 훈련했습니다.</p></li>
 </ul>
@@ -687,7 +692,7 @@ document.write(`
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_base.png"><img alt="result_base" class="bg-primary mb-1" src="../../_images/result_base.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 766 </span><span class="caption-text">result_base</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 820 </span><span class="caption-text">result_base</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>생성한 이미지를 추가 데이터로 활용한 경우</p>
@@ -697,7 +702,7 @@ document.write(`
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/result_new.png"><img alt="result_new" class="bg-primary mb-1" src="../../_images/result_new.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 767 </span><span class="caption-text">result_now</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 821 </span><span class="caption-text">result_now</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -705,7 +710,7 @@ document.write(`
 </ul>
 </section>
 <section id="discussion">
-<h2>5. Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
+<h2>5. Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>stable diffusion 훈련 중간중간에 일정 step마다 이미지를 생성하게해서 훈련에 대한 모니터링이 있으면 좋겠다는 생각을 했습니다.</p></li>
 <li><p>stable diffusion 훈련시 hyperparameter tuning을 좀 더 철저하게 해야겠다는 생각을 했습니다.</p></li>
@@ -716,44 +721,44 @@ document.write(`
 </ul>
 </section>
 <section id="appendix">
-<h2>6. Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<h2>6. Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>앞에서 언급한 prompt에 대한 이미지 생성 예시입니다. 일부 이미지는 NSFW로 판단되어 검은색으로 나왔습니다.</p></li>
 </ul>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cat.png"><img alt="cat" class="bg-primary mb-1" src="../../_images/cat.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 768 </span><span class="caption-text">cat 생성 결과, prompt: “cat”</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 822 </span><span class="caption-text">cat 생성 결과, prompt: “cat”</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/sea.png"><img alt="sea" class="bg-primary mb-1" src="../../_images/sea.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 769 </span><span class="caption-text">sea 생성 결과, prompt: “sea”</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 823 </span><span class="caption-text">sea 생성 결과, prompt: “sea”</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/pirate.png"><img alt="pirate" class="bg-primary mb-1" src="../../_images/pirate.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 770 </span><span class="caption-text">pirate 생성 결과, prompt: “pirate”</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 824 </span><span class="caption-text">pirate 생성 결과, prompt: “pirate”</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/illustration.png"><img alt="illustration" class="bg-primary mb-1" src="../../_images/illustration.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 771 </span><span class="caption-text">illustration 생성 결과, prompt: “illustration”</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 825 </span><span class="caption-text">illustration 생성 결과, prompt: “illustration”</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/animation.png"><img alt="animation" class="bg-primary mb-1" src="../../_images/animation.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 772 </span><span class="caption-text">animation 생성 결과, prompt: “animation”</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 826 </span><span class="caption-text">animation 생성 결과, prompt: “animation”</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/wallpaper.png"><img alt="wallpaper" class="bg-primary mb-1" src="../../_images/wallpaper.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 773 </span><span class="caption-text">wallpaper 생성 결과, prompt: “wallpaper”</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 827 </span><span class="caption-text">wallpaper 생성 결과, prompt: “wallpaper”</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -790,12 +795,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../review/zero123plus.html"
+       href="../review/DreamGaussian.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Zero123++</p>
+        <p class="prev-next-title">DreamGaussian</p>
       </div>
     </a>
     <a class="right-next"
@@ -853,7 +858,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -877,8 +882,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

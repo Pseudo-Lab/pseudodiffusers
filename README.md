@@ -76,6 +76,13 @@ CVPR 2024 Workshop
 | 35 | 2024.09.25 | Joongwon Lee | [One-step Diffusion with Distribution Matching Distillation](https://arxiv.org/abs/2311.18828) (CVPR 2024) |
 | 36 | 2024.10.02 | Donghyun Han | [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](https://arxiv.org/abs/2311.05556)|
 | 37 | 2024.10.09 | Kyeongmin Yu | [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)|
+| nn | 2024.10.16 | | |
+| nn | 2024.10.30 | | |
+| nn | 2024.11.06 | | |
+| nn | 2024.11.13 | Kyeongmin Yu | [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](https://arxiv.org/abs/2305.16213)|
+| nn | 2024.11.27 | | |
+| nn | 2024.12.04 | | |
+| nn | 2024.12.11 | Kyeongmin Yu | [# DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation](https://arxiv.org/abs/2309.16653)|
 
 
 

@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="../../" >
+<html lang="en" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Shap-E &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -18,50 +19,54 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
-    <script src="../../_static/doctools.js?v=9a2dae69"></script>
-    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
-    <script src="../../_static/copybutton.js?v=f281be69"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Shap-E';</script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="DreamFusion" href="DreamFusion.html" />
@@ -143,8 +148,6 @@
         <div class="sidebar-primary-item">
 
   
-    
-  
 
 <a class="navbar-brand logo" href="../../intro.html">
   
@@ -162,18 +165,7 @@
   
   
 </a></div>
-        <div class="sidebar-primary-item">
-
- <script>
- document.write(`
-   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
-    <span class="search-button__default-text">Search</span>
-    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-   </button>
- `);
- </script></div>
-        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -330,6 +322,13 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -364,9 +363,9 @@
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</button></div>
+</label></div>
       
     </div>
   
@@ -491,10 +490,10 @@
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -502,14 +501,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</button>
+</label>
 </div></div>
       
     </div>
@@ -587,26 +586,26 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="shap-e">
-<h1>Shap-E<a class="headerlink" href="#shap-e" title="Link to this heading">#</a></h1>
+<h1>Shap-E<a class="headerlink" href="#shap-e" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id2">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure1.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/figure1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 689 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 688 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="abstract">
-<h1>0. Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
+<h1>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>📌 <strong>논문요약</strong><br />
-2023년 openai의 <a class="reference external" href="https:arxiv.org/search/cs?searchtype=author&amp;amp;query=Jun,+H">Heewoo Jun</a>, <a class="reference external" href="https:arxiv.org/search/cs?searchtype=author&amp;amp;query=Nichol,+A">Alex Nichol</a> 가 발표한 논문입니다. official code는 <a class="reference external" href="https:github.com/openai/shap-e/tree/main">github</a>에서, diffusers를 활용한 코드는 <a class="reference external" href="https:huggingface.co/docs/diffusers/en/api/pipelines/shap_e">huggingface</a>에서 확인할 수 있습니다. <br />
+2023년 openai의 <a class="reference external" href="https:arxiv.org/search/cs?searchtype=author&amp;query=Jun,+H">Heewoo Jun</a>, <a class="reference external" href="https:arxiv.org/search/cs?searchtype=author&amp;query=Nichol,+A">Alex Nichol</a> 가 발표한 논문입니다. official code는 <a class="reference external" href="https:github.com/openai/shap-e/tree/main">github</a>에서, diffusers를 활용한 코드는 <a class="reference external" href="https:huggingface.co/docs/diffusers/en/api/pipelines/shap_e">huggingface</a>에서 확인할 수 있습니다. <br />
 <strong>목적 -</strong> 조건부 3D assets 생성 <br />
 <strong>생성방식 -</strong> encoder를 통해 implicit function의 parameter 형태로 표현한 후, 이를 diffusion model의 조건으로 사용함으로써 conditional 3D assets을 생성할 수 있도록 했다.<br />
 <strong>차별점 -</strong> texture mesh 나 NeRF 모두 생성 가능한 implicit function의 parameters를 직접적으로 생성할 수 있다. (다른 3D 생성 모델의 경우 단일 표현만 가능한 경우가 많다고 합니다.)</p>
 </div></blockquote>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <p>implicit neural representations (INRs)는 3D assets을 인코딩하는 방식으로 많이 사용된다. 3D asset을 표현하기 위해 INRs는 주로 3D coordinate를 location specific info(density, color)로 맵핑한다. 일반적으로 INRs는 화질에 영향을 받지 않는데 이는 고정된 grid나 sequence가 아닌 arbitrary input points를 처리할 수 있기 때문이다. 덕분에 end-to-end 미분이 가능하다. INRs은 이후 다양한 downstream applications도 가능하게 한다. 본 논문에서는 2가지 타입의 INRs을 다룬다.</p>
 <ul class="simple">
 <li><p><strong>Neural Radiamce Field (NeRF)</strong> - 3D scene을 function mapping으로 표현.</p>
@@ -624,9 +623,9 @@ document.write(`
 <p>이미지, 비디오, 오디오, 3D assets 생성에 관한 다양한 연구가 있지만 downstream application에서 사용하기 편한 형태로 3D assets을 표현하는 방법에 대한 연구는 부족하다. 본 논문은 단일 representation으로 부터 두가지 형태로 rendering 가능하게 했다는 특징이 있다.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>2. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h1>
+<h1>2. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
 <section id="neural-radiance-fields-nerf">
-<h2>2.1 Neural Radiance Fields (NeRF)<a class="headerlink" href="#neural-radiance-fields-nerf" title="Link to this heading">#</a></h2>
+<h2>2.1 Neural Radiance Fields (NeRF)<a class="headerlink" href="#neural-radiance-fields-nerf" title="Permalink to this heading">#</a></h2>
 <p>Mildenhall et al. 는 아래와 같이 NeRF(3D scene을 implicit function으로 표현하는 방법)를 제안했다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -643,7 +642,7 @@ F_{\Theta} : (\mathbf{x},\mathbf d)↦(\mathbf c,\sigma) \tag{1}
 <figure class="align-default" id="id3">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4859.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/IMG_4859.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 690 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 689 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -668,20 +667,20 @@ w_i \sim T_i(1-\text{exp}(-\sigma(\mathbf r(t_i))\delta_i))\tag{4}
 <figure class="align-default" id="id4">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4860.png"><img alt="figure2" class="bg-light mb-1" src="../../_images/IMG_4860.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 691 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 690 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section id="signed-distance-functions-and-texture-field-stf">
-<h2>2.2 Signed Distance Functions and Texture Field (STF)<a class="headerlink" href="#signed-distance-functions-and-texture-field-stf" title="Link to this heading">#</a></h2>
+<h2>2.2 Signed Distance Functions and Texture Field (STF)<a class="headerlink" href="#signed-distance-functions-and-texture-field-stf" title="Permalink to this heading">#</a></h2>
 <p>본 논문에서 STF는 signed distances와 texture colors 두가지 모두를 생성하는 implicit function을 의미한다. 이번 섹션에서는 이러한 implicit function이 meshes를 구성하고 rendering을 만드는 방식을 설명한다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4872.png"><img alt="figure3" class="bg-light mb-1" src="../../_images/IMG_4872.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 692 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
-source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 691 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
+source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>**Signed Distance Functions (SDFs)**는 3D shape을 scaler field에서 표현하는 전통적인 방법중 하나다. 특히 SDF <span class="math notranslate nohighlight">\(f\)</span>는 coordinate <span class="math notranslate nohighlight">\(x\)</span>를 scaler 로 mapping한다. (<span class="math notranslate nohighlight">\(f(\mathbf x)=d\)</span>) 여기서 <span class="math notranslate nohighlight">\(d\)</span>는 특정 위치 <span class="math notranslate nohighlight">\(x\)</span>에서 가장 가까운 물체의 표면까지의 거리를 말한다. <span class="math notranslate nohighlight">\(d\)</span>가 0보다 작으면 해당 물체 외부임을 의미한다. 이러한 정의에 따라 <span class="math notranslate nohighlight">\(f(\mathbf x)=0\)</span> 일때는 물체의 표면을 의미한다. <span class="math notranslate nohighlight">\(\text{sign}(d)\)</span>는 표면에 따른 normal orientation을 의미한다.</p>
@@ -692,14 +691,14 @@ source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href=
 <figure class="align-default" id="id6">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure4" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 693 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
-source - <a class="reference external" href="https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models">tutorials in grabcad</a></span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 692 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+source - <a class="reference external" href="https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models">tutorials in grabcad</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>bump는 lighting 을 고려하여 texture가 더 자연스러워 졌지만 구의 표면을 보면 물체의 형태가 실제로 바뀐것은 아님을 알수 있다.displacement를 보면 texture를 따라 물체의 표면이 변화된것을 볼 수 있다.</p>
 </section>
 <section id="diffusion-models">
-<h2>2.3 Diffusion Models<a class="headerlink" href="#diffusion-models" title="Link to this heading">#</a></h2>
+<h2>2.3 Diffusion Models<a class="headerlink" href="#diffusion-models" title="Permalink to this heading">#</a></h2>
 <p>본 논문에서 활용한 diffusion model은 DDPM으로 diffusion process(noising process)를 data sample <span class="math notranslate nohighlight">\(x_0\)</span> 에 gaussian noise를 서서히 추가하여 완전한 노이즈가 되어가는 과정 <span class="math notranslate nohighlight">\((x_1,x_2,…x_T)\)</span> 으로 표현했다. 일반적으로 <span class="math notranslate nohighlight">\(x_T\)</span>는 gaussian noise와 구분불가능한 상태로 상정한다. 해당 과정은 sequential하게 진행되지만 활용시에는 아래의 식과 같이 특정 단계로 바로 “jump”하는 방식을 이용한다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -724,13 +723,13 @@ L_{x_0}=E_{x_0\sim q(x_0),\epsilon\sim\mathcal N(0,\mathbf I),t\sim U[1,T]}\|x_\
 <p><span class="math notranslate nohighlight">\(s\)</span> 는 guidance scale이고 <span class="math notranslate nohighlight">\(s=0, s=1\)</span> 일때는 regular unconditional, conditional sampling을 뜻한다. <span class="math notranslate nohighlight">\(s\)</span> 를 더 키우면 일관성(coherence)은 커지지만 다양성(diversity)이 떨어질 수 있다. 실험적으로 나은 결과물을 얻기 위해서는 guidance가 필요하다는 것을 알아냈다. (section 5의 figure 4 참고)</p>
 </section>
 <section id="latent-diffusion">
-<h2>2.4 Latent Diffusion<a class="headerlink" href="#latent-diffusion" title="Link to this heading">#</a></h2>
+<h2>2.4 Latent Diffusion<a class="headerlink" href="#latent-diffusion" title="Permalink to this heading">#</a></h2>
 <p>continuous latent space에서도 diffusion을 활용하여 샘플들을 생성할 수 있다. 이는 Stable Diffusion(LDM)에서 제안된 것으로, pixel space와 latent space간의 변환을 담당하는 encoder와 decoder를 추가하여 two-stage방식으로 모델을 학습시키면 된다. 앞서 봤던 노이즈를 예측을 담당하는 모델 <span class="math notranslate nohighlight">\(\epsilon_\theta\)</span>는 latent space에서 추가된 노이즈(latent noise)를 예측하게 되는 것이다. original LDM에서는 latent noise를 원본 이미지 보다 낮은 복잡도(lower-dimensional distribution)를 가지도록 KL penalty나 vector quantization layer를 사용했다.</p>
 <p>본 논문에서도 위와 유사한 방식을 사용했으나 GAN-based objective와 perceptual loss를 사용하지 않고 단순히 <span class="math notranslate nohighlight">\(L_1\)</span>, <span class="math notranslate nohighlight">\(L_2\)</span> reconstruction loss를 사용했다. 또한 KL regularization과 vector quantization은 bottleneck이 되므로 고정된 numerical range를 가지도록 하고 diffusion style의 noise를 추가 했다.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>3. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
+<h1>3. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Point-E</p></li>
 <li><p>3D auto-encoder + implicit decoder</p>
@@ -755,7 +754,7 @@ L_{x_0}=E_{x_0\sim q(x_0),\epsilon\sim\mathcal N(0,\mathbf I),t\sim U[1,T]}\|x_\
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h1>
+<h1>4. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
 <blockquote>
 <div><p>📌 훈련 방법 <br />
 two stage 방식으로 Shap-E를 학습시킨다.<br />
@@ -763,11 +762,11 @@ two stage 방식으로 Shap-E를 학습시킨다.<br />
 <strong>Stage 2. train a conditional diffusion model on outputs of the encoder</strong></p>
 </div></blockquote>
 <section id="d-encoder">
-<h2>4.1 3D Encoder<a class="headerlink" href="#d-encoder" title="Link to this heading">#</a></h2>
+<h2>4.1 3D Encoder<a class="headerlink" href="#d-encoder" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id7">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4861.png"><img alt="figure5" class="bg-light mb-1" src="../../_images/IMG_4861.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 694 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 693 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>encoder의 input :</strong>  (point clouds, rendered views) <br />
@@ -784,13 +783,13 @@ Point-E와 비교하였을때, post-processing 방식을 변경하여 3D Asset�
 <figure class="align-default" id="id8">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4869.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/IMG_4869.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 695 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 694 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>encoder에 입력된 point clouds와 views는 cross-attention과 transformer backbone에 의해 처리되어 sequence of vectors가 된다. 이후 latent bottleneck과 projection layer를 통과하여 MLP weight matrices를 만든다.</p>
 <p>encoder는 NeRF rendering objective를 사용(Section 4.1.1 참고)하여 사전 학습한다. mesh-based objective를 이용한 사전학습시 보다 더 안정적인 결과물을 얻을 수 있었다고 한다. 이후에는 SDF와 texture color prediction을 위해 추가적인 output head를 넣어 Section 4.1.2와 같이 two-stage 방식으로 head들을 학습시킨다.</p>
 <section id="decoding-with-nerf-rendering">
-<h3>4.1.1 Decoding with NeRF Rendering<a class="headerlink" href="#decoding-with-nerf-rendering" title="Link to this heading">#</a></h3>
+<h3>4.1.1 Decoding with NeRF Rendering<a class="headerlink" href="#decoding-with-nerf-rendering" title="Permalink to this heading">#</a></h3>
 <p>original NeRF의 식과 유사하지만 coarse net과 fine net이 parameter들을 공유할 수 있도록 하지는 않았다. 랜덤한 4096개의 ray를 각 학습 데이터에서 샘플링하였으며, <span class="math notranslate nohighlight">\(L_1\)</span> loss가 최소가 되도록 했다. (original NeRF에서는 <span class="math notranslate nohighlight">\(L_2\)</span> loss를 사용)</p>
 <div class="math notranslate nohighlight">
 \[
@@ -808,12 +807,12 @@ L_\text{NeRF}=L_\text{RGB}+L_T \tag{12}
 \]</div>
 </section>
 <section id="decoding-with-stf-rendering">
-<h3>4.1.2 Decoding with STF Rendering<a class="headerlink" href="#decoding-with-stf-rendering" title="Link to this heading">#</a></h3>
+<h3>4.1.2 Decoding with STF Rendering<a class="headerlink" href="#decoding-with-stf-rendering" title="Permalink to this heading">#</a></h3>
 <figure class="align-default" id="id9">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 696 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
-source - https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 695 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+source - https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>NeRF 방식을 통해 사전학습한 후, MLPs에 STF output heads를 추가한다. 이러한 MLPs는 SDF와 texture color를 예측한다. triangle mesh를 생성하기 위해서는 각 vertex의 SDF를 regular <span class="math notranslate nohighlight">\(128^3\)</span> grid로 옮겨 미분가능한 형태의 Marching Cube를 진행해야 한다. 이후 texture color는 최종 mesh의 각 vertex texture color head를 통해 얻는다. Pytorch 3D를 활용하면 미분가능한 rendering을 통해 textured mesh를 얻을 수 있다고 한다. 렌더링 시에는 데이터셋 구축시 preprocessing에 사용한 것과 동일한 lighting 조건을 사용했다.</p>
@@ -840,13 +839,13 @@ L_\text{FT}=L_\text{NeRF}+L_\text{STF}\tag{15}
 </section>
 </section>
 <section id="id1">
-<h2>4.2 Latent Diffusion<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<h2>4.2 Latent Diffusion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <p>Point-E의 transformer 기반 diffusion 구조를 채택했다. 하지만 point cloud를 latent vector의 sequence로 바꾸었다. latent sequences의 크기는 <span class="math notranslate nohighlight">\(1024\times1024\)</span> 로 이를 길이가 1024인 1024개의 token처럼 transformer의 입력으로 사용했다. 각 token은 MLP weight matrices의 각 row와 일치한다. Shap-E의 모델은 Point-E base 모델과 유사한 부분이 많다.(context length와 width가 동일) 하지만 더 고차원의 샘플(samples in higher-dimensional)을 생성하는데 이는 입출력 채널의 복잡도(dimension)가 증가하였기 때문이다.</p>
 <p>Point-E의 conditioning 방식을 동일하게 사용하였다. 이미지 조건부 3d 생성시 256-token CLIP embedding sequence를 transformer context로 사용했으며, 텍스트 조건부 3d 생성시 single token을 사용했다.</p>
 <p>Point-E와의 차이점으로는 diffusion model의 출력을 <span class="math notranslate nohighlight">\(\epsilon\)</span> prediction으로 parameterize하지 않았다는 것이다. 대신 본 논문에서는 곧바로 sample을 예측하는 방식을 사용했다. 대수적으로는 동일한 의미이나 초기 실험에서 더 일관된 결과물을 생성하여 해당 방식을 사용하였다고 함.</p>
 </section>
 <section id="dataset">
-<h2>4.3 Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
+<h2>4.3 Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
 <p>공정한 비교를 위해 대부분의 실험에서 Point-E와 동일한 3D assets을 사용했다. 하지만 post-processing부분에서는 차이가 있다.</p>
 <ul>
 <li><p>point cloud 계산시, 20개가 아닌 60개의 view를 rendering했다. 20개만 사용했을때 주어진 view에서 확인할 수 없는 영역때문에 crack 발생 (+NeRF 때문으로 추정)</p></li>
@@ -855,9 +854,9 @@ L_\text{FT}=L_\text{NeRF}+L_\text{STF}\tag{15}
 <figure class="align-default" id="id10">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/untitled.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/untitled.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 697 </span><span class="caption-text">Phong model <br />
+<p><span class="caption-number">Fig. 696 </span><span class="caption-text">Phong model <br />
 기본적인 shading방식으로 본 논문에서는 specular를 사용하지 않았다 <br />
-source - <a class="reference external" href="https:www.researchgate.net/publication/265514880_Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment">Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment</a></span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+source - <a class="reference external" href="https:www.researchgate.net/publication/265514880_Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment">Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment</a></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -866,24 +865,24 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="result">
-<h1>5. Result<a class="headerlink" href="#result" title="Link to this heading">#</a></h1>
+<h1>5. Result<a class="headerlink" href="#result" title="Permalink to this heading">#</a></h1>
 <section id="encoder-evaluation">
-<h2>5.1 Encoder Evaluation<a class="headerlink" href="#encoder-evaluation" title="Link to this heading">#</a></h2>
+<h2>5.1 Encoder Evaluation<a class="headerlink" href="#encoder-evaluation" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id11">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table12.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/table12.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 698 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 697 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>distillation에서 rendering 이미지의 퀄리티가 떨어지는 것처럼 보이나 finetuning시 퀄리티가 더욱 좋아진다. 또한 STF의 퀄리티 또한 크게 상승한다.</p>
 </section>
 <section id="comparison-to-point-e">
-<h2>5.2 Comparison to Point-E<a class="headerlink" href="#comparison-to-point-e" title="Link to this heading">#</a></h2>
+<h2>5.2 Comparison to Point-E<a class="headerlink" href="#comparison-to-point-e" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id12">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure4.png"><img alt="figure9" class="bg-light mb-1" src="../../_images/figure4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 699 </span><span class="caption-text">Shap-E와 Point-E비교<br />
-세모 마크가 Point-E, 원형 마크가 Shap-E이다.</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 698 </span><span class="caption-text">Shap-E와 Point-E비교<br />
+세모 마크가 Point-E, 원형 마크가 Shap-E이다.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>point-E보다 Shap-E의 CLIP score가 더 높다. 더 많은수의 parameter를 가진 point-E를 사용하여도 Shap-E의 성능이 우수함.</p>
@@ -891,14 +890,14 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id13">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure5.png"><img alt="figure10" class="bg-light mb-1" src="../../_images/figure5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 700 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 699 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 base model의 크기 동일한 데이터셋으로 학습시킨 결과. 텍스트 조건부 생성시에는 퀄리티 차이가 크지 않음.</p>
 <figure class="align-default" id="id14">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure6.png"><img alt="figure11" class="bg-light mb-1" src="../../_images/figure6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 701 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 700 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이미지 조건부 생성시에는 비교적 차이가 크다.
@@ -906,33 +905,33 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 위의 강아지와 컵 이미지 기반 생성 결과를 보면 point-E와 shap-E가 유사한 케이스에서 실패하는 모습을 보였다.</p>
 </section>
 <section id="comparison-to-other-methods">
-<h2>5.3 Comparison to Other Methods<a class="headerlink" href="#comparison-to-other-methods" title="Link to this heading">#</a></h2>
+<h2>5.3 Comparison to Other Methods<a class="headerlink" href="#comparison-to-other-methods" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id15">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table21.png"><img alt="figure12" class="bg-light mb-1" src="../../_images/table21.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 702 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 701 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>reference latency에서 point-E와 Shap-E의 차이가 있는데, 이는 Shap-E는 추가적인 upsampling diffusion model을 사용하지 않기 때문이다.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="limitations-and-future-work">
-<h1>6. Limitations and Future Work<a class="headerlink" href="#limitations-and-future-work" title="Link to this heading">#</a></h1>
+<h1>6. Limitations and Future Work<a class="headerlink" href="#limitations-and-future-work" title="Permalink to this heading">#</a></h1>
 <figure class="align-default" id="id16">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure7.png"><img alt="figure13" class="bg-light mb-1" src="../../_images/figure7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 703 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 702 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림과 같이 여러가지 특성을 가진물체를 생성하는데에 어려움을 겪는 모습을 보인다. 이는 학습에 사용한 paired data가 제한적이기 때문으로 더 많은 3D dataset을 수집하면 나아질 수 있다. 또한 texture의 세부 특성을 encoder가 무시하는 경우도 있는데, 더 나은 encoder를 사용함으로써 개선될수 있다.</p>
 <p>Shap-E는 다양한 3D 생성 기술들을 융합하는데에 도움을 줄 수 있다. 예를 들어 Shap-E로 생성한 NeRF와 mesh를 다른 최적화 기반  모델을 초기화 하는데 사용하는 것이다. 이를 통해 더 빠른 수렴도 가능할 것으로 생각된다.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>7. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h1>
+<h1>7. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
 <p>Shap-E는 latent diffusion model을 3D implicit function공간에서 전개하여 NeRF와 textured mesh 모두를 생성 할 수 있었다. 동일한 데이터셋을 활용하여 다른 생성모델들과 비교하였을때 더 나은 성능을 보임을 확인했다. 또한 text 조건부 생성시 이미지 없이도 다양한 흥미로운 물체를 생성할 수 있음확인했다. 이는 implicit represention을 생성함에 큰 가능성을 보여준다.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="acknowledgements">
-<h1>8. Acknowledgements<a class="headerlink" href="#acknowledgements" title="Link to this heading">#</a></h1>
+<h1>8. Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this heading">#</a></h1>
 <p>특정 인물들에 대한 언급 외에도 ChatGPT로 부터 valuable writing feedback을 받았다고 표현한 부분있었다.</p>
 </section>
 
@@ -1055,7 +1054,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2022.
       <br/>
     
   </p>
@@ -1079,8 +1078,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

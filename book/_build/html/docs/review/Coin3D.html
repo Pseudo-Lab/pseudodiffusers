@@ -1,0 +1,1078 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Coin3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Coin3D';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="DreamGaussian" href="DreamGaussian.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Coin3D</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/Coin3D.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/Coin3D.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Coin3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall">Overall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-guided-3d-conditiong-for-diffusion">3.1: Proxy-Guided 3D Conditiong for Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-aware-conditioned-generation">3.2 3D Aware Conditioned Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-pipeline-of-3d-aware-conditioned-generation">3.2.1 Training Pipeline of 3D Aware Conditioned Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-equation">Loss Equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-generation-workflow">3.3. Interactive Generation Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-bounded-part-editing">3.3.1. Proxy-bounded part editing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-preview-with-progressive-volume-caching">3.3.2. Interactive Preview with Progressive Volume Caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-conditioned-reconstruction">3.4 Volume-Conditioned Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-reconstruction">3.4.1. Preview &amp; Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">4. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">프록시 기반 생성 방법 비교</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">주요 관찰점</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">요약:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-results">4.2 Quantitative Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">5. Ablation Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-sds">Volume SDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-condition-3d-mask-dilation">Proxy Condition &amp; 3D Mask Dilation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> Controllable and Interactive 3D Assets Generation with Proxy-Guided Conditioning (SIGGRAPH 2024)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2405.08054">https://arxiv.org/pdf/2405.08054</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/zju3dv/Coin3D">zju3dv/Coin3D</a></p></li>
+<li><p>Project Page : <a class="reference external" href="https://zju3dv.github.io/coin3d/">https://zju3dv.github.io/coin3d/</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Donggeun Sean Ko</p></li>
+<li><p><strong>Last updated on January. 07, 2025</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="coin3d">
+<h1>Coin3D<a class="headerlink" href="#coin3d" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_01.png"><img alt="main_fig" class="bg-primary mb-1" src="../../_images/coin3d_01.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 809 </span><span class="caption-text">Overview of Coin3D</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>“사용자 친화적인” &amp; “제어 가능”한 3D assets 생성 프레임워크는 3가지 특성을 가져야 한다고 주장함</p>
+<ul class="simple">
+<li><p><strong>3D Controllable</strong>: Basic shape를 이용해서 간단하고 쉽게 원하는 형태를 만들 수 있어야 됨</p></li>
+<li><p><strong>Flexible</strong>: Interactive하게 (UI 등)을 활용하여 다양한 결과물을 만들 수 있어야 됨 (간단)</p></li>
+<li><p><strong>Responsive</strong>: 중간 결과물 및 빠른 결과물을 만들 수 있게 해야 됨 (fast inference time)</p></li>
+</ul>
+</section>
+<section id="related-works">
+<h2>2. Related Works<a class="headerlink" href="#related-works" title="Permalink to this heading">#</a></h2>
+<p><strong>3D Object Generation</strong></p>
+<ul class="simple">
+<li><p>Polygon-mesh based</p></li>
+<li><p>Point Cloud</p></li>
+<li><p>Voxels, Implicit Fields</p></li>
+<li><p>CAD-based</p></li>
+<li><p>Multiview Image generation (zero123++,Wonder3D,etc)</p></li>
+</ul>
+<p><strong>Controllable and Interactive Generation</strong></p>
+<ul class="simple">
+<li><p>Latent-NeRF</p></li>
+<li><p>Fantasia3D</p></li>
+</ul>
+<p><strong>이전 방법들의 문제점</strong></p>
+<ul class="simple">
+<li><p>“다중 얼굴 야누스 문제” (하나의 객체가 다양한 각도에서 일관성 있는 모습을 유지하지 못하는 문제)</p></li>
+<li><p>텍스트 프롬프트(텍스트-3D)나 이미지(이미지-3D)에만 집중함</p></li>
+<li><p>3D 형태를 정확하게 제어할 수 없음</p></li>
+</ul>
+</section>
+<section id="overall">
+<h2>Overall<a class="headerlink" href="#overall" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Coin3D Input Condition (전처리)</p></li>
+<li><p>3D-Aware Conditioned Generation</p></li>
+<li><p>Preview and Reconstruction</p></li>
+</ul>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_02.png"><img alt="overall_coin3d_arch" class="bg-primary mb-1" src="../../_images/coin3d_02.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 810 </span><span class="caption-text">Overview of Coin3D Main Architecture</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="method">
+<h2>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="proxy-guided-3d-conditiong-for-diffusion">
+<h2>3.1: Proxy-Guided 3D Conditiong for Diffusion<a class="headerlink" href="#proxy-guided-3d-conditiong-for-diffusion" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_03.png"><img alt="3d_proxy" class="bg-primary mb-1" src="../../_images/coin3d_03.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 811 </span><span class="caption-text">Proxy-based Initial Condition Generation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>3D Proxy as an initial condition (Preprocessing)</strong></p>
+<ul class="simple">
+<li><p>Coarse shape <span class="math notranslate nohighlight">\(P\)</span>와 prompt <span class="math notranslate nohighlight">\(y\)</span>로 <span class="math notranslate nohighlight">\(N_v\)</span>를 다양한 camera pose에 대하여 예측</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{X}_{(i:N_v)} = f(P, y, \mathbf{c}_{(i:N_v)})
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(N_v\)</span>: consistent image</p></li>
+<li><p><span class="math notranslate nohighlight">\(P\)</span>: coarse shape</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span>: Multiview diffusion-based generator</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span>: prompt</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{c}\)</span>: camera poses</p></li>
+</ul>
+</section>
+<section id="d-aware-conditioned-generation">
+<h2>3.2 3D Aware Conditioned Generation<a class="headerlink" href="#d-aware-conditioned-generation" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_04.png"><img alt="3d_aware" class="bg-primary mb-1" src="../../_images/coin3d_04.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 812 </span><span class="caption-text">3D-Aware Conditioned Generation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p>3D Proxy Sample을 Voxelize를 통해 Voxel Grid <span class="math notranslate nohighlight">\(F_v\)</span> 생성</p></li>
+<li><p><strong>Multiview Image 생성</strong></p>
+<ul class="simple">
+<li><p>2-1. Image Candidates를 <strong>Clip</strong> + (Rotation, Translation)로 <strong>Denoising U-Net</strong> condition input으로 입력</p></li>
+<li><p>2-2. Volume Projected Condition도 입력 (학습)</p></li>
+</ul>
+</li>
+<li><p>MV Images → Project Fusion을 통해<br />
+multiview feature volume, <span class="math notranslate nohighlight">\(F_l^t\)</span> 생성</p></li>
+<li><p>3D Convolution (<span class="math notranslate nohighlight">\(f_{VP}\)</span>)을 통해 intermediate feature를 MVConv<br />
+(3DConv intermediate layer)에 계층적으로 추가</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_c^t = f_{VM(1 \dots N)}(F_l^t) + f_{VM(1 \dots N)}(f_{VP}(F_v)_{1 \dots N})\)</span></p></li>
+<li><p>3D control volume 완성!</p></li>
+<li><p>3D Control Volume을 다시 <span class="math notranslate nohighlight">\(f_u\)</span>에 넣어 MV image 생성</p></li>
+</ol>
+</section>
+<section id="training-pipeline-of-3d-aware-conditioned-generation">
+<h2>3.2.1 Training Pipeline of 3D Aware Conditioned Generation<a class="headerlink" href="#training-pipeline-of-3d-aware-conditioned-generation" title="Permalink to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>(Preprocess)</strong> 각 학습 데이터를 MV image와 균일하게 샘플링된 coarse proxies로 변환</p></li>
+<li><p><strong>(Training)</strong> <span class="math notranslate nohighlight">\(B\)</span>개의 condition 및 target image를 무작위로 sampling하고, 대응하는 coarse proxy points를 샘플링함</p></li>
+<li><p><strong>(Training)</strong> <span class="math notranslate nohighlight">\(B\)</span> timestamp with Gaussian Noise도 샘플링<br />
+<span class="math notranslate nohighlight">\(\epsilon_{(1:B)} \sim \mathcal{N}(0, 1)\)</span></p></li>
+<li><p>아래의 loss를 이용하여 추가된 noise를 network <span class="math notranslate nohighlight">\(\epsilon_\theta\)</span>를 통해 예측</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\epsilon_\theta : \text{model’s predicted noise}  
+c(I, F_c^t, c_i) : \text{conditioned embedding}  
+c_i : \text{camera view}  
+F_c^t : \text{3D Control volume}  
+I : \text{Candidate Image}
+\]</div>
+<section id="loss-equation">
+<h3>Loss Equation<a class="headerlink" href="#loss-equation" title="Permalink to this heading">#</a></h3>
+<div class="math notranslate nohighlight">
+\[
+\min_{\theta} \mathbb{E}_{t, \mathbf{x}_{(1:N_v)}, \epsilon_{(1:N_v)}} 
+\| \epsilon_i - \epsilon_\theta (\mathbf{x}_i^t, t, c(I, F_c^t, \mathbf{c}_i)) \|, \tag{2}
+\]</div>
+</section>
+</section>
+<section id="interactive-generation-workflow">
+<h2>3.3. Interactive Generation Workflow<a class="headerlink" href="#interactive-generation-workflow" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="proxy-bounded-part-editing">
+<h2>3.3.1. Proxy-bounded part editing<a class="headerlink" href="#proxy-bounded-part-editing" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_05.png"><img alt="proxy-bounded-editing" class="bg-primary mb-1" src="../../_images/coin3d_05.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 813 </span><span class="caption-text">Proxy-bounded Part Editing</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>MV diffusion은 3D volume &amp; 2D image에 conditionin이 되어 있기 때문에,<br />
+이런 condition을 고려해서 편집을 해야하는 게 간단하지 않음.</p></li>
+<li><p>따라서, two-pathway condition editing scheme을 구성함:</p>
+<ul>
+<li><p>Projected 2D Mask → 2D Latent Diffusion Model</p></li>
+<li><p>3D Volume Mask → Partial Update Volume</p></li>
+<li><p>2D Image condition + 3D masked volume condition으로 “3D image editing”을 진행</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\hat{F}_C^t = (1 - M) F_C^t + M \tilde{F}_C^t, \tag{3}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{F}_C^t\)</span>: updated volume</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tilde{F}_C^t\)</span>: predicted volume at <span class="math notranslate nohighlight">\(t\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(F_C^t\)</span>: cached original volume</p></li>
+</ul>
+</section>
+<section id="interactive-preview-with-progressive-volume-caching">
+<h2>3.3.2. Interactive Preview with Progressive Volume Caching<a class="headerlink" href="#interactive-preview-with-progressive-volume-caching" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_06.png"><img alt="progressive_volume" class="bg-primary mb-1" src="../../_images/coin3d_06.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 814 </span><span class="caption-text">Interactive Preview with Progressive Volume Caching</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>목표: Interactive preview를 통해 수정된 결과를 몇 초 내에 확인하고<br />
+임의의 시점에서 효과를 검사 및 수정이 가능</p></li>
+<li><p>Progressive Volume Caching</p>
+<ul>
+<li><p>각 timestamp <span class="math notranslate nohighlight">\(t\)</span>에서 최신 3D Control Volume, <span class="math notranslate nohighlight">\(F_C^t\)</span>를 캐싱함</p></li>
+<li><p>이를 <span class="math notranslate nohighlight">\(F_C^t\)</span>를 반복적으로 계산할 필요가 없음</p></li>
+</ul>
+</li>
+<li><p>Viewpoint Panning</p>
+<ul>
+<li><p>Preview 단계에서 user’s viewpoint poses <span class="math notranslate nohighlight">\(c'\)</span>를 MV diffusion viewpoint condition에 전달</p></li>
+<li><p>이를 통해 원하는 시점 (arbitrary viewpoints)에서 프리뷰 이미지를 렌더링할 수 있음</p></li>
+</ul>
+</li>
+<li><p>핵심</p>
+<ul>
+<li><p>Cache를 이용하여 불필요한 연산을 제거하고 Cache에서 저장된 3D adapter rendering output을 이용하여 여러 preview를 생성</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="volume-conditioned-reconstruction">
+<h2>3.4 Volume-Conditioned Reconstruction<a class="headerlink" href="#volume-conditioned-reconstruction" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="preview-reconstruction">
+<h2>3.4.1. Preview &amp; Reconstruction<a class="headerlink" href="#preview-reconstruction" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_07.png"><img alt="preview_recon" class="bg-primary mb-1" src="../../_images/coin3d_07.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 815 </span><span class="caption-text">Preview and Reconstruction</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>기존 Multiview images를 활용한 3D Reconstruction은<br />
+viewpoint가 적어 unexpected geometry가 만들어져 결과물이 뭉개지거나 한계점이 보임</p></li>
+<li><p>3D-aware context from 3D control volume을 활용해 3D Reconstruction quality를 올림</p>
+<ul>
+<li><p>개인적인 의견: 더 정교한 3D 물체 + Multiview가 있으니 더 정교한 결과물이 만들어진다? 라고 보여짐…</p></li>
+</ul>
+</li>
+<li><p><strong>Propose Volume SDS</strong></p>
+<ul>
+<li><p>integrating 3D control prior from voxelized feature <span class="math notranslate nohighlight">\(F_C^t\)</span> to the field’s backpropagation</p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\Delta_x L_{V-SDS} = w(t) \left( \epsilon_\theta \left( \mathbf{x}_t, t, c(I, F_C^t, \mathbf{c}) \right) - \epsilon \right),
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(w(t)\)</span> is the weighting function from <strong>DreamFusion</strong>.</p>
+</section>
+<section id="results">
+<h2>4. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_08.png"><img alt="results" class="bg-primary mb-1" src="../../_images/coin3d_08.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 816 </span><span class="caption-text">Qualitative Results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="id1">
+<h3>프록시 기반 생성 방법 비교<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Wonder3D와 SyncDreamer 디테일 비교</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>더 높은 품질의 멀티뷰 이미지</strong>:</p>
+<ul>
+<li><p>Coin3D 결과물은 <strong>다양한 시점에서 일관성 있는 이미지</strong>를 생성하며, 왜곡이나 아티팩트가 최소화됨.</p></li>
+<li><p>반면, Wonder3D와 SyncDreamer는 복잡한 객체(예: 거북이와 오리)에서 <strong>기하학적 불일치</strong> 또는 텍스처 불일치를 보임.</p></li>
+</ul>
+</li>
+<li><p><strong>더 나은 텍스처 메쉬</strong>:</p>
+<ul>
+<li><p>Ours는 <strong>더욱 현실적이고 세밀한 텍스처</strong>를 재구성하며, 부드러운 전환과 정밀한 정렬을 유지.</p></li>
+<li><p>Wonder3D는 텍스처 불일치가 나타나고, SyncDreamer는 단순화된 텍스처를 생성하는 경향이 있음.</p></li>
+</ul>
+</li>
+<li><p><strong>객체 형태의 보존</strong>:</p>
+<ul>
+<li><p>Ours는 입력된 <strong>coarse shape</strong>를 정확히 보존하면서 세부 정보를 강화함.</p></li>
+<li><p>다른 방법론은 재구성 중 형태 왜곡(예: 의자가 휘거나 일그러짐)이 나타남.</p></li>
+</ul>
+</li>
+<li><p><strong>더 자연스러운 출력</strong>:</p>
+<ul>
+<li><p>Ours의 출력은 <strong>미적 품질이 높고 자연스러운 결과물</strong>을 제공하며, 복잡한 텍스처(예: 도넛)에서도 특히 돋보임.</p></li>
+<li><p>Wonder3D와 SyncDreamer는 인공적이거나 세부 사항이 부족한 경우가 많음.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</section>
+<section id="id2">
+<h3>주요 관찰점<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Coarse Shapes</strong>: 모든 방법이 비슷한 코스 쉐이프에서 시작하지만, Ours는 이를 가장 잘 개선함.</p></li>
+<li><p><strong>멀티뷰 이미지</strong>: Ours는 명확하고 일관된 멀티뷰 이미지를 생성하여 정확한 3D 재구성을 가능하게 함.</p></li>
+<li><p><strong>텍스처 메쉬</strong>: Ours는 현실적인 텍스처를 생성하며, 경쟁 방법론보다 높은 수준의 사실성을 보여줌.</p></li>
+</ul>
+</section>
+<section id="id3">
+<h3>요약:<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>(a) Ours</strong>: 멀티뷰 이미지의 일관성과 텍스처 메쉬 품질에서 우수함.</p></li>
+<li><p><strong>(b) Wonder3D</strong>: 기하학적 일관성과 텍스처 세부 정보에서 어려움.</p></li>
+<li><p><strong>(c) SyncDreamer</strong>: 텍스처가 단순화되고 형태가 불일치함.</p></li>
+</ul>
+</section>
+</section>
+<section id="quantitative-results">
+<h2>4.2 Quantitative Results<a class="headerlink" href="#quantitative-results" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id12">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_09.png"><img alt="quant_results" class="bg-primary mb-1" src="../../_images/coin3d_09.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 817 </span><span class="caption-text">Quantitative Results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>TEXTure</strong> (Richardson et al., 2023) user study guideline 채택</p></li>
+<li><p>30명 사용자에게 35개의 test case를 무작위 순서로 제시한 후<br />
+perceptual quality &amp; content matching degree (w.r.t the given image or text prompts)를 기준으로 정렬 및 점수 배정</p></li>
+<li><p>3점 Best 기준으로 함.</p></li>
+</ul>
+</section>
+<section id="ablation-study">
+<h2>5. Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h2>
+<section id="volume-sds">
+<h3>Volume SDS<a class="headerlink" href="#volume-sds" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id13">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_10.png"><img alt="vol_sds" class="bg-primary mb-1" src="../../_images/coin3d_10.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 818 </span><span class="caption-text">Ablation Study on Volume SDS</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Volume SDS Loss를 추가시 렌더링에 artifacts가 없으며 더 스무스하고 자연스러운 텍스쳐를 바탕으로 생성함</p></li>
+</ul>
+</section>
+<section id="proxy-condition-3d-mask-dilation">
+<h3>Proxy Condition &amp; 3D Mask Dilation<a class="headerlink" href="#proxy-condition-3d-mask-dilation" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id14">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_11.png"><img alt="proxy_cond" class="bg-primary mb-1" src="../../_images/coin3d_11.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 819 </span><span class="caption-text">Ablation Study on Proxy Condition and 3D Mask Dilation</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Proxy 하고 Dilation이 없을 시 rendering이 고르게 안되는 현상이 생김.</p></li>
+<li><p>Full method는 proxy와 dilation을 둘다 사용했으며</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Basic block만 있으면 원하는 3D 생성을 할 수 있음</p></li>
+<li><p>Flexible 하고 UI-friendly 함 (ComfyUI 등)</p></li>
+<li><p>타 모델들에 비해 3D 결과물이 더 좋음</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="DreamGaussian.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DreamGaussian</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overall">Overall</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-guided-3d-conditiong-for-diffusion">3.1: Proxy-Guided 3D Conditiong for Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-aware-conditioned-generation">3.2 3D Aware Conditioned Generation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-pipeline-of-3d-aware-conditioned-generation">3.2.1 Training Pipeline of 3D Aware Conditioned Generation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-equation">Loss Equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-generation-workflow">3.3. Interactive Generation Workflow</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-bounded-part-editing">3.3.1. Proxy-bounded part editing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interactive-preview-with-progressive-volume-caching">3.3.2. Interactive Preview with Progressive Volume Caching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-conditioned-reconstruction">3.4 Volume-Conditioned Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-reconstruction">3.4.1. Preview &amp; Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">4. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">프록시 기반 생성 방법 비교</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">주요 관찰점</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">요약:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-results">4.2 Quantitative Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">5. Ablation Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volume-sds">Volume SDS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proxy-condition-3d-mask-dilation">Proxy Condition &amp; 3D Mask Dilation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">6. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

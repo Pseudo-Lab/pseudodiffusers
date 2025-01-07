@@ -71,6 +71,7 @@ parts:
   - file: docs/review/zero123plus
   - file: docs/review/ProlificDreamer
   - file: docs/review/DreamGaussian
+  - file: docs/review/Coin3D
   
 - caption: Experiments
   chapters:

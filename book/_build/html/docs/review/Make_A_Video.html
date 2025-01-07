@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Make A Video &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -794,8 +794,8 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <li><p>flatten: spatial dimension 축에 대해 flatten하는 연산 (결과 dimension: <span class="math notranslate nohighlight">\(B\)</span>,<span class="math notranslate nohighlight">\(C\)</span>,<span class="math notranslate nohighlight">\(F\)</span>,<span class="math notranslate nohighlight">\(HW\)</span>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(ATTN_{2D}\)</span>는 pretrained T2I 모델에서 초기화되고, <span class="math notranslate nohighlight">\(ATTN_{1D}\)</span>는 identity function으로 초기화 된다.</p></li>
 <li><p>Code</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SpatioTemporalAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpatioTemporalAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">dim</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -822,7 +822,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ff</span> <span class="o">=</span> <span class="n">FeedForward</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">ff_mult</span><span class="p">)</span>
 
-    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">x</span><span class="p">,</span>
         <span class="n">enable_time</span> <span class="o">=</span> <span class="kc">True</span>

@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Zero123++ &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -585,7 +585,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_01.png"><img alt="zero123plus_01" class="bg-primary mb-1" src="../../_images/zero123plus_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 742 </span><span class="caption-text">High-quality, consistent multi-view 3D images from Zero123++</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 741 </span><span class="caption-text">High-quality, consistent multi-view 3D images from Zero123++</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Zero-1-to-3(Zero123) 논문이 zero-shot 형태로 single-image-to-3D conversion 을 하는 기법을 처음으로 소개하였습니다. 하지만 해당 방식으로는 주어진 view 에 대해서 독립적으로 객체를 생성하게 됨으로써 multi-view consistency 에서 부족한 부분을 보여주게 된다고 설명합니다. Zero123++ 논문에서 이를 해결하기 위해 여섯개의 view 로부터 하나의 이미지를 생성하여 multi-view 에 대한 joint distirbution 을 학습할 수 있도록 설정합니다.</p>
@@ -605,7 +605,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_02.png"><img alt="zero123plus_02" class="bg-primary mb-1" src="../../_images/zero123plus_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 743 </span><span class="caption-text">Elevation/Azimuth angle</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 742 </span><span class="caption-text">Elevation/Azimuth angle</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -614,7 +614,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_03.png"><img alt="zero123plus_03" class="bg-primary mb-1" src="../../_images/zero123plus_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 744 </span><span class="caption-text">3x2 layout of Zero123++ prediction</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 743 </span><span class="caption-text">3x2 layout of Zero123++ prediction</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -624,7 +624,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_04.png"><img alt="zero123plus_04" class="bg-primary mb-1" src="../../_images/zero123plus_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 745 </span><span class="caption-text">Linear vs Scaled linear schedule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 744 </span><span class="caption-text">Linear vs Scaled linear schedule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, 동일한 noise 가 주입되었을때 고해상도 이미지가 저해상도 이미지에 비해 noise level 이 적기 때문에, Zero-1-to-3 모델에서 고해상도 이미지를 학습하였을 때 불안정한 모습을 보여주었던 것도 동일한 원인 때문이라고 설명합니다.</p>
@@ -637,14 +637,14 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_05.png"><img alt="zero123plus_05" class="bg-primary mb-1" src="../../_images/zero123plus_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 746 </span><span class="caption-text">Reference Attention</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 745 </span><span class="caption-text">Reference Attention</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Reference Attention 기법을 적용한 결과, fine-tuning 작업을 진행하지 않아도 reference image 에서의 semantic content 와 texture 가 잘 반영되었습니다. 또한, fine-tuning 을 하였을때 reference latent 을 5x scaling 하였을때 reference image 와의 일관성을 가장 잘 보여주었다고 합니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_06.png"><img alt="zero123plus_06" class="bg-primary mb-1" src="../../_images/zero123plus_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 747 </span><span class="caption-text">Comparison on local conditioning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 746 </span><span class="caption-text">Comparison on local conditioning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -655,14 +655,14 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_07.png"><img alt="zero123plus_07" class="bg-primary mb-1" src="../../_images/zero123plus_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 748 </span><span class="caption-text">FlexDiffuse’s linear guidance</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 747 </span><span class="caption-text">FlexDiffuse’s linear guidance</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위와 같은 global conditioning 을 하였을때, 보이지 않은 unseen region 에서도 semantic 한 정보들을 유지한채 이미지를 잘 생성하는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_08.png"><img alt="zero123plus_08" class="bg-primary mb-1" src="../../_images/zero123plus_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 749 </span><span class="caption-text">Ablation on global conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 748 </span><span class="caption-text">Ablation on global conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -681,7 +681,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_09.png"><img alt="zero123plus_09" class="bg-primary mb-1" src="../../_images/zero123plus_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 750 </span><span class="caption-text">Qualitative comparison on image to multi-view task</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 749 </span><span class="caption-text">Qualitative comparison on image to multi-view task</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Quantitative Comparison</strong></p>
@@ -689,7 +689,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_10.png"><img alt="zero123plus_10" class="bg-primary mb-1" src="../../_images/zero123plus_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 751 </span><span class="caption-text">Quantitative Comparison on image to multi-view task</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 750 </span><span class="caption-text">Quantitative Comparison on image to multi-view task</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -699,7 +699,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_11.png"><img alt="zero123plus_11" class="bg-primary mb-1" src="../../_images/zero123plus_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 752 </span><span class="caption-text">Qualitative comparison on text to multi-view task</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 751 </span><span class="caption-text">Qualitative comparison on text to multi-view task</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -710,7 +710,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_12.png"><img alt="zero123plus_12" class="bg-primary mb-1" src="../../_images/zero123plus_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 753 </span><span class="caption-text">Depth-controlled Zero123++</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 752 </span><span class="caption-text">Depth-controlled Zero123++</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>

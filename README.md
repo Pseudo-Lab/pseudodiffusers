@@ -78,12 +78,12 @@ CVPR 2024 Workshop
 | 37 | 2024.10.09 | Kyeongmin Yu | [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)|
 | nn | 2024.10.16 | | |
 | nn | 2024.10.30 | | |
-| nn | 2024.11.06 | | |
+| nn | 2024.11.06 | Geonhak Song | [MVDream: Multi-view Diffusion for 3D Generation](https://arxiv.org/abs/2308.16512) (ICLR 2024 Poster) |
 | nn | 2024.11.13 | Kyeongmin Yu | [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](https://arxiv.org/abs/2305.16213)|
 | nn | 2024.11.27 | | |
 | nn | 2024.12.04 | | |
 | nn | 2024.12.11 | Kyeongmin Yu | [# DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation](https://arxiv.org/abs/2309.16653)|
-| nn | 2024.12.18 | Donggeun Sean Ko | [Coin3D: Controllable and Interactive 3D Assets Generation with Proxy-Guided Conditioning](https://arxiv.org/abs/2405.08054)|
+| nn | 2024.12.18 | Geonhak Song <br> Donggeun Sean Ko | [CAT3D: Create Anything in 3D with Multi-View Diffusion Models](https://arxiv.org/abs/2405.10314) (NeurIPS 2024 (Oral)) <br> [Coin3D: Controllable and Interactive 3D Assets Generation with Proxy-Guided Conditioning](https://arxiv.org/abs/2405.08054)|
 
 
 

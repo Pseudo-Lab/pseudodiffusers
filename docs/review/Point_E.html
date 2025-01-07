@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022) &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -656,9 +676,9 @@ document.write(`
 </li>
 <li><p>본 논문의 접근법</p>
 <figure class="align-default" id="id1">
-<img alt="Point_E_01" class="bg-primary mb-1" src="pics/Point_E/01.png" />
+<img alt="Point_E_01" class="bg-primary mb-1" src="../../_images/013.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 669 </span><span class="caption-text">Point-E 파이프라인 개요</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 681 </span><span class="caption-text">Point-E 파이프라인 개요</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -852,9 +872,9 @@ document.write(`
 이미지, 타임 스텝 t, 노이즈가 있는 포인트 클라우드 <span class="math notranslate nohighlight">\(x_t\)</span>를 조건으로 받아 <span class="math notranslate nohighlight">\(\epsilon\)</span>과 <span class="math notranslate nohighlight">\(\sum\)</span>을 예측한다.</p></li>
 <li><p>모델 구조</p>
 <figure class="align-default" id="id2">
-<img alt="Point_E_02" class="bg-primary mb-1" src="pics/Point_E/02.png" />
+<img alt="Point_E_02" class="bg-primary mb-1" src="../../_images/022.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Point-E 모델 구조</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 682 </span><span class="caption-text">Point-E 모델 구조</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -976,9 +996,9 @@ document.write(`
 </ul>
 <p>평가 결과는 아래 그래프와 같다.</p>
 <figure class="align-default" id="id3">
-<img alt="Point_E_03" class="bg-primary mb-1" src="pics/Point_E/03.png" />
+<img alt="Point_E_03" class="bg-primary mb-1" src="../../_images/032.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 671 </span><span class="caption-text">평가 결과</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 683 </span><span class="caption-text">평가 결과</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -996,18 +1016,18 @@ document.write(`
 <ul>
 <li><p>포인트 클라우드 생성 결과</p>
 <figure class="align-default" id="id4">
-<img alt="Point_E_04" class="bg-primary mb-1" src="pics/Point_E/04.png" />
+<img alt="Point_E_04" class="bg-primary mb-1" src="../../_images/042.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 672 </span><span class="caption-text">포인트클라우드 생성 결과</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 684 </span><span class="caption-text">포인트클라우드 생성 결과</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 <li><p>Point·E 모델이 복잡한 프롬프트에 대해 종종 일관된 고품질의 3D 형상을 생성할 수 있다는 것을 발견했다.</p></li>
 <li><p>때때로 포인트 클라우드 디퓨전 모델은 조건화된 이미지를 이해하지 못하거나 예측할 수 없는 경우가 있다.  이는 주로 두 가지 문제 중 하나로 인해 발생한다.</p>
 <figure class="align-default" id="id5">
-<img alt="Point_E_05" class="bg-primary mb-1" src="pics/Point_E/05.png" />
+<img alt="Point_E_05" class="bg-primary mb-1" src="../../_images/052.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 673 </span><span class="caption-text">잘못 추론한 예시</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 685 </span><span class="caption-text">잘못 추론한 예시</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -1022,9 +1042,9 @@ document.write(`
 <ul>
 <li><p>CLIP-R-Precision 지표를 이용하여 Point·E를 다른 3D 생성 기술과 비교했다.</p>
 <figure class="align-default" id="id6">
-<img alt="Point_E_06" class="bg-primary mb-1" src="pics/Point_E/06.png" />
+<img alt="Point_E_06" class="bg-primary mb-1" src="../../_images/062.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 674 </span><span class="caption-text">CLIP-R-Precision 성능</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 686 </span><span class="caption-text">CLIP-R-Precision 성능</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1048,9 +1068,9 @@ document.write(`
 <li><p>이 모델이 DALL·E 2 시스템과 많은 제한 사항을 공유할 것으로 예상한다. (데이터셋에서 야기된 많은 편향을 포함할 수 있다)</p></li>
 <li><p>모델이 생성한 3D 모델이 실제로 물리적으로 제작될 때, 그 제품이 위험할 수 있는 물체의 청사진을 생성할 수 있다.</p>
 <figure class="align-default" id="id7">
-<img alt="Point_E_07" class="bg-primary mb-1" src="pics/Point_E/07.png" />
+<img alt="Point_E_07" class="bg-primary mb-1" src="../../_images/072.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 675 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 687 </span><span class="caption-text">Figure 6</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1078,7 +1098,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

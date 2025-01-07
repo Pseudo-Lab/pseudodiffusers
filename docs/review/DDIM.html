@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DDIM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -576,7 +596,7 @@ document.write(`
 </li>
 <li><p>그러던 중, DDPM과 NCSN같은 adversarial training구조가 아닌 model들이 등장하였고 성공의 가능성을 보여주었다.</p></li>
 <li><p>이 중 DDPM은 Forward Process에서 Markov Process를 거치는데 이때문에 GAN에 비해 매우 느린 Performance를 보여준다.</p>
-<div class="pst-scrollable-table-container"><table class="table">
+<div class="pst-scrollable-table-container"><table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="head"><p>sampling</p></th>
 <th class="head"><p>GAN</p></th>
@@ -788,19 +808,19 @@ document.write(`
 <section id="code">
 <h2>6. Code<a class="headerlink" href="#code" title="Permalink to this heading">#</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># https://keras.io/examples/generative/ddim/</span>
-<span class="k">class</span> <span class="nc">DiffusionModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">block_depth</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">DiffusionModel</span><span class="p">(</span><span class="n">keras</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">block_depth</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">=</span> <span class="n">layers</span><span class="o">.</span><span class="n">Normalization</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">network</span> <span class="o">=</span> <span class="n">get_network</span><span class="p">(</span><span class="n">image_size</span><span class="p">,</span> <span class="n">widths</span><span class="p">,</span> <span class="n">block_depth</span><span class="p">)</span> <span class="c1"># unet 구조</span>
 
-    <span class="k">def</span> <span class="nf">denormalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">denormalize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
         <span class="c1"># convert the pixel values back to 0-1 range</span>
         <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="o">.</span><span class="n">mean</span> <span class="o">+</span> <span class="n">images</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="o">.</span><span class="n">variance</span><span class="o">**</span><span class="mf">0.5</span>
         <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">clip_by_value</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">diffusion_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diffusion_times</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">diffusion_schedule</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">diffusion_times</span><span class="p">):</span>
         <span class="c1"># diffusion times -&gt; angles</span>
         <span class="n">start_angle</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">max_signal_rate</span><span class="p">)</span>
         <span class="n">end_angle</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">acos</span><span class="p">(</span><span class="n">min_signal_rate</span><span class="p">)</span>
@@ -814,7 +834,7 @@ document.write(`
 
         <span class="k">return</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span>
 
-    <span class="k">def</span> <span class="nf">denoise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">denoise</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">noisy_images</span><span class="p">,</span> <span class="n">noise_rates</span><span class="p">,</span> <span class="n">signal_rates</span><span class="p">,</span> <span class="n">training</span><span class="p">):</span>
         <span class="c1"># the exponential moving average weights are used at evaluation</span>
         <span class="k">if</span> <span class="n">training</span><span class="p">:</span>
             <span class="n">network</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">network</span>
@@ -829,7 +849,7 @@ document.write(`
 
     
 
-    <span class="k">def</span> <span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">train_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">images</span><span class="p">):</span>
         <span class="c1"># normalize images to have standard deviation of 1, like the noises</span>
         <span class="n">images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span><span class="p">(</span><span class="n">images</span><span class="p">,</span> <span class="n">training</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="n">noises</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -859,7 +879,7 @@ document.write(`
 
         <span class="k">return</span> <span class="p">{</span><span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">metrics</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]}</span>
 
-		<span class="k">def</span> <span class="nf">reverse_diffusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_noise</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
+		<span class="k">def</span><span class="w"> </span><span class="nf">reverse_diffusion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">initial_noise</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
         <span class="c1"># reverse diffusion = sampling</span>
         <span class="n">num_images</span> <span class="o">=</span> <span class="n">initial_noise</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">step_size</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="n">diffusion_steps</span>
@@ -891,7 +911,7 @@ document.write(`
 
         <span class="k">return</span> <span class="n">pred_images</span>
 
-    <span class="k">def</span> <span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_images</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">):</span>
         <span class="c1"># noise -&gt; images -&gt; denormalized images</span>
         <span class="n">initial_noise</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_images</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="n">image_size</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
         <span class="n">generated_images</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">reverse_diffusion</span><span class="p">(</span><span class="n">initial_noise</span><span class="p">,</span> <span class="n">diffusion_steps</span><span class="p">)</span>
@@ -915,7 +935,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

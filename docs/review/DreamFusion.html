@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>DreamFusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -600,9 +620,9 @@ document.write(`
 <li><p>DreamField (CVPR 2022) [<a class="reference external" href="https://arxiv.org/abs/2112.01455">arxiv</a>] [<a class="reference external" href="https://ajayj.com/dreamfields">Official Project page</a>]</p></li>
 </ul>
 <figure class="align-default" id="id1">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/dreamfieldfig1.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/dreamfieldfig1.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/dreamfieldfig1.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/dreamfieldfig1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 691 </span><span class="caption-text">DreamField Figure 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 703 </span><span class="caption-text">DreamField Figure 1</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -614,9 +634,9 @@ document.write(`
 <li><p>즉, NeRF와 SDS를 결합함으로써  Text prompt가 입력으로 주어진다면, DramFusion은 고품질이며 일관성있는 3D object와 scene들을 만들어낼 수 있다.</p></li>
 </ul>
 <figure class="align-default" id="id2">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig1.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig1.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig1.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 692 </span><span class="caption-text">DreamFusion Figure 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 704 </span><span class="caption-text">DreamFusion Figure 1</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="diffusion-models-and-score-distillation-sampling">
@@ -636,9 +656,9 @@ document.write(`
 <p>예측된 noise는 smooth density에 대한 예측된 score function (<span class="math notranslate nohighlight">\(\nabla_{z_t} log p(z_t)\)</span>)과 연관</p>
 <p>ELBO로 생성 모델 학습은 <span class="math notranslate nohighlight">\(\phi\)</span> parameter를 활용한 weighted denoising score matching objective로 간소화 가능</p>
 <figure class="align-default" id="id3">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq1.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq1.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq1.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 693 </span><span class="caption-text">DreamFusion Equation 1</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 705 </span><span class="caption-text">DreamFusion Equation 1</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Diffusion 학습 (2가지 관점)</p>
@@ -668,9 +688,9 @@ document.write(`
 <li><p>아래 식 : <span class="math notranslate nohighlight">\(\mathcal{L}\)</span> Gradient에 대한 식</p></li>
 </ul>
 <figure class="align-default" id="id4">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq2.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq2.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq2.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 694 </span><span class="caption-text">DreamFusion Equation 2</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 706 </span><span class="caption-text">DreamFusion Equation 2</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -678,9 +698,9 @@ document.write(`
 <li><p>저자들은 <strong>U-Net Jacobian term을 생략</strong>함으로써 diffusion model을 사용한 DIP 최적화에 효과적인 gradient로 유도할 수 있음을 발견.</p></li>
 </ul>
 <figure class="align-default" id="id5">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq3.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq3.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq3.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 695 </span><span class="caption-text">DreamFusion Equation 3</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 707 </span><span class="caption-text">DreamFusion Equation 3</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -688,24 +708,24 @@ document.write(`
 <li><p>Appendix A.4에서 diffusion model의 학습된 score function을 사용하여 weighted probability density distillation loss의 gradient임을 보여줌.</p></li>
 </ul>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq4.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq4.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq4.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 696 </span><span class="caption-text">DreamFusion Equation 4</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 708 </span><span class="caption-text">DreamFusion Equation 4</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>쉽게 적용 가능하고 diffusion model의 backpropagation이 필요 없음.</p></li>
 </ul>
 <figure class="align-default" id="id7">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig2.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig2.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig2.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 697 </span><span class="caption-text">DreamFusion Figure 2</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 709 </span><span class="caption-text">DreamFusion Figure 2</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig8.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig8.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig8.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 698 </span><span class="caption-text">DreamFusion Figure 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 710 </span><span class="caption-text">DreamFusion Figure 8</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -713,9 +733,9 @@ document.write(`
 <section id="the-dreamfusion-algorithm">
 <h2>3. The DreamFusion Algorithm<a class="headerlink" href="#the-dreamfusion-algorithm" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id9">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig3.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig3.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig3.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 699 </span><span class="caption-text">DreamFusion Figure 3</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 711 </span><span class="caption-text">DreamFusion Figure 3</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Text를 기반한 3D asset을 만드는 알고리즘 소개 단계</p>
@@ -725,13 +745,13 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/nerf.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/nerf.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 700 </span><span class="caption-text">NeRF Figure</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 712 </span><span class="caption-text">NeRF Figure</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq5.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq5.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq5.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 701 </span><span class="caption-text">DreamFusion Equation 5</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 713 </span><span class="caption-text">DreamFusion Equation 5</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>NeRF 구성 2가지 : volumetic raytracer &amp; MLP</p>
@@ -741,7 +761,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/mipnerf.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/mipnerf.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 702 </span><span class="caption-text">MipNeRF Figure</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 714 </span><span class="caption-text">MipNeRF Figure</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>본 방법에서는 <strong>mip-NeRF 360</strong> 사용(aliasing 감소 특화)</p>
@@ -749,9 +769,9 @@ document.write(`
 <p><strong>Shading</strong></p>
 <p>일반적인 radiance를 내보내는 NeRF와 달리, 본 논문에서는 각 point별 RGB albedo <span class="math notranslate nohighlight">\(\rho\)</span> 사용</p>
 <figure class="align-default" id="id13">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq6.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq6.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq6.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 703 </span><span class="caption-text">DreamFusion Equation 6</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 715 </span><span class="caption-text">DreamFusion Equation 6</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\tau\)</span> : volumetric density</p>
@@ -763,9 +783,9 @@ document.write(`
 <p>some point light source with 3D coordinate : <span class="math notranslate nohighlight">\(l\)</span> &amp; color <span class="math notranslate nohighlight">\(l_\rho\)</span></p>
 <p>ambient light color : <span class="math notranslate nohighlight">\(l_a\)</span></p>
 <figure class="align-default" id="id14">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusioneq7.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusioneq7.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusioneq7.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusioneq7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 704 </span><span class="caption-text">DreamFusion Equation 7</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 716 </span><span class="caption-text">DreamFusion Equation 7</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>추가 발견 내용 : 랜덤하게 albedo color <span class="math notranslate nohighlight">\(\rho\)</span>를 white (1,1,1)로 교체하여 textureless 음영 처리 결과물 생성할 수 있음.</p>
@@ -783,9 +803,9 @@ document.write(`
 <h3>3.2 Text-to-3D Synthesis<a class="headerlink" href="#text-to-3d-synthesis" title="Permalink to this heading">#</a></h3>
 <p>각 text prompt에 대해 NeRF 초기 랜덤 초기화</p>
 <figure class="align-default" id="id15">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig3_fig.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig3_fig.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig3_fig.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig3_fig.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 705 </span><span class="caption-text">DreamFusion Figure 3-1</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 717 </span><span class="caption-text">DreamFusion Figure 3-1</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>DreamFusion의 각 iter 최적화</p>
@@ -797,7 +817,7 @@ document.write(`
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/spherical_coord.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/spherical_coord.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 706 </span><span class="caption-text">Spherical Coordinate Figure</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 718 </span><span class="caption-text">Spherical Coordinate Figure</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>매 iteration, camera position은 spherical coordinate에서 무작위로 sample됨.</p>
@@ -832,15 +852,15 @@ document.write(`
 <section id="experiments">
 <h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
 <figure class="align-default" id="id17">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig4.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig4.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig4.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 707 </span><span class="caption-text">DreamFusion Figure 4</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 719 </span><span class="caption-text">DreamFusion Figure 4</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusiontable1.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusiontable1.png" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusiontable1.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusiontable1.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 708 </span><span class="caption-text">DreamFusion Table 1</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 720 </span><span class="caption-text">DreamFusion Table 1</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -868,16 +888,16 @@ document.write(`
 </li>
 </ul>
 <figure class="align-default" id="id19">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig5.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig5.png" style="width: 800px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/DreamFusionfig5.png"><img alt="title_fig" class="bg-primary mb-1" src="../../_images/DreamFusionfig5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 709 </span><span class="caption-text">DreamFusion Figure 5</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 721 </span><span class="caption-text">DreamFusion Figure 5</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Ablation</strong></p>
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="pics/DreamFusion/DreamFusionfig6.png"><img alt="title_fig" class="bg-primary mb-1" src="pics/DreamFusion/DreamFusionfig6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 710 </span><span class="caption-text">DreamFusion Figure 6</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 722 </span><span class="caption-text">DreamFusion Figure 6</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -908,7 +928,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

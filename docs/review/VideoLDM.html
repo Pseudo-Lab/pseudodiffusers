@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>VideoLDM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="current nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -566,7 +586,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure11.png"><img alt="figure1" class="bg-primary mb-1" src="../../_images/figure11.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 590 </span><span class="caption-text">Video LDM samples</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 602 </span><span class="caption-text">Video LDM samples</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="abstract">
@@ -582,7 +602,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure2.png"><img alt="figure2" class="bg-primary mb-1" src="../../_images/figure2.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 591 </span><span class="caption-text">Temproal Video finetuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 603 </span><span class="caption-text">Temproal Video finetuning</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -653,13 +673,13 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure41.png"><img alt="figure4" class="bg-primary mb-1" src="../../_images/figure41.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 592 </span><span class="caption-text">Video-Aware Temporal Backbone</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 604 </span><span class="caption-text">Video-Aware Temporal Backbone</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/einops.png"><img alt="einops" class="bg-primary mb-1" src="../../_images/einops.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 593 </span><span class="caption-text">Einops notation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 605 </span><span class="caption-text">Einops notation</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -694,7 +714,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure3.png"><img alt="figure3" class="bg-primary mb-1" src="../../_images/figure3.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 594 </span><span class="caption-text">Temporal Autoencoder Finetuning</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 606 </span><span class="caption-text">Temporal Autoencoder Finetuning</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -726,7 +746,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/interpolation.png"><img alt="interpolation" class="bg-primary mb-1" src="../../_images/interpolation.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 595 </span><span class="caption-text">Temporal Interpolation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 607 </span><span class="caption-text">Temporal Interpolation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -761,7 +781,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cascaded_dms.png"><img alt="cascaded_dms" class="bg-primary mb-1" src="../../_images/cascaded_dms.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 596 </span><span class="caption-text">Cascaded DM</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 608 </span><span class="caption-text">Cascaded DM</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -808,7 +828,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure71.png"><img alt="figure7" class="bg-primary mb-1" src="../../_images/figure71.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 597 </span><span class="caption-text">Real-World Driving Scenes with Video LDM</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 609 </span><span class="caption-text">Real-World Driving Scenes with Video LDM</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -825,7 +845,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure61.png"><img alt="figure6" class="bg-primary mb-1" src="../../_images/figure61.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 598 </span><span class="caption-text">Text-to-Video with Stable Diffusion</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 610 </span><span class="caption-text">Text-to-Video with Stable Diffusion</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -834,7 +854,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/table4_5.png"><img alt="table4_5" class="bg-primary mb-1" src="../../_images/table4_5.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 599 </span><span class="caption-text">Performance Table</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 611 </span><span class="caption-text">Performance Table</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -849,7 +869,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure8.png"><img alt="figure8" class="bg-primary mb-1" src="../../_images/figure8.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 600 </span><span class="caption-text">Text-to-Video with DreamBooth</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 612 </span><span class="caption-text">Text-to-Video with DreamBooth</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -873,7 +893,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

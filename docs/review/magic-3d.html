@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Magic3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -585,7 +605,7 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_01.png"><img alt="magic_3d_01" class="bg-primary mb-1" src="../../_images/magic_3d_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 711 </span><span class="caption-text">Score Distillation Sampling</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 723 </span><span class="caption-text">Score Distillation Sampling</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -595,7 +615,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_02.png"><img alt="magic_3d_02" class="bg-primary mb-1" src="../../_images/magic_3d_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 712 </span><span class="caption-text">Magic3D Framework</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 724 </span><span class="caption-text">Magic3D Framework</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="coarse-to-fine-diffusion-priors">
@@ -607,7 +627,7 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_03.png"><img alt="magic_3d_03" class="bg-primary mb-1" src="../../_images/magic_3d_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 713 </span><span class="caption-text">SDS in high resolution 512x512</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 725 </span><span class="caption-text">SDS in high resolution 512x512</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -644,7 +664,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_04.png"><img alt="magic_3d_04" class="bg-primary mb-1" src="../../_images/magic_3d_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 714 </span><span class="caption-text">Qualitative comparisons</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 726 </span><span class="caption-text">Qualitative comparisons</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>User studies</strong></p>
@@ -652,15 +672,15 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_05.png"><img alt="magic_3d_05" class="bg-primary mb-1" src="../../_images/magic_3d_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 715 </span><span class="caption-text">User studies</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 727 </span><span class="caption-text">User studies</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Can single-stage optimization work with LDM prior?</strong></p>
 <p>LDM prior 를 활용한 single-stage optimization setup 으로 scene model 을 최적화할 시에 대한 ablation study 를 진행해본 결과, 성능이 좋지 않은 부분을 확인할 수 있었다고 합니다.</p>
 <figure class="align-default" id="id6">
-<a class="bg-primary mb-1 reference internal image-reference" href="pics/magic-3d/magic_3d_06.png"><img alt="magic_3d_06" class="bg-primary mb-1" src="pics/magic-3d/magic_3d_06.png" style="width: 700px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_06.png"><img alt="magic_3d_06" class="bg-primary mb-1" src="../../_images/magic_3d_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 716 </span><span class="caption-text">Single-stage vs Coarse-to-fine</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 728 </span><span class="caption-text">Single-stage vs Coarse-to-fine</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Can we use NeRF for the fine model?</strong></p>
@@ -670,7 +690,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_07.png"><img alt="magic_3d_07" class="bg-primary mb-1" src="../../_images/magic_3d_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 717 </span><span class="caption-text">Coarse models vs. fine models</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 729 </span><span class="caption-text">Coarse models vs. fine models</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -681,7 +701,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_08.png"><img alt="magic_3d_08" class="bg-primary mb-1" src="../../_images/magic_3d_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 718 </span><span class="caption-text">Controllable 3D Generation</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 730 </span><span class="caption-text">Controllable 3D Generation</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Prompt-based editing through fine-tuning</strong></p>
@@ -694,7 +714,7 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/magic_3d_09.png"><img alt="magic_3d_09" class="bg-primary mb-1" src="../../_images/magic_3d_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 719 </span><span class="caption-text">Prompt-based editing through fine-tuning</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 731 </span><span class="caption-text">Prompt-based editing through fine-tuning</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -717,7 +737,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

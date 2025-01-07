@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Make A Video &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -70,7 +70,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="VideoLDM" href="VideoLDM.html" />
-    <link rel="prev" title="MimicBrush: Zero-shot Image Editing with Reference Imitation" href="MimicBrush.html" />
+    <link rel="prev" title="One-step Diffusion with Distribution Matching Distillation" href="one_step_diffusion_with_distribution_matching_distillation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="current nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -655,7 +675,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <img alt="make_a_video_00" class="bg-primary mb-1" src="../../_images/001.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 576 </span><span class="caption-text">최종 inference 수식</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 588 </span><span class="caption-text">최종 inference 수식</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -678,7 +698,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <img alt="make_a_video_01" class="bg-primary mb-1" src="../../_images/Untitled1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 577 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 589 </span><span class="caption-text">Imagen 구조</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -690,7 +710,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <img alt="make_a_video_02" class="bg-primary mb-1" src="../../_images/1.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 578 </span><span class="caption-text">text <span class="math notranslate nohighlight">\(x\)</span>가 prior <span class="math notranslate nohighlight">\(P\)</span>를 통해 image embedding 변환된다.
+<p><span class="caption-number">Fig. 590 </span><span class="caption-text">text <span class="math notranslate nohighlight">\(x\)</span>가 prior <span class="math notranslate nohighlight">\(P\)</span>를 통해 image embedding 변환된다.
 fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -726,7 +746,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id7">
 <img alt="make_a_video_03" class="bg-primary mb-1" src="../../_images/2.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 579 </span><span class="caption-text">Architecture of Pseudo-3D convolutional layers</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 591 </span><span class="caption-text">Architecture of Pseudo-3D convolutional layers</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -740,7 +760,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id8">
 <img alt="make_a_video_04" class="bg-primary mb-1" src="../../_images/conv3d.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 580 </span><span class="caption-text">Pseudo-3D convolutional layer</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 592 </span><span class="caption-text">Pseudo-3D convolutional layer</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -756,7 +776,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id9">
 <img alt="make_a_video_05" class="bg-primary mb-1" src="../../_images/3.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 581 </span><span class="caption-text">Architecture of Pseudo-3D attention layers</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 593 </span><span class="caption-text">Architecture of Pseudo-3D attention layers</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -766,7 +786,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id10">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/attention3d.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 582 </span><span class="caption-text">Pseudo-3D attention layer</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 594 </span><span class="caption-text">Pseudo-3D attention layer</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -774,8 +794,8 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <li><p>flatten: spatial dimension 축에 대해 flatten하는 연산 (결과 dimension: <span class="math notranslate nohighlight">\(B\)</span>,<span class="math notranslate nohighlight">\(C\)</span>,<span class="math notranslate nohighlight">\(F\)</span>,<span class="math notranslate nohighlight">\(HW\)</span>)</p></li>
 <li><p><span class="math notranslate nohighlight">\(ATTN_{2D}\)</span>는 pretrained T2I 모델에서 초기화되고, <span class="math notranslate nohighlight">\(ATTN_{1D}\)</span>는 identity function으로 초기화 된다.</p></li>
 <li><p>Code</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SpatioTemporalAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SpatioTemporalAttention</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">dim</span><span class="p">,</span>
         <span class="o">*</span><span class="p">,</span>
@@ -802,7 +822,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 
         <span class="bp">self</span><span class="o">.</span><span class="n">ff</span> <span class="o">=</span> <span class="n">FeedForward</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="n">dim</span><span class="p">,</span> <span class="n">mult</span> <span class="o">=</span> <span class="n">ff_mult</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">x</span><span class="p">,</span>
         <span class="n">enable_time</span> <span class="o">=</span> <span class="kc">True</span>
@@ -992,7 +1012,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id11">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/4.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 583 </span><span class="caption-text">Automatic Evaluaton on MSR-VTT</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 595 </span><span class="caption-text">Automatic Evaluaton on MSR-VTT</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>→ 가장 우수한 성능을 보인다.</p>
@@ -1003,7 +1023,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id12">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/5.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 584 </span><span class="caption-text">Automatic Evluation on UCF-101</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 596 </span><span class="caption-text">Automatic Evluation on UCF-101</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>→ Make-A-Video의 제로 샷 성능이 다른 방법보다 우수하다. Finetunning을 한 결과에서도 SOTA를 달성하였다.</p>
@@ -1018,7 +1038,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id13">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/6.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 585 </span><span class="caption-text">Human Evaluation</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 597 </span><span class="caption-text">Human Evaluation</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>→ 평가자가 Make-A-Video 모델의 결과가 더 낫다고 투표한 퍼센트 비율. 대부분 평가자가 모든 벤치마크에서 Make-A-Video가 더 낫다고 평가하였다.</p>
@@ -1038,14 +1058,14 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id14">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/7.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 586 </span><span class="caption-text">T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
+<p><span class="caption-number">Fig. 598 </span><span class="caption-text">T2V Generation 결과. 맨 위: VDM, 가운데: CogVideo, 맨 아래: Make-A-Video
 → Make-A-Video가 모션의 일관성을 유지하면서 더 풍부한 콘텐츠를 생성할 수 있다.</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id15">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/8.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 587 </span><span class="caption-text">이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과.
+<p><span class="caption-number">Fig. 599 </span><span class="caption-text">이미지에 mask frame interpolation 및 extrpolation network ↑F를 적용한 결과.
 가장 왼쪽에 입력 이미지가 주어지면, 이를 동영상으로 애니메이션화 함.
 사용자는 자신의 이미지를 사용하여 동영상을 생성할 수 있으며, 생성된 동영상을 개인화하고 직접 제어할 수 있음.</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1053,7 +1073,7 @@ fps: desired frame rate</span><a class="headerlink" href="#id6" title="Permalink
 <figure class="align-default" id="id16">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/9.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 588 </span><span class="caption-text">두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach
+<p><span class="caption-number">Fig. 600 </span><span class="caption-text">두 이미지 사이의 interpolation 결과. 왼쪽: FILM, 오른쪽: 본 논문의 approach
 FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드럽게 전환하기만 함.
 본 논문의 approach → 의미론적으로 더 의미있는 interpolation을 만듬.</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -1061,7 +1081,7 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
 <figure class="align-default" id="id17">
 <img alt="make_a_video_06" class="bg-primary mb-1" src="../../_images/101.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 589 </span><span class="caption-text">비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 601 </span><span class="caption-text">비디오 변형 예시. 위: 원본 비디오, 아래: 새로운 비디오</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1091,7 +1111,7 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }
@@ -1109,12 +1129,12 @@ FILM →  실제 움직이는 object에 대한 이해 없이 프레임을 부드
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="MimicBrush.html"
+       href="one_step_diffusion_with_distribution_matching_distillation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">MimicBrush: Zero-shot Image Editing with Reference Imitation</p>
+        <p class="prev-next-title">One-step Diffusion with Distribution Matching Distillation</p>
       </div>
     </a>
     <a class="right-next"

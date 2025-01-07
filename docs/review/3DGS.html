@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>3D Gaussian Splatting for Real-Time Radiance Field Rendering &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -269,6 +269,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -316,6 +321,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -564,13 +584,13 @@ document.write(`
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image0.png"><img alt="image0" class="bg-primary mb-1" src="../../_images/image0.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 657 </span><span class="caption-text">Main process of 3D Gaussian Splatting</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 669 </span><span class="caption-text">Main process of 3D Gaussian Splatting</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image1.png"><img alt="image1" class="bg-primary mb-1" src="../../_images/image1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 658 </span><span class="caption-text">Peusdo Algorithm of 3D Gaussian Splatting</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 670 </span><span class="caption-text">Peusdo Algorithm of 3D Gaussian Splatting</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -581,14 +601,14 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image2.png"><img alt="image2" class="bg-primary mb-1" src="../../_images/image2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 659 </span><span class="caption-text">3D Gaussian Splatting Equation 4</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 671 </span><span class="caption-text">3D Gaussian Splatting Equation 4</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>3D Gaussian은 포인트(mean) μ를 중심으로 하고, 3D 공분산 행렬 Σ로 정의한다. 렌더링을 위해 3D Gaussian을 2D로 project해야 하며, 이는 viewing transformation W에 따라 카메라 좌표계에서의 공분산 행렬 Σ’로 나타낼 수 있다. 최적화를 위해, Σ는 positive semi-definite 행렬이어야 하며, 이 때문에 최적화가 어렵다고 한다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image3.png"><img alt="image3" class="bg-primary mb-1" src="../../_images/image3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 660 </span><span class="caption-text">3D Gaussian Splatting Equation 5</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 672 </span><span class="caption-text">3D Gaussian Splatting Equation 5</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>따라서 논문에서는 더 직관적이고 최적화에 적합한 representation을 선택한다. 3D Gaussian의 공분산 행렬 Σ는 타원체의 구성을 설명하는 것과 유사하며, 이를 위해 scaling matrix S와 rotation matrix R을 사용한다.</p>
@@ -596,7 +616,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image4.png"><img alt="image4" class="bg-primary mb-1" src="../../_images/image4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 661 </span><span class="caption-text">3D Gaussian Splatting Equation 6</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 673 </span><span class="caption-text">3D Gaussian Splatting Equation 6</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최적화에 적합한 anisotropic covariance representation은 장면의 다양한 geometry에 적응하도록 3D Gaussian을 최적화한다.</p>
@@ -634,13 +654,13 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image6.png"><img alt="image6" class="bg-primary mb-1" src="../../_images/image6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 662 </span><span class="caption-text">D-SSIM equation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 674 </span><span class="caption-text">D-SSIM equation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image7.png"><img alt="image7" class="bg-primary mb-1" src="../../_images/image7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 663 </span><span class="caption-text">SSIM equation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 675 </span><span class="caption-text">SSIM equation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -660,7 +680,7 @@ document.write(`
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image8.png"><img alt="image8" class="bg-primary mb-1" src="../../_images/image8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 664 </span><span class="caption-text">Adaptive Control of Gaussians</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Adaptive Control of Gaussians</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -695,13 +715,13 @@ document.write(`
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image12.png"><img alt="image12" class="bg-primary mb-1" src="../../_images/image12.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 665 </span><span class="caption-text">3D Gaussian Splatting experiments table</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 677 </span><span class="caption-text">3D Gaussian Splatting experiments table</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image13.png"><img alt="image13" class="bg-primary mb-1" src="../../_images/image13.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 666 </span><span class="caption-text">3D Gaussian Splatting experiments result</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 678 </span><span class="caption-text">3D Gaussian Splatting experiments result</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -710,13 +730,13 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image19.png"><img alt="image19" class="bg-primary mb-1" src="../../_images/image19.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 667 </span><span class="caption-text">3D Gaussian Splatting ablation test image</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 679 </span><span class="caption-text">3D Gaussian Splatting ablation test image</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/image18.png"><img alt="image18" class="bg-primary mb-1" src="../../_images/image18.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 668 </span><span class="caption-text">3D Gaussian Splatting result image</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 680 </span><span class="caption-text">3D Gaussian Splatting result image</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -745,7 +765,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

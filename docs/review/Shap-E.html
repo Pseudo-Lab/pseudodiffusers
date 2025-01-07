@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Shap-E &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -271,6 +271,11 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
 <ul class="nav bd-sidenav">
@@ -318,6 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -579,7 +599,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure1.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/figure1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 676 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 688 </span><span class="caption-text">Shap-E를 통해 생성한 3D assets</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -631,7 +651,7 @@ F_{\Theta} : (\mathbf{x},\mathbf d)↦(\mathbf c,\sigma) \tag{1}
 <figure class="align-default" id="id3">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4859.png"><img alt="figure1" class="bg-light mb-1" src="../../_images/IMG_4859.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 677 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 689 </span><span class="caption-text">수식 (2) 보충설명</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -656,7 +676,7 @@ w_i \sim T_i(1-\text{exp}(-\sigma(\mathbf r(t_i))\delta_i))\tag{4}
 <figure class="align-default" id="id4">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4860.png"><img alt="figure2" class="bg-light mb-1" src="../../_images/IMG_4860.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 678 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 690 </span><span class="caption-text">수식 (5) 보충 설명</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -668,7 +688,7 @@ w_i \sim T_i(1-\text{exp}(-\sigma(\mathbf r(t_i))\delta_i))\tag{4}
 <figure class="align-default" id="id5">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4872.png"><img alt="figure3" class="bg-light mb-1" src="../../_images/IMG_4872.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 679 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
+<p><span class="caption-number">Fig. 691 </span><span class="caption-text">point cloud, voxel, polygon mesh의 비교 <br />
 source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -680,7 +700,7 @@ source - 3D Vision with Transformers: A Survey</span><a class="headerlink" href=
 <figure class="align-default" id="id6">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure4" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 680 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+<p><span class="caption-number">Fig. 692 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
 source - <a class="reference external" href="https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models">tutorials in grabcad</a></span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -755,7 +775,7 @@ two stage 방식으로 Shap-E를 학습시킨다.<br />
 <figure class="align-default" id="id7">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4861.png"><img alt="figure5" class="bg-light mb-1" src="../../_images/IMG_4861.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 681 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 693 </span><span class="caption-text">3D Encoder의 구조</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>encoder의 input :</strong>  (point clouds, rendered views) <br />
@@ -772,7 +792,7 @@ Point-E와 비교하였을때, post-processing 방식을 변경하여 3D Asset�
 <figure class="align-default" id="id8">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4869.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/IMG_4869.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 682 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 694 </span><span class="caption-text">pseudocode</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>encoder에 입력된 point clouds와 views는 cross-attention과 transformer backbone에 의해 처리되어 sequence of vectors가 된다. 이후 latent bottleneck과 projection layer를 통과하여 MLP weight matrices를 만든다.</p>
@@ -800,7 +820,7 @@ L_\text{NeRF}=L_\text{RGB}+L_T \tag{12}
 <figure class="align-default" id="id9">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/IMG_4874.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/IMG_4874.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 683 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
+<p><span class="caption-number">Fig. 695 </span><span class="caption-text">texture, bump, displacement의 비교 <br />
 source - https:grabcad.com/tutorials/adding-textures-to-3d-models-texture-bump-and-displacement-mapping-how-to-make-photo-realistic-models</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -843,7 +863,7 @@ L_\text{FT}=L_\text{NeRF}+L_\text{STF}\tag{15}
 <figure class="align-default" id="id10">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/untitled.png"><img alt="figure7" class="bg-light mb-1" src="../../_images/untitled.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 684 </span><span class="caption-text">Phong model <br />
+<p><span class="caption-number">Fig. 696 </span><span class="caption-text">Phong model <br />
 기본적인 shading방식으로 본 논문에서는 specular를 사용하지 않았다 <br />
 source - <a class="reference external" href="https:www.researchgate.net/publication/265514880_Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment">Realistic_Visualisation_of_Endoscopic_Surgery_in_a_Virtual_Training_Environment</a></span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -860,7 +880,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id11">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table12.png"><img alt="figure8" class="bg-light mb-1" src="../../_images/table12.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 685 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 697 </span><span class="caption-text">각 스테이지 별 훈련 이후 encoder 성능평가</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>distillation에서 rendering 이미지의 퀄리티가 떨어지는 것처럼 보이나 finetuning시 퀄리티가 더욱 좋아진다. 또한 STF의 퀄리티 또한 크게 상승한다.</p>
@@ -870,7 +890,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id12">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure4.png"><img alt="figure9" class="bg-light mb-1" src="../../_images/figure4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 686 </span><span class="caption-text">Shap-E와 Point-E비교<br />
+<p><span class="caption-number">Fig. 698 </span><span class="caption-text">Shap-E와 Point-E비교<br />
 세모 마크가 Point-E, 원형 마크가 Shap-E이다.</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -879,14 +899,14 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id13">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure5.png"><img alt="figure10" class="bg-light mb-1" src="../../_images/figure5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 687 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 699 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>동일한 base model의 크기 동일한 데이터셋으로 학습시킨 결과. 텍스트 조건부 생성시에는 퀄리티 차이가 크지 않음.</p>
 <figure class="align-default" id="id14">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure6.png"><img alt="figure11" class="bg-light mb-1" src="../../_images/figure6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 688 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 700 </span><span class="caption-text">Shap-E와 Point-E비교</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이미지 조건부 생성시에는 비교적 차이가 크다.
@@ -898,7 +918,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id15">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/table21.png"><img alt="figure12" class="bg-light mb-1" src="../../_images/table21.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 689 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 701 </span><span class="caption-text">COCO 데이터셋을 이용한 비교결과</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>reference latency에서 point-E와 Shap-E의 차이가 있는데, 이는 Shap-E는 추가적인 upsampling diffusion model을 사용하지 않기 때문이다.</p>
@@ -909,7 +929,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
 <figure class="align-default" id="id16">
 <a class="bg-light mb-1 reference internal image-reference" href="../../_images/figure7.png"><img alt="figure13" class="bg-light mb-1" src="../../_images/figure7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 690 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 702 </span><span class="caption-text">텍스트 조건부 생성 결과</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>왼쪽 그림과 같이 여러가지 특성을 가진물체를 생성하는데에 어려움을 겪는 모습을 보인다. 이는 학습에 사용한 paired data가 제한적이기 때문으로 더 많은 3D dataset을 수집하면 나아질 수 있다. 또한 texture의 세부 특성을 encoder가 무시하는 경우도 있는데, 더 나은 encoder를 사용함으로써 개선될수 있다.</p>
@@ -937,7 +957,7 @@ source - <a class="reference external" href="https:www.researchgate.net/publicat
         },
         kernelOptions: {
             name: "python3",
-            path: "./docs/review"
+            path: "./docs\review"
         },
         predefinedOutput: true
     }

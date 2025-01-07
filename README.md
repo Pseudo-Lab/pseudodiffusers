@@ -83,6 +83,7 @@ CVPR 2024 Workshop
 | nn | 2024.11.27 | | |
 | nn | 2024.12.04 | | |
 | nn | 2024.12.11 | Kyeongmin Yu | [# DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation](https://arxiv.org/abs/2309.16653)|
+| nn | 2024.12.18 | Donggeun Sean Ko | [Coin3D: Controllable and Interactive 3D Assets Generation with Proxy-Guided Conditioning](https://arxiv.org/abs/2405.08054)|
 
 
 

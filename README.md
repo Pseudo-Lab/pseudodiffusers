@@ -33,7 +33,7 @@ CVPR 2024 Workshop
 - 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
 - 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin |
 - 유경민 [Kyeongmin Yu] | [Github](https://github.com/yukyeongmin) | Linkdedin |
-- 이정인 [Jeongin Lee] | Github | Linkedin |
+- 이정인 [Jeongin Lee] | Github | [Linkedin](www.linkedin.com/in/innimu) |
 - 김현수 [Hyunsoo Kim] | [Github](https://github.com/gustn9609) | [Linkedin](https://www.linkedin.com/in/%ED%98%84%EC%88%98-%EA%B9%80-b28a67202/) |
 
 ## Reviewed Papers 
@@ -77,7 +77,7 @@ CVPR 2024 Workshop
 | 36 | 2024.10.02 | Donghyun Han | [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](https://arxiv.org/abs/2311.05556)|
 | 37 | 2024.10.09 | Kyeongmin Yu | [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)|
 | nn | 2024.10.16 | | |
-| nn | 2024.10.30 | | |
+| nn | 2024.10.30 | Jeongin Lee | [Zero-1-to-3: Zero-shot One Image to 3D Object](https://arxiv.org/abs/2303.11328) (ICCV 2023) |
 | nn | 2024.11.06 | Geonhak Song | [MVDream: Multi-view Diffusion for 3D Generation](https://arxiv.org/abs/2308.16512) (ICLR 2024 Poster) |
 | nn | 2024.11.13 | Kyeongmin Yu | [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](https://arxiv.org/abs/2305.16213)|
 | nn | 2024.11.27 | | |

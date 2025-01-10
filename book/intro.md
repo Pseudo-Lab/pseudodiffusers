@@ -45,4 +45,4 @@ CVPR 2024 Workshop
 - 한동현 [Donghyun Han] | [GitHub](https://github.com/donghyun99) | [Linkedin](https://www.linkedin.com/in/donghyun99/) |
 - 이창환 [ChangHwan Lee] | [Github](https://github.com/Hwan-I) | Linkedin 
 - 유경민 [Kyeongmin Yu] | [Github](https://github.com/yukyeongmin) | Linkdedin |
-- 이정인 [Jeongin Lee] | Github | Linkdedin |
+- 이정인 [Jeongin Lee] | Github | [Linkdedin](https://www.linkedin.com/in/innimu/) |

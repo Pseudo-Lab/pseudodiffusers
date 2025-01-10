@@ -8,7 +8,7 @@
         - [NonOfficial](https://github.com/ashawkey/stable-dreamfusion)
     - Project Page : [https://dreamfusion3d.github.io/](https://dreamfusion3d.github.io/)
 
-- **Author:** Geonhak Song
+- **Presentor:** Geonhak Song
 
 - **Last updated on {July. 3, 2024}**
 ```
@@ -49,7 +49,7 @@ DreamFusion은 pretrained 2D Text-to-Image diffusion model을 활용하여 te
 - DreamField (CVPR 2022) [[arxiv](https://arxiv.org/abs/2112.01455)] [[Official Project page](https://ajayj.com/dreamfields)]
     
 :::{figure-md} 
-<img src="../../pics/DreamFusion/dreamfield fig 1.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_dreamfield_fig1.png" alt="title_fig" class="bg-primary mb-1" width="800px">
 
 DreamField Figure 1
 :::
@@ -62,11 +62,6 @@ DreamField Figure 1
 - **Score Distillation Sampling(SDS)방법**은 미분가능한 image parameterization을 기반으로 sampling 최적화가 가능하게 함.
 - 즉, NeRF와 SDS를 결합함으로써  Text prompt가 입력으로 주어진다면, DramFusion은 고품질이며 일관성있는 3D object와 scene들을 만들어낼 수 있다.
 
-:::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 1.png" alt="title_fig" class="bg-primary mb-1" width="800px">
-
-DreamFusion Figure 1
-:::
 
 ### 2. Diffusion Models and Score Distillation Sampling
 
@@ -98,7 +93,7 @@ Latent : $z_t : \mathbb{E} [x|z_t] \approx \hat{x_\phi} (z_t; t) = (z_t - \sigma
 ELBO로 생성 모델 학습은 $\phi$ parameter를 활용한 weighted denoising score matching objective로 간소화 가능
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 1.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq1.png" alt="DreamFusion_eq1" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 1
 :::
@@ -133,7 +128,7 @@ CFG는 score function을 conditional density가 unconditional density에 비해 
 - 아래 식 : $\mathcal{L}$ Gradient에 대한 식
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 2.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq2.png" alt="DreamFusion_eq2" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 2
 :::
@@ -143,7 +138,7 @@ DreamFusion Equation 2
 - 저자들은 **U-Net Jacobian term을 생략**함으로써 diffusion model을 사용한 DIP 최적화에 효과적인 gradient로 유도할 수 있음을 발견.
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 3.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq3.png" alt="DreamFusion_eq3" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 3
 :::
@@ -152,7 +147,7 @@ DreamFusion Equation 3
 - Appendix A.4에서 diffusion model의 학습된 score function을 사용하여 weighted probability density distillation loss의 gradient임을 보여줌.
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 4.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq4.png" alt="DreamFusion_eq4" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 4
 :::
@@ -160,13 +155,13 @@ DreamFusion Equation 4
 - 쉽게 적용 가능하고 diffusion model의 backpropagation이 필요 없음.
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 2.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq5.png" alt="DreamFusion_eq5" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 2
 :::
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 8.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig8.png" alt="DreamFusion_fig8" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 8
 :::
@@ -175,7 +170,7 @@ DreamFusion Figure 8
 ## 3. The DreamFusion Algorithm
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 3.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig3.png" alt="DreamFusion_fig3" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 3
 :::
@@ -187,7 +182,7 @@ Imagen 중 64x64 base model만 수정없이 사용
 ### 3.1 Neural Rendering of a 3D Model
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/nerf.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_nerf.png" alt="DreamFusion_nerf" class="bg-primary mb-1" width="800px">
 
 NeRF Figure
 :::
@@ -208,7 +203,7 @@ NeRF로부터 이미지를 Rendering하기 위해 ray casting.
 : (volumetric density $\tau$, RGB color $c$ ( alpha compositing )
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/mipnerf.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_mipnerf.png" alt="DreamFusion_mipnerf" class="bg-primary mb-1" width="800px">
 
 MipNeRF Figure 
 :::
@@ -222,7 +217,7 @@ MipNeRF Figure
 일반적인 radiance를 내보내는 NeRF와 달리, 본 논문에서는 각 point별 RGB albedo $\rho$ 사용
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 6.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq6.png" alt="DreamFusion_eq6" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 6
 :::
@@ -244,7 +239,7 @@ some point light source with 3D coordinate : $l$ & color $l_\rho$
 ambient light color : $l_a$
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion eq 7.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_eq7.png" alt="DreamFusion_eq7" class="bg-primary mb-1" width="800px">
 
 DreamFusion Equation 7
 :::
@@ -274,7 +269,7 @@ Appendix A.2 참조
 각 text prompt에 대해 NeRF 초기 랜덤 초기화
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 3_fig.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig3_fig.png" alt="DreamFusion_fig3_fig" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 3-1
 :::
@@ -292,7 +287,7 @@ DreamFusion의 각 iter 최적화
 **1. Random camera and light sampling**
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/spherical_coord.png" alt="title_fig" class="bg-primary mb-1" width="400px">
+<img src="../../pics/DreamFusion/DreamFusion_spherical_coord.png" alt="DreamFusion_spherical_coord" class="bg-primary mb-1" width="400px">
 
 Spherical Coordinate Figure
 :::
@@ -354,13 +349,13 @@ Appendix A.2 optimization setting
 ## 4. Experiments
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 4.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig4.png" alt="DreamFusion_fig4" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 4
 :::
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion table 1.png" alt="title_fig" class="bg-primary mb-1" width="400px">
+<img src="../../pics/DreamFusion/DreamFusion_table1.png" alt="DreamFusion_table1" class="bg-primary mb-1" width="400px">
 
 DreamFusion Table 1
 :::
@@ -377,7 +372,7 @@ DreamFusion Table 1
     - 기하학적 평가를 위해 textureless render에 대한 R-Precision 측정
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 5.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig5.png" alt="DreamFusion_fig5" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 5
 :::
@@ -385,7 +380,7 @@ DreamFusion Figure 5
 **Ablation**
 
 :::{figure-md} 
-<img src="../../pics/DreamFusion/DreamFusion fig 6.png" alt="title_fig" class="bg-primary mb-1" width="800px">
+<img src="../../pics/DreamFusion/DreamFusion_fig6.png" alt="DreamFusion_fig6" class="bg-primary mb-1" width="800px">
 
 DreamFusion Figure 6
 :::

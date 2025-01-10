@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>One-Step Image Translation with Text-to-Image Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -147,8 +147,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -320,6 +318,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 1-to-3 : Zero-shot One Image to 3D Object</a></li>
+
+
+
+
 
 
 
@@ -499,10 +505,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -510,7 +516,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -594,8 +600,8 @@ document.write(`
 </figure>
 <ul>
 <li><p><strong>CycleGAN-Turbo 코드</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">CycleGAN_Turbo</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pretrained_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ckpt_folder</span><span class="o">=</span><span class="s2">&quot;checkpoints&quot;</span><span class="p">,</span> <span class="n">lora_rank_unet</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">lora_rank_vae</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">CycleGAN_Turbo</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pretrained_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pretrained_path</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">ckpt_folder</span><span class="o">=</span><span class="s2">&quot;checkpoints&quot;</span><span class="p">,</span> <span class="n">lora_rank_unet</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">lora_rank_vae</span><span class="o">=</span><span class="mi">4</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;tokenizer&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">text_encoder</span> <span class="o">=</span> <span class="n">CLIPTextModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;text_encoder&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
@@ -704,7 +710,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 <p>학습하는 파라미터: LoRA 가중치, zero-convolutional layer, 그리고 첫번째 U-Net convolutional layer 가 330MB 소요됩니다.</p>
 <ul>
 <li><p><strong>UNet initialization 코드</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">initialize_unet</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize_unet</span><span class="p">(</span><span class="n">rank</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">unet</span> <span class="o">=</span> <span class="n">UNet2DConditionModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;unet&quot;</span><span class="p">)</span>
     <span class="n">unet</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">unet</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
@@ -737,7 +743,7 @@ Y → X\)</span> 는 translation 함수입니다. 두 translation 모두 동일�
 </div>
 </li>
 <li><p><strong>VAE initialization 코드</strong></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">initialize_vae</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">initialize_vae</span><span class="p">(</span><span class="n">rank</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">return_lora_module_names</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="n">vae</span> <span class="o">=</span> <span class="n">AutoencoderKL</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="s2">&quot;stabilityai/sd-turbo&quot;</span><span class="p">,</span> <span class="n">subfolder</span><span class="o">=</span><span class="s2">&quot;vae&quot;</span><span class="p">)</span>
     <span class="n">vae</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">my_vae_encoder_fwd</span><span class="o">.</span><span class="fm">__get__</span><span class="p">(</span><span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="p">,</span> <span class="n">vae</span><span class="o">.</span><span class="n">encoder</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
@@ -1009,8 +1015,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

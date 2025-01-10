@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>DreamGaussian &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -147,8 +147,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -320,6 +318,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 1-to-3 : Zero-shot One Image to 3D Object</a></li>
+
+
+
+
 
 
 
@@ -499,10 +505,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -510,7 +516,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -715,7 +721,7 @@ in the wild dataset에서 scene 재구성을 위해 scene을
 <figure class="align-default" id="id2">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_8.png"><img alt="GS optimization" class="mb-1" src="../../_images/image_8.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 776 </span><span class="caption-text">Gaussian Splatting optimization
+<p><span class="caption-number">Fig. 775 </span><span class="caption-text">Gaussian Splatting optimization
 colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D gaussian을 초기화 한다. 이후 gaussian들을 합치거나 쪼개며 최적화를 진행한다. 렌더링 시에는 3D gaussian들을 2D projection하여 하나의 이미지를 만든다.</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -742,19 +748,19 @@ colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D 
 <figure class="align-default" id="id3">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_9.png"><img alt="image9" class="mb-1" src="../../_images/image_9.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 777 </span><span class="caption-text">수학적으로는 라플라스 미분방정식의 해</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 776 </span><span class="caption-text">수학적으로는 라플라스 미분방정식의 해</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id4">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_10.png"><img alt="image10" class="mb-1" src="../../_images/image_10.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 778 </span><span class="caption-text">Spherical Harmonics 시각화 [<a class="reference external" href="https://en.wikipedia.org/wiki/Table_of_spherical_harmonics">eq</a>]</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 777 </span><span class="caption-text">Spherical Harmonics 시각화 [<a class="reference external" href="https://en.wikipedia.org/wiki/Table_of_spherical_harmonics">eq</a>]</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id5">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_11.png"><img alt="image11" class="mb-1" src="../../_images/image_11.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 779 </span><span class="caption-text">Spherical Harmonics 시각화</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 778 </span><span class="caption-text">Spherical Harmonics 시각화</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
   <img src="../../pics/DreamGaussian/Rotating_spherical_harmonics.gif" width="40" height="40"/>
@@ -763,13 +769,13 @@ colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D 
 <figure class="align-default" id="id6">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_12.png"><img alt="image12" class="mb-1" src="../../_images/image_12.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 780 </span><span class="caption-text">삼각함수들을 이용해 임의의 주기함수를 근사하는 푸리에 변환의 3D 확장판</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 779 </span><span class="caption-text">삼각함수들을 이용해 임의의 주기함수를 근사하는 푸리에 변환의 3D 확장판</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_13.png"><img alt="image13" class="mb-1" src="../../_images/image_13.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 781 </span><span class="caption-text">SH를 이용한 근사 예시. SH는 구 표면에서의 분포의 basis에 해당.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 780 </span><span class="caption-text">SH를 이용한 근사 예시. SH는 구 표면에서의 분포의 basis에 해당.</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -778,14 +784,14 @@ colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D 
 <figure class="align-default" id="id8">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_14.png"><img alt="image14" class="mb-1" src="../../_images/image_14.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 782 </span><span class="caption-text">Diffuse reflection (~ Lambertian effects)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 781 </span><span class="caption-text">Diffuse reflection (~ Lambertian effects)</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Lambertian reflection은 어떤 각도에서 보든 같은 양 빛을 관찰 할 수 있는 이상적인 상태</p>
 <figure class="align-default" id="id9">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_15.png"><img alt="image15" class="mb-1" src="../../_images/image_15.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 783 </span><span class="caption-text">Non-lambertian effects -&gt; 즉, 반사광 표현가능</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 782 </span><span class="caption-text">Non-lambertian effects -&gt; 즉, 반사광 표현가능</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -796,7 +802,7 @@ colmap과 같은 SfM 을 이용해 3D keypoint를 찾아 해당 지점으로 3D 
 <figure class="align-default" id="id10">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_16.png"><img alt="image16" class="mb-1" src="../../_images/image_16.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 784 </span><span class="caption-text">3D Gaussian Splatting
+<p><span class="caption-number">Fig. 783 </span><span class="caption-text">3D Gaussian Splatting
 initialization, optimization, adaptive control of gaussians</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -808,13 +814,13 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id11">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_17.png"><img alt="image17" class="mb-1" src="../../_images/image_17.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 785 </span><span class="caption-text">3D Gaussian Splatting Volumetric Rendering</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 784 </span><span class="caption-text">3D Gaussian Splatting Volumetric Rendering</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id12">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_18.png"><img alt="image18" class="mb-1" src="../../_images/image_18.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 786 </span><span class="caption-text">from nerfstudio</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 785 </span><span class="caption-text">from nerfstudio</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -824,7 +830,7 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id13">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_19.png"><img alt="image19" class="mb-1" src="../../_images/image_19.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 787 </span><span class="caption-text">original NeRF vs 3d Gaussian Splatting rendering</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 786 </span><span class="caption-text">original NeRF vs 3d Gaussian Splatting rendering</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -897,7 +903,7 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id14">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_21.png"><img alt="marching cube" class="mb-1" src="../../_images/image_21.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 788 </span><span class="caption-text">from wikipedia</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 787 </span><span class="caption-text">from wikipedia</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -922,7 +928,7 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id15">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_22.png"><img alt="3DMM" class="mb-1" src="../../_images/image_22.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 789 </span><span class="caption-text">3DMM</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 788 </span><span class="caption-text">3DMM</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -931,7 +937,7 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id16">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_23.png"><img alt="SMPL" class="mb-1" src="../../_images/image_23.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 790 </span><span class="caption-text">SMPL</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 789 </span><span class="caption-text">SMPL</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -940,7 +946,7 @@ initialization, optimization, adaptive control of gaussians</span><a class="head
 <figure class="align-default" id="id17">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_24.png"><img alt="FLAME" class="mb-1" src="../../_images/image_24.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 791 </span><span class="caption-text">FLAME</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 790 </span><span class="caption-text">FLAME</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -957,13 +963,13 @@ enabling zero-shot novel view synthesis and 3D reconstruction from a single imag
 <figure class="align-default" id="id18">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_24.png"><img alt="zero 1-to-3" class="mb-1" src="../../_images/image_24.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 792 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 791 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id19">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_25.png"><img alt="zero 1-to-3" class="mb-1" src="../../_images/image_25.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 793 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 792 </span><span class="caption-text">zero 1-to-3</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </details>
@@ -975,7 +981,7 @@ enabling zero-shot novel view synthesis and 3D reconstruction from a single imag
 <figure class="align-default" id="id20">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_26.png"><img alt="method overview" class="mb-1" src="../../_images/image_26.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 794 </span><span class="caption-text">Method Overview</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 793 </span><span class="caption-text">Method Overview</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1049,7 +1055,7 @@ d(\mathbf x)=\sum_i\alpha_i\text{exp}(-\frac{1}{2}(\mathbf x-\mathbf x_i)^T\Sigm
 <figure class="align-default" id="id21">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_27.png"><img alt="uv mapping" class="mb-1" src="../../_images/image_27.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 795 </span><span class="caption-text">uv mapping</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 794 </span><span class="caption-text">uv mapping</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>먼저 mesh의 UV coordinate를 unwrap하고 빈 texture image로 초기화 한다. 그리고 8개의 azimuth, 3개의 elevation을 균일하게 선택하고 top, bottom view까지 포함하여 corresponding RGB image를 렌더링 할 수 있게 한다. 이러한 RGB 이미지들의 각 픽셀은 UV coordinate를 기반으로 texture image로 맵핑할 수 있다.</p>
@@ -1062,7 +1068,7 @@ d(\mathbf x)=\sum_i\alpha_i\text{exp}(-\frac{1}{2}(\mathbf x-\mathbf x_i)^T\Sigm
 <figure class="align-default" id="id22">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_28.png"><img alt="uv-space texture refinement" class="mb-1" src="../../_images/image_28.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 796 </span><span class="caption-text">UV-space Texture Refinement</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 795 </span><span class="caption-text">UV-space Texture Refinement</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>앞선 back-projection된 coarse texture를 시작으로 texture 품질을 올리고자 했으나, SDS loss를 이용해
@@ -1072,13 +1078,13 @@ UV-space를 직접 fine-tuning 하면 위의 그림과 같은 artifact가 발생
 <figure class="align-default" id="id23">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_29.png"><img alt="rasterization" class="mb-1" src="../../_images/image_29.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 797 </span><span class="caption-text">from widipedia</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 796 </span><span class="caption-text">from widipedia</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id24">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_30.png"><img alt="rasterization" class="mb-1" src="../../_images/image_30.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 798 </span><span class="caption-text">from unity document</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 797 </span><span class="caption-text">from unity document</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위와 같은 고품질 렌더링와 렌더링 속도 향상을 위해 mipmap이라는 기법을 활용한다. 본 논문에서 texture mapping, rendering시 사용한 NVdiffrast도 mipmap을 활용하고 있다.
@@ -1094,7 +1100,7 @@ I^p_\text{fine}=f_\phi(I^p_\text{coarse}+\epsilon(t_\text{start});t_\text{start}
 <figure class="align-default" id="id25">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_31.png"><img alt="from SDEdit" class="mb-1" src="../../_images/image_31.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 799 </span><span class="caption-text">from SDEdit</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 798 </span><span class="caption-text">from SDEdit</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(f_\phi(\cdot)\)</span> 는 사전학습된 2D diffusion 을 통해 refined image를 얻는 multi-step denoising process를 의미한다. <span class="math notranslate nohighlight">\(\epsilon(t_\text{start})\)</span> 는 timestep <span class="math notranslate nohighlight">\(t_\text{start}\)</span>의 랜덤 노이즈를 말한다. <span class="math notranslate nohighlight">\(c\)</span> 는 image-to-3D를 위한 condition인 카메라 포즈 변화량 <span class="math notranslate nohighlight">\(\Delta p\)</span> 이고, <span class="math notranslate nohighlight">\(e\)</span>는 text-to-3D의 condition을 말한다. 시작 timestep <span class="math notranslate nohighlight">\(t_\text{start}\)</span>는 noise 강도를 제한하기 위해 신중히 선택되어야 refined image의 original content를 유지하며 detail을 향상 시킬수 있다고 한다. refined image는 이후 pixel-wise MSE loss에 texture 최적화를 위해 사용된다.</p>
@@ -1134,13 +1140,13 @@ azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degr
 <figure class="align-default" id="id26">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_32.png"><img alt="Horizontal coordinates from wikipedia" class="mb-1" src="../../_images/image_32.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 800 </span><span class="caption-text">Horizontal coordinates from wikipedia</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 799 </span><span class="caption-text">Horizontal coordinates from wikipedia</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id27">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_33.png"><img alt="Horizontal coordinates from wikipedia" class="mb-1" src="../../_images/image_33.png" style="width: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 801 </span><span class="caption-text"><a class="reference external" href="https://www.epd.gov.hk/eia/register/report/eiareport/eia_2522017/EIA/html/Appendix/Appendix%2011.1.pdf">출처</a></span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 800 </span><span class="caption-text"><a class="reference external" href="https://www.epd.gov.hk/eia/register/report/eiareport/eia_2522017/EIA/html/Appendix/Appendix%2011.1.pdf">출처</a></span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1157,21 +1163,21 @@ azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degr
 <figure class="align-default" id="id28">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_34.png"><img alt="실험결과" class="mb-1" src="../../_images/image_34.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 802 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 801 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id28" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Text-to-3D comparison</strong></p>
 <figure class="align-default" id="id29">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_35.png"><img alt="실험결과" class="mb-1" src="../../_images/image_35.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 803 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 802 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id29" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>최적화를 진행하는 방법론 뿐만 아니라 inference-only 방법론들과 비교해도 매우 빠른 생성 속도를 보였다고 함.</p>
 <figure class="align-default" id="id30">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_36.png"><img alt="실험결과" class="mb-1" src="../../_images/image_36.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 804 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 803 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id30" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이렇게 뽑아낸 mesh는 blender와 같은 리깅 툴을 이용해 애니메이팅 가능.</p>
@@ -1181,13 +1187,13 @@ azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degr
 <figure class="align-default" id="id31">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_37.png"><img alt="실험결과" class="mb-1" src="../../_images/image_37.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 805 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 804 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id31" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id32">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_38.png"><img alt="실험결과" class="mb-1" src="../../_images/image_38.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 806 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 805 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id32" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1196,7 +1202,7 @@ azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degr
 <figure class="align-default" id="id33">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_39.png"><img alt="실험결과" class="mb-1" src="../../_images/image_39.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 807 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 806 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id33" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서 제안하는 파이프라인의 모든 과정이 필요함을 보여줌.</p>
@@ -1217,7 +1223,7 @@ azimuth in <span class="math notranslate nohighlight">\([-180,180]\)</span> degr
 <figure class="align-default" id="id34">
 <a class="mb-1 reference internal image-reference" href="../../_images/image_40.png"><img alt="실험결과" class="mb-1" src="../../_images/image_40.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 808 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 807 </span><span class="caption-text">실험결과</span><a class="headerlink" href="#id34" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>아래와 같은 기존 방법론들의 문제점들을 여전히 가지고 있으나 score debiasing/ camera-conditioned 2D diffusion models/ BRDF auto-encoder와 같은 방법을 도입하면, 개선가능할 것으로 기대함.</p>
@@ -1376,8 +1382,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

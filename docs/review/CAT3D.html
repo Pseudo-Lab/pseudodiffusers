@@ -1,0 +1,859 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>CAT3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/CAT3D';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 1-to-3 : Zero-shot One Image to 3D Object</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/CAT3D.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/CAT3D.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CAT3D</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-view-diffusion-model">3.1 Multi-View Diffusion Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-novel-views">3.2 Generating Novel Views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-3d-reconstruction">3.3 Robust 3D reconstruction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> CAT3D: Create Anything in 3D with Multi-View Diffusion Models (NIPS 2024)</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2405.10314">https://arxiv.org/abs/2405.10314</a></p></li>
+<li><p>Code: -</p></li>
+<li><p>Project Page : <a class="reference external" href="https://cat3d.github.io/">https://cat3d.github.io/</a></p></li>
+</ul>
+</li>
+<li><p><strong>Presentor:</strong> Geonhak Song</p></li>
+<li><p><strong>Last updated on December.18 , 2023</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="cat3d">
+<h1>CAT3D<a class="headerlink" href="#cat3d" title="Permalink to this heading">#</a></h1>
+<img src="../../pics\CAT3D\cat3d_fig_1.jpg" alt="cat3d_fig1" class="bg-primary mb-1" width="700px">
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>3D content의 수요는 증가하지만 3D content는 여전히 부족함.</p>
+<p>이를 위해서는 복잡하고 특수한 tool 사용해야 하며 상당한 시간과 노고가 들어감.</p>
+<p>NeRF, Instant-NGP, Gaussian Splatting과 같은 최신 기술들은 2D 이미지를 기반으로 어떠한 viewpoint에서 render하여 3D를 생성해내는 방법을 제안함.</p>
+<p>그러나 여전히 고품질 장면 생성을 위해서는 수 천장을 찍어야 하는 labor-intensive process 필요.</p>
+<p>불충분한 장면 시점은 부정확한 기하학적 외관적 결과를 초래하며 신뢰 높은 3D 복원의 어려움을 제공</p>
+<p>단일 이미지, text로 3D 생성 방법을 제안하는 방법 또한 제공되고 있지만, 여전히 품질, 효율성, 일반화에서 어려움이 있음.</p>
+<p>본 논문은 <strong>CAT3D</strong>를 통해 입력된 적은 수의 뷰(few-view input)만으로 3D 일관성을 유지하며 고품질의 3D 콘텐츠 생성.</p>
+<p>Novel-view synthesis가 가능한 Multi-View Diffusion Model 훈련 진행을 통해 다수의 3D consistent image를 생성할 수 있는 효과적인 sampling strategy 제안.</p>
+<p>any view point / few-view에서도 3D 생성 가능</p>
+<p>1분 미만의 생성</p>
+</section>
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<p><strong>2D priors</strong></p>
+<p><strong>2D priors with camera conditioning</strong></p>
+<p><strong>Multi-view priors</strong></p>
+<p><strong>Video Priors</strong></p>
+<p><strong>Feed-forward methods</strong></p>
+</section>
+<section id="method">
+<h2>3. Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h2>
+<img src="../../pics\CAT3D\cat3d_fig_3.jpg" alt="cat3d_fig3" class="bg-primary mb-1" width="700px">
+<p>두 단계 접근법 사용</p>
+<p>Step 1. multi-view diffusion model을 활용하여 한 개 혹은 그 이상의 입력 view와 일관된 다수의 새로운 view 생성.</p>
+<p>Step 2. 생성된 view를 활용해 robust 3D reconstruction pipeline 실행</p>
+<section id="multi-view-diffusion-model">
+<h3>3.1 Multi-View Diffusion Model<a class="headerlink" href="#multi-view-diffusion-model" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>3D 장면의 한 개 혹은 그 이상의 view를 입력으로 받아, 카메라 위치에 따라 다수의 출력 이미지를 생성하는 multi-view diffusion model 훈련(“a view” is a paired image and its camera pose)</p></li>
+<li><p>입력 : <span class="math notranslate nohighlight">\(M\)</span>개의 조건부 views (<span class="math notranslate nohighlight">\(I_{cond}\)</span> : images, <span class="math notranslate nohighlight">\(p_{cond}\)</span> : camera parameters) &amp; <span class="math notranslate nohighlight">\(N\)</span>개의 target camera parameters <span class="math notranslate nohighlight">\(p_{tgt}\)</span></p></li>
+<li><p>출력 : <span class="math notranslate nohighlight">\(N\)</span>개의 target images <span class="math notranslate nohighlight">\(I_{tgt}\)</span></p></li>
+<li><p>위 조건을 만족하는 joint distribution 모델 학습</p></li>
+</ul>
+<img src="../../pics\CAT3D\cat3d_eq_1.jpg" alt="cat3d_eq_1" class="bg-primary mb-1" width="700px">
+<p><strong>Model architecture</strong></p>
+<ul class="simple">
+<li><p>모델 아키텍처는 video latent diffusion model과 유사하지만, time embedding 대신 각 이미지에 대해 camera pose embedding 사용</p></li>
+</ul>
+<p>학습 방법</p>
+<ul class="simple">
+<li><p>conditional and target image 집합이 주어졌을 때, 모델은 각 이미지를 VAE latent representation를 통한 encoding</p></li>
+<li><p>이후 conditional signal이 주어졌을 때 latent representation의 joint distribution를 추정하는 diffusion model training</p></li>
+<li><p>T2I LDM initialize &amp; resolution 512×512×3</p></li>
+<li><p>Backbone : 2D diffusion model</p>
+<ul>
+<li><p>추가 layer는 다중 입력 이미지 latent와 연결된 상태</p></li>
+</ul>
+</li>
+</ul>
+<img src="../../pics\CAT3D\cat3d_mvdream.jpg" alt="cat3d_mvdream" class="bg-primary mb-1" width="700px">
+<p><a class="reference external" href="https://kimjy99.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/mv-dream">MVDream</a>에서와 같이, 3D self-attention layer (2D in space and 1D across images) 사용</p>
+<p>이때, 최소한의 추가 모델 파라미터 사용을 위해 2D self-attention을 직접적으로 inflate하는 방식으로  3D self-attention을 latent에 연결</p>
+<img src="../../pics\CAT3D\cat3d_ReconfFusion_fig.jpg" alt="cat3d_ReconfFusion_fig" class="bg-primary mb-1" width="700px">
+<p>3D self-attention layer를 통한 input view conditioning은 ReconFusion에서 사용한 PixelNeRF나 CLIP image embedding 필요성 제거</p>
+<img src="../../pics\CAT3D\cat3d_fig_7.jpg" alt="cat3d_fig_7" class="bg-primary mb-1" width="700px">
+<p>빠른 training, sampling을 위한 FlashAttention 사용 &amp; LDM weight fine-tuning</p>
+<p>pretrained image diffusion model에서 더 높은 차원의 데이터를 포착하는 multi-view diffusion model로 전환할 때, noise schedule을 high noise level로 이동하는 것이 중요.</p>
+<p>log SNR(signal-to-noise ratio)를 log N만큼 이동, N: target 이미지 수</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://arxiv.org/abs/2301.11093">Simple diffusion: End-to-end diffusion for high resolution images (23.01)</a> 참조</p></li>
+</ul>
+<p>target image와 conditioning image 구분을 위해 <strong>Binary mask</strong>를 channel dim을 따라 latent에 concat</p>
+<p>다양한 3D Generation 설정 처리를 위해 8개의 conditioning &amp; target view(N+M=8)를 모델링할 수 있는 하나의 모델을 학습</p>
+<p>training 중 조건부 view 1 또는 3 무작위 선택</p>
+<p>자세한 내용 : Appendix B. Details of Multi-View Diffusion Model</p>
+<p><strong>Camera conditioning</strong></p>
+<p>camera pose conditioning을 위한 동일 height, width의 a camera ray representation (“raymap”) 사용. 이후 각 공간 위치에서 ray origin, direction로 encoding</p>
+<p>ray는 광선은 <strong>첫 번째 조건부 이미지의 camera pose 기준</strong>으로 계산되므로, pose representation은 3D world 좌표계의 rigid transformation에 대해 불변성을 가짐.</p>
+<ul class="simple">
+<li><p><strong>첫 번째 카메라를 기준으로 모든 위치를 상대적으로 정의</strong>하여, 모델이 3D 세계 좌표계의 이동이나 회전 같은 전역적인 변환에 영향을 받지 않도록 한다는 뜻입니다.</p></li>
+<li><p>이는 3D 재구성의 안정성과 일관성을 높이는 데 중요한 역할</p></li>
+</ul>
+<p>각 이미지의 raymap은 해당 이미지의 latent에 channel-wise concat</p>
+</section>
+<section id="generating-novel-views">
+<h3>3.2 Generating Novel Views<a class="headerlink" href="#generating-novel-views" title="Permalink to this heading">#</a></h3>
+<p>목표 : 입력 view 집합이 주어졌을 때, 일관된 view에 대한 대규모 집합을 생성하는 것
+필요 1) <strong>샘플링할 카메라 위치 집합</strong>을 결정
+필요 2) 일관된 view 생성이 가능한 a sampling strategy</p>
+<p><strong>Camera trajectories</strong></p>
+<p>3D scene reconstruction에서의 문제는 장면을 완전히 포괄하기 위해 필요한 view가 복잡하고 장면의 콘텐츠에 따라 달라질 수 있다는 점</p>
+<p>경험적으로 다양한 유형의 장면에 대해 <strong>적절한 카메라 경로</strong>를 설계하는 것이 설득력 있는 few-view 3D reconstruction 달성하는 데 매우 중요함 발견</p>
+<p>카메라 경로는 재구성 문제를 완전히 제약할 수 있도록 충분히 철저하고 밀도가 높아야 할 뿐 아니라장면 내 물체를 관통하거나 부자연스러운 각도에서 장면 콘텐츠가 제공되지 않아야함.</p>
+<p>In summary, we explore four types of camera paths based on the characteristic of a scene:</p>
+<p>(1) orbital paths of different scales and heights around the center scene</p>
+<ul class="simple">
+<li><p>중심 장면 주위를 도는 다양한 크기와 높이의 궤도형 경로</p></li>
+</ul>
+<p>(2) forward-facing circle paths of different scales and offsets</p>
+<ul class="simple">
+<li><p>다양한 크기와 오프셋을 가진 전방을 향한 원형 경로</p></li>
+</ul>
+<p>(3) spline paths of different offsets</p>
+<ul class="simple">
+<li><p>다양한 오프셋을 가진 스플라인 경로</p></li>
+</ul>
+<img src="../../pics\CAT3D\cat3d_image.png" alt="cat3d_image" class="bg-primary mb-1">
+<p>(4) spiral trajectories along a cylindrical path, moving into and out of the scene</p>
+<ul class="simple">
+<li><p>실린더 경로를 따라 장면으로 들어가고 나오는 나선형 경로</p></li>
+</ul>
+<p>Appendix C 참조</p>
+<img src="../../pics\CAT3D\cat3d_fig_8.jpg" alt="cat3d_fig_8" class="bg-primary mb-1" >
+<p><strong>Generating a large set of synthetic views</strong></p>
+<p>다중 시점 확산 모델을 Novel view synthesis 에 적용할 때의 문제점</p>
+<ul class="simple">
+<li><p>소수의 유한한 입출력 view(총 8개)로 훈련되었다는 점</p></li>
+</ul>
+<p>(?)
+출력 view의 개수를 늘리기 위해,</p>
+<ul class="simple">
+<li><p>target viewpoints을 더 작은 그룹으로 clustering</p></li>
+<li><p>조건부 view가 주어진 상태에서 각 그룹을 독립적으로 생성</p></li>
+</ul>
+<p>single-image conditioning에서는 auto-regressive sampling 전략 채택</p>
+<ul class="simple">
+<li><p>장면을 커버하는 7개의 <strong>anchor views</strong> 집합을 생성(ZeroNVS과 유사하며, k-means++[69]에서 제안된 탐욕 초기화(greedy initialization)를 사용)</p></li>
+<li><p>관찰된 view와 앵커 view가 주어진 상태에서 나머지 view 그룹을 병렬로 생성.</p></li>
+</ul>
+<p>이 방식은 앵커 view 간의 long-range consistency과 근접 view 간의 local similarity을 유지하면서도, 대규모 합성 view 집합을 효율적으로 생성할 수 있도록 합니다.</p>
+<p>single-image setting : 80 views / few-view setting : 480~960 views 생성</p>
+<p><strong>Conditioning larger sets of input views and non-square images</strong></p>
+<p>Reconfusion에서 제안된 방법과 같이 가까운 M개의 view condition 선택</p>
+<p>sampling동안 단순하게 multi-view diffusion architecture의 sequence length를 늘리는 방법보다 nearest view conditioning과 grouped sampling strategy가 성능이 더 좋았음.</p>
+<p>넓은 종횡비의 이미지를 처리하기 위해, 정사각형으로 자른 입력 view에서 나온 정사각형 샘플과 padding된 정사각형 입력 뷰에서 잘라낸 샘플 결합.</p>
+</section>
+<section id="robust-3d-reconstruction">
+<h3>3.3 Robust 3D reconstruction<a class="headerlink" href="#robust-3d-reconstruction" title="Permalink to this heading">#</a></h3>
+<p>생성된 뷰는 일반적으로 완벽한 3D 일관성을 갖추고 있지않음.</p>
+<p>때문에 일관적이지 않은 입력 view에 대한 robustness 향상을 위한 NeRF 훈련 방법 수정 진행</p>
+<p>Zip-NeRF 기반 <strong>Photometric Reconstruction Loss, Distortion Loss, Interlevel Loss, Normalized L2 Weight Regularizer</strong></p>
+<p>추가로 rendered image와 input image 간 <strong>perceptual loss (LPIPS)</strong> 사용
+LPIPS는 렌더링된 이미지와 관찰된 이미지 간의 <strong>고차원적 의미적 유사성</strong>을 강조하며, 저차원 고주파 세부사항의 불일치 가능성은 무시
+<strong>가장 가까운 관찰된 뷰와의 거리</strong>를 기준으로 생성된 뷰의 손실에 가중치를 부여</p>
+<p>Weight</p>
+<ul class="simple">
+<li><p>훈련 초기에는 균일하게 적용</p></li>
+<li><p>관찰된 view와 더 가까운 view간의 reconstruction loss에 더 강한 패널티를 부여하는 weighting func로 변환되도록 점진적으로 강화</p></li>
+</ul>
+<p>Appendix D 참조</p>
+</section>
+</section>
+<section id="experiments">
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<p>4 datasets with camera pose annotations: Objaverse, CO3D, RealEstate10k, MVImgNet</p>
+<p>4.1 Few-View 3D Reconstruction</p>
+<img src="../../pics\CAT3D\cat3d_table_1.jpg" alt="cat3d_table_1" class="bg-primary mb-1" width="700px">
+![table 1.jpg](table_1.jpg)
+<p>4.2 single image evaluation</p>
+<img src="../../pics\CAT3D\cat3d_fig_5.jpg" alt="cat3d_fig_5" class="bg-primary mb-1" width="700px">
+![fig 5.jpg](fig_5.jpg)
+<img src="../../pics\CAT3D\cat3d_table_2.jpg" alt="cat3d_table_2" class="bg-primary mb-1" width="700px">
+![table 2.jpg](table_2.jpg)
+<p>4.3 Ablation</p>
+<img src="../../pics\CAT3D\cat3d_table_3.jpg" alt="cat3d_table_3" class="bg-primary mb-1" width="700px">
+![table 3.jpg](table_3.jpg)
+<img src="../../pics\CAT3D\cat3d_fig_6.jpg" alt="cat3d_fig_6" class="bg-primary mb-1" width="700px">
+![fig 6.jpg](fig_6.jpg)
+<p>LPIPS loss is crucial for achieving high-quality texture and geometry,</p>
+<p>increasing the number of generated views from 80 (single elliptical orbit) to 720 (nine orbits) improved central object geometry but sometimes introduced background blur, probably due to inconsistencies in generated content</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">3. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-view-diffusion-model">3.1 Multi-View Diffusion Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-novel-views">3.2 Generating Novel Views</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-3d-reconstruction">3.3 Robust 3D reconstruction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

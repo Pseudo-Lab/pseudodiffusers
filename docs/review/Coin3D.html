@@ -7,7 +7,7 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Coin3D &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
-  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
     <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -147,8 +147,6 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
-  
-    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -320,6 +318,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 1-to-3 : Zero-shot One Image to 3D Object</a></li>
+
+
+
+
 
 
 
@@ -499,10 +505,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
-    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
-    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
 `);
 </script>
@@ -510,7 +516,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -599,7 +605,7 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_01.png"><img alt="main_fig" class="bg-primary mb-1" src="../../_images/coin3d_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 809 </span><span class="caption-text">Overview of Coin3D</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 808 </span><span class="caption-text">Overview of Coin3D</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>“사용자 친화적인” &amp; “제어 가능”한 3D assets 생성 프레임워크는 3가지 특성을 가져야 한다고 주장함</p>
@@ -641,7 +647,7 @@ document.write(`
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_02.png"><img alt="overall_coin3d_arch" class="bg-primary mb-1" src="../../_images/coin3d_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 810 </span><span class="caption-text">Overview of Coin3D Main Architecture</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 809 </span><span class="caption-text">Overview of Coin3D Main Architecture</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -653,7 +659,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_03.png"><img alt="3d_proxy" class="bg-primary mb-1" src="../../_images/coin3d_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 811 </span><span class="caption-text">Proxy-based Initial Condition Generation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 810 </span><span class="caption-text">Proxy-based Initial Condition Generation</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>3D Proxy as an initial condition (Preprocessing)</strong></p>
@@ -678,7 +684,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_04.png"><img alt="3d_aware" class="bg-primary mb-1" src="../../_images/coin3d_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 812 </span><span class="caption-text">3D-Aware Conditioned Generation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 811 </span><span class="caption-text">3D-Aware Conditioned Generation</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -732,7 +738,7 @@ I : \text{Candidate Image}
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_05.png"><img alt="proxy-bounded-editing" class="bg-primary mb-1" src="../../_images/coin3d_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 813 </span><span class="caption-text">Proxy-bounded Part Editing</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 812 </span><span class="caption-text">Proxy-bounded Part Editing</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -762,7 +768,7 @@ I : \text{Candidate Image}
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_06.png"><img alt="progressive_volume" class="bg-primary mb-1" src="../../_images/coin3d_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 814 </span><span class="caption-text">Interactive Preview with Progressive Volume Caching</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 813 </span><span class="caption-text">Interactive Preview with Progressive Volume Caching</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -795,7 +801,7 @@ I : \text{Candidate Image}
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_07.png"><img alt="preview_recon" class="bg-primary mb-1" src="../../_images/coin3d_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 815 </span><span class="caption-text">Preview and Reconstruction</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 814 </span><span class="caption-text">Preview and Reconstruction</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -823,7 +829,7 @@ viewpoint가 적어 unexpected geometry가 만들어져 결과물이 뭉개지�
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_08.png"><img alt="results" class="bg-primary mb-1" src="../../_images/coin3d_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 816 </span><span class="caption-text">Qualitative Results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 815 </span><span class="caption-text">Qualitative Results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id1">
@@ -881,7 +887,7 @@ viewpoint가 적어 unexpected geometry가 만들어져 결과물이 뭉개지�
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_09.png"><img alt="quant_results" class="bg-primary mb-1" src="../../_images/coin3d_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 817 </span><span class="caption-text">Quantitative Results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 816 </span><span class="caption-text">Quantitative Results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -898,7 +904,7 @@ perceptual quality &amp; content matching degree (w.r.t the given image or text 
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_10.png"><img alt="vol_sds" class="bg-primary mb-1" src="../../_images/coin3d_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 818 </span><span class="caption-text">Ablation Study on Volume SDS</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 817 </span><span class="caption-text">Ablation Study on Volume SDS</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -910,7 +916,7 @@ perceptual quality &amp; content matching degree (w.r.t the given image or text 
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/coin3d_11.png"><img alt="proxy_cond" class="bg-primary mb-1" src="../../_images/coin3d_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 819 </span><span class="caption-text">Ablation Study on Proxy Condition and 3D Mask Dilation</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 818 </span><span class="caption-text">Ablation Study on Proxy Condition and 3D Mask Dilation</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1069,8 +1075,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
 
   <footer class="bd-footer">
   </footer>

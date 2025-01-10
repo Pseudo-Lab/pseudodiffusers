@@ -17,7 +17,8 @@
 ---
 
 :::{figure-md} 
- <img src="../../pics/zero123/image.png" alt="tag" class="bg-primary mb-1">
+ <img src="../../pics/zero123/image_.png" alt="image" class="bg-primary mb-1">
+
 :::
 
 1. **단일  RGB 이미지**를 입력으로  **Object 의 카메라 viewpoint 를 변경**하여 이미지를 합성하는 프레임워크 
@@ -82,7 +83,8 @@
     - [**기존 접근 방식**:](https://velog.io/@dldydldy75/3D-Understanding)
         
         :::{figure-md} 
-        <img src="../../pics/zero123/image1.png" alt="tag" class="bg-primary mb-1">
+        <img src="../../pics/zero123/image_1.png" alt="image1" class="bg-primary mb-1">
+
         :::
         
         1. **데이터 수집 형태에 따른 전역적인(global) 특성 기반의 조건화 모델** 
@@ -130,7 +132,8 @@
     2. **인터넷 규모 데이터셋에 반영된 뷰포인트 편향** : 생성 모델들은 인터넷에서 반영된 시점 편향을 물려받아, 특정한 자세 및 시점에서의 이미지를 생성하는 경향 존재
 
     :::{figure-md} 
-    <img src="../../pics/zero123/image2.png" alt="tag" class="bg-primary mb-1">
+    <img src="../../pics/zero123/image_2.png" alt="image2" class="bg-primary mb-1">
+
     :::
 
     
@@ -142,14 +145,16 @@
 - **접근법 [Figure3]**
     
     :::{figure-md} 
-    <img src="../../pics/zero123/image3.png" alt="tag" class="bg-primary mb-1">
+    <img src="../../pics/zero123/image_3.png" alt="image_3" class="bg-primary mb-1">
+
     :::
     
 - 사전 훈련된 diffusion 모델을 미세조정하여 나머지 표현을 손상시키지 않고 카메라 파라미터를 제어하도록 학습.
 - **Latent Diffusion Architecture 를 이용**
     - **[참고] LDM**
     :::{figure-md} 
-    <img src="../../pics/zero123/image4.png" alt="tag" class="bg-primary mb-1">
+    <img src="../../pics/zero123/image_4.png" alt="image_4" class="bg-primary mb-1">
+
     :::
     - Encoder($\mathcal{E}$), Denoiser(U-Net, $\epsilon_\theta$), Decoder($\mathcal{D}$)로 구성
     - **The Objective**
@@ -206,10 +211,6 @@
     $$
     
     - $\nabla \mathcal{L}_{SJC}$ : PAAS 스코어
-    
-    :::{figure-md} 
-    <img src="../../pics/zero123/image7.png" alt="tag" class="bg-primary mb-1">
-    :::
     
 - 입력 뷰와의 **MSE** 손실로 최적화
 - NeRF representation 규제를 위한 추가 loss term
@@ -308,19 +309,25 @@
 ## 4.4. Novel View Synthesis Results
 
 :::{figure-md} 
-<img src="../../pics/zero123/image12.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_12.png" alt="image_12" class="bg-primary mb-1">
+
 :::
+
 - **Table 2** : RTMV에서의 새로운 뷰 합성 결과.  RTMV의 장면은 Objaverse 훈련 데이터와 분포가 다르지만, 우리의 모델은 여전히 기준선을 상당한 차이로 능가.
 
 :::{figure-md} 
-<img src="../../pics/zero123/image13.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_13.png" alt="image_13" class="bg-primary mb-1">
+
 :::
+
 - **Figure 5 : Novel view synthesis on Google Scanned Object** 
 왼쪽에 표시된 입력 뷰는 두 개의 무작위 샘플링된 새로운 뷰를 합성하는 데 사용됨. 해당하는 실제 뷰는 오른쪽에 표시되어 있음. 기준 방법들과 비교할 때, 우리가 합성한 새로운 뷰는 실제와 매우 일치하는 풍부한 텍스트 및 기하학적 세부 사항을 포함하고 있으며, 반면 기준 방법들은 고주파 세부 사항의 유의미한 손실을 보임.
 
 :::{figure-md} 
-<img src="../../pics/zero123/image14.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_14.png" alt="image_14" class="bg-primary mb-1">
+
 :::
+
 - **Figure 6 Novel view synthesis on RTMV**
 왼쪽에 표시된 입력 뷰는 두 개의 무작위로 샘플링된 새로운 뷰를 합성하는 데 사용됨. 오른쪽에는 해당하는 실제 뷰가 표시됨. 우리가 합성한 뷰는 큰 카메라 시점 변화가 있을 때조차도 높은 충실도를 유지하며, 대부분의 다른 방법들은 품질이 급격히 저하됨.
 ****
@@ -329,7 +336,8 @@
     - 그러나 생성된 포인트 클라우드의 크기가 작아 Point-E가 새로운 뷰 합성(novel view synthesis)에서의 적용 가능성을 제한함.
 
 :::{figure-md} 
-<img src="../../pics/zero123/image15.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_15.png" alt="image_15" class="bg-primary mb-1">
+
 :::
 
 - **Figure 7 Novel view synthesis on in-the-wild images.**
@@ -339,7 +347,8 @@
     - 입력 이미지가 2D이기 때문에 항상 객체의 부분적인 뷰만을 나타내고 많은 부분이 관찰되지 않으므로, diffusion 을 통해 다양한 시점에서 샘플들을 랜덤으로 생성
     
 :::{figure-md} 
-<img src="../../pics/zero123/image16.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_16.png" alt="image_16" class="bg-primary mb-1">
+
 :::
     
 - Figure 8: 입력 뷰를 고정하고, 다양한 시점에서 새로운 샘플을 랜덤으로 생성하여 시각화
@@ -348,16 +357,20 @@
 ## 4.5. 3D Reconstruction Results
 
 :::{figure-md} 
-<img src="../../pics/zero123/image17.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_17.png" alt="image_17" class="bg-primary mb-1">
+
 :::
 
 - 실제 ground truth 와 유사한 고충실도의 3D 메쉬를 reconstruct
 
 :::{figure-md} 
-<img src="../../pics/zero123/image18.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_18.png" alt="image_18" class="bg-primary mb-1">
+
 :::
+
 :::{figure-md} 
-<img src="../../pics/zero123/image19.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_19.png" alt="image_19" class="bg-primary mb-1">
+
 :::
 
 - **MCC (Multiview Compressive Coding)**:
@@ -372,7 +385,8 @@
 ## 4.6. Text to Image to 3D-
 
 :::{figure-md} 
-<img src="../../pics/zero123/image20.png" alt="tag" class="bg-primary mb-1">
+<img src="../../pics/zero123/image_20.png" alt="image_20" class="bg-primary mb-1">
+
 :::
 
 - 실제 환경에서 촬영된 이미지 외에도, Dall-E-2와 같은 txt2img 모델이 생성한 이미지에 대해서도 테스트

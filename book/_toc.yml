@@ -73,6 +73,7 @@ parts:
   - file: docs/review/ProlificDreamer
   - file: docs/review/DreamGaussian
   - file: docs/review/Coin3D
+  - file: docs/review/LGM
   
 - caption: Experiments
   chapters:

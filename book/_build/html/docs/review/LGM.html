@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/LGM';</script>
+    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="Coin3D" href="Coin3D.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
+
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/LGM.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/LGM.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-summary">Contribution Summary:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-3d-generation">High-Resolution 3D Generation.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-3d-generation">Efficient 3D Generation.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-multi-view-gaussian-model">3. Large Multi-View Gaussian Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">3.1 Preliminaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-splatting">Gaussian Splatting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-view-diffusion-models">Multi-View Diffusion Models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-framework">3.2 Overall Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asymmetric-u-net-for-3d-gaussians">3.3 Asymmetric U-Net for 3D Gaussians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-training">3.4 Robust Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-augmentation">Data Augmentation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2402.05054">https://arxiv.org/pdf/2402.05054</a></p></li>
+<li><p>Code: <a class="reference external" href="https://github.com/3DTopia/LGM">Official</a></p></li>
+<li><p>Project Page: <a class="reference external" href="https://me.kiui.moe/lgm/">https://me.kiui.moe/lgm/</a></p></li>
+<li><p>Demo: <a class="reference external" href="https://huggingface.co/spaces/ashawkey/LGM">HuggingFace Spaces</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Donghyun Han</p></li>
+<li><p><strong>Last updated on Jan. 13, 2025</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="lgm-large-multi-view-gaussian-model-for-high-resolution-3d-content-creation">
+<h1>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation<a class="headerlink" href="#lgm-large-multi-view-gaussian-model-for-high-resolution-3d-content-creation" title="Permalink to this heading">#</a></h1>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>3D Content 생성은 계산 cost가 크기 때문에 고해상도 영상에 대해 아직까지 한계점을 가지고 있다. 그러나 본 논문에서 제안하는 Large Multi-View Gaussian Model(LGM)은 single-view image or text를 고해상도 3D Content로 변환이 가능하다.</p>
+<p>Feature:</p>
+<ul class="simple">
+<li><p><strong>3D Representation</strong>: gaussian 기반의 효율적이면서도 강력한 3D representation + NeRF등과 같은 differentiable rendering.</p></li>
+<li><p><strong>3D Backbone</strong>: single-view image 나 text를 입력받아 multi-view image를 생성하는 Diffusion + Gaussian Model의 backbone으로 asymmetric(비대칭) U-Net을 제안.</p></li>
+</ul>
+<p>효율적이고 강력한 성능을 가지고 있음. 5초 이내에 3D Content 생성이 가능하면서 512 resolution으로 훈련이 가능하다.</p>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>3D Content 생성 분야는 다양하게 연구되어 왔으며, 최근에는 single-view나 few-shot 영상을 3D object로 변환하는 연구가 발전하고 있다. 이같은 방법은 Transformer 기반 모델을 통해 triplane-based NeRF를 직접 예측하는 방식으로 이루어지고 있다.</p>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_1.png"><img alt="Triplane-based representation" class="bg-primary mb-1" src="../../_images/LGM_1.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 819 </span><span class="caption-text">Triplane-based representation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>그러나 기존 연구는 저해상도에서 훈련되어 상세한 텍스쳐나 복잡한 표현이 힘들다. 이는 3D representation이 비효율적이고 3D backbone이 너무 무겁기 때문이다. 예를들어 LRM은 triplane representation의 해상도가 32인 반면, rendering image의 해상도는 128로 병목이 생기게 된다. transformer 기반 백본 모델이 너무 cost가 크기 때문에 해상도에 대한 한계점이 생길 수 밖에 없다.</p>
+<p>따라서 본 연구는 triplane-based rendering이나 transformer 기반 모델을 사용하지 않는다. 대신 asymmetric U-Net을 통해 3D Gaussian Splatting을 예측하는 방식으로 문제를 해결했다.</p>
+<p>LGM의 목표는 고해상도 + 적절한 representation을 학습하는 것인데, Gaussian Splatting은 triplane에 비해 간결한 representation을 가지고 asymmetric U-Net은 Multi view pixel에 대해 충분한 3D Gaussian을 생성할 수 있기 때문에 적합한 방법이라고 한다. 또한 LGM은 빠르고 image-to-3D, text-to-3D를 모두 지원한다.</p>
+<figure class="align-default" id="id2">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_2.png"><img alt="LGM - i23, t23 results" class="bg-primary mb-1" src="../../_images/LGM_2.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 820 </span><span class="caption-text">LGM - i23, t23 results</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>방법은 Instant3D와 비슷한 방식을 사용한다. (2D Diffusion Model을 통해 Multi-view Image를 생성하고 3D reconstruction.)</p>
+<figure class="align-default" id="id3">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_3.png"><img alt="Instant3D" class="bg-primary mb-1" src="../../_images/LGM_3.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 821 </span><span class="caption-text">Instant3D</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="contribution-summary">
+<h3>Contribution Summary:<a class="headerlink" href="#contribution-summary" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>text나 single-view image를 통해 생성된 multi-view image를 융합해 고해상도 3D Gaussian을 생성하는 프레임워크를 제안.</p></li>
+<li><p>고해상도에 대한 효율적인 end-to-end 학습을 위해 asymmetic U-Net 아키텍쳐 + Robust한 학습을 위한 데이터 증강 기술 + 3D Gaussian의 mesh 추출 방식 제안.</p></li>
+<li><p>실험을 통해 text-to-3D / image-to-3D에서  높은 품질, 고해상도, 효율성을 입증.</p></li>
+</ol>
+</section>
+</section>
+<section id="related-works">
+<h2>2. Related Works<a class="headerlink" href="#related-works" title="Permalink to this heading">#</a></h2>
+<section id="high-resolution-3d-generation">
+<h3>High-Resolution 3D Generation.<a class="headerlink" href="#high-resolution-3d-generation" title="Permalink to this heading">#</a></h3>
+<p>SDS-based → NeRF, Magic3D, … → 3D Gaussian splatting</p>
+</section>
+<section id="efficient-3d-generation">
+<h3>Efficient 3D Generation.<a class="headerlink" href="#efficient-3d-generation" title="Permalink to this heading">#</a></h3>
+<p>SDS-based 방법론에 비해 최근 방법론들은 몇초만에 3D 생성이 가능. 3D Diffusion model을 사용하려는 시도는 있었으나 좋은 성능을 보여주지 못했다. LRM, Instant3D 등의 triplane + NeRF 기반 모델은 강력한 성능을 보여주지만 상대적으로 낮은 해상도에서 동작하기 때문에 한계를 가진다. 따라서 본 연구는 U-Net + Gaussian Splatting을 사용하여 고해상도 3D 생성을 훈련했다.</p>
+</section>
+</section>
+<section id="large-multi-view-gaussian-model">
+<h2>3. Large Multi-View Gaussian Model<a class="headerlink" href="#large-multi-view-gaussian-model" title="Permalink to this heading">#</a></h2>
+<section id="preliminaries">
+<h3>3.1 Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h3>
+<section id="gaussian-splatting">
+<h4>Gaussian Splatting<a class="headerlink" href="#gaussian-splatting" title="Permalink to this heading">#</a></h4>
+<p>Parameter <span class="math notranslate nohighlight">\(\Theta_i=\{x_i, s_i, q_i, \alpha_i, c_i\}\)</span>로 각 Gaussian을 표현할 수 있으며 각각 center <span class="math notranslate nohighlight">\(x\in\mathbb{R}^3\)</span>, scaling factor <span class="math notranslate nohighlight">\(s\in\mathbb{R}^3\)</span>, rotation quaternion <span class="math notranslate nohighlight">\(q\in\mathbb{R}^4\)</span>, opacity value <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}\)</span>, color feature <span class="math notranslate nohighlight">\(c\in\mathbb{R}^C\)</span>을 의미.</p>
+</section>
+<section id="multi-view-diffusion-models">
+<h4>Multi-View Diffusion Models<a class="headerlink" href="#multi-view-diffusion-models" title="Permalink to this heading">#</a></h4>
+<p>2D Diffusion Model을 single-view image의 object를 multi-view image로 변환할 수 있도록 fine-tuning하여 사용.</p>
+</section>
+</section>
+<section id="overall-framework">
+<h3>3.2 Overall Framework<a class="headerlink" href="#overall-framework" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="id4">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_4.png"><img alt="LGM framework" class="bg-primary mb-1" src="../../_images/LGM_4.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 822 </span><span class="caption-text">LGM framework</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>LGM은 2step으로 진행되며 먼저 2D Diffusion model을 통해 single-view image 또는 text를 multi-view image로 변환한다. 이때 MVDream은 text, Image Dream은 image를 입력받아 변환한다. 두 모델 모두 직교 방위각에 따른 multi-view image를 생성한다.</p>
+<figure class="align-default" id="id5">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_5.png"><img alt="Asymmetric U-Net" class="bg-primary mb-1" src="../../_images/LGM_5.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 823 </span><span class="caption-text">Asymmetric U-Net</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>생성된 multi-view image는 U-Net기반 3D Gaussian을 예측하도록 학습된다. 생성한 Gaussian은 추가적인 변환 작업을 통해 폴리곤 형태로 변환이 가능하다. (downstream task)</p>
+</section>
+<section id="asymmetric-u-net-for-3d-gaussians">
+<h3>3.3 Asymmetric U-Net for 3D Gaussians<a class="headerlink" href="#asymmetric-u-net-for-3d-gaussians" title="Permalink to this heading">#</a></h3>
+<p>위 그림과 같이 Gaussian 예측 모델은 Asymmetric U-Net을 사용하며 기존과 같이 Plücker ray embedding을 사용해 인코딩값 + multi-view image에 대한 RGB 값을 합친 총 9차원 feature map을 입력받는다.</p>
+<p>(RGB + 3차원 ray direction + 3차원 ray origin==9)</p>
+<div class="math notranslate nohighlight">
+\[
+f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
+\]</div>
+<p>각 pixel i에 대한 feature map <span class="math notranslate nohighlight">\(f_i\)</span>에 대해 <span class="math notranslate nohighlight">\(c_i,o_i,d_i\)</span>는 각각 RGB value, ray origin, ray direction을 의미한다. U-Net 구조는 residual layer와 self-attention layer로 이루어져 있으며 메모리를 효율적으로 사용하기 위해 deeper layer에서만 self-attention을 사용하였다.</p>
+<p>4가지 이미지에 대한 feature는 self-attention 전 flatten 후 concatenation을 통해 정보를 융합한다. (MV-Dream, Image-Dream과 유사한 방식)</p>
+<p>U-Net 구조를 비대칭적으로 구성한 이유는 입력 영상의 크기보다 더 작은 크기의 출력을 예측하도록 하기 위함이다. 즉 더 큰 입력 영상을 사용할 수 있으며 출력 gaussian의 수를 제한할 수 있다는 장점을 가진다. 최종 출력 feature map은 14개의 channel을 포함하는 Gaussian <span class="math notranslate nohighlight">\(\Theta_i\)</span> 이다.</p>
+<p>학습의 안정화를 위해 기존 gaussian splatting과 activation function을 다르게 사용했다. 먼저 예측 position <span class="math notranslate nohighlight">\(x_i\)</span>를 <span class="math notranslate nohighlight">\([-1,1]^3\)</span>에 클램핑하고 softplus activation scale <span class="math notranslate nohighlight">\(s_i\)</span>에 0.1을 곱하여 훈련이 시작될 때 생성되는 Gaussian이 scene의 중심에 가깝도록 조정했다. 최종 출력된 Gaussian 집합은 3D Gaussian으로 융합된다.</p>
+</section>
+<section id="robust-training">
+<h3>3.4 Robust Training<a class="headerlink" href="#robust-training" title="Permalink to this heading">#</a></h3>
+<section id="data-augmentation">
+<h4>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this heading">#</a></h4>
+<p>Diffusion model과 Gaussian splatting은 학습 데이터셋에 대해 각각 따로 학습되지만 실제 inference time에는 두 파이프라인이 함께 동작해야 하기 때문에(Diffusion output == Gaussian splatting input) 간극을 좁혀줄 수 있는 강력한 augmentation 기법이 필요하다. LGM은 2가지의 augmentation 기법을 제시했다.</p>
+<ol class="arabic simple">
+<li><p>Grid Distortion.</p></li>
+</ol>
+<p>2D Diffusion model을 통해 3D multi-view image를 합성하는 연구는 많지만, 기존 연구들은 3D representation에 대한 고려가 없기 때문에 각 view들의 미묘한 inconsistency가 생긴다. 따라서 Gaussian splatting을 훈련할 때 첫 입력 view를 제외한 나머지 입력 view에 일부러 Grid Distortion(왜곡)을 주어 Gaussian splatting 모델이 Robust하게 학습될 수 있도록 한다.</p>
+<ol class="arabic simple">
+<li><p>Orbital Camera Jitter.</p></li>
+</ol>
+<p>Grid Distortion의 이유와 비슷한데 multi-view Image의 각도나 camera의 위치가 항상 정확하게 일치하지 않기 때문에 random rotation을 통해 좀더 Robust 하게 학습될 수 있도록 Augmentation을 추가한다.</p>
+</section>
+<section id="loss-function">
+<h4>Loss Function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h4>
+<p>학습은 Gaussian을 결합하여 입력 4개의 view를 포함한 총 8개의 view에 대한 rendering image를 만들고 각 RGB와 <span class="math notranslate nohighlight">\(\alpha\)</span>에 대한 몇가지 손실 함수를 사용하였다.</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{rgb}=\mathcal{L}_{MSE}(I_{rgb}, I_{rgb}^{GT})+\lambda\mathcal{L}_{LPIPS}(I_{rgb},I_{rgb}^{GT}) \tag{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}_{\alpha}=\mathcal{L}_{MSE}(I_\alpha,I_\alpha^{GT}) \tag{3}
+\]</div>
+</section>
+</section>
+</section>
+<section id="experiments">
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="id6">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_6.png"><img alt="Quantitative results" class="bg-primary mb-1" src="../../_images/LGM_6.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 824 </span><span class="caption-text">Quantitative results</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id7">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_7.png"><img alt="Qualitative results" class="bg-primary mb-1" src="../../_images/LGM_7.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 825 </span><span class="caption-text">Qualitative results</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id8">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_8.png"><img alt="LRM vs LGM" class="bg-primary mb-1" src="../../_images/LGM_8.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 826 </span><span class="caption-text">LRM vs LGM</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id9">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_9.png"><img alt="text-to-3D results" class="bg-primary mb-1" src="../../_images/LGM_9.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 827 </span><span class="caption-text">text-to-3D results</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id10">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_10.png"><img alt="Diversity results" class="bg-primary mb-1" src="../../_images/LGM_10.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 828 </span><span class="caption-text">Diversity results</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id11">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_11.png"><img alt="Ablation study" class="bg-primary mb-1" src="../../_images/LGM_11.png" style="width: 800px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 829 </span><span class="caption-text">Ablation study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="limitations">
+<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h3>
+<p>기본적으로 Multi-view reconstruction 모델이기 때문에 4개의 입력 view의 품질에 대한 의존도가 높다.</p>
+<p>그러나 multi-view를 생성하는 diffusion model이 완벽하지 않기 때문에 (낮은 resolution, inconsistency 등) 한계점을 가지고 있다.</p>
+</section>
+</section>
+<section id="conclusion">
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>기존 NeRF 및 Transformer 기반 모델과 달리 Gaussian Splatting 과 U-Net 기반 구조를 사용하여 높은 메모리 cost 문제를 해결했다. 또한 고해상도 영상에 대한 학습을 통해 고품질의 3D content를 생성할 수 있었다.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Coin3D.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Coin3D</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contribution-summary">Contribution Summary:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-works">2. Related Works</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-resolution-3d-generation">High-Resolution 3D Generation.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#efficient-3d-generation">Efficient 3D Generation.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#large-multi-view-gaussian-model">3. Large Multi-View Gaussian Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preliminaries">3.1 Preliminaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-splatting">Gaussian Splatting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-view-diffusion-models">Multi-View Diffusion Models</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-framework">3.2 Overall Framework</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#asymmetric-u-net-for-3d-gaussians">3.3 Asymmetric U-Net for 3D Gaussians</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#robust-training">3.4 Robust Training</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-augmentation">Data Augmentation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations">Limitations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

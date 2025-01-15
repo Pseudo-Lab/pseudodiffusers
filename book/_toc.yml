@@ -74,6 +74,7 @@ parts:
   - file: docs/review/DreamGaussian
   - file: docs/review/Coin3D
   - file: docs/review/LGM
+  - file: docs/review/One-2-3-45
   
 - caption: Experiments
   chapters:

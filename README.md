@@ -76,11 +76,11 @@ CVPR 2024 Workshop
 | 35 | 2024.09.25 | Joongwon Lee | [One-step Diffusion with Distribution Matching Distillation](https://arxiv.org/abs/2311.18828) (CVPR 2024) |
 | 36 | 2024.10.02 | Donghyun Han | [LCM-LoRA: A Universal Stable-Diffusion Acceleration Module](https://arxiv.org/abs/2311.05556)|
 | 37 | 2024.10.09 | Kyeongmin Yu | [IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models](https://arxiv.org/abs/2308.06721)|
-| nn | 2024.10.16 | | |
-| nn | 2024.10.30 | Jeongin Lee | [Zero-1-to-3: Zero-shot One Image to 3D Object](https://arxiv.org/abs/2303.11328) (ICCV 2023) |
-| nn | 2024.11.06 | Geonhak Song | [MVDream: Multi-view Diffusion for 3D Generation](https://arxiv.org/abs/2308.16512) (ICLR 2024 Poster) |
-| nn | 2024.11.13 | Kyeongmin Yu | [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](https://arxiv.org/abs/2305.16213)|
-| nn | 2024.11.27 | | |
+| 38 | 2024.10.16 | | |
+| 39 | 2024.10.30 | Jeongin Lee | [Zero-1-to-3: Zero-shot One Image to 3D Object](https://arxiv.org/abs/2303.11328) (ICCV 2023) |
+| 40 | 2024.11.06 | Geonhak Song | [MVDream: Multi-view Diffusion for 3D Generation](https://arxiv.org/abs/2308.16512) (ICLR 2024 Poster) |
+| 41 | 2024.11.13 | Kyeongmin Yu | [ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation](https://arxiv.org/abs/2305.16213)|
+| 42 | 2024.11.27 | Jeonghwa Yoo | [One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape Optimization](https://arxiv.org/abs/2306.16928)|
 | nn | 2024.12.04 | Joongwon Lee <br> Donghyun Han | [LRM: Large Reconstruction Model for Single Image to 3D](https://arxiv.org/pdf/2311.04400) <br> [LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation](https://arxiv.org/pdf/2402.05054) (ECCV 2024 (Oral))|
 | nn | 2024.12.11 | Kyeongmin Yu | [# DreamGaussian: Generative Gaussian Splatting for Efficient 3D Content Creation](https://arxiv.org/abs/2309.16653)|
 | nn | 2024.12.18 | Geonhak Song <br> Donggeun Sean Ko | [CAT3D: Create Anything in 3D with Multi-View Diffusion Models](https://arxiv.org/abs/2405.10314) (NeurIPS 2024 (Oral)) <br> [Coin3D: Controllable and Interactive 3D Assets Generation with Proxy-Guided Conditioning](https://arxiv.org/abs/2405.08054)|

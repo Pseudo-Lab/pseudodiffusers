@@ -13,7 +13,7 @@
 - **Last updated on {July. 3, 2024}**
 ```
 
-# **DreamFusion**
+# DreamFusion
 
 ## Abstract
 

@@ -12,7 +12,7 @@
 - **Last updated on Jan. 13, 2025**
 ```
 
-# LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation 
+# LGM
 
 ## Summary
 

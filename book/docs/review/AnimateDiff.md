@@ -121,7 +121,7 @@ personalized T2I를 애니메이션화 시키는 연구가 많지는 않지만 �
 
 ## 3. Preliminary
 
-#### 3.1 Stable Diffusion
+### 3.1 Stable Diffusion
 
 Stable Diffusion ([Rombach et al., 2022](https://github.com/CompVis/stable-diffusion)), the base T2I model used in our work
 
@@ -146,7 +146,7 @@ Stable Diffusion ([Rombach et al., 2022](https://github.com/CompVis/stable-diffu
     - $τ_θ(·)$ is a text encoder mapping the prompt to a vector sequence.
     - In SD, $ϵ_θ(·)$ is implemented as a UNet (down*4, middle, up*4 blocks; ResNet, spatial self-attn, cross-attn)
 
-#### 3.2 Low-Rank Adaptation(LoRA)
+### 3.2 Low-Rank Adaptation(LoRA)
 
 Low-Rank Adaptation(LoRA) ([Hu et al., 2021](https://arxiv.org/pdf/2106.09685.pdf)), which helps understand the domain adapter (Sec. 4.1) and MotionLoRA (Sec. 4.3) in AnimateDiff
 

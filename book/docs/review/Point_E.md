@@ -10,7 +10,7 @@
 - **Last updated on Sep. 11, 2024**
 ```
 
-# Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)
+# Point-E
 
 
 <aside>

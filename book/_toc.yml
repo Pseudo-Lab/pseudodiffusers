@@ -70,8 +70,10 @@ parts:
   - file: docs/review/DreamBooth3D
   - file: docs/review/zero123
   - file: docs/review/zero123plus
+  - file: docs/review/MVDream
   - file: docs/review/ProlificDreamer
   - file: docs/review/DreamGaussian
+  - file: docs/review/CAT3D
   - file: docs/review/Coin3D
   - file: docs/review/LGM
   - file: docs/review/One-2-3-45

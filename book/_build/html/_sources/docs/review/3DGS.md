@@ -10,7 +10,7 @@
 - **Last updated on June. 12, 2024**
 ```
 
-# 3D Gaussian Splatting for Real-Time Radiance Field Rendering
+# 3D Gaussian Splatting 
 
 NeRF 기반 방식들은 높은 품질의 새로운 장면 합성이 가능하지만, 시간이 많이 걸려 실시간 렌더링에는 한계가 있다. 다른 방식들은 시간은 빠르지만 품질이 떨어진다. 이를 해결하기 위해, 논문은 3D Gaussian Splatting을 제안합니다. 이 방법은 Mip-NeRF360과 유사한 성능을 제공하면서도 InstantNGP만큼 빠르게 학습할 수 있다.
 

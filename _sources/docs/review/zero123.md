@@ -1,7 +1,5 @@
-# zero 123
-
 ``` {admonition} Information
-- **Title:** zero 1-to-3 : Zero-shot One Image to 3D Object
+- **Title:** Zero-1-to-3: Zero-shot One Image to 3D Object 
 
 - **Reference**
     - Paper: [<https://arxiv.org/abs/2303.11328>](<https://arxiv.org/abs/2303.11328>)
@@ -12,7 +10,9 @@
 - **Last updated on Jan. 10, 2025**
 ```
 
-# Abstract : Zero-shot One Image to 3D Object
+# Zero 1-to-3
+
+## Abstract : Zero-shot One Image to 3D Object
 
 ---
 
@@ -27,7 +27,7 @@
     2. 합성 데이터셋에서 훈련되었음에도 wild images , OOD(out-of-distribution) 데이터 등에 대해 강력한 zero-shot 일반화 능력 보유 
 3. viewpoint-conditioned diffusion 접근법은 단일 이미지로부터의 3D 재구성을 위해서도 사용 가능
 
-# 1. Introduction
+## 1. Introduction
 
 ---
 
@@ -57,7 +57,7 @@
          **파인튜닝을 통해 상대적인 카메라 회전 및 이동을 컨트롤**하여 새로운 시점의 이미지를 생성하는 접근법 제시
         - 파인튜닝을 통해 선택한 다른 카메라 시점에서의 임의의 이미지를 생성 가능
 
-# 2. Related Work
+## 2. Related Work
 
 1. **3D generative models**
     - 생성 모델의 동향
@@ -107,7 +107,7 @@
         - **Zero-1-to-3**
             - 사전 훈련된 Stable Diffusion 모델에서 직접 풍부한 기하학적 정보를 추출할 수 있음을 보여주며, 이는 **추가적인 깊이 정보 없이**도 가능함을 보임
 
-# 3. Methods
+## 3. Methods
 
 - **목표 :** 주어진 단일 RGB 이미지 $x \in \mathbb{R}^{H \times W \times 3}$ 를  입력으로, 다른 카메라 시점에서의 객체 이미지를 합성
 - **카메라 변환**
@@ -138,7 +138,7 @@
 
     
 
-## 3.1. Learning to Control Camera Viewpoint
+### 3.1. Learning to Control Camera Viewpoint
 
 - **목표**: Diffusion 모델을 통해, 촬영된 이미지에서 카메라의 외부 매개변수를 제어할 수 있는 메커니즘을 학습하여 새로운 시점의 이미지를 합성하는 것.
 - **데이터셋**: 이미지 쌍과 상대적 카메라 외부 매개변수로 구성된 데이터셋 ${ (x, x_{(R,T)}, R, T) }$
@@ -178,7 +178,7 @@
     - 이러한 **compositionality**(구성 가능성)는 모델에서 제로샷 기능을 확립하며, 
     최종모델은 3D assets 이 부족하고 fine-tuning 집합에 존재하지 않는 객체 클래스에 대한 새로운 뷰를 합성 가능
 
-## 3.2. View-Conditioned Diffusion
+### 3.2. View-Conditioned Diffusion
 
 - 단일이미지로부터 3D 객체를 재구성하기 위해 저수준 인식(깊이, 음영, 텍스처 등)과 고수준 이해(형태, 기능, 구조 등)  모두를 필요로 함.
 
@@ -193,7 +193,7 @@
     - 모델이 합성되는 중인 객체의 identity 와 details 을 유지하도록 함.
 - **classifier-free guidance** 적용을 위해 이미지와 posed CLIP 임베딩을 무작위로 영(0) 벡터로 설정하고, 추론 중 조건부 정보를 스케일링하는 메커니즘
 
-## 3.3 3D Reconstruction
+### 3.3 3D Reconstruction
 
 - 많은 응용에서, 객체의 새로운 뷰를 합성하는 것만으로는 충분하지 않으며, 객체의 외관과 기하 구조를 모두 캡처하는 전체 3D 재구성이 필요
 - **Score Jacobian Chaining(SJC)**을 채택하여, 텍스트-이미지 확산 모델의 사전 정보를 사용하여 3D 표현을 최적화
@@ -217,7 +217,7 @@
     - **Depth smoothness loss** to every sampled viewpoint
     - **near-view consistency loss** : 근접 뷰 간의 외관 변화(appearance change)를 규제, 가까운 뷰 간의 일관성을 유지
 
-## 3.4. Dataset
+### 3.4. Dataset
 
 - **Dataset** :  Objaverse, 800K+ 3D models  created by 100K+ artists
 - **데이터 구성**
@@ -237,14 +237,14 @@
         - **변환(Translation)**: 카메라가 세계 좌표계의 특정 위치에 어느 좌표로 이동해 있는지를 나타냄
         - [참조 링크](https://jhtobigs.oopy.io/3dcoordinate)
 
-# 4.Experiments
+## 4.Experiments
 
 - 평가 대상 : **model’s performance  zero-shot novel view synthesis & 3D reconstruction**
 - Objaverse 데이터셋 외의 데이터와 이미지를 사용하였으므로, 제로샷 결과로 간주
 - 모델 성능을 합성 객체와 장면들을 다양한 복잡함 수준에서 정량적으로 결과 비교
 - 다양한 자연 이미지(일상적인 객체 사진부터 그림까지)를 사용하여 질적 결과를 보고
 
-## 4.1. Tasks
+### 4.1. Tasks
 
 - 단일 RGB 이미지를 입력으로, 밀접하게 연관된 두가지 태스크를 수행 & zero-shot 적용
 1. **Novel View Synthesis**
@@ -265,7 +265,7 @@
     - **3D reconstruction 에 대한 view-conditioned diffusion model 활용**
         - diffusion 모델이 학습한 풍부한 2D 외양 prior를 3D 기하학으로 전환 가능한 경로 제공
 
-## 4.2. Baselines
+### 4.2. Baselines
 
 - 본 방법론이 다루는 범위와 일관되도록 아래 두가지 모두에 해당되는 방법론들만 비교
     - **zero-shot setting**
@@ -295,7 +295,7 @@
     </aside>
     
 
-## 4.3. Benchmarks and Metrics
+### 4.3. Benchmarks and Metrics
 
 - **데이터셋 평가**
     - Google Scanned Objects (GSO): 고품질 스캔된 가정용 아이템 데이터셋
@@ -306,7 +306,7 @@
 - **3D reconstruction evaluation metrics**
     - **Chamfer Distance, Volumetric IoU (Intersection over Union)**
 
-## 4.4. Novel View Synthesis Results
+### 4.4. Novel View Synthesis Results
 
 :::{figure-md} 
 <img src="../../pics/zero123/image_12.png" alt="image_12" class="bg-primary mb-1">
@@ -354,7 +354,7 @@
 - Figure 8: 입력 뷰를 고정하고, 다양한 시점에서 새로운 샘플을 랜덤으로 생성하여 시각화
 이러한 다양한 결과는 입력 뷰에서 놓친 기하학적 및 외관 정보를 반영
 
-## 4.5. 3D Reconstruction Results
+### 4.5. 3D Reconstruction Results
 
 :::{figure-md} 
 <img src="../../pics/zero123/image_17.png" alt="image_17" class="bg-primary mb-1">
@@ -382,7 +382,7 @@
 - **제안된 방법**:
     - 학습된 다중 보기 우선 순위를 활용하고 NeRF 스타일 표현의 장점을 결합하여 CD와 부피 IoU 모두에서 이전 작업들보다 개선됨(표 3 및 4에서 확인).
 
-## 4.6. Text to Image to 3D-
+### 4.6. Text to Image to 3D-
 
 :::{figure-md} 
 <img src="../../pics/zero123/image_20.png" alt="image_20" class="bg-primary mb-1">
@@ -391,22 +391,22 @@
 
 - 실제 환경에서 촬영된 이미지 외에도, Dall-E-2와 같은 txt2img 모델이 생성한 이미지에 대해서도 테스트
 
-# 5. Discussion
+## 5. Discussion
 
 - **Zero-1-to-3** 방식은 단일 이미지에서 새로운 시점을 생성하고 3D 재구성을 수행하는 제로샷 방식
 - 사전 학습된 Stable Diffusion 모델의 **풍부한 의미적, 기하적 prior 를** 활용하여 우수한 성능을 달성
     - 이러한 정보 추출을 위해 **Stable Diffusion 모델이** **카메라 시점 제어를 학습**하도록 미세 조정하여, 벤치마크에서 최첨단 성능을 입증
     
 
-## 5.1. Future Work
+### 5.1. Future Work
 
-### From objects to scenes
+#### From objects to scenes
 
 - 본 접근법은 평범한 배경의 단일 객체 데이터셋으로 훈련
 - RTMV 데이터셋에서 여러 객체가 있는 장면에 대한 강한 일반화를 입증했지만, GSO에서의 분포 내 샘플에 비해 품질이 여전히 저하
 - 복잡한 배경이 있는 장면으로의 일반화는 앞으로의 주요 과제
 
-# 6. Appendix
+## 6. Appendix
 
 ### C. Finetuning Stable Diffusion
 
@@ -416,11 +416,11 @@
 - 이 층의 학습률은 다른 층보다 10배 크게 조정
 - 나머지 네트워크 아키텍처는 원래 스테이블 디퓨전과 동일하게 유지
 
-### C.1 훈련 세부사항
+#### C.1 훈련 세부사항
 
 - **8×A100-80GB 머신**에서 7일 동안 모델을 미세 조정
 
-### C.2 추론 세부사항
+#### C.2 추론 세부사항
 
 - 새로운 뷰를 생성하기 위해 Zero-1-to-3는 RTX A6000 GPU에서 단 2초 소요
 - 이전 작업에서는 일반적으로 NeRF를 훈련하여 새로운 뷰를 렌더링하는 데 상당한 시간 소요

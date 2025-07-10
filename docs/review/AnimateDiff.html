@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>AnimateDiff &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -15,58 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/AnimateDiff';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Animate Anyone" href="Animate_Anyone.html" />
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -225,11 +236,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -262,10 +268,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +285,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,36 +310,26 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="MVDream.html"><strong>MVDream: Multi-view Diffusion for 3D Generation</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="CAT3D.html">CAT3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +350,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +359,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +491,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +502,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -589,7 +577,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -607,19 +595,19 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="animatediff">
-<h1>AnimateDiff<a class="headerlink" href="#animatediff" title="Permalink to this heading">#</a></h1>
+<h1>AnimateDiff<a class="headerlink" href="#animatediff" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>📌 논문의 의의<br />
 In this paper, we present <strong>AnimateDiff</strong>, a practical framework for animating personalized T2I models without requiring model-specific tuning.<br />
 <strong>AnimateDiff = public personalized T2I models + domain adapter &amp; plug-and-play Motion Module + MotionLoRA</strong></p>
 </div></blockquote>
 <section id="abstract">
-<h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>0. Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <p>T2I diffusion model과 DreamBooth나 LoRA와 같은 개인화 기술이 발전함에 따라 사람들은 적절한 비용을 지불하여 고화질의 원하는 이미지를 얻을 수 있게 되었다. 하지만, 기존 고화질 이미지 생성 모델(personalized T2I)에 움직임을 추가하거나 애니메이션을 생성하도록 하는 것은 여전히 어렵다. <strong>본 논문에서는 추가적인 훈련(model-specific tuning)없이 기존 고화질 이미지 생성모델에 움직임을 추가하는 실용적인 프레임 워크를 제안한다.</strong> <strong>본 논문에서 제안하는 프레임 워크의 핵심은 plug-and-play motion module을 활용하는 것으로 이 motion module을 한번 학습하면, 어떤 이미지 생성 모델과도 융합할 수 있다.</strong> 본 논문에서 제안하는 학습 방법을 이용하면 motion module은 real-world 비디오로 부터 효과적으로 motion prior를 학습할 수 있다. 한번 학습된 motion module은 이미지 생성 모델에 덧붙여 애니메이션 생성 모델로 사용할 수 있다. 또한 AnimateDiff를 위한 간단한 파인튜닝 방식인 MotionLoRA를 제안한다. 이는 사전 학습된 motion module이 저비용으로 새로운 움직임 패턴을 학습할 수 있게 해준다. (ex. 촬영 기법) AnimateDiff와 MotionLoRA를 공개된 이미지 생성 모델에 부착하여 실험했으며 이를 통해 본 논문의 방식이 이미지 퀄리티와 다양한 움직임을 보전하면서도 자연스러운 애니메이션 클립을 생성할 수 있음을 보였다.</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/inference_pipeline.png"><img alt="inference_pipeline" class="bg-primary mb-1" src="../../_images/inference_pipeline.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 613 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 614 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -656,7 +644,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>텍스트 프롬프트를 입력하여 이미지를 생성하는 디퓨전 모델(T2I diffusion models)의 발전으로 많은 예술가와 아마추어들이 시각 컨텐츠를 보다 쉽게 생성할 수 있게 되었다. 기존 T2I 모델의 생성능력(creativity)를 자극하기 위해 DreamBooth와 LoRA와 같은 가벼운 개인화 방식들이 제안되었다. 이러한 방식들은 작은 데이터셋과 적당한 하드웨어에서도 customized finetuning을 할 수 있게 해준다. 그로인해 사용자들이 적은 비용으로도 base T2I model을 새로운 domain에 적용하거나 시각적 퀄리티를 높일 수 있게 되었다. 그 결과 AI 아티스트와 아마추어 커뮤니티 에서 상당량의 personalized models을 Civitai나 Hugging Face와 같은 플랫폼에 개시했다. 이러한 모델들이 상당히 좋은 수준의 이미지를 생성할 수 있지만, 정적인 이미지만 생성할 수 있다는 한계가 있다. 반면, 애니메이션을 생성하는 기술이 영화나 카툰과 같은 실산업에서 더 요구된다. 본 연구에서는 고화질 T2I 모델을 파인튜닝 없이 곧바로 애니메이션 생성 모델로 변환하는 것을 목표로 한다. 파인 튜닝을 위한 데이터 수집과 컴퓨팅 자원의 필요는 아마추어 사용자에게 걸림돌이 된다.</p>
 <p><strong>본 논문에서는 AnimateDiff를 제안하는데 이는 personalized T2I model의 능력을 보전하면서 애니메이션을 생성하는 문제를 해결할 수 있는 효과적인 파이프라인이다.</strong> AnimateDiff의 핵심은 비디오 데이터셋(WebVid-10M)으로부터 타당한 motion 정보를 plug-and-play motion module이 학습하는 것이다. motion module의 학습은 세가지 단계로 구성된다.</p>
 <ol class="arabic">
@@ -673,14 +661,14 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_pipeline.png"><img alt="training_pipeline" class="bg-primary mb-1" src="../../_images/training_pipeline.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 614 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 615 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="related-work">
-<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
 <section id="text-to-image-diffusion-models">
-<h3>2.1 Text-to-image diffusion models<a class="headerlink" href="#text-to-image-diffusion-models" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Text-to-image diffusion models<a class="headerlink" href="#text-to-image-diffusion-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Diffusion models</p>
 <ul>
@@ -692,31 +680,31 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <li><p>DALL-E2 (Ramesh et al., 2022)는 CLIP을 이용하여 text-image 일관성을 향상시켰다.</p></li>
 <li><p>Imagen (Saharia et al., 2022)은 LLM과 cascade 구조를 이용하여 photorealistic한 결과물을 얻고자 했다.</p></li>
 <li><p>**Stable Diffusion (Rombach et al., 2022)**은 auto-encoder의 latent space에서 diffusion 과정을 수행함으로써 효율을 높였다. (3.1 참고)</p></li>
-<li><p>eDiff-I (<a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;q=e+diff+i&amp;ie=UTF-8&amp;oe=UTF-8">Balaji et al., 2022</a>) 디퓨전 모델들을 앙상블 학습시켜 generation(denoising) 단계별로 적절한 디퓨전 모델로 denoise를 수행하고자 했다.</p></li>
+<li><p>eDiff-I (<a class="reference external" href="https://www.google.com/search?client=safari&amp;amp;rls=en&amp;amp;q=e+diff+i&amp;amp;ie=UTF-8&amp;amp;oe=UTF-8">Balaji et al., 2022</a>) 디퓨전 모델들을 앙상블 학습시켜 generation(denoising) 단계별로 적절한 디퓨전 모델로 denoise를 수행하고자 했다.</p></li>
 </ul>
 </li>
 </ul>
 <figure class="align-default" id="id5">
-<a class="reference internal image-reference" href="pics/AnimateDiff/clip.png"><img alt="clip_pipeline" src="pics/AnimateDiff/clip.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="../../_images/clip.png"><img alt="clip_pipeline" src="../../_images/clip.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 615 </span><span class="caption-text">CLIP:Contrastive language-image pre-training</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 616 </span><span class="caption-text">CLIP:Contrastive language-image pre-training</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id6">
-<a class="reference internal image-reference" href="pics/AnimateDiff/imagen.png"><img alt="imagen_pipeline" src="pics/AnimateDiff/imagen.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="../../_images/imagen.png"><img alt="imagen_pipeline" src="../../_images/imagen.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 616 </span><span class="caption-text">Imagen</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 617 </span><span class="caption-text">Imagen</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="reference internal image-reference" href="../../_images/eDiff-I.png"><img alt="eDiff-I_pipeline" src="../../_images/eDiff-I.png" style="width: 200px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 617 </span><span class="caption-text">eDiff-I</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 618 </span><span class="caption-text">eDiff-I</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="personalizing-t2i-models">
-<h3>2.2 Personalizing T2I models<a class="headerlink" href="#personalizing-t2i-models" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Personalizing T2I models<a class="headerlink" href="#personalizing-t2i-models" title="Link to this heading">#</a></h3>
 <p>사전학습된 T2I 모델을 활용하기 위해 효율적인 개인화(personalization)방법에 대한 연구가 뜨겁다. 여기서 개인화란 reference images를 통해 (새로운) concepts나 style을 사전학습된 모델에 추가하는 것을 말한다. (손을 잘그리는 모델, 눈을 잘그리는 모델, 특정 그림체를 학습한 모델 등) 이를 위한 가장 단순한 방법은 전체 모델을 fine-tuning 시키는 것이다. 이를 통해 전체적인 퀄리티가 높아질 수도 있지만, 기존 학습데이터를 잊는 catastrophic forgetting이 발생할 수도 있다는 문제가 있다. 이러한 문제는 특히 reference image 데이터가 적을때 발생한다.</p>
 <ul class="simple">
 <li><p>DreamBooth (<a class="reference external" href="https://dreambooth.github.io">Ruiz et al., 2023</a>) 은 매우 적은 이미지를 사용하면서도 preservation loss를 추가하여 전체 모델을 fine-tuning 시켰다.</p></li>
@@ -726,7 +714,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 </ul>
 </section>
 <section id="animating-personalized-t2is">
-<h3>2.3 Animating personalized T2Is<a class="headerlink" href="#animating-personalized-t2is" title="Permalink to this heading">#</a></h3>
+<h3>2.3 Animating personalized T2Is<a class="headerlink" href="#animating-personalized-t2is" title="Link to this heading">#</a></h3>
 <p>personalized T2I를 애니메이션화 시키는 연구가 많지는 않지만 아래의 연구들과 관련있다.</p>
 <ul>
 <li><p>Text2Cinemagraph <a class="reference external" href="https://text2cinemagraph.github.io/website/">(Mahapatra et al., 2023)</a> 는 flow prediction을 통해 cinematography를 생성하고자 했다.</p></li>
@@ -744,9 +732,9 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 </section>
 </section>
 <section id="preliminary">
-<h2>3. Preliminary<a class="headerlink" href="#preliminary" title="Permalink to this heading">#</a></h2>
+<h2>3. Preliminary<a class="headerlink" href="#preliminary" title="Link to this heading">#</a></h2>
 <section id="stable-diffusion">
-<h3>3.1 Stable Diffusion<a class="headerlink" href="#stable-diffusion" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Stable Diffusion<a class="headerlink" href="#stable-diffusion" title="Link to this heading">#</a></h3>
 <p>Stable Diffusion (<a class="reference external" href="https://github.com/CompVis/stable-diffusion">Rombach et al., 2022</a>), the base T2I model used in our work</p>
 <ul>
 <li><p>open-sourced, well-developed community, many high-quality personalized T2I models for eval</p></li>
@@ -776,7 +764,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 </ul>
 </section>
 <section id="low-rank-adaptation-lora">
-<h3>3.2 Low-Rank Adaptation(LoRA)<a class="headerlink" href="#low-rank-adaptation-lora" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Low-Rank Adaptation(LoRA)<a class="headerlink" href="#low-rank-adaptation-lora" title="Link to this heading">#</a></h3>
 <p>Low-Rank Adaptation(LoRA) (<a class="reference external" href="https://arxiv.org/pdf/2106.09685.pdf">Hu et al., 2021</a>), which helps understand the domain adapter (Sec. 4.1) and MotionLoRA (Sec. 4.3) in AnimateDiff</p>
 <ul>
 <li><p>language model에서 처음 등장한 개념으로 거대 모델의 fine-tuning을 빠르게 수행하기 위해 제안된 개념이다.</p></li>
@@ -796,7 +784,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 </section>
 </section>
 <section id="id1">
-<h2>4. AnimateDiff<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>4. AnimateDiff<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <blockquote>
 <div><p>➕ <strong>Architecture Overall</strong><br />
 본 논문에서 제안하는 모델의 핵심은 비디오 데이터를 통해 transferable model prior를 학습하는 것이다. 이렇게 학습한 motion module을 personalized T2I 모델에 곧바로 적용할 수 있다. <br />
@@ -814,7 +802,7 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/inference_pipeline.png"><img alt="inference_pipeline" class="bg-primary mb-1" src="../../_images/inference_pipeline.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 618 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 619 </span><span class="caption-text">inference pipeline</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -829,18 +817,18 @@ In this paper, we present <strong>AnimateDiff</strong>, a practical framework fo
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_pipeline.png"><img alt="training_pipeline" class="bg-primary mb-1" src="../../_images/training_pipeline.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 619 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 620 </span><span class="caption-text">training pipeline</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="alleviate-negative-effects-from-training-data-with-domain-adapter">
-<h3>4.1 Alleviate Negative Effects from Training Data with Domain Adapter<a class="headerlink" href="#alleviate-negative-effects-from-training-data-with-domain-adapter" title="Permalink to this heading">#</a></h3>
+<h3>4.1 Alleviate Negative Effects from Training Data with Domain Adapter<a class="headerlink" href="#alleviate-negative-effects-from-training-data-with-domain-adapter" title="Link to this heading">#</a></h3>
 <p>비디오 데이터셋은 이미지 데이터셋에 비해 수집하기 어렵다. 동영상 데이터셋 WebVid (Bain et al., 2021)과 이미지 데이터셋 LAION-Aestetic (Schuhmann et al., 2022)를 비교해보면, 품질차이도 큼을 알 수 있다.</p>
 <p>각 비디오 프레임을 개별 이미지로 다루게 되면 motion blur, compression artifacts, watermark등을 포함하고 있을 수도 있다. 따라서 T2I 모델을 훈련할 때 사용한 이미지 데이터셋에 비해 motion prior를 학습하기 위해 사용한 동영상 데이터 셋의 품질은 무시할 수 없을 만큼의 차이가 있다. 이 때문에 직접적으로 비디오 데이터셋을 이용하여 애니메이션 생성 모델을 학습할 경우, 생성한 애니메이션의 품질이 제한 될 수 있다.</p>
 <p>동영상 데이터의 낮은 품질로 인해 해당 특성을 motion module이 학습하는 것을 피하고 base T2I의 지식을 보전하기 위해, 네트워크를 분리하여 각 도메인(영상/이미지)의 정보에 맞게 피팅하는 방식(domain adapter)을 제안한다. inference 시에는 domain adapter를 제거하였으며 앞서 언급한 domain gap에 의한 부정적 영향을 제거하는데 효과적이라는 것을 보여준다. domain adapter layer는 LoRA를 활용했으며, self-, cross-attention layer들을 base T2I model에 Fig. 3과 같이 추가하였다. 아래 query projection을 예로 살펴보면,</p>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/lora.png"><img alt="lora" class="bg-primary mb-1" src="../../_images/lora.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 620 </span><span class="caption-text">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 621 </span><span class="caption-text">LORA: LOW-RANK ADAPTATION OF LARGE LANGUAGE MODELS</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="math notranslate nohighlight">
@@ -850,7 +838,7 @@ Q=\mathcal W^Qz+\text{AdapterLayer}(z)=\mathcal W^Qz+\alpha \cdot AB^Tz \tag{4}
 <p><span class="math notranslate nohighlight">\(Q\)</span> 는 query, <span class="math notranslate nohighlight">\(z\)</span> 는 internal feature, <span class="math notranslate nohighlight">\(\alpha\)</span> 는 상수로 inference time에 domain adapter의 영향력을 조절한다. (기본값은 1 / domain adapter의 효과를 완전히 제거하고 싶다면 <span class="math notranslate nohighlight">\(\alpha\)</span>를 0으로) 나머지 모델의 파라미터는 freeze하고 domain adapter의 파라미터들만 비디오 데이터셋으로 부터 랜덤하게 샘플한 static frame들을 이용하여 최적화했다. 이때 objective function은 Eq. (2)를 사용했다. (아직까지는 이미지 생성 모델)</p>
 </section>
 <section id="learn-motion-priors-with-motion-module">
-<h3>4.2 Learn Motion Priors with Motion Module<a class="headerlink" href="#learn-motion-priors-with-motion-module" title="Permalink to this heading">#</a></h3>
+<h3>4.2 Learn Motion Priors with Motion Module<a class="headerlink" href="#learn-motion-priors-with-motion-module" title="Link to this heading">#</a></h3>
 <p>motion dynamics를 사전학습된 T2I 모델과 공유하는 dimension상의 시간축으로 모델링 하기 위해 2가지 단계가 필요하다.</p>
 <ol class="arabic simple">
 <li><p>2d diffusion model을 3d 비디오 데이터에 맞게 확장시켜야 한다. (<strong>Network Inflation</strong>)</p></li>
@@ -870,16 +858,16 @@ z_{\text{out}}=\text{Attention}(Q,K,V)=\text{Softmax}(QK^T/\sqrt{c})\cdot V \tag
 <p>추가적인 모듈을 넣음으로 인해 발생할수 있는 문제들을 피하기 위해 temporal Transformer의 레이어의 파라미터는 0으로 초기화 하였으며 residual connection을 추가하여 훈련 시작시에 motion module이 identity mapping으로 동작하도록 했다.</p>
 </section>
 <section id="adapt-to-new-motion-patterns-with-motionlora">
-<h3>4.3 Adapt to New Motion Patterns with MotionLoRA<a class="headerlink" href="#adapt-to-new-motion-patterns-with-motionlora" title="Permalink to this heading">#</a></h3>
+<h3>4.3 Adapt to New Motion Patterns with MotionLoRA<a class="headerlink" href="#adapt-to-new-motion-patterns-with-motionlora" title="Link to this heading">#</a></h3>
 <p>전반적인 motion 지식을 motion module이 사전학습하더라도 새로운 동작 패턴에 대한 적용에 대한 문제는 발생한다.
 ex. zooming, panning, rolling.</p>
 <p>높은 사전학습을 위한 비용을 감당할 수 없어 motion module을 특정 액션에 맞춰 튜닝하고자 하는 사용자를 위해 적은 참고 비디오(reference video)나 적은 훈련 횟수로도 효율적으로 모델을 적용할 수 있도록 하는 것이 중요하다. 이를 위해 AnimateDiff에 MotionLoRA를 마지막으로 적용했다. Motion Module의 구조와 제한된 참고 비디오를 고려하여, self-attn layers에 LoRA layers를 inflated model에 추가하여 motion personalization을 위한 효율적인 파인튜닝 방법을 제안한다.</p>
 <p>몇 종의 촬영 방식으로 실험을 진행하였으며 rule-based augmentation을 통해 reference videos를 얻었다. 예를 들어 zooming 비디오를 얻기 위해 시간에 따라 비디오 프레임을 점차 줄이거나(zoom-in) 늘려가며(zoom-out) augmentation을 진행했다. AnimateDiff의 MotionLoRA는 20~50개 정도의 적은 참고 비디오, 2000번의 훈련횟수로 파인튜닝했을때도 괜찮은 결과를 보였다. low-rank property로 인해 MotionLoRA 또한 composition capability를 가지고 있다. 학습된 MotionLoRA 모델 각각이 inference time상의 motion effect를 융합하기위해 협력(combine)할 수 있음을 말한다.</p>
 </section>
 <section id="animatediff-in-practice">
-<h3>4.4 AnimateDiff in Practice<a class="headerlink" href="#animatediff-in-practice" title="Permalink to this heading">#</a></h3>
+<h3>4.4 AnimateDiff in Practice<a class="headerlink" href="#animatediff-in-practice" title="Link to this heading">#</a></h3>
 <section id="training">
-<h4>Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h4>
+<h4>Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h4>
 <p>Fig. 3을 보면 AnimateDiff에는 학습 가능한 모듈이 3개 있다. 각 모듈의 objective는 약간씩 다르다. domain adapter는 SD의 MSE loss인 Eq. 2 objective function을 통해 학습한다. 애니메이션을 만드는 역할을 하는 motion module과 motion LoRA의 경우 video data에 대한 차원을 더 많이 수용하기 위해 약간 수정된 objective를 사용한다. video data batch ( <span class="math notranslate nohighlight">\(x_0^{1:f}\in \Bbb R^{b\times c \times f \times h \times w}\)</span>)는 사전학습된 SD의 auto-encoder를 사용해 각 프레임 별로 latent code <span class="math notranslate nohighlight">\(z_0^{1:f}\)</span>로 인코딩된다. 이 latent code는 Eq. 1 과 같이 정의된 diffusion schedule에 따라 노이즈가 추가(forward process)된다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -893,30 +881,30 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 <p>각 모듈들(domain adapter, motion module, MotionLoRA)을 학습할때, 학습 타겟을 제외한 영역은 freeze 시킨뒤 학습했다.</p>
 </section>
 <section id="inference">
-<h4>Inference<a class="headerlink" href="#inference" title="Permalink to this heading">#</a></h4>
+<h4>Inference<a class="headerlink" href="#inference" title="Link to this heading">#</a></h4>
 <p>inference시에는 personalized T2I model는 앞서 설명한대로 inflate되며 motion module과 (optional) MotionLoRA를 더해 애니메이션을 생성한다.</p>
 <p>domain adapter의 경우 inference시 그냥 배제하지 않고 personalized T2I model에 injection하였으며 domain adapter의 영향력은 Eq. 4의 <span class="math notranslate nohighlight">\(\alpha\)</span>를 이용해 조절했다. Sec 5.3의 Ablation study에서 <span class="math notranslate nohighlight">\(\alpha\)</span>의 값에 따른 결과의 차이를 확인할 수 있다. 마지막으로 animation frames은 reverse diffusion process와 이를 통해 얻은 latent codes를 디코딩 함으로써 얻을수 있다.</p>
 </section>
 </section>
 </section>
 <section id="experiments">
-<h2>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>SD 1.5에 AnimateDiff를 적용하여 실험을 진행했다. 또한 motion module을 학습할때는 WebVid 10M 데이터셋을 사용하였다. (자세한 사항은 supplementary material 확인해주세요)</p>
 <section id="qualitative-results">
-<h3>5.1 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Qualitative Results<a class="headerlink" href="#qualitative-results" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-1.png"><img alt="experiments_1" class="bg-primary mb-1" src="../../_images/exp-1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 621 </span><span class="caption-text">qualitative results</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 622 </span><span class="caption-text">qualitative results</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="quantitative-comparison">
-<h3>5.2 Quantitative Comparison<a class="headerlink" href="#quantitative-comparison" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Quantitative Comparison<a class="headerlink" href="#quantitative-comparison" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-2.png"><img alt="experiments_2" class="bg-primary mb-1" src="../../_images/exp-2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 622 </span><span class="caption-text">quantitative results</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 623 </span><span class="caption-text">quantitative results</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -947,29 +935,29 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 </ul>
 </section>
 <section id="ablation-study">
-<h3>5.3 Ablation Study<a class="headerlink" href="#ablation-study" title="Permalink to this heading">#</a></h3>
+<h3>5.3 Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h3>
 <section id="domain-adapter">
-<h4>Domain Adapter<a class="headerlink" href="#domain-adapter" title="Permalink to this heading">#</a></h4>
+<h4>Domain Adapter<a class="headerlink" href="#domain-adapter" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-3.png"><img alt="effect_of_domain_adapter" class="bg-primary mb-1" src="../../_images/exp-3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 623 </span><span class="caption-text">scaler를 0으로 하면 domain adapter에 의한 효과를 제거한 것과 같다. 위의 그림은 모델이 생성한 animation clip의 첫번째 프레임이다.</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 624 </span><span class="caption-text">scaler를 0으로 하면 domain adapter에 의한 효과를 제거한 것과 같다. 위의 그림은 모델이 생성한 animation clip의 첫번째 프레임이다.</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>domain adapter에 의한 효과를 제거했을때 전체적인 이미지 퀄리티가 높아 보이는데, 이는 domain adapter가 video dataset의 특성이라고 할 수 있는 watermark나 모션 블러 등을 학습했기 때문이다. 즉, domain adapter가 전체 학습과정에 도움이 되었음을 보여준다.</p>
 </section>
 <section id="motion-module-design">
-<h4>Motion module design<a class="headerlink" href="#motion-module-design" title="Permalink to this heading">#</a></h4>
+<h4>Motion module design<a class="headerlink" href="#motion-module-design" title="Link to this heading">#</a></h4>
 <p>AnimateDiff의 temporal Transformer구조와 전체 convolution인 구조의 모델과 비교했다. 두 방식 모두 비디오 생성 분야에서 자주 사용된다.</p>
 <p>temporal Transformer의 temporal attention부분을 1D temporal convolution으로 교체하여 두 모델의 파라미터가 유사하게 놓여있음을 확인했다. convolution motion module은 모든 프레임을 동일하게 놓았지만 Transformer 구조와 비교하여 움직임을 제대로 반영하지 못했다.</p>
 </section>
 <section id="efficiency-of-motionlora">
-<h4>Efficiency of MotionLoRA<a class="headerlink" href="#efficiency-of-motionlora" title="Permalink to this heading">#</a></h4>
+<h4>Efficiency of MotionLoRA<a class="headerlink" href="#efficiency-of-motionlora" title="Link to this heading">#</a></h4>
 <p>parameter efficiency와 data efficiency 측면에서 MotionLoRA의 효율성을 시험해보았다. 이를 위해 parameter 개수와 data 개수를 조절해가며 여러 MotionLoRA를 학습시켰다.</p>
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-4.png"><img alt="experiments-4" class="bg-primary mb-1" src="../../_images/exp-4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 624 </span><span class="caption-text">Efficiency of MotionLoRA</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 625 </span><span class="caption-text">Efficiency of MotionLoRA</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -989,11 +977,11 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 </section>
 </section>
 <section id="controllable-generation">
-<h3>5.4 Controllable Generation<a class="headerlink" href="#controllable-generation" title="Permalink to this heading">#</a></h3>
+<h3>5.4 Controllable Generation<a class="headerlink" href="#controllable-generation" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/exp-5.png"><img alt="experiments_5" class="bg-primary mb-1" src="../../_images/exp-5.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 625 </span><span class="caption-text">Controllability of AnimateDiff</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 626 </span><span class="caption-text">Controllability of AnimateDiff</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>visual content와 motion prior의 개별 학습을 통해 AnimateDiff가 existing content를 조절할 수 있도록 했다. 이 특성을 확인하기 위해 AnimateDiff를 ControlNet과 결합하여 영상 생성시 depth를 통해 조절할 수 있도록 했다.</p>
@@ -1001,34 +989,34 @@ z_t^{1:f}=\sqrt{\bar \alpha_t}z_0^{1:f}+\sqrt{1-\bar\alpha_t}\epsilon^{1:f} \tag
 </section>
 </section>
 <section id="conclusion">
-<h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>6. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>본 논문에서는 애니메이션 생성을 위한 practical pipeline인 AnimateDiff를 제안한다. AnimateDiff를 통해 personalized text-to-image model을 바로 애니메이션 생성에 사용할 수 있다. 이를 위해 본 논문에서는 세가지 module을 디자인하였으며 이를 통해 AnimateDiff는 motion prior를 학습하고, visual quality를 유지할 수 있으며, MotionLoRA를 통해 가벼운 finetuning을 통해 원하는 motion으로 애니메이션을 생성할 수 있다.</p>
 <p>motion module은 한번 학습되면 다른 이미지를 animate시키고자 할때 사용할 수 있다. 다양한 실험 결과를 통해 AnimateDiff와 MotionLoRA의 효율성과 생성능력을 검증했다. 또 content-controllability측면에서도 추가적인 학습없이 본 논문의 방식을 사용할 수 있음을 보였다.</p>
 <p>AnimateDiff는 취향의 그림체, 캐릭터의 움직임, 카메라 워크에 맞게 이미지를 애니메이션화 시킬 수있는 효율적인 베이스 라인으로써 다양한 방면의 application에 큰 잠재력을 가지고 있다.</p>
 </section>
 <section id="id2">
-<h2>7. 실습<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<h2>7. 실습<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>아래 이미지들을 클릭하면 gif를 보실 수 있습니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/0-side-view-photo-of-17-year-old-girl-in-a-japanese-school_edit.gif"><img alt="hands_on_1" class="bg-primary mb-1" src="../../_images/0-side-view-photo-of-17-year-old-girl-in-a-japanese-school_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 626 </span><span class="caption-text">side-view-photo-of-17-year-old-girl-in-a-japanese-school<br />
-gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 627 </span><span class="caption-text">side-view-photo-of-17-year-old-girl-in-a-japanese-school<br />
+gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id17">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/0-side-view-photo-of-man-in-black-padded-jumper,-hallway,_edit.gif"><img alt="hands_on_2" class="bg-primary mb-1" src="../../_images/0-side-view-photo-of-man-in-black-padded-jumper,-hallway,_edit.gif" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/0-side-view-photo-of-man-in-black-padded-jumper,-hallway,_edit.gif"><img alt="hands_on_2" class="bg-primary mb-1" src="../../_images/0-side-view-photo-of-man-in-black-padded-jumper%2C-hallway%2C_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 627 </span><span class="caption-text">side-view-photo-of-man-in-black-padded-jumper<br />
+<p><span class="caption-number">Fig. 628 </span><span class="caption-text">side-view-photo-of-man-in-black-padded-jumper<br />
 직접 촬영한 사진을 input으로 사용함<br />
-입력한 사진의 인물의 인종이 유지되지 않았는데 학습데이터 셋의 불균형 때문으로 사료됨</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+입력한 사진의 인물의 인종이 유지되지 않았는데 학습데이터 셋의 불균형 때문으로 사료됨</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id18">
-<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes,_edit.gif"><img alt="hands_on_3" class="bg-primary mb-1" src="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes,_edit.gif" style="width: 400px;" /></a>
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes,_edit.gif"><img alt="hands_on_3" class="bg-primary mb-1" src="../../_images/6-image-of-a-man-with-blonde-hair-and-blue-eyes%2C_edit.gif" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 628 </span><span class="caption-text">image-of-a-man-with-blonde-hair-and-blue-eyes<br />
-gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 629 </span><span class="caption-text">image-of-a-man-with-blonde-hair-and-blue-eyes<br />
+gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <blockquote>
@@ -1071,7 +1059,7 @@ gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" hre
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1100,6 +1088,7 @@ gpt로 생성한 그림을 input으로 사용함</span><a class="headerlink" hre
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1169,7 +1158,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1193,8 +1182,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

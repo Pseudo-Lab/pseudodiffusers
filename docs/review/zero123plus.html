@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Zero123++ &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -15,62 +14,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/zero123plus';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation" href="ProlificDreamer.html" />
-    <link rel="prev" title="zero 123" href="zero123.html" />
+    <link rel="next" title="ProlificDreamer" href="ProlificDreamer.html" />
+    <link rel="prev" title="Zero 1-to-3" href="zero123.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -566,7 +557,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -583,13 +574,13 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="zero123">
-<h1>Zero123++<a class="headerlink" href="#zero123" title="Permalink to this heading">#</a></h1>
+<h1>Zero123++<a class="headerlink" href="#zero123" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_01.png"><img alt="zero123plus_01" class="bg-primary mb-1" src="../../_images/zero123plus_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 741 </span><span class="caption-text">High-quality, consistent multi-view 3D images from Zero123++</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 742 </span><span class="caption-text">High-quality, consistent multi-view 3D images from Zero123++</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Zero-1-to-3(Zero123) 논문이 zero-shot 형태로 single-image-to-3D conversion 을 하는 기법을 처음으로 소개하였습니다. 하지만 해당 방식으로는 주어진 view 에 대해서 독립적으로 객체를 생성하게 됨으로써 multi-view consistency 에서 부족한 부분을 보여주게 된다고 설명합니다. Zero123++ 논문에서 이를 해결하기 위해 여섯개의 view 로부터 하나의 이미지를 생성하여 multi-view 에 대한 joint distirbution 을 학습할 수 있도록 설정합니다.</p>
@@ -598,9 +589,9 @@ document.write(`
 <p>b) 두번째로 Zero-1-to-3 논문에서 512x512 이미지 해상도로 학습 시 불안정하게 수렴하게 되어 256x256 해상도로 줄인 부분에 대해 논문 저자는 원인을 분석하며 새로운 scheduling 기법을 소개합니다.</p>
 </section>
 <section id="improving-consistency-and-conditioning">
-<h2>2. Improving Consistency and Conditioning<a class="headerlink" href="#improving-consistency-and-conditioning" title="Permalink to this heading">#</a></h2>
+<h2>2. Improving Consistency and Conditioning<a class="headerlink" href="#improving-consistency-and-conditioning" title="Link to this heading">#</a></h2>
 <section id="multi-view-generation">
-<h3>2.1. Multi-view Generation<a class="headerlink" href="#multi-view-generation" title="Permalink to this heading">#</a></h3>
+<h3>2.1. Multi-view Generation<a class="headerlink" href="#multi-view-generation" title="Link to this heading">#</a></h3>
 <p>Zero-1-to-3 모델은 단일 이미지를 독립적으로 생성하며 multi-view 이미지에 대한 상관관계를 학습 혹은 생성 시에 고려하지 않습니다. 따라서, Zero123++에서는 3×2 layout 의 6개 이미지를 단일 프레임으로 tiling 하여 multiple image 에 대한 joint distribution 을 학습하게 됩니다.</p>
 <p>Objaverse 데이터셋은 기본적으로 gravity axis 은 동일하지만 객체들이 일관된 canonical pose 를 가지고 있지 않습니다. 따라서 절대적인 camera pose 를 기반으로 해당 데이터셋을 학습하게 되면 객체의 orientation 을 학습하는데 어려움이 있다고 주장합니다.</p>
 <p>반면에 Zero-1-to-3 는 input view 에 대한 상대적인 camera pose(elevation/azimuth angle) 을 입력받아 학습하였습니다. 그러나 해당 방식을 활용한다면 novel view 에 대한 relative pose 를 구하기 위해서는 input view 에 대한 elevation angle 을 사전에 알아야 한다는 단점이 있습니다. 후속적으로 One-2-3-45 그리고 DreamGaussian 논문에서 elevation angle 을 추가적으로 예측하는 모듈을 정의하고, 이에 따라 오차율도 증가하게 됩니다.</p>
@@ -609,7 +600,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_02.png"><img alt="zero123plus_02" class="bg-primary mb-1" src="../../_images/zero123plus_02.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 742 </span><span class="caption-text">Elevation/Azimuth angle</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 743 </span><span class="caption-text">Elevation/Azimuth angle</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -618,74 +609,74 @@ document.write(`
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_03.png"><img alt="zero123plus_03" class="bg-primary mb-1" src="../../_images/zero123plus_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 743 </span><span class="caption-text">3x2 layout of Zero123++ prediction</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 744 </span><span class="caption-text">3x2 layout of Zero123++ prediction</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="consistency-and-stability-noise-schedule">
-<h3>2.2. Consistency and Stability: Noise Schedule<a class="headerlink" href="#consistency-and-stability-noise-schedule" title="Permalink to this heading">#</a></h3>
+<h3>2.2. Consistency and Stability: Noise Schedule<a class="headerlink" href="#consistency-and-stability-noise-schedule" title="Link to this heading">#</a></h3>
 <p>Stable Diffusion 모델에서 사용되었던 scaled-linear schedule 은 local detail 을 학습하는데 초점을 두고 Signal-to-Noise Ratio (SNR) 가 낮은 timestep 이 극히 드뭅니다. SNR 이 낮은 구간에서 global low frequency 정보들을 학습하게 되며 해당 단계에서 step 수가 적으면 구조적인 변형이 클 수가 있습니다. 따라서, 이러한 scheduling 은 단일 이미지를 생성하는데는 유용하지만 multi-view consistent 한 이미지를 생성하는데 한계가 있다고 주장합니다.</p>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_04.png"><img alt="zero123plus_04" class="bg-primary mb-1" src="../../_images/zero123plus_04.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 744 </span><span class="caption-text">Linear vs Scaled linear schedule</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 745 </span><span class="caption-text">Linear vs Scaled linear schedule</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>또한, 동일한 noise 가 주입되었을때 고해상도 이미지가 저해상도 이미지에 비해 noise level 이 적기 때문에, Zero-1-to-3 모델에서 고해상도 이미지를 학습하였을 때 불안정한 모습을 보여주었던 것도 동일한 원인 때문이라고 설명합니다.</p>
 <p>Zero123++ 에서는 scaled-linear schedule 대신에 linear schedule 를 사용하게 되고, 변화된 schedule 에 따라 <span class="math notranslate nohighlight">\(x\)</span>-prediction, <span class="math notranslate nohighlight">\(\epsilon\)</span>-prediction 모델보다 <span class="math notranslate nohighlight">\(v\)</span>-prediction 모델이 더 안정적으로 학습되었다고 합니다. 따라서, Stable Diffusion 2 <span class="math notranslate nohighlight">\(v\)</span>-prediction 모델로 fine-tuning 을 진행하였다고 합니다.</p>
 </section>
 <section id="local-condition-scaled-reference-attention">
-<h3>2.3. Local Condition: Scaled Reference Attention<a class="headerlink" href="#local-condition-scaled-reference-attention" title="Permalink to this heading">#</a></h3>
+<h3>2.3. Local Condition: Scaled Reference Attention<a class="headerlink" href="#local-condition-scaled-reference-attention" title="Link to this heading">#</a></h3>
 <p>기존에 Zero-1-to-3 논문에서 noisy input 과 conditioned image(single-view input) 가 feature-wise concatenate 하는데 해당 방식으로는 pixel-wise spatial correspondence 가 정확하지 않다고 합니다.</p>
 <p>Zero123++ 에서는 이 부분을 보완하여 Reference Attention 이라는 기법을 소개합니다. Reference Attention 이란, 아래 그림과 같이 noisy latent 와 conditioned latent 간에 self-attention 모듈에서의 key, value 값을 추가하여 연산 작업을 진행합니다. 이때, noisy input 에 주입된 noise 를 동일하게 conditioned image 에 적용하였다고 합니다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_05.png"><img alt="zero123plus_05" class="bg-primary mb-1" src="../../_images/zero123plus_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 745 </span><span class="caption-text">Reference Attention</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 746 </span><span class="caption-text">Reference Attention</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Reference Attention 기법을 적용한 결과, fine-tuning 작업을 진행하지 않아도 reference image 에서의 semantic content 와 texture 가 잘 반영되었습니다. 또한, fine-tuning 을 하였을때 reference latent 을 5x scaling 하였을때 reference image 와의 일관성을 가장 잘 보여주었다고 합니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_06.png"><img alt="zero123plus_06" class="bg-primary mb-1" src="../../_images/zero123plus_06.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 746 </span><span class="caption-text">Comparison on local conditioning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 747 </span><span class="caption-text">Comparison on local conditioning</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="global-condition-flexdiffuse">
-<h3>2.4. Global Condition: FlexDiffuse<a class="headerlink" href="#global-condition-flexdiffuse" title="Permalink to this heading">#</a></h3>
+<h3>2.4. Global Condition: FlexDiffuse<a class="headerlink" href="#global-condition-flexdiffuse" title="Link to this heading">#</a></h3>
 <p>Zero123++ 논문에서 추가적으로 FlexDiffuse 에서 소개한 linear guidance mechanism 을 활용하여 fine-tuning 범위를 최소화하는 선에서 global image conditioning 하였습니다.</p>
 <p>더 자세하게는, <span class="math notranslate nohighlight">\(L \times D\)</span> 차원의 prompt embedding <span class="math notranslate nohighlight">\(T\)</span> 와 <span class="math notranslate nohighlight">\(D\)</span> 차원의 CLIP global image embedding <span class="math notranslate nohighlight">\(I\)</span> 에 global weight <span class="math notranslate nohighlight">\(w_i\)</span> 를 곱한 값을 더하여 모델에 입력합니다. 이때, <span class="math notranslate nohighlight">\(L\)</span> 은 token length 이고 <span class="math notranslate nohighlight">\(D\)</span> 는 token embedding 의 차원 크기입니다. 이때, <span class="math notranslate nohighlight">\(w_i = \frac{i}{L}\)</span> 로 초기 가중치 값을 설정하였습니다. Text condition 이 없을 경우에는 empty prompt 를 encoding 하여 <span class="math notranslate nohighlight">\(T\)</span> 를 얻게 됩니다.</p>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_07.png"><img alt="zero123plus_07" class="bg-primary mb-1" src="../../_images/zero123plus_07.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 747 </span><span class="caption-text">FlexDiffuse’s linear guidance</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 748 </span><span class="caption-text">FlexDiffuse’s linear guidance</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위와 같은 global conditioning 을 하였을때, 보이지 않은 unseen region 에서도 semantic 한 정보들을 유지한채 이미지를 잘 생성하는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_08.png"><img alt="zero123plus_08" class="bg-primary mb-1" src="../../_images/zero123plus_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 748 </span><span class="caption-text">Ablation on global conditioning</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 749 </span><span class="caption-text">Ablation on global conditioning</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="putting-everything-together">
-<h3>2.5. Putting Everything Together<a class="headerlink" href="#putting-everything-together" title="Permalink to this heading">#</a></h3>
+<h3>2.5. Putting Everything Together<a class="headerlink" href="#putting-everything-together" title="Link to this heading">#</a></h3>
 <p>정리하자면 해당 논문은 Stable Diffusion 2 <span class="math notranslate nohighlight">\(v\)</span>-model 을 사용하였고, Objaverse 데이터를 random HDRI environment lighting 를 적용하여 렌더링한 데이터에 학습하였습니다. 그리고 Stable Diffusion Image Variations model 의 학습 방식을 도입하여 two-stage 로 학습을 진행하였습니다.</p>
 <p>첫번째 phase 에서는 self-attention layer 와 cross-attention layer 의 KV 행렬만 fine-tuning 을 하였고, AdamW optimizer 와 cosine annealing schedule 을 사용하였습니다. 두번째 phase 에서는 UNet 모델 전체를 학습하고 <span class="math notranslate nohighlight">\(5 \times 10^{-6}\)</span> 값의 constant learning rate 를 사용하였습니다. 그리고 학습 과정을 더 효율적으로 하기 위해 Min-SNR weighting 기법도 활용하였습니다.</p>
 </section>
 </section>
 <section id="comparison-to-the-state-of-the-art">
-<h2>3. Comparison to the State of the Art<a class="headerlink" href="#comparison-to-the-state-of-the-art" title="Permalink to this heading">#</a></h2>
+<h2>3. Comparison to the State of the Art<a class="headerlink" href="#comparison-to-the-state-of-the-art" title="Link to this heading">#</a></h2>
 <section id="image-to-multi-view">
-<h3>3.1. Image to Multi-view<a class="headerlink" href="#image-to-multi-view" title="Permalink to this heading">#</a></h3>
+<h3>3.1. Image to Multi-view<a class="headerlink" href="#image-to-multi-view" title="Link to this heading">#</a></h3>
 <p><strong>Qualitative Comparison</strong></p>
 <p>논문에서 Zero-1-to-3 XL 그리고 SyncDreamer 모델과의 성능을 비교합니다. Zero123++ 모델이 unseen view 에 대해서 가장 월등하게 이미지를 생성하는 것을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_09.png"><img alt="zero123plus_09" class="bg-primary mb-1" src="../../_images/zero123plus_09.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 749 </span><span class="caption-text">Qualitative comparison on image to multi-view task</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 750 </span><span class="caption-text">Qualitative comparison on image to multi-view task</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Quantitative Comparison</strong></p>
@@ -693,28 +684,28 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_10.png"><img alt="zero123plus_10" class="bg-primary mb-1" src="../../_images/zero123plus_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 750 </span><span class="caption-text">Quantitative Comparison on image to multi-view task</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 751 </span><span class="caption-text">Quantitative Comparison on image to multi-view task</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="text-to-multi-view">
-<h3>3.2. Text to Multi-view<a class="headerlink" href="#text-to-multi-view" title="Permalink to this heading">#</a></h3>
+<h3>3.2. Text to Multi-view<a class="headerlink" href="#text-to-multi-view" title="Link to this heading">#</a></h3>
 <p>Text 를 입력받아 우선적으로 SDXL 모델을 통해 단일 이미지를 생성한 후, Zero123++ 모델을 적용한 결과입니다. MVDream 과 Zero-1-to-3 XL 모델과 비교하였을 때, Zero123++ 모델이 가장 realistic 하고 multi-view consistent 한 이미지를 생성하는 부분을 확인할 수 있습니다.</p>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_11.png"><img alt="zero123plus_11" class="bg-primary mb-1" src="../../_images/zero123plus_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 751 </span><span class="caption-text">Qualitative comparison on text to multi-view task</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 752 </span><span class="caption-text">Qualitative comparison on text to multi-view task</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="depth-controlnet-for-zero123">
-<h2>4. Depth ControlNet for Zero123++<a class="headerlink" href="#depth-controlnet-for-zero123" title="Permalink to this heading">#</a></h2>
+<h2>4. Depth ControlNet for Zero123++<a class="headerlink" href="#depth-controlnet-for-zero123" title="Link to this heading">#</a></h2>
 <p>아래 사진은 추가적으로 렌더링한 depth map 를 기반으로 ControlNet 을 학습한 결과입니다.</p>
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/zero123plus_12.png"><img alt="zero123plus_12" class="bg-primary mb-1" src="../../_images/zero123plus_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 752 </span><span class="caption-text">Depth-controlled Zero123++</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 753 </span><span class="caption-text">Depth-controlled Zero123++</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -747,7 +738,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -756,7 +747,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">zero 123</p>
+        <p class="prev-next-title">Zero 1-to-3</p>
       </div>
     </a>
     <a class="right-next"
@@ -764,7 +755,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</p>
+        <p class="prev-next-title">ProlificDreamer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -776,6 +767,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -822,7 +814,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -846,8 +838,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

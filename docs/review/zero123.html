@@ -1,72 +1,67 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>zero 123 &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>Zero 1-to-3 &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/zero123';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Zero123++" href="zero123plus.html" />
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -532,7 +523,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>zero 123</h1>
+    <h1>Zero 1-to-3</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -542,42 +533,42 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">zero 123</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-zero-shot-one-image-to-3d-object">Abstract : Zero-shot One Image to 3D Object</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">3. Methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-to-control-camera-viewpoint">3.1. Learning to Control Camera Viewpoint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-conditioned-diffusion">3.2. View-Conditioned Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction">3.3 3D Reconstruction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3.4. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-zero-shot-one-image-to-3d-object">Abstract : Zero-shot One Image to 3D Object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">3. Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-to-control-camera-viewpoint">3.1. Learning to Control Camera Viewpoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-conditioned-diffusion">3.2. View-Conditioned Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction">3.3 3D Reconstruction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3.4. Dataset</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">4.1. Tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baselines">4.2. Baselines</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-metrics">4.3. Benchmarks and Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#novel-view-synthesis-results">4.4. Novel View Synthesis Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction-results">4.5. 3D Reconstruction Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-to-3d">4.6. Text to Image to 3D-</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">4.1. Tasks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baselines">4.2. Baselines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-metrics">4.3. Benchmarks and Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#novel-view-synthesis-results">4.4. Novel View Synthesis Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction-results">4.5. 3D Reconstruction Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-to-3d">4.6. Text to Image to 3D-</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">5.1. Future Work</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-objects-to-scenes">From objects to scenes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-finetuning-stable-diffusion">C. Finetuning Stable Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-1">C.1 훈련 세부사항</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-2">C.2 추론 세부사항</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-reconstruction">D. 3D Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">5.1. Future Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-objects-to-scenes">From objects to scenes</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-finetuning-stable-diffusion">C. Finetuning Stable Diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-1">C.1 훈련 세부사항</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-2">C.2 추론 세부사항</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-reconstruction">D. 3D Reconstruction</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -586,14 +577,12 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="zero-123">
-<h1>zero 123<a class="headerlink" href="#zero-123" title="Permalink to this heading">#</a></h1>
-<div class="admonition-information admonition">
+  <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
 <ul class="simple">
-<li><p><strong>Title:</strong> zero 1-to-3 : Zero-shot One Image to 3D Object</p></li>
+<li><p><strong>Title:</strong> Zero-1-to-3: Zero-shot One Image to 3D Object</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
 <li><p>Paper: <a class="reference external" href="https://arxiv.org/abs/2303.11328"><a class="reference external" href="https://arxiv.org/abs/2303.11328">https://arxiv.org/abs/2303.11328</a></a></p></li>
@@ -604,9 +593,10 @@ document.write(`
 <li><p><strong>Last updated on Jan. 10, 2025</strong></p></li>
 </ul>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="abstract-zero-shot-one-image-to-3d-object">
-<h1>Abstract : Zero-shot One Image to 3D Object<a class="headerlink" href="#abstract-zero-shot-one-image-to-3d-object" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="zero-1-to-3">
+<h1>Zero 1-to-3<a class="headerlink" href="#zero-1-to-3" title="Link to this heading">#</a></h1>
+<section id="abstract-zero-shot-one-image-to-3d-object">
+<h2>Abstract : Zero-shot One Image to 3D Object<a class="headerlink" href="#abstract-zero-shot-one-image-to-3d-object" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ol class="arabic simple">
 <li><p><strong>단일  RGB 이미지</strong>를 입력으로  <strong>Object 의 카메라 viewpoint 를 변경</strong>하여 이미지를 합성하는 프레임워크</p></li>
@@ -619,8 +609,8 @@ document.write(`
 <li><p>viewpoint-conditioned diffusion 접근법은 단일 이미지로부터의 3D 재구성을 위해서도 사용 가능</p></li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <hr class="docutils" />
 <ol class="arabic">
 <li><p><strong>인간의 3D 인지 능력</strong></p>
@@ -672,8 +662,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p><strong>3D generative models</strong></p>
 <ul class="simple">
@@ -754,8 +744,8 @@ document.write(`
 </li>
 </ol>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="methods">
-<h1>3. Methods<a class="headerlink" href="#methods" title="Permalink to this heading">#</a></h1>
+<section id="methods">
+<h2>3. Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><strong>목표 :</strong> 주어진 단일 RGB 이미지 <span class="math notranslate nohighlight">\(x \in \mathbb{R}^{H \times W \times 3}\)</span> 를  입력으로, 다른 카메라 시점에서의 객체 이미지를 합성</p></li>
 <li><p><strong>카메라 변환</strong></p>
@@ -793,7 +783,7 @@ document.write(`
 </li>
 </ul>
 <section id="learning-to-control-camera-viewpoint">
-<h2>3.1. Learning to Control Camera Viewpoint<a class="headerlink" href="#learning-to-control-camera-viewpoint" title="Permalink to this heading">#</a></h2>
+<h3>3.1. Learning to Control Camera Viewpoint<a class="headerlink" href="#learning-to-control-camera-viewpoint" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>목표</strong>: Diffusion 모델을 통해, 촬영된 이미지에서 카메라의 외부 매개변수를 제어할 수 있는 메커니즘을 학습하여 새로운 시점의 이미지를 합성하는 것.</p></li>
 <li><p><strong>데이터셋</strong>: 이미지 쌍과 상대적 카메라 외부 매개변수로 구성된 데이터셋 <span class="math notranslate nohighlight">\({ (x, x_{(R,T)}, R, T) }\)</span></p></li>
@@ -833,7 +823,7 @@ document.write(`
 </ul>
 </section>
 <section id="view-conditioned-diffusion">
-<h2>3.2. View-Conditioned Diffusion<a class="headerlink" href="#view-conditioned-diffusion" title="Permalink to this heading">#</a></h2>
+<h3>3.2. View-Conditioned Diffusion<a class="headerlink" href="#view-conditioned-diffusion" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>단일이미지로부터 3D 객체를 재구성하기 위해 저수준 인식(깊이, 음영, 텍스처 등)과 고수준 이해(형태, 기능, 구조 등)  모두를 필요로 함.</p></li>
 </ul>
@@ -858,7 +848,7 @@ document.write(`
 </ul>
 </section>
 <section id="d-reconstruction">
-<h2>3.3 3D Reconstruction<a class="headerlink" href="#d-reconstruction" title="Permalink to this heading">#</a></h2>
+<h3>3.3 3D Reconstruction<a class="headerlink" href="#d-reconstruction" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>많은 응용에서, 객체의 새로운 뷰를 합성하는 것만으로는 충분하지 않으며, 객체의 외관과 기하 구조를 모두 캡처하는 전체 3D 재구성이 필요</p></li>
 <li><p>**Score Jacobian Chaining(SJC)**을 채택하여, 텍스트-이미지 확산 모델의 사전 정보를 사용하여 3D 표현을 최적화</p>
@@ -892,7 +882,7 @@ document.write(`
 </ul>
 </section>
 <section id="dataset">
-<h2>3.4. Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
+<h3>3.4. Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Dataset</strong> :  Objaverse, 800K+ 3D models  created by 100K+ artists</p></li>
 <li><p><strong>데이터 구성</strong></p>
@@ -929,8 +919,8 @@ document.write(`
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="experiments">
-<h1>4.Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<section id="experiments">
+<h2>4.Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>평가 대상 : <strong>model’s performance  zero-shot novel view synthesis &amp; 3D reconstruction</strong></p></li>
 <li><p>Objaverse 데이터셋 외의 데이터와 이미지를 사용하였으므로, 제로샷 결과로 간주</p></li>
@@ -938,7 +928,7 @@ document.write(`
 <li><p>다양한 자연 이미지(일상적인 객체 사진부터 그림까지)를 사용하여 질적 결과를 보고</p></li>
 </ul>
 <section id="tasks">
-<h2>4.1. Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h2>
+<h3>4.1. Tasks<a class="headerlink" href="#tasks" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>단일 RGB 이미지를 입력으로, 밀접하게 연관된 두가지 태스크를 수행 &amp; zero-shot 적용</p></li>
 </ul>
@@ -981,7 +971,7 @@ document.write(`
 </ol>
 </section>
 <section id="baselines">
-<h2>4.2. Baselines<a class="headerlink" href="#baselines" title="Permalink to this heading">#</a></h2>
+<h3>4.2. Baselines<a class="headerlink" href="#baselines" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>본 방법론이 다루는 범위와 일관되도록 아래 두가지 모두에 해당되는 방법론들만 비교</p>
 <ul>
@@ -1033,7 +1023,7 @@ document.write(`
 </ol>
 </section>
 <section id="benchmarks-and-metrics">
-<h2>4.3. Benchmarks and Metrics<a class="headerlink" href="#benchmarks-and-metrics" title="Permalink to this heading">#</a></h2>
+<h3>4.3. Benchmarks and Metrics<a class="headerlink" href="#benchmarks-and-metrics" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>데이터셋 평가</strong></p>
 <ul>
@@ -1055,7 +1045,7 @@ document.write(`
 </ul>
 </section>
 <section id="novel-view-synthesis-results">
-<h2>4.4. Novel View Synthesis Results<a class="headerlink" href="#novel-view-synthesis-results" title="Permalink to this heading">#</a></h2>
+<h3>4.4. Novel View Synthesis Results<a class="headerlink" href="#novel-view-synthesis-results" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Table 2</strong> : RTMV에서의 새로운 뷰 합성 결과.  RTMV의 장면은 Objaverse 훈련 데이터와 분포가 다르지만, 우리의 모델은 여전히 기준선을 상당한 차이로 능가.</p></li>
 </ul>
@@ -1092,7 +1082,7 @@ document.write(`
 </ul>
 </section>
 <section id="d-reconstruction-results">
-<h2>4.5. 3D Reconstruction Results<a class="headerlink" href="#d-reconstruction-results" title="Permalink to this heading">#</a></h2>
+<h3>4.5. 3D Reconstruction Results<a class="headerlink" href="#d-reconstruction-results" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>실제 ground truth 와 유사한 고충실도의 3D 메쉬를 reconstruct</p></li>
 </ul>
@@ -1117,14 +1107,14 @@ document.write(`
 </ul>
 </section>
 <section id="text-to-image-to-3d">
-<h2>4.6. Text to Image to 3D-<a class="headerlink" href="#text-to-image-to-3d" title="Permalink to this heading">#</a></h2>
+<h3>4.6. Text to Image to 3D-<a class="headerlink" href="#text-to-image-to-3d" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>실제 환경에서 촬영된 이미지 외에도, Dall-E-2와 같은 txt2img 모델이 생성한 이미지에 대해서도 테스트</p></li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="discussion">
-<h1>5. Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h1>
+<section id="discussion">
+<h2>5. Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Zero-1-to-3</strong> 방식은 단일 이미지에서 새로운 시점을 생성하고 3D 재구성을 수행하는 제로샷 방식</p></li>
 <li><p>사전 학습된 Stable Diffusion 모델의 <strong>풍부한 의미적, 기하적 prior 를</strong> 활용하여 우수한 성능을 달성</p>
@@ -1134,9 +1124,9 @@ document.write(`
 </li>
 </ul>
 <section id="future-work">
-<h2>5.1. Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h2>
+<h3>5.1. Future Work<a class="headerlink" href="#future-work" title="Link to this heading">#</a></h3>
 <section id="from-objects-to-scenes">
-<h3>From objects to scenes<a class="headerlink" href="#from-objects-to-scenes" title="Permalink to this heading">#</a></h3>
+<h4>From objects to scenes<a class="headerlink" href="#from-objects-to-scenes" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>본 접근법은 평범한 배경의 단일 객체 데이터셋으로 훈련</p></li>
 <li><p>RTMV 데이터셋에서 여러 객체가 있는 장면에 대한 강한 일반화를 입증했지만, GSO에서의 분포 내 샘플에 비해 품질이 여전히 저하</p></li>
@@ -1145,10 +1135,10 @@ document.write(`
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="appendix">
-<h1>6. Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h1>
+<section id="appendix">
+<h2>6. Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
 <section id="c-finetuning-stable-diffusion">
-<h2>C. Finetuning Stable Diffusion<a class="headerlink" href="#c-finetuning-stable-diffusion" title="Permalink to this heading">#</a></h2>
+<h3>C. Finetuning Stable Diffusion<a class="headerlink" href="#c-finetuning-stable-diffusion" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>렌더링된 데이터셋을 사용하여 새로운 뷰 합성을 수행하기 위해 사전 훈련된 스테이블 디퓨전 모델을 미세 조정</p></li>
 <li><p>원래의 스테이블 디퓨전 네트워크는 다중 모드 텍스트 임베딩에 대해 조건화되지 않기 때문에, 조건 정보를 이미지에서 사용할 수 있도록 원래의 스테이블 디퓨전 아키텍처를 조정하고 미세 조정해야함.</p></li>
@@ -1156,26 +1146,27 @@ document.write(`
 <li><p>이 층의 학습률은 다른 층보다 10배 크게 조정</p></li>
 <li><p>나머지 네트워크 아키텍처는 원래 스테이블 디퓨전과 동일하게 유지</p></li>
 </ul>
-</section>
 <section id="c-1">
-<h2>C.1 훈련 세부사항<a class="headerlink" href="#c-1" title="Permalink to this heading">#</a></h2>
+<h4>C.1 훈련 세부사항<a class="headerlink" href="#c-1" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><strong>8×A100-80GB 머신</strong>에서 7일 동안 모델을 미세 조정</p></li>
 </ul>
 </section>
 <section id="c-2">
-<h2>C.2 추론 세부사항<a class="headerlink" href="#c-2" title="Permalink to this heading">#</a></h2>
+<h4>C.2 추론 세부사항<a class="headerlink" href="#c-2" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p>새로운 뷰를 생성하기 위해 Zero-1-to-3는 RTX A6000 GPU에서 단 2초 소요</p></li>
 <li><p>이전 작업에서는 일반적으로 NeRF를 훈련하여 새로운 뷰를 렌더링하는 데 상당한 시간 소요</p></li>
 <li><p>비교적으로, 본 접근 방식은 3D 재구성과 새로운 뷰 합성의 순서를 반전시켜 새로운 뷰 합성 과정을 신속하고 불확실성 하에서 다양성을 포함하도록 함</p></li>
 </ul>
 </section>
+</section>
 <section id="d-3d-reconstruction">
-<h2>D. 3D Reconstruction<a class="headerlink" href="#d-3d-reconstruction" title="Permalink to this heading">#</a></h2>
+<h3>D. 3D Reconstruction<a class="headerlink" href="#d-3d-reconstruction" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>이미지에서 전체 3D 재구성을 실행하는 데 RTX A6000 GPU에서 약 30분이 소요</p></li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -1206,7 +1197,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1236,48 +1227,49 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">zero 123</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-zero-shot-one-image-to-3d-object">Abstract : Zero-shot One Image to 3D Object</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">3. Methods</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-to-control-camera-viewpoint">3.1. Learning to Control Camera Viewpoint</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-conditioned-diffusion">3.2. View-Conditioned Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction">3.3 3D Reconstruction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3.4. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-zero-shot-one-image-to-3d-object">Abstract : Zero-shot One Image to 3D Object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">3. Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-to-control-camera-viewpoint">3.1. Learning to Control Camera Viewpoint</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-conditioned-diffusion">3.2. View-Conditioned Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction">3.3 3D Reconstruction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">3.4. Dataset</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">4.1. Tasks</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baselines">4.2. Baselines</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-metrics">4.3. Benchmarks and Metrics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#novel-view-synthesis-results">4.4. Novel View Synthesis Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction-results">4.5. 3D Reconstruction Results</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-to-3d">4.6. Text to Image to 3D-</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4.Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">4.1. Tasks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baselines">4.2. Baselines</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#benchmarks-and-metrics">4.3. Benchmarks and Metrics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#novel-view-synthesis-results">4.4. Novel View Synthesis Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-reconstruction-results">4.5. 3D Reconstruction Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-image-to-3d">4.6. Text to Image to 3D-</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">5.1. Future Work</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-objects-to-scenes">From objects to scenes</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-finetuning-stable-diffusion">C. Finetuning Stable Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-1">C.1 훈련 세부사항</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-2">C.2 추론 세부사항</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-reconstruction">D. 3D Reconstruction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">5. Discussion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">5.1. Future Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#from-objects-to-scenes">From objects to scenes</a></li>
 </ul>
 </li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-finetuning-stable-diffusion">C. Finetuning Stable Diffusion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-1">C.1 훈련 세부사항</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-2">C.2 추론 세부사항</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-3d-reconstruction">D. 3D Reconstruction</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
@@ -1301,7 +1293,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1325,8 +1317,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

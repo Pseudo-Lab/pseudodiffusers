@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Consistency Models &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -15,58 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/consistency_models';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Latent Consistency Models" href="latent_consistency_models.html" />
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -564,7 +555,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -581,15 +572,15 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="consistency-models">
-<h1>Consistency Models<a class="headerlink" href="#consistency-models" title="Permalink to this heading">#</a></h1>
+<h1>Consistency Models<a class="headerlink" href="#consistency-models" title="Link to this heading">#</a></h1>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Diffusion Models 은 image generation, audio synthesis, video generation 등의 다양한 분야에 연구가 진행되어 왔습니다. 하지만 single-step generative model 인 VAE, GAN, 그리고 normalizing flows 에 비해 추론 속도가 10-2000배 더 많은 연산작업을 요하는 치명적인 단점이 존재합니다.</p>
 <p>이러한 문제를 해결하기 위해 논문에서 Consistency Model 을 소개합니다.</p>
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_01.png"><img alt="consistency_models_01" class="bg-primary mb-1" src="../../_images/consistency_models_01.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 480 </span><span class="caption-text">Overview of Consistency Models</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 481 </span><span class="caption-text">Overview of Consistency Models</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위의 사진처럼 주어진 PF ODE (Probability Flow Ordinary Differential Equation) 에 대해서 동일한 trajectory 에 있는 point 들이 동일한 시작점으로 매핑되도록 모델을 학습하는 방식을 제안하고, 이러한 self-consistency 특성을 만족시킬 수 있도록 2가지 학습 방식을 소개합니다.</p>
@@ -600,13 +591,13 @@ document.write(`
 <p>CIFAR-10, ImageNet 64x64, LSUN 256x256 데이터셋에 실험한 결과, 기존 distillation 기법을 적용한 모델 (i.e., progressive distillation) 보다 성능이 개선되고, 독립적인 모델로서도 사전학습된 diffusion model 없이 GAN 을 제외한 single-step generative model 보다 성능이 좋다고 합니다. 마지막으로 다양한 zero-shot data editing (image denoising, interpolation, inpainting, colorization, super-resolution, stroke-guided image editing) task 에도 consistency model 이 좋은 성능을 보여준다는 것을 확인하였습니다.</p>
 </section>
 <section id="diffusion-models">
-<h2>2. Diffusion Models<a class="headerlink" href="#diffusion-models" title="Permalink to this heading">#</a></h2>
+<h2>2. Diffusion Models<a class="headerlink" href="#diffusion-models" title="Link to this heading">#</a></h2>
 <p><strong>Diffusion Models in Continuous Time</strong></p>
 <p>Continuous time 에서의 diffusion model 을 다음과 같이 SDE 수식으로 표현할 수 있습니다. (<a class="reference external" href="https://arxiv.org/abs/2011.13456">Song et al., 2021</a>)</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_02.png"><img alt="consistency_models_02" class="bg-primary mb-1" src="../../_images/consistency_models_02.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 481 </span><span class="caption-text">Diffusion Models in Continuous Time</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 482 </span><span class="caption-text">Diffusion Models in Continuous Time</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -618,14 +609,14 @@ document.write(`
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_03.png"><img alt="consistency_models_03" class="bg-primary mb-1" src="../../_images/consistency_models_03.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 482 </span><span class="caption-text">Probability Flow (PF) ODE</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 483 </span><span class="caption-text">Probability Flow (PF) ODE</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>일반적으로 위의 SDE 수식에서 <span class="math notranslate nohighlight">\(p_T(x)\)</span> 가 Gaussian distribution <span class="math notranslate nohighlight">\(\pi(x)\)</span> 를 따르도록 정의하고, 해당 논문에서 <a class="reference external" href="https://arxiv.org/abs/2206.00364">Karras et al., 2022</a> 와 동일하게 <span class="math notranslate nohighlight">\(\mu(x,t) = 0, \sigma(t) = \sqrt{2}t\)</span> 로 설정하였습니다. 그리고 sampling 시, score matching 을 통해 score model <span class="math notranslate nohighlight">\(s_{\phi}(x,t) \approx \nabla \log p_t(x)\)</span> 우선적으로 학습한 후, 위의 식에 대입하면 다음과 같은 empirical PF ODE 로 표현할 수 있습니다</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_04.png"><img alt="consistency_models_04" class="bg-primary mb-1" src="../../_images/consistency_models_04.png" style="width: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 483 </span><span class="caption-text">Empirical PF ODE</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 484 </span><span class="caption-text">Empirical PF ODE</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>다음 과정으로는 initial condition <span class="math notranslate nohighlight">\(x_T \sim N(0, T^2I)\)</span>  을 기반으로 Euler 나 Heun 등의 numerical ode solver 를 통해 역방향으로 풀어 solution trajectory <span class="math notranslate nohighlight">\(\{x_t\}_{t \in [0,T]}\)</span><span class="math notranslate nohighlight">\({x_t}\)</span><span class="math notranslate nohighlight">\(\hat{x}_0\)</span><span class="math notranslate nohighlight">\({x_t}\)</span><span class="math notranslate nohighlight">\(p_{data}(x)\)</span> 로부터 나온 샘플에 대한 근사값이라고 할 수 있습니다.</p>
@@ -633,14 +624,14 @@ document.write(`
 <p>앞서 소개드린 방식으로 diffusion model 을 통한 sampling 시, ode solver 를 사용하는데 score model <span class="math notranslate nohighlight">\(s_{\phi}(x_t,t)\)</span> 의 수많은 iterative evaluation 작업이 필요합니다. 빠른 sampling 작업을 위해, 더 빠른 numerical ode solver 에 대한 연구들이 진행되었지만, 이를 활용해도 최소 10번 이상의 evaluation step 을 거쳐야만 competitive 한 성능을 보여준다고 합니다. 여러 distillation 기법들에 대한 연구들도 진행되었지만, <a class="reference external" href="https://arxiv.org/abs/2202.00512">Salimans &amp; Ho (2022)</a> 를 제외하고는 distillation 작업을 하기 위해서 사전에 diffusion model 로부터 대량의 데이터를 수집해야한다는 단점이 있습니다.</p>
 </section>
 <section id="id1">
-<h2>3.  Consistency Models<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>3.  Consistency Models<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>논문에서 single-step generation 이 가능한 consistency model 을 제안하고, 학습하는 방식으로 1) 사전학습된 diffusion model 로부터 knowledge distillation 진행하는 방식과 2) 독립적으로 학습하는 방식 을 소개합니다.</p>
 <p><strong>Definition</strong></p>
 <p>주어진 PF ODE 에 대한 trajectory <span class="math notranslate nohighlight">\(\{x_t\}_{t \in [0,T]}\)</span> 에 대해서 다음과 같은 <em>consistency function</em>            <span class="math notranslate nohighlight">\(f : (x_t, t) \mapsto x_{\epsilon}\)</span> 을 정의하고, 함수 <span class="math notranslate nohighlight">\(f\)</span> 는 동일한 trajectory 에 있는 임의의 두 <span class="math notranslate nohighlight">\(t, t' \in [\epsilon, T]\)</span> 에 대해 <span class="math notranslate nohighlight">\(f(x_t, t) = f(x_{t'}, t')\)</span>, 즉 <em>self-consistency</em> 성질을 만족합니다. 이러한 함수 <span class="math notranslate nohighlight">\(f\)</span> 를 예측하기 위해 데이터로부터 <span class="math notranslate nohighlight">\(f_{\theta}\)</span> 을 학습하는 것이 consistency model 의 objective 이며, 이는 <a class="reference external" href="https://arxiv.org/abs/2110.13040">Bilos et al., 2021</a> 에서 정의하는 neural flow 와 유사하지만, consistency model 은 invertible property 를 부여하지는 않습니다.</p>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_05.png"><img alt="consistency_models_05" class="bg-primary mb-1" src="../../_images/consistency_models_05.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 484 </span><span class="caption-text">Self-Consistency</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 485 </span><span class="caption-text">Self-Consistency</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Parameterization</strong></p>
@@ -648,21 +639,21 @@ document.write(`
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_06.png"><img alt="consistency_models_06" class="bg-primary mb-1" src="../../_images/consistency_models_06.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 485 </span><span class="caption-text">Parameterization Method 1</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Parameterization Method 1</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 <span class="math notranslate nohighlight">\(F_{\theta}(x,t)\)</span> 는 output 차원이 <span class="math notranslate nohighlight">\(x\)</span> 와 동일한 free-form deep neural network 입니다. 두번째 방식으로는, 다음과 같이 skip-connection 을 활용합니다.</p>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_07.png"><img alt="consistency_models_07" class="bg-primary mb-1" src="../../_images/consistency_models_07.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 486 </span><span class="caption-text">Parameterization Method 2</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Parameterization Method 2</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(F_{\theta}(x,t), c_{skip}(t), c_{out}(t)\)</span> 는 <span class="math notranslate nohighlight">\(c_{skip}(\epsilon) = 1, c_{out}(\epsilon) = 0\)</span> 조건을 만족시키는 미분 가능한 함수로 정의합니다.</p>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_08.png"><img alt="consistency_models_08" class="bg-primary mb-1" src="../../_images/consistency_models_08.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 487 </span><span class="caption-text">Parameterization Method 2 - <span class="math notranslate nohighlight">\(c_{skip}(t), c_{out}(t)\)</span></span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 488 </span><span class="caption-text">Parameterization Method 2 - <span class="math notranslate nohighlight">\(c_{skip}(t), c_{out}(t)\)</span></span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>두번째 parameterization 기법이 diffusion model 형식과 매우 유사하여 이러한 diffusion model 아키텍쳐를 leverage 하기 위해 논문에서 두번째 방식으로 parameterization 을 하는 방식을 택합니다.</p>
@@ -671,7 +662,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_09.png"><img alt="consistency_models_09" class="bg-primary mb-1" src="../../_images/consistency_models_09.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 488 </span><span class="caption-text">Multistep Consistency Sampling</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 489 </span><span class="caption-text">Multistep Consistency Sampling</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Zero-Shot Data Editing</strong></p>
@@ -681,7 +672,7 @@ document.write(`
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_10.png"><img alt="consistency_models_10" class="bg-primary mb-1" src="../../_images/consistency_models_10.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 489 </span><span class="caption-text">Consistency Models - Inpainting</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Consistency Models - Inpainting</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -689,7 +680,7 @@ document.write(`
 <figure class="align-default" id="id12">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_11.png"><img alt="consistency_models_11" class="bg-primary mb-1" src="../../_images/consistency_models_11.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 490 </span><span class="caption-text">Consistency Models - Interpolation</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Consistency Models - Interpolation</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -697,14 +688,14 @@ document.write(`
 <figure class="align-default" id="id13">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_12.png"><img alt="consistency_models_12" class="bg-primary mb-1" src="../../_images/consistency_models_12.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 491 </span><span class="caption-text">Consistency Models - Self-consistency</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 492 </span><span class="caption-text">Consistency Models - Self-consistency</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section id="training-consistency-models-via-distillation">
-<h2>4. Training Consistency Models via Distillation<a class="headerlink" href="#training-consistency-models-via-distillation" title="Permalink to this heading">#</a></h2>
+<h2>4. Training Consistency Models via Distillation<a class="headerlink" href="#training-consistency-models-via-distillation" title="Link to this heading">#</a></h2>
 <p>앞서 소개한 두 가지 학습 방식 중, 첫번째로 사전학습된 score model <span class="math notranslate nohighlight">\(s_{\phi}(x,t)\)</span> 를 consistency model 에 knowledge distillation 하는 학습하는 방식을 소개합니다.</p>
 <p>논문에서 특히 continuous time interval <span class="math notranslate nohighlight">\([\epsilon, T]\)</span> 을 boundary <span class="math notranslate nohighlight">\(t_1 = \epsilon &lt; t_2 &lt; \cdots &lt; t_N=T\)</span> 를 기준으로 <span class="math notranslate nohighlight">\(N-1\)</span> 개의 interval 로 discretize 하는 상황을 가정하고, <a class="reference external" href="https://arxiv.org/abs/2206.00364">Karras et al., 2022</a> 의 설정과 동일하게 boundary 를 다음과 같이 정의합니다.</p>
 <div class="math notranslate nohighlight">
@@ -715,46 +706,46 @@ t_i = (\epsilon^{1/\rho} + \frac{i-1}{N-1}(T^{1/\rho}-\epsilon^{1/\rho}))^{\rho}
 <figure class="align-default" id="id14">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_13.png"><img alt="consistency_models_13" class="bg-primary mb-1" src="../../_images/consistency_models_13.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 492 </span><span class="caption-text">One Discretization Step of a Numerical ODE Solver</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 493 </span><span class="caption-text">One Discretization Step of a Numerical ODE Solver</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이때, <span class="math notranslate nohighlight">\(\Phi(\cdots; \phi)\)</span> 은 empirical PF ODE 에 적용되는 one step ODE solver 의 update function 입니다. Euler solver 같은 경우, <span class="math notranslate nohighlight">\(\Phi(x,t;\phi) = -ts_{\phi}(x,t)\)</span> 를 대입하면 다음과 같이 표현할 수 있게 됩니다.</p>
 <figure class="align-default" id="id15">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_14.png"><img alt="consistency_models_14" class="bg-primary mb-1" src="../../_images/consistency_models_14.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 493 </span><span class="caption-text">One Discretization Step of a Euler ODE Solver</span><a class="headerlink" href="#id15" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 494 </span><span class="caption-text">One Discretization Step of a Euler ODE Solver</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 수식을 활용하여 주어진 <span class="math notranslate nohighlight">\(x \sim p_{data}\)</span> 에 대해서 PF ODE trajectory 에 있는 인접한 두 지점 <span class="math notranslate nohighlight">\((\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})\)</span> 을 샘플링할 수 있게 됩니다. 더 자세하게는, <span class="math notranslate nohighlight">\(x_{t_{n+1}} \sim N(x,t^2_{n+1}I)\)</span> 를 우선적으로 샘플링한 후, 위 수식을 기반으로 numerical ode solver 의 discretization step 을 한번 거쳐 <span class="math notranslate nohighlight">\(\hat{x}^{\phi}_{t_n}\)</span> 을 계산합니다. 최종적으로 <span class="math notranslate nohighlight">\((\hat{x}^{\phi}_{t_n}, x_{t_{n+1}})\)</span> 로부터의 모델 출력값 차이를 최소화하도록 consistency model 을 학습하게 되고, 학습 시 사용되는 <em>consistency distillation loss</em> 는 다음과 같이 정의합니다.</p>
 <figure class="align-default" id="id16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_15.png"><img alt="consistency_models_15" class="bg-primary mb-1" src="../../_images/consistency_models_15.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 494 </span><span class="caption-text">Consistency Distillation Loss</span><a class="headerlink" href="#id16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Consistency Distillation Loss</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>여기서 metric function <span class="math notranslate nohighlight">\(d(\cdot,\cdot)\)</span> 로는 L1 distance, L2 distance, 그리고 LPIPS distance 를 사용하였고, 실험적으로 확인해본 결과 <span class="math notranslate nohighlight">\(\lambda(t_n) \equiv 1\)</span> 를 적용했을 때 모델 성능이 가장 좋은 부분을 확인할 수 있었다고 합니다. 파라미터 <span class="math notranslate nohighlight">\(\theta\)</span> 는 stochastic gradient descent 그리고 <span class="math notranslate nohighlight">\(\theta^-\)</span> 는 exponential moving average (EMA) 로 학습하였다고 합니다.</p>
 <figure class="align-default" id="id17">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_16.png"><img alt="consistency_models_16" class="bg-primary mb-1" src="../../_images/consistency_models_16.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 495 </span><span class="caption-text">Exponential Moving Average (EMA)</span><a class="headerlink" href="#id17" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Exponential Moving Average (EMA)</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>이처럼 EMA update 와 stopgrad operator 로 학습할 시, <span class="math notranslate nohighlight">\(\theta = \theta^{-}\)</span> 로 설정할때보다 모델을 더 안정적으로 학습할 수 있고 성능에도 개선이 있었다고 합니다. 전체적인 학습 절차는 하단의 Algorithm 2 처럼 정리할 수 있습니다.</p>
 <figure class="align-default" id="id18">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_17.png"><img alt="consistency_models_17" class="bg-primary mb-1" src="../../_images/consistency_models_17.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 496 </span><span class="caption-text">Overview of Consistency Distillation (CD)</span><a class="headerlink" href="#id18" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Overview of Consistency Distillation (CD)</span><a class="headerlink" href="#id18" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><span class="math notranslate nohighlight">\(\theta^{-}\)</span>  는 과거 <span class="math notranslate nohighlight">\(\theta\)</span> 에 대한 running average 이므로 Algorithm 2 가 수렴할 시 이 둘은 일치하게 됩니다. 즉, target network <span class="math notranslate nohighlight">\(f_{\theta^-}\)</span>와 online network <span class="math notranslate nohighlight">\(f_{\theta}\)</span>  가 일치하게 됩니다.</p>
 </section>
 <section id="training-consistency-models-in-isolation">
-<h2>5. Training Consistency Models in Isolation<a class="headerlink" href="#training-consistency-models-in-isolation" title="Permalink to this heading">#</a></h2>
+<h2>5. Training Consistency Models in Isolation<a class="headerlink" href="#training-consistency-models-in-isolation" title="Link to this heading">#</a></h2>
 <p>Consistency Distillation 방식에서는 ground truth score function <span class="math notranslate nohighlight">\(\nabla \log p_t(x_t)\)</span> 을 근사하는 사전학습된 score model <span class="math notranslate nohighlight">\(s_{\phi}(x,t)\)</span> 에 의존했다면, 이에 의존하지 않고 다음과 같은  <span class="math notranslate nohighlight">\(\nabla \log p_t(x_t)\)</span> 에 대한 unbiased estimator 를 활용할 수도 있습니다. 다시 말해, <span class="math notranslate nohighlight">\(-(x_t - x)/t^2\)</span> 로 <span class="math notranslate nohighlight">\(\nabla \log p_t(x_t)\)</span> 를 근사할 수 있습니다.</p>
 <figure class="align-default" id="id19">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_18.png"><img alt="consistency_models_18" class="bg-primary mb-1" src="../../_images/consistency_models_18.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 497 </span><span class="caption-text">Unbiased Estimator of Score Function</span><a class="headerlink" href="#id19" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Unbiased Estimator of Score Function</span><a class="headerlink" href="#id19" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -771,7 +762,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id20">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_19.png"><img alt="consistency_models_19" class="bg-primary mb-1" src="../../_images/consistency_models_19.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 498 </span><span class="caption-text">Consistency Training Loss</span><a class="headerlink" href="#id20" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Consistency Training Loss</span><a class="headerlink" href="#id20" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -779,22 +770,22 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id21">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_20.png"><img alt="consistency_models_20" class="bg-primary mb-1" src="../../_images/consistency_models_20.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 499 </span><span class="caption-text">Schedule Functions for Consistency Training</span><a class="headerlink" href="#id21" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Schedule Functions for Consistency Training</span><a class="headerlink" href="#id21" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>논문에서 추가적인 성능 개선을 위해 <span class="math notranslate nohighlight">\(N\)</span> 을 점진적으로 증가시키는 방식을 제안합니다. <span class="math notranslate nohighlight">\(N\)</span>  이 작을수록 (<span class="math notranslate nohighlight">\(i.e., \Delta t\)</span> 가 클수록) consistency training loss 가 consistency distillation loss 와 비교했을때 variance 는 감소하지만 bias 는 증가하게 되어, 초기에 더 빠른 convergence 에 이르는데 용이합니다. 반면에, <span class="math notranslate nohighlight">\(N\)</span> 이 클수록 (<span class="math notranslate nohighlight">\(i.e., \Delta t\)</span> 가 작을수록) variance 는 증가하고 bias 는 감소하게 되어, 학습의 마지막 단계에 적용하는 것이 바람직하다고 제안합니다. EMA decay rate schedule function <span class="math notranslate nohighlight">\(\mu(\cdot)\)</span> 도 <span class="math notranslate nohighlight">\(N\)</span>  에 따라 바뀌는 함수로 최종적으로 정의합니다. 전체적인 학습 절차는 하단의 Algorithm 3 처럼 정리할 수 있습니다.</p>
 <figure class="align-default" id="id22">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_21.png"><img alt="consistency_models_21" class="bg-primary mb-1" src="../../_images/consistency_models_21.png" style="width: 500px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 500 </span><span class="caption-text">Overview of Consistency Training (CT)</span><a class="headerlink" href="#id22" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Overview of Consistency Training (CT)</span><a class="headerlink" href="#id22" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="experiments">
-<h2>6. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2>6. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <p>논문에서 CIFAR-10, ImageNet 64x64, LSUN Bedroom 256x256, 그리고 LSUN Cat 256x256 데이터셋에 consistency distillation, consistency training 두 학습 방식을 모두 실험하였고, 모델 성능 지표는 FID, IS, Precision, 그리고 Recall 을 사용하였습니다. 모델 architecture 는 CIFAR-10 데이터셋에는 NCSN++, 그리고 그 외 데이터셋에는 ADM 모델을 사용하였습니다.</p>
 <section id="training-consistency-models">
-<h3>6.1. Training Consistency Models<a class="headerlink" href="#training-consistency-models" title="Permalink to this heading">#</a></h3>
+<h3>6.1. Training Consistency Models<a class="headerlink" href="#training-consistency-models" title="Link to this heading">#</a></h3>
 <p>CIFAR-10 데이터셋에 다음과 같은 hyperparameter tuning 작업을 진행하였습니다. (metric function <span class="math notranslate nohighlight">\(d(\cdot,\cdot)\)</span>, ODE solver,  CD (Consistency Distillation) 에서의 number of discretization steps <span class="math notranslate nohighlight">\(N\)</span>, 그리고 CT (Consistency Training)) 에서의 schedule functions <span class="math notranslate nohighlight">\(N(\cdot), \mu(\cdot)\)</span>)</p>
 <p><strong>Parameter Initialization</strong></p>
 <p>모델 초기 파라미터 값은 다음과 같이 설정하였습니다.</p>
@@ -807,7 +798,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id23">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_22.png"><img alt="consistency_models_22" class="bg-primary mb-1" src="../../_images/consistency_models_22.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 501 </span><span class="caption-text">Experimental Results - Hyperparameters</span><a class="headerlink" href="#id23" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 502 </span><span class="caption-text">Experimental Results - Hyperparameters</span><a class="headerlink" href="#id23" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -827,13 +818,13 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 </li>
 </ul>
 <section id="few-step-image-generation">
-<h4>6.2. Few-Step Image Generation<a class="headerlink" href="#few-step-image-generation" title="Permalink to this heading">#</a></h4>
+<h4>6.2. Few-Step Image Generation<a class="headerlink" href="#few-step-image-generation" title="Link to this heading">#</a></h4>
 <p><strong>Distillation</strong></p>
 <p>논문에서는 Consistency Distillation 모델의 성능을 synthetic data generation 을 필요하지 않는 knowledge distillation 기법 (PD, <a class="reference external" href="https://arxiv.org/abs/2202.00512">Salimans &amp; Ho (2022)</a>) 과 다음과 같이 비교합니다.</p>
 <figure class="align-default" id="id24">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_23.png"><img alt="consistency_models_23" class="bg-primary mb-1" src="../../_images/consistency_models_23.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 502 </span><span class="caption-text">Experimental Results - Distillation</span><a class="headerlink" href="#id24" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 503 </span><span class="caption-text">Experimental Results - Distillation</span><a class="headerlink" href="#id24" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Direct Generation</strong></p>
@@ -841,24 +832,24 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
 <figure class="align-default" id="id25">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_24.png"><img alt="consistency_models_24" class="bg-primary mb-1" src="../../_images/consistency_models_24.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 503 </span><span class="caption-text">Experimental Results - Direct Generation</span><a class="headerlink" href="#id25" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 504 </span><span class="caption-text">Experimental Results - Direct Generation</span><a class="headerlink" href="#id25" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </section>
 <section id="zero-shot-image-editing">
-<h3>6.3. Zero-Shot Image Editing<a class="headerlink" href="#zero-shot-image-editing" title="Permalink to this heading">#</a></h3>
+<h3>6.3. Zero-Shot Image Editing<a class="headerlink" href="#zero-shot-image-editing" title="Link to this heading">#</a></h3>
 <p>Diffusion model 과 유사하게 consistency model 도 multistep sampling 알고리즘을 수정함으로써 zero shot image editing 이 가능합니다. 해당 사진은 LSUN Bedroom 데이터셋에 colorization, super-resolution, stroke-guided image editing task 를 적용한 결과입니다.</p>
 <figure class="align-default" id="id26">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_25.png"><img alt="consistency_models_25" class="bg-primary mb-1" src="../../_images/consistency_models_25.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 504 </span><span class="caption-text">Pseudocode for Zero-Shot Image Editing</span><a class="headerlink" href="#id26" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 505 </span><span class="caption-text">Pseudocode for Zero-Shot Image Editing</span><a class="headerlink" href="#id26" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id27">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/consistency_models_26.png"><img alt="consistency_models_26" class="bg-primary mb-1" src="../../_images/consistency_models_26.png" style="width: 700px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 505 </span><span class="caption-text">Zero-Shot Image Editing Results</span><a class="headerlink" href="#id27" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 506 </span><span class="caption-text">Zero-Shot Image Editing Results</span><a class="headerlink" href="#id27" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -892,7 +883,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -921,6 +912,7 @@ L_{CT}^{N}(\theta,\theta^{-}) = \mathbb{E}[\lambda(t_n)d(f_{\theta}(x + t_{n+1}z
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -965,7 +957,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -989,8 +981,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Textual Inversion &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -15,56 +14,52 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/Textual_Inversion';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Custom Diffusion" href="CustomDiffusion.html" />
@@ -78,28 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -121,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -142,6 +140,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -160,7 +160,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -260,10 +271,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -277,21 +288,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -310,28 +313,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -339,7 +329,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -360,7 +351,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -369,14 +360,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -501,10 +492,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -512,14 +503,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -579,7 +570,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -589,7 +580,7 @@ document.write(`
 <ul>
 <li><p>Paper:  <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a></p></li>
 <li><p>Code: <a class="reference external" href="https://textual-inversion.github.io/">https://textual-inversion.github.io/</a></p></li>
-<li><p>Review: <a class="reference external" href="https://devocean.sk.com/blog/techBoardDetail.do?page=&amp;query=&amp;ID=164320&amp;boardType=writer&amp;searchData=sam56903&amp;subIndex=&amp;idList=&amp;pnwriterID=sam56903">https://devocean.sk.com/blog/techBoardDetail.do?page=&amp;query=&amp;ID=164320&amp;boardType=writer&amp;searchData=sam56903&amp;subIndex=&amp;idList=&amp;pnwriterID=sam56903</a></p></li>
+<li><p>Review: <a class="reference external" href="https://devocean.sk.com/blog/techBoardDetail.do?page=&amp;amp;query=&amp;amp;ID=164320&amp;amp;boardType=writer&amp;amp;searchData=sam56903&amp;amp;subIndex=&amp;amp;idList=&amp;amp;pnwriterID=sam56903">https://devocean.sk.com/blog/techBoardDetail.do?page=&amp;query=&amp;ID=164320&amp;boardType=writer&amp;searchData=sam56903&amp;subIndex=&amp;idList=&amp;pnwriterID=sam56903</a></p></li>
 </ul>
 </li>
 <li><p><strong>Author:</strong> Kwang-Su Mun</p></li>
@@ -597,10 +588,10 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="textual-inversion">
-<h1>Textual Inversion<a class="headerlink" href="#textual-inversion" title="Permalink to this heading">#</a></h1>
+<h1>Textual Inversion<a class="headerlink" href="#textual-inversion" title="Link to this heading">#</a></h1>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="abstract">
-<h1>Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h1>
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">이미지</span> <span class="mi">3</span><span class="o">-</span><span class="mi">5</span><span class="n">장으로</span> <span class="n">새로운</span> <span class="n">개념</span><span class="p">(</span><span class="n">또는</span> <span class="n">콘셉트</span><span class="p">,</span> <span class="n">concept</span><span class="p">)</span><span class="n">을</span> <span class="n">학습해</span> <span class="n">관련된</span> <span class="n">이미지를</span> <span class="n">뽑아내는</span> <span class="n">모델</span>
 </pre></div>
 </div>
@@ -608,17 +599,17 @@ document.write(`
 <figure class="align-default" id="textual-inverison-example">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbIVL03%2Fbtsg8b6ssL1%2FsZQKABrsLJG58fJuvqd5MK%2Fimg.png"><img alt="textual inverison example" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbIVL03%2Fbtsg8b6ssL1%2FsZQKABrsLJG58fJuvqd5MK%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 152 </span><span class="caption-text">textual inversion example \  (source: <a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>)</span><a class="headerlink" href="#textual-inverison-example" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 152 </span><span class="caption-text">textual inversion example \  (source: <a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>)</span><a class="headerlink" href="#textual-inverison-example" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
 <p>대규모 학습된 모델에 새로운 개념을 도입하는 일은 어려운 일이다. 각 새로운 개념에 대해 확장된 데이터 셋을 사용해 모델을 retraining하는 것은 엄청나게 비용이 많이 들고, 몇 가지 예제에 해서 fine-tuning은 보통 치명적인 망각을 초래한다. 따라서 저자들은 사전 훈련된 텍스트-이미지 모델의 텍스트 임베딩 공간에서 새로운 단어를 찾아 이러한 문제를 극복할 것을 제안.</p>
 <figure class="align-default" id="architecture">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0jLjp%2Fbtsg9DuSNQj%2FkjfhEfeTTA212mS5htrb71%2Fimg.png"><img alt="architecture" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0jLjp%2Fbtsg9DuSNQj%2FkjfhEfeTTA212mS5htrb71%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 153 </span><span class="caption-text">architecture \  (source: <a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>)</span><a class="headerlink" href="#architecture" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 153 </span><span class="caption-text">architecture \  (source: <a class="reference external" href="https://arxiv.org/abs/2208.01618">https://arxiv.org/abs/2208.01618</a>)</span><a class="headerlink" href="#architecture" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>위 figure에서, “A photo of S*”은 tokenizer를 지나면서 각각 ‘508’, ‘701’, ‘73’, ‘*’과 같은 형태의 token set으로 변환되고, 이후 각 토큰은 자체 임베딩 벡터로 변환되고 이러한 벡터는 다운스트림 모델을 통해 제공됨.</p>
@@ -631,7 +622,7 @@ document.write(`
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>Related work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<h1>Related work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>text-guided synthesis</p></li>
 <li><p>GAN inversion</p></li>
@@ -645,7 +636,7 @@ document.write(`
 </ul>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1>Method<a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<h1>Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Our</span> <span class="n">goal</span> <span class="ow">is</span> <span class="n">to</span> <span class="n">enable</span> <span class="n">language</span><span class="o">-</span><span class="n">guided</span> <span class="n">generation</span> <span class="n">of</span> <span class="n">new</span><span class="p">,</span> <span class="n">user</span><span class="o">-</span><span class="n">specified</span> <span class="n">concepts</span><span class="o">.</span>
 </pre></div>
 </div>
@@ -654,12 +645,12 @@ document.write(`
 </ul>
 <p>따라서 pre-trained text-to-image model의 중간 단계의 representation으로 이러한 새로운 ‘concepts’을 인코딩하는데 초점을 맞춤. 일반적인 text-to-image model에서는 image의 representation에 대한 후보군을 text encoder의 word-embedding 단계에서 찾는다. 그러나 이러한 접근 방식은 이미지에 대한 in-depth visual understanding을 필요로 하지 않는다(생성자가 이미지에 대해서 시각적인 이해? 없이 그린다.) 따라서 여기서는 GAN inversion에서 영감을 받은 visual reconstruction objective를 제시.</p>
 <section id="cf-gan-inversion">
-<h2>cf) GAN Inversion(이해 못함)<a class="headerlink" href="#cf-gan-inversion" title="Permalink to this heading">#</a></h2>
+<h2>cf) GAN Inversion(이해 못함)<a class="headerlink" href="#cf-gan-inversion" title="Link to this heading">#</a></h2>
 <p>출처) - <a class="reference external" href="https://hyoseok-personality.tistory.com/entry/GAN-Inversion">https://hyoseok-personality.tistory.com/entry/GAN-Inversion</a></p>
 <figure class="align-default" id="gan-inversion">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpomZT%2Fbtsg9EHfVqc%2F4a4K6BmSPZV5ncVQXtfCHk%2Fimg.png"><img alt="GAN inversion" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FpomZT%2Fbtsg9EHfVqc%2F4a4K6BmSPZV5ncVQXtfCHk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 154 </span><span class="caption-text">GAN inversion \  (source: <a class="reference external" href="https://hyoseok-personality.tistory.com/entry/GAN-Inversion">https://hyoseok-personality.tistory.com/entry/GAN-Inversion</a>)</span><a class="headerlink" href="#gan-inversion" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">GAN inversion \  (source: <a class="reference external" href="https://hyoseok-personality.tistory.com/entry/GAN-Inversion">https://hyoseok-personality.tistory.com/entry/GAN-Inversion</a>)</span><a class="headerlink" href="#gan-inversion" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -667,21 +658,21 @@ document.write(`
 </ul>
 </section>
 <section id="ldm-latent-diffusion-model">
-<h2>LDM(Latent Diffusion Model)<a class="headerlink" href="#ldm-latent-diffusion-model" title="Permalink to this heading">#</a></h2>
+<h2>LDM(Latent Diffusion Model)<a class="headerlink" href="#ldm-latent-diffusion-model" title="Link to this heading">#</a></h2>
 <p>논문에서는 생성모델로서 LDM(Latent Diffusion Model)을 사용함. 이전에 말했듯이, LDM은 하나도 건들지 않음.</p>
 <figure class="align-default" id="ldm-objective-function">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdw5kRl%2FbtshgoiBpt4%2Fz72rzU3tvL8kLFbtBXwWVk%2Fimg.png"><img alt="LDM objective function" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fdw5kRl%2FbtshgoiBpt4%2Fz72rzU3tvL8kLFbtBXwWVk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 155 </span><span class="caption-text">LDM objective function \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#ldm-objective-function" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">LDM objective function \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#ldm-objective-function" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="text-embeddings">
-<h2>Text Embeddings<a class="headerlink" href="#text-embeddings" title="Permalink to this heading">#</a></h2>
+<h2>Text Embeddings<a class="headerlink" href="#text-embeddings" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="text-embedding">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0EWv%2Fbtsg9e9ZI4u%2FzfXraAXg1vpKpxemZLtVPk%2Fimg.png"><img alt="Text-Embedding" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fv0EWv%2Fbtsg9e9ZI4u%2FzfXraAXg1vpKpxemZLtVPk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Text-Embedding \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#text-embedding" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Text-Embedding \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#text-embedding" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -690,25 +681,25 @@ document.write(`
 </ul>
 </section>
 <section id="id1">
-<h2>Textual Inversion<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>Textual Inversion<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>새로운 embedding을 찾기 위해 작은 규모의 dataset(3-5장)을 사용해 다양한 배경 또는 포즈와 같은 여러 설정에 걸쳐 목표 concept을 묘사함. 이러한 작은 dataset에서 LDM loss를 최소화하는 과정을 통해 V를 최적화함. 생성 조건을 고정하기 위해 CLIP ImageNet 템플릿에서 파생된 중립 컨텍스트 텍스트를 무작위로 샘플링한다. 여기에는 “A photo of S*”, “A rendition of S*” 등의 형식 프롬프트가 포함된다.(아마 원본 이미지와 최대한 비슷하게 만들어서 원본과 비교하기 위한 목적이 아닐까 싶음) 최적화 목표식은 다음과 같음.</p>
 <figure class="align-default" id="textual-inversion-objective-function">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqY4nD%2FbtshiHP4k6T%2FvZrYjfSUAE2XePwon4rTIk%2Fimg.png"><img alt="textual inversion objective function" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FqY4nD%2FbtshiHP4k6T%2FvZrYjfSUAE2XePwon4rTIk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 157 </span><span class="caption-text">textual inversion objective function \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#textual-inversion-objective-function" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 157 </span><span class="caption-text">textual inversion objective function \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#textual-inversion-objective-function" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>LDM loss함수와 매우 유사함. 여기서 CΘ와 eΘ는 고정. 해당 따라서 학습된 embedding이 개념에 미세한 시각적 detail을 포착할 수 있을것으로 기대함.</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id2">
-<h1>성능평가<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h1>
+<h1>성능평가<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
 <section id="dall-e-2">
-<h2>DALL:E-2와 비교<a class="headerlink" href="#dall-e-2" title="Permalink to this heading">#</a></h2>
+<h2>DALL:E-2와 비교<a class="headerlink" href="#dall-e-2" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="compare-with-dalle-2">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkJvkY%2Fbtsg95YTKmc%2FX6lxVI5tL30ZP5gKEmoAv1%2Fimg.png"><img alt="compare with DALLE-2" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbkJvkY%2Fbtsg95YTKmc%2FX6lxVI5tL30ZP5gKEmoAv1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 158 </span><span class="caption-text">compare with DALLE-2 \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#compare-with-dalle-2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 158 </span><span class="caption-text">compare with DALLE-2 \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#compare-with-dalle-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -716,12 +707,12 @@ document.write(`
 </ul>
 </section>
 <section id="text-guided-synthesis">
-<h2>Text guided synthesis<a class="headerlink" href="#text-guided-synthesis" title="Permalink to this heading">#</a></h2>
+<h2>Text guided synthesis<a class="headerlink" href="#text-guided-synthesis" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRLYR1%2Fbtsg95SasXe%2FaUe9K6FVb2yC9sZqoK5eSk%2Fimg.png"><img alt="text guided synthesis" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbRLYR1%2Fbtsg95SasXe%2FaUe9K6FVb2yC9sZqoK5eSk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 159 </span><span class="caption-text">text guided synthesis - 입력 이미지의 스타일과 유사하면서도 text guide에 맞춰서 잘 진행함.
-\  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+\  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -730,7 +721,7 @@ document.write(`
 <figure class="align-default" id="style-transfer">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLlXhf%2Fbtsg8cEna6l%2FgiZvyYgqCaPj6X5wKTIzZk%2Fimg.png"><img alt="style transfer" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbLlXhf%2Fbtsg8cEna6l%2FgiZvyYgqCaPj6X5wKTIzZk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 160 </span><span class="caption-text">style transfer \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#style-transfer" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 160 </span><span class="caption-text">style transfer \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#style-transfer" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -738,27 +729,27 @@ document.write(`
 </ul>
 </section>
 <section id="pseudo-word">
-<h2>pseudo word 두 개 사용<a class="headerlink" href="#pseudo-word" title="Permalink to this heading">#</a></h2>
+<h2>pseudo word 두 개 사용<a class="headerlink" href="#pseudo-word" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="two-pseudo-word">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJtPJY%2Fbtsg9OinOOb%2FMLn4k48Hk7CP7vGv1yAaYk%2Fimg.png"><img alt="two pseudo word" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FJtPJY%2Fbtsg9OinOOb%2FMLn4k48Hk7CP7vGv1yAaYk%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 161 </span><span class="caption-text">two pseudo word \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#two-pseudo-word" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 161 </span><span class="caption-text">two pseudo word \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#two-pseudo-word" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="bias-reduction">
-<h2>Bias Reduction<a class="headerlink" href="#bias-reduction" title="Permalink to this heading">#</a></h2>
+<h2>Bias Reduction<a class="headerlink" href="#bias-reduction" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPakAR%2Fbtsg9OvWWW9%2FJZkKl1AFTKJgEKJsA2rb2K%2Fimg.png"><img alt="Bias reduction" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPakAR%2Fbtsg9OvWWW9%2FJZkKl1AFTKJgEKJsA2rb2K%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Bias reduction \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 162 </span><span class="caption-text">Bias reduction \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>기존 모델의 결과를 보면, 위 사진에서와 같이 ‘의사’라는 단어를 사용하면, 보통 백인 남성 의사를 잘 그려냈음. 이는 기존 데이터셋에서 남성 의사 사진 데이터가 많았음을 보여준다. 보다 작은 imageset에서 새로운 embedding을 학습함으로써 이러한 bias를 줄일 수 있음을 보여준다(즉, 성별 및 인종적 다양성에 대한 인식을 높일 수 있음).</p>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id5">
-<h1>정량평가<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h1>
+<h1>정량평가<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
 <p>latent space embedding의 품질을 분석.</p>
 <ol class="arabic simple">
 <li><p>reconstruction(y축?):  target concept를 얼마나 잘 복제하는지. 특정 이미지가 아닌 개념에 대한 변형을 생성하므로 의미적 CLIP 공간 거리를 고려하여 유사성을 측정.(이미지에 자체가 아닌, 이미지가 가진 ‘개념’에 대해 latent space를 생성하므로)  각 컨셉에 대해 “A photo of S*”라는 prompt를 사용해 64개의 이미지를 생성.</p></li>
@@ -766,19 +757,19 @@ document.write(`
 </ol>
 <p>각 prompt 별로, 50 DDIM step을 사용해 64개의 샘플을 만들고, CLIP-space embedding을 평가, textual prompt의 CLIP-space embedding에서 cosine similarity를 계산. 높은 스코어는 더 높은 editing capability와 prompt의 신뢰도를 보여줌.</p>
 <section id="setups">
-<h2>평가 setups<a class="headerlink" href="#setups" title="Permalink to this heading">#</a></h2>
+<h2>평가 setups<a class="headerlink" href="#setups" title="Link to this heading">#</a></h2>
 <p>GAN inversion에서 영감을 받은 실험 환경 설정에 따름. 생략</p>
 </section>
 <section id="id6">
-<h2>결과<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<h2>결과<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="quantative-evaluation1">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxKm1h%2Fbtshb63SIYh%2FNflBiQZTV5V0yh0I3EYpq1%2Fimg.png"><img alt="quantative evaluation1" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcxKm1h%2Fbtshb63SIYh%2FNflBiQZTV5V0yh0I3EYpq1%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 163 </span><span class="caption-text">quantative evaluation1 \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#quantative-evaluation1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 163 </span><span class="caption-text">quantative evaluation1 \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#quantative-evaluation1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="id7">
-<h3>주목할 점<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<h3>주목할 점<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>많은 baseline과 우리 방법의 semantic reconstruction quality는 단순히 training set에서 임의의 이미지를 샘플링하는 것과 비슷함(== 원본 이미지와 생성된 이미지가 큰 차이가 없었다?)</p></li>
 <li><p>single-word method는 비슷한 reconstruction quality를 달성하고, 모든 multi-word baseline에서 상당히 향상된 editablity을 달성. 이러한 점은 text embedding space의 인상적인 유연성을 나타내고, 단일 pseudo word만 사용하면서 높은 정확도로 새로운 개념을 캡처하는데 도움이 될 수 있음을 보여줌.</p></li>
@@ -788,11 +779,11 @@ document.write(`
 </section>
 </section>
 <section id="id8">
-<h2>사용자평가<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2>사용자평가<a class="headerlink" href="#id8" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="human-test">
 <a class="bg-primary mb-1 reference internal image-reference" href="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frx5Ei%2Fbtsg9MSpakC%2FFsPkgODR3zTGIBnvq6RXik%2Fimg.png"><img alt="human test" class="bg-primary mb-1" src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Frx5Ei%2Fbtsg9MSpakC%2FFsPkgODR3zTGIBnvq6RXik%2Fimg.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 164 </span><span class="caption-text">human test \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#human-test" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 164 </span><span class="caption-text">human test \  (source: <a class="reference external" href="https://arxiv.org/pdf/2208.01618.pdf">https://arxiv.org/pdf/2208.01618.pdf</a>)</span><a class="headerlink" href="#human-test" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>두 개의 설문지:</p>
@@ -804,14 +795,14 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="limitation">
-<h1>Limitation<a class="headerlink" href="#limitation" title="Permalink to this heading">#</a></h1>
+<h1>Limitation<a class="headerlink" href="#limitation" title="Link to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>이미지 생성에 더 많은 자유도를 제공하지만, concept의 의미론적인 본질을 파악하거나, 정확한 shape를 학습하는데 한계.</p></li>
 <li><p>최적화가 오래 걸린다. 하나의 concept를 학습하는데 약 2시간이 소요됨.</p></li>
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="id9">
-<h1>마무리<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h1>
+<h1>마무리<a class="headerlink" href="#id9" title="Link to this heading">#</a></h1>
 <p>: 새로운 설정과 장면에서 특정 concept의 이미지를 생성하기 위해 text-to-image model를 활용하는 개인화되며, language-guided generation을 소개함. 여기서 사용한 ‘text inversion’은 pretrained text-to-image 모델의 text embedding space 내에서 concept를 새로운 pseudo word로 inverse하여 작동함. 이러한 pseudo-word는 간단한 자연어 설명을 사용해 새로운 장면에 삽입할 수 있으므로 간단하고 직관적인 수정이 가능함.</p>
 <p>어떤 의미에서 이 방법은 사용자가 편집하기 쉽도록 텍스트 기반 interpace를 사용하지만 자연 언어의 한계에 접근할 때 시각적 단서를 제공하는 등 multi modal 정보를 활용할 수 있도록 함.</p>
 <p>이러한 접근 방식은 공개적으로 사용가능한 가장 큰 text-to-image model인 LDM을 통해 구현됨. 그러나 접근 방식에 아키텍처 세부 정보에 의존하지 않음. 따라서 textual inversion은 추가적인 대규모 text-to-image model에 쉽게 적용할 수 있다고 생각. 거기에서 text-to-image alignment, shape preseravation, image generation fidelity가 더 향상될 수 있음.</p>
@@ -844,7 +835,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -873,6 +864,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -934,7 +926,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -958,8 +950,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

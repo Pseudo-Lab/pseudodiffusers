@@ -10,7 +10,7 @@
 - **Last updated on Oct. 02, 2024**
 ```
 
-# LCM-LoRA: A Universal Stable-Diffusion Acceleration Module  
+# LCM-LoRA
 
 ## Proposal
 

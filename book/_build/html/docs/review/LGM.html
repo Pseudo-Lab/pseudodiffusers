@@ -1,75 +1,70 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>LGM &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/LGM';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="next" title="One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape" href="One-2-3-45.html" />
     <link rel="prev" title="Coin3D" href="Coin3D.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -532,7 +523,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</h1>
+    <h1>LGM</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -581,7 +572,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -599,10 +590,10 @@ document.write(`
 <li><p><strong>Last updated on Jan. 13, 2025</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="lgm-large-multi-view-gaussian-model-for-high-resolution-3d-content-creation">
-<h1>LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation<a class="headerlink" href="#lgm-large-multi-view-gaussian-model-for-high-resolution-3d-content-creation" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="lgm">
+<h1>LGM<a class="headerlink" href="#lgm" title="Link to this heading">#</a></h1>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
 <p>3D Content 생성은 계산 cost가 크기 때문에 고해상도 영상에 대해 아직까지 한계점을 가지고 있다. 그러나 본 논문에서 제안하는 Large Multi-View Gaussian Model(LGM)은 single-view image or text를 고해상도 3D Content로 변환이 가능하다.</p>
 <p>Feature:</p>
 <ul class="simple">
@@ -612,12 +603,12 @@ document.write(`
 <p>효율적이고 강력한 성능을 가지고 있음. 5초 이내에 3D Content 생성이 가능하면서 512 resolution으로 훈련이 가능하다.</p>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>3D Content 생성 분야는 다양하게 연구되어 왔으며, 최근에는 single-view나 few-shot 영상을 3D object로 변환하는 연구가 발전하고 있다. 이같은 방법은 Transformer 기반 모델을 통해 triplane-based NeRF를 직접 예측하는 방식으로 이루어지고 있다.</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_1.png"><img alt="Triplane-based representation" class="bg-primary mb-1" src="../../_images/LGM_1.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 819 </span><span class="caption-text">Triplane-based representation</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 820 </span><span class="caption-text">Triplane-based representation</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>그러나 기존 연구는 저해상도에서 훈련되어 상세한 텍스쳐나 복잡한 표현이 힘들다. 이는 3D representation이 비효율적이고 3D backbone이 너무 무겁기 때문이다. 예를들어 LRM은 triplane representation의 해상도가 32인 반면, rendering image의 해상도는 128로 병목이 생기게 된다. transformer 기반 백본 모델이 너무 cost가 크기 때문에 해상도에 대한 한계점이 생길 수 밖에 없다.</p>
@@ -626,18 +617,18 @@ document.write(`
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_2.png"><img alt="LGM - i23, t23 results" class="bg-primary mb-1" src="../../_images/LGM_2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 820 </span><span class="caption-text">LGM - i23, t23 results</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 821 </span><span class="caption-text">LGM - i23, t23 results</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>방법은 Instant3D와 비슷한 방식을 사용한다. (2D Diffusion Model을 통해 Multi-view Image를 생성하고 3D reconstruction.)</p>
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_3.png"><img alt="Instant3D" class="bg-primary mb-1" src="../../_images/LGM_3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 821 </span><span class="caption-text">Instant3D</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 822 </span><span class="caption-text">Instant3D</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="contribution-summary">
-<h3>Contribution Summary:<a class="headerlink" href="#contribution-summary" title="Permalink to this heading">#</a></h3>
+<h3>Contribution Summary:<a class="headerlink" href="#contribution-summary" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>text나 single-view image를 통해 생성된 multi-view image를 융합해 고해상도 3D Gaussian을 생성하는 프레임워크를 제안.</p></li>
 <li><p>고해상도에 대한 효율적인 end-to-end 학습을 위해 asymmetic U-Net 아키텍쳐 + Robust한 학습을 위한 데이터 증강 기술 + 3D Gaussian의 mesh 추출 방식 제안.</p></li>
@@ -646,48 +637,48 @@ document.write(`
 </section>
 </section>
 <section id="related-works">
-<h2>2. Related Works<a class="headerlink" href="#related-works" title="Permalink to this heading">#</a></h2>
+<h2>2. Related Works<a class="headerlink" href="#related-works" title="Link to this heading">#</a></h2>
 <section id="high-resolution-3d-generation">
-<h3>High-Resolution 3D Generation.<a class="headerlink" href="#high-resolution-3d-generation" title="Permalink to this heading">#</a></h3>
+<h3>High-Resolution 3D Generation.<a class="headerlink" href="#high-resolution-3d-generation" title="Link to this heading">#</a></h3>
 <p>SDS-based → NeRF, Magic3D, … → 3D Gaussian splatting</p>
 </section>
 <section id="efficient-3d-generation">
-<h3>Efficient 3D Generation.<a class="headerlink" href="#efficient-3d-generation" title="Permalink to this heading">#</a></h3>
+<h3>Efficient 3D Generation.<a class="headerlink" href="#efficient-3d-generation" title="Link to this heading">#</a></h3>
 <p>SDS-based 방법론에 비해 최근 방법론들은 몇초만에 3D 생성이 가능. 3D Diffusion model을 사용하려는 시도는 있었으나 좋은 성능을 보여주지 못했다. LRM, Instant3D 등의 triplane + NeRF 기반 모델은 강력한 성능을 보여주지만 상대적으로 낮은 해상도에서 동작하기 때문에 한계를 가진다. 따라서 본 연구는 U-Net + Gaussian Splatting을 사용하여 고해상도 3D 생성을 훈련했다.</p>
 </section>
 </section>
 <section id="large-multi-view-gaussian-model">
-<h2>3. Large Multi-View Gaussian Model<a class="headerlink" href="#large-multi-view-gaussian-model" title="Permalink to this heading">#</a></h2>
+<h2>3. Large Multi-View Gaussian Model<a class="headerlink" href="#large-multi-view-gaussian-model" title="Link to this heading">#</a></h2>
 <section id="preliminaries">
-<h3>3.1 Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Preliminaries<a class="headerlink" href="#preliminaries" title="Link to this heading">#</a></h3>
 <section id="gaussian-splatting">
-<h4>Gaussian Splatting<a class="headerlink" href="#gaussian-splatting" title="Permalink to this heading">#</a></h4>
+<h4>Gaussian Splatting<a class="headerlink" href="#gaussian-splatting" title="Link to this heading">#</a></h4>
 <p>Parameter <span class="math notranslate nohighlight">\(\Theta_i=\{x_i, s_i, q_i, \alpha_i, c_i\}\)</span>로 각 Gaussian을 표현할 수 있으며 각각 center <span class="math notranslate nohighlight">\(x\in\mathbb{R}^3\)</span>, scaling factor <span class="math notranslate nohighlight">\(s\in\mathbb{R}^3\)</span>, rotation quaternion <span class="math notranslate nohighlight">\(q\in\mathbb{R}^4\)</span>, opacity value <span class="math notranslate nohighlight">\(\alpha\in\mathbb{R}\)</span>, color feature <span class="math notranslate nohighlight">\(c\in\mathbb{R}^C\)</span>을 의미.</p>
 </section>
 <section id="multi-view-diffusion-models">
-<h4>Multi-View Diffusion Models<a class="headerlink" href="#multi-view-diffusion-models" title="Permalink to this heading">#</a></h4>
+<h4>Multi-View Diffusion Models<a class="headerlink" href="#multi-view-diffusion-models" title="Link to this heading">#</a></h4>
 <p>2D Diffusion Model을 single-view image의 object를 multi-view image로 변환할 수 있도록 fine-tuning하여 사용.</p>
 </section>
 </section>
 <section id="overall-framework">
-<h3>3.2 Overall Framework<a class="headerlink" href="#overall-framework" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Overall Framework<a class="headerlink" href="#overall-framework" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_4.png"><img alt="LGM framework" class="bg-primary mb-1" src="../../_images/LGM_4.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 822 </span><span class="caption-text">LGM framework</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 823 </span><span class="caption-text">LGM framework</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>LGM은 2step으로 진행되며 먼저 2D Diffusion model을 통해 single-view image 또는 text를 multi-view image로 변환한다. 이때 MVDream은 text, Image Dream은 image를 입력받아 변환한다. 두 모델 모두 직교 방위각에 따른 multi-view image를 생성한다.</p>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_5.png"><img alt="Asymmetric U-Net" class="bg-primary mb-1" src="../../_images/LGM_5.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 823 </span><span class="caption-text">Asymmetric U-Net</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 824 </span><span class="caption-text">Asymmetric U-Net</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>생성된 multi-view image는 U-Net기반 3D Gaussian을 예측하도록 학습된다. 생성한 Gaussian은 추가적인 변환 작업을 통해 폴리곤 형태로 변환이 가능하다. (downstream task)</p>
 </section>
 <section id="asymmetric-u-net-for-3d-gaussians">
-<h3>3.3 Asymmetric U-Net for 3D Gaussians<a class="headerlink" href="#asymmetric-u-net-for-3d-gaussians" title="Permalink to this heading">#</a></h3>
+<h3>3.3 Asymmetric U-Net for 3D Gaussians<a class="headerlink" href="#asymmetric-u-net-for-3d-gaussians" title="Link to this heading">#</a></h3>
 <p>위 그림과 같이 Gaussian 예측 모델은 Asymmetric U-Net을 사용하며 기존과 같이 Plücker ray embedding을 사용해 인코딩값 + multi-view image에 대한 RGB 값을 합친 총 9차원 feature map을 입력받는다.</p>
 <p>(RGB + 3차원 ray direction + 3차원 ray origin==9)</p>
 <div class="math notranslate nohighlight">
@@ -700,9 +691,9 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
 <p>학습의 안정화를 위해 기존 gaussian splatting과 activation function을 다르게 사용했다. 먼저 예측 position <span class="math notranslate nohighlight">\(x_i\)</span>를 <span class="math notranslate nohighlight">\([-1,1]^3\)</span>에 클램핑하고 softplus activation scale <span class="math notranslate nohighlight">\(s_i\)</span>에 0.1을 곱하여 훈련이 시작될 때 생성되는 Gaussian이 scene의 중심에 가깝도록 조정했다. 최종 출력된 Gaussian 집합은 3D Gaussian으로 융합된다.</p>
 </section>
 <section id="robust-training">
-<h3>3.4 Robust Training<a class="headerlink" href="#robust-training" title="Permalink to this heading">#</a></h3>
+<h3>3.4 Robust Training<a class="headerlink" href="#robust-training" title="Link to this heading">#</a></h3>
 <section id="data-augmentation">
-<h4>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Permalink to this heading">#</a></h4>
+<h4>Data Augmentation<a class="headerlink" href="#data-augmentation" title="Link to this heading">#</a></h4>
 <p>Diffusion model과 Gaussian splatting은 학습 데이터셋에 대해 각각 따로 학습되지만 실제 inference time에는 두 파이프라인이 함께 동작해야 하기 때문에(Diffusion output == Gaussian splatting input) 간극을 좁혀줄 수 있는 강력한 augmentation 기법이 필요하다. LGM은 2가지의 augmentation 기법을 제시했다.</p>
 <ol class="arabic simple">
 <li><p>Grid Distortion.</p></li>
@@ -714,7 +705,7 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
 <p>Grid Distortion의 이유와 비슷한데 multi-view Image의 각도나 camera의 위치가 항상 정확하게 일치하지 않기 때문에 random rotation을 통해 좀더 Robust 하게 학습될 수 있도록 Augmentation을 추가한다.</p>
 </section>
 <section id="loss-function">
-<h4>Loss Function<a class="headerlink" href="#loss-function" title="Permalink to this heading">#</a></h4>
+<h4>Loss Function<a class="headerlink" href="#loss-function" title="Link to this heading">#</a></h4>
 <p>학습은 Gaussian을 결합하여 입력 4개의 view를 포함한 총 8개의 view에 대한 rendering image를 만들고 각 RGB와 <span class="math notranslate nohighlight">\(\alpha\)</span>에 대한 몇가지 손실 함수를 사용하였다.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -728,51 +719,51 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
 </section>
 </section>
 <section id="experiments">
-<h2>4. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h2>
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_6.png"><img alt="Quantitative results" class="bg-primary mb-1" src="../../_images/LGM_6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 824 </span><span class="caption-text">Quantitative results</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 825 </span><span class="caption-text">Quantitative results</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_7.png"><img alt="Qualitative results" class="bg-primary mb-1" src="../../_images/LGM_7.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 825 </span><span class="caption-text">Qualitative results</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 826 </span><span class="caption-text">Qualitative results</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_8.png"><img alt="LRM vs LGM" class="bg-primary mb-1" src="../../_images/LGM_8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 826 </span><span class="caption-text">LRM vs LGM</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 827 </span><span class="caption-text">LRM vs LGM</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_9.png"><img alt="text-to-3D results" class="bg-primary mb-1" src="../../_images/LGM_9.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 827 </span><span class="caption-text">text-to-3D results</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 828 </span><span class="caption-text">text-to-3D results</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id10">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_10.png"><img alt="Diversity results" class="bg-primary mb-1" src="../../_images/LGM_10.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 828 </span><span class="caption-text">Diversity results</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 829 </span><span class="caption-text">Diversity results</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <figure class="align-default" id="id11">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/LGM_11.png"><img alt="Ablation study" class="bg-primary mb-1" src="../../_images/LGM_11.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 829 </span><span class="caption-text">Ablation study</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 830 </span><span class="caption-text">Ablation study</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="limitations">
-<h3>Limitations<a class="headerlink" href="#limitations" title="Permalink to this heading">#</a></h3>
+<h3>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">#</a></h3>
 <p>기본적으로 Multi-view reconstruction 모델이기 때문에 4개의 입력 view의 품질에 대한 의존도가 높다.</p>
 <p>그러나 multi-view를 생성하는 diffusion model이 완벽하지 않기 때문에 (낮은 resolution, inconsistency 등) 한계점을 가지고 있다.</p>
 </section>
 </section>
 <section id="conclusion">
-<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>기존 NeRF 및 Transformer 기반 모델과 달리 Gaussian Splatting 과 U-Net 기반 구조를 사용하여 높은 메모리 cost 문제를 해결했다. 또한 고해상도 영상에 대한 학습을 통해 고품질의 3D content를 생성할 수 있었다.</p>
 </section>
 </section>
@@ -804,7 +795,7 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -817,11 +808,11 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
       </div>
     </a>
     <a class="right-next"
-       href="../experiments/js_exp.html"
+       href="One-2-3-45.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+        <p class="prev-next-title">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -833,6 +824,7 @@ f_i=\{c_i,o_i\times d_i,d_i\} \tag{1}
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -894,7 +886,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -918,8 +910,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

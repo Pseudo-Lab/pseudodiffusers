@@ -11,7 +11,7 @@
 ```
 
 
-# DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion
+# DreamPose
 
 :::{figure-md} 
 <img src="../../pics/DreamPose/00.png" alt="DreamPose_input_output" class="bg-primary mb-1">
@@ -34,7 +34,7 @@ DreamPose 입출력
 - 패션 비디오 합성 태스크에 대해서 SOTA 성능을 달성 하였다.
 </aside>
 
-# **1. Introduction**
+## 1. Introduction
 
 - DreamPose가 제안된 배경
     - 패션 사진은 온라인에 널리 퍼져 있지만, 전달할 수 있는 정보가 제한적이며 입었을 때 옷의 늘어진 모양이나 흐름 등 옷의 중요한 뉘앙스를 포착하지 못한다.
@@ -62,9 +62,9 @@ DreamPose 입출력
     3. 컨디셔닝 이미지의 fidelity를 높여주는 split CLIP-VAE 인코더
     4. 이미지의 fidelity와 새로운 포즈에 대한 일반화 사이의 균형을 효과적으로 맞추는 파인튜닝 전략
 
-# 2. Related Work
+## 2. Related Work
 
-## 2.1. Diffusion models
+### 2.1. Diffusion models
 
 - 디퓨전 모델은 최근 text-to-image, 비디오 생성, 3D 생성 태스크에서 인상적인 결과를 보여주고 있다.
 - 하지만 이러한 모델을 처음부터 훈련하는 것은 비용이 많이 들고 많은 양의 데이터가 필요하다.
@@ -72,7 +72,7 @@ DreamPose 입출력
 - 스테이블 디퓨전과 그 사전 훈련된 체크포인트는 출시 이후 다양한 이미지 생성 작업에 사용되었다.
 - 본 논문에서도 사전 훈련된 스테이블 디퓨전 모델을 활용하고, subject에 특화된 파인튜닝을 한다.
 
-## 2.2. Still Image Animation
+### 2.2. Still Image Animation
 
 - 하나 이상의 입력 이미지로부터 동영상을 생성하는 태스크
 - 기존에 디퓨전 기반이 아닌 접근 방식들은 배경 예측, 모션 표현, occlusion map이나 dense map 등 여러 개의 개별 네트워크로 구성되는 경우가 많았다.
@@ -80,7 +80,7 @@ DreamPose 입출력
     - 모션이 크고 복잡할 경우에 groud-truth에 대한 예측은 도출하기 더 어렵고 오류가 발생하기 쉽다.
 - 최근 여러 방법들은 엔드 투 엔드 싱글 네트워크 접근 방식을 탐구하고 있다. (예: optical flow and warping, cross-attention 모듈, NeRF 표현을 사용한 애니메이션이 가능한 3D 휴먼 생성 등)
 
-## 2.3. Fashion Image Synthesis
+### 2.3. Fashion Image Synthesis
 
 - 기존 pose-guided 패션 이미지 합성 방법
     - 일반적으로 GAN을 기반으로 했고, optical flow에 의존해 이미지 특징을 포즈에 맞추는 방법을 사용했다. → 큰 포즈 변화, 가려진 영역 합성, 의상 스타일 보존에 어려움을 겪는 경우가 많다.
@@ -89,7 +89,7 @@ DreamPose 입출력
         - DiffFashion: 레퍼런스 이미지의 스타일을 트랜스퍼하여 의류 아이템을 편집하는 것을 목표로 한다.
         - PIDM: 포즈를 조건으로 넣어 사람 이미지를 생성한다 → 시간적 일관성을 위한 최적화는 하지 않는다.
 
-## 2.4. Diffusion Models for Video Synthesis
+### 2.4. Diffusion Models for Video Synthesis
 
 - 많은 text-to-video 디퓨전 모델은 text-to-image 디퓨전 모델을 활용하여 적용한다.
 - 결과를 기대할만 하지만, 여전히 텍스트-이미지 모델과 같은 성능은 나오지 않고 있다.
@@ -98,7 +98,7 @@ DreamPose 입출력
 - Turn-A-Video는 텍스트와 이미지가 조건으로 들어왔을 때 비디오 생성을 위해 사전 학습된 텍스트-이미지 디퓨전 모델을 파인튜닝한다.  → 이전 방법들과 마찬가지로 텍스처 깜빡거림(textural flickering), 구조적인 불일치가 나타난다.
 - 본 논문에서는 위의 문제를 해결하여 사람과 섬유의 움직임의 싱크를 맞추는 것을 목표로 한다.
 
-## 2.5. Conditioning Mechanisms for Diffusion Models
+### 2.5. Conditioning Mechanisms for Diffusion Models
 
 - 텍스트를 조건으로 하는 이미지 생성 디퓨전 모델을 널리 사용되어 왔다.
 - 텍스트 컨디셔닝은 높은 수준의 디테일을 조절하는 데는 효과적이지만, 사람과 의상의 정확한 identity나 포즈에 대한 풍부하고 상세한 정보를 제공하는 것은 어렵다.
@@ -109,7 +109,7 @@ DreamPose 입출력
 - DreamPose는 영상 속 피사체의 외형뿐만 아니라 구조와 움직임까지 제어할 수 있다.
 - PIDM과 마찬가지로 이미지 임베딩을 UNet의 크로스 어텐션 레이어에 직접 통합하지만, 이미지 임베딩에 대해 사전 학습된 두 개의 인코더(CLIP, VAE)를 혼합하여 사용한다. → 입력 노이즈에 연결된(concatenated) 멀티 포즈 입력 표현(multi-pose input representation)을 이용해 부드럽고 시간적으로 일관된 모션을 구현할 수 있다.
 
-# 3. Background
+## 3. Background
 
 - 디퓨전 모델
     - 디퓨전 모델은 품질, 다양성, 학습 안정성 측면에서 합성 태스크에서 GAN을 능가하는 최신 생성 모델이다.
@@ -152,13 +152,13 @@ DreamPose 입출력
         → 조건을 Null로 줬을 때의 모델의 예측값과 조건을 줬을 때의 모델이 예측값을 보간한다.
         
 
-# **4. Method**
+## 4. Method
 
 - 본 논문에서는  단일 이미지와 포즈 시퀀스로부터 사실적인 애니메이션 동영상을 만드는 것을 목표로 한다.
 - 이를 위해 패션 동영상 컬렉션에서 사전 학습된 스테이블 디퓨전을 패션 동영상 컬렉션에 맞게 파인튜닝한다.
 - 추가 컨디셔닝 신호(이미지 및 포즈)를 받고 동영상으로 볼 수 있는 시간적으로 일관된 콘텐츠를 출력하기 위해 스테이블 디퓨전의 구조를 조정하는 작업이 포함된다.
 
-## **4.1. Overview**
+### 4.1. Overview
 
 - 입출력
     - 입력: 입력 이미지 $x_0$, 포즈 $\{p_1, …, p_n\}$
@@ -168,7 +168,7 @@ DreamPose 입출력
     - 균일하게 분포된 가우시안 노이즈로 시작하여 두 조건 신호로 디퓨전 모델을 반복적으로 쿼리하여  noisy latent의 노이즈를 제거한다.
 - 마지막으로 예측된 디노이즈된 latent $z’_i$를 디코딩하여 예측된 비디오 프레임 $x’_i=\mathcal{D}(z’_i)$를 만든다.
 
-## 4.2. Architecture
+### 4.2. Architecture
 
 - 이미지 애니메이션을 위해 원래의 text-to-image 스테이블 디퓨전 모델을 수정하고 파인튜닝한다. (조건: 이미지, 포즈)
 - 이미지 애니메이션의 목표
@@ -184,7 +184,7 @@ DreamPose 입출력
     :::
 
 
-### **4.2.1 Split CLIP-VAE Encoder**
+#### 4.2.1 Split CLIP-VAE Encoder
 
 :::{figure-md} 
 <img src="../../pics/DreamPose/03.png" alt="DreamPose Encoder" class="bg-primary mb-1">
@@ -218,7 +218,7 @@ $$
 \begin{align}c_{I}={\mathcal{A}}(c_{\mathrm{CLIP}},c_{\mathrm{VAE}})\end{align}
 $$
 
-### 4.2.2 Modified UNet
+#### 4.2.2 Modified UNet
 
 :::{figure-md} 
 <img src="../../pics/DreamPose/04.png" alt="Modified UNet" class="bg-primary mb-1">
@@ -232,7 +232,7 @@ Modified UNet
 - 실제 비디오에서 추정된 포즈의 노이즈를 고려하고 생성된 프레임에서의 시간적 일관성을 극대화하기 위해, $c_p$를 다섯 개의 연속된 포즈 프레임으로 구성하였다. 즉, $c_p = \{p_{i-2}, p_{i-1}, pi, p_{i+1}, p_{i+2}\}$ → 개별 포즈로 네트워크를 학습하는 것보다 연속 포즈로 학습하면  전반적인 움직임의 부드러움과 시간적 일관성이 증가한다.
 - 구조적으로 0으로 초기화된 10개의 추가 입력 채널을 받아들이도록 UNet 입력 레이어를 수정하고 noisy latent에 해당하는 원래 채널은 사전 학습된 가중치에서 수정되지 않는다.
 
-### 4.2.3 **Finetuning**
+#### 4.2.3 Finetuning
 
 - 스테이블 디퓨전 모델의 대부분의 레이어 weight는 미리 학습된 text-to-image 스테이블 디퓨전 체크포인트로 초기화된다.
 - 이 때, CLIP 이미지 인코더는 별도의 미리 학습된 체크포인트에서 로드된다.
@@ -261,7 +261,7 @@ Modified UNet
     :::
     
 
-## 4.4. Pose and Image Classifier-Free Guidance
+### 4.4. Pose and Image Classifier-Free Guidance
 
 - 추론시 단일 입력 이미지와 피사체별 모델(subject-specific model)을 사용하는 일련의 포즈에서 프레임별로 동영상을 생성한다.
 - 이중(dual) classifier-free guidance를 사용하여 추론 시에 이미지 컨디셔닝 $c_I$와 포즈 컨디셔닝 $c_p$의 강도를 조절한다.
@@ -284,9 +284,9 @@ Modified UNet
 - $s_I$가 크면 입력 이미지에 높은 외관 충실도를 보장하고, $s_p$가 크면 입력 포즈에 대한 정렬을 보장한다.
 - 이중 classifier-free guidance는 포즈 및 이미지 가이드를 강화하는 것 에외도, 피사체별 모델 파인튜닝 후 하나의 입력 포즈에 대한 오버피팅을 방지한다.
 
-# 5. Experiments
+## 5. Experiments
 
-## 5.1.  Implementation Details
+### 5.1.  Implementation Details
 
 - 입력 이미지 resolution: 512x512
 - GPU: NVIDIA A100 2개
@@ -306,7 +306,7 @@ Modified UNet
     - 5e-5 learning rate
 - 추론 시에는 PNDM 샘플러 사용 (100step)
 
-## 5.2. Dataset
+### 5.2. Dataset
 
 - UBC Fashion 데이터셋 사용
 - Split
@@ -316,9 +316,9 @@ Modified UNet
 - 학습 중에는 학습 비디오로부터 랜덤으로 프레임 쌍을 샘플링 하였다.
 - DensePose를 이용해서 포즈를 계산하였다.
 
-# 6. Results
+## 6. Results
 
-## 6.1. Comparisons
+### 6.1. Comparisons
 
 - 공개적으로 사용 가능한 두 가지 최신 비디오 합성 방법인 MRAA(Motion Representations for Articulated Animation)과 Thin-Plate Spline Mothion Model(TPSMM)과 수치적 및 정성적인 비교를 하였다.
 - 제공된 훈련 스크립트와 권장 에폭 수를 사용하여 두 가지 모델을 UBC 패션 데이터셋을 이용해서 스크래치부터 학습하였다.
@@ -326,7 +326,7 @@ Modified UNet
 - PIDM과도 정성적인 비교를 하였다. PIDM의 경우 훈련 스크립트를 사용할 수 없어서 DeepFashion 데이터셋에 대해 학습된 체크포인트를 통해 비교하였다.
 - 100개의 디노이징 스텝을 사용하여 PIDM과 DreamPose를 실행하였다.
 
-### 6.1.1 Quantitative Analysis
+#### 6.1.1 Quantitative Analysis
 
 :::{figure-md} 
 <img src="../../pics/DreamPose/07.png" alt="result 1" class="bg-primary mb-1">
@@ -339,7 +339,7 @@ Modified UNet
 - MRAA와 TPSMM은 모두 driving video에서 추출된 feautre에 의존하는 반면, DreamPose는 UV-포즈 시퀀스에만 의존한다는 점에 유의하라.
 - 그럼에도 불구하고 DreamPose 모델은 네 가지 정량적 지표 모두에서 두 가지 방법보다 정량적으로 우수한 성능을 보였다.
 
-### 6.2.2 Qualitative Analysis
+#### 6.2.2 Qualitative Analysis
 
 :::{figure-md} 
 <img src="../../pics/DreamPose/08.png" alt="result 2" class="bg-primary mb-1">
@@ -360,7 +360,7 @@ Modified UNet
     - DreamPose는 얼굴의 identity와 의상 패턴 모두 더 충실도 높은 결과를 생성한다.
     - PIDM은 사실적인 얼굴을 합성하지만, 원본 인물의 identity와 일치하지 않고, identity와 옷차림이 프레임마다 달랐다. → PIDM이 비디오 합성에서는 잘 동작하지 않는다.
 
-## 6.2. Ablation Studies
+### 6.2. Ablation Studies
 
 - 아래 네 가지 변형에 대해 성능을 비교한다.
     1. $\text{Ours}_{\text{CLIP}}$: 듀얼 CLIP-VAE 인코더 대신에 사전 학습된 CLIP 이미지 인코더를 사용 → CLIP-VAE 인코더 효과 테스트
@@ -389,7 +389,7 @@ Ablation Studies - 정성적 비교
 - VAE 디코더를 파인튜닝하면 디테일의 선명도가 크게 향상되고 입력 포즈에 대한 오버피팅이 발생하지 않는다.
 - 한 가지 포즈만 입력하면 팔과 머리카락 주변에서의 피사체의 형태가 눈에 띄게 깜박이는 현상이 나타났다.
 
-## 6.3. Multiple Input Images
+### 6.3. Multiple Input Images
 
 - DreamPose는 피사체에 대한 입력 이미지를 여러 장 넣어서 파인튜닝할 수 있다.
 - 피사체의 입력 이미지를 추가하면 품질과 시점의 일관성이 향상된다.
@@ -402,7 +402,7 @@ Ablation Studies - 정성적 비교
 
     
 
-# **7. Limitations & Future Work**
+## 7. Limitations & Future Work
 
 - 실패 사례
     
@@ -417,7 +417,7 @@ Ablation Studies - 정성적 비교
 - 다른 디퓨전 모델과 마찬가지로 파인튜닝 및 추론 시간이 GAN 또는 VAE에 비해 느리다.
     - 특정 피사체에 대한 모델 파인튜닝은 프레임당 18초의 렌더링 시간 외의 UNet의 경우 약 10분, VAE 디코더의 경우 약 20분이 소요된다.
 
-# 8. Conclusion
+## 8. Conclusion
 
 - 스틸 패션 이미지 애니메이션을 위한 새로운 디퓨전 기반 방법인 DreamPose를 제안하였다.
 - 한 장의 이미지와 포즈 시퀀스가 주어졌을 때,  섬유, 패턴, 사람의 identity를 애니메이션 하는 사실적인 사실적인 패션 동영상을 생성하는 방법을 증명하였다.

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>CM3leon &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
@@ -15,58 +14,54 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/CM3leon';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Synthetic Data from Diffusion Models Improves ImageNet Classification" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html" />
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -584,7 +575,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -592,7 +583,7 @@ document.write(`
 <li><p><strong>Title:</strong> Scaling Autoregressive Multi-Modal Models: Pretraining and Instruction Tuning</p></li>
 <li><p><strong>Reference</strong></p>
 <ul>
-<li><p>Paper:  <a class="reference external" href="https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3c67a6&amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;_nc_ht=scontent-gmp1-1.xx&amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;oe=652FF632">https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3c67a6&amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;_nc_ht=scontent-gmp1-1.xx&amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;oe=652FF632</a></p></li>
+<li><p>Paper:  <a class="reference external" href="https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;amp;ccb=1-7&amp;amp;_nc_sid=3c67a6&amp;amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;amp;_nc_ht=scontent-gmp1-1.xx&amp;amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;amp;oe=652FF632">https://scontent-gmp1-1.xx.fbcdn.net/v/t39.2365-6/358725877_789390529544546_1176484804732743296_n.pdf?_nc_cat=108&amp;ccb=1-7&amp;_nc_sid=3c67a6&amp;_nc_ohc=PLfU_UR_vYAAX_NagU8&amp;_nc_ht=scontent-gmp1-1.xx&amp;oh=00_AfDrHAHXv1PcF0LqicjIYnmOrpVCGEQ0eMv5_Ve2_Tncvg&amp;oe=652FF632</a></p></li>
 <li><p>Code: X</p></li>
 </ul>
 </li>
@@ -601,18 +592,18 @@ document.write(`
 </ul>
 </div>
 <section class="tex2jax_ignore mathjax_ignore" id="cm3leon">
-<h1>CM3leon<a class="headerlink" href="#cm3leon" title="Permalink to this heading">#</a></h1>
+<h1>CM3leon<a class="headerlink" href="#cm3leon" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="cm3leon-result">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/cm3leon_result.png"><img alt="cm3leon_result" class="bg-primary mb-1" src="../../_images/cm3leon_result.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 305 </span><span class="caption-text">CM3leon result</span><a class="headerlink" href="#cm3leon-result" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 305 </span><span class="caption-text">CM3leon result</span><a class="headerlink" href="#cm3leon-result" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>복잡하게 구성된 객체(손, 텍스트)도 잘 생성한다.</p></li>
 </ul>
 <section id="abstract-1-introduction">
-<h2>Abstract &amp; 1. Introduction<a class="headerlink" href="#abstract-1-introduction" title="Permalink to this heading">#</a></h2>
+<h2>Abstract &amp; 1. Introduction<a class="headerlink" href="#abstract-1-introduction" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>CM3Leon</p>
 <ul>
@@ -659,14 +650,14 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="pretraining">
-<h1>2. Pretraining<a class="headerlink" href="#pretraining" title="Permalink to this heading">#</a></h1>
+<h1>2. Pretraining<a class="headerlink" href="#pretraining" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>RA-CM3를 기반으로 T2I 도메인에서 토큰 기반 디코더 모델의 잠재력을 연구했다.</p></li>
 </ul>
 <section id="data">
-<h2>2.1 Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<h2>2.1 Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <section id="image-tokenization">
-<h3>Image Tokenization<a class="headerlink" href="#image-tokenization" title="Permalink to this heading">#</a></h3>
+<h3>Image Tokenization<a class="headerlink" href="#image-tokenization" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Gafni의 image tokenizer를 사용했다.</p>
 <ul>
@@ -679,7 +670,7 @@ document.write(`
 <figure class="align-default" id="figure-8-9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_8_9.png"><img alt="figure_8_9" class="bg-primary mb-1" src="../../_images/figure_8_9.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Figure_8_9</span><a class="headerlink" href="#figure-8-9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 306 </span><span class="caption-text">Figure_8_9</span><a class="headerlink" href="#figure-8-9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-   이는 modality간 transition을 하게 한다.
@@ -687,7 +678,7 @@ document.write(`
 </div>
 </section>
 <section id="retrieval-augmentation">
-<h3>Retrieval Augmentation<a class="headerlink" href="#retrieval-augmentation" title="Permalink to this heading">#</a></h3>
+<h3>Retrieval Augmentation<a class="headerlink" href="#retrieval-augmentation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>목적: 입력 sequence에 맞춰 관련성이 높고 다양한 멀티 모달 문서(from memory bank)를 검색하는 것이다.</p>
 <ul>
@@ -747,7 +738,7 @@ document.write(`
 </section>
 </section>
 <section id="objective-function">
-<h2>2.2 Objective Function<a class="headerlink" href="#objective-function" title="Permalink to this heading">#</a></h2>
+<h2>2.2 Objective Function<a class="headerlink" href="#objective-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>CM3 objective</p>
 <ul>
@@ -772,7 +763,7 @@ document.write(`
 </ul>
 </section>
 <section id="model">
-<h2>2.3 Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h2>
+<h2>2.3 Model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>CM3Leon 모델은 디코더만 사용하는 transformer 아키텍쳐를 사용한다.</p></li>
 <li><p>Zhang에 비해 bias term, dropout, layer norm의 학습 가능한 파라미터를 제거했다.</p></li>
@@ -783,11 +774,11 @@ document.write(`
 </ul>
 </section>
 <section id="training">
-<h2>2.4 Training<a class="headerlink" href="#training" title="Permalink to this heading">#</a></h2>
+<h2>2.4 Training<a class="headerlink" href="#training" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="training-result">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/training_result.png"><img alt="training_result" class="bg-primary mb-1" src="../../_images/training_result.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 307 </span><span class="caption-text">Training result</span><a class="headerlink" href="#training-result" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 307 </span><span class="caption-text">Training result</span><a class="headerlink" href="#training-result" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -804,9 +795,9 @@ document.write(`
 </ul>
 </section>
 <section id="text-to-image-results">
-<h2>3. Text-To-Image Results<a class="headerlink" href="#text-to-image-results" title="Permalink to this heading">#</a></h2>
+<h2>3. Text-To-Image Results<a class="headerlink" href="#text-to-image-results" title="Link to this heading">#</a></h2>
 <section id="importance-of-decoding-strategies">
-<h3>3.1 Importance of Decoding Strategies<a class="headerlink" href="#importance-of-decoding-strategies" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Importance of Decoding Strategies<a class="headerlink" href="#importance-of-decoding-strategies" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>autoregressive T2I 모델에서 decoding 알고리즘에 대해 상당한 연구가 진행되어 왔다.</p>
 <ul>
@@ -821,7 +812,7 @@ document.write(`
 </ul>
 </section>
 <section id="temperatured-sampling">
-<h3>Temperatured Sampling<a class="headerlink" href="#temperatured-sampling" title="Permalink to this heading">#</a></h3>
+<h3>Temperatured Sampling<a class="headerlink" href="#temperatured-sampling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>autoregressive 모델에서 확률적 기술로 사용된다.</p>
 <ul>
@@ -835,7 +826,7 @@ document.write(`
 </ul>
 </section>
 <section id="topp-sampling">
-<h3>TopP Sampling<a class="headerlink" href="#topp-sampling" title="Permalink to this heading">#</a></h3>
+<h3>TopP Sampling<a class="headerlink" href="#topp-sampling" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>nucleus 샘플링으로도 불리고, 미리 정의한 임계값을 초과하는 누적 확률을 가진 가장 작은 상위 토큰 세트에서 샘플링을 포함한다.</p>
 <ul>
@@ -848,7 +839,7 @@ document.write(`
 </ul>
 </section>
 <section id="classifier-free-guidance-cfg">
-<h3>Classifier Free Guidance (CFG)<a class="headerlink" href="#classifier-free-guidance-cfg" title="Permalink to this heading">#</a></h3>
+<h3>Classifier Free Guidance (CFG)<a class="headerlink" href="#classifier-free-guidance-cfg" title="Link to this heading">#</a></h3>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{aligned}
@@ -869,18 +860,18 @@ document.write(`
 </ul>
 </section>
 <section id="contrastive-decoding-topk-cd-k">
-<h3>Contrastive Decoding TopK (CD-K)<a class="headerlink" href="#contrastive-decoding-topk-cd-k" title="Permalink to this heading">#</a></h3>
+<h3>Contrastive Decoding TopK (CD-K)<a class="headerlink" href="#contrastive-decoding-topk-cd-k" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>CFG에서 logit의 뺄셈 연산이 텍스트에서 contrastive decoding 방법의 log probability를 뺄셈하는 연산과 비슷하다.</p></li>
 </ul>
 </section>
 </section>
 <section id="quantitative-evaluation">
-<h2>3.2 Quantitative Evaluation<a class="headerlink" href="#quantitative-evaluation" title="Permalink to this heading">#</a></h2>
+<h2>3.2 Quantitative Evaluation<a class="headerlink" href="#quantitative-evaluation" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="evaluation">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/evalution.png"><img alt="evalution" class="bg-primary mb-1" src="../../_images/evalution.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 308 </span><span class="caption-text">Evaluation</span><a class="headerlink" href="#evaluation" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 308 </span><span class="caption-text">Evaluation</span><a class="headerlink" href="#evaluation" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -901,11 +892,11 @@ document.write(`
 </ul>
 </section>
 <section id="supervised-fine-tuning">
-<h2>4. Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Permalink to this heading">#</a></h2>
+<h2>4. Supervised Fine-Tuning<a class="headerlink" href="#supervised-fine-tuning" title="Link to this heading">#</a></h2>
 <figure class="align-default" id="figure5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_51.png"><img alt="figure_5" class="bg-primary mb-1" src="../../_images/figure_51.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 309 </span><span class="caption-text">Figure5</span><a class="headerlink" href="#figure5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 309 </span><span class="caption-text">Figure5</span><a class="headerlink" href="#figure5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -919,16 +910,16 @@ document.write(`
 <li><p>finetuning 과정은 pretraining 단계를 따르며, task instruction과 출력을 결합해 동일한 CM3 objective를 사용한다.</p></li>
 </ul>
 <section id="instructable-image-generation">
-<h3>4.1 Instructable Image Generation<a class="headerlink" href="#instructable-image-generation" title="Permalink to this heading">#</a></h3>
+<h3>4.1 Instructable Image Generation<a class="headerlink" href="#instructable-image-generation" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="figure6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_61.png"><img alt="figure_6" class="bg-primary mb-1" src="../../_images/figure_61.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 310 </span><span class="caption-text">Figure6</span><a class="headerlink" href="#figure6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 310 </span><span class="caption-text">Figure6</span><a class="headerlink" href="#figure6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="text-guided-image-editing">
-<h3>Text-Guided Image Editing<a class="headerlink" href="#text-guided-image-editing" title="Permalink to this heading">#</a></h3>
+<h3>Text-Guided Image Editing<a class="headerlink" href="#text-guided-image-editing" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>text instruction 에 기반한 initial image를 수정하는 task이다.</p></li>
 <li><p>InstructPix2Pix 방법 사용했다.</p></li>
@@ -940,18 +931,18 @@ document.write(`
 </ul>
 </section>
 <section id="image-to-image-grounded-generation">
-<h3>Image-to-Image Grounded Generation<a class="headerlink" href="#image-to-image-grounded-generation" title="Permalink to this heading">#</a></h3>
+<h3>Image-to-Image Grounded Generation<a class="headerlink" href="#image-to-image-grounded-generation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>다양한 feature과 텍스트 프롬프트로 grounding image를 생산하는 task이다.</p></li>
 <li><p>ControlNet 적용했다.</p></li>
 </ul>
 </section>
 <section id="spatially-grounded-image-generation">
-<h3>Spatially Grounded Image Generation<a class="headerlink" href="#spatially-grounded-image-generation" title="Permalink to this heading">#</a></h3>
+<h3>Spatially Grounded Image Generation<a class="headerlink" href="#spatially-grounded-image-generation" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="figure6-1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_6_1.png"><img alt="figure_6_1" class="bg-primary mb-1" src="../../_images/figure_6_1.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Figure6-1</span><a class="headerlink" href="#figure6-1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 311 </span><span class="caption-text">Figure6-1</span><a class="headerlink" href="#figure6-1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -959,11 +950,11 @@ document.write(`
 </ul>
 </section>
 <section id="image-captioning-visual-question-answering-task">
-<h3>Image captioning &amp; visual question answering task<a class="headerlink" href="#image-captioning-visual-question-answering-task" title="Permalink to this heading">#</a></h3>
+<h3>Image captioning &amp; visual question answering task<a class="headerlink" href="#image-captioning-visual-question-answering-task" title="Link to this heading">#</a></h3>
 <figure class="align-default" id="figure16">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/figure_16.png"><img alt="figure_16" class="bg-primary mb-1" src="../../_images/figure_16.png" style="width: 600px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 312 </span><span class="caption-text">Figure16</span><a class="headerlink" href="#figure16" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 312 </span><span class="caption-text">Figure16</span><a class="headerlink" href="#figure16" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1000,7 +991,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1029,6 +1020,7 @@ document.write(`
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1093,7 +1085,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1117,8 +1109,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

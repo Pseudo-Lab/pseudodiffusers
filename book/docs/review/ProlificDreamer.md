@@ -11,7 +11,7 @@
 ```
 
 
-# ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation
+# ProlificDreamer
 
 - view generation이 가능한 DM의 특성을 3D rendering 모델로 전달하여 pretrained 된 DM이 생성하는 이미지 분포와 3D representaiton의 분포를 맞춰가는 것으로 Dream Fusion(SDS)과 유사하지만 개선된 아이디어(VSD)를 제안하고자한 논문이다.
 
@@ -42,7 +42,7 @@ ProlificDreamer vs. DreamFusion 정성적 결과
 :::
 
 
-# 1 Introduction
+## 1. Introduction
 
 고품질의 3D content를 생산하는 것은 품이 많이 드는 일이다. 이러한 어려움을 해결하기 위해 text-to-3D 방식이 발전하고 있다. texture 기술을 기반으로 3D content 생성을 자동화하는 방식은 유망하며 다양한 분야(encompassing architecture, animation, gaming, AR/VR)  paradigm의 변화를 일으킬 수 있을 것이다. 
 
@@ -83,7 +83,7 @@ Sec 5에서 ProlificDreamer의 고화질(512x512) rendering 능력과 rich struc
 Prolific Dreamer  생성 결과
 :::
 
-# 2. Background
+## 2. Background
 
 ### Diffusion models (DMs)
 
@@ -110,7 +110,7 @@ Prolific Dreamer  생성 결과
 
 diffusion model이 가장 활발히 활용되고 있는 분야 중 하나는 text-to-image generation으로 text prompt $y$를 조건으로 noise를 예측한다. 또한 Classifier-free Guidence를 통해 샘플 품질과 다양성을 조절한다. guidance scale이 커질 수록 품질이 올라가지만 다양성이 감소하는 경향을 보인다.
 
-### **Text-to-3D by score distillation sampling**
+### Text-to-3D by score distillation sampling
 
 - **Score Distillation Sampling (SDS)** from DreamFusion
 - **Score Jacobian Chaining (SJC)** 라고도 불리며 Zero-1-to-3, Magic3d, Fantasia3d, Latent NeRF 등 다양한 연구에 활용되고 있다.
@@ -142,7 +142,7 @@ $$
     - 카메라 위치 $c$가 주어질때, rendering process $g(\theta,c)$는 casting rays로 정의되며 각 ray가 지나는 mesh의 intersection의 색을 계산함으로써 각 픽셀의 값을 결정한다.
     - Textured mesh는 고화질 렌더링이 가능하고 differentiable rasterization을 이용하면 렌더링 속도가 빠르다.
 
-# 3. Variational Score Distillation
+## 3. Variational Score Distillation
 
 :::{figure-md}
 <img src="../../pics/ProlificDreamer/image_5.png" alt="prolificdreamer_5" class="mb-1" width="700px">
@@ -269,7 +269,7 @@ gradient visualization에서도 SDS와 VSD의 차이점을 확인 할 수 있다
 :::
 </details>
 
-# 4. Prolific Dreamer
+## 4. Prolific Dreamer
 
 ### 4.1 Design Space of Text-to-3D Generation
 
@@ -315,7 +315,7 @@ object-centric scene에서는 Magic3D의 방식을 따랐으며($\lambda=10, r=0
 
 coordinate-based hash grid encoder의 특성을 이용해 NeRF에서 mesh를 추출했다. Fantasia3D의 방법론을 따랐는데 여기서는 geometry와 texture를 분리하여 최적화했다. 첫번째로는 normal map을 이용해 geometry를 최적화하고 두번째로 texture를 최적화하는 식이다. 실험결과에서 이단계에서는 SDS와 VSD의 품질 차이가 크지않아 효율성을 위해 SDS를 사용했다. 하지만 Fantasia3D와 비교했을때 VSD 및 앞선 방법론을 이용해 최적화한 NeRF에서 뽑아낸 mesh는 SDS를 이용한 것보다 뛰어났다.
 
-# 5. Experiments
+## 5. Experiments
 
 ### 5.1 Results of Prolific Dreamer
 
@@ -392,7 +392,7 @@ Prolific Dreamer 실험 결과
     GAN : Diffusion = DreamFusion : ProlificDreamer
 
 
-# Future Work
+## Future Work
 
 - GECO
     - 고정된 수의 particle을 이용하는 prolific dreamer의 단점을 보완해 새로운 샘플을 생성할 수 있도록 함.

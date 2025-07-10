@@ -1,76 +1,71 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>NeRF &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/NeRF';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="3D Gaussian Splatting for Real-Time Radiance Field Rendering" href="3DGS.html" />
-    <link rel="prev" title="DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion" href="DreamPose.html" />
+    <link rel="next" title="3D Gaussian Splatting" href="3DGS.html" />
+    <link rel="prev" title="DreamPose" href="DreamPose.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -262,10 +273,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +290,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,28 +315,15 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
@@ -341,7 +331,8 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +353,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +362,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +494,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +505,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -532,7 +523,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</h1>
+    <h1>NeRF</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -571,7 +562,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -587,8 +578,8 @@ document.write(`
 <li><p><strong>Last updated on May. 22, 2024</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis">
-<h1>NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis<a class="headerlink" href="#nerf-representing-scenes-as-neural-radiance-fields-for-view-synthesis" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="nerf">
+<h1>NeRF<a class="headerlink" href="#nerf" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=JuH79E8rdKc"><img alt="NeRF" src="http://img.youtube.com/vi/JuH79E8rdKc/0.jpg" /></a></p>
 <ul class="simple">
 <li><p>기존의 3D object 자체를 구성하여 렌더링하는 explicit method → 저장 용량이 많이 소요</p></li>
@@ -598,7 +589,7 @@ document.write(`
 특정한 장면(Scene)에서 여러 각도로 찍은 일부의 사진들을 가지고 완전 새로운 각도의 모습을 유추하는 task</p></li>
 </ul>
 <section id="abstract">
-<h2>0. Abstract<a class="headerlink" href="#abstract" title="Permalink to this heading">#</a></h2>
+<h2>0. Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
 <ul>
 <li><p><strong>NeRF</strong></p>
 <ul class="simple">
@@ -625,14 +616,14 @@ volume rendering, 3D deep learning</p>
 <figure class="align-default" id="id1">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled2.png"><img alt="NeRF" class="bg-primary mb-1" src="../../_images/Untitled2.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 660 </span><span class="caption-text">method that optimizes a continuous 5D neural radiance field representation \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 661 </span><span class="caption-text">method that optimizes a continuous 5D neural radiance field representation \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 <section id="introduction">
-<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>캡처된 이미지들의 렌더링 오차를 최소화하기 위해 연속적인 <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> scene 함수의 파라미터를 직접 최적화하여 View synthesis 분야의 오랜 문제를 새로운 방식으로 해결함</p>
 <hr class="docutils" />
 <ul class="simple">
@@ -725,19 +716,19 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 <figure class="align-default" id="id2">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled11.png"><img alt="NeRF overview" class="bg-primary mb-1" src="../../_images/Untitled11.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 661 </span><span class="caption-text">An overview of our neural radiance field scene representation and differentiable rendering procedure \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 662 </span><span class="caption-text">An overview of our neural radiance field scene representation and differentiable rendering procedure \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 <section id="related-work">
-<h2>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h2>
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>Neural 3D shape representations</strong></p></li>
 <li><p><strong>View synthesis and image-based rendering</strong></p></li>
 </ul>
 </section>
 <section id="neural-radiance-field-scene-representation">
-<h2>3. Neural Radiance Field Scene Representation<a class="headerlink" href="#neural-radiance-field-scene-representation" title="Permalink to this heading">#</a></h2>
+<h2>3. Neural Radiance Field Scene Representation<a class="headerlink" href="#neural-radiance-field-scene-representation" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>5차원 벡터 함수 (MLP) <span class="math notranslate nohighlight">\(F_{\Theta}:(\mathbf{x}, \mathbf{d}) \rightarrow(\mathbf{c}, \sigma)\)</span></p>
 <ul class="simple">
@@ -760,7 +751,7 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 <figure class="align-default" id="id3">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled3.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 662 </span><span class="caption-text">fully-connected network architecture\  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 663 </span><span class="caption-text">fully-connected network architecture\  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -781,7 +772,7 @@ a single <span class="math notranslate nohighlight">\(5 \mathrm{D}\)</span> coor
 </ul>
 </section>
 <section id="volume-rendering-with-radiance-fields">
-<h2>4. Volume Rendering with Radiance Fields<a class="headerlink" href="#volume-rendering-with-radiance-fields" title="Permalink to this heading">#</a></h2>
+<h2>4. Volume Rendering with Radiance Fields<a class="headerlink" href="#volume-rendering-with-radiance-fields" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><strong>5D NeRF 는 장면을 volume density 와 특정 포인트에서 방출된 빛(색상)으로 표현</strong></p></li>
 <li><p><strong>볼륨 렌더링 : scene 을 통과하는 모든 광선의 색상을 렌더링</strong></p>
@@ -835,7 +826,7 @@ C(\mathbf{r})=\int_{t_n}^{t_f} T(t) \sigma(\mathbf{r}(t)) \mathbf{c}(\mathbf{r}(
 </ul>
 </section>
 <section id="optimizing-a-neural-radiance-field">
-<h2>5. Optimizing a Neural Radiance Field<a class="headerlink" href="#optimizing-a-neural-radiance-field" title="Permalink to this heading">#</a></h2>
+<h2>5. Optimizing a Neural Radiance Field<a class="headerlink" href="#optimizing-a-neural-radiance-field" title="Link to this heading">#</a></h2>
 <p><strong>[REMIND]</strong></p>
 <ul class="simple">
 <li><p>지금까지 <strong>NeRF 로 scene 을 모델링하는 것, 이 표현으로 새로운 views 를 렌더링 하는 것</strong> 에 필요한 핵심적인 구성요소를 다룸</p>
@@ -852,7 +843,7 @@ that assists the MLP in representing high-frequency functions</p></li>
 that allows us to efficiently sample this high-frequency representation.</p></li>
 </ol>
 <section id="positional-encoding">
-<h3>5.1 Positional encoding<a class="headerlink" href="#positional-encoding" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Positional encoding<a class="headerlink" href="#positional-encoding" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Neural network <span class="math notranslate nohighlight">\(F_{\Theta}\)</span> 가 직접 <strong><span class="math notranslate nohighlight">\((x, y, z, \theta, \phi)\)</span> input coordinates</strong> 에서 직접 연산하는 경우, 색상과 형태에서 고주파 변동을 표현하는데 성능이 좋지 않았음</p></li>
 <li><p><a class="reference external" href="https://arxiv.org/abs/1806.08734">[35] On the spectral bias of neural networks</a> 논문 결과와 동일,</p>
@@ -876,7 +867,7 @@ that allows us to efficiently sample this high-frequency representation.</p></li
 </ul>
 </section>
 <section id="hierarchical-volume-sampling">
-<h3>5.2 Hierarchical volume sampling<a class="headerlink" href="#hierarchical-volume-sampling" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Hierarchical volume sampling<a class="headerlink" href="#hierarchical-volume-sampling" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>Stratified Sampling</strong></p>
 <ul class="simple">
@@ -928,7 +919,7 @@ that allows us to efficiently sample this high-frequency representation.</p></li
 </ul>
 </section>
 <section id="implementation-details">
-<h3>5.3 Implementation details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h3>
+<h3>5.3 Implementation details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>각 Scene 에 대해 네트워크 를 별도로 최적화</strong></p>
 <p>scene이 캡처된 RGB 이미지, extrinsic parameter(해당 카메라 포즈), intrinsic parameter, 장면 경계로 구성된 데이터셋이 필요</p>
@@ -943,7 +934,7 @@ that allows us to efficiently sample this high-frequency representation.</p></li
 <figure class="align-default" id="id4">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled6.png"><img alt="NeRF intrinsic_extrinsic" class="bg-primary mb-1" src="../../_images/Untitled6.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 663 </span><span class="caption-text">intrinsic prameter and extrinsic parameter</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 664 </span><span class="caption-text">intrinsic prameter and extrinsic parameter</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -981,7 +972,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 </section>
 </section>
 <section id="experiments-detail">
-<h2>5.4 Experiments detail<a class="headerlink" href="#experiments-detail" title="Permalink to this heading">#</a></h2>
+<h2>5.4 Experiments detail<a class="headerlink" href="#experiments-detail" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>a batch size of 4096 rays</p></li>
 <li><p>sampling coordinates :</p>
@@ -999,16 +990,16 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 </ul>
 </section>
 <section id="results">
-<h2>6. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h2>
+<h2>6. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <section id="datasets">
-<h3>6.1 Datasets<a class="headerlink" href="#datasets" title="Permalink to this heading">#</a></h3>
+<h3>6.1 Datasets<a class="headerlink" href="#datasets" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Synthetic renderings of object</strong></p></li>
 </ul>
 <figure class="align-default" id="id5">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled8.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled8.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 664 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 665 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -1040,7 +1031,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 </ol>
 </section>
 <section id="comparisons">
-<h3>6.2 Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h3>
+<h3>6.2 Comparisons<a class="headerlink" href="#comparisons" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>Models</strong></p>
 <ul>
@@ -1052,7 +1043,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 </ul>
 </section>
 <section id="discussion">
-<h3>6.3 Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h3>
+<h3>6.3 Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>comparison : Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</p></li>
 </ol>
@@ -1064,7 +1055,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id6">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled9.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled9.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 665 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 666 </span><span class="caption-text">Diffuse Synthetic : Lambertian, Realistic Synthetic : non-Lambertian</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1077,14 +1068,14 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id7">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled10.png"><img alt="Diffuse Synthetic" class="bg-primary mb-1" src="../../_images/Untitled10.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 666 </span><span class="caption-text">NeRF also correctly reconstructs partially occluded regions</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 667 </span><span class="caption-text">NeRF also correctly reconstructs partially occluded regions</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ol>
 </section>
 <section id="ablation-studies">
-<h3>6.4 Ablation studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h3>
+<h3>6.4 Ablation studies<a class="headerlink" href="#ablation-studies" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Realistic Synthetic 360도 scene</p></li>
 <li><p>위치 인코딩(PE), 시점 의존성(VD), 계층적 샘플링(H)</p></li>
@@ -1096,7 +1087,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 <figure class="align-default" id="id8">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled111.png"><img alt="ablation study" class="bg-primary mb-1" src="../../_images/Untitled111.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 667 </span><span class="caption-text">ablation study</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 668 </span><span class="caption-text">ablation study</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1105,7 +1096,7 @@ coarse 렌더링과 fine 렌더링의 색상 vs 실제 픽셀 색상 간의 총 
 </section>
 <hr class="docutils" />
 <section id="appendix-a-additional-implementation-details">
-<h2>(Appendix) A. Additional Implementation Details<a class="headerlink" href="#appendix-a-additional-implementation-details" title="Permalink to this heading">#</a></h2>
+<h2>(Appendix) A. Additional Implementation Details<a class="headerlink" href="#appendix-a-additional-implementation-details" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p><strong>Volume Bounds</strong>
 For experiments with synthetic images, we scale the scene so that it lies within a <strong>cube of
@@ -1116,7 +1107,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
 <figure class="align-default" id="id9">
 <a class="bg-primary mb-1 reference internal image-reference" href="../../_images/Untitled3.png"><img alt="NeRF architecture" class="bg-primary mb-1" src="../../_images/Untitled3.png" style="width: 800px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 668 </span><span class="caption-text">fully-connected network architecture \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 669 </span><span class="caption-text">fully-connected network architecture \  (source: {<a class="reference external" href="https://arxiv.org/pdf/2003.08934v2">https://arxiv.org/pdf/2003.08934v2</a>})</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -1158,7 +1149,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1167,7 +1158,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</p>
+        <p class="prev-next-title">DreamPose</p>
       </div>
     </a>
     <a class="right-next"
@@ -1175,7 +1166,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">3D Gaussian Splatting for Real-Time Radiance Field Rendering</p>
+        <p class="prev-next-title">3D Gaussian Splatting</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1187,6 +1178,7 @@ adding random Gaussian noise with zero mean and unit variance to the <strong>out
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1238,7 +1230,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1262,8 +1254,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

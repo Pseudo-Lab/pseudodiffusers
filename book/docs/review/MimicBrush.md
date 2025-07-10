@@ -10,7 +10,7 @@
 - **Last updated on Nov. 05, 2024**
 ```
 
-# MimicBrush: Zero-shot Image Editing with Reference Imitation 
+# MimicBrush
 
 ## Three Lines Summary
 

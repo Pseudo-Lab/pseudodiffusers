@@ -1,75 +1,70 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion &#8212; Text-to-Image Generation-feat-Diffusion</title>
+    <title>DreamPose &#8212; Text-to-Image Generation-feat-Diffusion</title>
   
   
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/DreamPose';</script>
-    <link rel="shortcut icon" href="../../_static/PseudoLab_logo.png"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis" href="NeRF.html" />
+    <link rel="next" title="NeRF" href="NeRF.html" />
     <link rel="prev" title="DreaMoving" href="DreaMoving.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -80,28 +75,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -123,12 +113,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -144,6 +142,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -162,7 +162,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -225,11 +236,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
 <li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
 
@@ -262,10 +268,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA: A Universal Stable-Diffusion Acceleration Module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
 
 
-<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush: Zero-shot Image Editing with Reference Imitation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
 <li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
 
 
@@ -279,21 +285,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-
-
-
-
-
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">DreamPose</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting for Real-Time Radiance Field Rendering</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E: A System for Generating 3D Point Clouds from Complex Prompts (Arxiv 2022)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
 
 
 
@@ -312,36 +310,26 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html"><strong>DreamFusion</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
 <li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="zero123.html">zero 123</a></li>
-
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer: High-Fidelity and Diverse Text-to-3D Generation with Variational Score Distillation</a></li>
-
-
-
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="MVDream.html"><strong>MVDream: Multi-view Diffusion for 3D Generation</strong></a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
 
 
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="CAT3D.html">CAT3D</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM: Large Multi-View Gaussian Model for High-Resolution 3D Content Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="One-2-3-45.html">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
 <ul class="nav bd-sidenav">
@@ -362,7 +350,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -371,14 +359,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -503,10 +491,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -514,14 +502,14 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -532,7 +520,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</h1>
+    <h1>DreamPose</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -542,47 +530,45 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">2.1. Diffusion models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#still-image-animation">2.2. Still Image Animation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fashion-image-synthesis">2.3. Fashion Image Synthesis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models-for-video-synthesis">2.4. Diffusion Models for Video Synthesis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-mechanisms-for-diffusion-models">2.5. Conditioning Mechanisms for Diffusion Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">2.1. Diffusion models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#still-image-animation">2.2. Still Image Animation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashion-image-synthesis">2.3. Fashion Image Synthesis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models-for-video-synthesis">2.4. Diffusion Models for Video Synthesis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-mechanisms-for-diffusion-models">2.5. Conditioning Mechanisms for Diffusion Models</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">3. Background</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method"><strong>4. Method</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview"><strong>4.1. Overview</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">4.2. Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-clip-vae-encoder"><strong>4.2.1 Split CLIP-VAE Encoder</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-unet">4.2.2 Modified UNet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning">4.2.3 <strong>Finetuning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">3. Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">4.2. Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-clip-vae-encoder">4.2.1 Split CLIP-VAE Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-unet">4.2.2 Modified UNet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning">4.2.3 Finetuning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-and-image-classifier-free-guidance">4.4. Pose and Image Classifier-Free Guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-and-image-classifier-free-guidance">4.4. Pose and Image Classifier-Free Guidance</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.1.  Implementation Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">5.2. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.1.  Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">5.2. Dataset</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.1. Comparisons</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-analysis">6.1.1 Quantitative Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">6.2.2 Qualitative Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.1. Comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-analysis">6.1.1 Quantitative Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">6.2.2 Qualitative Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.2. Ablation Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-images">6.3. Multiple Input Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.2. Ablation Studies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-images">6.3. Multiple Input Images</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-future-work"><strong>7. Limitations &amp; Future Work</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-future-work">7. Limitations &amp; Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -591,7 +577,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <div class="admonition-information admonition">
 <p class="admonition-title">Information</p>
@@ -607,12 +593,12 @@ document.write(`
 <li><p><strong>Last updated on May. 08, 2023</strong></p></li>
 </ul>
 </div>
-<section class="tex2jax_ignore mathjax_ignore" id="dreampose-fashion-image-to-video-synthesis-via-stable-diffusion">
-<h1>DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion<a class="headerlink" href="#dreampose-fashion-image-to-video-synthesis-via-stable-diffusion" title="Permalink to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="dreampose">
+<h1>DreamPose<a class="headerlink" href="#dreampose" title="Link to this heading">#</a></h1>
 <figure class="align-default" id="id1">
 <img alt="DreamPose_input_output" class="bg-primary mb-1" src="pics/DreamPose/00.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 646 </span><span class="caption-text">DreamPose 입출력</span><a class="headerlink" href="#id1" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 647 </span><span class="caption-text">DreamPose 입출력</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <aside>
@@ -628,9 +614,8 @@ document.write(`
 - 듀얼 classfier-free guidance를 사용하여 입력 이미지와 포즈 시퀀스에 대한 충실도의 강도를 조정한다.
 - 패션 비디오 합성 태스크에 대해서 SOTA 성능을 달성 하였다.
 </aside>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1><strong>1. Introduction</strong><a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>DreamPose가 제안된 배경</p>
 <ul>
@@ -680,10 +665,10 @@ document.write(`
 </li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="related-work">
-<h1>2. Related Work<a class="headerlink" href="#related-work" title="Permalink to this heading">#</a></h1>
+<section id="related-work">
+<h2>2. Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
 <section id="diffusion-models">
-<h2>2.1. Diffusion models<a class="headerlink" href="#diffusion-models" title="Permalink to this heading">#</a></h2>
+<h3>2.1. Diffusion models<a class="headerlink" href="#diffusion-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>디퓨전 모델은 최근 text-to-image, 비디오 생성, 3D 생성 태스크에서 인상적인 결과를 보여주고 있다.</p></li>
 <li><p>하지만 이러한 모델을 처음부터 훈련하는 것은 비용이 많이 들고 많은 양의 데이터가 필요하다.</p></li>
@@ -693,7 +678,7 @@ document.write(`
 </ul>
 </section>
 <section id="still-image-animation">
-<h2>2.2. Still Image Animation<a class="headerlink" href="#still-image-animation" title="Permalink to this heading">#</a></h2>
+<h3>2.2. Still Image Animation<a class="headerlink" href="#still-image-animation" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>하나 이상의 입력 이미지로부터 동영상을 생성하는 태스크</p></li>
 <li><p>기존에 디퓨전 기반이 아닌 접근 방식들은 배경 예측, 모션 표현, occlusion map이나 dense map 등 여러 개의 개별 네트워크로 구성되는 경우가 많았다.</p>
@@ -706,7 +691,7 @@ document.write(`
 </ul>
 </section>
 <section id="fashion-image-synthesis">
-<h2>2.3. Fashion Image Synthesis<a class="headerlink" href="#fashion-image-synthesis" title="Permalink to this heading">#</a></h2>
+<h3>2.3. Fashion Image Synthesis<a class="headerlink" href="#fashion-image-synthesis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>기존 pose-guided 패션 이미지 합성 방법</p>
 <ul>
@@ -723,7 +708,7 @@ document.write(`
 </ul>
 </section>
 <section id="diffusion-models-for-video-synthesis">
-<h2>2.4. Diffusion Models for Video Synthesis<a class="headerlink" href="#diffusion-models-for-video-synthesis" title="Permalink to this heading">#</a></h2>
+<h3>2.4. Diffusion Models for Video Synthesis<a class="headerlink" href="#diffusion-models-for-video-synthesis" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>많은 text-to-video 디퓨전 모델은 text-to-image 디퓨전 모델을 활용하여 적용한다.</p></li>
 <li><p>결과를 기대할만 하지만, 여전히 텍스트-이미지 모델과 같은 성능은 나오지 않고 있다.</p></li>
@@ -734,7 +719,7 @@ document.write(`
 </ul>
 </section>
 <section id="conditioning-mechanisms-for-diffusion-models">
-<h2>2.5. Conditioning Mechanisms for Diffusion Models<a class="headerlink" href="#conditioning-mechanisms-for-diffusion-models" title="Permalink to this heading">#</a></h2>
+<h3>2.5. Conditioning Mechanisms for Diffusion Models<a class="headerlink" href="#conditioning-mechanisms-for-diffusion-models" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>텍스트를 조건으로 하는 이미지 생성 디퓨전 모델을 널리 사용되어 왔다.</p></li>
 <li><p>텍스트 컨디셔닝은 높은 수준의 디테일을 조절하는 데는 효과적이지만, 사람과 의상의 정확한 identity나 포즈에 대한 풍부하고 상세한 정보를 제공하는 것은 어렵다.</p></li>
@@ -750,8 +735,8 @@ document.write(`
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="background">
-<h1>3. Background<a class="headerlink" href="#background" title="Permalink to this heading">#</a></h1>
+<section id="background">
+<h2>3. Background<a class="headerlink" href="#background" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>디퓨전 모델</p>
 <ul class="simple">
@@ -763,7 +748,7 @@ document.write(`
 <figure class="align-default" id="id2">
 <img alt="latent diffusion" class="bg-primary mb-1" src="../../_images/Untitled.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 647 </span><span class="caption-text">Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 648 </span><span class="caption-text">Latent Diffusion Model</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -809,15 +794,15 @@ document.write(`
 </li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="method">
-<h1><strong>4. Method</strong><a class="headerlink" href="#method" title="Permalink to this heading">#</a></h1>
+<section id="method">
+<h2>4. Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>본 논문에서는  단일 이미지와 포즈 시퀀스로부터 사실적인 애니메이션 동영상을 만드는 것을 목표로 한다.</p></li>
 <li><p>이를 위해 패션 동영상 컬렉션에서 사전 학습된 스테이블 디퓨전을 패션 동영상 컬렉션에 맞게 파인튜닝한다.</p></li>
 <li><p>추가 컨디셔닝 신호(이미지 및 포즈)를 받고 동영상으로 볼 수 있는 시간적으로 일관된 콘텐츠를 출력하기 위해 스테이블 디퓨전의 구조를 조정하는 작업이 포함된다.</p></li>
 </ul>
 <section id="overview">
-<h2><strong>4.1. Overview</strong><a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<h3>4.1. Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>입출력</p>
 <ul>
@@ -835,7 +820,7 @@ document.write(`
 </ul>
 </section>
 <section id="architecture">
-<h2>4.2. Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h2>
+<h3>4.2. Architecture<a class="headerlink" href="#architecture" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>이미지 애니메이션을 위해 원래의 text-to-image 스테이블 디퓨전 모델을 수정하고 파인튜닝한다. (조건: 이미지, 포즈)</p></li>
 <li><p>이미지 애니메이션의 목표</p>
@@ -849,17 +834,17 @@ document.write(`
 <figure class="align-default" id="id3">
 <img alt="DreamPose Architecture" class="bg-primary mb-1" src="../../_images/021.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 648 </span><span class="caption-text">DreamPose Architecture</span><a class="headerlink" href="#id3" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 649 </span><span class="caption-text">DreamPose Architecture</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 <section id="split-clip-vae-encoder">
-<h3><strong>4.2.1 Split CLIP-VAE Encoder</strong><a class="headerlink" href="#split-clip-vae-encoder" title="Permalink to this heading">#</a></h3>
+<h4>4.2.1 Split CLIP-VAE Encoder<a class="headerlink" href="#split-clip-vae-encoder" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="id4">
 <img alt="DreamPose Encoder" class="bg-primary mb-1" src="../../_images/031.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 649 </span><span class="caption-text">DreamPose Encoder</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 650 </span><span class="caption-text">DreamPose Encoder</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -902,11 +887,11 @@ document.write(`
 \]</div>
 </section>
 <section id="modified-unet">
-<h3>4.2.2 Modified UNet<a class="headerlink" href="#modified-unet" title="Permalink to this heading">#</a></h3>
+<h4>4.2.2 Modified UNet<a class="headerlink" href="#modified-unet" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="id5">
 <img alt="Modified UNet" class="bg-primary mb-1" src="../../_images/041.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 650 </span><span class="caption-text">Modified UNet</span><a class="headerlink" href="#id5" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 651 </span><span class="caption-text">Modified UNet</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -917,7 +902,7 @@ document.write(`
 </ul>
 </section>
 <section id="finetuning">
-<h3>4.2.3 <strong>Finetuning</strong><a class="headerlink" href="#finetuning" title="Permalink to this heading">#</a></h3>
+<h4>4.2.3 Finetuning<a class="headerlink" href="#finetuning" title="Link to this heading">#</a></h4>
 <ul>
 <li><p>스테이블 디퓨전 모델의 대부분의 레이어 weight는 미리 학습된 text-to-image 스테이블 디퓨전 체크포인트로 초기화된다.</p></li>
 <li><p>이 때, CLIP 이미지 인코더는 별도의 미리 학습된 체크포인트에서 로드된다.</p></li>
@@ -926,7 +911,7 @@ document.write(`
 <figure class="align-default" id="id6">
 <img alt="Two-phase finetuning" class="bg-primary mb-1" src="../../_images/051.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 651 </span><span class="caption-text">Two-phase Finetuning</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 652 </span><span class="caption-text">Two-phase Finetuning</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ol class="arabic simple">
@@ -949,7 +934,7 @@ document.write(`
 <figure class="align-default" id="id7">
 <img alt="Importance of VAE finetuning" class="bg-primary mb-1" src="../../_images/061.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 652 </span><span class="caption-text">VAE 파인튜닝의 중요성</span><a class="headerlink" href="#id7" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 653 </span><span class="caption-text">VAE 파인튜닝의 중요성</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
@@ -957,7 +942,7 @@ document.write(`
 </section>
 </section>
 <section id="pose-and-image-classifier-free-guidance">
-<h2>4.4. Pose and Image Classifier-Free Guidance<a class="headerlink" href="#pose-and-image-classifier-free-guidance" title="Permalink to this heading">#</a></h2>
+<h3>4.4. Pose and Image Classifier-Free Guidance<a class="headerlink" href="#pose-and-image-classifier-free-guidance" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>추론시 단일 입력 이미지와 피사체별 모델(subject-specific model)을 사용하는 일련의 포즈에서 프레임별로 동영상을 생성한다.</p></li>
 <li><p>이중(dual) classifier-free guidance를 사용하여 추론 시에 이미지 컨디셔닝 <span class="math notranslate nohighlight">\(c_I\)</span>와 포즈 컨디셔닝 <span class="math notranslate nohighlight">\(c_p\)</span>의 강도를 조절한다.</p></li>
@@ -982,10 +967,10 @@ document.write(`
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="experiments">
-<h1>5. Experiments<a class="headerlink" href="#experiments" title="Permalink to this heading">#</a></h1>
+<section id="experiments">
+<h2>5. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
 <section id="implementation-details">
-<h2>5.1.  Implementation Details<a class="headerlink" href="#implementation-details" title="Permalink to this heading">#</a></h2>
+<h3>5.1.  Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>입력 이미지 resolution: 512x512</p></li>
 <li><p>GPU: NVIDIA A100 2개</p></li>
@@ -1016,7 +1001,7 @@ document.write(`
 </ul>
 </section>
 <section id="dataset">
-<h2>5.2. Dataset<a class="headerlink" href="#dataset" title="Permalink to this heading">#</a></h2>
+<h3>5.2. Dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>UBC Fashion 데이터셋 사용</p></li>
 <li><p>Split</p>
@@ -1031,10 +1016,10 @@ document.write(`
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="results">
-<h1>6. Results<a class="headerlink" href="#results" title="Permalink to this heading">#</a></h1>
+<section id="results">
+<h2>6. Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
 <section id="comparisons">
-<h2>6.1. Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h2>
+<h3>6.1. Comparisons<a class="headerlink" href="#comparisons" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>공개적으로 사용 가능한 두 가지 최신 비디오 합성 방법인 MRAA(Motion Representations for Articulated Animation)과 Thin-Plate Spline Mothion Model(TPSMM)과 수치적 및 정성적인 비교를 하였다.</p></li>
 <li><p>제공된 훈련 스크립트와 권장 에폭 수를 사용하여 두 가지 모델을 UBC 패션 데이터셋을 이용해서 스크래치부터 학습하였다.</p></li>
@@ -1043,11 +1028,11 @@ document.write(`
 <li><p>100개의 디노이징 스텝을 사용하여 PIDM과 DreamPose를 실행하였다.</p></li>
 </ul>
 <section id="quantitative-analysis">
-<h3>6.1.1 Quantitative Analysis<a class="headerlink" href="#quantitative-analysis" title="Permalink to this heading">#</a></h3>
+<h4>6.1.1 Quantitative Analysis<a class="headerlink" href="#quantitative-analysis" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="id8">
 <img alt="result 1" class="bg-primary mb-1" src="../../_images/071.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 653 </span><span class="caption-text">정량적 성능 비교</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 654 </span><span class="caption-text">정량적 성능 비교</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1058,11 +1043,11 @@ document.write(`
 </ul>
 </section>
 <section id="qualitative-analysis">
-<h3>6.2.2 Qualitative Analysis<a class="headerlink" href="#qualitative-analysis" title="Permalink to this heading">#</a></h3>
+<h4>6.2.2 Qualitative Analysis<a class="headerlink" href="#qualitative-analysis" title="Link to this heading">#</a></h4>
 <figure class="align-default" id="id9">
 <img alt="result 2" class="bg-primary mb-1" src="../../_images/081.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 654 </span><span class="caption-text">정성적 성능 비교</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 655 </span><span class="caption-text">정성적 성능 비교</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul>
@@ -1072,7 +1057,7 @@ document.write(`
 <figure class="align-default" id="id10">
 <img alt="result 3" class="bg-primary mb-1" src="../../_images/091.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 655 </span><span class="caption-text">PIDM과의 비교</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 656 </span><span class="caption-text">PIDM과의 비교</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1084,7 +1069,7 @@ document.write(`
 </section>
 </section>
 <section id="ablation-studies">
-<h2>6.2. Ablation Studies<a class="headerlink" href="#ablation-studies" title="Permalink to this heading">#</a></h2>
+<h3>6.2. Ablation Studies<a class="headerlink" href="#ablation-studies" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>아래 네 가지 변형에 대해 성능을 비교한다.</p>
 <ol class="arabic simple">
@@ -1099,14 +1084,14 @@ document.write(`
 <figure class="align-default" id="id11">
 <img alt="result 4" class="bg-primary mb-1" src="../../_images/10.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 656 </span><span class="caption-text">Ablation Studies - 정량적 비교</span><a class="headerlink" href="#id11" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 657 </span><span class="caption-text">Ablation Studies - 정량적 비교</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>Qualitative Comparison</strong></p>
 <figure class="align-default" id="id12">
 <img alt="result 5" class="bg-primary mb-1" src="../../_images/11.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 657 </span><span class="caption-text">Ablation Studies - 정성적 비교</span><a class="headerlink" href="#id12" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 658 </span><span class="caption-text">Ablation Studies - 정성적 비교</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1117,28 +1102,28 @@ document.write(`
 </ul>
 </section>
 <section id="multiple-input-images">
-<h2>6.3. Multiple Input Images<a class="headerlink" href="#multiple-input-images" title="Permalink to this heading">#</a></h2>
+<h3>6.3. Multiple Input Images<a class="headerlink" href="#multiple-input-images" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>DreamPose는 피사체에 대한 입력 이미지를 여러 장 넣어서 파인튜닝할 수 있다.</p></li>
 <li><p>피사체의 입력 이미지를 추가하면 품질과 시점의 일관성이 향상된다.</p>
 <figure class="align-default" id="id13">
 <img alt="result 6" class="bg-primary mb-1" src="../../_images/12.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 658 </span><span class="caption-text">Multiple Input Images 결과</span><a class="headerlink" href="#id13" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 659 </span><span class="caption-text">Multiple Input Images 결과</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </li>
 </ul>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="limitations-future-work">
-<h1><strong>7. Limitations &amp; Future Work</strong><a class="headerlink" href="#limitations-future-work" title="Permalink to this heading">#</a></h1>
+<section id="limitations-future-work">
+<h2>7. Limitations &amp; Future Work<a class="headerlink" href="#limitations-future-work" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>실패 사례</p>
 <figure class="align-default" id="id14">
 <img alt="result 7" class="bg-primary mb-1" src="../../_images/13.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 659 </span><span class="caption-text">실패 사례 예시</span><a class="headerlink" href="#id14" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 660 </span><span class="caption-text">실패 사례 예시</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -1153,12 +1138,13 @@ document.write(`
 </li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="conclusion">
-<h1>8. Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h1>
+<section id="conclusion">
+<h2>8. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>스틸 패션 이미지 애니메이션을 위한 새로운 디퓨전 기반 방법인 DreamPose를 제안하였다.</p></li>
 <li><p>한 장의 이미지와 포즈 시퀀스가 주어졌을 때,  섬유, 패턴, 사람의 identity를 애니메이션 하는 사실적인 사실적인 패션 동영상을 생성하는 방법을 증명하였다.</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1188,7 +1174,7 @@ document.write(`
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -1205,7 +1191,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis</p>
+        <p class="prev-next-title">NeRF</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1218,53 +1204,52 @@ document.write(`
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">DreamPose: Fashion Image-to-Video Synthesis via Stable Diffusion</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>1. Introduction</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">2.1. Diffusion models</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#still-image-animation">2.2. Still Image Animation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fashion-image-synthesis">2.3. Fashion Image Synthesis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models-for-video-synthesis">2.4. Diffusion Models for Video Synthesis</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-mechanisms-for-diffusion-models">2.5. Conditioning Mechanisms for Diffusion Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">2. Related Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models">2.1. Diffusion models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#still-image-animation">2.2. Still Image Animation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashion-image-synthesis">2.3. Fashion Image Synthesis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion-models-for-video-synthesis">2.4. Diffusion Models for Video Synthesis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditioning-mechanisms-for-diffusion-models">2.5. Conditioning Mechanisms for Diffusion Models</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#background">3. Background</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#method"><strong>4. Method</strong></a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview"><strong>4.1. Overview</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">4.2. Architecture</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#split-clip-vae-encoder"><strong>4.2.1 Split CLIP-VAE Encoder</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-unet">4.2.2 Modified UNet</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning">4.2.3 <strong>Finetuning</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background">3. Background</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">4. Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">4.1. Overview</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">4.2. Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#split-clip-vae-encoder">4.2.1 Split CLIP-VAE Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-unet">4.2.2 Modified UNet</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#finetuning">4.2.3 Finetuning</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-and-image-classifier-free-guidance">4.4. Pose and Image Classifier-Free Guidance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pose-and-image-classifier-free-guidance">4.4. Pose and Image Classifier-Free Guidance</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.1.  Implementation Details</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">5.2. Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">5. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">5.1.  Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">5.2. Dataset</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.1. Comparisons</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-analysis">6.1.1 Quantitative Analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">6.2.2 Qualitative Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">6. Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">6.1. Comparisons</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#quantitative-analysis">6.1.1 Quantitative Analysis</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#qualitative-analysis">6.2.2 Qualitative Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.2. Ablation Studies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-images">6.3. Multiple Input Images</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-studies">6.2. Ablation Studies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-images">6.3. Multiple Input Images</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-future-work"><strong>7. Limitations &amp; Future Work</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#limitations-future-work">7. Limitations &amp; Future Work</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">8. Conclusion</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
@@ -1288,7 +1273,7 @@ By PseudoLab
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1312,8 +1297,8 @@ By PseudoLab
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

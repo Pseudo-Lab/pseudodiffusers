@@ -10,7 +10,7 @@
 - **Last updated on May. 22, 2024**
 ```
 
-# NeRF : Representing Scenes as Neural Radiance Fields for View Synthesis
+# NeRF
 
 [![NeRF](http://img.youtube.com/vi/JuH79E8rdKc/0.jpg)](https://www.youtube.com/watch?v=JuH79E8rdKc)
 

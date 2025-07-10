@@ -30,7 +30,7 @@
 IP-Adapter를 활용한 이미지 합성 [출처](https://arxiv.org/abs/2308.06721)
 :::
 
-# Introduction
+## Introduction
 
 **:image prompt의 필요성과 기존 연구에서 image prompt를 사용해 이미지를 생성하려는 시도의 종류와 장단점을 말한다.**
 
@@ -94,7 +94,7 @@ SD Image Variations와 Stable UnCLIP과 같은 기존 연구에서 image prompt�
 - reusable and flexible (base + IP-Adapter + ControlNet가능)
 - multimodal compatibility (image prompt + text prompt)
 
-# Related Works
+## Related Works
 
 ### Text-to-Image Diffusion Models
 
@@ -165,7 +165,7 @@ T2I-adapter의 결과는 기존 모델의 각 층의 feature map 크기가 맞�
 SeeCoder Architecture [출처](https://arxiv.org/abs/2305.16223)
 :::
 
-# Method
+## Method
 
 ### Preliminaries
 
@@ -262,7 +262,7 @@ $$
 \mathbf Z^\text{new}=\text{Softmax}(\mathbf {Q,K,V})+ \lambda\cdot\text{Softmax}(\mathbf {Q,K',V'})\tag{8}
 $$
 
-# Experiments
+## Experiments
 
 ### Experimental Setup
 
@@ -352,7 +352,7 @@ IP-Adapter는 CLIP image encoder로 부터 추출한 global image embedding를 �
 
 두 adapter의 생성 결과를 비교하면 finer-grained feature를 이용하면 보다 image prompt와 가까운 결과를 얻을 수 있다. finer-grained feature는 spatial structure information을 학습하여 생성된 이미지의 diversity를 낮추는 결과를 초래할 수 있으나 추가적인 조건(text prompt, structure map)을 활용하면 다양한 이미지를 만들 수 있다. 예를 들어 위의 그림과 같이 사진+pose를 통해 이미지를 생성 할 수 있다.
 
-# Conclusion
+## Conclusion
 
 본 연구에서는 사전 학습된 T2I diffusion model에 image prompt capability를 달성하기 위해 IP-Adapter를 제안한다. IP-Adapter의 핵심 디자인은 decoupled cross-attention으로 image feature를 분리하여 cross-attention을 수행한다. 고작 22M parameter가 추가된 IP-Adapter는 qualitative, quantitative experimental results 모두에서 비등하거나 나은 성능을 보인다. 또한 IP-Adapter는 확장성이 좋아 한번 훈련된 뒤, 다른 custom model, structural controllable tools에 곧바로 덧붙여 사용할 수도 있다. 더욱 중요한 점은 image prompt를 text prompt와 더애 멀티모달 이미지 생성을 가능케한다는 점이다.
 

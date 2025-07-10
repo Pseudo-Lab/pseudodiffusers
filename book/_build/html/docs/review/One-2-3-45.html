@@ -1,0 +1,1563 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape &#8212; Text-to-Image Generation-feat-Diffusion</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/review/One-2-3-45';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="icon" href="../../_static/PseudoLab_logo.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Synthetic Data with Stable Diffusion for Foliar Disease Classification" href="../experiments/js_exp.html" />
+    <link rel="prev" title="LGM" href="LGM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/PseudoLab_logo.png" class="logo__image only-light" alt="Text-to-Image Generation-feat-Diffusion - Home"/>
+    <script>document.write(`<img src="../../_static/PseudoLab_logo.png" class="logo__image only-dark" alt="Text-to-Image Generation-feat-Diffusion - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Welcome to PseudoDiffusers!!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preliminary Works</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vae.html">VAE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gan.html">GAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DDPM.html">DDPM</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DDIM.html">DDIM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="A_Study_on_the_Evaluation_of_Generative_Models.html">A Study on the Evaluation of Generative Models</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Image Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cycleGAN.html">CycleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyleGAN.html">StyleGAN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_beats_GANs.html">Diffusion Models Beat GANs on Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dalle.html">DALL-E</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DALLE2.html">DALL-E 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dreambooth.html">DreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlNet.html">ControlNet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Latent_Diffusion_Model.html">Introduction</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Textual_Inversion.html">Textual Inversion</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="CustomDiffusion.html">Custom Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LoRA.html">LoRA</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="I-DDPM.html">I-DDPM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="StyO.html">StyO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen.html">Imagen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="imagen_editor.html">Imagen Editor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDEdit.html">SDEdit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDXL.html">SDXL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="t2i_adapter.html">T2I-Adapter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="IP_Adapter.html">IP-Adapter</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="HyperDreamBooth.html">HyperDreamBooth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CM3leon.html">CM3leon</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Synthetic_Data_from_Diffusion_Models_Improves_ImageNet_Classification.html">Synthetic Data from Diffusion Models Improves ImageNet Classification</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="GLIDE.html">GLIDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="BBDM.html">BBDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Your_Diffusion_Model_is_Secretly_a_Zero_Shot_Classifier.html">Your Diffusion Model is Secretly a Zero-Shot Classifier</a></li>
+<li class="toctree-l1"><a class="reference internal" href="progressive_distillation.html">Progressive Distillation for Fast Sampling of Diffusion Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ConceptLab.html">ConceptLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_models_already_have_a_Semantic_Latent_Space.html">Diffusion Models already have a Semantic Latent Space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Muse.html">Muse</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="GIGAGAN.html">Scaling up GANs for Text-to-Image Synthesis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="consistency_models.html">Consistency Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="latent_consistency_models.html">Latent Consistency Models</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="LLM_grounded_Diffusion.html">LLM Grounded Diffusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiT.html">DiT</a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="one-step-image-translation.html">One-Step Image Translation with Text-to-Image Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LCM-LoRA.html">LCM-LoRA</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="MimicBrush.html">MimicBrush</a></li>
+<li class="toctree-l1"><a class="reference internal" href="one_step_diffusion_with_distribution_matching_distillation.html">One-step Diffusion with Distribution Matching Distillation</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Video Generation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Make_A_Video.html">Make A Video</a></li>
+<li class="toctree-l1"><a class="reference internal" href="VideoLDM.html">VideoLDM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AnimateDiff.html">AnimateDiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Animate_Anyone.html">Animate Anyone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreaMoving.html">DreaMoving</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamPose.html">DreamPose</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3D Generation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="NeRF.html">NeRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3DGS.html">3D Gaussian Splatting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Point_E.html">Point-E</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Shap-E.html">Shap-E</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="DreamFusion.html">DreamFusion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="magic-3d.html">Magic3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamBooth3D.html">Dream Booth 3D</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="zero123.html">Zero 1-to-3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zero123plus.html">Zero123++</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ProlificDreamer.html">ProlificDreamer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DreamGaussian.html">DreamGaussian</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Coin3D.html">Coin3D</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LGM.html">LGM</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../experiments/js_exp.html">Synthetic Data with Stable Diffusion for Foliar Disease Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../experiments/swjo_exp.html">Training DreamBooth on Naver Webtoon Face Dataset</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pseudo-lab/text-to-image-generation-feat-diffusion/issues/new?title=Issue%20on%20page%20%2Fdocs/review/One-2-3-45.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/docs/review/One-2-3-45.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-generation-guided-by-2d-prior-models">3D Generation Guided by 2D Prior Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-image-to-3d">Single Image to 3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizable-neural-reconstruction">Generalizable Neural Reconstruction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero123-view-conditioned-2d-diffusion">3.1 Zero123: View-Conditioned 2D Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-nerf-optimization-lift-multi-view-predictions-to-3d">3.2 Can NeRF Optimization Lift Multi-View Predictions to 3D?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-surface-reconstruction-from-imperfect-multi-view-predictions">3.3 Neural Surface Reconstruction from Imperfect Multi-View Predictions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-pose-estimation">3.4 Camera Pose Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">4.1 Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-image-to-3d-mesh">4.2 Single Image to 3D Mesh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.3 Ablation Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d-mesh">4.4 Text to 3D Mesh</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-elevation-estimation">6.4. Details of Elevation Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-training-and-evaluation">6.5 Details of Training and Evaluation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="admonition-information admonition">
+<p class="admonition-title">Information</p>
+<ul class="simple">
+<li><p><strong>Title:</strong> One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape Optimization</p></li>
+<li><p><strong>Reference</strong></p>
+<ul>
+<li><p>Project: <a class="reference external" href="https://one-2-3-45.github.io/">https://one-2-3-45.github.io/</a></p></li>
+<li><p>Paper: <a class="reference external" href="https://arxiv.org/pdf/2306.16928">https://arxiv.org/pdf/2306.16928</a></p></li>
+<li><p>Code: <a class="github reference external" href="https://github.com/One-2-3-45/One-2-3-45">One-2-3-45/One-2-3-45</a></p></li>
+</ul>
+</li>
+<li><p><strong>Author:</strong> Jeonghwa Yoo</p></li>
+<li><p><strong>Last updated on Jan. 15, 2025</strong></p></li>
+</ul>
+</div>
+<section class="tex2jax_ignore mathjax_ignore" id="one-2-3-45-any-single-image-to-3d-mesh-in-45-seconds-without-per-shape">
+<h1>One-2-3-45: Any Single Image to 3D Mesh in 45 Seconds without Per-Shape<a class="headerlink" href="#one-2-3-45-any-single-image-to-3d-mesh-in-45-seconds-without-per-shape" title="Link to this heading">#</a></h1>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Task: 단일 이미지 → 3D 복원</strong></p></li>
+<li><p><strong>단일 이미지 3D 복원 문제</strong></p>
+<ul>
+<li><p>자연 세계에 대한 깊은 지식을 요구하는 중요한 동시에 도전적인 과제.</p></li>
+<li><p>기존 방법들은 2D 디퓨전 모델을 이용한 neural radiance field 최적화를 통해 문제를 해결하지만, 최적화 시간 증가, 3D 일관성 부족, 형상 품질 저하 등의 문제점이 있음.</p></li>
+</ul>
+</li>
+<li><p><strong>제안 방법</strong></p>
+<ul>
+<li><p><strong>단일 이미지 입력</strong>: 객체의 단일 이미지를 입력으로 받아 360도 3D 텍스처 메쉬를 생성.</p></li>
+<li><p><strong>다중 뷰 이미지를 생성한 후 (Zero123) 이용 이를 3D 공간으로 lifting</strong>하는 것을 목표로 함</p>
+<ul>
+<li><p><strong>View-conditioned 디퓨전 모델 사용</strong>: Zero123 모델을 활용하여 입력 이미지로부터 다중 뷰 이미지를 생성</p></li>
+<li><p><strong>3D 복원 모듈</strong>:</p>
+<ul>
+<li><p>다중 뷰 불일치 문제를 해결하기 위해, SDF-based generalizable neural surface reconstruction method을 사용.</p></li>
+<li><p>360도 메쉬 복원을 가능하게 하는 <strong>중요한 학습 전략</strong>을 제안.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>장점</strong></p>
+<ul>
+<li><p>고비용 최적화를 필요로 하지 않아 <strong>기존 방법보다 짧은 시간</strong>에 3D 형태를 복원.</p></li>
+<li><p>3D 일관성을 높이고 입력 이미지에 더 충실한 결과 생성.</p></li>
+</ul>
+</li>
+<li><p><strong>평가 결과</strong></p>
+<ul>
+<li><p>합성 데이터와 실제 이미지에서 테스트하여, 메쉬 품질과 실행 시간 측면에서 우수성을 입증.</p></li>
+</ul>
+</li>
+<li><p><strong>추가 활용 가능성</strong></p>
+<ul>
+<li><p>텍스트-이미지 디퓨전 모델과 결합하여 텍스트-3D(Text-to-3D) 작업도 지원 가능.</p></li>
+</ul>
+</li>
+</ul>
+<figure class="align-default" id="id1">
+<a class="bg-primary mb-1 reference internal image-reference" href="../../_images/img_1.png"><img alt="one-2-3-45 01" class="bg-primary mb-1" src="../../_images/img_1.png" style="width: 700px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 831 </span><span class="caption-text">단일 이미지를 입력으로 받아 360도 메쉬를 45초 만에 재구성</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>참고 자료: Sign distance function</p>
+<figure class="align-default" id="id2">
+<img alt="one-2-3-45 02" class="bg-primary mb-1" src="../../_images/image23.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 832 </span><span class="caption-text">Sign Distance Function 예시</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>각 점이 표면에서 얼마나 멀리 떨어져 있는지를 거리로 표현</p></li>
+<li><p>양수: 표면 바깥</p></li>
+<li><p>음수: 표면 안쪽</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>단일 이미지 3D 복원의 중요성과 어려운 점</strong></p>
+<ul>
+<li><p>단일 2D 이미지로부터 3D 객체 모델을 복원하는 문제는 로봇 조작, 내비게이션, 3D 콘텐츠 제작, AR/VR 등에서 중요한 역할을 함.</p></li>
+<li><p>보이는 부분뿐만 아니라 보이지 않는 부분을 추정해야 하며, 이는 정보 부족으로 다수의 가능성 있는 솔루션을 포함한 ill-posed 문제임.</p></li>
+</ul>
+</li>
+<li><p><strong>3D shape dataset을 이용한 기존 방법과 제안 접근법 비교</strong></p>
+<ul>
+<li><p><strong>3D shape dataset을 이용한 기존 방법의 한계</strong></p>
+<ul>
+<li><p>3D shape dataset을 통해 클래스 특화 사전 정보(Class-specific Priors)를 이용하지만, <strong>새로운 카테고리에 대한 일반화</strong>가 어려움.</p></li>
+<li><p>공개된 3D 데이터셋 크기가 제한되어 있어 <strong>복원 품질의 한계</strong>가 존재.</p></li>
+</ul>
+</li>
+<li><p><strong>제안 접근법</strong></p>
+<ul>
+<li><p><strong>범용 솔루션</strong>: 입력 이미지의 <strong>객체 카테고리와 상관없이</strong> 고품질 3D 텍스처 메쉬를 생성.</p></li>
+<li><p><strong>2D 디퓨전 모델의 강력한 사전 정보</strong>를 활용하여 3D 복원을 수행.</p></li>
+<li><p><strong>Zero123 모델</strong>을 사용하여 입력 이미지의 카메라 변환에 따른 <strong>다중 뷰 이미지를 생성</strong>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>기존 최적화 기반 방법들과 제안 접근법 비교</strong></p>
+<ul>
+<li><p><strong>기존 최적화 기반 방법들의 문제점</strong></p>
+<ul>
+<li><p><strong>시간 소모적</strong>: 최적화 과정에서 다수의 iteration 필요.</p></li>
+<li><p><strong>메모리 집약적</strong>: 고해상도 이미지 렌더링 시 메모리 부담 증가.</p></li>
+<li><p><strong>3D 일관성 부족</strong>: 단일 뷰 기반 작업으로 인해 모순된 3D 형상이 생성될 가능성(Janus 문제).</p></li>
+<li><p><strong>형상 품질 저하</strong>: density field 기반 방법은 고품질 RGB 렌더링은 가능하지만, 고품질 메쉬 추출은 어려움.</p></li>
+</ul>
+</li>
+<li><p><strong>제안 방법의 특징</strong></p>
+<ul>
+<li><p>최적화 기반 접근 대신, <strong>코스트 볼륨 기반(cost-volume-based)</strong> 3D 복원 기법을 결합.</p></li>
+<li><p>SparseNeuS(MVSNeRF 변형)를 기반으로 하여 다중 뷰 예측의 불일치 문제를 해결.</p></li>
+<li><p>입력 이미지의 카메라 포즈가 미지수인 문제를 해결하기 위해 고도 추정 모듈(elevation estimation module)을 제안.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>구성 모듈</strong></p>
+<ul>
+<li><p><strong>다중 뷰 생성</strong>: Zero123 모델로 다중 뷰 이미지 생성.</p></li>
+<li><p><strong>고도 추정 모듈</strong>(elevation estimation module): Zero123의 좌표계에서 입력 형태의 고도를 계산하여 카메라 포즈 결정.</p></li>
+<li><p><strong>3D 복원</strong>: 다중 뷰 예측 및 카메라 조건을 바탕으로 고품질 360도 메쉬 복원.</p></li>
+</ul>
+</li>
+<li><p><strong>제안한 방법의 강점</strong></p>
+<ul>
+<li><p><strong>시간 효율성</strong>: 최적화 없이 <strong>45초 내외</strong>로 3D 메쉬 생성.</p></li>
+<li><p><strong>형상 품질 개선</strong>: SDF 표현을 활용하여 더 나은 지오메트리와 일관된 3D 메쉬 생성.</p></li>
+<li><p><strong>입력 이미지 충실도</strong>: 기존 방법보다 입력 이미지에 더 충실한 복원 결과.</p></li>
+</ul>
+</li>
+<li><p><strong>평가 결과</strong></p>
+<ul>
+<li><p>합성 데이터와 실제 이미지에서 테스트하여 <strong>품질과 효율성</strong> 측면에서 기존 방법보다 우수함을 입증.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="related-work">
+<h2>Related Work<a class="headerlink" href="#related-work" title="Link to this heading">#</a></h2>
+<section id="d-generation-guided-by-2d-prior-models">
+<h3>3D Generation Guided by 2D Prior Models<a class="headerlink" href="#d-generation-guided-by-2d-prior-models" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>강력한 사전 지식을 가지고 있는 2D 모델(DALL-E, Imagen, Stable Diffusion)들을 이용해서 3D를 생성하는 연구가 증가하고 있음</p></li>
+<li><p>연구 종류</p>
+<ul>
+<li><p>최적화 기반의 3D shape generation: DreamField, DreamFusion, Magic3D</p>
+<ul>
+<li><p>Per-shape optimization: 각 객체에 대해 독립적으로 최적화</p></li>
+<li><p>NeRF, mesh, SMPL human(Skinned Multi-Person Linear Model)모델과 같은 3D 표현을 최적화</p></li>
+<li><p>Differentiable rendering을 사용해 여러 뷰에서 2D 이미지를 생성하고, CLIP 또는 2D 디퓨전 모델로 loss를 계산하여 3D 최적화에 활용.</p></li>
+</ul>
+</li>
+<li><p>CLIP 임베딩 공간을 활용해 3D 생성 학습.</p></li>
+<li><p>2D 모델의 사전 지식을 활용해 입력 메시의 텍스처(texture) 및 재질(material)을 생성하는 연구</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="single-image-to-3d">
+<h3>Single Image to 3D<a class="headerlink" href="#single-image-to-3d" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>초기 방법</strong>: CLIP과 대규모 2D 디퓨전 모델이 등장하기 전에는 3D 합성 데이터나 실물 스캔 데이터에서 3D 사전 지식을 학습.</p></li>
+<li><p><strong>다양한 3D 표현</strong>:</p>
+<ul>
+<li><p>3D 볼륨(voxel), 포인트 클라우드(point cloud), 폴리곤 메시(polygon mesh), 매개변수 모델(parametric model) 등.</p></li>
+</ul>
+</li>
+<li><p><strong>2D 확산 모델 기반의 Per-Shape 최적화</strong>:</p>
+<ul>
+<li><p>Text-to-3D 작업에서 활용.</p></li>
+<li><p>NeuralLift-360은 CLIP 손실을 추가해 입력 이미지와 렌더링 이미지 간 유사성을 강화.</p></li>
+<li><p>3DFuse는 Stable Diffusion 모델을 LoRA 레이어와 희소 깊이(sparse depth)로 튜닝.</p></li>
+</ul>
+</li>
+<li><p><strong>최신 연구</strong>:</p>
+<ul>
+<li><p>OpenAI의 Point-E는 수백만 개의 3D 모델로 학습해 포인트 클라우드를 생성.</p></li>
+<li><p>Shap-E는 implicit function의 파라미터를 생성해 텍스처 메시나 neural radiance fields를 생성.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="generalizable-neural-reconstruction">
+<h3>Generalizable Neural Reconstruction<a class="headerlink" href="#generalizable-neural-reconstruction" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>전통적인 NeRF 방법</strong>: 하나의 장면을 표현하기 위해 신경망을 사용하고 장면 별로 최적화 필요.</p></li>
+<li><p><strong>일부 접근법은 장면 전체의 사전지식을 학습하고 새로운 장면에 일반화 하려고 함</strong>:</p>
+<ul>
+<li><p>소수의 뷰를 입력으로 사용해 2D 특징을 추출한 후 3D 공간으로 투영</p></li>
+<li><p>NeRF 기반 렌더링 파이프라인을 통해 단일 feed-forward 과정으로 3D implicit field 생성.</p></li>
+</ul>
+</li>
+<li><p><strong>2D 특징 집계(aggregation) 방식</strong>:</p>
+<ul>
+<li><p>MLP나 트랜스포머 같은 네트워크를 이용해 2D 특징을 결합</p></li>
+<li><p>3D feature/volume을 생성해 voxel feature로 밀도와 색상을 디코딩</p></li>
+<li><p>Density field 외에도 SparseNeuS나 VolRecon 같은 방법들은 signed distance function 표현을 활용하여 기하학적 구조를 재구성</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>3.1 Zero123: View-Conditioned 2D Diffusion → 다중 뷰 이미지 생성</p></li>
+<li><p>3.2 Can NeRF Optimization Lift Multi-View Predictions to 3D? → 기존 NeRF 기반 및 SDF 기반 방법의 한계점 (일관되지 않은 다중 뷰 예측으로 인해 고품질 메시를 재구성하지 못함)</p></li>
+<li><p>3.3 Neural Surface Reconstruction from Imperfect Multi-View Predictions → 일관적이지 않은 다중 뷰 예측을 처리하고 3D 메시를 재구성 할 수 있는 모듈 제안</p></li>
+<li><p>3.4 Camera Pose Estimation → 3D 재구성을 위한 Zero123의 포즈 추정의 필요성 및 입력 뷰의 고도를 추정하는 새로운 모듈 제안</p></li>
+</ul>
+<section id="zero123-view-conditioned-2d-diffusion">
+<h3>3.1 Zero123: View-Conditioned 2D Diffusion<a class="headerlink" href="#zero123-view-conditioned-2d-diffusion" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id3">
+<img alt="one-2-3-45 03" class="bg-primary mb-3" src="../../_images/img_2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 833 </span><span class="caption-text">모델 구조</span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p><strong>2D 확산 모델의 강점</strong>:</p>
+<ul class="simple">
+<li><p>DALL-E, Imagen, Stable Diffusion과 같은 최신 2D 확산 모델은 인터넷 규모 데이터를 학습해 강력한 시각적 개념과 사전 지식을 보유.</p></li>
+<li><p>기존에는 주로 text-to-image에 초점을 맞췄지만, 최근 연구는 모델을 fine-tuning하여 다양한 조건부 제어 기능 추가 가능성을 보여줌.</p></li>
+<li><p>Canny edges, 사용자 낙서(user scribbles), 깊이(depth), 노멀 맵(normal maps)과 같은 조건들이 효과적임이 입증됨.</p></li>
+</ul>
+</li>
+<li><p><strong>Zero123</strong></p>
+<figure class="align-default" id="id4">
+<img alt="one-2-3-45 04" class="bg-primary mb-3" src="../../_images/img_3.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 834 </span><span class="caption-text">Zero-1-2-3</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>목표</strong></p>
+<ul>
+<li><p>Stable Diffusion 모델에 뷰포인트 조건(viewpoint condition)을 추가하는 것이 목표.</p></li>
+<li><p>주어진 단일 RGB 이미지와 상대적인 카메라 변환 정보를 통해 변환된 뷰에서 새 이미지를 합성 → novel view synthesis</p></li>
+</ul>
+</li>
+<li><p><strong>데이터세트 및 학습 방법</strong>:</p>
+<ul>
+<li><p>대규모 3D 데이터세트에서 생성된 이미지 쌍과 상대적 카메라 변환 정보를 사용해 Stable Diffusion 모델을 파인 튜닝.</p></li>
+<li><p>학습 시 객체는 좌표계의 원점에 배치되고, 구면 카메라는 구 표면에 위치하며 항상 원점을 바라봄.</p></li>
+</ul>
+</li>
+<li><p><strong>카메라 변환 매개변수화</strong>:</p>
+<ul>
+<li><p>두 카메라 위치 (θ₁, ϕ₁, r₁)와 (θ₂, ϕ₂, r₂) 간의 상대적 카메라 변환을 (θ₂ − θ₁, ϕ₂ − ϕ₁, r₂ − r₁)로 표현.</p></li>
+<li><p>학습 목표: 모델 f가 f(x1, θ2−θ1, ϕ2−ϕ1, r2−r1)를 x2와 유사하게 만드는 것 (x1, x2는 객체의 서로 다른 뷰에서 촬영된 이미지)</p></li>
+</ul>
+</li>
+<li><p><strong>성과</strong>:</p>
+<ul>
+<li><p>Stable Diffusion 모델이 학습 데이터세트에 없는 객체들에 대해서도 카메라 뷰포인트를 제어하는 일반적인 메커니즘을 학습할 수 있음을 발견.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="can-nerf-optimization-lift-multi-view-predictions-to-3d">
+<h3>3.2 Can NeRF Optimization Lift Multi-View Predictions to 3D?<a class="headerlink" href="#can-nerf-optimization-lift-multi-view-predictions-to-3d" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Zero123을 사용하여 주어진 객체의 단일 이미지를 기반으로 다중 뷰 이미지를 생성.</p></li>
+<li><p>여기서, 기존의 NeRF 기반  또는 SDF 기반 방법으로 이  다중 뷰 이미지를 사용해 고품질 3D 메시를 복원할 수 있는지 검증하기 위해 실험 수행.</p></li>
+<li><p><strong>실험 설계</strong></p>
+<ol class="arabic simple">
+<li><p>단일 이미지를 입력으로 받아 Zero123을 통해 구 표면에서 균일하게 샘플링된 카메라 자세를 사용해 32개의 다중 뷰 이미지를 생성.</p></li>
+<li><p>생성된 다중 뷰 이미지를 각각 NeRF 기반 TensoRF와 SDF 기반 NeuS에 입력.</p>
+<ul class="simple">
+<li><p><strong>TensoRF</strong>: density 필드 최적화.</p></li>
+<li><p><strong>NeuS</strong>: signed distance function 필드 최적화.</p></li>
+</ul>
+</li>
+<li><p>결과물의 품질 분석</p></li>
+</ol>
+</li>
+<li><p><strong>실험 결과</strong></p>
+<figure class="align-default" id="id5">
+<img alt="one-2-3-45 05" class="bg-primary mb-3" src="../../_images/img_4.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 835 </span><span class="caption-text">Reconstruction 결과</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>두 방법 모두 만족스러운 결과를 생성하지 못함</p></li>
+<li><p>수많은 왜곡과 floaters가 발생.</p>
+<ul>
+<li><p>Floaters: 메인 메쉬와 연결되지 않은 별도의 조각들</p></li>
+</ul>
+</li>
+<li><p>이러한 성능 저하의 주된 원인은 Zero123의 예측 간 <strong>비일관성(inconsistency)</strong> 때문.</p></li>
+</ul>
+</li>
+<li><p><strong>Zero123 예측의 한계</strong></p>
+<ul>
+<li><p>Zero123의 예측 결과와 실제 렌더링을 비교:</p>
+<figure class="align-default" id="id6">
+<img alt="one-2-3-45 06" class="bg-primary mb-3" src="../../_images/img_5.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 836 </span><span class="caption-text">예측 결과와 실제 렌더링 비교 그래프</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>PSNR(픽셀 단위 유사도)</strong>: 전체적으로 낮음. 특히 입력 카메라 pose와 목표 카메라 pose의 상대적 변화가 크거나, target pose가 하단(bottom) 또는 상단(top)처럼 일반적이지 않은 위치일 경우 더욱 저하.</p></li>
+<li><p><strong>Mask IoU(영역 일치도)</strong>: 대부분 0.95 이상으로 높음.</p></li>
+<li><p><strong>CLIP 유사도</strong>: 상대적으로 양호.</p></li>
+</ul>
+<p>→ Zero123은 전반적으로 실제 결과와 유사한 윤곽과 경계를 가진 예측을 생성하지만, <strong>픽셀 단위 외관</strong>은 정확히 일치하지 않음.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>기존 최적화 기반 방법의 한계</strong></p>
+<ul class="simple">
+<li><p>소스 뷰 간의 이러한 미세한 비일관성은 전통적인 최적화 기반 방법에 치명적.</p></li>
+<li><p>원본 Zero123 논문에서 다중 뷰 예측을 3D로 변환하는 또 다른 방법을 제안했으나, 실험 결과 이 역시 완벽한 결과를 제공하지 못하며 <strong>최적화에 시간이 오래 걸림</strong></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="neural-surface-reconstruction-from-imperfect-multi-view-predictions">
+<h3>3.3 Neural Surface Reconstruction from Imperfect Multi-View Predictions<a class="headerlink" href="#neural-surface-reconstruction-from-imperfect-multi-view-predictions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>최적화 기반 방법 대신, 본 연구는 <strong>SparseNeuS에 기반한 일반화 가능한 SDF 재구성 방식</strong>을 채택.</p>
+<ul>
+<li><p>SparseNeuS는 MVSNeRF 파이프라인의 변형으로, 다중 뷰 스테레오, neural scene representation, 볼륨 렌더링(volume rendering)을 결합.</p></li>
+<li><p>해당 모듈은 소스 이미지와 대응하는 카메라 pose를 입력으로 받아 단일 feed-forward 패스로 텍스처 메시를 생성.</p></li>
+</ul>
+</li>
+</ul>
+<hr class="docutils" />
+<ul>
+<li><p><strong>복원 관련 네트워크 파이프라인</strong></p>
+<figure class="align-default" id="id7">
+<img alt="one-2-3-45 07" class="bg-primary mb-3" src="../../_images/img_6.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 837 </span><span class="caption-text">복원 네트워크 파이프라인</span><a class="headerlink" href="#id7" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ol class="arabic simple">
+<li><p><strong>입력 및 2D feature 추출</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">m</span></code>개의 카메라 pose와 주어진 소스 이미지를 입력.</p></li>
+<li><p>2D feature 네트워크를 사용해 <code class="docutils literal notranslate"><span class="pre">m</span></code>개의 2D feature map 추출.</p></li>
+</ul>
+</li>
+<li><p><strong>3D cost volume 생성</strong></p>
+<ul class="simple">
+<li><p>각 3D 복셀을 <code class="docutils literal notranslate"><span class="pre">m</span></code>개의 2D feature plane으로 투영.</p></li>
+<li><p>투영된 2D 위치에서의 특징 값들의 분산을 계산해 cost volume 생성.</p></li>
+<li><p>Cost volume construction</p>
+<ul>
+<li><p>Cost volume: 특정 깊이에서 3D 점의 일치성을 표현하는 3차원 매트릭스</p></li>
+<li><p>생성 과정</p>
+<ul>
+<li><p>Bounding box 설정: 관심 있는 영역을 포함하는 바운딩 박스(카메라 파라미터를 이용하여 모든 이미지를 포괄하는 3D 공간 영역 정의) 를 설정하고 이를 고정된 3D 복셀 그리드로 분할</p></li>
+<li><p>Feature Projection</p>
+<ul>
+<li><p>입력 이미지에서 2D feature map을 추출하고 3D 공간의 각 복셀을 해당 이미지의 픽셀로 투영 (카메라 파라미터 이용)</p></li>
+<li><p>이 때 투영된 feature들은 보간을 통해 정확하게 계산됨</p></li>
+</ul>
+</li>
+<li><p>동일한 voxel 위치에서 여러 이미지 view에서 투영된 feature들의 variance를 계산하여 cost volume 생성</p>
+<ul>
+<li><p>분산이 높을수록 이미지간 불일치가 큰 것</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Geometry volume 생성</strong></p>
+<ul class="simple">
+<li><p>Sparse 3D CNN을 사용해 cost volume을 처리하여 입력 shape 기하학적 정보를 인코딩하는 볼륨 생성.</p></li>
+</ul>
+</li>
+<li><p><strong>SDF 및 색상 예측</strong></p>
+<ul class="simple">
+<li><p>SDF 값 예측 (첫번째 MLP 네트워크):</p>
+<ul>
+<li><p>입력</p>
+<ul>
+<li><p>3D 좌표</p></li>
+<li><p>geometry volume feature</p></li>
+</ul>
+</li>
+<li><p>출력: SDF 값</p></li>
+</ul>
+</li>
+<li><p>색상 예측 (두번째 MLP 네트워크):</p>
+<ul>
+<li><p>입력</p>
+<ul>
+<li><p>투영된 위치의 2D feature</p></li>
+<li><p>geometry volume feature</p></li>
+<li><p>쿼리 viewing direction과 소스 이미지의 시점 간 상대적 방향.</p></li>
+</ul>
+</li>
+<li><p>네트워크는 각 소스 뷰에 대한 blending weight를 예측하고, 해당 3D 점의 색상은 투영된 색상의 가중합(weighted sum)으로 계산.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>렌더링</strong></p>
+<ul class="simple">
+<li><p>SDF 기반 렌더링 기법을 활용해 RGB 및 depth 렌더링 수행</p></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<hr class="docutils" />
+<p><strong>2-Stage Source View Selection and Groundtruth-Prediction Mixed Training</strong></p>
+<ul class="simple">
+<li><p>기존 sparseNeuS는 정면 reconstruction만 가능</p></li>
+<li><p>본 논문에서는 360도 메쉬 복원을 위해 sparseNeuS를 확장</p>
+<ul>
+<li><p>특정 방식의 소스 뷰 선택 및 깊이 정보 추가</p></li>
+<li><p>Zero123을 활용하여 새로운 데이터 처리</p></li>
+</ul>
+</li>
+<li><p>데이터셋과 카메라 모델</p>
+<ul>
+<li><p>Zero123은 freeze 시킨 채 3D 객체 데이터셋에 대해 학습.</p></li>
+<li><p>Zero123의 훈련 방식(정규화된 shape, 구면 카메라 모델)을 따름.</p></li>
+</ul>
+</li>
+<li><p>2-stage source view selection</p>
+<ul>
+<li><p>1 stage: 구면 위의 균일하게 배치된 n개의 카메라 포즈에서 RGB와 depth ground truth 이미지 렌더링</p></li>
+<li><p>2 stage: Zero123 예측</p>
+<ul>
+<li><p>각 Ground-Truth 뷰에서 <strong>4개의 인접 뷰</strong>를 Zero123으로 예측.  → 인접 뷰를 사용하기에 zero123의 결과가 정확하고 일관적임</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Groundtruth-prediction mixed training</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">4</span> <span class="pre">×</span> <span class="pre">n</span></code>개의 예측과 실제 카메라 pose를 reconstruction 모듈에 입력</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span></code>개의 실제 RGB 이미지 중 하나를 랜덤으로 타겟 뷰로 선택</p></li>
+</ul>
+</li>
+<li><p>Ground truth RGB와 depth 값을 사용해 학습 → depth loss로 더욱 정밀한 복원 가능</p></li>
+<li><p>Inference 시에는 ground truth를 zero123의 예측으로 대체하고 depth는 필요 없음</p></li>
+<li><p>텍스처 메시 생성</p>
+<ul>
+<li><p>Marching Cubes 알고리즘을 이용해 예측된 SDF 필드에서 메시를 추출</p></li>
+<li><p>메시의 vertex 색상은 NeuS에서 사용한 방법을 이용해서 쿼리</p></li>
+</ul>
+</li>
+<li><p>본 모듈은 3D 데이터셋에서 학습되었지만, 로컬 상관관계를 학습했기 때문에 unseen shapes에도 일반화 가능함을 확인.</p></li>
+</ul>
+</section>
+<section id="camera-pose-estimation">
+<h3>3.4 Camera Pose Estimation<a class="headerlink" href="#camera-pose-estimation" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>카메라 파라미터화 및 제약사항</p>
+<ul>
+<li><p>Zero123은 카메라를 <strong>구면 좌표계</strong> (θ, ϕ, r)로 표현</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">θ</span></code>: 고도각(Elevation).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ϕ</span></code>: 방위각(Azimuth).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>: 반지름(Radius).</p></li>
+</ul>
+</li>
+<li><p>방위각 <code class="docutils literal notranslate"><span class="pre">ϕ</span></code>와 반지름 <code class="docutils literal notranslate"><span class="pre">r</span></code>은 임의로 조정 가능하며, 이는 결과적으로 <strong>복원 객체의 회전 및 스케일 변화</strong>를 유발.</p></li>
+<li><p>그러나 <strong>절대 고도각(θ)</strong> 정보가 하나는 반드시 필요</p>
+<ul class="simple">
+<li><p>기준 카메라(예: <code class="docutils literal notranslate"><span class="pre">$(θ_0,</span> <span class="pre">ϕ_0,</span> <span class="pre">r_0)$</span></code>)의 고도각이 있어야 다른 카메라와의 상대적인 포즈(∆θ, ∆ϕ)를 표준 XYZ 프레임에서 정확히 계산 가능.</p></li>
+<li><p>동일한 <code class="docutils literal notranslate"><span class="pre">∆θ</span></code>와 <code class="docutils literal notranslate"><span class="pre">∆ϕ</span></code>일지라도, 기준 고도각(<span class="math notranslate nohighlight">\(θ_0\)</span>)에 따라 <strong>상대 포즈가 달라짐</strong>:</p>
+<ul>
+<li><p>모든 이미지의 고도각을 조정하면 복원 형태가 왜곡됨(예: 전체 고도각을 30도 상하로 이동할 경우).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>참고: 구면 좌표계</p>
+<figure class="align-default" id="id8">
+<img alt="one-2-3-45 08" class="bg-primary mb-3" src="../../_images/img_7.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 838 </span><span class="caption-text">구면 좌표계</span><a class="headerlink" href="#id8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul>
+<li><p>구면 좌표계에서 XYZ 좌표계로의 변환</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+            x=r⋅cos(θ)⋅cos(ϕ)\\
+            y=r⋅cos(θ)⋅sin(ϕ)\\
+            z=r⋅sin(θ)
+            \end{split}\]</div>
+</li>
+<li><p>상대적 변화량이 기준 고도각에 따라 달라짐</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(θ_0\)</span>이 0<span class="math notranslate nohighlight">\(^\circ\)</span>일 때의 <span class="math notranslate nohighlight">\(Δθ=30^\circ\)</span>의 결과와 <span class="math notranslate nohighlight">\(θ_0\)</span>이 60<span class="math notranslate nohighlight">\(^\circ\)</span>일 때의 <span class="math notranslate nohighlight">\(Δθ=30^\circ\)</span>의 결과는 다름</p></li>
+<li><p><span class="math notranslate nohighlight">\(θ_0\)</span>이 60<span class="math notranslate nohighlight">\(^\circ\)</span>일 때의 <span class="math notranslate nohighlight">\(Δθ=30^\circ\)</span>은 더 큰 이동을 초래함</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Elevation Estimation Module</strong></p>
+<ul class="simple">
+<li><p>고도각 왜곡 문제를 해결하기 위해 <strong>Elevation Estimation Module</strong>을 도입:</p>
+<ol class="arabic simple">
+<li><p>Zero123을 사용해 입력 이미지로부터 <strong>4개의 근접 뷰</strong>를 예측.</p></li>
+<li><p><strong>모든 가능한 고도각 후보</strong>를 coarse-to-fine 방식으로 열거.</p></li>
+<li><p>각 고도각 후보에 대해:</p>
+<ul>
+<li><p>4개의 이미지에 대응하는 카메라 포즈 계산.</p></li>
+<li><p>이미지와 카메라 포즈 간 <strong>Reprojection Error</strong>를 계산하여 후보 고도각의 정확성 평가</p></li>
+</ul>
+</li>
+<li><p>Reprojection Error가 가장 작은 고도각을 최종적으로 선택.</p></li>
+</ol>
+</li>
+<li><p><strong>최종 카메라 포즈 생성</strong></p>
+<ul>
+<li><p>선택된 고도각을 기반으로 입력 이미지의 포즈와 상대 포즈를 결합하여 <strong>4 × n 소스 뷰의 카메라 포즈</strong>를 생성.</p></li>
+</ul>
+</li>
+<li><p><strong>왜곡 방지 및 세부사항 제공</strong></p>
+<ul>
+<li><p>고도각 추정 과정을 통해 복원 객체의 왜곡을 방지.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="experiments">
+<h2>4. Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<section id="implementation-details">
+<h3>4.1 Implementation Details<a class="headerlink" href="#implementation-details" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>입력 이미지당 소스 뷰 이미지 생성</strong></p>
+<ul>
+<li><p><strong>n = 8</strong>: 입력 이미지에 대해 구면 표면에 균일하게 배치된 카메라 포즈를 선택하여 8개의 뷰 생성.</p></li>
+<li><p>각 8개의 뷰에 대해 <strong>10° 간격의 로컬 이미지</strong> 4개 추가 생성.</p>
+<ul>
+<li><p>총 <strong>32개의 소스 뷰 이미지</strong>가 재구성을 위해 사용됨.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>학습 환경</strong></p>
+<ul>
+<li><p>Zero123 모델은 freeze</p></li>
+<li><p>Reconstruction 모듈 학습 데이터셋: Objaverse-LVIS</p>
+<ul>
+<li><p>총 46,000개의 3D 모델 포함.</p></li>
+<li><p>1,156개 카테고리로 구성된 대규모 3D 객체 데이터셋.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>렌더링 도구</strong></p>
+<ul>
+<li><p>BlenderProc : 학습 데이터로 사용할 RGB 및 depth 이미지의 ground truth  생성.</p></li>
+</ul>
+</li>
+<li><p><strong>배경 제거:</strong> 배경이 포함된 이미지의 경우, SAM(Segment Anything Model) 을 사용하여 배경 제거 수행.</p></li>
+</ul>
+</section>
+<section id="single-image-to-3d-mesh">
+<h3>4.2 Single Image to 3D Mesh<a class="headerlink" href="#single-image-to-3d-mesh" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Qualitative examples</strong></p>
+<figure class="align-default" id="id9">
+<img alt="one-2-3-45 09" class="bg-primary mb-3" src="../../_images/img_8.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 839 </span><span class="caption-text">Qualitative examples*</span><a class="headerlink" href="#id9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>그림 1과 5</strong>에서 합성 이미지 및 실제 이미지에 대한 효과적인 처리 방법을 보여줌.</p></li>
+</ul>
+</li>
+<li><p><strong>다른 single image to 3d reconstruction 방법들과의 정성적 비교</strong></p>
+<figure class="align-default" id="id10">
+<img alt="one-2-3-45 10" class="bg-primary mb-3" src="../../_images/img_9.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 840 </span><span class="caption-text">다른 방법들과 정성적 비교</span><a class="headerlink" href="#id10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>대부분의 방법들이 단일 이미지에서 그럴듯한 3D 메시를 생성하지만, <strong>기하학적 품질</strong>, <strong>입력 이미지와의 일치도</strong>, <strong>3D 일관성</strong>에서 차이가 있음.</p></li>
+<li><p><strong>기하학적 품질</strong></p>
+<ul>
+<li><p><strong>RealFusion</strong> 과 <strong>3DFuse</strong>는 neural radiance field를 최적화하나, 고품질 메시 추출에 어려움이 있음.</p></li>
+<li><p><strong>Point-E</strong>는 희박한 포인트 클라우드를 생성하여 메시에 구멍이 많이 생김.</p></li>
+<li><p>본 논문의 방법은 <strong>SDF</strong>표현을 사용하여 더 나은 기하학적 품질을 제공.</p></li>
+</ul>
+</li>
+<li><p><strong>입력 이미지와의 일치도</strong>:</p>
+<ul>
+<li><p>대부분의 베이스라인 방법들이 입력 이미지와의 유사성 유지에 어려움을 겪음.</p></li>
+<li><p><strong>Shap-E</strong>는 다소 나은 성능을 보이나 여전히 실패 사례가 발생(예: 어깨끈 없는 배낭, 왜곡된 신발, 세 개 다리 의자).</p></li>
+<li><p>본 논문의 방법은 2D 디퓨전 모델을 활용하여 고품질의 다중 뷰 이미지를 생성, 3D 공간 환각을 피하고 입력 이미지와 더 잘 일치함.</p></li>
+</ul>
+</li>
+<li><p><strong>3D 일관성</strong>:</p>
+<ul>
+<li><p>여러 방법들이 <strong>3D 일관성 문제 (Janus 문제)를 보임</strong> (예: 두 손잡이 머그컵, 여러 얼굴을 가진 마리오, 두 얼굴의 배낭).</p></li>
+<li><p>여러 방법들은 각 뷰를 독립적으로 최적화하여 3D 일관성 문제를 초래.</p></li>
+<li><p>본 논문의 방법은 view-conditioned 2D Diffusion Model을 활용하여 3D 일관성을 자연스럽게 향상시킴.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>다른 single image to 3d reconstruction 방법들과의 정량적 비교</strong></p>
+<figure class="align-default" id="id11">
+<img alt="one-2-3-45 11" class="bg-primary mb-3" src="../../_images/img_102.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 841 </span><span class="caption-text">다른 방법들과 정량적 비교</span><a class="headerlink" href="#id11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Objaverse</strong>와 <strong>GoogleScannedObjects (GSO)</strong> 데이터셋에서 비교.</p></li>
+<li><p>각 데이터셋에서 20개 shape를 랜덤으로 선택하고, 각 형상에 대해 단일 이미지를 렌더링하여 평가</p></li>
+<li><p>본 논문의 방법은 F-Score에서 모든 베이스라인보다 우위 성능</p></li>
+<li><p>CLIP 유사도에서는 Shap-E와 동등한 성능을 보임.</p></li>
+<li><p>실행 시간에서 최적화 기반 접근법에 비해 우위를 보이며 Point-E와 Shap-E와 비슷한 성능을 보임.</p>
+<ul>
+<li><p>3D 재구성 모듈은 약 5초 안에 3D 메시를 재구성하며, Zero123 예측에 약 1초 소요됨.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="ablation-study">
+<h3>4.3 Ablation Study<a class="headerlink" href="#ablation-study" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>학습 전략 (Training Strategies)</strong></p>
+<figure class="align-default" id="id12">
+<img alt="one-2-3-45 12" class="bg-primary mb-3" src="../../_images/img_112.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 842 </span><span class="caption-text">학습 전략에 따른 결과</span><a class="headerlink" href="#id12" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>첫 번째 열: <strong>2단계 소스 뷰 선택 전략</strong>을 적용하지 않으면, <strong>32개의 균등하게 배치된 Zero123 예측</strong>(첫 번째 열)만 사용한 네트워크가 소스 뷰 간의 불일치로 심각한 문제를 겪고, 재구성 모듈이 완전히 실패함.</p></li>
+<li><p>두 번째 열: <strong>4개의 인접 뷰 없이 8개의 소스 뷰만 사용</strong>, 로컬 대응을 캡처할 수 없어 세밀한 기하학을 재구성하지 못함.</p></li>
+<li><p>세 번째 열: 학습 중 <strong>depth loss를 적용하지 않으면,</strong> 네트워크가 세밀한 기하학을 재구성하는 방법을 학습하지 못함.</p></li>
+<li><p>네 번째 열: 8×4개의 ground-truth 렌더링을 <strong>Zero123 예측 없이 사용</strong>하면, Zero123 예측을 수행할 때 많은 영역이 누락되어 잘 일반화되지 않음.</p></li>
+<li><p>다섯 번째 열: <strong>n개의 ground-truth 렌더링을 n개의 Zero123 예측으로 대체</strong>하면, 잘못된 깊이 정보 때문에 네트워크가 실패함.</p></li>
+</ul>
+</li>
+<li><p><strong>고도 추정 (Elevation Estimation)</strong></p>
+<ul>
+<li><p>재구성 모듈은 입력 뷰의 정확한 고도 각도에 의존함.</p></li>
+<li><p><strong>고도 각도를 ±30° 변경</strong>하면 왜곡된 재구성 결과가 발생.</p>
+<figure class="align-default" id="id13">
+<img alt="one-2-3-45 13" class="bg-primary mb-3" src="../../_images/img_122.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 843 </span><span class="caption-text">고도 각도 변경에 따른 왜곡된 재구성 결과</span><a class="headerlink" href="#id13" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+<li><p>예측된 고도 각도를 사용하면, 결과가 정확히 ground truth 고도와 일치함.</p></li>
+<li><p><strong>1,700개의 랜덤 카메라 포즈로 렌더링한 이미지</strong>에서 고도 추정 모듈이 정확한 고도를 예측하는 성능을 입증함. (그림 7)</p>
+<figure class="align-default" id="id14">
+<img alt="one-2-3-45 14" class="bg-primary mb-3" src="../../_images/img_132.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 844 </span><span class="caption-text">고도 예측 성능</span><a class="headerlink" href="#id14" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p><strong>소스 뷰 수</strong></p>
+<ul>
+<li><p>소스 뷰의 수가 3D 재구성에 미치는 영향을 실험.</p></li>
+<li><p>소스 뷰의 수에 대해 큰 민감도가 없으며, 재구성 모듈이 해당 설정으로 다시 학습되면 문제없이 동작함.</p>
+<figure class="align-default" id="id15">
+<img alt="one-2-3-45 15" class="bg-primary mb-3" src="../../_images/img_142.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 845 </span><span class="caption-text">소스 뷰의 수에 따른 결과</span><a class="headerlink" href="#id15" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+<li><p><strong>360°  reconstruction과 Multi-view Fusion</strong></p>
+<ul>
+<li><p>본 논문의 방법은 360° 메시를 한 번에 재구성할 수 있음.</p></li>
+<li><p>대부분의 기존 일반화 가능한 neural reconstruction 접근법은 주로 정면 뷰 재구성에 집중.</p></li>
+<li><p>대안으로는 각 뷰에 대해 독립적으로 기하학을 추론하고 이를 융합하는 방법이 있음.</p></li>
+<li><p>하지만 Multi-view Fusion 전략은 Zero123 예측의 불일치로 어려움을 겪는 경우가 많음.</p>
+<figure class="align-default" id="id16">
+<img alt="one-2-3-45 16" class="bg-primary mb-3" src="../../_images/img_152.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 846 </span><span class="caption-text">360도 복원과 Multi-view Fusion의 차이</span><a class="headerlink" href="#id16" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="text-to-3d-mesh">
+<h3>4.4 Text to 3D Mesh<a class="headerlink" href="#text-to-3d-mesh" title="Link to this heading">#</a></h3>
+<figure class="align-default" id="id17">
+<img alt="one-2-3-45 17" class="bg-primary mb-3" src="../../_images/img_162.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 847 </span><span class="caption-text">Text to 3D Mesh</span><a class="headerlink" href="#id17" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Text-to-image 디퓨전 모델과 통합하여 텍스트를 3D 메시로 변환할 수 있음</p></li>
+<li><p>짧은 시간 내에 고품질의 텍스처 메시를 생성할 수 있음</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusion">
+<h2>5. Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>본 논문에서는 <strong>단일 이미지</strong>에서 <strong>고품질 360° 메시</strong>를 재구성하는 새로운 방법을 제시함.</p></li>
+<li><p>기존 제로샷 접근법과 비교했을 때 본 논문의 방법은 우수한 품질, 향상된 3D 일관성, 그리고 입력 이미지에 대한 뛰어난 일치성을 보임.</p></li>
+<li><p>본 논문의 방법은 <strong>시간 소모적인 최적화 과정 없이</strong> 메시를 단일 전방 패스에서 재구성할 수 있어 <strong>처리 시간을 크게 단축</strong>함.</p></li>
+<li><p><strong>텍스트-3D</strong> 작업을 지원할 수 있도록 <strong>쉽게 확장</strong> 가능함.</p></li>
+</ul>
+</section>
+<section id="appendix">
+<h2>6. Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<section id="details-of-elevation-estimation">
+<h3>6.4. Details of Elevation Estimation<a class="headerlink" href="#details-of-elevation-estimation" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>목표</strong>: 입력 이미지의 고도 각도(θ)를 추정.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p><strong>초기 단계</strong>:</p>
+<ul class="simple">
+<li><p><strong>Zero123</strong>을 사용하여 입력 이미지에서 <strong>4개의 근처 뷰</strong>를 예측 (각각 10도씩 차이).</p></li>
+<li><p>예측된 뷰들을 사용해 가능한 <strong>모든 고도 각도</strong>를 나열하고 각 각도에 대해 reprojection error를 계산.</p></li>
+<li><p>Reprojection error는 <strong>카메라 포즈</strong>와 <strong>이미지 관측</strong> 간의 일치도를 평가 (이는 Structure-from-Motion(SfM) 파이프라인의 번들 조정 모듈과 유사)</p></li>
+</ul>
+</li>
+<li><p><strong>고도 각도 후보 나열</strong>:</p>
+<ul class="simple">
+<li><p><strong>Coarse 단계</strong>: 10도 간격으로 고도 각도 후보 나열.</p></li>
+<li><p><strong>Fine 단계</strong>: 가장 작은 리프로젝션 오차를 갖는 고도 각도 <strong>e</strong><em>를 e</em> − 10°부터 e* + 10°까지 1도 간격으로 후보 각도를 나열.</p></li>
+<li><p>이 Coarse-Fine 방식은 고도 추정 모듈을 <strong>1초 이내에 완료</strong>하도록 효율적으로 만듦.</p></li>
+</ul>
+</li>
+<li><p><strong>Feature matching</strong>:</p>
+<ul class="simple">
+<li><p>4개의 예측된 근처 뷰에서 feature matching을 통해 이미지쌍(총 6쌍) 간의 <strong>매칭되는 키포인트</strong>를 식별.</p></li>
+<li><p><strong>LoFTR</strong>모듈을 사용하여 매칭.</p></li>
+</ul>
+</li>
+<li><p><strong>카메라 포즈 계산</strong>:</p>
+<ul class="simple">
+<li><p>각 고도 각도 후보에 대해 <strong>구면 좌표 시스템</strong>을 사용하여 입력 이미지의 카메라 포즈 계산.</p></li>
+<li><p>r = 1.2, ϕ = 0으로 설정. (이는 임의로 조정 가능, 이를 통해 회전 및 스케일링 효과 얻을 수 있음)</p></li>
+<li><p>4개의 예측된 뷰에 대해 <strong>델타 포즈</strong>를 반영하여 카메라 포즈 계산.</p></li>
+</ul>
+</li>
+<li><p><strong>리프로젝션 오차 계산</strong>:</p>
+<ul class="simple">
+<li><p>3개 이미지(예: a, b, c)의 triplet images를 사용하여 리프로젝션 오차 계산.</p></li>
+<li><p>각 triplet의 키포인트 집합 P에 대해  triangulation을 사용하여 3D 위치를 추정하고, 이를 세 번째 이미지에 투영하여 <strong>리프로젝션 오차</strong> 계산.</p></li>
+<li><p>리프로젝션 오차는 <strong>재투영된 2D 픽셀</strong>과 추정된 키포인트 간의 <strong>l1 거리</strong>로 정의.</p></li>
+<li><p>모든 triplet images를 와 해당 키포인트에 대해 평균 리프로젝션 오차를 계산하여 각 고도 각도 후보의 오차를 평가.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="details-of-training-and-evaluation">
+<h3>6.5 Details of Training and Evaluation<a class="headerlink" href="#details-of-training-and-evaluation" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Training</p>
+<div class="math notranslate nohighlight">
+\[
+    \mathcal{L}=\mathcal{L}_{r g b}+\lambda_{0}\mathcal{L}_{d e p t h}+\lambda_{1}\mathcal{L}_{e i k o n a l}+\lambda_{2}\mathcal{L}_{s p a r s i t y}
+    \]</div>
+<ul class="simple">
+<li><p>Loss</p>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\(L_{rgb}\)</span></strong>: 렌더링된 색상과 실제 색상 간의 l1 loss (누적 가중치로 가중치가 부여됨)</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(L_{depth}\)</span></strong>: 렌더링된 깊이와 실제 깊이 간의 l1 loss</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_{eikonal}\)</span>: Eikonal 손실 (SparseNeuS 참고)</p></li>
+<li><p><span class="math notranslate nohighlight">\(L_{sparsity}\)</span>: 희소성 손실 (SparseNeuS 참고)</p></li>
+</ul>
+</li>
+<li><p><strong>가중치 설정</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\lambda_0 = 1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{1}=0.1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lambda_{2}=0.02\)</span> 로 설정</p></li>
+</ul>
+</li>
+<li><p><strong>데이터셋 및 학습</strong>:</p>
+<ul>
+<li><p>LVIS 하위 데이터셋을 사용하여 Objaverse의 46,000개 3D 모델과 1,156개 카테고리에서 훈련.</p></li>
+<li><p>재구성 모듈은 A10 GPU 2개를 사용하여 300,000번의 iteration으로 학습 (약 6일 소요).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Evaluation</p>
+<ul>
+<li><p>모든 베이스라인은 공식 코드베이스를 사용하여 평가.</p></li>
+<li><p>예측된 메시의 크기 및 변환:</p>
+<ul>
+<li><p>입력으로 한 장의 이미지만 사용하는 접근 방식이므로, 예측된 메시의 크기 및 변환이 실제 메시와 일치하지 않을 수 있음.</p></li>
+<li><p>정확한 비교를 위해 다음과 같은 과정을 거쳐 예측된 메시를 실제 메시와 정렬:</p>
+<ol class="arabic simple">
+<li><p>각 접근 방식으로 생성된 결과에서 상향 방향을 정렬.</p></li>
+<li><p>각 생성된 메시에 대해 스케일과 회전 각도를 상향 방향을 기준으로 선형 탐색.</p></li>
+<li><p>각 스케일과 z-회전을 적용한 후, ICP(Iterative Closest Point) 알고리즘을 사용하여 변환된 메시를 실제 메시와 정렬.</p></li>
+<li><p>내부 점이 가장 많은 메시를 최종 정렬로 선택.</p></li>
+</ol>
+<p>→  이 정렬 과정은 다양한 접근 방식 간 예측된 메시를 일관된 기준 프레임으로 비교할 수 있도록 도와줌</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs/review"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="LGM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LGM</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../experiments/js_exp.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Synthetic Data with Stable Diffusion for Foliar Disease Classification</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#related-work">Related Work</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-generation-guided-by-2d-prior-models">3D Generation Guided by 2D Prior Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-image-to-3d">Single Image to 3D</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizable-neural-reconstruction">Generalizable Neural Reconstruction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method">Method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zero123-view-conditioned-2d-diffusion">3.1 Zero123: View-Conditioned 2D Diffusion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#can-nerf-optimization-lift-multi-view-predictions-to-3d">3.2 Can NeRF Optimization Lift Multi-View Predictions to 3D?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neural-surface-reconstruction-from-imperfect-multi-view-predictions">3.3 Neural Surface Reconstruction from Imperfect Multi-View Predictions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#camera-pose-estimation">3.4 Camera Pose Estimation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">4. Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-details">4.1 Implementation Details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#single-image-to-3d-mesh">4.2 Single Image to 3D Mesh</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ablation-study">4.3 Ablation Study</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#text-to-3d-mesh">4.4 Text to 3D Mesh</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">5. Conclusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">6. Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-elevation-estimation">6.4. Details of Elevation Estimation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-of-training-and-evaluation">6.5 Details of Training and Evaluation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By PseudoLab
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -14,7 +14,7 @@
 
 ```
 
-# **MVDream: Multi-view Diffusion for 3D Generation**
+# MVDream: Multi-view Diffusion for 3D Generation
 
 ## 1. Introduction
 
@@ -50,15 +50,15 @@ e.g. Dreamfusion & Magic3D
 
 ## 2. Related work
 
-### **2.1 3D Generative Models**
+### 2.1 3D Generative Models
 
 Dreamfusion, Magic3D, Rodin, Point-E, HoldDiffusion, Shap-E, ProlificDreamer
 
-### **2.2 Diffusion Models for Object Novel View Synthesis**
+### 2.2 Diffusion Models for Object Novel View Synthesis
 
 SparseFusion, Zero-1-to-3, GeNVS, Viewset Diffusion, MVDiffusion
 
-### **2.3 Lifting 2D diffusion for 3D Generation**
+### 2.3 Lifting 2D diffusion for 3D Generation
 
 DreamFusion, SJC(Score Jacobian Chaining), Magic3D, Make-it-3D, Fantasia3D, ProlificDreamer, Dreamtime
 
